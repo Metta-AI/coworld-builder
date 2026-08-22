@@ -42,7 +42,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  COWORLD_PKG: "coworld[auth]==0.1.34"
+  # Kept on the same pin as coworld-release.yml.
+  COWORLD_PKG: "coworld[auth]==0.1.38"
   SR: ${{ runner.temp }}/submit-result
 
 jobs:

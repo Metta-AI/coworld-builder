@@ -105,7 +105,7 @@ half-published version behind.
 
 The step order is load-bearing and is the whole point of the file:
 
-1. `softmax set-token "$SOFTMAX_TOKEN"` via `uvx --from "coworld[auth]==0.1.34"`.
+1. `softmax set-token "$SOFTMAX_TOKEN"` via `uvx --from "coworld[auth]==0.1.38"`.
 2. `coworld build --version $VERSION --project . --compose compose.yaml --template coworld_manifest_template.json --output dist/coworld_manifest.json`.
 3. `coworld certify dist/coworld_manifest.json`, teed to an artifact, and **failed unless the
    output contains `Replay liveness: skipped (static replay bundle declared`** — that line is
