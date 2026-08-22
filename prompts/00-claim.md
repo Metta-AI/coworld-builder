@@ -99,7 +99,8 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       name `<slug> — coworld run <run>`, notes = the idea text verbatim + a link to the idea task.
       Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 80), unassigned, incomplete.
    9. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
-      `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, and create `runs/<run>/log.md`.
+      `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, `session_ended_at: null`, and
+      create `runs/<run>/log.md`.
    10. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
       pushed a `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see
       its STATE, and exit.
@@ -118,9 +119,17 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 
 ## Exit criterion
 
-Exactly one of: (a) exited because another run is live; (b) a run task is in *Running*, its
-`heartbeat_at` is fresh, `runs/<run>/STATE.json` exists and is pushed, and control has entered
-`prompts/<STATE.phase>-*.md`.
+Exactly one of:
+(a) exited because another run is live (a fresh `heartbeat_at` with no `session_ended_at`);
+(b) exited because 2 runs are already *Blocked*, or because this heartbeat **yielded** to an
+    earlier claim comment — in both cases nothing was created;
+(c) exited into `prompts/90-blocked.md` because the top idea is marked confidential, or because
+    the resumed phase's `phase_attempts` reached 3;
+(d) a run task is in *Running*, its `heartbeat_at` is fresh, `runs/<run>/STATE.json` exists and
+    is pushed, and control has entered `prompts/<STATE.phase>-*.md`.
+
+Section moves (steps 3 and 4.8) are `POST /sections/<section_gid>/addTask {"data":{"task":…}}` —
+shape and gids in `playbooks/observatory-api.md` §Non-Observatory calls and `fleet/cloud.md`.
 
 ## Writes
 
