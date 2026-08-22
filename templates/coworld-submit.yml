@@ -44,13 +44,21 @@ concurrency:
 env:
   # Kept on the same pin as coworld-release.yml.
   COWORLD_PKG: "coworld[auth]==0.1.38"
-  SR: ${{ runner.temp }}/submit-result
 
 jobs:
   submit:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      # `runner.*` is a STEP-level context: in a workflow- or job-level `env:`
+      # block GitHub rejects the file with "Unrecognized named-value: 'runner'"
+      # and no job runs at all. SR is exported here, first, from $RUNNER_TEMP.
+      - name: Export the result directory
+        run: |
+          set -euo pipefail
+          echo "SR=${RUNNER_TEMP}/submit-result" >> "$GITHUB_ENV"
+          mkdir -p "${RUNNER_TEMP}/submit-result"
+
       - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v6
 
@@ -130,6 +138,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: submit-result
-          path: ${{ runner.temp }}/submit-result/submit-result.json
+          path: ${{ env.SR }}/submit-result.json
           if-no-files-found: warn
           retention-days: 30
