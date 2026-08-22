@@ -19,6 +19,33 @@ Ids are not secrets. Tokens are — none appear in this file, ever.
 | coworld-builder-discord | `vlt_011CeJJ4eJ7h2TKoPBwKhA4M` | `DISCORD_BOT_TOKEN` → host `discord.com` (credential `vcrd_01QU9AwcE3bj7PRqFN1WuvxX`) | live (created 2026-08-22 via `POST /vaults {display_name}` then `POST /vaults/{id}/credentials {display_name, auth:{type:environment_variable, secret_name, secret_value, networking:{type:limited, allowed_hosts}, injection_location:{header,body}}}`) |
 
 
+## Parallelism
+
+Several coworld runs advance at the same time. Each deployment below is one heartbeat cron on
+the **same** coordinator agent; every firing adopts **at most one** unit of work (resume a stale
+run, resume an unblocked run, or claim one new idea) and then exits — so the crons fan out the
+work, and the cap below is what bounds it.
+
+- `max_parallel_runs: 3` — the maximum number of *Running* runs with a **fresh** heartbeat
+  (< 90 min and no `session_ended_at ≥ heartbeat_at`) that may exist at once. A heartbeat that
+  finds the cap reached does not claim a new idea; it still resumes a stale or unblocked run.
+  This is the throttle to lower when the shared resource (Bedrock capacity) is tight — lower it
+  here, no redeploy needed, the coordinator reads this file every heartbeat. Lowering it never
+  stops runs already in flight; it only stops new claims.
+- The separate bound of **2 simultaneously-Blocked runs** (`prompts/00-claim.md` step 3) is
+  unchanged and independent.
+
+| deployment | cron (UTC) |
+|---|---|
+| `coworld-builder-a` | `11 * * * *` |
+| `coworld-builder-b` | `31 * * * *` |
+| `coworld-builder-c` | `51 * * * *` |
+
+The same table lives in `fleet/deployment.json`'s `deployments` list, which is what
+`fleet/bin/deploy.py` actually applies; `deploy.py` prints a WARNING if the two disagree.
+`coworld-builder-a` **is** the original `coworld-builder-hourly` deployment, renamed and
+rescheduled in place by `deploy.py update` — same id, never deleted, never duplicated.
+
 ## Managed Agents ids
 
 Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run the tool.
@@ -26,7 +53,9 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 <!-- ids:start -->
 | name | kind | model | id | version |
 |---|---|---|---|---|
-| coworld-builder-hourly | deployment | — | depl_01YSmungQBmAMerqw9KxGdQs | — |
+| coworld-builder-a | deployment | — | depl_01YSmungQBmAMerqw9KxGdQs | — |
+| coworld-builder-b | deployment | — | TBD | — |
+| coworld-builder-c | deployment | — | TBD | — |
 | coworld-builder-designer | agent | claude-opus-5 | `agent_01H3PEczi6dnzrkJrxwptWGj` | 1 |
 | coworld-builder-builder | agent | claude-opus-5 | `agent_01SzZNRaSMDkipDajZYWysoc` | 1 |
 | coworld-builder-reviewer | agent | claude-opus-5 | `agent_01AUUSA9pGCz89r72iyymKLC` | 1 |
@@ -36,8 +65,12 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 | coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 1 |
 <!-- ids:end -->
 
-Deployment schedule: `11 * * * *` UTC (hourly, minute 11 — staggered clear of the cogamer
-fleet's crons). Config: `fleet/deployment.json`.
+`coworld-builder-a` carries the id the single pre-parallelism deployment
+(`coworld-builder-hourly`) was created with: `deploy.py update` renames and reschedules it in
+place. `b` and `c` are TBD until `deploy.py create` makes them and rewrites this table.
+
+Deployment schedules: `11`, `31`, `51 * * * *` UTC — hourly each, 20 minutes apart, staggered
+clear of the cogamer fleet's crons (§Parallelism). Config: `fleet/deployment.json`.
 
 ## Sandbox tooling
 

@@ -1,6 +1,20 @@
 {
- "_comment": "The single coworld-builder deployment. `agent` is filled in by fleet/bin/deploy.py from the coordinator id it created (create) or read from fleet/cloud.md (update). `environment_id` and `vault_ids` are read from fleet/cloud.md; the placeholders here are what deploy.py substitutes. `authorization_token` is NEVER stored in git \u2014 deploy.py re-supplies it from `gh auth token` at apply time, exactly as fleetctl.py does. The six starter repos are mounted read-only at /workspace/starters/<name>: phase 10 reads them to choose and cite a starter, and phase 20 clones the chosen one into the new repo's working tree for a clean history.",
- "name": "coworld-builder-hourly",
+ "_comment": "One template body, K heartbeat deployments. `deployments` is the fan-out list fleet/bin/deploy.py applies: each entry becomes a deployment named coworld-builder-<suffix> whose cron is <cron> (UTC), and every other field here is shared verbatim. `name` and `schedule.expression` below are the template's defaults (= deployment a) and are overwritten per entry. fleet/cloud.md \u00a7Parallelism carries the same table plus `max_parallel_runs`, which the coordinator reads; deploy.py warns if the two disagree. `agent` is filled in by deploy.py from the coordinator id it created (create) or read from fleet/cloud.md (update). `environment_id` and `vault_ids` are read from fleet/cloud.md; the placeholders here are what deploy.py substitutes. `authorization_token` is NEVER stored in git \u2014 deploy.py re-supplies it from `gh auth token` at apply time, exactly as fleetctl.py does. The six starter repos are mounted read-only at /workspace/starters/<name>: phase 10 reads them to choose and cite a starter, and phase 20 clones the chosen one into the new repo's working tree for a clean history.",
+ "deployments": [
+  {
+   "suffix": "a",
+   "cron": "11 * * * *"
+  },
+  {
+   "suffix": "b",
+   "cron": "31 * * * *"
+  },
+  {
+   "suffix": "c",
+   "cron": "51 * * * *"
+  }
+ ],
+ "name": "coworld-builder-a",
  "agent": {
   "type": "agent",
   "id": "<from cloud.md: coworld-builder-coordinator>",

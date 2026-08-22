@@ -5,15 +5,25 @@ Git is the source of truth for configuration; the Anthropic Managed-Agents API i
 Modelled on daveey/cogamer's fleet/bin/fleetctl.py (same api()/key() helpers, same
 "tokens are never in git, re-supplied at apply time" rule).
 
-  create             create the six sub-agents (agents/<role>.json + agents/<role>.md), then the
-                     coordinator (agents/coordinator.json + AGENT.md) with the roster ids, then
-                     the deployment (fleet/deployment.json) with repo tokens from `gh auth token`.
-                     Writes every id into fleet/cloud.md's ids table.
+  create             create whatever does not exist live yet: the six sub-agents
+                     (agents/<role>.json + agents/<role>.md), the coordinator
+                     (agents/coordinator.json + AGENT.md) with the roster ids, and each of the
+                     K heartbeat deployments in fleet/deployment.json's `deployments` list, with
+                     repo tokens from `gh auth token`. Anything already live is SKIPped, never
+                     duplicated — so `create` is also how deployment b and c are added while a
+                     is already running. Writes every id into fleet/cloud.md's ids table.
   update             compare local config against live and POST a new agent version wherever the
                      system prompt or (model, tools, description, skills, multiagent) differ; then
-                     update the deployment (schedule/resources/vaults/agent version) if it drifted.
+                     reconcile ALL K deployments (name/schedule/resources/vaults/agent version).
   run                POST /deployments/{id}/run — a manual heartbeat, off-schedule.
-  status             latest deployment runs + their session status.
+                     `--name <suffix>` picks which one (default `a`).
+  status             every deployment's latest runs + their session status.
+
+Parallelism: several coworld runs advance at once. Each of the K deployments is one heartbeat
+cron (staggered inside the hour); `max_parallel_runs` in fleet/cloud.md §Parallelism is the cap
+the coordinator itself enforces. fleet/deployment.json is the authority for what this tool
+applies; fleet/cloud.md §Parallelism is the same table for the agents to read, and a
+disagreement between them prints a WARNING here.
 
   --dry-run          print the payloads (redacted) instead of sending them. Works on every
                      subcommand.
@@ -42,7 +52,11 @@ API = "https://api.anthropic.com/v1"
 
 ROLES = ["designer", "builder", "reviewer", "fixer", "judge", "verifier"]
 COORDINATOR = "coworld-builder-coordinator"
-DEPLOYMENT_NAME = "coworld-builder-hourly"
+DEPLOYMENT_PREFIX = "coworld-builder-"
+# The pre-parallelism single deployment. `update` renames it to LEGACY_TARGET (same id, new
+# schedule) rather than creating a second cron beside it; it is never deleted.
+LEGACY_DEPLOYMENT_NAME = "coworld-builder-hourly"
+LEGACY_TARGET = "coworld-builder-a"
 
 AGENT_FIELDS = ("name", "description", "model", "tools", "mcp_servers", "skills", "multiagent")
 # `mcp_servers` was in AGENT_FIELDS but not here, so an edit to it in agents/<role>.json was a
@@ -185,6 +199,58 @@ def read_cloud():
     }
 
 
+def read_parallelism():
+    """fleet/cloud.md §Parallelism: `max_parallel_runs: N` and the {suffix: cron} table.
+
+    Documentation for the agents (they read `max_parallel_runs`), and a cross-check for this
+    tool — `fleet/deployment.json` is what gets applied.
+    """
+    body = open(CLOUD_MD, encoding="utf-8").read()
+    sec = body.split("## Parallelism", 1)[1].split("\n## ", 1)[0] if "## Parallelism" in body else ""
+    m = re.search(r"`max_parallel_runs:\s*(\d+)`", sec)
+    crons = {}
+    row = re.compile(r"^\|\s*`%s([a-z0-9\-]+)`\s*\|\s*`([^`]+)`\s*\|" % re.escape(DEPLOYMENT_PREFIX))
+    for line in sec.splitlines():
+        mm = row.match(line.strip())
+        if mm:
+            crons[mm.group(1)] = mm.group(2)
+    return {"max_parallel_runs": int(m.group(1)) if m else None, "crons": crons}
+
+
+def deployment_specs():
+    """[(name, suffix, cron)] from fleet/deployment.json's `deployments` list, cross-checked
+    against fleet/cloud.md §Parallelism. One template body, K names and K crons."""
+    cfg = json.load(open(DEPLOYMENT_JSON, encoding="utf-8"))
+    specs = cfg.get("deployments")
+    if not specs:
+        raise SystemExit("fleet/deployment.json declares no `deployments` list — parallelism "
+                         "needs one entry per heartbeat cron, e.g. {\"suffix\":\"a\","
+                         "\"cron\":\"11 * * * *\"}")
+    out, seen = [], set()
+    for s in specs:
+        suf, cron = s.get("suffix"), s.get("cron")
+        if not suf or not cron:
+            raise SystemExit("every `deployments` entry needs `suffix` and `cron`: %r" % (s,))
+        if suf in seen:
+            raise SystemExit("duplicate deployment suffix %r in fleet/deployment.json" % suf)
+        seen.add(suf)
+        out.append((DEPLOYMENT_PREFIX + suf, suf, cron))
+    doc = read_parallelism()
+    for name, suf, cron in out:
+        if suf not in doc["crons"]:
+            print("WARNING %s is not in fleet/cloud.md §Parallelism" % name)
+        elif doc["crons"][suf] != cron:
+            print("WARNING %s: cron %r in fleet/deployment.json, %r in fleet/cloud.md "
+                  "§Parallelism (deployment.json wins)" % (name, cron, doc["crons"][suf]))
+    for suf in doc["crons"]:
+        if suf not in seen:
+            print("WARNING fleet/cloud.md §Parallelism lists %s%s, which fleet/deployment.json "
+                  "does not declare" % (DEPLOYMENT_PREFIX, suf))
+    if doc["max_parallel_runs"] is None:
+        print("WARNING fleet/cloud.md has no `max_parallel_runs:` line — the coordinator reads it")
+    return out
+
+
 def write_cloud(rows):
     """Merge rows into the ids table between the markers. rows: name -> (kind, model, id, version).
 
@@ -275,9 +341,17 @@ def norm_depl(d):
     return out
 
 
-def deployment_body(coordinator_id, coordinator_version, cloud, with_token=True):
+def deployment_body(coordinator_id, coordinator_version, cloud, spec, with_token=True):
+    """The one template body in fleet/deployment.json, stamped with this spec's name and cron."""
+    name, _suffix, cron = spec
     cfg = json.load(open(DEPLOYMENT_JSON, encoding="utf-8"))
     cfg.pop("_comment", None)
+    # `deployments` is this tool's fan-out list, not part of the API body.
+    cfg.pop("deployments", None)
+    cfg["name"] = name
+    sched = dict(cfg.get("schedule") or {})
+    sched.update({"type": "cron", "expression": cron, "timezone": sched.get("timezone", "UTC")})
+    cfg["schedule"] = sched
     cfg["agent"] = {"type": "agent", "id": coordinator_id, "version": coordinator_version}
     cfg["environment_id"] = cloud["environment_id"]
     cfg["vault_ids"] = [v for v in cloud["vault_ids"] if v and not v.startswith("<")]
@@ -293,7 +367,8 @@ def deployment_body(coordinator_id, coordinator_version, cloud, with_token=True)
         # EVERY repo mount gets the token re-supplied here — this repo, cogamer, and each of the
         # six read-only starters at /workspace/starters/<name>.
         r["authorization_token"] = tok
-    print("%d repo mount(s): %s" % (len(repos), ", ".join(r["mount_path"] for r in repos)))
+    print("%s: %d repo mount(s): %s"
+          % (name, len(repos), ", ".join(r["mount_path"] for r in repos)))
     return cfg
 
 
@@ -301,29 +376,33 @@ def deployment_body(coordinator_id, coordinator_version, cloud, with_token=True)
 
 
 def cmd_create(args):
+    """Create what is missing, SKIP what exists. Never duplicates a name.
+
+    fleetctl.py's apply creates only `if live is None`, and this used to be a blanket refusal:
+    a second `create` would otherwise duplicate all seven agents AND add a second cron firing
+    the same coordinator. Parallelism made the blanket refusal wrong — adding deployment b and
+    c while a is live is a normal `create` — so the guard moved from "refuse if anything
+    exists" to "create only the names that do not exist live".
+    """
     cloud = read_cloud()
-    want = [load_agent(r)[0] for r in ROLES] + [load_agent("coordinator")[0]]
+    specs = deployment_specs()
     if args.dry_run:
-        print("(dry run — live-state collision check skipped; a real `create` refuses if any of "
-              "%s or %s already exists)" % (", ".join(want), DEPLOYMENT_NAME))
+        print("(dry run — live state not read; a real `create` SKIPs every agent and deployment "
+              "that already exists live and creates only the missing ones)")
+        ags, dps = {}, {}
     else:
-        # fleetctl.py's apply creates only `if live is None`. Without this check a second
-        # `create` duplicates all seven agents AND creates a second hourly deployment — two crons
-        # firing the same coordinator, duplicate heartbeats, duplicate runs.
         ags, dps = live_state()
-        clash = [(n, ags[n]["id"]) for n in want if n in ags]
-        if DEPLOYMENT_NAME in dps:
-            clash.append((DEPLOYMENT_NAME, dps[DEPLOYMENT_NAME]["id"]))
-        if clash:
-            for n, i in clash:
-                print("EXISTS %s %s" % (n, i))
-            raise SystemExit(
-                "refusing to create: %d name(s) above already exist live. `create` is for an "
-                "empty account only — run `python3 fleet/bin/deploy.py update` to version the "
-                "existing agents and the deployment." % len(clash))
-    rows, roster = {}, []
+
+    rows, roster, made_agent = {}, [], False
     for role in ROLES:
         name, body = load_agent(role)
+        live = ags.get(name)
+        if live is not None:
+            print("SKIP agent %s (live %s v%s) — `update` versions it" % (
+                name, live["id"], live.get("version")))
+            rows[name] = ("agent", body["model"]["id"], live["id"], live.get("version"))
+            roster.append({"type": "agent", "id": live["id"], "version": live.get("version")})
+            continue
         if args.dry_run:
             show("POST /agents (%s)" % name, body)
             rows[name] = ("agent", body["model"]["id"], "TBD", "TBD")
@@ -333,11 +412,21 @@ def cmd_create(args):
         print("CREATED agent %s %s v%s" % (name, a["id"], a["version"]))
         rows[name] = ("agent", body["model"]["id"], a["id"], a["version"])
         roster.append({"type": "agent", "id": a["id"], "version": a["version"]})
+        made_agent = True
 
     name, body = load_agent("coordinator")
     body.setdefault("multiagent", {})["type"] = "coordinator"
     body["multiagent"]["agents"] = roster
-    if args.dry_run:
+    live_coord = ags.get(name)
+    if live_coord is not None:
+        print("SKIP agent %s (live %s v%s) — `update` versions it" % (
+            name, live_coord["id"], live_coord.get("version")))
+        rows[name] = ("agent", body["model"]["id"], live_coord["id"], live_coord.get("version"))
+        coord_id, coord_ver = live_coord["id"], live_coord.get("version")
+        if made_agent:
+            print("NOTE the coordinator already existed, so its roster still lacks the "
+                  "sub-agent(s) just created — run `update` to version it with the full roster.")
+    elif args.dry_run:
         show("POST /agents (%s)" % name, body)
         rows[name] = ("agent", body["model"]["id"], "TBD", "TBD")
         coord_id, coord_ver = "<dry-run>", 1
@@ -347,27 +436,46 @@ def cmd_create(args):
         print("CREATED agent %s %s v%s" % (name, coord_id, coord_ver))
         rows[name] = ("agent", body["model"]["id"], coord_id, coord_ver)
 
-    # Record the agent ids BEFORE the deployment POST: a failure there used to leave seven
-    # created agents whose ids were never written down, and the only fix-forward was another
-    # `create` (which now refuses, above).
+    # Record the agent ids BEFORE the deployment POSTs: a failure there used to leave seven
+    # created agents whose ids were never written down.
     if not args.dry_run:
         write_cloud(rows)
 
-    depl = deployment_body(coord_id, coord_ver, cloud, with_token=not args.dry_run)
+    legacy = dps.get(LEGACY_DEPLOYMENT_NAME)
+    for spec in specs:
+        dname, _suffix, cron = spec
+        live_depl = dps.get(dname)
+        if live_depl is not None:
+            print("SKIP deployment %s (live %s, schedule %s) — `update` reconciles it" % (
+                dname, live_depl["id"], (live_depl.get("schedule") or {}).get("expression")))
+            rows[dname] = ("deployment", None, live_depl["id"], None)
+            continue
+        if dname == LEGACY_TARGET and legacy is not None:
+            # Creating -a beside the legacy cron would double the heartbeat rate on the same
+            # coordinator. `update` renames the legacy deployment instead.
+            print("SKIP deployment %s: the legacy %s (%s) is live — run `update`, which renames "
+                  "it to %s. It is never deleted." % (
+                      dname, LEGACY_DEPLOYMENT_NAME, legacy["id"], LEGACY_TARGET))
+            continue
+        depl = deployment_body(coord_id, coord_ver, cloud, spec, with_token=not args.dry_run)
+        if args.dry_run:
+            show("POST /deployments (%s)" % dname, depl)
+            rows[dname] = ("deployment", None, "TBD", None)
+            continue
+        d = api("/deployments", depl)
+        print("CREATED deployment %s %s (%s UTC)" % (d["name"], d["id"], cron))
+        rows[dname] = ("deployment", None, d["id"], None)
+
     if args.dry_run:
-        show("POST /deployments", depl)
-        rows[DEPLOYMENT_NAME] = ("deployment", None, "TBD", None)
-        print("\n(dry run — nothing created, cloud.md untouched)")
+        print("\n(dry run — nothing created, cloud.md untouched; %d deployment(s): %s)"
+              % (len(specs), ", ".join(s[0] for s in specs)))
         return
-    d = api("/deployments", depl)
-    print("CREATED deployment %s %s (%s UTC)" % (
-        d["name"], d["id"], depl["schedule"]["expression"]))
-    rows[DEPLOYMENT_NAME] = ("deployment", None, d["id"], None)
     write_cloud(rows)
 
 
 def cmd_update(args):
     cloud = read_cloud()
+    specs = deployment_specs()
     ags, dps = live_state()
     # Pre-flight: every role must exist live before anything is POSTed or written. A role missed
     # here (rename, API blip, truncated page) used to be `continue`d past BEFORE the roster
@@ -414,18 +522,29 @@ def cmd_update(args):
             roster.append({"type": "agent", "id": a["id"], "version": a["version"]})
 
     coord = rows.get(COORDINATOR)
-    live_depl = dps.get(DEPLOYMENT_NAME)
-    depl_ok = True
-    if live_depl is None:
-        # Do NOT put a row in `rows` for it: write_cloud() then preserves whatever cloud.md
-        # already recorded, which is what _deployment_id()/run/status read.
-        print("MISSING live deployment %s — run `create` first" % DEPLOYMENT_NAME)
-        depl_ok = False
-    elif not coord or coord[2] == "TBD":
-        print("SKIP deployment: no coordinator id")
-        depl_ok = False
-    else:
-        want = deployment_body(coord[2], coord[3], cloud, with_token=not args.dry_run)
+    legacy = dps.get(LEGACY_DEPLOYMENT_NAME)
+    reconciled, missing, no_coord = [], [], []
+    for spec in specs:
+        dname, _suffix, _cron = spec
+        live_depl = dps.get(dname)
+        if live_depl is None and dname == LEGACY_TARGET and legacy is not None:
+            # The pre-parallelism deployment IS deployment a: same id, new name and cron. Never
+            # delete it and never create a second one beside it — that would double the cron.
+            print("ADOPTING legacy deployment %s %s as %s (rename + reschedule, same id)"
+                  % (LEGACY_DEPLOYMENT_NAME, legacy["id"], dname))
+            live_depl = legacy
+        if live_depl is None:
+            # Do NOT put a row in `rows` for it: write_cloud() then preserves whatever cloud.md
+            # already recorded, which is what _deployment_id()/run/status read.
+            print("MISSING live deployment %s — run `create` to add it; `update` reconciles "
+                  "only what exists" % dname)
+            missing.append(dname)
+            continue
+        if not coord or coord[2] == "TBD":
+            print("SKIP deployment %s: no coordinator id" % dname)
+            no_coord.append(dname)
+            continue
+        want = deployment_body(coord[2], coord[3], cloud, spec, with_token=not args.dry_run)
         cmp_want = json.loads(json.dumps(want))
         cmp_want.pop("initial_events", None)
         for r in cmp_want.get("resources") or []:
@@ -434,7 +553,7 @@ def cmd_update(args):
         got = norm_depl(live_depl)
         changed = [k for k in cmp_want if got.get(k) != cmp_want.get(k)]
         if not changed:
-            print("unchanged deployment %s" % DEPLOYMENT_NAME)
+            print("unchanged deployment %s" % dname)
         else:
             # POST only the differing fields: the update endpoint 400s on full-config bodies
             # (immutable fields), and an agent repoint needs agent.type.
@@ -443,64 +562,99 @@ def cmd_update(args):
                 payload["agent"] = {"type": "agent", "id": want["agent"]["id"],
                                     "version": want["agent"]["version"]}
             if args.dry_run:
-                show("POST /deployments/%s" % live_depl["id"], payload)
+                show("POST /deployments/%s (%s)" % (live_depl["id"], dname), payload)
             else:
                 api("/deployments/%s" % live_depl["id"], payload)
-                print("UPDATED deployment %s (%s)" % (DEPLOYMENT_NAME, ", ".join(changed)))
-        rows[DEPLOYMENT_NAME] = ("deployment", None, live_depl["id"], None)
+                print("UPDATED deployment %s (%s)" % (dname, ", ".join(changed)))
+        rows[dname] = ("deployment", None, live_depl["id"], None)
+        reconciled.append(dname)
+
+    print("deployments (%d configured): %s" % (len(specs), "; ".join(
+        "%s cron=%s %s" % (n, c, "reconciled" if n in reconciled else
+                           ("MISSING — run create" if n in missing else "skipped"))
+        for n, _s, c in specs)))
 
     if not args.dry_run:
         write_cloud(rows)
-    if not depl_ok:
-        raise SystemExit("update incomplete: the deployment was not updated (see above)")
+    # A deployment that simply has not been created yet is a normal partial state while
+    # parallelism is being rolled out (b and c added by `create` after a exists) — it is
+    # reported, not fatal. Nothing reconciled at all, or a missing coordinator id, still is.
+    if no_coord:
+        raise SystemExit("update incomplete: no coordinator id for %s" % ", ".join(no_coord))
+    if not reconciled:
+        raise SystemExit("update incomplete: no deployment was updated (see above) — "
+                         "run `create` first")
 
 
-def _deployment_id(cloud, dry_run=False):
-    row = cloud["ids"].get(DEPLOYMENT_NAME)
+def _deployment_id(cloud, name, dry_run=False):
+    row = cloud["ids"].get(name)
     ident = (row or {}).get("id", "").strip("`")
     if ident and ident != "TBD":
         return ident
     if dry_run:
-        return "<deployment id not yet in cloud.md — run create>"
+        return "<%s id not yet in cloud.md — run create>" % name
     _, dps = live_state()
-    d = dps.get(DEPLOYMENT_NAME)
+    d = dps.get(name)
+    if not d and name == LEGACY_TARGET:
+        d = dps.get(LEGACY_DEPLOYMENT_NAME)      # pre-rename account
     if not d:
-        raise SystemExit("no deployment %s — run `create` first" % DEPLOYMENT_NAME)
+        raise SystemExit("no deployment %s — run `create` first" % name)
     return d["id"]
 
 
+def _resolve_name(suffix):
+    """`a` or `coworld-builder-a` -> the configured deployment name."""
+    specs = deployment_specs()
+    by_suffix = {suf: name for name, suf, _ in specs}
+    if suffix in by_suffix:
+        return by_suffix[suffix]
+    if suffix in [name for name, _, _ in specs]:
+        return suffix
+    raise SystemExit("unknown deployment %r — fleet/deployment.json declares: %s"
+                     % (suffix, ", ".join("%s (%s)" % (s, n) for n, s, _ in specs)))
+
+
 def cmd_run(args):
-    dep = _deployment_id(read_cloud(), args.dry_run)
+    name = _resolve_name(args.name)
+    dep = _deployment_id(read_cloud(), name, args.dry_run)
     if args.dry_run:
-        show("POST /deployments/%s/run" % dep, {})
+        show("POST /deployments/%s/run (%s)" % (dep, name), {})
         return
     d = api("/deployments/%s/run" % dep, {})
-    print("triggered %s -> %s" % (DEPLOYMENT_NAME, json.dumps(redact(d))[:400]))
+    print("triggered %s -> %s" % (name, json.dumps(redact(d))[:400]))
 
 
 def cmd_status(args):
-    dep = _deployment_id(read_cloud(), args.dry_run)
-    if args.dry_run:
-        show("GET /deployment_runs?deployment_id=%s&limit=%d" % (dep, args.limit), {})
-        return
-    d = api("/deployments/%s" % dep)
-    sched = (d.get("schedule") or {}).get("expression")
-    print("%s %s status=%s schedule=%s agent=%s v%s" % (
-        DEPLOYMENT_NAME, dep, d.get("status"), sched,
-        d.get("agent", {}).get("id"), d.get("agent", {}).get("version")))
-    if d.get("paused_reason"):
-        print("  paused_reason: %s" % d["paused_reason"])
-    runs = api("/deployment_runs?deployment_id=%s&limit=%d" % (dep, args.limit))
-    for r in (runs.get("data") or runs if isinstance(runs, dict) else runs)[: args.limit]:
-        sid = r.get("session_id")
-        line = "  %s  run=%s" % (r.get("created_at"), r.get("id"))
-        if r.get("error"):
-            print(line + "  ERROR %s" % json.dumps(redact(r["error"]))[:200])
+    cloud = read_cloud()
+    for name, _suffix, cron in deployment_specs():
+        try:
+            dep = _deployment_id(cloud, name, args.dry_run)
+        except SystemExit as e:
+            # One deployment that does not exist yet must not hide the others' status.
+            print("%s cron=%s — %s" % (name, cron, e))
             continue
-        if sid:
-            s = api("/sessions/%s" % sid)
-            line += "  session=%s %s updated=%s" % (sid, s.get("status"), s.get("updated_at"))
-        print(line)
+        if args.dry_run:
+            show("GET /deployment_runs?deployment_id=%s&limit=%d (%s, cron %s)"
+                 % (dep, args.limit, name, cron), {})
+            continue
+        d = api("/deployments/%s" % dep)
+        sched = (d.get("schedule") or {}).get("expression")
+        print("%s %s status=%s schedule=%s agent=%s v%s" % (
+            d.get("name", name), dep, d.get("status"), sched,
+            d.get("agent", {}).get("id"), d.get("agent", {}).get("version")))
+        if d.get("paused_reason"):
+            print("  paused_reason: %s" % d["paused_reason"])
+        runs = api("/deployment_runs?deployment_id=%s&limit=%d" % (dep, args.limit))
+        for r in (runs.get("data") or runs if isinstance(runs, dict) else runs)[: args.limit]:
+            sid = r.get("session_id")
+            line = "  %s  run=%s" % (r.get("created_at"), r.get("id"))
+            if r.get("error"):
+                print(line + "  ERROR %s" % json.dumps(redact(r["error"]))[:200])
+                continue
+            if sid:
+                s = api("/sessions/%s" % sid)
+                line += "  session=%s %s updated=%s" % (sid, s.get("status"), s.get("updated_at"))
+            print(line)
 
 
 def main():
@@ -508,10 +662,13 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="print redacted payloads instead of sending them")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("create", help="create the sub-agents, the coordinator, and the deployment")
-    sub.add_parser("update", help="new agent versions where config differs; update the deployment")
-    sub.add_parser("run", help="POST /deployments/{id}/run — a manual heartbeat")
-    s = sub.add_parser("status", help="latest deployment runs + session status")
+    sub.add_parser("create", help="create the missing sub-agents, coordinator, and deployments")
+    sub.add_parser("update", help="new agent versions where config differs; reconcile all "
+                                  "deployments")
+    r = sub.add_parser("run", help="POST /deployments/{id}/run — a manual heartbeat")
+    r.add_argument("--name", default="a",
+                   help="which heartbeat deployment: a suffix (a/b/c) or the full name")
+    s = sub.add_parser("status", help="every deployment's latest runs + session status")
     s.add_argument("--limit", type=int, default=5)
     args = ap.parse_args()
     {"create": cmd_create, "update": cmd_update, "run": cmd_run, "status": cmd_status}[
