@@ -80,9 +80,16 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    9. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
       pushed a `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see
       its STATE, and exit.
-5. **Resume path.** Read `runs/<run>/STATE.json`, set `heartbeat_at` = now on both STATE and the
-   Asana task, append a `resume at phase <n>` line to `log.md`, commit, push, and enter the prompt
-   named by `STATE.phase`.
+5. **Resume path.** Read `runs/<run>/STATE.json`. **Count the resume**: increment
+   `STATE.phase_attempts[<STATE.phase>]` by 1 before doing any work in that phase. A phase that
+   reliably kills the session (sandbox OOM, an unbounded watch, a wedged poll) emits no failure of
+   its own, so this is the only counter that ever reaches the budget — **at 3, enter
+   `prompts/90-blocked.md`** instead of the phase, with the ask "phase `<n>` has ended three
+   sessions without progress" and the last lines of `log.md` as the evidence. (A resume that
+   arrives via step 3, after a human unblocked the run, has just reset the counter to 0, so it
+   starts again at 1.) Then set `heartbeat_at` = now on both STATE and the Asana task (custom
+   field `1217748424048134`), append `<UTC> 00 resume at phase <n> attempt=<k>` to `log.md`,
+   commit, push, and enter the prompt named by `STATE.phase`.
 
 ## Exit criterion
 
