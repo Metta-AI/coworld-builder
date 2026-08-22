@@ -43,10 +43,13 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       recorded at `prompts/90-blocked.md` step 1). That is the human subtask.
    2. Only if `STATE.blocked.subtask` is missing, fall back to the subtask whose name starts with
       `BLOCKED ` (the title prefix phase 90 sets) and which is assigned to `1209016834701578`.
-   3. If that one subtask is `completed: true`, move the task to *Running*, append
-      `<UTC> 00 resumed after unblock subtask=<gid>` to `log.md`, and go to step 5. If it is still
-      open, leave the task in *Blocked* and move on — never resume on a phase subtask's
-      completion.
+   3. If that one subtask is `completed: true`, move the task to *Running*, then **clear the
+      block before resuming**: set `STATE.phase_attempts[<STATE.phase>] = 0` and
+      `STATE.blocked = null` (the human answered; the phase gets its full budget back, and a
+      finished run must not still report `blocked` to the human reading path in `README.md`).
+      Append `<UTC> 00 resumed after unblock subtask=<gid> attempts_reset=<phase>` to `log.md`,
+      commit, push, and go to step 5. If it is still open, leave the task in *Blocked* and move
+      on — never resume on a phase subtask's completion.
 4. Else claim work. **Claiming races** — two overlapping heartbeats (the cron plus a manual
    `deploy.py run`, or a retried deployment run) can both see an empty board. The comment-first
    claim below is the guard (`/workspace/cogamer/fleet/PROTOCOLS.md` §CLAIM PROTOCOL exists

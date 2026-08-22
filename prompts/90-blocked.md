@@ -64,5 +64,8 @@ subtask.
 
 ## Resume
 
-A later heartbeat that finds this task in *Blocked* with the subtask completed moves it back to
-*Running* and re-enters `prompts/<STATE.phase>-*.md` with `phase_attempts[<n>]` reset to 0.
+A later heartbeat that finds this task in *Blocked* with **the subtask recorded in
+`STATE.blocked.subtask`** completed moves it back to *Running*, sets `phase_attempts[<n>] = 0`
+and `blocked = null`, and re-enters `prompts/<STATE.phase>-*.md`. That is implemented in
+`prompts/00-claim.md` step 3 — this paragraph only describes it; the claim prompt is the one that
+runs.
