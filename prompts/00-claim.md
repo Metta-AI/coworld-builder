@@ -13,6 +13,19 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 
 ## Procedure
 
+0. **Tool preflight — once, at the top of every heartbeat.** Every phase prompt pipes JSON through
+   `jq` (00, 20, 40, 50, 60, 70). The sandbox is guaranteed `git`, `gh`, `curl`, `python3`; `jq` is
+   expected but not guaranteed, so check it before you rely on it:
+   ```bash
+   command -v jq >/dev/null || echo "NO JQ"
+   ```
+   If it is missing, do **not** go to phase 90 and do not stop: every `jq` line in these prompts
+   has a mechanical `python3` equivalent — `python3 -c 'import json,sys; d=json.load(sys.stdin);
+   print(…)'` for reads and `json.dump` for writes. Use it, and record
+   `<UTC> 00 jq missing — using python3 json` in `runs/heartbeats.log` (or the run's `log.md`
+   once you own a run) so the gap is visible. Confirmed-present tooling belongs in
+   `fleet/cloud.md` §Sandbox tooling.
+
 1. List *Running* tasks on the Builder board.
    ```bash
    curl -sS "https://app.asana.com/api/1.0/tasks?project=1217747772236871&opt_fields=name,completed,memberships.section.gid,custom_fields,notes" \

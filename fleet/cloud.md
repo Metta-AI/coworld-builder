@@ -39,6 +39,21 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 Deployment schedule: `11 * * * *` UTC (hourly, minute 11 — staggered clear of the cogamer
 fleet's crons). Config: `fleet/deployment.json`.
 
+## Sandbox tooling
+
+What the agents' sandbox is known to provide. `jq` appears in almost every phase prompt; if the
+preflight in `prompts/00-claim.md` step 0 finds it missing, the prompts' `python3` equivalents are
+used instead and the gap is logged — it is never a reason to block.
+
+| tool | status | used by |
+|---|---|---|
+| `git` | guaranteed | every phase (this repo + the coworld repo) |
+| `gh` | guaranteed | phases 20, 30, 40, 50, 60 (workflow dispatch, run watch, artifact download) |
+| `curl` | guaranteed | Asana, Observatory, softmax.com, Discord |
+| `python3` | guaranteed | `fleet/bin/deploy.py`; the fallback for every `jq` line |
+| `jq` | expected, preflighted (`prompts/00-claim.md` step 0) | JSON reads/writes in 00, 20, 40, 50, 60, 70 |
+| docker / nim / emsdk | **absent by design** | all compilation happens in GitHub Actions |
+
 ## Asana
 
 | what | gid |
