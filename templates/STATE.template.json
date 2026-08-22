@@ -33,5 +33,6 @@
   },
   "blocked": null,
   "heartbeat_at": "",
+  "session_id": null,
   "log": ""
 }

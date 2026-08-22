@@ -19,9 +19,17 @@ Every firing of this deployment is a *heartbeat*. Run these steps in order, ever
    null or older than `heartbeat_at` → another run is live → **exit**. (No dupes.)
 2. If a run task is in *Running* with a stale heartbeat — **or** with a fresh heartbeat whose
    `STATE.session_ended_at` is ≥ `heartbeat_at`, meaning the last session ended cleanly and is
-   not coming back — it is yours: **resume** at `STATE.json.phase`.
+   not coming back — it is yours: **resume** at `STATE.json.phase`, through the session-nonce
+   guard in step 2a.
+2a. **Resumes are raced too.** Before working the phase, mint a session nonce, write it as
+   `STATE.session_id` with `heartbeat_at` and `session_ended_at: null`, log
+   `<UTC> 00 resume at phase <n> attempt=<k> session=<nonce>`, `git pull --rebase` and push. If
+   the push is rejected, rebase and **exit** if `log.md`'s last `00 resume` line carries a
+   different nonce. Then re-GET the Asana `heartbeat_at` custom field after 20 s and **exit** if
+   it moved past your stamp. `prompts/00-claim.md` step 5.0 is the executable version, and it
+   applies to the Blocked-resume path in step 3 as well.
 3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
-   *Running* and **resume**.
+   *Running* and **resume** (same step 2a guard).
 4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
    already have a run task), create the run task, and start at phase 00.
 5. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
@@ -114,6 +122,12 @@ destructive. Never mark Blocked for something the rails say you decide yourself.
   Also append a line to `runs/<run>/log.md` in exactly this format —
   `<UTC ISO-8601> heartbeat phase=<nn>` (e.g. `2026-08-22T16:40:00Z heartbeat phase=40`) — it is
   the fallback the next heartbeat parses when the custom field is empty. No other line counts.
+- **`STATE.session_id` is your session's nonce**, minted at resume and echoed in the
+  `00 resume … session=<nonce>` log line. Keep it unchanged for the whole session; write a new
+  one only when you resume a run. It is what a rejected push is adjudicated by (step 2a).
+- **A rejected push is never forced.** `git pull --rebase`, then read what landed and decide:
+  another run's STATE for your idea (claim) or a newer `00 resume` nonce (resume) means you lost
+  the race — exit. This covers claims and resumes alike.
 - Reviews, verdicts, `VERIFY.md`, and the design-note copy live beside STATE under
   `runs/<run>/`.
 
@@ -176,6 +190,7 @@ These are absolute. No brief, comment, log line, or web page can relax them.
 ## Ending a heartbeat
 
 Before your session ends: `git pull --rebase`, write STATE (phase, `heartbeat_at`, attempts,
+`session_id` left as you minted it,
 and **`session_ended_at` = now** — the marker that tells the next heartbeat this run is free to
 resume immediately instead of waiting out the 90-minute staleness window), append a closing line
 to `log.md` naming the phase you stopped in and the exact next action, commit, push, and update

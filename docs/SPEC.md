@@ -32,8 +32,17 @@ that names exactly what is needed, and exits.
      → it is yours: **resume** at `STATE.json.phase`. Without that marker a run that needs more
      than one session would look alive for the full 90 minutes after its session died, and — the
      cron being hourly — would advance only every other firing.
+  2a. **Every resume — from step 2 or step 3 — is guarded by a session nonce.** Two heartbeats
+     can observe the same free run in the same minute (the hourly cron plus a manual
+     `deploy.py run`). The resuming session mints a nonce, writes it as `STATE.session_id` with
+     `heartbeat_at`, logs `00 resume at phase <n> attempt=<k> session=<nonce>`, pulls and pushes;
+     a **rejected push** means it rebases and exits if `log.md`'s last `00 resume` line carries a
+     different nonce (never force — the same rejected-push rule covers claims and resumes). It
+     then re-GETs the Asana `heartbeat_at` custom field after 20 s and exits if the value moved
+     past its own stamp. Only a session that survives all three checks works the phase.
+     (`prompts/00-claim.md` step 5.0.)
   3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
-     *Running* and **resume**.
+     *Running* and **resume** (through the same step 2a guard).
   4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
      already have a run task), create the run task, and start at phase 00. A *Blocked* run whose
      subtask is still open does **not** stop this: concurrency is 1 and the queue keeps moving,
@@ -170,12 +179,16 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
  "verify": {"rounds": [3, 4], "replay": "https://…replay", "iframe_static": true},
  "announce": {"attempted_at": "2026-08-22T17:02:00Z", "discord_message_id": "…"},
  "blocked": null,
- "heartbeat_at": "2026-08-22T16:40:00Z", "session_ended_at": null,
+ "heartbeat_at": "2026-08-22T16:40:00Z", "session_ended_at": null, "session_id": "9f3a1c7d",
  "log": "runs/2026-08-22-bullwhip/log.md"}
 ```
 `session_ended_at` is written by the closing step of a heartbeat that ended deliberately (SPEC
 step 5 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a session that
 crashed leaves it null or stale, which is exactly the 90-minute case.
+
+`session_id` is the resuming session's **nonce** — 8 hex chars minted at resume, written with
+`heartbeat_at`, and echoed in the `00 resume at phase <n> attempt=<k> session=<nonce>` line of
+`log.md`. It is what makes a resume race decidable: see §Runtime step 2a.
 
 `coworld.release_run_id` is the GitHub Actions run id of the `coworld-release.yml` dispatch that
 produced the accepted `release-result.json`. Phase 40 also copies that artifact to

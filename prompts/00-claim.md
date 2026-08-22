@@ -55,7 +55,9 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       `STATE.blocked = null` (the human answered; the phase gets its full budget back, and a
       finished run must not still report `blocked` to the human reading path in `README.md`).
       Append `<UTC> 00 resumed after unblock subtask=<gid> attempts_reset=<phase>` to `log.md`,
-      commit, push, and go to step 5. If it is still open, leave the task in *Blocked* and move
+      commit, push (the rejected-push rule at the end of step 4 applies to this push too), and
+      go to step 5 — whose **session-nonce guard (step 5.0) runs on this path as well**; an
+      unblocked run is as raceable as a stale one. If it is still open, leave the task in *Blocked* and move
       on — never resume on a phase subtask's completion.
    **If a *Blocked* run's subtask is still open, control falls through to step 4 and this
    heartbeat claims a NEW idea.** That is deliberate: concurrency is 1, and a run waiting on a
@@ -137,28 +139,61 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    9. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
       `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, `session_ended_at: null`, and
       create `runs/<run>/log.md`.
-   10. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
-      pushed a `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see
-      its STATE, and exit.
-5. **Resume path.** Read `runs/<run>/STATE.json`. **Count the resume**: increment
+   10. `git pull --rebase`, commit and push. **The rejected-push rule (below) applies here and
+      on every resume**: if the push rejects because another heartbeat already pushed a
+      `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see its
+      STATE, and exit.
+
+**Rejected-push rule (claims and resumes alike).** A rejected push means another heartbeat wrote
+this repo first. Never force, never `--force-with-lease` (`AGENT.md` hard rule 2). Always
+`git pull --rebase` and then read what landed: on a **claim**, another `runs/<run>/STATE.json` for
+your idea means that run won → exit; on a **resume**, a last `00 resume` line in `log.md` carrying
+a different `session=<nonce>` means that session owns the run → exit. In both cases exit silently:
+create nothing, write nothing, and do not retry the push.
+5. **Resume path.** Reached from step 2 (stale/ended session) and from step 3.3 (a human
+   unblocked the run). Both arrive here, and **both run the session-nonce guard below** — two
+   heartbeats can observe the same free run at the same moment (the cron plus a manual
+   `deploy.py run`), and without the guard both would resume it and work the same phase.
+
+   **5.0 Session-nonce guard — do this before any phase work.**
+   1. Mint a nonce for this session: `SESSION=$(python3 -c 'import secrets;print(secrets.token_hex(4))')`.
+   2. `git pull --rebase`, then write `STATE.session_id = "<nonce>"` together with
+      `heartbeat_at` = now (and `session_ended_at: null`), append
+      `<UTC> 00 resume at phase <n> attempt=<k> session=<nonce>` to `log.md` — that exact
+      format, `session=` last — commit and push.
+   3. **If the push is rejected**, the other heartbeat got there first: `git pull --rebase`
+      (never force — `AGENT.md` hard rule 2), re-read `log.md`. If its **last `00 resume` line
+      carries a different `session=` nonce**, that session owns the run: append nothing, write
+      nothing, and **exit**. Only if the last resume line is still yours (or there is none) may
+      you push again.
+   4. Write `heartbeat_at` = the same stamp on the Asana task (custom field
+      `1217748424048134`). **Wait 20 s and re-GET that field.** If it has moved **past** your
+      stamp, another session is heartbeating this run: **exit immediately**, leaving its value
+      in place. Only when the field still holds your stamp do you enter the phase.
+
+   Then continue: read `runs/<run>/STATE.json`. **Count the resume**: increment
    `STATE.phase_attempts[<STATE.phase>]` by 1 before doing any work in that phase. A phase that
    reliably kills the session (sandbox OOM, an unbounded watch, a wedged poll) emits no failure of
    its own, so this is the only counter that ever reaches the budget — **at 3, enter
    `prompts/90-blocked.md`** instead of the phase, with the ask "phase `<n>` has ended three
    sessions without progress" and the last lines of `log.md` as the evidence. (A resume that
    arrives via step 3, after a human unblocked the run, has just reset the counter to 0, so it
-   starts again at 1.) Then set `heartbeat_at` = now on both STATE and the Asana task (custom
-   field `1217748424048134`), append `<UTC> 00 resume at phase <n> attempt=<k>` to `log.md`,
-   commit, push, and enter the prompt named by `STATE.phase`. Set `session_ended_at` back to
-   `null` as part of this write — you are the session that took the run, and the closing step
-   (`AGENT.md` §Ending a heartbeat) stamps it again when you finish.
+   starts again at 1.) The `heartbeat_at`, `session_id`, `session_ended_at: null` write and the
+   `00 resume` log line are the ones step 5.0 already made — do not write a second, unstamped
+   pair. Having survived 5.0, enter the prompt named by `STATE.phase`. You are the session that
+   took the run; the closing step (`AGENT.md` §Ending a heartbeat) stamps `session_ended_at`
+   again when you finish, and leaves `session_id` as it is so the next session can see whose
+   session ended.
 
 ## Exit criterion
 
 Exactly one of:
 (a) exited because another run is live (a fresh `heartbeat_at` with no `session_ended_at`);
-(b) exited because 2 runs are already *Blocked*, or because this heartbeat **yielded** to an
-    earlier claim comment — in both cases nothing was created;
+(b) exited because 2 runs are already *Blocked*, because this heartbeat **yielded** to an
+    earlier claim comment, or because it **lost a resume race** at step 5.0 (its push was
+    rejected and `log.md`'s last `00 resume` line carries another session's nonce, or the Asana
+    `heartbeat_at` field moved past its stamp within 20 s) — in every case nothing was created
+    and no phase work was done;
 (c) exited into `prompts/90-blocked.md` because the resumed phase's `phase_attempts` reached 3
     (90 is only ever entered for a run that already has a run task and a STATE);
 (c2) one or more ideas were **SKIPPED** (confidential / unstartable): each has one
