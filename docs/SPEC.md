@@ -128,13 +128,18 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
  "phase": "60", "phase_attempts": {"40": 2}, "review_round": 3,
  "coworld": {"version": "0.1.2", "cow_id": "cow_…", "manifest_sha": "sha256:…"},
  "policies": {"champion1": "bullwhip-steady:v1", "champion2": "bullwhip-forecaster:v1",
-              "fillers": ["bullwhip-basestock:v1", "bullwhip-mirror:v1"]},
+              "fillers": ["bullwhip-basestock:v1", "bullwhip-mirror:v1"],
+              "filler_version_ids": ["b7c1…", "9ad2…"]},
  "league": {"id": "league_…", "division": "div_…"},
  "verify": {"rounds": [3, 4], "replay": "https://…replay", "iframe_static": true},
  "announce": {"discord_message_id": "…"},
  "blocked": null,
  "heartbeat_at": "2026-08-22T16:40:00Z", "log": "runs/2026-08-22-bullwhip/log.md"}
 ```
+`policies.champion1` / `champion2` / `fillers[]` are always `<name>:vN` **labels**, written by
+phase 40. `policies.filler_version_ids[]` holds the policy-version **UUIDs** phase 50 resolves
+from `GET /policy-versions`; phase 50 writes that field and never overwrites `fillers[]`.
+
 `log.md` is append-only, one line per action with UTC time. Reviews, verdicts, VERIFY.md,
 and the design note copy live beside it. STATE is committed and pushed on every write.
 

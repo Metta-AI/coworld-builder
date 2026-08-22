@@ -113,7 +113,9 @@ unpaused, and at least one round in `pending`/`running`/`completed` — not `fai
 
 ## Writes
 
-- STATE: `league.id`, `league.division`, `policies.fillers[]` UUIDs, `phase: "60"`, `heartbeat_at`.
+- STATE: `league.id`, `league.division`, `policies.filler_version_ids[]` (the resolved UUIDs —
+  **never** overwrite `policies.fillers[]`, which holds phase 40's `<name>:vN` labels),
+  `phase: "60"`, `heartbeat_at`.
 - `log.md`: one line per API call with the HTTP status and the id returned.
 - Asana: complete the phase-50 subtask; comment with `league_id`, `division_id`, and both champion
   policy labels.
