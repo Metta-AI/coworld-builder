@@ -307,7 +307,7 @@ Response `id` is the message id; record it in STATE.
 
 | Symptom | Cause / fix |
 |---|---|
-| "replay viewer bundle must be uploaded first" | stale metta checkout — in CI, make the workflow install metta from `origin/main` |
+| "replay viewer bundle must be uploaded first" | the pinned `coworld` CLI is < 0.1.42: it does not wait for the server to finish expanding the replay-viewer bundle before POSTing the manifest (`_wait_for_replay_viewer_bundle` added in 0.1.42). Bump `COWORLD_PKG` in the workflow (seen: cogame-lighthouse run 32603113899, 2026-08-22) |
 | `coworld secret put` 404 | ran before `upload-coworld` — order matters |
 | Champion renamed "Baseline (N)" | champion version listed as filler — mint distinct filler versions |
 | "No featured match yet" | only one ranked player — submit the daveey-1 champion |

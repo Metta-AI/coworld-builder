@@ -53,3 +53,9 @@
 2026-08-22T22:38:54Z heartbeat phase=40
 2026-08-22T22:39:35Z 40 phase entered; prompts/40-release.md read; builder dispatched for release (version 0.1.0, policies from repo tools/ci/policies.json, put_secret=true)
 2026-08-22T22:39:35Z heartbeat phase=40
+2026-08-22T22:57:16Z 40 dispatch #1 v0.1.0 run=32603113899 FAILED step=upload-coworld (HTTP 400 bundle-not-expanded race; root cause coworld CLI 0.1.38 lacks _wait_for_replay_viewer_bundle); builder fixed workflows to coworld 0.1.42 (sha 62678a49) — distinct change logged
+2026-08-22T22:57:16Z 40 dispatch #2 v0.1.1 run=32603480864 SUCCESS: canonical=true certify.ok=true replay_liveness=skipped-static secret_put=true; cow_id=cow_e0618924-ab1f-42cc-ae51-8012688aac6e; policies v2 x4, champion2 owned by ply_bac48eb1 (verified from committed release-result.json)
+2026-08-22T22:57:16Z 40 templates updated: coworld-release.yml + coworld-submit.yml COWORLD_PKG 0.1.38->0.1.42; playbook common-mistakes row corrected (was: stale metta checkout)
+2026-08-22T22:57:16Z 40 EXIT: release-result.json committed; phase -> 50
+2026-08-22T22:57:16Z progress phase=40 marker=release-run-32603480864
+2026-08-22T22:57:16Z heartbeat phase=50
