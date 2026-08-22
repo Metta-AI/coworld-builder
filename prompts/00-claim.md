@@ -130,9 +130,10 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       `claimed by coworld-builder run <run>` on the idea task.
    7. **Wait 20 s, then re-read the idea's comments.** If a `claimed by coworld-builder run …`
       comment for a *different* run exists with an **earlier** `created_at` than yours, that run
-      won: append `<UTC> 00 yield idea=<gid> to=<other run>` to the *builder* log (no run
-      directory exists yet — write it to `runs/<other-run>/log.md` if present, else say it in the
-      heartbeat's closing note), create nothing, and **exit**. Never delete the other claim.
+      won: append `<UTC> 00 yield idea=<gid> to=<other run>` to the shared
+      `runs/heartbeats.log` **and** say it in the heartbeat's closing note. Never write it into
+      `runs/<other-run>/log.md` — that is another run's directory (`AGENT.md` hard rule 7).
+      Create nothing else, and **exit**. Never delete the other claim.
    8. Create the run task in *Running* from `templates/run-task.md`:
       name `<slug> — coworld run <run>`, notes = the idea text verbatim + a link to the idea task.
       Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 80), unassigned, incomplete.
@@ -213,7 +214,8 @@ shape and gids in `playbooks/observatory-api.md` §Non-Observatory calls and `fl
   `skipped by coworld-builder: <reason>` comment on the idea task and one Fleet-section card
   (`1217747860605582`) assigned to `1209016834701578`, titled `SKIPPED <idea title>: <reason>`,
   deduped by title.
-- `runs/<run>/STATE.json`, `runs/<run>/log.md` — committed and pushed.
+- `runs/<run>/STATE.json`, `runs/<run>/log.md` — committed and pushed. A heartbeat that owns no
+  run writes to the shared `runs/heartbeats.log` instead, never into another run's directory.
 - `runs/SKIPPED.json` (array of skipped idea gids) and `runs/heartbeats.log` — committed and
   pushed on every SKIP.
 - `log.md` lines: `<UTC ISO-8601> 00 claim <run> idea=<gid> slug=<slug>`, and every heartbeat
