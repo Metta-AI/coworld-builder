@@ -19,3 +19,8 @@
 2026-08-22T20:25:04Z 20 dispatching builder sub-agent (round 1)
 2026-08-22T20:25:04Z heartbeat phase=20
 2026-08-22T20:50:17Z 20 builder raised tuning contradiction: pinned 17x11/descending-keys/tidePeriod4 makes escaped==3 unreachable (oracle min 47-93 ticks vs maxTicks<=55); decision=A (rails: parameter tuning) — board 13x9, keys sorted ascending, tidePeriod 5/4, lantern one-step lookahead + bumped-only retransmit; all test thresholds kept literal; design note to be amended with a Tuning revision block
+2026-08-22T21:21:08Z 20 builder pushed full tree 8f57cf75 (44 files); ci.yml run 32599176421 red only on the two contested test_bot assertions; docker-smoke + wasm-viewer green; workflow-parse + placeholder checks all pass
+2026-08-22T21:21:08Z 20 decision A re-sent to builder (first reply apparently not received); builder to apply retune, amend design note, push, drive green
+2026-08-22T21:21:08Z 20 env fact for future builders: git-over-HTTPS auth fails with sandbox GH_TOKEN (Invalid username or token); gh api Git Data API push works — builder used blobs->tree->commit->PATCH ref
+2026-08-22T21:21:08Z progress phase=20 marker=ci-run-32599176421
+2026-08-22T21:21:08Z heartbeat phase=20
