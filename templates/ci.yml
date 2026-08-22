@@ -48,9 +48,9 @@ jobs:
           path: |
             ~/.nimby
             ~/.cache/nim
-          key: nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-${{ hashFiles('nimby.lock') }}-${{ github.sha }}
+          key: nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-${{ hashFiles('nimby.lock') }}
           restore-keys: |
-            nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-${{ hashFiles('nimby.lock') }}-
+            nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-
 
       - name: Install nimby and Nim
         run: |
