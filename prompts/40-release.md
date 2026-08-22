@@ -47,15 +47,23 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
    so the version is **owned by daveey-1**. Champion #2 needs this or its submit 409s "already
    assigned to player". Entries also accept `"image"` (override `<IMAGE>:latest`) and `"run"` as a
    string (shlex-split) or an array.
-3. Dispatch and block:
+3. Dispatch and block, using the **`dispatch-then-watch` recipe** in
+   `playbooks/make-coworld.md` (record `dispatched_at`, poll `gh run list --event
+   workflow_dispatch` until a run newer than it appears, then watch that id). A bare
+   `gh run list -L 1` right after the dispatch watches the **previous** run and downloads its
+   stale `release-result.json` as this dispatch's evidence — do not use it.
    ```bash
    REPO=Metta-AI/cogame-<slug>
-   gh workflow run coworld-release.yml -R "$REPO" --ref main \
+   WF=coworld-release.yml
+   # POLICIES is only needed to OVERRIDE tools/ci/policies.json for this one dispatch:
+   POLICIES=$(jq -c . tools/ci/policies.json)   # or: jq -nc '[{name:…,run:…,env:{…}}, …]'
+   dispatched_at=$(date -u +%FT%TZ)
+   gh workflow run "$WF" -R "$REPO" --ref main \
      -f version=<v> -f put_secret=true          # add -f policies="$POLICIES" only to override
                                                  # tools/ci/policies.json for this one dispatch.
    # Never pass -f skip_certify=true for a real release: it is a debugging switch and makes
    # release-result.json.certify null (= "not checked"), which cannot satisfy the exit criterion.
-   RUN=$(gh run list -R "$REPO" -w coworld-release.yml -L 1 --json databaseId -q '.[0].databaseId')
+   # …then find $RUN with the dispatch-then-watch recipe and:
    gh run watch "$RUN" -R "$REPO" --exit-status || true
    gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
    jq . /tmp/rr/release-result.json

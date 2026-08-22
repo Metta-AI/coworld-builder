@@ -36,18 +36,43 @@ thing the game is about.
 | league seed / divisions / settings / fillers / trigger / verify | direct HTTPS — no docker needed |
 | "the metta checkout must be at origin/main" | not applicable; CI installs metta fresh from main |
 
-### Dispatching and reading a release
+### RECIPE `dispatch-then-watch` — the only way to find the run you just started
+
+**Never `gh run list … -L 1` straight after `gh workflow run`.** The dispatch returns before the
+run is registered, so the newest row is often the *previous* run — you then watch a finished run
+and download **its** stale artifact as this dispatch's evidence. Record the dispatch time first
+and poll until a `workflow_dispatch` run created at or after it appears (Z-suffixed ISO-8601
+timestamps compare correctly as strings):
 
 ```bash
 REPO=Metta-AI/cogame-<slug>
+WF=coworld-release.yml            # or ci.yml, coworld-submit.yml
+dispatched_at=$(date -u +%FT%TZ)
+gh workflow run "$WF" -R "$REPO" --ref main -f …
+RUN=""
+for i in $(seq 1 24); do                                   # 24 × 5 s = 120 s ceiling
+  RUN=$(gh run list -R "$REPO" --workflow "$WF" --event workflow_dispatch \
+          --json databaseId,createdAt,status -L 5 \
+        | jq -r --arg t "$dispatched_at" \
+            '[.[]|select(.createdAt >= $t)]|sort_by(.createdAt)|last|.databaseId // empty')
+  [ -n "$RUN" ] && break
+  sleep 5
+done
+[ -n "$RUN" ] || { echo "no workflow_dispatch run registered within 120 s"; exit 1; }
+gh run watch "$RUN" -R "$REPO" --exit-status || true       # never let a red run abort the phase
+```
+
+Every phase that dispatches a workflow uses this recipe by name and does not restate it:
+`prompts/20-build.md` (for a **push**-triggered `ci.yml` run the same rule applies with
+`--event push` and a `headSha` match on the commit you just pushed), `prompts/40-release.md`
+(`coworld-release.yml`), `prompts/50-league.md` (`coworld-submit.yml`, twice).
+
+### Dispatching and reading a release
+
+```bash
 # `policies` is OPTIONAL — empty means "read tools/ci/policies.json from the repo",
 # which phase 20 scaffolds. Pass it only to override that file for one dispatch.
-gh workflow run coworld-release.yml -R "$REPO" --ref main \
-  -f version=0.1.0 \
-  -f put_secret=true
-# find the run just started, then block on it
-RUN=$(gh run list -R "$REPO" -w coworld-release.yml -L 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN" -R "$REPO" --exit-status || true      # never let a red run abort the phase
+# Dispatch and find $RUN with the dispatch-then-watch recipe above, then:
 gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
 jq . /tmp/rr/release-result.json
 ```

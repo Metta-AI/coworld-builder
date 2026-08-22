@@ -64,11 +64,16 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > binary silently produces wrong gameplay.
    > Report: commit shas, the CI run id, and anything in the design note you could not implement.
 
-3. Watch CI:
+3. Watch CI. Find the run the way the **`dispatch-then-watch` recipe** in
+   `playbooks/make-coworld.md` prescribes — never `-L 1` straight after the push, which can watch
+   the previous run. `ci.yml` here is push-triggered, so match on the sha you just pushed:
    ```bash
-   gh run list -R Metta-AI/cogame-<slug> -w ci.yml -L 1 --json databaseId,conclusion
-   gh run watch <id> -R Metta-AI/cogame-<slug> --exit-status || \
-     gh run view <id> -R Metta-AI/cogame-<slug> --log-failed
+   SHA=$(git -C <repo checkout> rev-parse HEAD)
+   RUN=$(gh run list -R Metta-AI/cogame-<slug> --workflow ci.yml --event push \
+           --json databaseId,headSha,createdAt -L 10 \
+         | jq -r --arg s "$SHA" '[.[]|select(.headSha==$s)]|sort_by(.createdAt)|last|.databaseId // empty')
+   gh run watch "$RUN" -R Metta-AI/cogame-<slug> --exit-status || \
+     gh run view "$RUN" -R Metta-AI/cogame-<slug> --log-failed
    ```
 4. On red, feed the failing log back to the builder. Do not fix by weakening or deleting a test —
    that is failure, not completion.

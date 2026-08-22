@@ -55,7 +55,9 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
      -f player_id=ply_44ae9048-3242-4654-881f-6d9d43347fa3 \
      -f policy="$CH1" -f league_id="$L"
    ```
-   Watch the run, download the `submit-result` artifact
+   Find the run with the **`dispatch-then-watch` recipe** in `playbooks/make-coworld.md` (record
+   `dispatched_at`, poll `--event workflow_dispatch` for a newer run; never `-L 1`), watch it,
+   download the `submit-result` artifact
    (`{"ok","player_id","policy","league_id","exit_code","output_tail","error"}`), require
    `ok: true`; on failure quote `output_tail` in `log.md`.
 6. **Champion #2 — daveey-1** (`ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`): its policy version must
@@ -71,6 +73,8 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
      -f player_id=ply_bac48eb1-662e-44f8-973d-f3e016dccf5d \
      -f policy="$CH2" -f league_id="$L"
    ```
+   Find and watch this run with the same **`dispatch-then-watch` recipe**; require `ok: true` in
+   its `submit-result` artifact.
    **Two ranked players are REQUIRED** — with fewer, softmax.com/<slug> shows "No featured match
    yet".
 7. **Fillers — BEFORE any trigger-round.** First resolve the UUIDs: `release-result.json` reports
