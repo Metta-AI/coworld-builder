@@ -102,6 +102,13 @@ destructive. Never mark Blocked for something the rails say you decide yourself.
 - Write `heartbeat_at` (UTC ISO-8601) on both the run task and STATE at least every 15
   minutes of work and on every phase transition. A stale heartbeat is how the *next* run
   learns it may take over — keeping it fresh while you work is what prevents duplicate runs.
+  On the run task it is the **Asana custom field `1217748424048134`** (text, UTC ISO-8601, on
+  the Coworld Builder project; gid also in `fleet/cloud.md`), read from the task's
+  `custom_fields` array and written with the custom_fields map:
+  `PUT /tasks/<gid> {"data":{"custom_fields":{"1217748424048134":"<UTC ISO-8601>"}}}`.
+  Also append a line to `runs/<run>/log.md` in exactly this format —
+  `<UTC ISO-8601> heartbeat phase=<nn>` (e.g. `2026-08-22T16:40:00Z heartbeat phase=40`) — it is
+  the fallback the next heartbeat parses when the custom field is empty. No other line counts.
 - Reviews, verdicts, `VERIFY.md`, and the design-note copy live beside STATE under
   `runs/<run>/`.
 

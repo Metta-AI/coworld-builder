@@ -15,11 +15,24 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 
 1. List *Running* tasks on the Builder board.
    ```bash
-   /usr/bin/curl -sS "https://app.asana.com/api/1.0/tasks?project=1217747772236871&opt_fields=name,completed,memberships.section.gid,custom_fields,notes" \
+   curl -sS "https://app.asana.com/api/1.0/tasks?project=1217747772236871&opt_fields=name,completed,memberships.section.gid,custom_fields,notes" \
      -H "Authorization: Bearer $ASANA_PAT"
    ```
-2. For each *Running* task read `heartbeat_at` (custom field, else the last `heartbeat` line in
-   `runs/<run>/log.md`).
+2. For each *Running* task read `heartbeat_at`. It is the **Asana custom field
+   `1217748424048134`** (text, UTC ISO-8601, on the Coworld Builder project — gid in
+   `fleet/cloud.md`). Read it out of the task's `custom_fields` array:
+   ```bash
+   HB=$(… | jq -r '.data.custom_fields[]|select(.gid=="1217748424048134")|.text_value')
+   ```
+   Write it with the custom_fields **map** keyed by that gid:
+   ```bash
+   curl -sS -X PUT "https://app.asana.com/api/1.0/tasks/<run_task_gid>" \
+     -H "Authorization: Bearer $ASANA_PAT" -H 'content-type: application/json' \
+     -d '{"data":{"custom_fields":{"1217748424048134":"2026-08-22T16:40:00Z"}}}'
+   ```
+   If the field is empty or absent, fall back to the last `heartbeat` line in `runs/<run>/log.md`,
+   whose format is pinned as `<UTC ISO-8601> heartbeat phase=<nn>` (e.g.
+   `2026-08-22T16:40:00Z heartbeat phase=40`). Nothing else counts as a heartbeat line.
    - Any *Running* task with `heartbeat_at` **< 90 min old** → another run is live. **Exit
      immediately.** Write nothing.
    - A *Running* task with a **stale** `heartbeat_at` → it is yours. Go to step 5 (resume).
@@ -48,9 +61,11 @@ Exactly one of: (a) exited because another run is live; (b) a run task is in *Ru
 
 ## Writes
 
-- Asana: run task (+ 8 phase subtasks), section *Running*, `heartbeat_at`; one comment on the idea.
+- Asana: run task (+ 8 phase subtasks), section *Running*, `heartbeat_at` (custom field
+  `1217748424048134`); one comment on the idea.
 - `runs/<run>/STATE.json`, `runs/<run>/log.md` — committed and pushed.
-- `log.md` line: `<UTC> 00 claim <run> idea=<gid> slug=<slug>`.
+- `log.md` lines: `<UTC ISO-8601> 00 claim <run> idea=<gid> slug=<slug>`, and every heartbeat
+  refresh as `<UTC ISO-8601> heartbeat phase=<nn>` — that exact format, since step 2 parses it.
 
 ## Retry budget
 
