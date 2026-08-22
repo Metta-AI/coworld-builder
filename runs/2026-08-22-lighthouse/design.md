@@ -87,13 +87,20 @@ pinned seed reproduces the episode bit-for-bit):
    **ascending**; seed-draw 3 of the top 8 subject to pairwise BFS distance ≥ 6, retrying up to 50
    times; on failure take the 3 nearest candidates outright. (Ascending, not descending: on a
    *perfect* maze the far dead ends cannot be reached and returned from inside the tick budget —
-   see §Tuning revision. The dead-end filter is what keeps the keeper load-bearing; a blind runner
-   still cannot find a key without it.) If fewer than 3 candidates exist at all — which **does**
-   occur at 11 × 9, so this path is live rather than defensive — fall back to the floor tiles with
-   `y ≤ height - 4` of greatest exit distance, taking the farthest that are pairwise ≥ 6 apart
-   before topping up. The fallback applies the same "not the exit tile, not adjacent to it, not a
-   start" exclusions as the dead-end candidates, so every key placement satisfies the same
+   see §Tuning revision.) If fewer than 3 candidates exist at all, fall back to the floor tiles
+   with `y ≤ height - 4` of greatest exit distance, taking the farthest that are pairwise ≥ 6
+   apart before topping up. The fallback applies the same "not the exit tile, not adjacent to it,
+   not a start" exclusions as the dead-end candidates, so every key placement satisfies the same
    invariants however it was drawn.
+   **At the shipped 11 × 9 the fallback is the NORMAL path, not the exception.** A 5 × 4-room maze
+   yields 0–2 eligible dead ends (measured on the fixture seeds: 2, 2, 0, 1), always fewer than
+   `keyCount`, so keys are in practice the farthest floor tiles above the drowning rows, pairwise
+   ≥ 6 apart. That still places them deep in corridors a blind runner cannot search, so the
+   keeper's map stays load-bearing and the measured competence numbers in §Tuning revision hold;
+   but the dead-end rule above should be read as the preference, not the usual outcome. A board
+   large enough for the dead-end draw to bind (13 × 9 yields 1–4, 17 × 11 yields 3–7) is also large
+   enough for the path-length problem §Tuning revision documents, which is the trade this board
+   size settles.
 6. **The keeper occupies no tile.** It is in the lantern room, off-board. It cannot move; it has
    no position; there is no keeper action other than speaking or staying silent.
 
