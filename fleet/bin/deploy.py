@@ -286,9 +286,14 @@ def deployment_body(coordinator_id, coordinator_version, cloud, with_token=True)
     if not cfg["vault_ids"]:
         raise SystemExit("fleet/cloud.md has no usable `vault_ids:` line")
     tok = gh_token() if with_token else "<resupply-at-apply>"
-    for r in cfg.get("resources") or []:
-        if r.get("type") == "github_repository":
-            r["authorization_token"] = tok
+    repos = [r for r in cfg.get("resources") or [] if r.get("type") == "github_repository"]
+    if not repos:
+        raise SystemExit("fleet/deployment.json declares no github_repository resources")
+    for r in repos:
+        # EVERY repo mount gets the token re-supplied here — this repo, cogamer, and each of the
+        # six read-only starters at /workspace/starters/<name>.
+        r["authorization_token"] = tok
+    print("%d repo mount(s): %s" % (len(repos), ", ".join(r["mount_path"] for r in repos)))
     return cfg
 
 
@@ -297,6 +302,25 @@ def deployment_body(coordinator_id, coordinator_version, cloud, with_token=True)
 
 def cmd_create(args):
     cloud = read_cloud()
+    want = [load_agent(r)[0] for r in ROLES] + [load_agent("coordinator")[0]]
+    if args.dry_run:
+        print("(dry run — live-state collision check skipped; a real `create` refuses if any of "
+              "%s or %s already exists)" % (", ".join(want), DEPLOYMENT_NAME))
+    else:
+        # fleetctl.py's apply creates only `if live is None`. Without this check a second
+        # `create` duplicates all seven agents AND creates a second hourly deployment — two crons
+        # firing the same coordinator, duplicate heartbeats, duplicate runs.
+        ags, dps = live_state()
+        clash = [(n, ags[n]["id"]) for n in want if n in ags]
+        if DEPLOYMENT_NAME in dps:
+            clash.append((DEPLOYMENT_NAME, dps[DEPLOYMENT_NAME]["id"]))
+        if clash:
+            for n, i in clash:
+                print("EXISTS %s %s" % (n, i))
+            raise SystemExit(
+                "refusing to create: %d name(s) above already exist live. `create` is for an "
+                "empty account only — run `python3 fleet/bin/deploy.py update` to version the "
+                "existing agents and the deployment." % len(clash))
     rows, roster = {}, []
     for role in ROLES:
         name, body = load_agent(role)
@@ -323,6 +347,12 @@ def cmd_create(args):
         print("CREATED agent %s %s v%s" % (name, coord_id, coord_ver))
         rows[name] = ("agent", body["model"]["id"], coord_id, coord_ver)
 
+    # Record the agent ids BEFORE the deployment POST: a failure there used to leave seven
+    # created agents whose ids were never written down, and the only fix-forward was another
+    # `create` (which now refuses, above).
+    if not args.dry_run:
+        write_cloud(rows)
+
     depl = deployment_body(coord_id, coord_ver, cloud, with_token=not args.dry_run)
     if args.dry_run:
         show("POST /deployments", depl)
@@ -339,15 +369,25 @@ def cmd_create(args):
 def cmd_update(args):
     cloud = read_cloud()
     ags, dps = live_state()
+    # Pre-flight: every role must exist live before anything is POSTed or written. A role missed
+    # here (rename, API blip, truncated page) used to be `continue`d past BEFORE the roster
+    # append, so the coordinator was versioned with a short multiagent.agents list and silently
+    # lost a sub-agent — and its row was stamped TBD over a real id in fleet/cloud.md.
+    missing = [load_agent(role)[0] for role in ROLES + ["coordinator"]
+               if load_agent(role)[0] not in ags]
+    if missing:
+        for n in missing:
+            print("MISSING live agent %s" % n)
+        raise SystemExit(
+            "aborting update: %d role(s) above are not live. Updating now would version the "
+            "coordinator with a truncated roster and overwrite recorded ids. Create the missing "
+            "agent(s) first (`create` on an empty account, or by hand), then re-run `update`."
+            % len(missing))
     rows = {}
     roster = []
     for role in ROLES + ["coordinator"]:
         name, body = load_agent(role)
-        live = ags.get(name)
-        if live is None:
-            print("MISSING live agent %s — run `create` first (or create it by hand)" % name)
-            rows[name] = ("agent", body["model"]["id"], "TBD", "TBD")
-            continue
+        live = ags[name]
         if role == "coordinator" and roster:
             body.setdefault("multiagent", {})["type"] = "coordinator"
             body["multiagent"]["agents"] = roster
@@ -375,10 +415,15 @@ def cmd_update(args):
 
     coord = rows.get(COORDINATOR)
     live_depl = dps.get(DEPLOYMENT_NAME)
+    depl_ok = True
     if live_depl is None:
+        # Do NOT put a row in `rows` for it: write_cloud() then preserves whatever cloud.md
+        # already recorded, which is what _deployment_id()/run/status read.
         print("MISSING live deployment %s — run `create` first" % DEPLOYMENT_NAME)
+        depl_ok = False
     elif not coord or coord[2] == "TBD":
         print("SKIP deployment: no coordinator id")
+        depl_ok = False
     else:
         want = deployment_body(coord[2], coord[3], cloud, with_token=not args.dry_run)
         cmp_want = json.loads(json.dumps(want))
@@ -406,6 +451,8 @@ def cmd_update(args):
 
     if not args.dry_run:
         write_cloud(rows)
+    if not depl_ok:
+        raise SystemExit("update incomplete: the deployment was not updated (see above)")
 
 
 def _deployment_id(cloud, dry_run=False):
