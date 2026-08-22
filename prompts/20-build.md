@@ -42,7 +42,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > the manifest's `certification.game_config.num_agents`, which is how a manifest edited without
    > the design note (or vice versa) gets caught. Files: `.github/workflows/ci.yml`,
    > `.github/workflows/coworld-release.yml`, `.github/workflows/coworld-submit.yml`,
-   > `tools/ci/docker_smoke.sh` (**`chmod +x`**), and `tools/ci/policies.json` (from
+   > `tools/ci/docker_smoke.sh` and `tools/build_replay_viewer.sh` (**both `chmod +x`** — `coworld
+   > build` hard-requires `os.X_OK` on the replay-viewer hook), and `tools/ci/policies.json` (from
    > `templates/tools/ci/policies.json.example` — copy **and edit**: the example's `bullwhip-*`
    > names and prompts are bullwhip's; rewrite names and prompts for THIS game. Only the shape is
    > inherited: **two LLM prompt policies** (`PLAYER_PROMPT`, one per champion, different prompts)
@@ -50,8 +51,12 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > image, env-switched, with champion #2 — the second `PLAYER_PROMPT` entry — carrying
    > `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
    > `ci.yml`'s `docker-smoke` job calls `tools/ci/docker_smoke.sh` and its `wasm-viewer` job
-   > calls `tools/build_replay_viewer.sh` — if either file is missing or non-executable the repo's
-   > CI cannot go green, so both are part of this scaffold, not a later step.
+   > calls `tools/build_replay_viewer.sh`, each by path and each behind a `test -x` assertion — if
+   > either file is missing or non-executable the repo's CI cannot go green, so both are part of
+   > this scaffold, not a later step. The exec bit on `tools/build_replay_viewer.sh` is not
+   > cosmetic: `coworld build` refuses to package a source replay-viewer bundle unless the hook is
+   > `os.X_OK`, so a mode-0644 hook that slipped past CI would fail in phase 40 instead. Set it with
+   > `git update-index --chmod=+x <path>`.
    > Hard requirements, each of which is a blocking review finding if missed:
    > truncate every recorded string on RUNE boundaries; **for simultaneous-decision games** issue
    > all seats' LLM calls as ONE parallel batch per turn (`curly.makeRequests`) — a turn-based
@@ -85,7 +90,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 ## Exit criterion
 
 `ci.yml` conclusion `success` on `main`, at a commit whose tree contains: the manifest template with
-`num_agents` everywhere, `tools/build_replay_viewer.sh`, `tools/ci/docker_smoke.sh` (executable),
+`num_agents` everywhere, `tools/build_replay_viewer.sh` (**executable**), `tools/ci/docker_smoke.sh`
+(**executable**),
 `tools/ci/policies.json`, all three workflows, both policy entry points, and the tests the design
 note listed. No unsubstituted placeholder survives:
 

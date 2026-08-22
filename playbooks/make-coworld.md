@@ -208,11 +208,11 @@ daveey-1) plus **≥1 scripted filler, normally 2**. Bullwhip's real set was `bu
 (fillers):
 
 ```json
-[{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}},
- {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"… different …"},
+[{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>-player","env":{"PLAYER_PROMPT":"…"}},
+ {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>-player","env":{"PLAYER_PROMPT":"… different …"},
   "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"},
- {"name":"<slug>-<baseline-1>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
- {"name":"<slug>-<baseline-2>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
+ {"name":"<slug>-<baseline-1>","run":"/bin/<slug>-player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
+ {"name":"<slug>-<baseline-2>","run":"/bin/<slug>-player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
 ```
 
 A **scripted policy seated as a champion is a FAILURE state** (see §Definition of done) — both

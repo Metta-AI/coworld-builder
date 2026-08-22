@@ -34,11 +34,11 @@ repo (SPEC §Phases, `AGENT.md` §Sub-agents, `agents/builder.md` §Release). No
    `bullwhip-steady`, champion #2 `bullwhip-forecaster`, fillers `bullwhip-basestock` and
    `bullwhip-mirror`:
    ```json
-   [{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}},
-    {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"… a different prompt …"},
+   [{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>-player","env":{"PLAYER_PROMPT":"…"}},
+    {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>-player","env":{"PLAYER_PROMPT":"… a different prompt …"},
      "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"},
-    {"name":"<slug>-<baseline-1>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
-    {"name":"<slug>-<baseline-2>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
+    {"name":"<slug>-<baseline-1>","run":"/bin/<slug>-player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
+    {"name":"<slug>-<baseline-2>","run":"/bin/<slug>-player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
    ```
    The scripted baselines are selected by **`PLAYER_SCRIPTED=<name>`** — the same env var the
    builder brief names (`prompts/20-build.md`), with the baseline's name as its value. There is no
