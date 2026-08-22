@@ -36,8 +36,17 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    - Any *Running* task with `heartbeat_at` **< 90 min old** → another run is live. **Exit
      immediately.** Write nothing.
    - A *Running* task with a **stale** `heartbeat_at` → it is yours. Go to step 5 (resume).
-3. Else list *Blocked* tasks. For each, fetch its subtasks; if the human subtask is `completed:
-   true`, move the task to *Running*, append `resumed after unblock` to `log.md`, and go to step 5.
+3. Else list *Blocked* tasks. For each, identify **the human subtask** — never "a completed
+   subtask": every run task carries eight phase subtasks (10…80) that phase 80 completes as the
+   run progresses, so a completed phase subtask means nothing here.
+   1. Read `runs/<run>/STATE.json` and take **`STATE.blocked.subtask`** (the gid phase 90
+      recorded at `prompts/90-blocked.md` step 1). That is the human subtask.
+   2. Only if `STATE.blocked.subtask` is missing, fall back to the subtask whose name starts with
+      `BLOCKED ` (the title prefix phase 90 sets) and which is assigned to `1209016834701578`.
+   3. If that one subtask is `completed: true`, move the task to *Running*, append
+      `<UTC> 00 resumed after unblock subtask=<gid>` to `log.md`, and go to step 5. If it is still
+      open, leave the task in *Blocked* and move on — never resume on a phase subtask's
+      completion.
 4. Else claim work. **Claiming races** — two overlapping heartbeats (the cron plus a manual
    `deploy.py run`, or a retried deployment run) can both see an empty board. The comment-first
    claim below is the guard (`/workspace/cogamer/fleet/PROTOCOLS.md` §CLAIM PROTOCOL exists
