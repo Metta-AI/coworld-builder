@@ -36,3 +36,5 @@
 2026-08-22T21:35:13Z 20 EXIT: ci.yml green on main, all exit checks pass; phase -> 30 round 1
 2026-08-22T21:35:13Z progress phase=20 marker=ci-run-32600293001
 2026-08-22T21:35:13Z heartbeat phase=30
+2026-08-22T21:44:44Z 30 round 1: reviewer dispatched over clean checkout at a16bebc6 (/workspace/scratch/review-lighthouse); output reviews/r1-review.md
+2026-08-22T21:44:44Z heartbeat phase=30
