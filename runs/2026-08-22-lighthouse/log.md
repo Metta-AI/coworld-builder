@@ -27,3 +27,8 @@
 2026-08-22T21:28:20Z 20 incident+fix: builder's 'gh auth setup-git' overwrote /root/.gitconfig credential helper with gh (placeholder token fails git basic auth at egress); restored credential.helper=anthropic (/usr/local/bin/git-credential-anthropic) — git push works again. Correction to earlier env fact: git-over-HTTPS auth is fine with the stock helper; do NOT run gh auth setup-git in this sandbox
 2026-08-22T21:28:20Z 20 note: interim cron heartbeat yielded cleanly to this run (commit bfc424e)
 2026-08-22T21:28:20Z heartbeat phase=20
+2026-08-22T21:35:13Z 20 builder returned: ci.yml GREEN on main sha=30a829796e1bc9296be667e3b3adea132af4c5fd run=32599827047 (test/docker-smoke/wasm-viewer all success; verified via gh). Shipped constants 11x9/ascending/tidePeriod 7,5 + lantern lookahead/never-twice — approved (rails, same direction as decision A; builder never received my replies, converged independently with measurements: keys 4/4, all-out 3/4, talk 51-52%)
+2026-08-22T21:35:13Z 20 workflow-parse checks pass: all three workflows active; release inputs version/policies/put_secret/skip_certify; submit inputs player_id/policy/league_id; release-result+submit-result artifacts referenced; zero placeholder residue
+2026-08-22T21:35:13Z 20 remaining before phase 30: in-repo design note stale (still 17x11/tidePeriod4) — builder re-dispatched to amend note + sync runs/ copy
+2026-08-22T21:35:13Z progress phase=20 marker=ci-run-32599827047
+2026-08-22T21:35:13Z heartbeat phase=20
