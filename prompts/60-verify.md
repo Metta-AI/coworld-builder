@@ -19,7 +19,7 @@ ELEV=(-H "X-Use-Elevated-Privileges: true")
 
 **1. ≥2 completed rounds after the fillers were set.**
 ```bash
-/usr/bin/curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
+curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
  | jq -r '[.entries[]|select(.status=="completed")]|length'
 ```
 Must be ≥ 2, and those rounds' `round_number`s must be **after** the round in which fillers were
@@ -28,7 +28,7 @@ their `error` verbatim.
 
 **2. Both champions ranked.**
 ```bash
-/usr/bin/curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" \
+curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" \
  | jq -r '.[]|[.rank,.player_name,.policy_label,.score,.rounds_played,.episode_wins]|@tsv'
 ```
 (bare list, not `.entries`). Require rows for `daveey` **and** `daveey-1`, each `rounds_played ≥ 1`;
@@ -36,11 +36,11 @@ fillers absent or `policy_label` starting `Baseline`.
 
 **3. Latest round's episode request completed with a replay.**
 ```bash
-R=$(/usr/bin/curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
+R=$(curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
     | jq -r '[.entries[]|select(.status=="completed")]|max_by(.round_number).id')
-EREQ=$(/usr/bin/curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}" \
+EREQ=$(curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}" \
     | jq -r '.entries[0].id')      # NOT division_id= (500); league_id=/coworld_name= are ignored
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" \
+curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" \
  | jq '{status, replay_url, participants, participant_scores}'
 ```
 Require `status == "completed"`, a non-null `replay_url`, and `participants` naming `daveey` and
@@ -48,7 +48,7 @@ Require `status == "completed"`, a non-null `replay_url`, and `participants` nam
 
 **4. Replay bytes are valid and show the game.**
 ```bash
-/usr/bin/curl -sSL "$(… .replay_url)" -o /tmp/ep.replay
+curl -sSL "$(… .replay_url)" -o /tmp/ep.replay
 jq -e . /tmp/ep.replay >/dev/null && echo "strict UTF-8 JSON: ok"   # strict parser, not a browser
 jq -r '.protocol, .results.reason' /tmp/ep.replay
 jq -r '[.events[]|select(.type=="decision")]|length' /tmp/ep.replay
@@ -61,7 +61,7 @@ must be a small minority of decisions).
 
 **5. Hosted game log is clean.**
 ```bash
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" \
  | grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' || echo CLEAN
 ```
 Must be `CLEAN`. `LLM provider is unavailable` is a platform-wide Bedrock outage if another LLM

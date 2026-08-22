@@ -22,25 +22,25 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
 
 1. **Seed**
    ```bash
-   /usr/bin/curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" -d '{
+   curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" -d '{
      "coworld_name":"<slug>","league_key":"default","league_name":"<Slug>",
      "template":"commissioner_driven","enabled":true,
      "overrides":{"commissioner_key":"platform"}}'
    ```
 2. **League id** — fetch and match client-side on `game.coworld_name`:
    ```bash
-   L=$(/usr/bin/curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
+   L=$(curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
        | jq -r '.entries[]|select(.game.coworld_name=="<slug>")|.id')
    ```
 3. **Division**
    ```bash
-   D=$(/usr/bin/curl -sS -X PUT "$BASE/leagues/$L/divisions" "${AUTH[@]}" "${ELEV[@]}" \
+   D=$(curl -sS -X PUT "$BASE/leagues/$L/divisions" "${AUTH[@]}" "${ELEV[@]}" \
        -d '{"divisions":[{"name":"Competition","level":1,"type":"competition","hidden":false}]}' \
        | jq -r '.divisions[0].id')
    ```
 4. **Settings**
    ```bash
-   /usr/bin/curl -sS -X POST "$BASE/leagues/$L/settings" "${AUTH[@]}" "${ELEV[@]}" -d "{
+   curl -sS -X POST "$BASE/leagues/$L/settings" "${AUTH[@]}" "${ELEV[@]}" -d "{
      \"ladder\":{\"enabled\":true,
        \"scheduler\":{\"strategy\":\"round_robin\",\"insufficient_players\":\"filler_policy\"},
        \"fulfillment\":{\"allowed_failures\":0.0,\"retry_times\":2},
@@ -84,7 +84,7 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
    `policy_version_id: null` for every policy, so fetch them and filter **client-side** (the
    `name=` filter is ignored):
    ```bash
-   /usr/bin/curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
+   curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
     | jq -r '.entries[]|select(.policy_name|startswith("<slug>-"))
              |[.policy_name,.policy_version_id,.player_name]|@tsv'
    ```
@@ -101,12 +101,12 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
    champion's.
 8. **Unpause, then trigger**
    ```bash
-   /usr/bin/curl -sS -X POST "$BASE/leagues/$L/rounds-paused" "${AUTH[@]}" "${ELEV[@]}" -d '{"paused":false}'
-   /usr/bin/curl -sS -X POST "$BASE/leagues/$L/trigger-round"  "${AUTH[@]}" "${ELEV[@]}" -d '{}'
+   curl -sS -X POST "$BASE/leagues/$L/rounds-paused" "${AUTH[@]}" "${ELEV[@]}" -d '{"paused":false}'
+   curl -sS -X POST "$BASE/leagues/$L/trigger-round"  "${AUTH[@]}" "${ELEV[@]}" -d '{}'
    ```
 9. Confirm the round exists and is not instantly failed:
    ```bash
-   /usr/bin/curl -sS "$BASE/rounds?league_id=$L&limit=5" "${AUTH[@]}" \
+   curl -sS "$BASE/rounds?league_id=$L&limit=5" "${AUTH[@]}" \
      | jq -r '.entries[]|[.round_number,.status,(.error//"-")]|@tsv'
    ```
    `Temporal RoundWorkflow failed before settling the round` = fillers were not set before the

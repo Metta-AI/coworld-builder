@@ -292,7 +292,7 @@ Announcements go to Discord guild `1309708848730345493`, channel `coworlds`
 `1440464430646427718`, via the Disco bot token. **Not Slack.**
 
 ```bash
-/usr/bin/curl -sS -X POST \
+curl -sS -X POST \
   "https://discord.com/api/v10/channels/1440464430646427718/messages" \
   -H "authorization: Bot $DISCORD_BOT_TOKEN" \
   -H "content-type: application/json" \
@@ -320,7 +320,7 @@ Response `id` is the message id; record it in STATE.
 | Cert fails "completed without a replay URL", artifacts exist in S3 | reconciler race on a cold image — **bump version, re-upload**; it passes the second time |
 | daveey-1 submit 409 "already assigned to player" | version owned by daveey — upload a fresh policy while daveey-1 is active |
 | Episodes done in ~20 s, `LLM provider is unavailable` in game log | platform Bedrock sidecar outage (all LLM coworlds) — wait, don't debug the game |
-| zsh eats a var or curl breaks | `status` is reserved in zsh; use `/usr/bin/curl` if PATH is broken |
+| zsh eats a var (`status` is reserved in zsh) | a **local macOS/zsh** trap only. The cloud sandbox is Linux running `bash`: call plain `curl`, and never pin `/usr/bin/curl` — that absolute path is a macOS workaround and is not necessarily where `curl` lives on the sandbox image. |
 | `release-result.json.policies[].policy_version_id` is `null` | expected, always — `upload-policy` prints no uuid. Resolve UUIDs from `GET /policy-versions`, filtered client-side on `policy_name`. |
 | `release-result.json.certify` is `null` | `skip_certify` was true. That is a debugging switch; re-dispatch without it. `null` means "not checked", not "failed". |
 | CI red on a missing script | `tools/ci/docker_smoke.sh` absent or not `chmod +x`, or `tools/build_replay_viewer.sh` missing — both are phase-20 scaffold, not later work |

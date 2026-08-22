@@ -5,6 +5,9 @@ Anything marked **BINDING** is a contract another part of this repo must provide
 
 ## Auth and base
 
+All calls use plain `curl` from `$PATH`. Never pin `/usr/bin/curl`: that is a local macOS/zsh
+workaround, and the cloud sandbox is Linux where the binary may sit elsewhere.
+
 ```bash
 BASE=https://softmax.com/api/observatory/v2
 # SOFTMAX_TOKEN is a vault credential substituted at egress; it is never printed.
@@ -22,7 +25,7 @@ ELEV=(-H "X-Use-Elevated-Privileges: true")     # add on EVERY write, and on art
 ## 1. Seed a league
 
 ```bash
-/usr/bin/curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' -d '{
   "coworld_name": "<slug>",
   "league_key": "default",
@@ -38,7 +41,7 @@ ELEV=(-H "X-Use-Elevated-Privileges: true")     # add on EVERY write, and on art
 ## 2. Find the league id
 
 ```bash
-/usr/bin/curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
+curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
  | jq -r '.entries[] | select(.game.coworld_name=="<slug>") | .id'
 ```
 
@@ -48,7 +51,7 @@ here — fetch and filter client-side.
 ## 3. Divisions
 
 ```bash
-/usr/bin/curl -sS -X PUT "$BASE/leagues/$L/divisions" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X PUT "$BASE/leagues/$L/divisions" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' -d '{
   "divisions": [{"name":"Competition","level":1,"type":"competition","hidden":false}]
 }'
@@ -60,7 +63,7 @@ Response: `{"divisions":[{"id":"div_…","name":"Competition","level":1,"type":"
 ## 4. Settings
 
 ```bash
-/usr/bin/curl -sS -X POST "$BASE/leagues/$L/settings" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X POST "$BASE/leagues/$L/settings" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' -d "{
   \"ladder\": {
     \"enabled\": true,
@@ -78,7 +81,7 @@ Response: `{"divisions":[{"id":"div_…","name":"Competition","level":1,"type":"
 
 ```bash
 # The name= filter is SILENTLY IGNORED. Fetch, then filter client-side.
-/usr/bin/curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
+curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
  | jq -r '.entries[] | select(.policy_name|startswith("<slug>-"))
           | [.policy_name, .policy_version_id, .player_name] | @tsv'
 ```
@@ -94,7 +97,7 @@ version is owned by `daveey-1`.
 ## 6. Filler policies — BEFORE the first trigger-round
 
 ```bash
-/usr/bin/curl -sS -X POST "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X POST "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' \
   -d '{"policy_version_ids": ["<uuid-1>", "<uuid-2>"]}'
 ```
@@ -108,17 +111,17 @@ A `trigger-round` issued before any filler exists fails instantly with
 ## 7. Unpause and trigger
 
 ```bash
-/usr/bin/curl -sS -X POST "$BASE/leagues/$L/rounds-paused" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X POST "$BASE/leagues/$L/rounds-paused" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' -d '{"paused": false}'
 
-/usr/bin/curl -sS -X POST "$BASE/leagues/$L/trigger-round" "${AUTH[@]}" "${ELEV[@]}" \
+curl -sS -X POST "$BASE/leagues/$L/trigger-round" "${AUTH[@]}" "${ELEV[@]}" \
   -H 'content-type: application/json' -d '{}'
 ```
 
 ## 8. Rounds
 
 ```bash
-/usr/bin/curl -sS "$BASE/rounds?league_id=$L&limit=10" "${AUTH[@]}" | jq .
+curl -sS "$BASE/rounds?league_id=$L&limit=10" "${AUTH[@]}" | jq .
 ```
 
 Shape:
@@ -138,8 +141,8 @@ policy versions were actually seated.
 
 ```bash
 # WORKS
-/usr/bin/curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}"
-/usr/bin/curl -sS "$BASE/episode-requests?coworld_id=$COW&limit=20" "${AUTH[@]}"
+curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}"
+curl -sS "$BASE/episode-requests?coworld_id=$COW&limit=20" "${AUTH[@]}"
 
 # DOES NOT WORK
 # ?division_id=…    -> HTTP 500
@@ -150,7 +153,7 @@ policy versions were actually seated.
 List key: `entries`. Detail:
 
 ```bash
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" \
+curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" \
  | jq '{status, replay_url, participants, participant_scores}'
 ```
 
@@ -160,9 +163,9 @@ Fields used: `status`, `replay_url`, `participants` (seat → display name; cham
 ## 10. Artifacts and hosted logs
 
 ```bash
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs"    "${AUTH[@]}" "${ELEV[@]}"
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ/artifacts/results" "${AUTH[@]}" "${ELEV[@]}"
-/usr/bin/curl -sS "$BASE/episode-requests/$EREQ/artifacts/replay"  "${AUTH[@]}" "${ELEV[@]}"
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs"    "${AUTH[@]}" "${ELEV[@]}"
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/results" "${AUTH[@]}" "${ELEV[@]}"
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/replay"  "${AUTH[@]}" "${ELEV[@]}"
 ```
 
 The elevated header is required here even though it is a read. Grep the log for
@@ -175,7 +178,7 @@ Replay bytes also live at `https://softmax-public.s3.amazonaws.com/replays/<uuid
 ## 11. Leaderboard
 
 ```bash
-/usr/bin/curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" | jq .
+curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" | jq .
 ```
 
 Returns a **bare JSON list** (not `{"entries":…}`). Row fields: `rank`, `player_name`,
@@ -244,7 +247,7 @@ curl -sS "https://app.asana.com/api/1.0/tasks/<gid>?opt_fields=name,completed,no
   -H "Authorization: Bearer $ASANA_PAT"
 
 # Discord (Disco bot) — announcements, NOT Slack
-/usr/bin/curl -sS -X POST "https://discord.com/api/v10/channels/1440464430646427718/messages" \
+curl -sS -X POST "https://discord.com/api/v10/channels/1440464430646427718/messages" \
   -H "authorization: Bot $DISCORD_BOT_TOKEN" -H 'content-type: application/json' \
   -d '{"content":"…"}'
 
