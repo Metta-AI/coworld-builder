@@ -50,6 +50,7 @@ fleet's crons). Config: `fleet/deployment.json`.
 | Coworld Builder section Done | `1217748136343842` |
 | Coworld Builder section Fleet (setup + fleet cards) | `1217747860605582` |
 | David Bloomin (assignee for every Blocked subtask) | `1209016834701578` |
+| `heartbeat_at` custom field (text, UTC ISO-8601; on the Coworld Builder project) | `1217748424048134` |
 
 ## Discord
 
