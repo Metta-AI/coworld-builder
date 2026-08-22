@@ -96,3 +96,7 @@
 2026-08-22T23:28:10Z 60 verifier returned: all 8 checks TRUE with fetched evidence (VERIFY.md commit cff6cac); rounds 2+3 completed, both champions ranked rounds_played=2, replay strict-UTF8 reason=complete, champion fallbacks 0/27, static bundle assets all 200, bridge+ready present
 2026-08-22T23:28:10Z 60 judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
 2026-08-22T23:28:10Z heartbeat phase=60
+2026-08-22T23:32:11Z 60 judge returned: blocking: 0 / BLOCKING: 0 (every check spot-checked live, bytes reproduced exactly); 60-verdict.md committed
+2026-08-22T23:32:11Z 60 EXIT: definition-of-done all-true, judge blocking 0; phase -> 70
+2026-08-22T23:32:11Z progress phase=60 marker=reviews/60-verdict.md
+2026-08-22T23:32:11Z heartbeat phase=70
