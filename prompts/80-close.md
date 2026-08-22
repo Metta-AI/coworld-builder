@@ -46,4 +46,5 @@ section, and `runs/<run>/` is fully pushed.
 
 3 attempts per Asana call. Failure here does **not** go to 90 — the work is done. Log the failure,
 leave the run task in *Running* with a `close-failed` comment, and let the next heartbeat retry
-phase 80.
+phase 80. That retry is **not counted**: `prompts/00-claim.md` step 5 exempts phase 80 from the
+resume counter, so repeated close retries can never trip the three-sessions budget into 90.

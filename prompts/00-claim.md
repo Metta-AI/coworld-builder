@@ -192,7 +192,13 @@ create nothing, write nothing, and do not retry the push.
    `prompts/90-blocked.md`** instead of the phase, with the ask "phase `<n>` has ended three
    sessions without progress" and the last lines of `log.md` as the evidence. (A resume that
    arrives via step 3, after a human unblocked the run, has just reset the counter to 0, so it
-   starts again at 1.) The `heartbeat_at`, `session_id`, `session_ended_at: null` write and the
+   starts again at 1.)
+   **Phase 80 is exempt from this counter.** `prompts/80-close.md` §Retry budget says a failed
+   close does not go to 90 — the run's work is already done and the next heartbeat simply retries
+   the Asana calls. So on a resume with `STATE.phase == "80"`, do **not** increment
+   `phase_attempts["80"]` and never enter 90 from it; log
+   `<UTC> 00 resume at phase 80 (close retry, not counted) session=<nonce>` instead. No other
+   phase is exempt. The `heartbeat_at`, `session_id`, `session_ended_at: null` write and the
    `00 resume` log line are the ones step 5.0 already made — do not write a second, unstamped
    pair. Having survived 5.0, enter the prompt named by `STATE.phase`. You are the session that
    took the run; the closing step (`AGENT.md` §Ending a heartbeat) stamps `session_ended_at`
