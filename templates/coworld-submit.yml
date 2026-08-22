@@ -139,5 +139,5 @@ jobs:
         with:
           name: submit-result
           path: ${{ env.SR }}/submit-result.json
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30

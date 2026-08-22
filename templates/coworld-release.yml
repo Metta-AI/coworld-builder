@@ -470,7 +470,7 @@ jobs:
         with:
           name: release-result
           path: ${{ env.RR }}/release-result.json
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload release logs
@@ -482,7 +482,7 @@ jobs:
             ${{ env.RR }}/certify.log
             ${{ env.RR }}/upload.log
             dist/coworld_manifest.json
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
       - name: Enforce canonical
