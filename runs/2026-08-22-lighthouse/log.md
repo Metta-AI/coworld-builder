@@ -59,3 +59,8 @@
 2026-08-22T22:57:16Z 40 EXIT: release-result.json committed; phase -> 50
 2026-08-22T22:57:16Z progress phase=40 marker=release-run-32603480864
 2026-08-22T22:57:16Z heartbeat phase=50
+2026-08-22T22:58:46Z 50 seed 200: lseed_41c87474-5597-4867-bedb-a0907f6bc876 league_id=league_3e9fc4b5-5b6c-4ad7-8ff4-e74fa144d954
+2026-08-22T22:58:46Z 50 division 200: div_83c5d76c-b3a8-4651-9ac1-c33bd739494d (Competition, level 1); note: GET /leagues returns a bare array, not {entries} — filtered client-side
+2026-08-22T22:58:46Z 50 settings 200: ladder elo/mean, round_robin, filler_policy, round_interval_minutes=15
+2026-08-22T22:58:46Z 50 dispatching coworld-submit.yml champion1 lighthouse-beacon:v2 as daveey
+2026-08-22T22:58:46Z heartbeat phase=50

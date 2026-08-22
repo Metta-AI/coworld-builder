@@ -24,8 +24,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_3e9fc4b5-5b6c-4ad7-8ff4-e74fa144d954",
+    "division": "div_83c5d76c-b3a8-4651-9ac1-c33bd739494d"
   },
   "verify": {
     "rounds": [],
@@ -37,7 +37,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-22T22:57:16Z",
+  "heartbeat_at": "2026-08-22T22:58:46Z",
   "session_ended_at": null,
   "session_id": "1351c680",
   "log": "runs/2026-08-22-lighthouse/log.md"
