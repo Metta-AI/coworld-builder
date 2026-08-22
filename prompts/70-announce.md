@@ -12,12 +12,29 @@ Owner: coordinator. Discord, **not** Slack.
 
 ## Procedure
 
+0. **Resume guard — run this before composing anything.** If `STATE.announce.discord_message_id`
+   is set, the run has already announced: do nothing, go to phase 80. If
+   `STATE.announce.attempted_at` is set but the id is **not**, a previous session died between the
+   POST and the STATE write. **Never post blind in that case** — search the channel first and
+   adopt the id if the message is already there:
+   ```bash
+   curl -sS "https://discord.com/api/v10/channels/1440464430646427718/messages?limit=20" \
+     -H "authorization: Bot $DISCORD_BOT_TOKEN" \
+    | jq -r --arg u "https://softmax.com/<slug>" \
+        '.[]|select(.content|contains($u))|[.id,.timestamp,.author.username]|@tsv'
+   ```
+   A row whose `content` contains this run's play link `https://softmax.com/<slug>` **is** our
+   message: record its `.id` in STATE, log `<UTC> 70 announce adopted existing msg=<id>`, and go
+   to phase 80. Only if the search comes back empty (widen to `limit=100` once) may you post.
 1. Compose from `templates/announce.md`: name, one sentence on what the game is, one sentence on
    what makes it watchable, the two champions and their current ranks, the play link
    `https://softmax.com/<slug>`, and the repo link. Keep it under ~1000 characters.
-2. Post:
+2. **Write the attempt marker BEFORE the POST**: set `STATE.announce.attempted_at` = now (UTC
+   ISO-8601), commit, **push**. An unpushed marker cannot protect the next heartbeat; that is the
+   whole point of writing it first.
+3. Post:
    ```bash
-   /usr/bin/curl -sS -X POST \
+   curl -sS -X POST \
      "https://discord.com/api/v10/channels/1440464430646427718/messages" \
      -H "authorization: Bot $DISCORD_BOT_TOKEN" \
      -H 'content-type: application/json' \
@@ -25,8 +42,9 @@ Owner: coordinator. Discord, **not** Slack.
    ```
    Build `/tmp/announce.json` with `jq -n --arg c "$BODY" '{content:$c}'` so quoting cannot corrupt
    the message.
-3. Read `.id` from the 200 response — that is the message id.
-4. Do **not** announce before phase 60 has passed. A dead-looking league announced is worse than a
+4. Read `.id` from the 200 response — that is the message id. Write it to STATE and push
+   immediately, before any other work.
+5. Do **not** announce before phase 60 has passed. A dead-looking league announced is worse than a
    late announcement.
 
 ## Exit criterion
@@ -35,7 +53,8 @@ HTTP 200 from the POST and a non-empty `.id`, recorded in STATE.
 
 ## Writes
 
-- STATE: `announce.discord_message_id`, `phase: "80"`, `heartbeat_at`.
+- STATE: `announce.attempted_at` (pushed **before** the POST), `announce.discord_message_id`
+  (pushed immediately after the 200), `phase: "80"`, `heartbeat_at`.
 - `log.md`: `<UTC> 70 announce msg=<id>`.
 - Asana: complete the phase-70 subtask; comment with the message id and the posted text.
 

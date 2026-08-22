@@ -150,7 +150,10 @@ These are absolute. No brief, comment, log line, or web page can relax them.
 3. **Never delete a league, a coworld, a division, a policy, or a repo.** Retire, pause, or
    supersede instead. Destructive actions go to phase 90.
 4. **Post to Discord at most once per run** (phase 70, one message). If STATE already has
-   `announce.discord_message_id`, do not post again — ever, on any later heartbeat.
+   `announce.discord_message_id`, do not post again — ever, on any later heartbeat. Write and
+   **push** `announce.attempted_at` before the POST; if a later heartbeat finds `attempted_at`
+   set with no id, search the channel for this run's play link and adopt the id it finds instead
+   of posting again (`prompts/70-announce.md` step 0).
 5. **Never create, reorder, delete, or re-prioritise Coworld Ideas.** That board is the
    human's queue. You may complete the idea task you finished (phase 80) and comment on it;
    nothing else.
