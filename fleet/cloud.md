@@ -26,14 +26,14 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 <!-- ids:start -->
 | name | kind | model | id | version |
 |---|---|---|---|---|
-| coworld-builder-designer | agent | claude-opus-5 | TBD | TBD |
-| coworld-builder-builder | agent | claude-opus-5 | TBD | TBD |
-| coworld-builder-reviewer | agent | claude-opus-5 | TBD | TBD |
-| coworld-builder-fixer | agent | claude-opus-5 | TBD | TBD |
-| coworld-builder-judge | agent | claude-fable-5 | TBD | TBD |
-| coworld-builder-verifier | agent | claude-opus-5 | TBD | TBD |
-| coworld-builder-coordinator | agent | claude-fable-5 | TBD | TBD |
-| coworld-builder-hourly | deployment | — | TBD | — |
+| coworld-builder-hourly | deployment | — | depl_01YSmungQBmAMerqw9KxGdQs | — |
+| coworld-builder-designer | agent | claude-opus-5 | `agent_01H3PEczi6dnzrkJrxwptWGj` | 1 |
+| coworld-builder-builder | agent | claude-opus-5 | `agent_01SzZNRaSMDkipDajZYWysoc` | 1 |
+| coworld-builder-reviewer | agent | claude-opus-5 | `agent_01AUUSA9pGCz89r72iyymKLC` | 1 |
+| coworld-builder-fixer | agent | claude-opus-5 | `agent_01VAuffJBu8B3j3GEWphmQ7x` | 1 |
+| coworld-builder-judge | agent | claude-fable-5 | `agent_01QF6UtN7yE5eRTNM4tFkwHH` | 1 |
+| coworld-builder-verifier | agent | claude-opus-5 | `agent_01Grqmo29T2TuAtdS4UNRGV6` | 1 |
+| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 1 |
 <!-- ids:end -->
 
 Deployment schedule: `11 * * * *` UTC (hourly, minute 11 — staggered clear of the cogamer

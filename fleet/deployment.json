@@ -1,5 +1,5 @@
 {
- "_comment": "The single coworld-builder deployment. `agent` is filled in by fleet/bin/deploy.py from the coordinator id it created (create) or read from fleet/cloud.md (update). `environment_id` and `vault_ids` are read from fleet/cloud.md; the placeholders here are what deploy.py substitutes. `authorization_token` is NEVER stored in git — deploy.py re-supplies it from `gh auth token` at apply time, exactly as fleetctl.py does. The six starter repos are mounted read-only at /workspace/starters/<name>: phase 10 reads them to choose and cite a starter, and phase 20 clones the chosen one into the new repo's working tree for a clean history.",
+ "_comment": "The single coworld-builder deployment. `agent` is filled in by fleet/bin/deploy.py from the coordinator id it created (create) or read from fleet/cloud.md (update). `environment_id` and `vault_ids` are read from fleet/cloud.md; the placeholders here are what deploy.py substitutes. `authorization_token` is NEVER stored in git \u2014 deploy.py re-supplies it from `gh auth token` at apply time, exactly as fleetctl.py does. The six starter repos are mounted read-only at /workspace/starters/<name>: phase 10 reads them to choose and cite a starter, and phase 20 clones the chosen one into the new repo's working tree for a clean history.",
  "name": "coworld-builder-hourly",
  "agent": {
   "type": "agent",
@@ -20,56 +20,48 @@
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/coworld-builder",
    "mount_path": "/workspace/coworld-builder",
-   "access": "read_write",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/daveey/cogamer",
    "mount_path": "/workspace/cogamer",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/cogame-babel",
    "mount_path": "/workspace/starters/cogame-babel",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/cogame-bullwhip",
    "mount_path": "/workspace/starters/cogame-bullwhip",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/cogame-parley",
    "mount_path": "/workspace/starters/cogame-parley",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/coworld-ctf",
    "mount_path": "/workspace/starters/coworld-ctf",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/cogame-moba",
    "mount_path": "/workspace/starters/cogame-moba",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   },
   {
    "type": "github_repository",
    "url": "https://github.com/Metta-AI/cogame-factorio",
    "mount_path": "/workspace/starters/cogame-factorio",
-   "access": "read",
    "authorization_token": "<resupply-at-apply>"
   }
  ],
