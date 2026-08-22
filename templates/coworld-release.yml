@@ -390,6 +390,17 @@ jobs:
               errors.append(f"upload-coworld exited {upload['exit_code']}")
           if canonical_raw == "no":
               errors.append("uploaded Coworld is NOT canonical (hosted smoke likely failed)")
+          elif canonical_raw is None:
+              # No parsed `Canonical:` line at all. Without this the run ends
+              # ok:false with an EMPTY errors[], and phase 40's triage table has
+              # nothing to match on while step_failed names whichever step
+              # merely happened to be running.
+              errors.append(
+                  "no 'Canonical: yes|no' line in the upload-coworld output "
+                  f"(exit_code={upload.get('exit_code')}); the upload did not "
+                  "run, died early, or the CLI output format changed - see "
+                  "release-logs/upload.log"
+              )
 
           ok = job_status == "success" and canonical_raw == "yes"
           result = {
