@@ -13,3 +13,8 @@
 2026-08-22T20:23:54Z 10 design.md copied to runs/2026-08-22-lighthouse/design.md; phase -> 20
 2026-08-22T20:23:54Z progress phase=10 marker=runs/2026-08-22-lighthouse/design.md
 2026-08-22T20:23:54Z heartbeat phase=20
+2026-08-22T20:25:04Z 20 phase entered; prompts/20-build.md read. gh missing from sandbox — installed gh 2.63.2 from release tarball (cloud.md says guaranteed; gap logged)
+2026-08-22T20:25:04Z 20 repo created public: https://github.com/Metta-AI/cogame-lighthouse
+2026-08-22T20:25:04Z 20 propagate-secrets.yml run 32596594949 green; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-lighthouse
+2026-08-22T20:25:04Z 20 dispatching builder sub-agent (round 1)
+2026-08-22T20:25:04Z heartbeat phase=20
