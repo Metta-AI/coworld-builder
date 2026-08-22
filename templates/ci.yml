@@ -4,8 +4,10 @@
 # Substitute: <slug>  (lowercase game slug, e.g. bullwhip)
 #             <IMAGE> (local image name WITHOUT a tag, must match the image in
 #                      compose.yaml minus ":latest", e.g. coworld-bullwhip)
-#             <SEATS> (seat count, used only as the docker-smoke fallback when
-#                      the manifest fixture cannot be read)
+#             <SEATS> (seat count -- a CROSS-CHECK, not a fallback:
+#                      docker_smoke.sh takes the seat count solely from
+#                      certification.game_config.num_agents and hard-fails if
+#                      this value disagrees with it)
 #
 # The coworld-builder sandbox has no docker, no nim and no emsdk: this
 # workflow is the ONLY place those toolchains run. Phase 20's exit criterion
