@@ -31,16 +31,19 @@
     "division": "div_83c5d76c-b3a8-4651-9ac1-c33bd739494d"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_2be3c46a-4312-44d7-ab36-e5c6605911e3",
+      "round_3 (completed 23:17:09Z)"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/c8551f16-57b7-4d14-a638-36c179b1b234.replay",
+    "iframe_static": true
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-22T23:02:42Z",
+  "heartbeat_at": "2026-08-22T23:28:10Z",
   "session_ended_at": null,
   "session_id": "1351c680",
   "log": "runs/2026-08-22-lighthouse/log.md"

@@ -93,3 +93,6 @@
 2026-08-22T23:27:06Z 60 check 7 TRUE: committed runs/2026-08-22-lighthouse/release-result.json (commit e7ca202) .certify.replay_liveness = 'Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)'
 2026-08-22T23:27:06Z 60 check 8 TRUE: replay events legible (keeper 11 says, pilot key at tick 5, 3 drowns, end complete); bundle index.html+chrome.css+renderer.js+lighthouse_replay.js+static_replay.js+lighthouse_replay.wasm all 200 (1528/12044/54965/11403/5923/162418 B, valid wasm); static_replay.js has coworld-replay bridge + tell("ready") at :123
 2026-08-22T23:27:06Z 60 EXIT: VERIFY.md written with all 8 checks TRUE and evidence pasted inline
+2026-08-22T23:28:10Z 60 verifier returned: all 8 checks TRUE with fetched evidence (VERIFY.md commit cff6cac); rounds 2+3 completed, both champions ranked rounds_played=2, replay strict-UTF8 reason=complete, champion fallbacks 0/27, static bundle assets all 200, bridge+ready present
+2026-08-22T23:28:10Z 60 judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-22T23:28:10Z heartbeat phase=60
