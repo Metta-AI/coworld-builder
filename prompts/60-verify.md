@@ -86,10 +86,22 @@ Record in VERIFY.md **which** of the two sources you used. The iframe `src` must
 players).
 
 **7. Certification declared the static bundle.**
+The evidence is `runs/<run>/release-result.json` — the artifact phase 40 downloaded and
+**committed** (`prompts/40-release.md` §Writes). Read the committed copy, never `/tmp`: phase 40
+usually ran in an earlier heartbeat and that sandbox's `/tmp` is gone.
 ```bash
-jq -r '.certify.replay_liveness' /tmp/rr/release-result.json
+jq -r '.certify.replay_liveness' runs/<run>/release-result.json
 ```
-Must contain `Replay liveness: skipped (static replay bundle declared`.
+If the file is missing (a run whose phase 40 predates this rule), re-download it from the release
+run id STATE recorded, then commit it — do **not** mark the check NOT FETCHED without trying:
+```bash
+RR=$(jq -r '.coworld.release_run_id' runs/<run>/STATE.json)
+REPO=$(jq -r '.repo' runs/<run>/STATE.json)          # Metta-AI/cogame-<slug>
+gh run download "$RR" -R "$REPO" -n release-result -D "runs/<run>"   # lands as release-result.json
+jq -r '.certify.replay_liveness' runs/<run>/release-result.json
+```
+Must contain `Replay liveness: skipped (static replay bundle declared`. Paste the `jq` output and
+say which of the two sources you read it from.
 
 **8. Spectator judgment — fetched, not rendered.** The sandbox has **no screen and no headless
 browser**: there is nothing to read a DOM from, and `curl` of `index.html` returns the bundle

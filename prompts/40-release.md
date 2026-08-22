@@ -68,6 +68,12 @@ repo (SPEC §Phases, `AGENT.md` §Sub-agents, `agents/builder.md` §Release). No
    gh run watch "$RUN" -R "$REPO" --exit-status || true
    gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
    jq . /tmp/rr/release-result.json
+   # PERSIST IT. /tmp does not survive the session, and phase 60 check 7 re-reads this file —
+   # usually in a LATER heartbeat with an empty /tmp. Copy it into the run directory, record the
+   # release run id in STATE, and commit both.
+   mkdir -p runs/<run>
+   cp /tmp/rr/release-result.json runs/<run>/release-result.json
+   # STATE: coworld.release_run_id = "$RUN"   (phase 60's fallback re-download key)
    ```
 4. Read `release-result.json` — never the workflow's colour alone. Require:
    - `canonical == true`
@@ -101,7 +107,13 @@ requested policy with distinct `<name>:vN` labels, champion #2's `player_id` ==
 
 ## Writes
 
+- `runs/<run>/release-result.json` — the successful dispatch's `release-result` artifact, copied
+  out of `/tmp/rr` and **committed and pushed**. Phase 60 check 7 reads this committed copy
+  (`prompts/60-verify.md` check 7); `/tmp` is gone by then. Overwrite it on every successful
+  re-dispatch so it always matches `coworld.version`.
 - STATE: `coworld.version`, `coworld.cow_id`, `coworld.manifest_sha`,
+  `coworld.release_run_id` (the GitHub Actions run id of the dispatch this result came from —
+  phase 60's fallback is `gh run download "$release_run_id" -R <repo> -n release-result`),
   `policies.champion1` (the daveey-owned LLM prompt policy), `policies.champion2` (the
   daveey-1-owned LLM prompt policy), `policies.fillers[]` (the scripted baselines) — all as
   `<name>:vN` **labels** (UUIDs are not available yet; phase 50 resolves them into

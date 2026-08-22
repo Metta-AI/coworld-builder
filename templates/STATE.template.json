@@ -11,7 +11,8 @@
   "coworld": {
     "version": "",
     "cow_id": "",
-    "manifest_sha": ""
+    "manifest_sha": "",
+    "release_run_id": ""
   },
   "policies": {
     "champion1": "",

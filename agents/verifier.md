@@ -52,7 +52,8 @@ showing the champion seats doing the thing the game is about); the hosted game l
 `falling back|LLM provider is unavailable|cut off at max_tokens|rejected` lines; the
 `softmax.com/<slug>` page with a featured match and a **static** iframe `src`
 (`/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` — a `/client/replay`
-pod URL is a failure, not a variant); the certification output containing
+pod URL is a failure, not a variant); the certification output — read from the committed
+`runs/<run>/release-result.json` — containing
 `Replay liveness: skipped (static replay bundle declared`.
 
 **Item 8 — spectator judgment.** A short paragraph saying whether the replay is legible and
@@ -76,6 +77,12 @@ claimed from a rendered page is fabricated. Say plainly if the replay is illegib
 ## Standards
 
 - Fetch fresh, every item, this run. Never reuse a fetch from an earlier phase or heartbeat.
+  **One documented exception: item 7.** The certification output is an artifact of *this run's*
+  release dispatch, not a live endpoint; its evidence is `runs/<run>/release-result.json`, the
+  copy phase 40 committed. Read that file; if it is absent, re-download it with
+  `gh run download "$(jq -r .coworld.release_run_id runs/<run>/STATE.json)" -R <repo> -n
+  release-result -D "runs/<run>"` and say in `VERIFY.md` which of the two you used. Never look
+  for it under `/tmp` — that sandbox is gone.
 - Redact nothing but secrets: name the header you sent (`elevated`, `Authorization`), never
   its value.
 - Where the checklist allows a documented exception (a `deadline` the design declares

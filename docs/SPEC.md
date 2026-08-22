@@ -93,7 +93,8 @@ is bounded at 75 minutes of wall clock.
 6. `https://softmax.com/<slug>` page fetched: featured match present; the replay iframe `src`
    is `/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` (never a
    `/client/replay` pod URL).
-7. Certification output contains `Replay liveness: skipped (static replay bundle declared`.
+7. Certification output contains `Replay liveness: skipped (static replay bundle declared` —
+   read from the committed `runs/<run>/release-result.json` (phase 40's artifact copy).
 8. The verifier's **spectator judgment** (a short paragraph): the replay is legible and shows
    the game. The sandbox has no screen and no headless browser, so the judgment is written from
    three fetched things, never from a rendered page:
@@ -152,7 +153,8 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
 {"run": "2026-08-22-bullwhip", "idea_task": "1217704516752265", "run_task": "…",
  "slug": "bullwhip", "repo": "Metta-AI/cogame-bullwhip", "starter": "cogame-babel",
  "phase": "60", "phase_attempts": {"40": 2}, "review_round": 3,
- "coworld": {"version": "0.1.2", "cow_id": "cow_…", "manifest_sha": "sha256:…"},
+ "coworld": {"version": "0.1.2", "cow_id": "cow_…", "manifest_sha": "sha256:…",
+              "release_run_id": "17423991055"},
  "policies": {"champion1": "bullwhip-steady:v1", "champion2": "bullwhip-forecaster:v1",
               "fillers": ["bullwhip-basestock:v1", "bullwhip-mirror:v1"],
               "filler_version_ids": ["b7c1…", "9ad2…"]},
@@ -166,6 +168,12 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
 `session_ended_at` is written by the closing step of a heartbeat that ended deliberately (SPEC
 step 5 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a session that
 crashed leaves it null or stale, which is exactly the 90-minute case.
+
+`coworld.release_run_id` is the GitHub Actions run id of the `coworld-release.yml` dispatch that
+produced the accepted `release-result.json`. Phase 40 also copies that artifact to
+`runs/<run>/release-result.json` and commits it; phase 60 check 7 reads the committed copy and
+falls back to `gh run download <release_run_id> -n release-result`. `/tmp` never crosses a
+heartbeat.
 
 `policies.champion1` / `champion2` / `fillers[]` are always `<name>:vN` **labels**, written by
 phase 40. `policies.filler_version_ids[]` holds the policy-version **UUIDs** phase 50 resolves
@@ -197,7 +205,7 @@ templates/               ci.yml, coworld-release.yml, run-task.md, blocked-subta
 playbooks/make-coworld.md   the make-coworld skill + gotchas (maintained here; copy of the local skill)
 playbooks/observatory-api.md  call shapes that are known to work (from the worked example)
 learnings/LEARNINGS.md   append-only, dated; every run adds a section
-runs/<run>/              STATE.json, log.md, reviews/, VERIFY.md, design note copy
+runs/<run>/              STATE.json, log.md, reviews/, VERIFY.md, release-result.json, design note copy
 fleet/cloud.md           env/vault/agent/deployment ids (deploy.py rewrites the ids table)
 fleet/bin/deploy.py      create agents + deployment from agents/*.json and AGENT.md
 ```
