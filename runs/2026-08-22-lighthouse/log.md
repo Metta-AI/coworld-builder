@@ -64,3 +64,12 @@
 2026-08-22T22:58:46Z 50 settings 200: ladder elo/mean, round_robin, filler_policy, round_interval_minutes=15
 2026-08-22T22:58:46Z 50 dispatching coworld-submit.yml champion1 lighthouse-beacon:v2 as daveey
 2026-08-22T22:58:46Z heartbeat phase=50
+2026-08-22T23:01:45Z 50 champion1 submit run=32603951851 success ok:true sub_479be48c (lighthouse-beacon:v2, daveey)
+2026-08-22T23:01:45Z 50 champion2 submit run=32603978761 success ok:true sub_2fd6d43a (lighthouse-pilot:v2, daveey-1, player_name verified daveey-1 on policy-versions row b285d4c3)
+2026-08-22T23:01:45Z 50 policy-version UUIDs resolved client-side: beacon:v2=f6b55249 pilot:v2=b285d4c3 lantern:v2=214ad0dc wallhug:v2=c2120b1c (v1 rows exist from failed release dispatch #1 — ignored)
+2026-08-22T23:01:45Z 50 fillers 200: lantern:v2+wallhug:v2 registered BEFORE trigger; response contains exactly those two, neither champion
+2026-08-22T23:01:45Z 50 unpause 200 paused:false; trigger-round 200 workflow_id=ladder-league_3e9fc4b5
+2026-08-22T23:01:45Z 50 rounds: round 2 pending with entrant_attributions = both champions (round 1 auto-scheduled pre-fillers failed 'Temporal RoundWorkflow failed before settling' — superseded, not a trigger of ours with fillers set)
+2026-08-22T23:01:45Z 50 EXIT: both champions entrants, fillers set, unpaused, round pending; phase -> 60
+2026-08-22T23:01:45Z progress phase=50 marker=league_3e9fc4b5-5b6c-4ad7-8ff4-e74fa144d954
+2026-08-22T23:01:45Z heartbeat phase=60

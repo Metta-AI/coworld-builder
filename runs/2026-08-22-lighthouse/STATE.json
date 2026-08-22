@@ -5,7 +5,7 @@
   "slug": "lighthouse",
   "repo": "https://github.com/Metta-AI/cogame-lighthouse",
   "starter": "Metta-AI/cogame-babel",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -21,7 +21,10 @@
       "lighthouse-lantern:v2",
       "lighthouse-wallhug:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "214ad0dc-abdd-4c8b-b1e4-e10b83d1ff02",
+      "c2120b1c-28f7-41b6-8dc6-7ea50b592b86"
+    ]
   },
   "league": {
     "id": "league_3e9fc4b5-5b6c-4ad7-8ff4-e74fa144d954",
@@ -37,7 +40,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-22T22:58:46Z",
+  "heartbeat_at": "2026-08-22T23:01:45Z",
   "session_ended_at": null,
   "session_id": "1351c680",
   "log": "runs/2026-08-22-lighthouse/log.md"
