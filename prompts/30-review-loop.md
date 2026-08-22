@@ -152,7 +152,7 @@ categories are all outside {hang, timeout, static-viewer, manifest, num_agents} 
 ## Writes
 
 - `runs/<run>/reviews/r<n>-{review,fixes,verdict}.md`.
-- STATE: `review_round`, `phase: "40"` (or `"90"`), `heartbeat_at`.
+- STATE: `review_round`, `phase: "40"` on success, `heartbeat_at`. On exhaustion STATE.phase stays `"30"` (phase 90 records the failed phase in `STATE.blocked.phase`; `STATE.phase` is never `"90"`).
 - Asana: complete the phase-30 subtask; comment with the round count and any residue.
 
 ## Retry budget

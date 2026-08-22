@@ -30,9 +30,10 @@ Page:  https://softmax.com/<slug>
 Run:   runs/<run>/ in Metta-AI/coworld-builder (STATE.json, log.md, reviews/, VERIFY.md)
 CI:    https://github.com/Metta-AI/cogame-<slug>/actions
 
-Coordinator: coworld-builder (hourly heartbeat, minute 11). This task is the lock:
-while it sits in Running with a fresh heartbeat_at (the custom field, not this text),
-no other run starts.
+Coordinator: coworld-builder heartbeats a/b/c (minutes 11/31/51 UTC). This task is this run's
+lock: a fresh heartbeat_at (the custom field, not this text) means a session is working it and
+no other session may take it. Up to max_parallel_runs (fleet/cloud.md) runs are in Running at
+once.
 
 Phases (SPEC §Phases). The current phase is the first unchecked line.
 

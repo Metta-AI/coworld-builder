@@ -30,7 +30,10 @@ work, and the cap below is what bounds it.
   (< 90 min and no `session_ended_at ≥ heartbeat_at`) that may exist at once. A heartbeat that
   finds the cap reached does not claim a new idea; it still resumes a stale or unblocked run.
   This is the throttle to lower when the shared resource (Bedrock capacity) is tight — lower it
-  here, no redeploy needed, the coordinator reads this file every heartbeat. Lowering it never
+  here, no redeploy needed, the coordinator reads this file every heartbeat. Worst case is
+  **cap + 1**: two heartbeats that overlap within seconds (a cron plus a manual or retried run)
+  can both see `live = cap − 1` and both claim; there is deliberately no re-check after a claim
+  (the claim itself is the commitment). Lowering it never
   stops runs already in flight; it only stops new claims.
 - The separate bound of **2 simultaneously-Blocked runs** (`prompts/00-claim.md` step 3) is
   unchanged and independent.

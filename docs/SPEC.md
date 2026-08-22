@@ -232,7 +232,7 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
 ```
 `phase` is written — committed and pushed — at the moment of **every** phase transition,
 **before** the new phase's first sub-agent is dispatched. A `log.md` line tagged with a phase
-number higher than `STATE.phase` is a defect: the next resume would re-enter the older phase and
+number higher than `STATE.phase` is a defect (the resume path repairs it forward-only from tags `10`…`80`; `90` lines are outcomes, never a phase): the next resume would re-enter the older phase and
 redo work already done. `prompts/00-claim.md` step 5 carries the repair for a run that already
 drifted.
 

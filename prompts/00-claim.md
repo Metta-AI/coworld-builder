@@ -224,14 +224,20 @@ create nothing, write nothing, and do not retry the push.
       stamp, another session is heartbeating this run: **exit immediately**, leaving its value
       in place. Only when the field still holds your stamp do you enter the phase.
 
-   **5.0a Phase-drift repair — after the guard, before any phase work.** Read the highest phase
-   tag `<nn>` on the `log.md` lines newer than the **previous** session's `00 claim` / `00 resume`
-   line (not your own, which 5.0 just appended). If it is **greater** than `STATE.phase`, trust
-   the log: set `STATE.phase` to it — and `review_round` to the highest `r<k>` seen, if that phase
-   is 30 — append `<UTC> 00 resume: STATE phase repaired <old> -> <new> from log`, commit, push,
-   and continue at the repaired phase. Without this a run whose STATE was left behind
-   (2026-08-22: STATE stayed at `"20"` through all of phase 30) is resumed into a phase it has
-   already finished, and redoes it. The 5.1 counter then applies to the **repaired** phase.
+   **5.0a Phase-drift repair — a read-only scan done BEFORE the 5.0 step-2 write, folded into
+   that single write.** Scan the `log.md` lines newer than the **previous** session's `00 claim`
+   / `00 resume` line for phase tags, using exactly this grammar: a line starting
+   `<UTC> (\d\d) ` or containing `phase=(\d\d)`. **Consider only tags `10`…`80`.** Ignore `00`
+   (heartbeat/claim/resume lines) and **`90`** (`90 blocked …` lines are an outcome, not a phase —
+   treating them as one re-enters 90 on every unblock-resume and re-blocks the run forever).
+   Let `<new>` be the highest such tag. Only if `<new>` is **greater** than `STATE.phase` (this
+   repair can only move forward, never back): write `STATE.phase = "<new>"` — and, if `<new>` is
+   30, `review_round` = the highest `r<k>` seen on those lines — in the same STATE write as
+   5.0 step 2, and append `<UTC> 00 repair phase <old> -> <new> from log session=<nonce>` right
+   before the `00 resume …` line (the repair line carries your nonce so the foreign-nonce rule in
+   5.0 step 3 cannot misread it). Without this a run whose STATE was left behind (2026-08-22:
+   STATE stayed at `"20"` through all of phase 30) is resumed into a phase it has already
+   finished, and redoes it. The 5.1 counter applies to the **repaired** phase.
 
    **5.1 Count the resume — but only sessions that made no progress.** Read
    `runs/<run>/STATE.json`. The counter exists because a phase that reliably kills the session

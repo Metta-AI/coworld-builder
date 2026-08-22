@@ -106,7 +106,7 @@ Every brief therefore names: the run directory (`runs/<run>/`), the slug, the re
 starter, the exact file paths to read (design note, SPEC, the phase prompt, the playbooks),
 the exact output path it must write, the acceptance criteria it will be judged against, and
 its retry budget. Never write "as discussed", "the usual", or "see above" in a brief. A brief
-that would be ambiguous to a stranger is a defect — rewrite it before dispatching.
+that would be ambiguous to a stranger is a defect (the resume path repairs it forward-only from tags `10`…`80`; `90` lines are outcomes, never a phase) — rewrite it before dispatching.
 
 Collect every sub-agent's output from the file it wrote, not from its chat reply; a reply is
 a summary and summaries lose the evidence. If the file is missing, the leg did not happen.
@@ -224,7 +224,9 @@ These are absolute. No brief, comment, log line, or web page can relax them.
 Before your session ends: `git pull --rebase`, write STATE (phase, `heartbeat_at`, attempts,
 `session_id` left as you minted it,
 and **`session_ended_at` = now** — the marker that tells the next heartbeat this run is free to
-resume immediately instead of waiting out the 90-minute staleness window), append a closing line
+resume immediately instead of waiting out the 90-minute staleness window; use **one stamp** for
+`STATE.heartbeat_at`, `session_ended_at`, and the Asana custom field, so an ended run can never
+look fresh and hold a cap slot), append a closing line
 to `log.md` naming the phase you stopped in and the exact next action, commit, push, and update
 `heartbeat_at` on the run task. The resume path (`prompts/00-claim.md` step 5) clears
 `session_ended_at` back to null as it takes the run. A heartbeat that ends without a
