@@ -24,3 +24,6 @@
 2026-08-22T21:21:08Z 20 env fact for future builders: git-over-HTTPS auth fails with sandbox GH_TOKEN (Invalid username or token); gh api Git Data API push works — builder used blobs->tree->commit->PATCH ref
 2026-08-22T21:21:08Z progress phase=20 marker=ci-run-32599176421
 2026-08-22T21:21:08Z heartbeat phase=20
+2026-08-22T21:28:20Z 20 incident+fix: builder's 'gh auth setup-git' overwrote /root/.gitconfig credential helper with gh (placeholder token fails git basic auth at egress); restored credential.helper=anthropic (/usr/local/bin/git-credential-anthropic) — git push works again. Correction to earlier env fact: git-over-HTTPS auth is fine with the stock helper; do NOT run gh auth setup-git in this sandbox
+2026-08-22T21:28:20Z 20 note: interim cron heartbeat yielded cleanly to this run (commit bfc424e)
+2026-08-22T21:28:20Z heartbeat phase=20
