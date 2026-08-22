@@ -44,3 +44,6 @@
 2026-08-22T22:01:35Z 30 r1 reviewer returned: 17 findings (F1 wallhug moves into flooded-key tiles via glyph order; F2 legality test 'and' defect; F3 stale replay-reader defaults; F4 missing viewer-smoke repo checks; F5-F17 minor), 5 could-not-determine; reviews/r1-review.md committed
 2026-08-22T22:01:35Z 30 r1: fixer dispatched
 2026-08-22T22:01:35Z heartbeat phase=30
+2026-08-22T22:27:53Z 30 r1 fixer returned: 15 commits (F1..F17: 14 fixed, F13 refuted with evidence, F14 noted, F16 accepted+doc); final sha eeb1004f3c8adbdde1ce562b1bec7ca3d3495ebb, ci run 32602216061 success (verified); r1-fixes.md + refreshed design.md committed
+2026-08-22T22:27:53Z 30 r1: judge dispatched (fresh context) at eeb1004
+2026-08-22T22:27:53Z heartbeat phase=30

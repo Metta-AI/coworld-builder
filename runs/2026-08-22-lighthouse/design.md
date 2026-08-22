@@ -80,6 +80,12 @@ pinned seed reproduces the episode bit-for-bit):
    from the seed subject to pairwise `|Δx| ≥ 4`; retry the draw up to 50 times, then fall back to
    the leftmost, middle and rightmost bottom rooms. Runner 1 → the leftmost of the three drawn,
    runner 2 → the middle, runner 3 → the rightmost.
+   **At the shipped 11 × 9 this draw is degenerate and the starts are the same on every seed:**
+   the bottom room row is `{1, 3, 5, 7, 9}` and `{1, 5, 9}` is the only triple pairwise ≥ 4
+   apart — which is also the fallback — so every episode starts at `(1,7)`, `(5,7)`, `(9,7)`
+   (verified over 13 seeds). That is a consequence of the pinned separation at this width, not a
+   broken draw; the anti-pre-baking argument in §Two name spaces rests on the maze, the exit, the
+   key set and the aliases, all of which do vary per seed. The draw binds again on a wider board.
 5. **Keys.** `keyCount` = **3**. Candidates are the **dead-end rooms** (rooms with exactly one
    open neighbour) that are not a start room, not the exit tile, not adjacent to the exit tile,
    and have `y ≤ height - 4` (= 5 at the default size — keys in the bottom two rows would drown
@@ -221,8 +227,10 @@ phase-60 verification, but should be rare: the arithmetic below leaves ~160 s of
 
 - The **whole grid**, rendered as `height` lines of `width` characters, using this glyph set:
   `#` wall · `.` floor · `~` flooded · `K` uncollected key · `E` exit, gate closed ·
-  `O` exit, gate open · `1` `2` `3` a runner, by runner number (a runner glyph overrides the
-  tile under it).
+  `O` exit, gate open · `1` `2` `3` a runner, by runner number. Precedence is runner over exit
+  over wall over water over key over floor: in particular an uncollected key on a **flooded**
+  tile renders `~`, not `K`, because nobody may step onto it — the glyph is the only thing a
+  blind runner has to go on, and the `wallhug` baseline reads legality straight off it.
 - Per runner: alias, `(x, y)`, status, the move it made last tick and whether it was blocked,
   and how many keys it is carrying.
 - Tide: `tideRows`, `waterLine`, and — stated explicitly in the prompt, because it is the whole
@@ -278,8 +286,11 @@ truncator is bullwhip's `cleanText(text, limit)` (`src/bullwhip/llm.nim:385-390`
 
 - `move` — one of `N`, `S`, `E`, `W`, `WAIT`. Accepted case-insensitively, with surrounding
   whitespace stripped, and with the aliases `NORTH`/`UP`, `SOUTH`/`DOWN`, `EAST`/`RIGHT`,
-  `WEST`/`LEFT`, `STAY`/`HOLD`/`WAIT`. Anything else (`"NE"`, `42`, missing) is a **parse
-  failure** and takes the retry-then-fallback path.
+  `WEST`/`LEFT`, `STAY`/`HOLD`/`H`/`WAIT`. `H` is on the list because champion #2
+  `lighthouse-pilot` is specified with the grammar `"<Alias>:<N|S|E|W|H>"`, and the same
+  `parseMoveToken` reads both a runner's reply and the direction a keeper's message gives a
+  `wallhug` runner: without `H` the pilot keeper's own hold order would not parse. Anything
+  else (`"NE"`, `42`, missing) is a **parse failure** and takes the retry-then-fallback path.
 - `notes` — free text, cap **200 runes**, private, fed back next tick.
 
 `{"type":"prompt","prompt":…}` frames from the player container are capped at **4000 chars**
@@ -739,10 +750,14 @@ LighthouseRenderer` — **the `coworld-replay` postMessage bridge, including `te
 `tell("ready")` and `tell("error")`, and the 20 s `AbortController` fetch bound, stay exactly as
 they are** (phase-60 check 8c greps for the bridge). From `client/renderer.js` these helpers are
 copied unchanged: `makeNameMap`, `applyNames`, `clampName`, `isBaselineFiller`, `renderFeed`,
-`roundBase`, `escapeHtml`, `ellipsize`, `wrapLines`, `roundRect`, `hexToRgb`/`shade`/`rgba`,
+`roundBase`, `escapeHtml`, `wrapLines`, `roundRect`, `hexToRgb`/`shade`/`rgba`,
 `drawTag`, `drawParchment`, `buildScrub`, `bindFeedToggle`, `makeEffects`, `attachLive`,
 `attachReplay`, `updateEndscreen`'s shell, and the Ink & Print palette
 (`COLORS`/`COLOR_HEX`/`PAPER`/`INK`/`AMBER`/`GHOST`, `PICK_HOLD_MS` 2500, `PICK_FADE_MS` 700).
+`ellipsize` is babel's with exactly one change: it cuts the string by **code point**
+(`Array.from`) rather than by UTF-16 code unit, because babel's `slice(0, -1)` can cut an astral
+rune between its surrogates and *Legible at 360 px* below asks for a rune-safe boundary. The
+keeper's message is arbitrary model text and does reach this plate.
 Only `draw`, `computeLayout`, `describeEvent`, `updateScorebug` and the endscreen columns are
 rewritten.
 
@@ -906,8 +921,16 @@ shading rules named above, the same way babel draws its scene cards and shapes. 
   baselines, whose versions must differ from both champions'.
 - **Kept byte-for-byte from the starter**: `data/arena_floor.png`,
   `data/soldier_{red,blue,green,yellow}_front.png`, `data/font.ttf`, `data/FONT_LICENSE.txt`,
-  `nimby.lock`, `LICENSE`, `.gitignore`. `client/chrome.css` is babel's byte-for-byte apart from
-  the scorebug rules named in §Viewer, which babel does not have.
+  `nimby.lock`, `LICENSE`, `.gitignore`. `client/chrome.css` is babel's byte-for-byte except for
+  four additions, all of them additive and none of them touching babel's own rules: `#scorebug`
+  becomes `repeat(4, 1fr)` for four plates; `.plate-name` takes bullwhip's
+  `min-width: 3.2em; flex: 1 1 auto` (§Viewer, *Legible at 360 px*); bullwhip's
+  `@media (max-width: 640px)` block arrives whole — `.plate-label { display: none }` plus the
+  `.plate-score` size and the `#scorebug` gap/padding that ship with it; and lighthouse adds six
+  classes of its own for the chrome §Viewer describes (`.plate-status`, `.plate-msg`,
+  `.plate.drowned .plate-name`, `.plate.escaped .plate-name`, `.feed-notes`, `.feed-tick`) with a
+  `@media (max-width: 420px)` block that drops the scorebug to two columns so four plates still
+  read on the narrowest embed.
 
 ---
 
