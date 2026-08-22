@@ -102,6 +102,32 @@ artifact-readback recipes in `coworld-release.yml` and `coworld-submit.yml`, and
 `coworld-submit.yml`'s `policy` input description. `templates/README.md` lists them as expected
 residue — do not file them as findings.
 
+**And the two workflows phases 40/50 depend on must parse and accept their inputs.** Phase 40
+dispatches `coworld-release.yml` and phase 50 dispatches `coworld-submit.yml` twice; a workflow
+that does not parse is invisible to `gh workflow run` and the phase fails with an unhelpful
+error two phases later. GitHub only lists a workflow it could parse, so check that here, on the
+green sha:
+
+```bash
+REPO=Metta-AI/cogame-<slug>
+for WF in ci.yml coworld-release.yml coworld-submit.yml; do
+  gh api "repos/$REPO/actions/workflows/$WF" -q '.name + " " + .state' || \
+    { echo "::error::$WF did not parse / is not registered"; exit 1; }
+done
+# the inputs phases 40 and 50 pass by name (BINDING, per playbooks/observatory-api.md §12):
+gh workflow view coworld-release.yml -R "$REPO" --yaml \
+ | grep -E '^ +(version|policies|put_secret|skip_certify):' 
+gh workflow view coworld-submit.yml  -R "$REPO" --yaml \
+ | grep -E '^ +(player_id|policy|league_id):'
+# and the two artifacts the later phases read back:
+grep -n 'release-result' .github/workflows/coworld-release.yml
+grep -n 'submit-result'  .github/workflows/coworld-submit.yml
+# plus the optional per-policy owner field champion #2 needs:
+grep -n '"player"\|player_id' .github/workflows/coworld-release.yml
+```
+Every one of those must hit. A missing input name or artifact here is a phase-20 failure, not a
+phase-40 surprise.
+
 ## Writes
 
 - STATE: `repo`, `phase: "30"`, `review_round: 1`, `heartbeat_at`.
