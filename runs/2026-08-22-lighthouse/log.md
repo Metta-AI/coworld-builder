@@ -18,3 +18,4 @@
 2026-08-22T20:25:04Z 20 propagate-secrets.yml run 32596594949 green; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-lighthouse
 2026-08-22T20:25:04Z 20 dispatching builder sub-agent (round 1)
 2026-08-22T20:25:04Z heartbeat phase=20
+2026-08-22T20:50:17Z 20 builder raised tuning contradiction: pinned 17x11/descending-keys/tidePeriod4 makes escaped==3 unreachable (oracle min 47-93 ticks vs maxTicks<=55); decision=A (rails: parameter tuning) — board 13x9, keys sorted ascending, tidePeriod 5/4, lantern one-step lookahead + bumped-only retransmit; all test thresholds kept literal; design note to be amended with a Tuning revision block
