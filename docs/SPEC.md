@@ -89,7 +89,10 @@ that names exactly what is needed, and exits.
 | 90 | `prompts/90-blocked.md` | coordinator | run task → *Blocked*, subtask → human, STATE.blocked | used by any phase on exhausting its retry budget |
 
 Retry budgets: each phase may retry its own failing step 3× (with a different approach each
-time, logged) before going to 90. Phase 30's loop cap is 4 rounds. Phase 60's wait for rounds
+time, logged) before going to 90. The resume counter (`prompts/00-claim.md` step 5.1) counts
+only sessions that ended **without progress**: a closing step that recorded a
+`progress phase=<nn> marker=<value>` line in `log.md` resets `phase_attempts[<nn>]` to 0, and
+phase 80 is exempt from the counter entirely (a failed close never goes to 90). Phase 30's loop cap is 4 rounds. Phase 60's wait for rounds
 is bounded at 75 minutes of wall clock.
 
 ## Definition of done (phase 60, all fetched, never assumed)

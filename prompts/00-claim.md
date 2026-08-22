@@ -172,7 +172,8 @@ create nothing, write nothing, and do not retry the push.
    **5.0 Session-nonce guard — do this before any phase work.**
    1. Mint a nonce for this session: `SESSION=$(python3 -c 'import secrets;print(secrets.token_hex(4))')`.
    2. `git pull --rebase`, then write `STATE.session_id = "<nonce>"` together with
-      `heartbeat_at` = now (and `session_ended_at: null`), append
+      `heartbeat_at` = now, `session_ended_at: null`, and the resume count from step 5.1
+      (one STATE write, one push — not two), and append
       `<UTC> 00 resume at phase <n> attempt=<k> session=<nonce>` to `log.md` — that exact
       format, `session=` last — commit and push.
    3. **If the push is rejected**, the other heartbeat got there first: `git pull --rebase`
@@ -185,22 +186,46 @@ create nothing, write nothing, and do not retry the push.
       stamp, another session is heartbeating this run: **exit immediately**, leaving its value
       in place. Only when the field still holds your stamp do you enter the phase.
 
-   Then continue: read `runs/<run>/STATE.json`. **Count the resume**: increment
-   `STATE.phase_attempts[<STATE.phase>]` by 1 before doing any work in that phase. A phase that
-   reliably kills the session (sandbox OOM, an unbounded watch, a wedged poll) emits no failure of
-   its own, so this is the only counter that ever reaches the budget — **at 3, enter
-   `prompts/90-blocked.md`** instead of the phase, with the ask "phase `<n>` has ended three
-   sessions without progress" and the last lines of `log.md` as the evidence. (A resume that
-   arrives via step 3, after a human unblocked the run, has just reset the counter to 0, so it
-   starts again at 1.)
+   **5.1 Count the resume — but only sessions that made no progress.** Read
+   `runs/<run>/STATE.json`. The counter exists because a phase that reliably kills the session
+   (sandbox OOM, an unbounded watch, a wedged poll) emits no failure of its own; it is **not**
+   meant to punish a phase that legitimately spans several hourly sessions (phase 20's builds,
+   phase 30's four rounds). So:
+   - **First, look for progress.** Scan `runs/<run>/log.md` for a
+     `<UTC> progress phase=<nn> marker=<value>` line for the **current phase** that is *newer
+     than the last `00 resume` line*. That line is written by the previous session's closing step
+     (`AGENT.md` §Ending a heartbeat) and names a phase-specific, monotone marker:
+
+     | phase | progress marker |
+     |---|---|
+     | 10 | the design note gained a section, or was written |
+     | 20 | a **new** `ci.yml` run id (a build or test run that did not exist last session) |
+     | 30 | a **new** review round artifact (`r<n>-review.md` / `-fixes.md` / `-verdict.md`) |
+     | 40 | a **new** `coworld-release.yml` dispatch run id |
+     | 50 | a new league, division, submission, or filler registration id |
+     | 60 | a new completed round id, or a check that turned TRUE in `VERIFY.md` |
+     | 70 | `announce.attempted_at` written, or the message id adopted |
+
+     If such a line exists, the last session progressed: set
+     `STATE.phase_attempts[<STATE.phase>] = 0` and log
+     `<UTC> 00 attempts_reset phase=<nn> reason=progress marker=<value>`.
+   - **Then increment**: `STATE.phase_attempts[<STATE.phase>] += 1` (so a progressing run
+     resumes at 1 every time), written and pushed by the 5.0 step-2 write, before any work in
+     that phase. **At 3, enter `prompts/90-blocked.md`** instead of the phase, with the ask
+     "phase `<n>` has ended three sessions without progress" and the last lines of `log.md` as
+     the evidence — three *consecutive* markerless sessions, which is what the ask claims.
+   - A resume that arrives via step 3, after a human unblocked the run, has just had the counter
+     reset to 0, so it starts again at 1.
+
    **Phase 80 is exempt from this counter.** `prompts/80-close.md` §Retry budget says a failed
    close does not go to 90 — the run's work is already done and the next heartbeat simply retries
    the Asana calls. So on a resume with `STATE.phase == "80"`, do **not** increment
    `phase_attempts["80"]` and never enter 90 from it; log
    `<UTC> 00 resume at phase 80 (close retry, not counted) session=<nonce>` instead. No other
-   phase is exempt. The `heartbeat_at`, `session_id`, `session_ended_at: null` write and the
-   `00 resume` log line are the ones step 5.0 already made — do not write a second, unstamped
-   pair. Having survived 5.0, enter the prompt named by `STATE.phase`. You are the session that
+   phase is exempt.
+
+   **5.2 Work the phase.** Having survived 5.0 and counted at 5.1, enter the prompt named by
+   `STATE.phase`. You are the session that
    took the run; the closing step (`AGENT.md` §Ending a heartbeat) stamps `session_ended_at`
    again when you finish, and leaves `session_id` as it is so the next session can see whose
    session ended.

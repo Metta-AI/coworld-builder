@@ -200,3 +200,18 @@ to `log.md` naming the phase you stopped in and the exact next action, commit, p
 `heartbeat_at` on the run task. The resume path (`prompts/00-claim.md` step 5) clears
 `session_ended_at` back to null as it takes the run. A heartbeat that ends without a
 pushed STATE has done nothing that the next heartbeat can see.
+
+**Record progress, or the next session counts you as stuck.** If this session advanced the phase
+it worked — a new CI run id (20), a new review-round artifact (30), a new release dispatch (40), a
+new league/division/submission id (50), a new completed round or a check that turned true (60),
+`announce.attempted_at` or the message id (70), a design note written or extended (10) — append
+one more line to `log.md` before you exit:
+
+```
+<UTC ISO-8601> progress phase=<nn> marker=<the id, filename, or field>
+```
+
+That exact format. The next resume reads it (`prompts/00-claim.md` step 5.1) and resets
+`phase_attempts[<nn>]` to 0, so a phase that legitimately spans several hourly sessions is never
+Blocked as "ended three sessions without progress". A session that genuinely achieved nothing
+writes no such line — and that is the case the counter is for.
