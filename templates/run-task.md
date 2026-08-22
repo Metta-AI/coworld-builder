@@ -1,6 +1,8 @@
 # Run task template
 
-Goes to: the **Coworld Builder** Asana board (`$BUILDER_PROJECT`), section *Running*.
+Goes to: the **Coworld Builder** Asana board — the gid in the Asana table of `fleet/cloud.md`
+(`1217747772236871`); it is a row in that table, **not** a shell variable, and nothing exports
+`BUILDER_PROJECT` — section *Running* (`1217747860567752`).
 Created by phase 00 (`prompts/00-claim.md`), one per claimed Coworld Idea.
 
 Substitute: `<slug>`, `<idea title>`, `<run>` (= `<YYYY-MM-DD>-<slug>`), `<idea task gid>`,
@@ -11,11 +13,13 @@ Substitute: `<slug>`, `<idea title>`, `<run>` (= `<YYYY-MM-DD>-<slug>`), `<idea 
 ## Title
 
 ```
-RUN <slug> — <idea title>
+<slug> — coworld run <run>
 ```
 
-One run task per idea, forever. If the title already exists on the board, the idea is
-claimed — skip it (SPEC §Runtime step 4).
+That exact form — it is the name `prompts/00-claim.md` step 4.8 creates. One run task per idea,
+forever. The authoritative "is this idea claimed" test is the idea's gid appearing as `idea_task`
+in some `runs/*/STATE.json` (or its gid in `runs/SKIPPED.json`), not the title
+(`prompts/00-claim.md` step 4.2).
 
 ## Description
 
@@ -27,7 +31,8 @@ Run:   runs/<run>/ in Metta-AI/coworld-builder (STATE.json, log.md, reviews/, VE
 CI:    https://github.com/Metta-AI/cogame-<slug>/actions
 
 Coordinator: coworld-builder (hourly heartbeat, minute 11). This task is the lock:
-while it sits in Running with a fresh heartbeat_at, no other run starts.
+while it sits in Running with a fresh heartbeat_at (the custom field, not this text),
+no other run starts.
 
 Phases (SPEC §Phases). The current phase is the first unchecked line.
 
@@ -46,28 +51,35 @@ Phases (SPEC §Phases). The current phase is the first unchecked line.
 
 Blocked (90) is not a phase in this list: it is where any phase goes after three
 distinct failed attempts. It moves this task to Blocked and files a subtask for a human.
-
-heartbeat_at: <ISO8601 UTC>
 ```
 
-## The heartbeat line
+The description carries **no** `heartbeat_at:` line. Do not add one — nothing reads it.
 
-The last line of the description is rewritten by the coordinator, in place, at least every
-15 minutes of work and on every phase transition:
+## Where the heartbeat lives
 
+`heartbeat_at` is the Asana **custom field `1217748424048134`** (text, UTC ISO-8601, on the
+Coworld Builder project; gid in `fleet/cloud.md`). It is read from the task's `custom_fields`
+array and written with the custom_fields map:
+
+```bash
+curl -sS -X PUT "https://app.asana.com/api/1.0/tasks/<run task gid>" \
+  -H "Authorization: Bearer $ASANA_PAT" -H 'content-type: application/json' \
+  -d '{"data":{"custom_fields":{"1217748424048134":"2026-08-22T16:40:00Z"}}}'
 ```
-heartbeat_at: 2026-08-22T16:40:00Z
-```
 
-Rules:
+Rules (`prompts/00-claim.md` step 2, `AGENT.md` §STATE, log, heartbeat discipline):
 
-- Exactly one `heartbeat_at:` line, always last, always `YYYY-MM-DDTHH:MM:SSZ` (UTC, no
-  offsets, no fractional seconds). The next heartbeat parses it with a strict format —
-  an unparseable stamp is treated as **stale**.
+- Always `YYYY-MM-DDTHH:MM:SSZ` (UTC, no offsets, no fractional seconds); an unparseable
+  stamp is treated as **stale**.
 - The same value is written to `runs/<run>/STATE.json.heartbeat_at` in the same action,
-  and both are committed and pushed. STATE is the record; the task line is the lock.
-- Fresh (< 90 min): another run is live → the heartbeat exits without touching anything.
-- Stale (≥ 90 min): the run is yours → resume at `STATE.json.phase`.
+  and STATE is committed and pushed. STATE is the record; the custom field is the lock.
+- If the field is empty or absent, the fallback is the last
+  `<UTC ISO-8601> heartbeat phase=<nn>` line in `runs/<run>/log.md` — that exact format, and
+  nothing else counts.
+- Fresh (< 90 min) **and** `STATE.session_ended_at` null or older: another run is live → the
+  heartbeat exits without touching anything.
+- Stale (≥ 90 min), **or** `session_ended_at` ≥ `heartbeat_at`: the run is yours → resume at
+  `STATE.json.phase`, through the session-nonce guard (`prompts/00-claim.md` step 5.0).
 
 ## Subtasks
 

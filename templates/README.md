@@ -200,10 +200,13 @@ every phase transition; it is the record that a resumed run reads to know where 
 
 ## `run-task.md` → the Asana run task on the Coworld Builder board
 
-Title pattern `RUN <slug> — <idea title>`, description with the idea/repo/run/CI links, the
-00…80 phase checklist, and the `heartbeat_at:` line the coordinator rewrites in place. The
-task is the lock: a fresh `heartbeat_at` (< 90 min) means another run is live and the
-heartbeat exits; a stale one means the run is yours to resume at `STATE.json.phase`.
+Title pattern `<slug> — coworld run <run>` (the name `prompts/00-claim.md` step 4.8 creates),
+description with the idea/repo/run/CI links and the 00…80 phase checklist. The description
+carries **no** heartbeat line: `heartbeat_at` is the Asana custom field `1217748424048134`
+(`fleet/cloud.md`), with the `<UTC> heartbeat phase=<nn>` line in `runs/<run>/log.md` as the
+fallback. The field is the lock: fresh (< 90 min, with `STATE.session_ended_at` null or older)
+means another run is live and the heartbeat exits; stale — or `session_ended_at` ≥
+`heartbeat_at` — means the run is yours to resume at `STATE.json.phase`.
 Substitutions listed in the file.
 
 ## `blocked-subtask.md` → a subtask of the run task, assigned to David Bloomin
