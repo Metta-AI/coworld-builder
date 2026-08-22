@@ -78,8 +78,10 @@ environment id, the vault ids, the Asana gids and the Discord ids live; the agen
 
 ## One-time human setup
 
-1. **`Metta-AI` org secrets** (Actions): `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, visible to
-   the `cogame-*` repos. CI cannot certify or upload without them.
+1. **CI credentials** live as repo secrets on this repo (`SOFTMAX_TOKEN`, `ANTHROPIC_API_KEY`,
+   `GH_APP_ID`, `GH_APP_PRIVATE_KEY` — the softmax-agents GitHub App). `.github/workflows/propagate-secrets.yml`
+   copies the first two onto each coworld repo; the coordinator dispatches it in phase 20. Nothing
+   to do per run. (Set once 2026-08-22.)
 2. **`DISCORD_BOT_TOKEN` vault credential** → host `discord.com`, added to the deployment's
    `vault_ids`. Until it exists, phase 70 cannot post and every run ends Blocked at 70. Record
    the vault id in `fleet/cloud.md`.

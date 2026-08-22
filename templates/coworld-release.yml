@@ -15,7 +15,7 @@
 # put` MUST come after upload-coworld, because the secret namespace does not
 # exist until the Coworld does.
 #
-# Org secrets required on Metta-AI: SOFTMAX_TOKEN, ANTHROPIC_API_KEY.
+# Repo secrets required: SOFTMAX_TOKEN, ANTHROPIC_API_KEY (set by coworld-builder's propagate-secrets.yml).
 #
 # The agent reads the outcome back with:
 #   gh run download <run_id> -R Metta-AI/cogame-<slug> -n release-result \
@@ -108,7 +108,7 @@ jobs:
           set -euo pipefail
           echo "Authenticate to Softmax" > "$RR/current_step"
           if [ -z "${SOFTMAX_TOKEN}" ]; then
-            echo "::error::SOFTMAX_TOKEN org secret is not set on this repo"
+            echo "::error::SOFTMAX_TOKEN secret is not set on this repo (dispatch propagate-secrets.yml in Metta-AI/coworld-builder)"
             exit 1
           fi
           uvx --from "$COWORLD_PKG" softmax set-token "$SOFTMAX_TOKEN"
@@ -343,7 +343,7 @@ jobs:
           set -euo pipefail
           echo "Put the Coworld secret" > "$RR/current_step"
           if [ -z "${ANTHROPIC_API_KEY}" ]; then
-            echo "::error::ANTHROPIC_API_KEY org secret is not set on this repo"
+            echo "::error::ANTHROPIC_API_KEY secret is not set on this repo (dispatch propagate-secrets.yml in Metta-AI/coworld-builder)"
             exit 1
           fi
           secret_file="$(mktemp)"

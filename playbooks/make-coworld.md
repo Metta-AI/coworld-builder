@@ -187,7 +187,7 @@ Notes that survive the move to CI:
   is visible. Fix: bump the version and re-dispatch once the image is warm. It passes the second
   time. Do not debug the game for this.
 - **Hosted game logs:** `GET /v2/episode-requests/<ereq>/artifacts/logs` with the elevated header.
-- **Secret** is `anthropic_api_key`; the workflow puts it from the `ANTHROPIC_API_KEY` org secret,
+- **Secret** is `anthropic_api_key`; the workflow puts it from the repo's `ANTHROPIC_API_KEY` secret (propagated by coworld-builder's `propagate-secrets.yml`),
   after `upload-coworld`.
 - **LLM players on Bedrock:** force JSON with a system prompt demanding the reply **begins with
   `{`** (Haiku answers prose-first otherwise); Haiku 4.5 rejects `output_config.effort`;

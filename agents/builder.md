@@ -39,7 +39,7 @@ note in full, then `playbooks/make-coworld.md` for the pins and the gotcha table
 - Drive it: `gh workflow run <workflow> [-f ...]`, then `gh run watch <id>` (or poll
   `gh run view <id> --log-failed`). Read the failing log, fix, push, re-run. Repeat until
   green. Report the run URL and the conclusion for the run you are claiming as green.
-- Org secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY` on `Metta-AI` supply CI. If a workflow
+- CI credentials are repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; the softmax-agents GitHub App sets them — no org admin, no value ever in the sandbox) (phase 20 dispatches it right after creating the repo). If a workflow
   fails because a secret is missing or unauthorised, that is a Blocked-class fact: report it
   precisely (workflow, step, exact error) rather than working around it.
 

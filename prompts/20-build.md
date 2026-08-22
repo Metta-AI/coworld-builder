@@ -19,6 +19,14 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    ```bash
    gh repo create Metta-AI/cogame-<slug> --public --description "<one line>"
    ```
+   Then, **before anything else**, give the new repo its CI credentials — it cannot release
+   without them and the sandbox never holds the values:
+   ```bash
+   gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>
+   # find-the-new-run recipe (playbook), then:
+   gh run watch <id> -R Metta-AI/coworld-builder --exit-status
+   gh secret list -R Metta-AI/cogame-<slug>     # must list SOFTMAX_TOKEN and ANTHROPIC_API_KEY
+   ```
 2. Send the **builder** brief (self-contained):
 
    > Implement `Metta-AI/cogame-<slug>` from the design note at `<abs path to runs/<run>/design.md>`,
