@@ -18,7 +18,7 @@ push; a leftover `<` in a workflow is a syntax-valid, semantically dead referenc
 | --- | --- | --- |
 | `<slug>` | lowercase game slug. Also the repo suffix (`cogame-<slug>`), the Coworld `game.name`, the secret namespace, the page path `softmax.com/<slug>`, and the binary names `/bin/<slug>` and `/bin/<slug>-player`. | `bullwhip` |
 | `<IMAGE>` | local docker image name **without a tag**. Must equal the `image:` in `compose.yaml` minus `:latest`, because `coworld build` builds that tag and `upload-policy` cuts policies from it. | `coworld-bullwhip` |
-| `<SEATS>` | seat count (`num_agents`). Only used as `docker_smoke.sh`'s fallback when the certification fixture cannot be read; the fixture in `coworld_manifest_template.json` is the real source. | `4` |
+| `<SEATS>` | seat count (`num_agents`). A **cross-check**, not a fallback: `docker_smoke.sh` takes the seat count solely from `certification.game_config.num_agents` in `coworld_manifest_template.json` and hard-fails if this value disagrees with it. | `4` |
 
 `run-task.md`, `blocked-subtask.md` and `announce.md` carry their own additional
 substitutions; each file lists them at the top.
@@ -65,9 +65,20 @@ static viewer route, so this job is not optional.
 The containerised twin of a local `tmp/run_e2e.sh`: one game container plus one player
 container per seat on the `coworld-local` docker network, all from the production image.
 It reads `coworld_manifest_template.json`, takes `certification.game_config` as the episode
-config (injecting `tokens` and `num_agents`), and gives each slot the **`run` and `env` of
+config (injecting `tokens`), and gives each slot the **`run` and `env` of
 the manifest player its certification fixture names** — so the smoke plays the same seat mix
-the certifier will. The game gets the `COGAME_*` contract with `file:///coworld/...` URIs
+the certifier will.
+
+**The seat count is never guessed.** It comes from exactly one place,
+`certification.game_config.num_agents`, and a missing, non-integer, or inconsistent value is a
+**hard failure** (message prefix `SEAT-COUNT FAIL:`), not a warning — a smoke that quietly
+picks a seat count and goes green is a green signal derived from the wrong game, which nothing
+downstream re-checks. Four checks fire before any container starts: `num_agents` present;
+`num_agents` a positive integer; `len(certification.players)` equal to it; and
+`len(certification.game_config.players)` equal to it. `SMOKE_SEATS` / `<SEATS>` is an
+independent second declaration substituted at scaffold time from the design note and is
+verified to agree — a non-numeric value means the placeholder was never substituted, which the
+phase-20 placeholder gate catches separately, so it is ignored here. The game gets the `COGAME_*` contract with `file:///coworld/...` URIs
 against a bind-mounted temp dir; each player gets
 `COWORLD_PLAYER_WS_URL=ws://<prefix>-game:8080/player?slot=N&token=token-N`. It asserts the
 game container exits 0, `results.json` is valid UTF-8 JSON with `names`/`scores` of the right
@@ -75,7 +86,8 @@ length, `replay.json` is non-empty (and parses as JSON unless told otherwise), a
 `player_failure.json` was written; on any failure it dumps every container's logs.
 
 Overridable by env: `SMOKE_IMAGE`, `SMOKE_SLUG`, `SMOKE_GAME_BIN` (default `/bin/<slug>`),
-`SMOKE_PLAYER_BIN` (default `/bin/<slug>-player`), `SMOKE_MANIFEST`, `SMOKE_SEATS`,
+`SMOKE_PLAYER_BIN` (default `/bin/<slug>-player`), `SMOKE_MANIFEST`, `SMOKE_SEATS`
+(cross-check, see above),
 `SMOKE_PORT` (8080), `SMOKE_TIMEOUT` (900), `SMOKE_REQUIRE_REPLAY_JSON` (1 — set `0` for a
 binary replay format such as CTF's `.bitreplay`), `SMOKE_EXTRA_ENV` (`"K=V K=V"` applied to
 every player). If `ANTHROPIC_API_KEY` is present it is forwarded to the game container so the

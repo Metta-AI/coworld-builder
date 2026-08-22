@@ -81,11 +81,15 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
    the episode settles and scores inside **60 %** of `episodeTimeoutSeconds` (720 s of 1200);
    there is no unbounded loop or blocking read. *(categories: hang, timeout)*
 6. **`num_agents`** present in **every** manifest variant **and** in the certification fixture.
-   `tools/ci/docker_smoke.sh` takes its seat mix from `certification.game_config` +
-   `certification.players`, so a cert fixture missing `num_agents` makes the smoke print a WARNING
-   and silently fall back to the `<SEATS>` default — i.e. it smokes the wrong seat count and still
-   goes green. **A `<SEATS>`-fallback WARNING in the docker-smoke log is itself a blocking finding**;
-   grep the CI log for it rather than trusting the job's colour. *(category: num_agents)*
+   `tools/ci/docker_smoke.sh` enforces four seat-count invariants before any container starts —
+   `certification.game_config.num_agents` present; a positive integer; `len(certification.players)`
+   equal to it; `len(certification.game_config.players)` equal to it — and `SMOKE_SEATS` (the
+   `<SEATS>` substitution, taken from the design note) is an independent **second declaration** that
+   must agree with the manifest. Every violation exits non-zero with a message prefixed
+   `SEAT-COUNT FAIL:`, so the job is already red. **`SEAT-COUNT FAIL` anywhere in the docker-smoke
+   log is a blocking finding** — grep for it rather than trusting the job's colour, which is what
+   catches a rerun with the job made non-required, or a log from a branch whose CI was skipped.
+   *(category: num_agents)*
 7. **Scripted baseline plays full episodes legally.** A test runs an all-scripted episode to the
    natural end, asserts `results.reason == "complete"`, and asserts every order/action is inside
    its legal bounds. The baseline's parameters were tuned with a grid harness, not guessed.

@@ -35,7 +35,10 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `game.protocols` with BOTH `player` and `global`), `tests/`, `README.md`, and this scaffold
    > copied from `<abs path>/templates/` (per-file docs in `templates/README.md`) with the
    > placeholders `<slug>`, `<IMAGE>` (the compose image name minus `:latest`, e.g.
-   > `coworld-<slug>`) and `<SEATS>` substituted: `.github/workflows/ci.yml`,
+   > `coworld-<slug>`) and `<SEATS>` substituted. `<SEATS>` is the seat count **from the design
+   > note**, and it is a cross-check, not a fallback: `docker_smoke.sh` fails if it disagrees with
+   > the manifest's `certification.game_config.num_agents`, which is how a manifest edited without
+   > the design note (or vice versa) gets caught. Files: `.github/workflows/ci.yml`,
    > `.github/workflows/coworld-release.yml`, `.github/workflows/coworld-submit.yml`,
    > `tools/ci/docker_smoke.sh` (**`chmod +x`**), and `tools/ci/policies.json` (from
    > `templates/tools/ci/policies.json.example` — copy **and edit**: the example's `bullwhip-*`

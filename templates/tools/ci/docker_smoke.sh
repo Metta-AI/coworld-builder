@@ -22,7 +22,10 @@
 #   SMOKE_GAME_BIN             game entrypoint                  (/bin/<slug>)
 #   SMOKE_PLAYER_BIN           player entrypoint                (/bin/<slug>-player)
 #   SMOKE_MANIFEST             manifest template path           (coworld_manifest_template.json)
-#   SMOKE_SEATS                seat-count fallback              (<SEATS>)
+#   SMOKE_SEATS                seat-count CROSS-CHECK           (<SEATS>)
+#                              must agree with the manifest fixture; it is
+#                              not a fallback -- a missing or inconsistent
+#                              num_agents is a hard failure
 #   SMOKE_PORT                 game port inside the network     (8080)
 #   SMOKE_TIMEOUT              seconds to wait for the episode  (900)
 #   SMOKE_REQUIRE_REPLAY_JSON  1 = replay must parse as JSON    (1)
@@ -41,7 +44,7 @@ slug="${SMOKE_SLUG:-<slug>}"
 game_bin="${SMOKE_GAME_BIN:-/bin/${slug}}"
 player_bin="${SMOKE_PLAYER_BIN:-/bin/${slug}-player}"
 manifest="${SMOKE_MANIFEST:-${repo_dir}/coworld_manifest_template.json}"
-seats_fallback="${SMOKE_SEATS:-<SEATS>}"
+seats_expected="${SMOKE_SEATS:-<SEATS>}"
 port="${SMOKE_PORT:-8080}"
 timeout_s="${SMOKE_TIMEOUT:-900}"
 require_replay_json="${SMOKE_REQUIRE_REPLAY_JSON:-1}"
@@ -75,38 +78,67 @@ test -f "${manifest}" || { echo "manifest not found: ${manifest}" >&2; exit 1; }
 # --------------------------------------------------------------------------
 # Episode config + per-seat launch args, derived from the cert fixture.
 # --------------------------------------------------------------------------
-python3 - "${manifest}" "${work_dir}" "${player_bin}" "${seats_fallback}" <<'PY'
+python3 - "${manifest}" "${work_dir}" "${player_bin}" "${seats_expected}" <<'PY'
 import json
 import os
 import shlex
 import sys
 
-manifest_path, work, player_bin, seats_fallback = sys.argv[1:5]
+manifest_path, work, player_bin, seats_expected = sys.argv[1:5]
 manifest = json.load(open(manifest_path))
 game = manifest.get("game") or {}
 cert = manifest.get("certification") or {}
 config = dict(cert.get("game_config") or {})
 cert_players = list(cert.get("players") or [])
 
-seats = (
-    config.get("num_agents")
-    or len(cert_players)
-    or len(config.get("players") or [])
-    or (int(seats_fallback) if str(seats_fallback).isdigit() else 0)
-)
-if not seats:
+# The seat count comes from ONE place: certification.game_config.num_agents.
+# It is never inferred and never guessed. A smoke that quietly picks a seat
+# count and goes green is a green signal derived from the wrong game -- worse
+# than a red one, because nothing downstream re-checks it.
+declared = config.get("num_agents")
+if declared is None:
     raise SystemExit(
-        "cannot determine seat count: set certification.game_config.num_agents "
-        "in the manifest template, or export SMOKE_SEATS"
+        f"SEAT-COUNT FAIL: certification.game_config.num_agents is missing from "
+        f"{manifest_path}.\n"
+        "  The seat count must be declared in the certification fixture (and in "
+        "every variant).\n"
+        '  Add "num_agents": <seats> to certification.game_config and re-run.'
+    )
+if not isinstance(declared, bool) and isinstance(declared, int) and declared >= 1:
+    seats = declared
+else:
+    raise SystemExit(
+        "SEAT-COUNT FAIL: certification.game_config.num_agents must be a "
+        f"positive integer, got {declared!r}"
     )
 
-# num_agents must be present in the fixture AND in every variant; the smoke is
-# the place that catches a manifest that forgot it.
-if "num_agents" not in config:
-    print(f"WARNING: certification.game_config.num_agents missing; using {seats}")
-config["num_agents"] = seats
+# Every other seat-count declaration in the fixture must agree with it. These
+# are free cross-checks on a manifest that was edited in one place only.
+if cert_players and len(cert_players) != seats:
+    raise SystemExit(
+        f"SEAT-COUNT FAIL: certification.game_config.num_agents is {seats} but "
+        f"certification.players names {len(cert_players)} seats. The fixture "
+        "must seat exactly num_agents players."
+    )
+fixture_players = list(config.get("players") or [])
+if fixture_players and len(fixture_players) != seats:
+    raise SystemExit(
+        f"SEAT-COUNT FAIL: certification.game_config.num_agents is {seats} but "
+        f"certification.game_config.players names {len(fixture_players)} seats."
+    )
+# SMOKE_SEATS / <SEATS> is an independent second declaration, substituted at
+# scaffold time from the design note. It is a CROSS-CHECK, not a fallback: if
+# it disagrees with the manifest, one of the two was edited alone. A
+# non-numeric value means the placeholder was never substituted, which the
+# phase-20 placeholder gate catches separately -- ignore it here.
+if str(seats_expected).isdigit() and int(seats_expected) != seats:
+    raise SystemExit(
+        f"SEAT-COUNT FAIL: the manifest fixture declares {seats} seats but "
+        f"SMOKE_SEATS/<SEATS> says {seats_expected}. The design note and the "
+        "manifest disagree; fix whichever is wrong."
+    )
 
-players = list(config.get("players") or [])
+players = list(fixture_players)
 while len(players) < seats:
     players.append({"name": f"smoke-{len(players)}"})
 config["players"] = players[:seats]
