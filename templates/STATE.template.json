@@ -1,0 +1,36 @@
+{
+  "run": "",
+  "idea_task": "",
+  "run_task": "",
+  "slug": "",
+  "repo": "",
+  "starter": "",
+  "phase": "00",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "discord_message_id": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "",
+  "log": ""
+}

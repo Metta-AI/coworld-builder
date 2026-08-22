@@ -1,0 +1,62 @@
+{
+ "_comment": "Coordinator agent. The multiagent.agents ids are placeholders: fleet/bin/deploy.py fills them in from the sub-agent ids it just created (create) or from the ids recorded in fleet/cloud.md (update). Never hand-edit them here \u2014 edit fleet/cloud.md and re-run deploy.py. `system` is the literal text of AGENT.md at the repo root, loaded by deploy.py.",
+ "name": "coworld-builder-coordinator",
+ "description": "coworld-builder: the coordinator. Runs the hourly heartbeat, claims a Coworld Idea, drives phases 00-90, delegates to the six sub-agents.",
+ "model": {
+  "id": "claude-fable-5",
+  "effort": {
+   "type": "xhigh"
+  },
+  "speed": "standard"
+ },
+ "tools": [
+  {
+   "type": "agent_toolset_20260401",
+   "default_config": {
+    "enabled": true,
+    "permission_policy": {
+     "type": "always_allow"
+    }
+   },
+   "configs": []
+  }
+ ],
+ "mcp_servers": [],
+ "skills": [],
+ "multiagent": {
+  "type": "coordinator",
+  "agents": [
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-designer>",
+    "version": 1
+   },
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-builder>",
+    "version": 1
+   },
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-reviewer>",
+    "version": 1
+   },
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-fixer>",
+    "version": 1
+   },
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-judge>",
+    "version": 1
+   },
+   {
+    "type": "agent",
+    "id": "<from cloud.md: coworld-builder-verifier>",
+    "version": 1
+   }
+  ]
+ },
+ "system": "<file: AGENT.md>"
+}

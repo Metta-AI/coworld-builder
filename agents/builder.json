@@ -1,0 +1,26 @@
+{
+ "name": "coworld-builder-builder",
+ "description": "coworld-builder: forks the starter, implements the design, drives GitHub Actions to green and through the release chain (phases 20 + 40).",
+ "model": {
+  "id": "claude-opus-5",
+  "effort": {
+   "type": "xhigh"
+  },
+  "speed": "standard"
+ },
+ "tools": [
+  {
+   "type": "agent_toolset_20260401",
+   "default_config": {
+    "enabled": true,
+    "permission_policy": {
+     "type": "always_allow"
+    }
+   },
+   "configs": []
+  }
+ ],
+ "mcp_servers": [],
+ "skills": [],
+ "system": "<file: agents/builder.md>"
+}

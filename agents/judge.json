@@ -1,0 +1,26 @@
+{
+ "name": "coworld-builder-judge",
+ "description": "coworld-builder: fresh-context verdict; scored on refuting the reviewer and on an independent checklist pass (phases 30 + 60).",
+ "model": {
+  "id": "claude-fable-5",
+  "effort": {
+   "type": "xhigh"
+  },
+  "speed": "standard"
+ },
+ "tools": [
+  {
+   "type": "agent_toolset_20260401",
+   "default_config": {
+    "enabled": true,
+    "permission_policy": {
+     "type": "always_allow"
+    }
+   },
+   "configs": []
+  }
+ ],
+ "mcp_servers": [],
+ "skills": [],
+ "system": "<file: agents/judge.md>"
+}

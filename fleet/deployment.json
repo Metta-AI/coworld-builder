@@ -1,0 +1,45 @@
+{
+ "_comment": "The single coworld-builder deployment. `agent` is filled in by fleet/bin/deploy.py from the coordinator id it created (create) or read from fleet/cloud.md (update). `environment_id` and `vault_ids` are read from fleet/cloud.md; the placeholders here are what deploy.py substitutes. `authorization_token` is NEVER stored in git — deploy.py re-supplies it from `gh auth token` at apply time, exactly as fleetctl.py does.",
+ "name": "coworld-builder-hourly",
+ "agent": {
+  "type": "agent",
+  "id": "<from cloud.md: coworld-builder-coordinator>",
+  "version": 1
+ },
+ "environment_id": "<from cloud.md>",
+ "vault_ids": [
+  "<from cloud.md>"
+ ],
+ "schedule": {
+  "type": "cron",
+  "expression": "11 * * * *",
+  "timezone": "UTC"
+ },
+ "resources": [
+  {
+   "type": "github_repository",
+   "url": "https://github.com/Metta-AI/coworld-builder",
+   "mount_path": "/workspace/coworld-builder",
+   "access": "read_write",
+   "authorization_token": "<resupply-at-apply>"
+  },
+  {
+   "type": "github_repository",
+   "url": "https://github.com/daveey/cogamer",
+   "mount_path": "/workspace/cogamer",
+   "access": "read",
+   "authorization_token": "<resupply-at-apply>"
+  }
+ ],
+ "initial_events": [
+  {
+   "type": "user.message",
+   "content": [
+    {
+     "type": "text",
+     "text": "Heartbeat. Read /workspace/coworld-builder/AGENT.md and run the heartbeat algorithm."
+    }
+   ]
+  }
+ ]
+}

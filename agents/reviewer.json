@@ -1,0 +1,26 @@
+{
+ "name": "coworld-builder-reviewer",
+ "description": "coworld-builder: neutral trace-and-report over the coworld diff; categorises findings against the phase-30 checklist (phase 30).",
+ "model": {
+  "id": "claude-opus-5",
+  "effort": {
+   "type": "xhigh"
+  },
+  "speed": "standard"
+ },
+ "tools": [
+  {
+   "type": "agent_toolset_20260401",
+   "default_config": {
+    "enabled": true,
+    "permission_policy": {
+     "type": "always_allow"
+    }
+   },
+   "configs": []
+  }
+ ],
+ "mcp_servers": [],
+ "skills": [],
+ "system": "<file: agents/reviewer.md>"
+}

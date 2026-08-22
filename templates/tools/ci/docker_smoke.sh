@@ -1,0 +1,258 @@
+#!/usr/bin/env bash
+# Raw-Docker one-episode smoke for a Coworld game repo.
+#
+# Goes to:  tools/ci/docker_smoke.sh  in the coworld repo (chmod +x).
+# Substitute: <slug>, <IMAGE>, <SEATS>.
+#
+#   tools/ci/docker_smoke.sh [image]
+#
+# Starts ONE game container plus one player container per seat on a shared
+# user-defined docker network, driving them with the certification fixture out
+# of coworld_manifest_template.json (same seat mix the certifier will use), and
+# asserts the game exits 0 having written results.json and a replay.
+#
+# It is the containerised twin of the local tmp/run_e2e.sh: same COGAME_*
+# contract, same one-player-process-per-slot shape, but every process runs in
+# the production image so a broken entrypoint or a missing runtime library
+# fails here instead of in hosted certification.
+#
+# env:
+#   SMOKE_IMAGE                image, if not given as $1        (<IMAGE>:ci)
+#   SMOKE_SLUG                 game slug                        (<slug>)
+#   SMOKE_GAME_BIN             game entrypoint                  (/bin/<slug>)
+#   SMOKE_PLAYER_BIN           player entrypoint                (/bin/<slug>-player)
+#   SMOKE_MANIFEST             manifest template path           (coworld_manifest_template.json)
+#   SMOKE_SEATS                seat-count fallback              (<SEATS>)
+#   SMOKE_PORT                 game port inside the network     (8080)
+#   SMOKE_TIMEOUT              seconds to wait for the episode  (900)
+#   SMOKE_REQUIRE_REPLAY_JSON  1 = replay must parse as JSON    (1)
+#                              set 0 for binary replay formats
+#   SMOKE_EXTRA_ENV            extra "K=V K=V" for every player (empty)
+#   ANTHROPIC_API_KEY          if set, forwarded to the game so the LLM path
+#                              is exercised; if unset the game must fall back
+#                              to its scripted baselines and still complete
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_dir="$(cd "${script_dir}/../.." && pwd)"
+
+image="${1:-${SMOKE_IMAGE:-<IMAGE>:ci}}"
+slug="${SMOKE_SLUG:-<slug>}"
+game_bin="${SMOKE_GAME_BIN:-/bin/${slug}}"
+player_bin="${SMOKE_PLAYER_BIN:-/bin/${slug}-player}"
+manifest="${SMOKE_MANIFEST:-${repo_dir}/coworld_manifest_template.json}"
+seats_fallback="${SMOKE_SEATS:-<SEATS>}"
+port="${SMOKE_PORT:-8080}"
+timeout_s="${SMOKE_TIMEOUT:-900}"
+require_replay_json="${SMOKE_REQUIRE_REPLAY_JSON:-1}"
+
+run_id="$$"
+prefix="${slug}-smoke-${run_id}"
+network="coworld-local"
+work_dir="$(mktemp -d "${TMPDIR:-/tmp}/${slug}-smoke.XXXXXX")"
+seats=0
+
+cleanup() {
+  docker ps -aq --filter "name=${prefix}" | xargs -r docker rm -f >/dev/null 2>&1 || true
+  rm -rf "${work_dir}"
+}
+trap cleanup EXIT
+
+dump_logs() {
+  echo "---- game container logs (tail 120) ----" >&2
+  docker logs "${prefix}-game" 2>&1 | tail -120 >&2 || true
+  local slot
+  for ((slot = 0; slot < seats; slot++)); do
+    echo "---- player ${slot} container logs (tail 40) ----" >&2
+    docker logs "${prefix}-p${slot}" 2>&1 | tail -40 >&2 || true
+  done
+  echo "---- work dir ----" >&2
+  ls -la "${work_dir}" >&2 || true
+}
+
+test -f "${manifest}" || { echo "manifest not found: ${manifest}" >&2; exit 1; }
+
+# --------------------------------------------------------------------------
+# Episode config + per-seat launch args, derived from the cert fixture.
+# --------------------------------------------------------------------------
+python3 - "${manifest}" "${work_dir}" "${player_bin}" "${seats_fallback}" <<'PY'
+import json
+import os
+import shlex
+import sys
+
+manifest_path, work, player_bin, seats_fallback = sys.argv[1:5]
+manifest = json.load(open(manifest_path))
+game = manifest.get("game") or {}
+cert = manifest.get("certification") or {}
+config = dict(cert.get("game_config") or {})
+cert_players = list(cert.get("players") or [])
+
+seats = (
+    config.get("num_agents")
+    or len(cert_players)
+    or len(config.get("players") or [])
+    or (int(seats_fallback) if str(seats_fallback).isdigit() else 0)
+)
+if not seats:
+    raise SystemExit(
+        "cannot determine seat count: set certification.game_config.num_agents "
+        "in the manifest template, or export SMOKE_SEATS"
+    )
+
+# num_agents must be present in the fixture AND in every variant; the smoke is
+# the place that catches a manifest that forgot it.
+if "num_agents" not in config:
+    print(f"WARNING: certification.game_config.num_agents missing; using {seats}")
+config["num_agents"] = seats
+
+players = list(config.get("players") or [])
+while len(players) < seats:
+    players.append({"name": f"smoke-{len(players)}"})
+config["players"] = players[:seats]
+config["tokens"] = [f"token-{i}" for i in range(seats)]
+
+with open(os.path.join(work, "config.json"), "w") as fh:
+    json.dump(config, fh, indent=2)
+
+by_id = {p.get("id"): p for p in (manifest.get("player") or [])}
+extra_env = [kv for kv in (os.environ.get("SMOKE_EXTRA_ENV") or "").split() if "=" in kv]
+
+for slot in range(seats):
+    player_id = cert_players[slot].get("player_id") if slot < len(cert_players) else None
+    entry = by_id.get(player_id) or {}
+    env_args = []
+    for key, value in (entry.get("env") or {}).items():
+        env_args += ["-e", f"{key}={value}"]
+    for kv in extra_env:
+        env_args += ["-e", kv]
+    argv = list(entry.get("run") or [player_bin])
+    with open(os.path.join(work, f"env-{slot}.args"), "w") as fh:
+        fh.write(" ".join(shlex.quote(a) for a in env_args))
+    with open(os.path.join(work, f"cmd-{slot}.args"), "w") as fh:
+        fh.write(" ".join(shlex.quote(a) for a in argv))
+    print(f"slot {slot}: player_id={player_id or '(default)'} run={argv} env={len(env_args) // 2}")
+
+with open(os.path.join(work, "seats"), "w") as fh:
+    fh.write(str(seats))
+print(f"game={game.get('name')} seats={seats} config={json.dumps(config)[:400]}")
+PY
+
+seats="$(cat "${work_dir}/seats")"
+chmod 777 "${work_dir}"
+
+# --------------------------------------------------------------------------
+# Launch.
+# --------------------------------------------------------------------------
+docker network inspect "${network}" >/dev/null 2>&1 || docker network create "${network}" >/dev/null
+
+game_env=()
+if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+  game_env+=(-e "ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}")
+  echo "ANTHROPIC_API_KEY present: the LLM path will be exercised"
+else
+  echo "no ANTHROPIC_API_KEY: the game must complete on its scripted baselines"
+fi
+
+echo "starting game container (${image} ${game_bin}) ..."
+docker run -d --name "${prefix}-game" \
+  --network "${network}" --network-alias "${prefix}-game" \
+  -e COGAME_HOST=0.0.0.0 \
+  -e COGAME_PORT="${port}" \
+  -e COGAME_CONFIG_URI=file:///coworld/config.json \
+  -e COGAME_RESULTS_URI=file:///coworld/results.json \
+  -e COGAME_SAVE_REPLAY_URI=file:///coworld/replay.json \
+  -e COGAME_PLAYER_FAILURE_URI=file:///coworld/player_failure.json \
+  ${game_env[@]+"${game_env[@]}"} \
+  -v "${work_dir}:/coworld:rw" \
+  "${image}" "${game_bin}" >/dev/null
+
+for ((slot = 0; slot < seats; slot++)); do
+  eval "penv=( $(cat "${work_dir}/env-${slot}.args") )"
+  eval "pcmd=( $(cat "${work_dir}/cmd-${slot}.args") )"
+  docker run -d --name "${prefix}-p${slot}" --network "${network}" \
+    -e COWORLD_PLAYER_WS_URL="ws://${prefix}-game:${port}/player?slot=${slot}&token=token-${slot}" \
+    ${penv[@]+"${penv[@]}"} \
+    "${image}" ${pcmd[@]+"${pcmd[@]}"} >/dev/null
+done
+
+# --------------------------------------------------------------------------
+# Wait for the game container to exit.
+# --------------------------------------------------------------------------
+echo "waiting for the episode (game container exit, up to ${timeout_s}s) ..."
+deadline=$((SECONDS + timeout_s))
+while docker ps -q --filter "name=${prefix}-game" | grep -q .; do
+  if (( SECONDS > deadline )); then
+    echo "FAIL: game container did not exit within ${timeout_s}s" >&2
+    dump_logs
+    exit 1
+  fi
+  sleep 3
+done
+
+exit_code="$(docker inspect -f '{{.State.ExitCode}}' "${prefix}-game")"
+if [ "${exit_code}" != "0" ]; then
+  echo "FAIL: game container exited ${exit_code}" >&2
+  dump_logs
+  exit 1
+fi
+
+# --------------------------------------------------------------------------
+# Assert the artifacts.
+# --------------------------------------------------------------------------
+if ! python3 - "${work_dir}" "${seats}" "${require_replay_json}" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+work = Path(sys.argv[1])
+seats = int(sys.argv[2])
+require_replay_json = sys.argv[3] not in ("0", "", "false", "no")
+
+failure = work / "player_failure.json"
+if failure.exists():
+    raise SystemExit(f"player failure reported: {failure.read_text()[:1000]}")
+
+results_path = work / "results.json"
+if not results_path.exists() or results_path.stat().st_size == 0:
+    raise SystemExit("results.json missing or empty")
+raw = results_path.read_bytes()
+try:
+    results = json.loads(raw.decode("utf-8"))
+except Exception as exc:
+    raise SystemExit(f"results.json is not valid UTF-8 JSON: {exc}") from exc
+if not isinstance(results, dict) or not results:
+    raise SystemExit(f"results.json is not a non-empty object: {results!r}")
+
+for key in ("names", "scores"):
+    if key in results:
+        if len(results[key]) != seats:
+            raise SystemExit(f"results.{key} has {len(results[key])} entries, expected {seats}")
+    else:
+        print(f"WARNING: results.json has no '{key}' key")
+
+reason = results.get("reason") or results.get("end_reason")
+if reason is not None:
+    print(f"episode end reason: {reason}")
+
+replay_path = work / "replay.json"
+if not replay_path.exists() or replay_path.stat().st_size == 0:
+    raise SystemExit("replay missing or empty (COGAME_SAVE_REPLAY_URI was file:///coworld/replay.json)")
+if require_replay_json:
+    try:
+        json.loads(replay_path.read_bytes().decode("utf-8"))
+    except Exception as exc:
+        raise SystemExit(
+            f"replay is not valid UTF-8 JSON: {exc} "
+            "(set SMOKE_REQUIRE_REPLAY_JSON=0 for a binary replay format)"
+        ) from exc
+
+print(
+    f"smoke OK: seats={seats} results={results_path.stat().st_size}B "
+    f"replay={replay_path.stat().st_size}B reason={reason}"
+)
+PY
+then
+  dump_logs
+  exit 1
+fi

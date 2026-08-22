@@ -1,0 +1,75 @@
+# Phase 20 — Build
+
+Purpose: create the public repo and implement the design note until `ci.yml` is green on `main`.
+Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile — CI is the harness.
+
+## Inputs
+
+- `runs/<run>/design.md` (accepted in phase 10), `STATE.slug`, `STATE.starter`, `STATE.repo`.
+- Starter repo, mounted read-only.
+- `templates/ci.yml`, `templates/coworld-release.yml`, `templates/coworld-submit.yml`.
+- `playbooks/make-coworld.md` §Phase 0 / §Phase 1.
+
+## Procedure
+
+1. Create the repo, **public** (public is a certification prerequisite; `source-resolves` 404s on
+   private):
+   ```bash
+   gh repo create Metta-AI/cogame-<slug> --public --description "<one line>"
+   ```
+2. Send the **builder** brief (self-contained):
+
+   > Implement `Metta-AI/cogame-<slug>` from the design note at `<abs path to runs/<run>/design.md>`,
+   > forking the conventions of `<starter>` at `<abs path>`. Copy the starter's layout, chrome, and
+   > build scripts verbatim where the note does not override them. Deliver on `main`:
+   > `src/` (sim module, server, LLM policy, scripted baseline — one image, env-switched
+   > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=1`), `client/` (viewer reusing the starter's
+   > `renderer.js`/`chrome.css` chrome), `replay-viewer/<slug>_replay.nim` +
+   > `tools/build_replay_viewer.sh` (the `coworld build` hook, emscripten, same sim module),
+   > `compose.yaml` (service name `<slug>`, `platform: linux/amd64`,
+   > `build: {context: ., network: host}`), `coworld_manifest_template.json`
+   > (image `{{<SLUG>_IMAGE}}`, `num_agents` in EVERY variant and in the cert fixture,
+   > `"replay_viewer": {"bundle": "static-replay-viewer"}`, `game.docs` =
+   > `{"readme":{"type":"text","value":…},"pages":[{"id","title","content":{"type":"text","value":…}}]}`,
+   > `game.protocols` with BOTH `player` and `global`), `tests/`, `README.md`, and
+   > `.github/workflows/{ci.yml,coworld-release.yml,coworld-submit.yml}` copied from
+   > `<abs path>/templates/`.
+   > Hard requirements, each of which is a blocking review finding if missed:
+   > truncate every recorded string on RUNE boundaries; issue all seats' LLM calls as ONE parallel
+   > batch per turn (`curly.makeRequests`); bound every wait and settle inside 60 % of
+   > `episodeTimeoutSeconds` (720 s); parse LLM replies tolerantly, retry once, then fall back to
+   > the scripted move; anonymous cog aliases in-game and real player names spectator-side only;
+   > `.plate-name { flex: 1 1 auto; min-width: 3.2em; }` and labels hidden under 640 px so the
+   > scorebug stays legible at 360 px.
+   > You cannot run Docker/Nim locally. Push and let `ci.yml` be the only verdict. Any smoke that
+   > runs a binary must depend on a fresh build of that binary in the same workflow run — a stale
+   > binary silently produces wrong gameplay.
+   > Report: commit shas, the CI run id, and anything in the design note you could not implement.
+
+3. Watch CI:
+   ```bash
+   gh run list -R Metta-AI/cogame-<slug> -w ci.yml -L 1 --json databaseId,conclusion
+   gh run watch <id> -R Metta-AI/cogame-<slug> --exit-status || \
+     gh run view <id> -R Metta-AI/cogame-<slug> --log-failed
+   ```
+4. On red, feed the failing log back to the builder. Do not fix by weakening or deleting a test —
+   that is failure, not completion.
+5. When green, tune the scripted baseline with a grid harness in CI (sweep its parameters, keep the
+   config that plays the game well) and assert bounded, legal orders in a test.
+
+## Exit criterion
+
+`ci.yml` conclusion `success` on `main`, at a commit whose tree contains: the manifest template with
+`num_agents` everywhere, `tools/build_replay_viewer.sh`, both policy entry points, and the tests the
+design note listed.
+
+## Writes
+
+- STATE: `repo`, `phase: "30"`, `review_round: 1`, `heartbeat_at`.
+- `log.md`: one line per push/CI attempt with the run id and conclusion.
+- Asana: complete the phase-20 subtask; comment with the repo URL and the green CI run URL.
+
+## Retry budget
+
+3 builder rounds against a red CI (each round must change approach, and say how, in `log.md`).
+On exhaustion → `prompts/90-blocked.md` with the failing job name and the last 40 log lines.

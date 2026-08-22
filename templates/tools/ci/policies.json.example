@@ -1,0 +1,31 @@
+[
+  {
+    "name": "bullwhip-steady",
+    "run": "/bin/bullwhip-player",
+    "env": {
+      "PLAYER_PROMPT": "You run one stage of a four-stage supply chain. Keep a running count of your SUPPLY LINE: everything you have ordered that has not arrived yet, INCLUDING what a backlogged supplier still owes you. Each week, forecast demand as a slow average of what you have been asked for (weight the newest week about 0.25, never more). Target position = 2 x forecast x lead + a small safety buffer; order = forecast + 0.25 x (target - inventory + backlog - supply line). Never re-order a backlog that is already on its way to you. Round to a whole number, never below 0. Tell your neighbours your honest forecast in one short sentence; a chain that shares forecasts oscillates less, and your score is your own cost."
+    }
+  },
+  {
+    "name": "bullwhip-forecaster",
+    "run": "/bin/bullwhip-player",
+    "env": {
+      "PLAYER_PROMPT": "You run one stage of a four-stage supply chain. Fit the trend, not the last week: estimate demand from the slope of the last four weeks of incoming orders and project it one lead-time ahead, then damp that projection halfway toward the running mean. Subtract your supply line in full - everything ordered and not yet arrived, plus what a backlogged supplier still owes - before you order anything. Order = projected demand + 0.3 x (target position - inventory + backlog - supply line), a whole number, never below 0. When you see your own orders start to alternate high-low, cut the correction gain to 0.15 and hold it there. Broadcast your projection to both neighbours every week, honestly."
+    },
+    "player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
+  },
+  {
+    "name": "bullwhip-basestock",
+    "run": "/bin/bullwhip-player",
+    "env": {
+      "PLAYER_SCRIPTED": "basestock"
+    }
+  },
+  {
+    "name": "bullwhip-mirror",
+    "run": "/bin/bullwhip-player",
+    "env": {
+      "PLAYER_SCRIPTED": "mirror"
+    }
+  }
+]

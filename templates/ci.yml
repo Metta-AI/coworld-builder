@@ -1,0 +1,201 @@
+# CI for a Coworld game repo (Metta-AI/cogame-<slug>).
+#
+# Goes to:  .github/workflows/ci.yml  in the coworld repo.
+# Substitute: <slug>  (lowercase game slug, e.g. bullwhip)
+#             <IMAGE> (local image name WITHOUT a tag, must match the image in
+#                      compose.yaml minus ":latest", e.g. coworld-bullwhip)
+#             <SEATS> (seat count, used only as the docker-smoke fallback when
+#                      the manifest fixture cannot be read)
+#
+# The coworld-builder sandbox has no docker, no nim and no emsdk: this
+# workflow is the ONLY place those toolchains run. Phase 20's exit criterion
+# is this workflow green on main.
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  SLUG: <slug>
+  IMAGE: <IMAGE>
+  # Pins mirror the Dockerfile build stage; bump both together.
+  NIMBY_VERSION: "0.1.26"
+  NIM_VERSION: "2.2.4"
+
+jobs:
+  # ---------------------------------------------------------------------
+  # Native Nim tests. Same nimby recipe as the Dockerfile build stage, so a
+  # green test job means the image's compiler and package tree agree.
+  # ---------------------------------------------------------------------
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Cache nimby toolchain and nimcache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimby
+            ~/.cache/nim
+          key: nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-${{ hashFiles('nimby.lock') }}-${{ github.sha }}
+          restore-keys: |
+            nimby-${{ runner.os }}-${{ env.NIMBY_VERSION }}-${{ env.NIM_VERSION }}-${{ hashFiles('nimby.lock') }}-
+
+      - name: Install nimby and Nim
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.local/bin"
+          arch="$(dpkg --print-architecture)"
+          case "$arch" in
+            amd64) asset="nimby-Linux-X64" ;;
+            arm64) asset="nimby-Linux-ARM64" ;;
+            *) echo "::error::unsupported runner arch: $arch"; exit 1 ;;
+          esac
+          curl -fsSL -o "$HOME/.local/bin/nimby" \
+            "https://github.com/treeform/nimby/releases/download/${NIMBY_VERSION}/${asset}"
+          chmod +x "$HOME/.local/bin/nimby"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.nimby/nim/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/nimby" use "$NIM_VERSION"
+
+      - name: Sync Nim dependencies
+        run: |
+          set -euo pipefail
+          if [ -f nimby.lock ]; then
+            nimby --global sync nimby.lock
+          else
+            echo "no nimby.lock in the repo; skipping dependency sync"
+          fi
+
+      - name: Regenerate nim.cfg from the synced package tree
+        # The committed nim.cfg pins the AUTHOR's machine package paths. Rebuild
+        # it from this runner's ~/.nimby/pkgs, exactly as the Dockerfile does.
+        run: |
+          set -euo pipefail
+          rm -f nim.cfg
+          for pkg in "$HOME"/.nimby/pkgs/*; do
+            [ -e "$pkg" ] || continue
+            if [ -d "$pkg/src" ]; then
+              echo "--path:\"$pkg/src\"" >> nim.cfg
+            else
+              echo "--path:\"$pkg\"" >> nim.cfg
+            fi
+          done
+          echo '--path:"src"' >> nim.cfg
+          echo "::group::nim.cfg"
+          cat nim.cfg
+          echo "::endgroup::"
+
+      - name: Run tests
+        # Every tests/*.nim runs twice: debug (range/overflow checks, stack
+        # traces) and -d:release (release-only compile errors and codegen bugs
+        # that debug runs never see). Repo variables narrow that:
+        #   NIM_TESTS               space-separated test files (default tests/*.nim)
+        #   NIM_TESTS_DEBUG_ONLY    files to run ONLY in debug
+        #   NIM_TESTS_RELEASE_ONLY  files to run ONLY in release
+        env:
+          NIM_TESTS: ${{ vars.NIM_TESTS }}
+          NIM_TESTS_DEBUG_ONLY: ${{ vars.NIM_TESTS_DEBUG_ONLY }}
+          NIM_TESTS_RELEASE_ONLY: ${{ vars.NIM_TESTS_RELEASE_ONLY }}
+        run: |
+          set -uo pipefail
+          tests="${NIM_TESTS:-}"
+          if [ -z "${tests}" ]; then
+            tests="$(ls tests/*.nim 2>/dev/null | tr '\n' ' ')"
+          fi
+          if [ -z "$(echo "${tests}" | tr -d ' ')" ]; then
+            echo "::error::no test files found (tests/*.nim empty and NIM_TESTS unset)"
+            exit 1
+          fi
+          fail=0
+          for t in ${tests}; do
+            if [ ! -f "${t}" ]; then
+              echo "::error::test file not found: ${t}"
+              fail=1
+              continue
+            fi
+            modes="debug release"
+            case " ${NIM_TESTS_DEBUG_ONLY} " in *" ${t} "*) modes="debug" ;; esac
+            case " ${NIM_TESTS_RELEASE_ONLY} " in *" ${t} "*) modes="release" ;; esac
+            for m in ${modes}; do
+              if [ "${m}" = "release" ]; then
+                flags="--hints:off -d:release"
+              else
+                flags="--hints:off"
+              fi
+              echo "::group::nim r ${flags} --path:src ${t}"
+              # shellcheck disable=SC2086
+              if ! nim r ${flags} --path:src "${t}"; then
+                echo "::error::FAILED (${m}) ${t}"
+                fail=1
+              fi
+              echo "::endgroup::"
+            done
+          done
+          exit "${fail}"
+
+  # ---------------------------------------------------------------------
+  # Packaging smoke: the production image builds, and one real episode runs
+  # end to end in raw docker with the certification fixture's seat mix.
+  # ---------------------------------------------------------------------
+  docker-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        run: docker build --platform=linux/amd64 -t "${IMAGE}:ci" .
+
+      - name: Raw-Docker episode smoke
+        run: bash tools/ci/docker_smoke.sh "${IMAGE}:ci"
+
+  # ---------------------------------------------------------------------
+  # The static replay viewer. The platform serves THIS bundle from
+  # /v2/coworlds/replays/static/<cow_id>/<sha>/index.html, so a bundle that
+  # does not build (or is missing its wasm) means every hosted replay hangs.
+  # tools/build_replay_viewer.sh falls back to the pinned emscripten/emsdk
+  # container (Dockerfile.replay-viewer) because the runner has no emcc.
+  # ---------------------------------------------------------------------
+  wasm-viewer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build the static replay viewer bundle
+        run: bash tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"
+
+      - name: Assert the bundle is complete
+        run: |
+          set -euo pipefail
+          out="$PWD/dist/static-replay-viewer"
+          test -s "${out}/index.html" || {
+            echo "::error::${out}/index.html missing or empty"; exit 1; }
+          wasm_count="$(find "${out}" -name '*.wasm' -size +1c | wc -l | tr -d ' ')"
+          if [ "${wasm_count}" -lt 1 ]; then
+            echo "::error::no non-empty .wasm module in ${out}"
+            find "${out}" -type f | sed 's/^/  /'
+            exit 1
+          fi
+          echo "bundle OK:"
+          find "${out}" -type f -printf '  %p (%s bytes)\n'
+
+      - name: Upload the bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-replay-viewer
+          path: dist/static-replay-viewer
+          if-no-files-found: error
+          retention-days: 14
