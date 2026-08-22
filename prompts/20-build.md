@@ -7,7 +7,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 
 - `runs/<run>/design.md` (accepted in phase 10), `STATE.slug`, `STATE.starter`, `STATE.repo`.
 - Starter repo, mounted read-only.
-- `templates/ci.yml`, `templates/coworld-release.yml`, `templates/coworld-submit.yml`.
+- `templates/README.md`, `templates/{ci.yml,coworld-release.yml,coworld-submit.yml}`,
+  `templates/tools/ci/{docker_smoke.sh,policies.json.example}`.
 - `playbooks/make-coworld.md` §Phase 0 / §Phase 1.
 
 ## Procedure
@@ -31,9 +32,17 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > (image `{{<SLUG>_IMAGE}}`, `num_agents` in EVERY variant and in the cert fixture,
    > `"replay_viewer": {"bundle": "static-replay-viewer"}`, `game.docs` =
    > `{"readme":{"type":"text","value":…},"pages":[{"id","title","content":{"type":"text","value":…}}]}`,
-   > `game.protocols` with BOTH `player` and `global`), `tests/`, `README.md`, and
-   > `.github/workflows/{ci.yml,coworld-release.yml,coworld-submit.yml}` copied from
-   > `<abs path>/templates/`.
+   > `game.protocols` with BOTH `player` and `global`), `tests/`, `README.md`, and this scaffold
+   > copied from `<abs path>/templates/` (per-file docs in `templates/README.md`) with the
+   > placeholders `<slug>`, `<IMAGE>` (the compose image name minus `:latest`, e.g.
+   > `coworld-<slug>`) and `<SEATS>` substituted: `.github/workflows/ci.yml`,
+   > `.github/workflows/coworld-release.yml`, `.github/workflows/coworld-submit.yml`,
+   > `tools/ci/docker_smoke.sh` (**`chmod +x`**), and `tools/ci/policies.json` (from
+   > `templates/tools/ci/policies.json.example`, with champion #2's entry carrying
+   > `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
+   > `ci.yml`'s `docker-smoke` job calls `tools/ci/docker_smoke.sh` and its `wasm-viewer` job
+   > calls `tools/build_replay_viewer.sh` — if either file is missing or non-executable the repo's
+   > CI cannot go green, so both are part of this scaffold, not a later step.
    > Hard requirements, each of which is a blocking review finding if missed:
    > truncate every recorded string on RUNE boundaries; issue all seats' LLM calls as ONE parallel
    > batch per turn (`curly.makeRequests`); bound every wait and settle inside 60 % of
@@ -60,8 +69,9 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 ## Exit criterion
 
 `ci.yml` conclusion `success` on `main`, at a commit whose tree contains: the manifest template with
-`num_agents` everywhere, `tools/build_replay_viewer.sh`, both policy entry points, and the tests the
-design note listed.
+`num_agents` everywhere, `tools/build_replay_viewer.sh`, `tools/ci/docker_smoke.sh` (executable),
+`tools/ci/policies.json`, all three workflows, both policy entry points, and the tests the design
+note listed. No placeholder `<slug>`/`<IMAGE>`/`<SEATS>` may survive anywhere in the tree.
 
 ## Writes
 

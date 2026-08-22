@@ -85,7 +85,11 @@ Response: `{"divisions":[{"id":"div_…","name":"Competition","level":1,"type":"
 
 List key: `entries`. Row fields used: **`policy_name`**, **`policy_version_id`**, **`player_name`**.
 
-Prefer the ids that `release-result.json.policies[].policy_version_id` already gave you.
+**This is the only source of policy-version UUIDs.** `release-result.json.policies[]` reports
+`policy_version_id: null` for every policy — `coworld upload-policy` prints only
+`Upload complete: <name>:vN` and no uuid, so CI cannot pass one back. Take the `<name>:vN` labels
+from the release artifact, then resolve them here. Use `player_name` to confirm champion #2's
+version is owned by `daveey-1`.
 
 ## 6. Filler policies — BEFORE the first trigger-round
 
@@ -180,27 +184,37 @@ Returns a **bare JSON list** (not `{"entries":…}`). Row fields: `rank`, `playe
 Done requires both `daveey` and `daveey-1` present with `rounds_played >= 1`, and fillers either
 absent or labelled `Baseline`.
 
-## 12. Champion submission — **BINDING, no HTTPS route known**
+## 12. Champion submission — no HTTPS route; use `coworld-submit.yml`
 
 There is **no documented Observatory endpoint** for submitting a policy to a league as a given
-player; the Bullwhip run did it with the `coworld` CLI locally. The cloud agent has no CLI.
-**This is a binding the templates must satisfy** — `templates/coworld-submit.yml`, a
-`workflow_dispatch` workflow in the coworld repo that runs:
+player; the Bullwhip run did it with the `coworld` CLI locally, and the cloud agent has no CLI.
+`templates/coworld-submit.yml` (slug-independent, no placeholders) covers it. It runs:
 
 ```bash
-softmax player use <ply_id>
-coworld submit <policy>:vN --league <league_id> --no-open-browser
-softmax player unset          # in an always() step
+softmax player use <player_id>
+coworld submit <policy> --league <league_id> --no-open-browser
+softmax player unset          # always() step
 ```
 
-Inputs: `player_id`, `policy`, `league_id`. Artifact `submit-result` →
-`submit-result.json` `{"ok":bool,"player_id":…,"policy":…,"league_id":…,"error":null}`.
+Inputs: `player_id`, `policy` (`<name>:vN`), `league_id`. `concurrency: coworld-submit`,
+`cancel-in-progress: false`. Artifact `submit-result` → `submit-result.json`:
+
+```json
+{"ok": true, "player_id": "ply_…", "policy": "<slug>-forecaster:v1", "league_id": "league_…",
+ "exit_code": 0, "output_tail": "…", "error": null}
+```
+
+Submission stays in its own workflow — do not fold it into the release workflow.
 
 ```bash
 gh workflow run coworld-submit.yml -R Metta-AI/cogame-<slug> --ref main \
   -f player_id=ply_44ae9048-3242-4654-881f-6d9d43347fa3 \
   -f policy='<slug>-forecaster:v1' -f league_id="$L"
 ```
+
+Ownership is set at **upload** time, not submit time: give champion #2's policy entry
+`"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"` in `coworld-release.yml`'s `policies` JSON,
+or the submit 409s "already assigned to player".
 
 If a direct API route is later discovered, document it here and keep the workflow as fallback.
 

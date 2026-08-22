@@ -5,8 +5,8 @@ Owner: coordinator. All HTTPS except champion submission, which is a CI dispatch
 
 ## Inputs
 
-- `STATE.slug`, `STATE.coworld.cow_id`, `STATE.policies.*` (names and `policy_version_id`s from
-  `release-result.json`).
+- `STATE.slug`, `STATE.coworld.cow_id`, `STATE.policies.*` (`<name>:vN` labels from
+  `release-result.json`; the UUIDs are **not** in that artifact — step 7 resolves them).
 - `playbooks/observatory-api.md` — every body below is quoted from it.
 
 ## Procedure
@@ -52,7 +52,9 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
      -f player_id=ply_44ae9048-3242-4654-881f-6d9d43347fa3 \
      -f policy='<slug>-forecaster:v1' -f league_id="$L"
    ```
-   Watch the run, download the `submit-result` artifact, require `ok: true`.
+   Watch the run, download the `submit-result` artifact
+   (`{"ok","player_id","policy","league_id","exit_code","output_tail","error"}`), require
+   `ok: true`; on failure quote `output_tail` in `log.md`.
 6. **Champion #2 — daveey-1** (`ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`): its policy version must
    have been **uploaded while daveey-1 was the active player** — a version uploaded as daveey is
    owned by daveey and submitting it as daveey-1 409s "already assigned to player". Phase 40 mints
@@ -66,8 +68,16 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
    ```
    **Two ranked players are REQUIRED** — with fewer, softmax.com/<slug> shows "No featured match
    yet".
-7. **Fillers — BEFORE any trigger-round.** Use the `policy_version_id` UUIDs of the versions that
-   are **not** either champion:
+7. **Fillers — BEFORE any trigger-round.** First resolve the UUIDs: `release-result.json` reports
+   `policy_version_id: null` for every policy, so fetch them and filter **client-side** (the
+   `name=` filter is ignored):
+   ```bash
+   /usr/bin/curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
+    | jq -r '.entries[]|select(.policy_name|startswith("<slug>-"))
+             |[.policy_name,.policy_version_id,.player_name]|@tsv'
+   ```
+   Use only the rows whose `<name>:vN` is **not** either champion's; confirm champion #2's row
+   shows `player_name` = `daveey-1` before submitting it. Then:
    ```bash
    /usr/bin/curl -sS -X POST "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" \
      -d '{"policy_version_ids":["<uuid-basestock>","<uuid-mirror>"]}'

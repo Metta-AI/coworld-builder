@@ -97,9 +97,12 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
 11. **Viewer legible at 360 px.** The scorebug's player names do not collapse at the embedded
     featured-match width: `.plate-name { flex: 1 1 auto; min-width: 3.2em; }`, labels hidden under
     `640px`. *(category: legibility)*
-12. **Release order.** `coworld-release.yml` runs build → certify → **upload-policies** →
-    upload-coworld → secret put, in that order, and any smoke step depends on a freshly built
-    binary in the same run. *(category: manifest)*
+12. **Release order and scaffold.** `coworld-release.yml` runs build → certify →
+    **upload-policies** → upload-coworld → secret put, in that order, and any smoke step depends on
+    a freshly built binary in the same run. All three workflows are present, `tools/ci/docker_smoke.sh`
+    is present and executable, `tools/ci/policies.json` defines five distinct policies with champion
+    #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, and no `<slug>`/`<IMAGE>`/
+    `<SEATS>` placeholder survives in the tree. *(category: manifest)*
 
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.

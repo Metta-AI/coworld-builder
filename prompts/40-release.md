@@ -13,8 +13,11 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
 
 1. Decide the version: `0.1.0` on the first attempt, then `0.1.1`, `0.1.2`, … Version bumps are
    free and are the documented fix for two distinct failures — use them rather than waiting.
-2. Compose the `policies` input — **five distinct versions** (two champions + three fillers), because identical content dedupes to
-   one version and fillers must differ from champions:
+2. Policies come from **`tools/ci/policies.json` in the repo** (scaffolded in phase 20 from
+   `templates/tools/ci/policies.json.example`); the `policies` dispatch input is optional and only
+   overrides that file for one run. Either way it must define **five distinct versions** (two
+   champions + three fillers) — identical content dedupes to one version, and fillers must differ
+   from champions:
    ```json
    [{"name":"<slug>-steady","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1"}},
     {"name":"<slug>-basestock","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1","BASELINE":"basestock"}},
@@ -24,13 +27,18 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
      "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"}]
    ```
    The optional `"player"` field wraps that one `upload-policy` in
-   `softmax player use <ply_id>` / `unset`, so the version is **owned by daveey-1**. Champion #2
-   needs this or its submit 409s "already assigned to player".
+   `softmax player use <ply_id>` / `unset` (unset in a `finally`, per policy and around the loop),
+   so the version is **owned by daveey-1**. Champion #2 needs this or its submit 409s "already
+   assigned to player". Entries also accept `"image"` (override `<IMAGE>:latest`) and `"run"` as a
+   string (shlex-split) or an array.
 3. Dispatch and block:
    ```bash
    REPO=Metta-AI/cogame-<slug>
    gh workflow run coworld-release.yml -R "$REPO" --ref main \
-     -f version=<v> -f policies="$POLICIES" -f put_secret=true
+     -f version=<v> -f put_secret=true          # add -f policies="$POLICIES" only to override
+                                                 # tools/ci/policies.json for this one dispatch.
+   # Never pass -f skip_certify=true for a real release: it is a debugging switch and makes
+   # release-result.json.certify null (= "not checked"), which cannot satisfy the exit criterion.
    RUN=$(gh run list -R "$REPO" -w coworld-release.yml -L 1 --json databaseId -q '.[0].databaseId')
    gh run watch "$RUN" -R "$REPO" --exit-status || true
    gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
@@ -40,7 +48,11 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
    - `canonical == true`
    - `certify.ok == true` and `certify.replay_liveness` contains
      `skipped (static replay bundle declared`
-   - `policies[]` has one entry per requested policy, each with a distinct `policy_version_id`, and champion #2's entry is owned by `daveey-1`
+   - `policies[]` has one entry per requested policy — `{"name","version","policy_version_id","player_id"}` —
+     with distinct `<name>:vN` labels, and champion #2's `player_id` ==
+     `ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`.
+     **`policy_version_id` is always `null`** (upload-policy prints no uuid). Do not treat that as
+     a failure; phase 50 resolves the UUIDs from `GET /policy-versions`, filtered client-side.
    - `secret_put == true`
 5. Triage by `step_failed`:
    | `step_failed` / error | Action |
@@ -56,15 +68,17 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
 
 ## Exit criterion
 
-`release-result.json` with `ok: true`, `canonical: true`, static replay liveness skipped, one
-distinct policy version id per requested policy (champion #2's owned by `daveey-1`), and
-`secret_put: true`.
+`release-result.json` with `ok: true`, `canonical: true`, `certify` non-null and its
+`replay_liveness` containing `skipped (static replay bundle declared`, one `policies[]` entry per
+requested policy with distinct `<name>:vN` labels, champion #2's `player_id` ==
+`ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`, and `secret_put: true`.
 
 ## Writes
 
 - STATE: `coworld.version`, `coworld.cow_id`, `coworld.manifest_sha`,
-  `policies.champion1`, `policies.champion2`, `policies.fillers[]` (names `:vN`) plus the
-  `policy_version_id` UUIDs, `phase_attempts["40"]`, `phase: "50"`, `heartbeat_at`.
+  `policies.champion1`, `policies.champion2`, `policies.fillers[]` — all as `<name>:vN` labels
+  (UUIDs are not available yet; phase 50 resolves and records them),
+  `phase_attempts["40"]`, `phase: "50"`, `heartbeat_at`.
 - `log.md`: one line per dispatch — version, run id, `step_failed`, decision.
 - Asana: complete the phase-40 subtask; comment with `cow_id`, version, and the release run URL.
 

@@ -30,7 +30,7 @@ thing the game is about.
 | `uv run coworld upload-coworld …` | same dispatch |
 | `uv run coworld secret put …` | same dispatch (`put_secret: true`) |
 | `docker build …` / any local image work | the workflow's runner; never the sandbox |
-| `uv run coworld submit …` | dispatch `coworld-submit.yml` |
+| `uv run coworld submit …` | dispatch `coworld-submit.yml` (artifact `submit-result`) |
 | `uv run softmax player use/unset` | inside `coworld-submit.yml` only |
 | `uv run coworld episode-logs …` | `GET /episode-requests/<id>/artifacts/logs` (HTTPS) |
 | league seed / divisions / settings / fillers / trigger / verify | direct HTTPS — no docker needed |
@@ -40,10 +40,10 @@ thing the game is about.
 
 ```bash
 REPO=Metta-AI/cogame-<slug>
+# `policies` is OPTIONAL — empty means "read tools/ci/policies.json from the repo",
+# which phase 20 scaffolds. Pass it only to override that file for one dispatch.
 gh workflow run coworld-release.yml -R "$REPO" --ref main \
   -f version=0.1.0 \
-  -f policies='[{"name":"<slug>-steady","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1"}},
-                {"name":"<slug>-forecaster","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}}]' \
   -f put_secret=true
 # find the run just started, then block on it
 RUN=$(gh run list -R "$REPO" -w coworld-release.yml -L 1 --json databaseId -q '.[0].databaseId')
@@ -52,15 +52,24 @@ gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
 jq . /tmp/rr/release-result.json
 ```
 
+Other inputs: `secret_key_name` (default `anthropic_api_key`), `put_secret` (default true),
+`skip_certify` (default false — **debugging only, never for a real release**; it also makes the
+`certify` key `null` rather than `false`, so a `null` there means "not checked", not "failed").
+
 `release-result.json` is written **even when a step fails**:
 
 ```json
 {"version":"0.1.2","ok":true,"cow_id":"cow_…","canonical":true,
- "manifest_sha":"sha256:…",
+ "manifest_sha":"sha256:…","hosted_smoke":"…","hosted_certification":"…",
  "certify":{"ok":true,"replay_liveness":"skipped (static replay bundle declared…)","output_tail":"…"},
- "policies":[{"name":"<slug>-steady","version":"v1","policy_version_id":"<uuid>"}],
+ "policies":[{"name":"<slug>-steady","version":"v1","policy_version_id":null,"player_id":null}],
  "secret_put":true,"errors":[],"step_failed":null}
 ```
+
+**`policy_version_id` is ALWAYS `null`.** `upload-policy` prints only `Upload complete: <name>:vN`
+and no uuid, so the workflow cannot report one. Take the `<name>:vN` labels from here and resolve
+the UUIDs the filler call needs from `GET /policy-versions` with a **client-side** filter — see
+`observatory-api.md` §5. `player_id` is the owning player (`null` = the CI token's own player).
 
 Read `step_failed` first, then `errors`, then `gh run view "$RUN" -R "$REPO" --log-failed`.
 Never conclude from the workflow's green/red alone — read the JSON.
@@ -173,8 +182,13 @@ versions for: champion #1, champion #2, and every filler.
  {"name":"<slug>-forecaster","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}}]
 ```
 
-`release-result.json.policies[]` carries `policy_version_id` — the UUID the filler-policy call
-needs. Do not go hunting for it in the API if the artifact has it.
+`release-result.json.policies[]` gives `{"name","version","policy_version_id":null,"player_id"}`.
+The `policy_version_id` is **always null** — resolve the UUIDs the filler-policy call needs from
+`GET /policy-versions` (fetch, filter client-side on `policy_name`; the `name=` filter is ignored).
+
+Per-policy extras the workflow accepts: `"player": "ply_…"` (upload that one policy while that
+player is active — this is how champion #2 comes to be owned by `daveey-1`), `"image"` (override
+`<IMAGE>:latest`), and `"run"` as either a string (shlex-split) or an array.
 
 ---
 
@@ -196,14 +210,17 @@ Full bodies in [`observatory-api.md`](observatory-api.md). Order:
 2. **Champion #2 (daveey-1, `ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`):** the second champion's
    policy version must be **uploaded while daveey-1 is the active player** — a version uploaded as
    daveey is owned by daveey, and submitting it as daveey-1 409s "already assigned to player".
-   **BINDING:** `coworld-release.yml` must honour an optional `"player"` field on a policy entry in
-   the `policies` JSON — wrapping that one `upload-policy` in
-   `softmax player use <ply_id>` … `softmax player unset` (unset in an `always()` step).
-   Give champion #2's policy `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, then dispatch
-   `coworld-submit.yml` with the same id.
+   `coworld-release.yml` honours an optional `"player"` field on a policy entry in the `policies`
+   JSON — it wraps that one `upload-policy` in `softmax player use <ply_id>` …
+   `softmax player unset` (the unset is in a `finally`, per policy *and* around the whole loop, so
+   no failure path leaves the runner switched for `upload-coworld`). Give champion #2's policy
+   `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, then dispatch `coworld-submit.yml` with
+   the same id. `release-result.json.policies[].player_id` echoes the owner — assert it.
    **Two ranked players are REQUIRED** — the softmax.com featured match shows "No featured match
    yet" with fewer.
-3. **Fillers:** `POST /leagues/$L/filler-policies` `{"policy_version_ids":[…]}`. **Filler versions
+3. **Fillers:** resolve UUIDs first — `GET /policy-versions?limit=200`, filter client-side on
+   `policy_name`, and pick the rows whose `<name>:vN` labels are **not** either champion's. Then
+   `POST /leagues/$L/filler-policies` `{"policy_version_ids":[…]}`. **Filler versions
    MUST differ from champion versions** — the platform renames ANY seat whose version is in the
    filler list to "Baseline (N)", even a scored champion.
    **Set fillers BEFORE the first `trigger-round`.**
@@ -268,6 +285,9 @@ Response `id` is the message id; record it in STATE.
 | daveey-1 submit 409 "already assigned to player" | version owned by daveey — upload a fresh policy while daveey-1 is active |
 | Episodes done in ~20 s, `LLM provider is unavailable` in game log | platform Bedrock sidecar outage (all LLM coworlds) — wait, don't debug the game |
 | zsh eats a var or curl breaks | `status` is reserved in zsh; use `/usr/bin/curl` if PATH is broken |
+| `release-result.json.policies[].policy_version_id` is `null` | expected, always — `upload-policy` prints no uuid. Resolve UUIDs from `GET /policy-versions`, filtered client-side on `policy_name`. |
+| `release-result.json.certify` is `null` | `skip_certify` was true. That is a debugging switch; re-dispatch without it. `null` means "not checked", not "failed". |
+| CI red on a missing script | `tools/ci/docker_smoke.sh` absent or not `chmod +x`, or `tools/build_replay_viewer.sh` missing — both are phase-20 scaffold, not later work |
 | **Scripted baseline oscillates wildly / "bullwhip" in a game that should be damped** | **stale binary** — game logic was edited but the smoke ran the previous build. Rebuild before every smoke; in CI make the smoke job `needs:` the build job, never reuse a cached binary. Cost one hour on bullwhip (2026-08-22). |
 | **Replay bytes fail a strict JSON parser but render in a browser** | a string was truncated on a **byte** boundary mid-UTF-8. Truncate every string that lands in the replay (`say`, `notes`, prompts, error text) on **rune** boundaries. |
 | **Round fails instantly: "Temporal RoundWorkflow failed before settling the round"** | `trigger-round` fired before any filler policy existed. **Set filler policies BEFORE the first trigger-round.** Two triggers were burned this way on bullwhip. |
