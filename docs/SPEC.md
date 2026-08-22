@@ -19,7 +19,8 @@ that names exactly what is needed, and exits.
   judge = `claude-fable-5`). Deployed with the `fleet/bin/fleetctl.py` conventions from
   `daveey/cogamer` (config mirrored in git under `fleet/mirror/`, applied out).
 - **One deployment, hourly cron** (`*/60`, minute 11). Every run is a *heartbeat*:
-  1. Read the **Coworld Builder** board (`$BUILDER_PROJECT`). If a run task sits in *Running*
+  1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md`; it is a
+     table row, not an environment variable). If a run task sits in *Running*
      with `heartbeat_at` < 90 min old → another run is live → **exit**. (No dupes.)
   2. If a run task is in *Running* with a stale heartbeat → it is yours: **resume** at
      `STATE.json.phase`.
@@ -48,7 +49,7 @@ that names exactly what is needed, and exits.
 | # | prompt | owner | produces | done when |
 |---|---|---|---|---|
 | 00 | `prompts/00-claim.md` | coordinator | run task (+ one subtask per phase), `runs/<run>/STATE.json`, `log.md` | task in *Running*, STATE written |
-| 10 | `prompts/10-design.md` | designer → coordinator | `docs/plans/<date>-<slug>-design.md` in the new repo (starter, rules, scoring, events, state JSON, viewer, packaging, tests) | coordinator accepts the note against the checklist in the prompt |
+| 10 | `prompts/10-design.md` | designer → coordinator | `docs/plans/<date>-<slug>-design.md` in the new repo, with the eight H2 sections `prompts/10-design.md` names, in that order: `## The game`, `## Decisions: LLM with scripted fallback`, `## Sim module`, `## Server, player, protocol`, `## Viewer`, `## Packaging`, `## Tests`, `## Out of scope (v1)` | coordinator accepts the note against the checklist in the prompt |
 | 20 | `prompts/20-build.md` | builder | the repo: sim/llm/server/player, viewer, manifest, CI templates, tests, README; CI green | `ci.yml` green on `main` |
 | 30 | `prompts/30-review-loop.md` | reviewer → fixer → judge | review reports under `runs/<run>/reviews/`, fixes pushed | judge returns **zero blocking findings** (max 4 rounds; residue logged) |
 | 40 | `prompts/40-release.md` | builder (CI) | `coworld-release.yml` run: build → certify → upload-policies → upload-coworld (wait hosted smoke) → secret put | coworld **Canonical: yes**, hosted certification certified |

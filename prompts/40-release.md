@@ -1,7 +1,8 @@
 # Phase 40 — Release
 
 Purpose: get a canonical, certified coworld and the policy versions the league will need.
-Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No docker in the sandbox.
+Owner: **builder**, dispatched by the coordinator — `coworld-release.yml` runs in the coworld
+repo (SPEC §Phases, `AGENT.md` §Sub-agents, `agents/builder.md` §Release). No docker in the sandbox.
 
 ## Inputs
 

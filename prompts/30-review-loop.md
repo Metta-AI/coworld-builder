@@ -12,9 +12,11 @@ Owner: coordinator, orchestrating three distinct sub-agents with distinct prompt
 ## Loop
 
 ```
-round = STATE.review_round (starts 1)
+round = max(STATE.review_round, 1)      # the STATE template initialises it to 0; a resume
+                                        # straight into phase 30 must not write r0-*.md files
 loop:
   reviewer -> runs/<run>/reviews/r<round>-review.md
+  if the review has no findings: the judge still runs (an empty review is not a pass)
   fixer    -> commits per finding, CI green, runs/<run>/reviews/r<round>-fixes.md
   judge    -> runs/<run>/reviews/r<round>-verdict.md   (fresh context)
   if verdict.blocking == 0: exit loop

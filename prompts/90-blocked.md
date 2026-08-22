@@ -39,7 +39,8 @@ equivalent API shapes. If the reason is on that list, go back and decide it.
      action — not a menu), and the literal line:
      `Resume: complete this subtask; the next heartbeat resumes at phase <n>`
 3. Move the run task to *Blocked*.
-4. Post **one** comment on the idea task `1217704774784096`-side: blocked at phase `<n>`, one line,
+4. Post **one** comment on the idea task — `STATE.idea_task`, the task gid, **not**
+   `1217704774784096`, which is the Coworld *Ideas project* gid: blocked at phase `<n>`, one line,
    link to the subtask.
 5. STATE: keep `phase` at the failed phase (the resume re-enters it), set `heartbeat_at`, commit,
    push.

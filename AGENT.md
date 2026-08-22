@@ -13,7 +13,8 @@ subtask that names exactly what a human must do, and you exit. Your specificatio
 
 Every firing of this deployment is a *heartbeat*. Run these steps in order, every time:
 
-1. Read the **Coworld Builder** board (`$BUILDER_PROJECT`). If a run task sits in *Running*
+1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md` — it is a
+   row in that table, **not** a shell variable; nothing exports `BUILDER_PROJECT`). If a run task sits in *Running*
    with `heartbeat_at` < 90 min old → another run is live → **exit**. (No dupes.)
 2. If a run task is in *Running* with a stale heartbeat → it is yours: **resume** at
    `STATE.json.phase`.
@@ -24,8 +25,9 @@ Every firing of this deployment is a *heartbeat*. Run these steps in order, ever
 5. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
    of work, and on every phase transition.
 
-All ids — `$BUILDER_PROJECT`, the Coworld Ideas board, the Discord guild and channel,
-the human to assign Blocked subtasks to — are in `/workspace/coworld-builder/fleet/cloud.md`.
+All ids — the Coworld Builder board, the Coworld Ideas board, the Discord guild and channel,
+the `heartbeat_at` custom field, the human to assign Blocked subtasks to — are in
+`/workspace/coworld-builder/fleet/cloud.md`.
 Read it once per heartbeat; never hard-code an id from memory.
 
 Before step 1, read the run task's comments (see *Operator steering*). After step 5, work the
@@ -46,8 +48,9 @@ phase you landed on until the session ends or the run reaches phase 80 or 90.
 | 80 | `prompts/80-close.md` | you | summaries, LEARNINGS entry, run *Done*, idea completed |
 | 90 | `prompts/90-blocked.md` | you | run *Blocked*, human subtask filed |
 
-**When you enter a phase, read `prompts/<phase>.md` from `/workspace/coworld-builder` and
-follow it.** The prompt is authoritative for that phase; this file only says which one to
+**When you enter a phase, read `prompts/<phase>-*.md` from `/workspace/coworld-builder` and
+follow it** (the files are `prompts/00-claim.md` … `prompts/90-blocked.md`; the glob is how you
+resolve a phase number to its file). The prompt is authoritative for that phase; this file only says which one to
 read and who owns it. Re-read the prompt on resume — it may have changed since the last
 heartbeat, and the newest committed version is the live one.
 

@@ -44,7 +44,7 @@ fleet's crons). Config: `fleet/deployment.json`.
 | what | gid |
 |---|---|
 | Coworld Ideas (the input queue; read-only to the agent — never create or reorder) | `1217704774784096` |
-| Coworld Builder (`$BUILDER_PROJECT` — run tasks live here) | `1217747772236871` |
+| Coworld Builder (run tasks live here; SPEC/AGENT call it "the Builder board" — no env var sets it) | `1217747772236871` |
 | Coworld Builder section Running | `1217747860567752` |
 | Coworld Builder section Blocked | `1217762552336061` |
 | Coworld Builder section Done | `1217748136343842` |

@@ -53,8 +53,10 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > calls `tools/build_replay_viewer.sh` — if either file is missing or non-executable the repo's
    > CI cannot go green, so both are part of this scaffold, not a later step.
    > Hard requirements, each of which is a blocking review finding if missed:
-   > truncate every recorded string on RUNE boundaries; issue all seats' LLM calls as ONE parallel
-   > batch per turn (`curly.makeRequests`); bound every wait and settle inside 60 % of
+   > truncate every recorded string on RUNE boundaries; **for simultaneous-decision games** issue
+   > all seats' LLM calls as ONE parallel batch per turn (`curly.makeRequests`) — a turn-based
+   > sequential game calls the seat whose turn it is, and the design note says which shape this
+   > game is; bound every wait and settle inside 60 % of
    > `episodeTimeoutSeconds` (720 s); parse LLM replies tolerantly, retry once, then fall back to
    > the scripted move; anonymous cog aliases in-game and real player names spectator-side only;
    > `.plate-name { flex: 1 1 auto; min-width: 3.2em; }` and labels hidden under 640 px so the

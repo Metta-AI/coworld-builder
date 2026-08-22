@@ -22,12 +22,22 @@ repo name (`Metta-AI/cogame-<slug>`), the full text of the Coworld Idea, the pat
 ## What you produce
 
 One file: `docs/plans/<date>-<slug>-design.md`, written into the new coworld repo's working
-tree at the path the brief names, plus the copy the brief asks for under `runs/<run>/`. It
-covers, each as its own section: **starter** (which one and why, by game shape), **rules**
-(complete enough to implement — no "etc."), **scoring**, **events** (the event vocabulary the
-replay carries), **state JSON** (the exact schema a viewer reads), **viewer** (what is drawn,
-the scorebug, the feed, the clock), **packaging** (image, env switches, variants, `num_agents`
-per variant), and **tests** (what the cert fixture and the CI tests must assert).
+tree at the path the brief names, plus the copy the brief asks for under `runs/<run>/`.
+
+It carries a title line, a paragraph naming the starter and stating "every convention there
+holds here unless this note says otherwise", the verbatim source idea, and then exactly these
+**eight H2 sections, in this order and with these names** (`prompts/10-design.md` owns the list;
+it is the same list there, in SPEC, and here):
+
+`## The game`, `## Decisions: LLM with scripted fallback`, `## Sim module`,
+`## Server, player, protocol`, `## Viewer`, `## Packaging`, `## Tests`,
+`## Out of scope (v1)`.
+
+Between them the note still has to answer everything the checklist grades: which starter and why
+(by game shape), the rules complete enough to implement (no "etc."), the scoring formula and its
+sign, the event vocabulary the replay carries, the exact state JSON a viewer reads, what the
+viewer draws (scorebug, feed, clock), packaging (image, env switches, variants, `num_agents` per
+variant), and the tests the cert fixture and CI must assert.
 
 Every design pin from SPEC is answered explicitly, not assumed: starter by game shape; public
 `Metta-AI/cogame-<slug>`; LLM policy **and** scripted baseline from day one, same image,
