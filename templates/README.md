@@ -213,7 +213,9 @@ Substitutions listed in the file.
 
 Title `BLOCKED <slug> @<phase>: <one-line ask>`; body = the verbatim failure, the three
 *distinct* attempts, the single decision/credential/action needed, and the
-`Resume: complete this subtask; the next heartbeat resumes at phase <n>` line. Includes the
+`Resume: complete this subtask; the next heartbeat resumes at phase <n>` line. The mirror in
+STATE is `blocked: {phase, at, ask, error, attempts, subtask}` — six fields, `subtask` being
+the gid the resume path looks the human subtask up by. Includes the
 list of things that must **never** be filed as blocked because the rails say the coordinator
 decides them itself.
 

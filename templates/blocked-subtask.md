@@ -46,9 +46,19 @@ Resume: complete this subtask; the next heartbeat resumes at phase <phase>.
 
 ## Rules
 
-- The coordinator writes `STATE.blocked` with the same four fields
-  (`what_failed`, `attempts`, `need`, `phase`) and pushes, then **exits**. It does not
-  keep working, and it does not start another idea.
+- The coordinator writes `STATE.blocked` with the same content in these **six** fields —
+  `phase`, `at`, `ask`, `error`, `attempts`, `subtask` (`prompts/90-blocked.md` step 1) —
+  and pushes, then **exits**. It does not keep working, and it does not start another idea.
+  ```json
+  {"phase":"40","at":"2026-08-22T16:40:00Z",
+   "ask":"<the one-line ask — the same text as this subtask's title>",
+   "error":"<the exact error text, scrubbed>",
+   "attempts":["<attempt 1>","<attempt 2>","<attempt 3>"],
+   "subtask":"<this subtask's gid>"}
+  ```
+  **`subtask` is load-bearing**: `prompts/00-claim.md` step 3.1 reads
+  `STATE.blocked.subtask` to find *the human subtask* among the eight phase subtasks. Omit it
+  and the resume falls back to matching the `BLOCKED ` title prefix plus the assignee.
 - One comment goes on the **idea task** pointing at this subtask.
 - The next heartbeat that sees the run task in *Blocked* with this subtask **complete**
   moves it back to *Running* and resumes at `STATE.json.phase`. An incomplete subtask
