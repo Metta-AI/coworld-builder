@@ -47,3 +47,7 @@
 2026-08-22T22:27:53Z 30 r1 fixer returned: 15 commits (F1..F17: 14 fixed, F13 refuted with evidence, F14 noted, F16 accepted+doc); final sha eeb1004f3c8adbdde1ce562b1bec7ca3d3495ebb, ci run 32602216061 success (verified); r1-fixes.md + refreshed design.md committed
 2026-08-22T22:27:53Z 30 r1: judge dispatched (fresh context) at eeb1004
 2026-08-22T22:27:53Z heartbeat phase=30
+2026-08-22T22:38:54Z 30 r1 judge returned: blocking: 0 / BLOCKING: 0 (markers agree, verified); 14 findings fixed+verified, F13 refuted (static-viewer ruling: declared viewer is what counts), F14 moot; 4 non-blocking observations recorded in verdict
+2026-08-22T22:38:54Z 30 EXIT: zero blocking findings in round 1; phase -> 40
+2026-08-22T22:38:54Z progress phase=30 marker=reviews/r1-verdict.md
+2026-08-22T22:38:54Z heartbeat phase=40
