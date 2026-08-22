@@ -105,3 +105,4 @@
 2026-08-22T23:33:46Z 70 EXIT: message posted (200, id recorded); phase -> 80
 2026-08-22T23:33:46Z progress phase=70 marker=announce.discord_message_id=1540866531330891857
 2026-08-22T23:33:46Z heartbeat phase=80
+2026-08-22T23:36:06Z 80 LEARNINGS section appended + playbook updates committed (1e038bb)
