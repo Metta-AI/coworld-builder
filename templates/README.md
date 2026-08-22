@@ -205,8 +205,9 @@ description with the idea/repo/run/CI links and the 00…80 phase checklist. The
 carries **no** heartbeat line: `heartbeat_at` is the Asana custom field `1217748424048134`
 (`fleet/cloud.md`), with the `<UTC> heartbeat phase=<nn>` line in `runs/<run>/log.md` as the
 fallback. The field is the lock: fresh (< 90 min, with `STATE.session_ended_at` null or older)
-means another run is live and the heartbeat exits; stale — or `session_ended_at` ≥
-`heartbeat_at` — means the run is yours to resume at `STATE.json.phase`.
+means a session is working that run right now — other heartbeats leave it alone and count it
+toward `max_parallel_runs` (runs are parallel; several fresh at once is normal); stale — or
+`session_ended_at` ≥ `heartbeat_at` — means the run is free to resume at `STATE.json.phase`.
 Substitutions listed in the file.
 
 ## `blocked-subtask.md` → a subtask of the run task, assigned to David Bloomin

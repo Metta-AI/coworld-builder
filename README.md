@@ -1,11 +1,20 @@
 # coworld-builder
 
-An autonomous builder for coworlds. A managed agent wakes up once an hour, takes the top
-unclaimed idea off the Asana **Coworld Ideas** board, and carries it all the way to a shipped
-game: a public `Metta-AI/cogame-<slug>` repo, a certified coworld on softmax.com, a league with
+An autonomous builder for coworlds. A managed agent wakes up three times an hour — three
+staggered crons on the same coordinator (`coworld-builder-a`/`-b`/`-c`, minutes 11/31/51 UTC) —
+takes the top unclaimed idea off the Asana **Coworld Ideas** board, and carries it all the way to
+a shipped game: a public `Metta-AI/cogame-<slug>` repo, a certified coworld on softmax.com, a league with
 two ranked champions and filler baselines, at least two completed rounds whose replays render
 in a static wasm viewer at `https://softmax.com/<slug>`, and an announcement in Discord
 `#coworlds`. No human is in the loop for any of it.
+
+**Runs go in parallel.** Each heartbeat adopts at most one unit of work — resume a run whose
+session ended, resume a run a human just unblocked, or claim one new idea — so up to
+`max_parallel_runs` runs (`fleet/cloud.md` §Parallelism, currently 3) are in flight at once, each
+with its own directory, repo, league and champions; the only shared surfaces are the two
+append-only files at the root of `runs/` and the Ideas board itself. Lower `max_parallel_runs` in
+`fleet/cloud.md` to throttle (no redeploy needed); it stops new claims and leaves runs in flight
+alone.
 
 This repository is not the coworlds — it is the machine that makes them. It holds the
 coordinator's system prompt (`AGENT.md`), one prompt per phase (`prompts/`), one system prompt
@@ -47,10 +56,13 @@ going to 90. Phase 30 caps at 4 review rounds; phase 60 waits at most 75 minutes
 ## Deploy and update
 
 ```
-python3 fleet/bin/deploy.py create     # six sub-agents + coordinator + the hourly deployment
-python3 fleet/bin/deploy.py update     # new agent versions wherever config/prompts drifted
-python3 fleet/bin/deploy.py run        # a manual heartbeat, off-schedule
-python3 fleet/bin/deploy.py status     # latest deployment runs and their sessions
+python3 fleet/bin/deploy.py create        # create whatever is missing: sub-agents, coordinator,
+                                          # and any of the three heartbeat deployments (SKIPs
+                                          # what already exists, so it also adds b and c)
+python3 fleet/bin/deploy.py update        # new agent versions wherever config/prompts drifted;
+                                          # reconciles all three deployments
+python3 fleet/bin/deploy.py run --name b  # a manual heartbeat on one deployment (default: a)
+python3 fleet/bin/deploy.py status        # every deployment's latest runs and their sessions
 ```
 
 Add `--dry-run` to any of them to print the redacted payloads without sending anything. The
@@ -70,7 +82,11 @@ environment id, the vault ids, the Asana gids and the Discord ids live; the agen
   `python3 fleet/bin/deploy.py update`. Role prompts are baked into agent versions, so they
   need the redeploy.
 - **Change the model, effort, or tools of a role** → edit `agents/<role>.json`, then `update`.
-- **Change the schedule or the mounts** → edit `fleet/deployment.json`, then `update`.
+- **Change the schedule, the mounts, or how many heartbeat crons there are** → edit
+  `fleet/deployment.json` (its `deployments` list is the fan-out) and the matching table in
+  `fleet/cloud.md` §Parallelism, then `update` (existing crons) and `create` (new ones).
+- **Change how many runs may be in flight** → edit `max_parallel_runs` in `fleet/cloud.md`
+  §Parallelism. No redeploy: the coordinator reads that file every heartbeat.
 - **Change the design itself** → edit `docs/SPEC.md` first, then the prompts and templates that
   implement it. The SPEC is the decided design; the prompts are its implementation.
 - **Change a CI workflow all future coworlds get** → edit `templates/`. Existing coworld repos
