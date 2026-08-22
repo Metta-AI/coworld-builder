@@ -64,8 +64,13 @@ must be a small minority of decisions).
 curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" \
  | grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' || echo CLEAN
 ```
-Must be `CLEAN`. `LLM provider is unavailable` is a platform-wide Bedrock outage if another LLM
-coworld's latest log shows it too — check one, document it, and treat it as a wait, not a defect.
+Must be `CLEAN`. `LLM provider is unavailable` is a platform-wide Bedrock **capacity** symptom,
+not a defect in this coworld, if another LLM coworld's latest log shows it too **or** another run
+in flight is hitting it at the same time (runs are parallel and Bedrock capacity is the one
+resource they share — SPEC §Parallelism and per-run isolation). Check one, document which, and
+**wait**: keep polling inside the 75-minute bound below rather than going Blocked. Only when that
+bound expires is it an outage for phase 90. The operator's throttle is `max_parallel_runs` in
+`fleet/cloud.md` §Parallelism.
 `cut off at max_tokens` → raise `maxOutputTokens` (900, not 400) and re-release.
 
 **6. The public page uses the static replay path.**
