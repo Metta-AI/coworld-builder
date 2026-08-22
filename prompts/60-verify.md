@@ -123,10 +123,13 @@ body is an HTML error page, is a broken viewer:
 ```bash
 BUNDLE="https://softmax.com/api/observatory/v2/coworlds/replays/static/$COW/<sha>"
 curl -sS "$BUNDLE/index.html" -o /tmp/idx.html -w 'index.html %{http_code} %{size_download}\n'
-grep -oE '(src|href)="[^"]+"' /tmp/idx.html            # the asset list, verbatim
-grep -oE '[A-Za-z0-9_.-]+\.wasm' /tmp/idx.html /tmp/*.js   # the wasm the module loader names
-for A in <each asset path from the two greps>; do
+grep -oE '(src|href)="[^"]+"' /tmp/idx.html            # pass 1: the asset list, verbatim
+for A in <each src/href path from that grep>; do
   curl -sSL "$BUNDLE/$A" -o "/tmp/$(basename "$A")" -w "$A %{http_code} %{size_download}\n"
+done
+grep -ohE '[A-Za-z0-9_.-]+\.wasm' /tmp/idx.html /tmp/*.js | sort -u   # pass 2: the wasm the loader names
+for W in <each .wasm name>; do
+  curl -sSL "$BUNDLE/$W" -o "/tmp/$W" -w "$W %{http_code} %{size_download}\n"
 done
 ```
 

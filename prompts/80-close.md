@@ -28,7 +28,8 @@ Owner: coordinator. This is the only phase that may complete the idea task.
    `playbooks/observatory-api.md` in the same commit.
 4. Verify every phase subtask on the run task is complete; complete any that are not, or say in the
    summary why not.
-5. Move the run task to *Done*; complete the **idea task**.
+5. Complete the **idea task** first; then move the run task to *Done* (the *Done* move is the last
+   step, so a failure before it leaves the run in *Running* where the next heartbeat retries it).
 6. STATE: `phase: "80"`, `heartbeat_at`, and a final `log.md` line. Commit and push everything.
 
 ## Exit criterion
@@ -44,7 +45,10 @@ section, and `runs/<run>/` is fully pushed.
 
 ## Retry budget
 
-3 attempts per Asana call. Failure here does **not** go to 90 — the work is done. Log the failure,
-leave the run task in *Running* with a `close-failed` comment, and let the next heartbeat retry
-phase 80. That retry is **not counted**: `prompts/00-claim.md` step 5 exempts phase 80 from the
-resume counter, so repeated close retries can never trip the three-sessions budget into 90.
+3 attempts per Asana call. A failure here is bookkeeping, not lost work: log it, leave the run
+task in *Running* with a `close-failed` comment (and a `<UTC> 80 close-failed: <error>` log line),
+and let the next heartbeat retry phase 80 — that retry is not counted by the resume counter
+(`prompts/00-claim.md` step 5 exempts phase 80). **But after 3 `close-failed` heartbeats** (count
+the `80 close-failed` lines in `log.md`), go to `prompts/90-blocked.md` with the exact Asana error:
+Blocked takes the task out of *Running* so the queue moves on; the human finishes the bookkeeping.
+A run parked in *Running* forever would stop every future claim.

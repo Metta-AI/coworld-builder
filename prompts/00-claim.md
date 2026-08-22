@@ -161,8 +161,9 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 **Rejected-push rule (claims and resumes alike).** A rejected push means another heartbeat wrote
 this repo first. Never force, never `--force-with-lease` (`AGENT.md` hard rule 2). Always
 `git pull --rebase` and then read what landed: on a **claim**, another `runs/<run>/STATE.json` for
-your idea means that run won → exit; on a **resume**, a last `00 resume` line in `log.md` carrying
-a different `session=<nonce>` means that session owns the run → exit. In both cases exit silently:
+your idea means that run won → exit; on a **resume**, any `00 resume` line in `log.md` with a foreign
+`session=<nonce>` that was not there before your pull (or a rebase conflict — abort it) means that
+session owns the run → exit (step 5.0.3). In both cases exit silently:
 create nothing, write nothing, and do not retry the push.
 5. **Resume path.** Reached from step 2 (stale/ended session) and from step 3.3 (a human
    unblocked the run). Both arrive here, and **both run the session-nonce guard below** — two
@@ -223,9 +224,11 @@ create nothing, write nothing, and do not retry the push.
    **Phase 80 is exempt from this counter.** `prompts/80-close.md` §Retry budget says a failed
    close does not go to 90 — the run's work is already done and the next heartbeat simply retries
    the Asana calls. So on a resume with `STATE.phase == "80"`, do **not** increment
-   `phase_attempts["80"]` and never enter 90 from it; log
-   `<UTC> 00 resume at phase 80 (close retry, not counted) session=<nonce>` instead. No other
-   phase is exempt.
+   `phase_attempts["80"]`; log
+   `<UTC> 00 resume at phase 80 (close retry, not counted) session=<nonce>` instead. The one
+   way out of a close that keeps failing is `prompts/80-close.md` §Retry budget: after 3
+   `80 close-failed` lines in `log.md`, phase 80 itself goes to 90 so the run leaves *Running*
+   and the queue moves. No other phase is exempt.
 
    **5.2 Work the phase.** Having survived 5.0 and counted at 5.1, enter the prompt named by
    `STATE.phase`. You are the session that
@@ -239,7 +242,7 @@ Exactly one of:
 (a) exited because another run is live (a fresh `heartbeat_at` with no `session_ended_at`);
 (b) exited because 2 runs are already *Blocked*, because this heartbeat **yielded** to an
     earlier claim comment, or because it **lost a resume race** at step 5.0 (its push was
-    rejected and `log.md`'s last `00 resume` line carries another session's nonce, or the Asana
+    rejected and `log.md` gained a foreign-nonce `00 resume` line, or the rebase conflicted, or the Asana
     `heartbeat_at` field moved past its stamp within 20 s) — in every case nothing was created
     and no phase work was done;
 (c) exited into `prompts/90-blocked.md` because the resumed phase's `phase_attempts` reached 3
