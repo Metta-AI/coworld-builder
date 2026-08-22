@@ -173,6 +173,11 @@ jobs:
         run: docker build --platform=linux/amd64 -t "${IMAGE}:ci" .
 
       - name: Raw-Docker episode smoke
+        # SMOKE_SLUG is passed explicitly so the workflow's SLUG is the single
+        # source for the game/player entrypoint names; the script's own
+        # scaffold-substituted default is only a fallback.
+        env:
+          SMOKE_SLUG: ${{ env.SLUG }}
         run: ./tools/ci/docker_smoke.sh "${IMAGE}:ci"
 
   # ---------------------------------------------------------------------
