@@ -51,12 +51,16 @@ require_replay_json="${SMOKE_REQUIRE_REPLAY_JSON:-1}"
 
 run_id="$$"
 prefix="${slug}-smoke-${run_id}"
-network="coworld-local"
+# Per-run network, created and removed by this script. A shared fixed-name
+# network (e.g. "coworld-local") collides with the one `coworld play` manages
+# and leaks after every local run; on a CI runner it merely never gets cleaned.
+network="${prefix}-net"
 work_dir="$(mktemp -d "${TMPDIR:-/tmp}/${slug}-smoke.XXXXXX")"
 seats=0
 
 cleanup() {
   docker ps -aq --filter "name=${prefix}" | xargs -r docker rm -f >/dev/null 2>&1 || true
+  docker network rm "${network}" >/dev/null 2>&1 || true
   rm -rf "${work_dir}"
 }
 trap cleanup EXIT
@@ -176,7 +180,7 @@ chmod 777 "${work_dir}"
 # --------------------------------------------------------------------------
 # Launch.
 # --------------------------------------------------------------------------
-docker network inspect "${network}" >/dev/null 2>&1 || docker network create "${network}" >/dev/null
+docker network create "${network}" >/dev/null
 
 game_env=()
 if [ -n "${ANTHROPIC_API_KEY:-}" ]; then

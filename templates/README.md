@@ -70,7 +70,8 @@ static viewer route, so this job is not optional.
 ## `tools/ci/docker_smoke.sh` → `tools/ci/docker_smoke.sh` (chmod +x)
 
 The containerised twin of a local `tmp/run_e2e.sh`: one game container plus one player
-container per seat on the `coworld-local` docker network, all from the production image.
+container per seat on a per-run docker network (`<slug>-smoke-<pid>-net`, created and removed
+by the script), all from the production image.
 It reads `coworld_manifest_template.json`, takes `certification.game_config` as the episode
 config (injecting `tokens`), and gives each slot the **`run` and `env` of
 the manifest player its certification fixture names** — so the smoke plays the same seat mix
