@@ -75,3 +75,21 @@
 2026-08-22T23:01:45Z heartbeat phase=60
 2026-08-22T23:02:42Z 60 phase entered; verifier dispatched (75-min poll bound; heartbeats delegated to verifier during its polls)
 2026-08-22T23:02:42Z heartbeat phase=60
+2026-08-22T23:03:20Z heartbeat phase=60
+2026-08-22T23:03:20Z 60 poll#1: rounds -> round 2 pending, round 1 failed (pre-filler)
+2026-08-22T23:07:20Z heartbeat phase=60
+2026-08-22T23:07:20Z 60 poll#2: round 2 COMPLETED (ereq_2a95c20e, replay f7ddf04d, reason=complete); awaiting round 3 for the 2nd completed round
+2026-08-22T23:17:04Z heartbeat phase=60
+2026-08-22T23:17:04Z 60 poll#3: round 3 round_73ab91e9 pending (created ~23:15); round 2 completed
+2026-08-22T23:27:06Z heartbeat phase=60
+2026-08-22T23:27:06Z 60 poll#4: rounds 2 AND 3 completed (23:03:13Z, 23:17:09Z) — polling closed at 18 min of the 75-min bound
+2026-08-22T23:27:06Z 60 check 1 TRUE: 2 completed rounds (3, 2), both seated fillers; round 1 failed 'Temporal RoundWorkflow failed before settling the round.' excluded
+2026-08-22T23:27:06Z 60 check 2 TRUE: leaderboard 1 daveey lighthouse-beacon:v2 1000.0 rounds_played=2 / 2 daveey-1 lighthouse-pilot:v2 1000.0 rounds_played=2; fillers absent
+2026-08-22T23:27:06Z 60 check 3 TRUE: round 3 ereq_7ae8cdc3-1c1b-4fcf-91ea-bf24d612683c completed, replay_url c8551f16-57b7-4d14-a638-36c179b1b234.replay, participants daveey/daveey-1 + 2 is_filler seats
+2026-08-22T23:27:06Z 60 check 4 TRUE: strict jq -e ok (25970 B), protocol lighthouse.replay.v1, results.reason=complete, champion seats 0/27 scripted ticks (fillers 27/27); round-2 replay corroborates (0/35)
+2026-08-22T23:27:06Z 60 check 5 TRUE: artifacts/logs (elevated) 110799 B, 0 matches for 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected'; 1 transient Bedrock 500 retried ok (1 of 51 calls), no seat degraded
+2026-08-22T23:27:06Z 60 check 6 TRUE: raw-HTML iframe grep empty (client-rendered) -> used page SSR payload (featured match lighthouse.r3.e1, daveey vs daveey-1) + POST /coworlds/replays/session (the call the page chunk makes) -> viewer_url = .../replays/static/<cow>/sha256%3A<manifest_hash>/index.html?replay=<s3>, ready:true, no /client/replay
+2026-08-22T23:27:06Z 60 check 6 note: static route <sha> is the coworld manifest_hash (NOT manifest.game.replay_viewer.bundle), and is served by api.observatory.softmax-research.net; the softmax.com/api proxy 404s that path platform-wide (bullwhip too) — playbook candidate for phase 80
+2026-08-22T23:27:06Z 60 check 7 TRUE: committed runs/2026-08-22-lighthouse/release-result.json (commit e7ca202) .certify.replay_liveness = 'Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)'
+2026-08-22T23:27:06Z 60 check 8 TRUE: replay events legible (keeper 11 says, pilot key at tick 5, 3 drowns, end complete); bundle index.html+chrome.css+renderer.js+lighthouse_replay.js+static_replay.js+lighthouse_replay.wasm all 200 (1528/12044/54965/11403/5923/162418 B, valid wasm); static_replay.js has coworld-replay bridge + tell("ready") at :123
+2026-08-22T23:27:06Z 60 EXIT: VERIFY.md written with all 8 checks TRUE and evidence pasted inline
