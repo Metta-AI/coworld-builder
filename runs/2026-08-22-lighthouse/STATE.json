@@ -43,8 +43,8 @@
     "discord_message_id": "1540866531330891857"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-22T23:33:46Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-22T23:37:13Z",
+  "session_ended_at": "2026-08-22T23:37:13Z",
   "session_id": "1351c680",
   "log": "runs/2026-08-22-lighthouse/log.md"
 }
