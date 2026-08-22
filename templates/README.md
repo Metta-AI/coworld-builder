@@ -191,8 +191,11 @@ distinct from champion versions.
 
 ## `STATE.template.json` → `runs/<run>/STATE.json` (in **this** repo, not the coworld repo)
 
-The `SPEC.md` §State schema with empty values. `phase` starts at `"00"`, `review_round` at
-`0`, `blocked` at `null`. Written by phase 00, rewritten and pushed on every heartbeat and
+The `SPEC.md` §State schema with empty values — **every** field SPEC §State defines, including
+`coworld.release_run_id` (phase 40), `policies.filler_version_ids` (phase 50),
+`announce.attempted_at` (phase 70), and the heartbeat trio `session_ended_at` / `session_id`
+(phase 00). A phase told to write "from `templates/STATE.template.json`" must find its key here.
+`phase` starts at `"00"`, `review_round` at `0`, `blocked` at `null`. Written by phase 00, rewritten and pushed on every heartbeat and
 every phase transition; it is the record that a resumed run reads to know where it was.
 
 ## `run-task.md` → the Asana run task on the Coworld Builder board

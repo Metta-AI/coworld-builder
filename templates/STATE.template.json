@@ -17,7 +17,8 @@
   "policies": {
     "champion1": "",
     "champion2": "",
-    "fillers": []
+    "fillers": [],
+    "filler_version_ids": []
   },
   "league": {
     "id": "",
@@ -29,10 +30,12 @@
     "iframe_static": false
   },
   "announce": {
+    "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
   "heartbeat_at": "",
+  "session_ended_at": null,
   "session_id": null,
   "log": ""
 }
