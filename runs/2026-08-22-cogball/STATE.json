@@ -5,7 +5,7 @@
   "slug": "cogball",
   "repo": "https://github.com/Metta-AI/cogame-cogball",
   "starter": "Metta-AI/cogame-moba",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-22T23:17:31Z",
+  "heartbeat_at": "2026-08-22T23:37:03Z",
   "session_ended_at": null,
   "session_id": "a44eaec9",
   "log": "runs/2026-08-22-cogball/log.md"

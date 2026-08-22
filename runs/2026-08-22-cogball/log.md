@@ -4,3 +4,8 @@
 2026-08-22T23:17:31Z 10 starter decided (rail): Metta-AI/cogame-moba — deterministic C-library physics sim (Box2D) compiled to wasm, lockstep episodes, replays re-simulate from seed+action log in a static wasm viewer; the idea itself names the NMMO/Moba replay model. Not factorio (Box2D links in-process, no external server), not ctf (idea: "nothing is gridded"), not babel (not turn-based text). Idea's "RL continuous vector" policy interface reinterpreted per pins (rail): LLM-prompt champions at a coarse decision cadence over a deterministic control layer; scripted baselines as fillers.
 2026-08-22T23:17:31Z 10 dispatching designer sub-agent; output=/workspace/scratch/cogame-cogball/docs/plans/2026-08-22-cogball-design.md
 2026-08-22T23:17:31Z heartbeat phase=10
+2026-08-22T23:37:03Z 10 designer returned round 1; note at scratch docs/plans/2026-08-22-cogball-design.md (922 lines); coordinator repaired one transcribed char in the verbatim artifact URL (476d->276d)
+2026-08-22T23:37:03Z 10 checklist: starter[x] num_agents[x] resolution-order[x] scoring[x] end-conditions[x] observation[x] reply-caps-rune[x] both-policies[x] parallel-batch-budget[x] degrade-never-hang[x] name-spaces[x] viewer-static-360px[x] replay-self-sufficient[x] packaging-docs-protocols[x] tests[x] out-of-scope[x] — ACCEPTED round 1, zero rejections
+2026-08-22T23:37:03Z 10 design.md copied to runs/2026-08-22-cogball/design.md; phase -> 20
+2026-08-22T23:37:03Z progress phase=10 marker=runs/2026-08-22-cogball/design.md
+2026-08-22T23:37:03Z heartbeat phase=20
