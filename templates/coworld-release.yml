@@ -206,6 +206,15 @@ jobs:
           rows = json.load(open(f"{rr}/policies_input.json"))
           uploaded, failures = [], []
 
+          # --secret-env values ride on the upload-policy command line, and a
+          # typer BadParameter echoes the offending KEY=VALUE straight back.
+          # This text ends up in release-result.json, which is uploaded as a
+          # build artifact, so strip every assignment before recording it.
+          ASSIGNMENT = re.compile(r"(?<![\w.-])([A-Za-z_][A-Za-z0-9_]*)=(\S+)")
+
+          def redact(text):
+              return ASSIGNMENT.sub(lambda m: f"{m.group(1)}=<redacted>", text or "")
+
           def softmax(*args):
               return subprocess.run(
                   ["uvx", "--from", pkg, "softmax", *args], capture_output=True, text=True
@@ -217,7 +226,7 @@ jobs:
               result = softmax("player", "unset")
               if result.returncode != 0:
                   print(f"::warning::softmax player unset failed: "
-                        f"{(result.stderr or result.stdout).strip()[-300:]}")
+                        f"{redact((result.stderr or result.stdout).strip())[-300:]}")
 
           try:
               for row in rows:
@@ -247,7 +256,7 @@ jobs:
                           failures.append(
                               f"{name}: softmax player use {player} exited "
                               f"{switch.returncode}; "
-                              f"{(switch.stderr or switch.stdout).strip()[-300:]}"
+                              f"{redact((switch.stderr or switch.stdout).strip())[-300:]}"
                           )
                           continue
                   try:
@@ -261,7 +270,7 @@ jobs:
                   match = re.search(r"^Upload complete: (\S+):(v\d+)$", proc.stdout, re.M)
                   if proc.returncode != 0 or not match:
                       failures.append(f"{name}: exit {proc.returncode}; "
-                                      f"{(proc.stderr or proc.stdout).strip()[-500:]}")
+                                      f"{redact((proc.stderr or proc.stdout).strip())[-500:]}")
                       continue
                   uploaded.append({
                       "name": match.group(1),
