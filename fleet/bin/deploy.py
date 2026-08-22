@@ -176,7 +176,7 @@ def read_cloud():
     for line in section.splitlines():
         cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.strip().startswith("|") else []
         if len(cells) >= 5 and cells[0].startswith("coworld-builder-"):
-            ids[cells[0]] = {"kind": cells[1], "id": cells[3],
+            ids[cells[0]] = {"kind": cells[1], "model": cells[2], "id": cells[3].strip("`"),
                              "version": cells[4]}
     return {
         "environment_id": env.group(1) if env else None,
@@ -186,12 +186,41 @@ def read_cloud():
 
 
 def write_cloud(rows):
-    """Rewrite the ids table between the markers. rows: name -> (kind, model, id, version)."""
+    """Merge rows into the ids table between the markers. rows: name -> (kind, model, id, version).
+
+    Merging, never replacing: a row this run did not resolve keeps whatever `fleet/cloud.md`
+    already recorded, and **a real id is never overwritten with TBD**. `_deployment_id()`, `run`
+    and `status` all read those ids back, so a lookup miss (a rename, an API blip, a truncated
+    page) that stamped TBD over them used to break the tool until a human re-ran `create`.
+    """
+    existing = read_cloud()["ids"]
+    merged = {}
+    order = [n for n in list(existing) if n not in rows] + list(rows)
+    seen = []
+    for name in order:
+        if name in seen:
+            continue
+        seen.append(name)
+        old = existing.get(name)
+        old_row = (old["kind"], old.get("model"), old.get("id"), old.get("version")) if old else None
+        new_row = rows.get(name)
+        if new_row is None:
+            merged[name] = old_row
+            continue
+        kind, model, ident, version = new_row
+        if (not ident or ident == "TBD") and old_row and old_row[2] and old_row[2] != "TBD":
+            print("KEEPING recorded id for %s (%s) — this run did not resolve one"
+                  % (name, old_row[2]))
+            merged[name] = (kind, model or old_row[1], old_row[2], old_row[3])
+            continue
+        merged[name] = (kind, model or (old_row[1] if old_row else None), ident, version)
+
     body = open(CLOUD_MD, encoding="utf-8").read()
     head, rest = body.split(IDS_START, 1)
     _, tail = rest.split(IDS_END, 1)
     lines = ["| name | kind | model | id | version |", "|---|---|---|---|---|"]
-    for name, (kind, model, ident, version) in rows.items():
+    for name, row in merged.items():
+        kind, model, ident, version = row
         lines.append("| %s | %s | %s | %s | %s |" % (
             name, kind, model or "—", "`%s`" % ident if ident and ident != "TBD" else "TBD",
             version if version is not None else "—"))

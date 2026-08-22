@@ -154,11 +154,24 @@ jobs:
       - uses: actions/checkout@v5
       - uses: docker/setup-buildx-action@v3
 
+      # Invoked by path, not through `bash`: `bash <script>` ignores the exec
+      # bit, so a 0644 helper would go green here and only fail wherever it is
+      # executed directly.
+      - name: Assert the smoke script is present and executable
+        run: |
+          set -euo pipefail
+          test -f tools/ci/docker_smoke.sh || {
+            echo "::error::tools/ci/docker_smoke.sh is missing"; exit 1; }
+          test -x tools/ci/docker_smoke.sh || {
+            echo "::error::tools/ci/docker_smoke.sh must be committed executable (mode 100755)."
+            echo "::error::Fix with: git update-index --chmod=+x tools/ci/docker_smoke.sh"
+            exit 1; }
+
       - name: Build image
         run: docker build --platform=linux/amd64 -t "${IMAGE}:ci" .
 
       - name: Raw-Docker episode smoke
-        run: bash tools/ci/docker_smoke.sh "${IMAGE}:ci"
+        run: ./tools/ci/docker_smoke.sh "${IMAGE}:ci"
 
   # ---------------------------------------------------------------------
   # The static replay viewer. The platform serves THIS bundle from
@@ -174,8 +187,29 @@ jobs:
       - uses: actions/checkout@v5
       - uses: docker/setup-buildx-action@v3
 
+      # `coworld build` (bundle.py) refuses to package a source replay-viewer
+      # bundle unless the hook is BOTH a file and os.X_OK:
+      #   "Coworld builds with a source replay viewer bundle require an
+      #    executable build hook".
+      # Running it as `bash tools/build_replay_viewer.sh` would ignore the exec
+      # bit entirely, so a mode-0644 hook passed CI and only blew up later, in
+      # coworld-release.yml's "Build the Coworld manifest". Assert the bit, then
+      # invoke by path so CI exercises exactly what `coworld build` requires.
+      - name: Assert the replay-viewer build hook is present and executable
+        run: |
+          set -euo pipefail
+          test -f tools/build_replay_viewer.sh || {
+            echo "::error::tools/build_replay_viewer.sh is missing; coworld build needs it"
+            echo "::error::to emit the static replay bundle"
+            exit 1; }
+          test -x tools/build_replay_viewer.sh || {
+            echo "::error::tools/build_replay_viewer.sh must be committed executable (mode 100755):"
+            echo "::error::coworld build hard-requires os.X_OK on the build hook."
+            echo "::error::Fix with: git update-index --chmod=+x tools/build_replay_viewer.sh"
+            exit 1; }
+
       - name: Build the static replay viewer bundle
-        run: bash tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"
+        run: ./tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"
 
       - name: Assert the bundle is complete
         run: |
