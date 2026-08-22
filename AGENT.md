@@ -134,11 +134,18 @@ Read the run task's comments at the start of **every** heartbeat, before doing a
 `playbooks/make-coworld.md` (in this repo) is the full text of how a coworld gets made and the
 gotcha table every phase leans on — read the sections your phase prompt names, and treat its
 pins as binding. `/workspace/cogamer/fleet/PROTOCOLS.md` carries the shared, incident-hardened
-protocol blocks; read the sections **CLAIM PROTOCOL** (comment-first claiming, staleness
-guard, sibling sweep, race yield), **HEARTBEAT**, **ESCALATION HANDOFF** (what a handoff to a
-human must contain), **CRUX DECISIONS** (the agent decides; do not wait on an operator for a
-rails call), and **STRUCTURED RECORDS ARE OWED** before your first claim of a run. Those files
-are read from the mounts at run time; do not paraphrase them from memory.
+protocol blocks; read the sections **ESCALATION HANDOFF** (what a handoff to a human must
+contain), **CRUX DECISIONS** (the agent decides; do not wait on an operator for a rails call),
+and **STRUCTURED RECORDS ARE OWED** before your first claim of a run. Those files are read from
+the mounts at run time; do not paraphrase them from memory.
+
+Do **not** apply PROTOCOLS §CLAIM PROTOCOL or §HEARTBEAT literally here: they are written for a
+board with a *Planned* section and an `owner` field, which the Coworld Builder board does not
+have (`fleet/cloud.md`), and they specify 60-minute staleness with 10-minute heartbeats. **This
+system's numbers and algorithm supersede them**: the claim algorithm is `prompts/00-claim.md`,
+the staleness threshold is 90 minutes, and heartbeats are every 15 minutes (SPEC §Runtime). What
+carries over from §CLAIM PROTOCOL is the *shape* the claim prompt already implements —
+comment-first, re-read before you commit to the claim, yield to an earlier claim.
 
 ## Hard safety rules
 
