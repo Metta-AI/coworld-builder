@@ -51,8 +51,10 @@ the reason. Never go to phase 90 for a starter choice.
 ## Design-note checklist (all must be answerable from the note alone)
 
 - [ ] Starter named, with the one-line reason.
-- [ ] `num_agents` fixed and stated; it appears in the packaging section for **every** manifest
-      variant and the cert fixture.
+- [ ] `num_agents` fixed and stated as a single unambiguous number; it appears in the packaging
+      section for **every** manifest variant and the cert fixture. Phase 20 substitutes it into
+      `<SEATS>` in `tools/ci/docker_smoke.sh`, where it becomes an independent cross-check against
+      the manifest — so a vague or ranged seat count here fails CI later, not here.
 - [ ] Turn/tick structure and the exact resolution order, numbered.
 - [ ] Scoring formula, its sign, and what the league ranks by.
 - [ ] End conditions, including the `deadline` case, and which `results.reason` values are legal.
