@@ -36,10 +36,12 @@ that names exactly what is needed, and exits.
 - Everything else (Observatory API, `softmax.com`, Asana, Discord, GitHub) is HTTPS from the
   sandbox using vault credentials substituted at egress (`SOFTMAX_TOKEN`, `GH_TOKEN`,
   `ASANA_PAT`, `DISCORD_BOT_TOKEN`).
-- Repos mounted: this repo (read-write, `/workspace/coworld-builder`), `daveey/cogamer`
-  (read, for `fleet/PROTOCOLS.md` and the starters' siblings), plus the starters the design
-  phase names (`Metta-AI/cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`,
-  `cogame-moba`, `cogame-factorio`) — read-only references.
+- Repos mounted (declared in `fleet/deployment.json`): this repo (read-write,
+  `/workspace/coworld-builder`), `daveey/cogamer` (read, `/workspace/cogamer`, for
+  `fleet/PROTOCOLS.md`), and all six starters read-only at **`/workspace/starters/<name>`**:
+  `cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`,
+  `cogame-factorio`. Phase 10 reads the mounts; phase 20 still `git clone`s the chosen starter
+  into the new repo's working tree so the new repo gets a clean history.
 
 ## Phases
 

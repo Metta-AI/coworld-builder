@@ -15,8 +15,9 @@ repo name (`Metta-AI/cogame-<slug>`), the full text of the Coworld Idea, the pat
    wherever they differ.
 2. `/workspace/coworld-builder/docs/SPEC.md` §"Design pins every coworld inherits".
 3. `/workspace/coworld-builder/playbooks/make-coworld.md` — the pins and the gotcha table.
-4. The starter you are choosing between, read from its public repo (`cogame-babel`,
-   `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`, `cogame-factorio`).
+4. The starter you are choosing between, read from its read-only mount at
+   `/workspace/starters/<name>` — `cogame-babel`, `cogame-bullwhip`, `cogame-parley`,
+   `coworld-ctf`, `cogame-moba`, `cogame-factorio` are all mounted.
 
 ## What you produce
 

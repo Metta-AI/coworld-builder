@@ -67,5 +67,6 @@ One message per run, phase 70 only. See AGENT.md §Hard safety rules.
 |---|---|
 | this repo (read-write mount at `/workspace/coworld-builder`) | `https://github.com/Metta-AI/coworld-builder` |
 | cogamer (read mount at `/workspace/cogamer`, for `fleet/PROTOCOLS.md`) | `https://github.com/daveey/cogamer` |
+| starters (read mounts at `/workspace/starters/<name>`) | `Metta-AI/`: `cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`, `cogame-factorio` |
 | coworld repos created per run | `https://github.com/Metta-AI/cogame-<slug>` |
 | org secrets required on `Metta-AI` for Actions | `SOFTMAX_TOKEN`, `ANTHROPIC_API_KEY` |

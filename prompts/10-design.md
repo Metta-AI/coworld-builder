@@ -8,16 +8,20 @@ Owner: designer sub-agent, accepted (or bounced) by the coordinator against the 
 - `STATE.idea_task`, `STATE.slug`, `STATE.run`.
 - The idea task's notes (verbatim) — fetch fresh, do not use a cached paraphrase.
 - `playbooks/make-coworld.md` §Phase 0 (design pins).
-- Read-only starter repos mounted in the sandbox (see the starter table).
+- The six starter repos, mounted read-only at `/workspace/starters/<name>` (see the starter
+  table; the mounts are declared in `fleet/deployment.json`).
 
 ## Starter table (the coordinator picks; it never asks)
 
-| Game shape | Starter | Lineage |
+| Game shape | Starter (mount) | Lineage |
 |---|---|---|
-| Turn-based / talk / cards / board / dice / bluff; game logic native; policy = LLM prompt | `Metta-AI/cogame-babel` — the best current parley-stack template. Fall back to a newer descendant (`cogame-bullwhip`) if it is closer. | parley → cosino → focus → babel → bullwhip |
-| Real-time grid, RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) | ctf |
-| Bit-exact port of an existing C/RL env | `Metta-AI/cogame-moba` + `docs/PORTING.md` | moba → nmmo |
-| Game logic in an external engine/process | `Metta-AI/cogame-factorio` (Python connector, per-seat servers) | factorio |
+| Turn-based / talk / cards / board / dice / bluff; game logic native; policy = LLM prompt | `Metta-AI/cogame-babel` (`/workspace/starters/cogame-babel`) — the best current parley-stack template. Fall back to a newer descendant (`cogame-bullwhip`, `/workspace/starters/cogame-bullwhip`) if it is closer. | parley → cosino → focus → babel → bullwhip |
+| Real-time grid, RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) — `/workspace/starters/coworld-ctf` | ctf |
+| Bit-exact port of an existing C/RL env | `Metta-AI/cogame-moba` + `docs/PORTING.md` — `/workspace/starters/cogame-moba` | moba → nmmo |
+| Game logic in an external engine/process | `Metta-AI/cogame-factorio` (Python connector, per-seat servers) — `/workspace/starters/cogame-factorio` | factorio |
+
+`Metta-AI/cogame-parley` is mounted too (`/workspace/starters/cogame-parley`) as the lineage's
+root reference.
 
 Ambiguity between two starters is a **rail**: pick the one with the closer turn structure and log
 the reason. Never go to phase 90 for a starter choice.
@@ -29,7 +33,8 @@ the reason. Never go to phase 90 for a starter choice.
 3. Send the **designer** brief (self-contained):
 
    > Write the design note for a new coworld at `Metta-AI/cogame-<slug>`, forked from
-   > `<starter>` (mounted read-only at `<path>`). Source idea, verbatim: `<idea text>`.
+   > `<starter>` (mounted read-only at `/workspace/starters/<starter>`). Source idea, verbatim:
+   > `<idea text>`.
    > Output exactly one file: `docs/plans/<YYYY-MM-DD>-<slug>-design.md` in the new repo, with
    > these H2 sections **in this order and with these names**:
    > `## The game`, `## Decisions: LLM with scripted fallback`, `## Sim module`,

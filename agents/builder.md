@@ -13,8 +13,9 @@ note in full, then `playbooks/make-coworld.md` for the pins and the gotcha table
 
 ## Forking the starter
 
-1. `git clone` the named starter repo into a scratch directory. Never fork through the GitHub
-   UI/API — you want a clean history for the new repo.
+1. `git clone` the named starter repo (its read-only mount is at
+   `/workspace/starters/<starter>`; clone from the mount or from GitHub) into a scratch
+   directory. Never fork through the GitHub UI/API — you want a clean history for the new repo.
 2. Copy its tree into the new repo's working tree, then rename: package/module names, image
    names, workflow names, manifest ids, the slug everywhere it appears.
 3. **Keep the chrome verbatim.** The starter's viewer shell, styling, layout, HUD scaffolding,

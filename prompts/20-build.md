@@ -6,7 +6,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 ## Inputs
 
 - `runs/<run>/design.md` (accepted in phase 10), `STATE.slug`, `STATE.starter`, `STATE.repo`.
-- Starter repo, mounted read-only.
+- Starter repo, mounted read-only at `/workspace/starters/<STATE.starter>` (the builder still
+  `git clone`s it into the new repo's working tree so the new repo gets a clean history).
 - `templates/README.md`, `templates/{ci.yml,coworld-release.yml,coworld-submit.yml}`,
   `templates/tools/ci/{docker_smoke.sh,policies.json.example}`.
 - `playbooks/make-coworld.md` §Phase 0 / §Phase 1.
@@ -21,7 +22,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 2. Send the **builder** brief (self-contained):
 
    > Implement `Metta-AI/cogame-<slug>` from the design note at `<abs path to runs/<run>/design.md>`,
-   > forking the conventions of `<starter>` at `<abs path>`. Copy the starter's layout, chrome, and
+   > forking the conventions of `<starter>`, mounted read-only at
+   > `/workspace/starters/<starter>`. Copy the starter's layout, chrome, and
    > build scripts verbatim where the note does not override them. Deliver on `main`:
    > `src/` (sim module, server, LLM policy, scripted baseline — one image, env-switched
    > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=1`), `client/` (viewer reusing the starter's
