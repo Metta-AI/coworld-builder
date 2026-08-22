@@ -70,9 +70,17 @@ coworld's latest log shows it too — check one, document it, and treat it as a 
 
 **6. The public page uses the static replay path.**
 ```bash
-/usr/bin/curl -sS "https://softmax.com/<slug>" | grep -o '<iframe[^>]*src="[^"]*"'
+curl -sS "https://softmax.com/<slug>" | grep -o '<iframe[^>]*src="[^"]*"'
 ```
-The iframe `src` must be
+If that grep finds **nothing**, do not record a false negative: the page may be client-rendered,
+in which case the iframe exists only after JS runs and there is no browser here. Fall back to the
+coworld detail API, which is what the page reads (see `playbooks/observatory-api.md`
+§Featured match / replay route):
+```bash
+curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
+ | jq -r '.entries[]|select(.name=="<slug>")|{id,canonical,replay_viewer,featured_match}'
+```
+Record in VERIFY.md **which** of the two sources you used. The iframe `src` must be
 `…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` — **never** a
 `/client/replay` pod URL. A featured match must be present (absence = fewer than two ranked
 players).

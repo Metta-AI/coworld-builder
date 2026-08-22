@@ -290,6 +290,23 @@ curl -sS "https://app.asana.com/api/1.0/tasks/<task_gid>/subtasks?opt_fields=nam
   -H "Authorization: Bearer $ASANA_PAT"
 ```
 
+## Featured match / replay route
+
+`https://softmax.com/<slug>` is the human page. **Whether it is server-rendered is not recorded
+here** — the bullwhip run read the iframe out of the raw HTML successfully, but a client-rendered
+build would return a shell and the grep would find nothing. Treat an empty grep as *unknown*, not
+as a failure, and fall back to the API the page itself reads:
+
+```bash
+curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
+ | jq -r '.entries[]|select(.name=="<slug>")|{id,canonical,replay_viewer,featured_match}'
+```
+
+(`?name=` on `/coworlds` is ignored — filter client-side, and select on the key `canonical`.)
+The static replay route is
+`…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>`; a `/client/replay` pod
+URL is a failure either way. When a run learns the answer for certain, record it in this section.
+
 ## Gotchas carried forward from earlier campaigns
 
 - `/v2/leagues/<id>/rounds` 404s; the flat `/v2/rounds?league_id=` is the real route. Conversely

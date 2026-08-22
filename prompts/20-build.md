@@ -111,4 +111,6 @@ residue — do not file them as findings.
 ## Retry budget
 
 3 builder rounds against a red CI (each round must change approach, and say how, in `log.md`).
-On exhaustion → `prompts/90-blocked.md` with the failing job name and the last 40 log lines.
+On exhaustion → `prompts/90-blocked.md` with the failing job name and the last 40 log lines —
+**scrubbed** per `prompts/90-blocked.md` step 2 (CI logs carry tokens in URLs; mask anything
+token-shaped before it leaves the sandbox).

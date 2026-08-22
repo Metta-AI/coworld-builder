@@ -6,7 +6,7 @@ Owner: coordinator. Entered by any phase that exhausts its retry budget.
 ## Inputs
 
 - `STATE.phase` (the phase that failed), `STATE.phase_attempts`, `runs/<run>/log.md`.
-- The three attempts' exact error text — quoted, never paraphrased.
+- The three attempts' exact error text — quoted, never paraphrased, and **scrubbed** (below).
 - `templates/blocked-subtask.md`.
 - Asana: run task `STATE.run_task`, Builder project `1217747772236871` (section *Blocked*),
   assignee **David Bloomin** `1209016834701578`.
@@ -38,6 +38,12 @@ equivalent API shapes. If the reason is on that list, go back and decide it.
      attempts, each with what changed), **what is needed** (exactly one decision, credential, or
      action — not a menu), and the literal line:
      `Resume: complete this subtask; the next heartbeat resumes at phase <n>`
+   - **Scrub before pasting.** CI logs and HTTP error bodies routinely carry credentials in URLs
+     and headers. Replace anything token-shaped with `<redacted>` — `ghp_…`, `gho_…`, `ghs_…`,
+     `github_pat_…`, `sk-ant-…`, `Bearer <…>`, `x-api-key: <…>`, `?X-Amz-Signature=…`,
+     `?token=…` — and any `https://<user>:<pw>@host` form, before the text goes into Asana. The
+     scrub never changes what failed: keep the message, mask the secret. (`AGENT.md` hard rule 1
+     makes this absolute; this step is where it bites.)
 3. Move the run task to *Blocked*.
 4. Post **one** comment on the idea task — `STATE.idea_task`, the task gid, **not**
    `1217704774784096`, which is the Coworld *Ideas project* gid: blocked at phase `<n>`, one line,

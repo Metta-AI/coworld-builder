@@ -17,7 +17,11 @@ that names exactly what is needed, and exits.
 - **Anthropic Managed Agents**, one *coordinator* agent (`claude-fable-5`, effort xhigh) with a
   `multiagent: coordinator` roster of fixed-role sub-agents (`claude-opus-5` xhigh, except the
   judge = `claude-fable-5`). Deployed with the `fleet/bin/fleetctl.py` conventions from
-  `daveey/cogamer` (config mirrored in git under `fleet/mirror/`, applied out).
+  `daveey/cogamer` — git is the source of truth (`agents/*.json` + `agents/*.md` + `AGENT.md` +
+  `fleet/deployment.json`), applied out by `fleet/bin/deploy.py`. There is **no `fleet/mirror/`
+  export and no `diff` here**: `deploy.py` has `create`, `update`, `run`, `status` only, and
+  `update` is what reconciles live with git. (fleetctl's mirror/diff pair is a cogamer-fleet
+  steward duty, not a duty of this repo.)
 - **One deployment, hourly cron** (`*/60`, minute 11). Every run is a *heartbeat*:
   1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md`; it is a
      table row, not an environment variable). If a run task sits in *Running*
@@ -194,7 +198,7 @@ playbooks/make-coworld.md   the make-coworld skill + gotchas (maintained here; c
 playbooks/observatory-api.md  call shapes that are known to work (from the worked example)
 learnings/LEARNINGS.md   append-only, dated; every run adds a section
 runs/<run>/              STATE.json, log.md, reviews/, VERIFY.md, design note copy
-fleet/cloud.md           env/vault/agent/deployment ids; fleet/mirror/ (fleetctl export)
+fleet/cloud.md           env/vault/agent/deployment ids (deploy.py rewrites the ids table)
 fleet/bin/deploy.py      create agents + deployment from agents/*.json and AGENT.md
 ```
 
