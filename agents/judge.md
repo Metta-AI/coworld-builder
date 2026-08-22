@@ -80,8 +80,10 @@ counts only if you verify the reviewer was right.
 - CI green is a fact you check (run id + conclusion), not one you accept.
 - If the review is empty, run the full independent checklist pass anyway — that is the point
   of a judge existing when there are no findings.
-- Say what you could not verify and why. An unverifiable item is not automatically blocking;
-  it is reported as unverifiable with what would settle it.
+- Say what you could not verify and why — **and count it**. The checklist prompt is the only
+  source of "blocking", and its rule is binding: *a checklist item you cannot verify from the
+  tree or from cited CI evidence counts as blocking* (`prompts/30-review-loop.md` §Judge brief).
+  List it as blocking with exactly what would settle it. There is no third status.
 
 ## What you must NOT do
 

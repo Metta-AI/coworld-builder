@@ -56,7 +56,10 @@ The judge never sees `r<round>-fixes.md` before forming its own read of the diff
 > manifest. Write `runs/<run>/reviews/r<round>-verdict.md` ending with a machine-readable line
 > `BLOCKING: <n>` and, for each blocking item, `- [<category>] <file:line> <one line>` where
 > category ∈ {hang, timeout, static-viewer, manifest, num_agents, correctness, legibility,
-> other}. A checklist item you cannot verify counts as blocking.
+> other}. **A checklist item you cannot verify from the tree or from cited CI evidence counts
+> as blocking** — this is the only rule; `agents/judge.md` defers to it. Say what would settle
+> it. Item 1's "no test loosened" is verified from `git log -p -- tests/` in the coworld repo,
+> so it is verifiable: do not report it as unverifiable.
 > Checklist: `<paste the ACCEPTANCE CHECKLIST verbatim>`.
 
 **Verdict markers.** The verdict file carries the count **twice**: `blocking: <n>` as the *first*
@@ -69,7 +72,15 @@ either end can be parsed) — do not "tidy" one away.
 A finding is **blocking** if and only if it falsifies one of these. Everything else is advisory.
 
 1. **CI green.** `ci.yml` conclusion `success` on `main` at the reviewed sha, with no test
-   disabled, skipped, or loosened during this run.
+   disabled, skipped, or loosened during this run. **Both halves are verifiable from the
+   sandbox** — the conclusion from `gh run list -R <repo> --branch main -w ci.yml` (run id +
+   conclusion, cited), and "no test loosened" from the coworld repo's own history:
+   ```bash
+   git -C <repo path> log -p --since="<run start>" -- tests/     # every test-file change this run
+   ```
+   Read those hunks: a deleted assertion, a widened tolerance, a `skip`/`t.Skip`/`xfail`/`--skip`
+   added, or a test file removed is a blocking finding. There is no CI-history access needed and
+   no excuse for reporting item 1 unverifiable.
 2. **Replay re-derivation.** Replaying the recorded events through the sim reproduces the recorded
    per-tick state **frame by frame**, and the viewer derives its display from that same
    re-derivation — not from a parallel recording. A test asserts it.
