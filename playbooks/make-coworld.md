@@ -113,8 +113,10 @@ build → certify → **upload-policies** → upload-coworld → secret put. Pol
 | Game shape | Starter | Lineage |
 |---|---|---|
 | Turn-based / talk / cards / board / dice / bluff; game logic native; policy = LLM prompt | `Metta-AI/cogame-babel` (best current parley-stack template), else newest parley descendant (`cogame-bullwhip`, `cogame-focus`, `cogame-cosino`) | parley → cosino → focus → babel → bullwhip |
-| Real-time grid, RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) — "the best coworld we have" | ctf |
-| Port of an existing C/RL env, bit-exact | `Metta-AI/cogame-moba` + its `docs/PORTING.md` | moba → nmmo |
+| Any real-time game loop (grid or continuous physics) with rules written for this coworld, RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) — "the best coworld we have" | ctf |
+| Bit-exact port of an existing, external C/RL env (rules pre-exist as code) | `Metta-AI/cogame-moba` + its `docs/PORTING.md` | moba → nmmo |
+
+New physics games (Cogball, Lantern, Tandem) take paintbot, not moba — operator ruling 2026-08-22.
 | Game logic in an external engine/process | `Metta-AI/cogame-factorio` (Python connector, per-seat servers) | factorio |
 
 The local skill said "if the mapping isn't obvious, ASK". A cloud agent **does not ask** —

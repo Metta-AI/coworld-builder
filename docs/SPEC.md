@@ -177,8 +177,9 @@ is bounded at 75 minutes of wall clock.
 
 ## Design pins every coworld inherits (from the make-coworld playbook)
 
-Starter by game shape (parley/babel for LLM-prompt games; coworld-ctf for real-time grid;
-cogame-moba for bit-exact ports; cogame-factorio for external engines). Public repo
+Starter by game shape (parley/babel for LLM-prompt games; coworld-ctf for ANY real-time loop —
+grid or continuous physics — with new rules; cogame-moba only for bit-exact ports of an existing
+external env; cogame-factorio for external engines). Public repo
 `Metta-AI/cogame-<slug>`. LLM policy **and** scripted baseline from day one (same image,
 env-switched). Static wasm replay viewer — never a pod. Real art, the starter's chrome
 verbatim. Two name spaces (anonymous cog aliases in-game; policy names spectator-side).

@@ -16,8 +16,10 @@ Owner: designer sub-agent, accepted (or bounced) by the coordinator against the 
 | Game shape | Starter (mount) | Lineage |
 |---|---|---|
 | Turn-based / talk / cards / board / dice / bluff; game logic native; policy = LLM prompt | `Metta-AI/cogame-babel` (`/workspace/starters/cogame-babel`) — the best current parley-stack template. Fall back to a newer descendant (`cogame-bullwhip`, `/workspace/starters/cogame-bullwhip`) if it is closer. | parley → cosino → focus → babel → bullwhip |
-| Real-time grid, RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) — `/workspace/starters/coworld-ctf` | ctf |
-| Bit-exact port of an existing C/RL env | `Metta-AI/cogame-moba` + `docs/PORTING.md` — `/workspace/starters/cogame-moba` | moba → nmmo |
+| **Any real-time game loop** (grid OR continuous physics, new rules written for this coworld), RL-vector policies | `Metta-AI/coworld-ctf` (paintbot) — `/workspace/starters/coworld-ctf` | ctf |
+| Bit-exact port of an **existing, external** C/RL environment (the rules already exist as code you must reproduce; e.g. NMMO, MOBA) | `Metta-AI/cogame-moba` + `docs/PORTING.md` — `/workspace/starters/cogame-moba` | moba → nmmo |
+
+A new physics game (Box2D soccer, hide-and-seek, couch-carrying) is the FIRST row, not the second — nothing pre-exists to port; paintbot supplies the loop, the per-tick replay, the static viewer and the chrome, and you swap the arena rules for the physics sim. (Operator ruling 2026-08-22, Cogball.)
 | Game logic in an external engine/process | `Metta-AI/cogame-factorio` (Python connector, per-seat servers) — `/workspace/starters/cogame-factorio` | factorio |
 
 `Metta-AI/cogame-parley` is mounted too (`/workspace/starters/cogame-parley`) as the lineage's
