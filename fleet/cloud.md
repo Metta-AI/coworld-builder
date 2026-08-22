@@ -48,6 +48,7 @@ used instead and the gap is logged — it is never a reason to block.
 | tool | status | used by |
 |---|---|---|
 | `git` | guaranteed | every phase (this repo + the coworld repo) |
+| `gh` | **NOT guaranteed** — the 00-claim preflight installs v2.63.2 from the release tarball (2026-08-22 the first run hit this) | every GitHub step (repo create, workflow dispatch/watch, secrets list) |
 | `gh` | guaranteed | phases 20, 30, 40, 50, 60 (workflow dispatch, run watch, artifact download) |
 | `curl` | guaranteed | Asana, Observatory, softmax.com, Discord |
 | `python3` | guaranteed | `fleet/bin/deploy.py`; the fallback for every `jq` line |

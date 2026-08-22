@@ -14,11 +14,20 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 ## Procedure
 
 0. **Tool preflight — once, at the top of every heartbeat.** Every phase prompt pipes JSON through
-   `jq` (00, 20, 40, 50, 60, 70). The sandbox is guaranteed `git`, `gh`, `curl`, `python3`; `jq` is
-   expected but not guaranteed, so check it before you rely on it:
+   `jq` (00, 20, 40, 50, 60, 70) and every phase that touches GitHub uses `gh`. The sandbox is
+   guaranteed `git`, `curl`, `python3`; **`gh` and `jq` are not** (2026-08-22: the first run found
+   `gh` missing and installed it). Check and install both before you rely on them:
    ```bash
+   command -v gh >/dev/null || {
+     curl -fsSL https://github.com/cli/cli/releases/download/v2.63.2/gh_2.63.2_linux_amd64.tar.gz \
+       | tar -xz -C /tmp && install -m 0755 /tmp/gh_2.63.2_linux_amd64/bin/gh /usr/local/bin/gh \
+       || install -m 0755 /tmp/gh_2.63.2_linux_amd64/bin/gh "$HOME/.local/bin/gh"; }
+   command -v gh >/dev/null && gh --version | head -1 || echo "NO GH"
    command -v jq >/dev/null || echo "NO JQ"
    ```
+   `gh` authenticates from `GH_TOKEN` in the environment (vault-injected); never run `gh auth
+   login`. If `gh` cannot be installed, that IS a Blocked-class fact (every GitHub step needs it)
+   — but only after one retry with the `$HOME/.local/bin` path on `PATH`.
    If it is missing, do **not** go to phase 90 and do not stop: every `jq` line in these prompts
    has a mechanical `python3` equivalent — `python3 -c 'import json,sys; d=json.load(sys.stdin);
    print(…)'` for reads and `json.dump` for writes. Use it, and record
