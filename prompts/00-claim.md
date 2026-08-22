@@ -38,17 +38,36 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    - A *Running* task with a **stale** `heartbeat_at` → it is yours. Go to step 5 (resume).
 3. Else list *Blocked* tasks. For each, fetch its subtasks; if the human subtask is `completed:
    true`, move the task to *Running*, append `resumed after unblock` to `log.md`, and go to step 5.
-4. Else claim work: list incomplete Coworld Ideas tasks in board order, skip any whose gid already
-   appears as `idea_task` in some `runs/*/STATE.json`, and take the top one.
-   1. `slug` = kebab-case of the idea title, ≤ 20 chars, no `cogame-` prefix.
-   2. `run` = `<YYYY-MM-DD>-<slug>` (UTC).
-   3. Create the run task in *Running* from `templates/run-task.md`:
+4. Else claim work. **Claiming races** — two overlapping heartbeats (the cron plus a manual
+   `deploy.py run`, or a retried deployment run) can both see an empty board. The comment-first
+   claim below is the guard (`/workspace/cogamer/fleet/PROTOCOLS.md` §CLAIM PROTOCOL exists
+   because plain "look then create" claims raced four confirmed times); do every step, in order.
+   1. **`git pull --rebase`** in `/workspace/coworld-builder` *before* reading anything from it —
+      the dedupe below is only as fresh as the mount.
+   2. List incomplete Coworld Ideas tasks in board order, skip any whose gid already appears as
+      `idea_task` in some `runs/*/STATE.json`, and take the top one.
+   3. `slug` = kebab-case of the idea title, ≤ 20 chars, no `cogame-` prefix.
+      `run` = `<YYYY-MM-DD>-<slug>` (UTC).
+   4. **Re-GET the idea task immediately before claiming it**
+      (`GET /tasks/<gid>?opt_fields=completed,name`) plus its comments
+      (`GET /tasks/<gid>/stories?opt_fields=text,created_at,created_by.name`). If it is now
+      `completed: true`, or a `claimed by coworld-builder run <other>` comment already exists,
+      drop it and go back to step 4.2 with the next idea.
+   5. **Post the claim comment BEFORE creating anything**:
+      `claimed by coworld-builder run <run>` on the idea task.
+   6. **Wait 20 s, then re-read the idea's comments.** If a `claimed by coworld-builder run …`
+      comment for a *different* run exists with an **earlier** `created_at` than yours, that run
+      won: append `<UTC> 00 yield idea=<gid> to=<other run>` to the *builder* log (no run
+      directory exists yet — write it to `runs/<other-run>/log.md` if present, else say it in the
+      heartbeat's closing note), create nothing, and **exit**. Never delete the other claim.
+   7. Create the run task in *Running* from `templates/run-task.md`:
       name `<slug> — coworld run <run>`, notes = the idea text verbatim + a link to the idea task.
       Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 80), unassigned, incomplete.
-   4. Comment on the idea task: `claimed by coworld-builder run <run>`.
-   5. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
+   8. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
       `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, and create `runs/<run>/log.md`.
-   6. Commit and push.
+   9. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
+      pushed a `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see
+      its STATE, and exit.
 5. **Resume path.** Read `runs/<run>/STATE.json`, set `heartbeat_at` = now on both STATE and the
    Asana task, append a `resume at phase <n>` line to `log.md`, commit, push, and enter the prompt
    named by `STATE.phase`.
