@@ -45,7 +45,14 @@ COORDINATOR = "coworld-builder-coordinator"
 DEPLOYMENT_NAME = "coworld-builder-hourly"
 
 AGENT_FIELDS = ("name", "description", "model", "tools", "mcp_servers", "skills", "multiagent")
-VERSIONED_FIELDS = ("description", "model", "tools", "skills", "multiagent")
+# `mcp_servers` was in AGENT_FIELDS but not here, so an edit to it in agents/<role>.json was a
+# silent no-op on `update` — the same class of bug fleetctl.py fixed for `skills` (its comment at
+# cmd_apply). Added 2026-08-22.
+# `multiagent` is sent in the version body too, so a roster change takes effect. fleetctl.py sends
+# only description/model/tools/skills, and its comment warns the update endpoint 400s on immutable
+# fields; `multiagent` here is UNVERIFIED against that endpoint. Verify with `--dry-run update`
+# followed by one real `update` after a roster edit, and record the outcome in this comment.
+VERSIONED_FIELDS = ("description", "model", "tools", "mcp_servers", "skills", "multiagent")
 DEPL_FIELDS = ("name", "environment_id", "vault_ids", "schedule", "resources")
 
 IDS_START = "<!-- ids:start -->"
@@ -85,8 +92,10 @@ def api(path, body=None, method=None, tries=3):
             with urllib.request.urlopen(r, timeout=120) as f:
                 return json.loads(f.read())
         except urllib.error.HTTPError as e:
-            sys.stderr.write("HTTP %s %s %s\n%s\n" % (e.code, m, path, e.read().decode(
-                "utf-8", "replace")[:2000]))
+            # The failing request may carry a live `gh` token (create's resources), and some
+            # APIs echo request context back in the error body — redact before printing.
+            sys.stderr.write("HTTP %s %s %s\n%s\n" % (e.code, m, path, redact_text(
+                e.read().decode("utf-8", "replace"))[:2000]))
             raise
         except Exception:
             if i < tries - 1:
@@ -96,14 +105,27 @@ def api(path, body=None, method=None, tries=3):
 
 
 def page(path):
+    """Every row of a list endpoint. Follows `next_page_url` AND the `has_more`/`after_id`
+    form, exactly as fleetctl.py does — `/agents` is account-wide and filtered client-side, so
+    a dropped page silently truncates live_state() and makes an existing agent look missing."""
+    base = path.split("?", 1)[0]
+    query = path.split("?", 1)[1] if "?" in path else ""
     out, url = [], path + ("&" if "?" in path else "?") + "limit=100"
+    seen = set()
     while url:
         d = api(url)
-        rows = d.get("data", d if isinstance(d, list) else [])
+        rows = d.get("data", d if isinstance(d, list) else []) if isinstance(d, dict) else d
+        rows = rows or []
         out += rows
         nxt = d.get("next_page_url") if isinstance(d, dict) else None
         if nxt and nxt.startswith(API):
             nxt = nxt[len(API):]
+        if not nxt and isinstance(d, dict) and d.get("has_more") and rows and rows[-1].get("id"):
+            after = rows[-1]["id"]
+            if after in seen:          # defensive: an endpoint that never advances
+                break
+            seen.add(after)
+            nxt = "%s?%slimit=100&after_id=%s" % (base, (query + "&") if query else "", after)
         url = nxt
     return out
 
@@ -126,6 +148,14 @@ def redact(obj):
                                  or obj.startswith("github_pat_") or obj.startswith("sk-ant-")):
         return "<redacted>"
     return obj
+
+
+TOKENISH = re.compile(r"\b(ghp_|gho_|ghu_|ghs_|github_pat_|sk-ant-)[A-Za-z0-9_\-]+")
+
+
+def redact_text(s):
+    """Mask token-shaped substrings in free text (HTTP error bodies, tails, logs)."""
+    return TOKENISH.sub(lambda m: m.group(1) + "<redacted>", s or "")
 
 
 def show(label, payload):
