@@ -33,9 +33,13 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    If the field is empty or absent, fall back to the last `heartbeat` line in `runs/<run>/log.md`,
    whose format is pinned as `<UTC ISO-8601> heartbeat phase=<nn>` (e.g.
    `2026-08-22T16:40:00Z heartbeat phase=40`). Nothing else counts as a heartbeat line.
-   - Any *Running* task with `heartbeat_at` **< 90 min old** → another run is live. **Exit
-     immediately.** Write nothing.
-   - A *Running* task with a **stale** `heartbeat_at` → it is yours. Go to step 5 (resume).
+   - Any *Running* task with `heartbeat_at` **< 90 min old** *and* whose
+     `runs/<run>/STATE.json` has `session_ended_at` null or older than `heartbeat_at` → another
+     run is live. **Exit immediately.** Write nothing.
+   - A *Running* task with a **stale** `heartbeat_at` (≥ 90 min), **or** one whose
+     `session_ended_at` is ≥ its `heartbeat_at` (the previous session ended deliberately and
+     said so) → it is yours. Go to step 5 (resume). The second case is what keeps a
+     multi-session run moving on the very next hourly firing instead of every other one.
 3. Else list *Blocked* tasks. For each, identify **the human subtask** — never "a completed
    subtask": every run task carries eight phase subtasks (10…80) that phase 80 completes as the
    run progresses, so a completed phase subtask means nothing here.
@@ -89,7 +93,9 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    arrives via step 3, after a human unblocked the run, has just reset the counter to 0, so it
    starts again at 1.) Then set `heartbeat_at` = now on both STATE and the Asana task (custom
    field `1217748424048134`), append `<UTC> 00 resume at phase <n> attempt=<k>` to `log.md`,
-   commit, push, and enter the prompt named by `STATE.phase`.
+   commit, push, and enter the prompt named by `STATE.phase`. Set `session_ended_at` back to
+   `null` as part of this write — you are the session that took the run, and the closing step
+   (`AGENT.md` §Ending a heartbeat) stamps it again when you finish.
 
 ## Exit criterion
 

@@ -21,9 +21,13 @@ that names exactly what is needed, and exits.
 - **One deployment, hourly cron** (`*/60`, minute 11). Every run is a *heartbeat*:
   1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md`; it is a
      table row, not an environment variable). If a run task sits in *Running*
-     with `heartbeat_at` < 90 min old → another run is live → **exit**. (No dupes.)
-  2. If a run task is in *Running* with a stale heartbeat → it is yours: **resume** at
-     `STATE.json.phase`.
+     with `heartbeat_at` < 90 min old **and** `STATE.session_ended_at` is null or older than
+     `heartbeat_at` → another run is live → **exit**. (No dupes.)
+  2. If a run task is in *Running* with a stale heartbeat, **or** with a fresh heartbeat whose
+     `STATE.session_ended_at` is ≥ `heartbeat_at` (the last session ended cleanly and said so),
+     → it is yours: **resume** at `STATE.json.phase`. Without that marker a run that needs more
+     than one session would look alive for the full 90 minutes after its session died, and — the
+     cron being hourly — would advance only every other firing.
   3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
      *Running* and **resume**.
   4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
@@ -148,8 +152,13 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
  "verify": {"rounds": [3, 4], "replay": "https://…replay", "iframe_static": true},
  "announce": {"attempted_at": "2026-08-22T17:02:00Z", "discord_message_id": "…"},
  "blocked": null,
- "heartbeat_at": "2026-08-22T16:40:00Z", "log": "runs/2026-08-22-bullwhip/log.md"}
+ "heartbeat_at": "2026-08-22T16:40:00Z", "session_ended_at": null,
+ "log": "runs/2026-08-22-bullwhip/log.md"}
 ```
+`session_ended_at` is written by the closing step of a heartbeat that ended deliberately (SPEC
+step 5 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a session that
+crashed leaves it null or stale, which is exactly the 90-minute case.
+
 `policies.champion1` / `champion2` / `fillers[]` are always `<name>:vN` **labels**, written by
 phase 40. `policies.filler_version_ids[]` holds the policy-version **UUIDs** phase 50 resolves
 from `GET /policy-versions`; phase 50 writes that field and never overwrites `fillers[]`.

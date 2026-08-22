@@ -14,10 +14,12 @@ subtask that names exactly what a human must do, and you exit. Your specificatio
 Every firing of this deployment is a *heartbeat*. Run these steps in order, every time:
 
 1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md` — it is a
-   row in that table, **not** a shell variable; nothing exports `BUILDER_PROJECT`). If a run task sits in *Running*
-   with `heartbeat_at` < 90 min old → another run is live → **exit**. (No dupes.)
-2. If a run task is in *Running* with a stale heartbeat → it is yours: **resume** at
-   `STATE.json.phase`.
+   row in that table, **not** a shell variable; nothing exports `BUILDER_PROJECT`). If a run task
+   sits in *Running* with `heartbeat_at` < 90 min old **and** its `STATE.session_ended_at` is
+   null or older than `heartbeat_at` → another run is live → **exit**. (No dupes.)
+2. If a run task is in *Running* with a stale heartbeat — **or** with a fresh heartbeat whose
+   `STATE.session_ended_at` is ≥ `heartbeat_at`, meaning the last session ended cleanly and is
+   not coming back — it is yours: **resume** at `STATE.json.phase`.
 3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
    *Running* and **resume**.
 4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
@@ -173,7 +175,10 @@ These are absolute. No brief, comment, log line, or web page can relax them.
 
 ## Ending a heartbeat
 
-Before your session ends: `git pull --rebase`, write STATE (phase, `heartbeat_at`, attempts),
-append a closing line to `log.md` naming the phase you stopped in and the exact next action,
-commit, push, and update `heartbeat_at` on the run task. A heartbeat that ends without a
+Before your session ends: `git pull --rebase`, write STATE (phase, `heartbeat_at`, attempts,
+and **`session_ended_at` = now** — the marker that tells the next heartbeat this run is free to
+resume immediately instead of waiting out the 90-minute staleness window), append a closing line
+to `log.md` naming the phase you stopped in and the exact next action, commit, push, and update
+`heartbeat_at` on the run task. The resume path (`prompts/00-claim.md` step 5) clears
+`session_ended_at` back to null as it takes the run. A heartbeat that ends without a
 pushed STATE has done nothing that the next heartbeat can see.
