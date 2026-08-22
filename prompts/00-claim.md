@@ -8,7 +8,7 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
 - Asana project **Coworld Builder** `1217747772236871`, sections Running / Blocked / Done / Fleet
   (section gids in `fleet/cloud.md`).
 - Asana project **Coworld Ideas** `1217704774784096` (board order = priority order).
-- `runs/*/STATE.json` in this repo.
+- `runs/*/STATE.json` and `runs/SKIPPED.json` in this repo.
 - `templates/run-task.md`, `templates/STATE.template.json`.
 
 ## Procedure
@@ -72,22 +72,58 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    because plain "look then create" claims raced four confirmed times); do every step, in order.
    1. **`git pull --rebase`** in `/workspace/coworld-builder` *before* reading anything from it —
       the dedupe below is only as fresh as the mount.
-   2. List incomplete Coworld Ideas tasks in board order, skip any whose gid already appears as
-      `idea_task` in some `runs/*/STATE.json`, and take the top one.
-   3. **Confidentiality check — this idea's text becomes public.** Phase 20 creates a *public*
-      repo and phase 10 copies the idea text verbatim into a design note that lands in it. If the
-      idea's title or notes are marked confidential/internal/do-not-publish (any of
-      `confidential`, `internal only`, `do not publish`, `NDA`, or an explicit instruction not to
-      share), do **not** claim it: go to `prompts/90-blocked.md` with the ask "idea <gid> is
-      marked confidential — publish it in a public repo, or reword it?" and exit. Never
-      paraphrase around it and proceed.
+   2. List incomplete Coworld Ideas tasks in board order and take the top one that is **not**
+      already spoken for. Skip an idea if any of these hold:
+      - its gid appears as `idea_task` in some `runs/*/STATE.json` (it has a run);
+      - its gid appears in `runs/SKIPPED.json` (a previous heartbeat skipped it — step 4.3);
+      - its comments carry a `skipped by coworld-builder:` line (same thing, seen from Asana;
+        this is the belt-and-braces read for a SKIPPED.json that failed to push).
+      ```bash
+      jq -r '.[]' runs/SKIPPED.json      # the skipped gids, one per line
+      ```
+   3. **Can this idea be started at all?** Two gates, both applied *before* anything is created.
+      An idea that fails either one is **SKIPPED** (step 4.3.1) — never sent to phase 90, which
+      cannot run without a run task and a STATE (`prompts/90-blocked.md` §Inputs).
+      - **Confidentiality — this idea's text becomes public.** Phase 20 creates a *public* repo
+        and phase 10 copies the idea text verbatim into a design note that lands in it. If the
+        idea's title or notes are marked confidential/internal/do-not-publish (any of
+        `confidential`, `internal only`, `do not publish`, `NDA`, or an explicit instruction not
+        to share) → SKIP with reason `marked confidential — a public repo would publish it`.
+        Never paraphrase around it and proceed.
+      - **Startability.** If the idea cannot be mapped to a starter at all (SPEC §Design pins:
+        parley/babel, coworld-ctf, cogame-moba, cogame-factorio) *and* the gap is one the rails
+        call a human decision rather than yours — the idea names an engine, platform, or asset
+        set none of the six starters can host, or it leaves the game so open that the readings
+        give materially different games (SPEC §Rails / §Blocked) → SKIP with that as the reason.
+        Starter choice **between** the six is always yours; never skip for it.
+      **How to SKIP an idea** — steps (a)…(e), in order. No run task, no STATE, no phase 90:
+      - (a) Post **one** comment on the idea task: `skipped by coworld-builder: <reason>`. If
+         that comment is already there, do not post a second one.
+      - (b) Append the idea gid to `runs/SKIPPED.json` (a JSON array of gid strings, committed):
+         ```bash
+         jq --arg g '<idea gid>' 'if index($g) then . else . + [$g] end' \
+            runs/SKIPPED.json > /tmp/s.json && mv /tmp/s.json runs/SKIPPED.json
+         ```
+      - (c) Create **one** card so a human sees it, on the Coworld Builder board in section
+         **Fleet** (`1217747860605582`, `fleet/cloud.md`), assigned to **David Bloomin**
+         (`1209016834701578`), titled `SKIPPED <idea title>: <reason>`, body = the idea's link,
+         the reason, and what would unblock it (reword the idea, or say which starter to use).
+         **Dedupe by title**: list the Fleet section's tasks first and create nothing if that
+         exact title already exists. One card per idea, ever.
+      - (d) Append `<UTC> 00 skipped idea=<gid> reason="<reason>" card=<gid>` to the heartbeat's
+         closing note and to the shared `runs/heartbeats.log` (append-only; there is no run
+         directory here and another run's `log.md` is off limits — `AGENT.md` hard rule 7),
+         `git pull --rebase`, commit, push.
+      - (e) **Continue to the next idea** — go back to step 4.2. The queue keeps moving; a skipped
+         idea never blocks it, and never re-selects because 4.2 filters it out.
    4. `slug` = kebab-case of the idea title, ≤ 20 chars, no `cogame-` prefix.
       `run` = `<YYYY-MM-DD>-<slug>` (UTC).
    5. **Re-GET the idea task immediately before claiming it**
       (`GET /tasks/<gid>?opt_fields=completed,name`) plus its comments
       (`GET /tasks/<gid>/stories?opt_fields=text,created_at,created_by.name`). If it is now
       `completed: true`, or a `claimed by coworld-builder run <other>` comment already exists,
-      drop it and go back to step 4.2 with the next idea.
+      or a `skipped by coworld-builder:` comment already exists (a concurrent heartbeat skipped
+      it), drop it and go back to step 4.2 with the next idea.
    6. **Post the claim comment BEFORE creating anything**:
       `claimed by coworld-builder run <run>` on the idea task.
    7. **Wait 20 s, then re-read the idea's comments.** If a `claimed by coworld-builder run …`
@@ -123,8 +159,12 @@ Exactly one of:
 (a) exited because another run is live (a fresh `heartbeat_at` with no `session_ended_at`);
 (b) exited because 2 runs are already *Blocked*, or because this heartbeat **yielded** to an
     earlier claim comment — in both cases nothing was created;
-(c) exited into `prompts/90-blocked.md` because the top idea is marked confidential, or because
-    the resumed phase's `phase_attempts` reached 3;
+(c) exited into `prompts/90-blocked.md` because the resumed phase's `phase_attempts` reached 3
+    (90 is only ever entered for a run that already has a run task and a STATE);
+(c2) one or more ideas were **SKIPPED** (confidential / unstartable): each has one
+    `skipped by coworld-builder: <reason>` comment, its gid in `runs/SKIPPED.json`, and one
+    Fleet-section card assigned to David Bloomin — and the heartbeat then either claimed the
+    next idea or exited under (a)/(b)/(d);
 (d) a run task is in *Running*, its `heartbeat_at` is fresh, `runs/<run>/STATE.json` exists and
     is pushed, and control has entered `prompts/<STATE.phase>-*.md`.
 
@@ -134,8 +174,13 @@ shape and gids in `playbooks/observatory-api.md` §Non-Observatory calls and `fl
 ## Writes
 
 - Asana: run task (+ 8 phase subtasks), section *Running*, `heartbeat_at` (custom field
-  `1217748424048134`); one comment on the idea.
+  `1217748424048134`); one comment on the idea. On a SKIP: one
+  `skipped by coworld-builder: <reason>` comment on the idea task and one Fleet-section card
+  (`1217747860605582`) assigned to `1209016834701578`, titled `SKIPPED <idea title>: <reason>`,
+  deduped by title.
 - `runs/<run>/STATE.json`, `runs/<run>/log.md` — committed and pushed.
+- `runs/SKIPPED.json` (array of skipped idea gids) and `runs/heartbeats.log` — committed and
+  pushed on every SKIP.
 - `log.md` lines: `<UTC ISO-8601> 00 claim <run> idea=<gid> slug=<slug>`, and every heartbeat
   refresh as `<UTC ISO-8601> heartbeat phase=<nn>` — that exact format, since step 2 parses it.
 

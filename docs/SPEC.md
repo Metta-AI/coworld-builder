@@ -38,8 +38,16 @@ that names exactly what is needed, and exits.
      already have a run task), create the run task, and start at phase 00. A *Blocked* run whose
      subtask is still open does **not** stop this: concurrency is 1 and the queue keeps moving,
      bounded at **2 simultaneously-Blocked runs** — at 2, the heartbeat claims nothing and exits.
-     An idea whose text is marked confidential is never claimed (it would be published in a
-     public repo); it goes to phase 90 instead.
+     An idea the coordinator **cannot start** is **SKIPPED**, not Blocked: its text is marked
+     confidential (a public repo would publish it), or it cannot be mapped to any starter and the
+     gap is one §Rails calls a human decision. A SKIP is one
+     `skipped by coworld-builder: <reason>` comment on the idea task, the gid appended to the
+     committed `runs/SKIPPED.json`, and one card in the Builder board's *Fleet* section assigned
+     to David Bloomin titled `SKIPPED <idea title>: <reason>` (one per idea, deduped by title);
+     the heartbeat then **continues to the next idea**. Step 4 skips gids listed in
+     `runs/SKIPPED.json` and ideas already carrying that comment, so a skipped idea never stalls
+     the queue. Phase 90 is **never** entered here: it needs a run task and a STATE, and at this
+     point neither exists.
   5. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
      of work, and on every phase transition.
 - The sandbox has **no Docker, no Nim, no emsdk**. Every compile / image / certification /
@@ -191,6 +199,11 @@ action needed, and `Resume: complete this subtask; the next heartbeat resumes at
 STATE.blocked records the same. The coordinator exits. The idea task gets one comment.
 Never mark Blocked for something the rails say the agent decides itself (starter choice,
 scoring rule when the idea pins one, parameter tuning).
+
+**Phase 90 requires a run.** It reads `STATE.phase`, `STATE.run_task`, `STATE.idea_task` and
+files a subtask *on the run task*, so it may only be entered once phase 00 has created the run
+task and written STATE. An idea that cannot be started never reaches it — that is the SKIPPED
+path in §Runtime step 4, whose human-visible artifact is a Fleet-section card, not a Blocked run.
 
 ## Repo layout
 

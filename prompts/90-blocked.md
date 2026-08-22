@@ -3,6 +3,14 @@
 Purpose: stop cleanly, hand a human exactly one decision, and exit.
 Owner: coordinator. Entered by any phase that exhausts its retry budget.
 
+## Precondition
+
+**This phase requires a run.** It reads `STATE.*` and files a subtask *on the run task*, so it may
+only be entered for a run that already has a run task and a committed `runs/<run>/STATE.json`. An
+idea that cannot be started (confidential, or unmappable to any starter) never comes here — it is
+**SKIPPED** by `prompts/00-claim.md` step 4.3, which comments on the idea, records the gid in
+`runs/SKIPPED.json`, files a Fleet-section card for a human, and moves to the next idea.
+
 ## Inputs
 
 - `STATE.phase` (the phase that failed), `STATE.phase_attempts`, `runs/<run>/log.md`.
