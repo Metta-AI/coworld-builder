@@ -482,7 +482,11 @@ jobs:
             ${{ env.RR }}/certify.log
             ${{ env.RR }}/upload.log
             dist/coworld_manifest.json
-          if-no-files-found: error
+          # warn, not error: with skip_certify=true, or on a failure before
+          # `coworld build`, some of these legitimately do not exist and the
+          # run should not gain a second red step for it. `release-result`
+          # above is the one the agent actually reads, and that one is `error`.
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Enforce canonical
