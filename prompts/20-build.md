@@ -38,8 +38,10 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `coworld-<slug>`) and `<SEATS>` substituted: `.github/workflows/ci.yml`,
    > `.github/workflows/coworld-release.yml`, `.github/workflows/coworld-submit.yml`,
    > `tools/ci/docker_smoke.sh` (**`chmod +x`**), and `tools/ci/policies.json` (from
-   > `templates/tools/ci/policies.json.example`, with champion #2's entry carrying
-   > `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
+   > `templates/tools/ci/policies.json.example` — copy **and edit**: the example's `bullwhip-*`
+   > names and prompts are bullwhip's; rewrite names and prompts for THIS game. Only the shape is
+   > inherited: one LLM policy per champion + two scripted baselines, same image, env-switched,
+   > champion #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
    > `ci.yml`'s `docker-smoke` job calls `tools/ci/docker_smoke.sh` and its `wasm-viewer` job
    > calls `tools/build_replay_viewer.sh` — if either file is missing or non-executable the repo's
    > CI cannot go green, so both are part of this scaffold, not a later step.
@@ -71,7 +73,20 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 `ci.yml` conclusion `success` on `main`, at a commit whose tree contains: the manifest template with
 `num_agents` everywhere, `tools/build_replay_viewer.sh`, `tools/ci/docker_smoke.sh` (executable),
 `tools/ci/policies.json`, all three workflows, both policy entry points, and the tests the design
-note listed. No placeholder `<slug>`/`<IMAGE>`/`<SEATS>` may survive anywhere in the tree.
+note listed. No unsubstituted placeholder survives:
+
+```bash
+if grep -n '<slug>\|<IMAGE>\|<SEATS>' \
+  .github/workflows/ci.yml .github/workflows/coworld-release.yml \
+  .github/workflows/coworld-submit.yml tools/ci/docker_smoke.sh tools/ci/policies.json
+then echo "::error::unsubstituted placeholders remain"; exit 1; fi
+```
+Grep for those **three names only** — never a bare `<`. Substitution is global and deliberately
+includes comments, so four angle-bracket names survive by design and are runtime values, not
+residue: `<cow_id>`/`<sha>` in `ci.yml`'s static-replay-route comment, `<run_id>` in the
+artifact-readback recipes in `coworld-release.yml` and `coworld-submit.yml`, and `<name>:vN` in
+`coworld-submit.yml`'s `policy` input description. `templates/README.md` lists them as expected
+residue — do not file them as findings.
 
 ## Writes
 

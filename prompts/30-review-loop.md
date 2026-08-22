@@ -101,8 +101,20 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
     **upload-policies** → upload-coworld → secret put, in that order, and any smoke step depends on
     a freshly built binary in the same run. All three workflows are present, `tools/ci/docker_smoke.sh`
     is present and executable, `tools/ci/policies.json` defines five distinct policies with champion
-    #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, and no `<slug>`/`<IMAGE>`/
-    `<SEATS>` placeholder survives in the tree. *(category: manifest)*
+    #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, and this gate exits 0:
+    ```bash
+    if grep -n '<slug>\|<IMAGE>\|<SEATS>' \
+      .github/workflows/ci.yml .github/workflows/coworld-release.yml \
+      .github/workflows/coworld-submit.yml tools/ci/docker_smoke.sh tools/ci/policies.json
+    then echo "::error::unsubstituted placeholders remain"; exit 1; fi
+    ```
+    Grep for those **three names only** — never a bare `<`. Substitution is global and deliberately
+    includes comments, so four angle-bracket names survive by design and are runtime values, not
+    residue: `<cow_id>`/`<sha>` in `ci.yml`'s static-replay-route comment, `<run_id>` in the
+    artifact-readback recipes in `coworld-release.yml` and `coworld-submit.yml`, and `<name>:vN` in
+    `coworld-submit.yml`'s `policy` input description. `templates/README.md` lists them as expected
+    residue — do not file them as findings.
+    *(category: manifest)*
 
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.
