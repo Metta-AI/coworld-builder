@@ -32,3 +32,7 @@
 2026-08-22T21:35:13Z 20 remaining before phase 30: in-repo design note stale (still 17x11/tidePeriod4) — builder re-dispatched to amend note + sync runs/ copy
 2026-08-22T21:35:13Z progress phase=20 marker=ci-run-32599827047
 2026-08-22T21:35:13Z heartbeat phase=20
+2026-08-22T21:35:13Z 20 note amendment landed: sha=a16bebc62f3101598926913a76fcfba20be7d9f5 ci run=32600293001 success (verified); runs/design.md synced (28-assertion note<->code consistency check by builder)
+2026-08-22T21:35:13Z 20 EXIT: ci.yml green on main, all exit checks pass; phase -> 30 round 1
+2026-08-22T21:35:13Z progress phase=20 marker=ci-run-32600293001
+2026-08-22T21:35:13Z heartbeat phase=30

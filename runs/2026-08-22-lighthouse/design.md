@@ -57,17 +57,18 @@ each such call is decided below with its reason.
 lets the league seat a keeper policy deliberately). Seats play under anonymous cog aliases;
 policy names are spectator-side only (§Two name spaces, below).
 
-**Board.** A rectangular grid, `width` × `height`, default **17 × 11**, both odd. `x` runs
-0..16 left→right, `y` runs 0..10 **top→bottom** (y = 0 is the top). Tiles are `wall` or `floor`.
+**Board.** A rectangular grid, `width` × `height`, default **11 × 9**, both odd. `x` runs
+0..10 left→right, `y` runs 0..8 **top→bottom** (y = 0 is the top). Tiles are `wall` or `floor`.
+(The default was 17 × 11 when this note was accepted; see §Tuning revision.)
 
 **Maze generation** (all from `config.seed`, one `Rand` stream initialised
 `initRand(int64(seed) * 7919 + 17)` exactly as babel `sim.nim:202`, drawn in this order so a
 pinned seed reproduces the episode bit-for-bit):
 
 1. Every tile starts as `wall`. **Rooms** are the tiles with odd `x` and odd `y`
-   (8 × 5 = 40 rooms at the default size).
+   (5 × 4 = 20 rooms at the default size).
 2. **Randomised-DFS (recursive backtracker)** over rooms: start at room `(1, height - 2)`
-   (= `(1, 9)`); at each step shuffle the four neighbouring rooms (`±2` in x or y), recurse into
+   (= `(1, 7)`); at each step shuffle the four neighbouring rooms (`±2` in x or y), recurse into
    the first unvisited one, carving both it and the wall tile between. The result is a
    **perfect maze** — exactly one path between any two floor tiles, no loops. Reason: a perfect
    maze makes the keeper's global view genuinely load-bearing (a blind runner cannot solve it by
@@ -75,18 +76,24 @@ pinned seed reproduces the episode bit-for-bit):
    the competence floor a champion prompt should beat.
 3. **Exit.** `exitX` = a seed-drawn odd x in `1 .. width - 2`. The tile `(exitX, 0)` is carved to
    `floor`; it is the **exit tile**, the only gap in the outer border.
-4. **Runner starts.** Three distinct rooms on the bottom room row `y = height - 2` (= 9), drawn
+4. **Runner starts.** Three distinct rooms on the bottom room row `y = height - 2` (= 7), drawn
    from the seed subject to pairwise `|Δx| ≥ 4`; retry the draw up to 50 times, then fall back to
    the leftmost, middle and rightmost bottom rooms. Runner 1 → the leftmost of the three drawn,
    runner 2 → the middle, runner 3 → the rightmost.
 5. **Keys.** `keyCount` = **3**. Candidates are the **dead-end rooms** (rooms with exactly one
    open neighbour) that are not a start room, not the exit tile, not adjacent to the exit tile,
-   and have `y ≤ height - 4` (= 7 at the default size — keys in the bottom two rows would drown
+   and have `y ≤ height - 4` (= 5 at the default size — keys in the bottom two rows would drown
    before anyone could reach them). Sort candidates by BFS distance from the exit tile,
-   descending; seed-draw 3 of the top 8 subject to pairwise BFS distance ≥ 6, retrying up to 50
-   times; on failure take the 3 highest-distance candidates outright. If fewer than 3 candidates
-   exist at all (does not occur at 17 × 11, but the code must be total), fall back to the 3
-   floor tiles with `y ≤ height - 4` of greatest exit distance.
+   **ascending**; seed-draw 3 of the top 8 subject to pairwise BFS distance ≥ 6, retrying up to 50
+   times; on failure take the 3 nearest candidates outright. (Ascending, not descending: on a
+   *perfect* maze the far dead ends cannot be reached and returned from inside the tick budget —
+   see §Tuning revision. The dead-end filter is what keeps the keeper load-bearing; a blind runner
+   still cannot find a key without it.) If fewer than 3 candidates exist at all — which **does**
+   occur at 11 × 9, so this path is live rather than defensive — fall back to the floor tiles with
+   `y ≤ height - 4` of greatest exit distance, taking the farthest that are pairwise ≥ 6 apart
+   before topping up. The fallback applies the same "not the exit tile, not adjacent to it, not a
+   start" exclusions as the dead-end candidates, so every key placement satisfies the same
+   invariants however it was drawn.
 6. **The keeper occupies no tile.** It is in the lantern room, off-board. It cannot move; it has
    no position; there is no keeper action other than speaking or staying silent.
 
@@ -102,22 +109,25 @@ team **two** clock units of tide instead of one. Runners always move; talking ne
 them. This is a single-valued rule, is visible on screen (the water jumps a beat), and puts the
 whole verbosity trade-off on one number.
 
-**Tide.** `tideDelay` = **10**, `tidePeriod` = **4**.
+**Tide.** `tideDelay` = **10**, `tidePeriod` = **7** (`spring-tide` uses 5).
 
 ```
 tideRows(clock) = clamp((clock - tideDelay) div tidePeriod, 0, height)
 waterLine       = height - tideRows          # y of the topmost flooded row; == height when dry
 a tile (x, y) is flooded  ⇔  y >= waterLine
-floodClock      = tideDelay + height * tidePeriod = 10 + 11 * 4 = 54
+floodClock      = tideDelay + height * tidePeriod = 10 + 9 * 7 = 73
 ```
 
-Water rises from the bottom row upward and never recedes. At the default settings: the bottom
-row floods at clock 14, the runners' start row (`y = 9`) at clock 18, the exit row (`y = 0`) at
-clock 50, and the whole board at clock 54.
+Water rises from the bottom row upward and never recedes. Row `y` floods at
+`clock = tideDelay + tidePeriod * (height - y)`. At the default settings: the bottom row
+(`y = 8`) floods at clock 17, the runners' start row (`y = 7`) at clock 24, then rows 6, 5, 4, 3,
+2 and 1 at clocks 31, 38, 45, 52, 59 and 66, and the exit row (`y = 0`) at clock 73, which is
+`floodClock`. Under `spring-tide` (`tidePeriod` 5) the same milestones are 15, 20, 25, 30, 35, 40,
+45, 50 and 55 — strictly harsher on every row.
 
 **Ticks.** `maxTicks` = **45** (cert fixture 10). Because `clock ≥ tick` always, a fully silent
-keeper leaves the team 45 ticks with the water at `waterLine = 3` by the end; a keeper who speaks
-every single tick floods the entire board by tick 27. That spread — 27 to 45 usable ticks,
+keeper leaves the team 45 ticks with the water at `waterLine = 4` by the end; a keeper who speaks
+every single tick floods the entire board by tick 37. That spread — 37 to 45 usable ticks,
 bought with silence — is the game.
 
 **Resolution order.** Tick `t` (0-based) resolves in exactly these twelve numbered steps:
@@ -268,6 +278,48 @@ truncator is bullwhip's `cleanText(text, limit)` (`src/bullwhip/llm.nim:385-390`
 `{"type":"prompt","prompt":…}` frames from the player container are capped at **4000 chars**
 (babel `server.nim:33`, `MaxPromptLen`), truncated on rune boundaries here too.
 
+### Tuning revision (2026-08-22, build phase)
+
+The constants this note was accepted with made its own §Tests `test_bot` thresholds unreachable.
+The coordinator approved a retune as a rails parameter-tuning call; the sections above are written
+with the shipped values, and this block records what changed and why.
+
+**Originally pinned:** board **17 × 11**; §The game step 5 sorted key candidates by exit distance
+**descending** (the farthest dead ends); `tidePeriod` **4** (`spring-tide` **3**), giving
+`floodClock` 54; `lantern` step 4 ordered the first step of the shortest path **from the runner's
+current tile**; `lantern` step 6 transmitted on `tick mod 2 == 0` **or** any of three exceptions,
+with no repeat-suppression and no not-twice-in-a-row rule.
+
+**The measurement.** An oracle over the real seeded boards computed, for each seed, the minimum
+over key→runner assignments of the maximum over runners of `dist(start, key) + dist(key, exit)` —
+the tick count a *perfect* keeper with *perfect* runners, no message lag and no tide would need
+before all three can be at the exit, since the gate needs all three keys before anyone can leave.
+On the original 17 × 11 board that is **55 / 47 / 53 / 81** ticks for the fixture seeds
+`[1, 7, 42, 1234]`; over sixty seeds the best is 47 and the worst 93. `maxTicks` is 45, and
+`sampleEpisode` caps it at `EpisodeCallBudget div CallsPerTick` = **55**. So `escaped == 3` was
+unreachable **by any policy at all**, LLM or scripted, on every seed. The note's own escape hatch
+(§Tests `test_bot` #4: raise `tidePeriod` from 4 to 5) only moves water and cannot fix a path
+that is longer than the tick budget: a sweep of `tidePeriod` 4, 5, 6, 8, 10 and 14 against
+`maxTicks` 45 and 55 never produced more than 2 escapes on 1 of the 4 seeds. Separately, with
+three runners the original transmit condition (b) fires whenever *any* of them turns a corner,
+which measured a **64–68 %** talk rate against this note's own ≤ 60 % bar.
+
+**Shipped instead:** board **11 × 9** (still odd × odd and ≥ 9, and inside this note's own
+`config_schema` ranges, so the schema is unchanged); key candidates sorted **ascending** (the
+nearest dead ends), every other placement filter unchanged; `tidePeriod` **7** (`spring-tide`
+**5**), giving `floodClock` 73; `lantern` step 4 aims one step ahead, at the tile the runner will
+occupy when the words land; `lantern` step 6 never transmits twice in a row and lets an exception
+break the rhythm only to say something new.
+
+**Measured outcome** with `lantern` + three `wallhug` over the fixture seeds `[1, 7, 42, 1234]`:
+all three keys collected on **4 of 4** seeds, all three runners out on **3 of 4**, talk rate
+**51–52 %**, instruction-following **89 %**, team scores **26–39** of a possible 42, episodes
+25–37 ticks with the tide still drowning a runner on one seed. Every threshold in §Tests passes
+as written; none was weakened. Everything else in this note — the twelve numbered resolution
+steps, the tide formula, the scoring formula and its sign, the event vocabulary, both protocols,
+the observation split, the reply schema and its rune caps, `maxTicks` 45, `keyCount` 3,
+`num_agents` 4, the viewer composition, the champion prompts and the policy set — is unchanged.
+
 ---
 
 ## Decisions: LLM with scripted fallback
@@ -360,17 +412,29 @@ A baseline that raised or idled in the wrong slot would strand episodes.
    pair, sort ascending by `dKey[k][pos(r)]` (ties broken by runner index then key index), and
    greedily assign each key to the first unassigned runner; runners left over target the exit
    tile. If all keys are in: every active runner targets the exit tile.
-4. For each active runner, take the first step of the shortest path from its tile to its target
-   (BFS parent pointers, neighbour order N, E, S, W for determinism) and map it to `N`/`E`/`S`/`W`;
-   if the runner is already on its target or no path exists over unflooded tiles, the step is
-   `hold`.
+4. For each active runner, take the first step of the shortest path to its target (BFS parent
+   pointers, neighbour order N, E, S, W for determinism) **from the tile the runner will be
+   standing on when the words land** — that is, from `pos(r) + delta(firstStep(pos(r)))`, one
+   step along the path — and map it to `N`/`E`/`S`/`W`. A transmission sent on tick `t` is not
+   read until the start of tick `t + 1`, by which time the runner has already moved; ordering the
+   step for the tile it occupies *now* is permanently one tile stale and makes the pair oscillate
+   at every corner (see §Tuning revision). If the runner is already on its target, or the
+   one-step-ahead tile is the target, or no path exists over unflooded tiles, the step is `hold`.
 5. Compose `"<Alias1> <step1>; <Alias2> <step2>; <Alias3> <step3>"` over the active runners, then
    `cleanText(msg, 160)`.
-6. **Transmit policy** (this is where the baseline pays the tick cost on purpose): transmit if
-   **any** of — (a) `tick mod 2 == 0`, (b) any runner's step differs from what the last
-   transmitted message told that runner, (c) any runner is within 2 tiles of a flooded tile, or
-   (d) `gateOpen` flipped this tick. Otherwise `transmit = false`. In practice it speaks on
-   roughly half the ticks; the tests assert ≤ 60 %.
+6. **Transmit policy** (this is where the baseline pays the tick cost on purpose). The keeper
+   **never transmits twice in a row** — a runner needs the tick in between to act on what it was
+   told, and a back-to-back pair costs the team two extra units of tide for one instruction. Given
+   that, transmit if `tick mod 2 == 0`; **or**, to say something the runners do not already have,
+   if the composed message differs from the last transmitted one **and** any of — (a) a runner has
+   no order in the last transmitted message, (b) a runner **bumped** last tick and its step differs
+   from what it was told, (c) the tide rose since the last message and a runner is within 2 tiles
+   of the water, or (d) `gateOpen` flipped this tick. Otherwise `transmit = false`.
+   Not-twice-in-a-row is what bounds the rate structurally at about half the ticks; measured over
+   the fixture seeds it speaks on **51–52 %** of the ticks it plays, and the tests assert ≤ 60 %.
+   (The accepted note had (b) as "any runner's step differs from the last message" with no
+   repeat-suppression and no not-twice rule; with three runners someone turns a corner almost every
+   tick, which measured 64–68 % against its own 60 % bar. See §Tuning revision.)
 
 **Scripted baseline `wallhug` (runner).** Blind: reads only its 3 × 3 window, its inbox/standing
 order and its own memory. No RNG, no notes:
@@ -452,7 +516,7 @@ cross-play mean over stranger runner pools — is a league setting, not game cod
 
 - `LighthouseError* = object of CatchableError`; `PlayerConfig* = object (name: string)`.
 - `GameConfig*` = babel's with the game fields replaced: `tokens`, `players`, `seed`,
-  `maxTicks` (default 45), `width` (17), `height` (11), `tideDelay` (10), `tidePeriod` (4),
+  `maxTicks` (default 45), `width` (11), `height` (9), `tideDelay` (10), `tidePeriod` (7),
   `keyCount` (3), `episodeTimeoutSeconds` (1200), `sampled` (bool), `turnDelayMs` (250),
   `playerConnectTimeoutSeconds` (180.0), `model` (`"claude-sonnet-5"`), `maxOutputTokens` (900),
   `llmTimeoutSeconds` (18).
@@ -499,12 +563,21 @@ API (mirrors babel's surface so the server, tests and viewer keep their shapes):
   after `done`); a blocked move is not an error.
 - `endEarly*(sim)` — `settle("deadline")`.
 - `teamScore*(sim): float`, `resultsJson*(sim): JsonNode`, `boardStateJson*(sim): JsonNode`.
-- `replayMatch*(config, events): seq[Sim]` — re-derives the whole state timeline from the
-  recorded events, exactly as babel `sim.nim:505-535`. `frames[i]` is the state after
-  `events[0 ..< i]`, so `frames.len == events.len + 1`. It **cross-checks** the recorded
-  `config.grid`, `config.exit`, `config.starts` and `config.keys` against what the seed re-derives
-  and raises `"the recorded maze does not match the seeded one"` on any disagreement — so a
-  wasm/native RNG divergence fails loudly instead of drawing a wrong maze.
+- `replayMatch*(config, events, recorded = nil): seq[Sim]` — re-derives the whole state timeline
+  from the recorded events, exactly as babel `sim.nim:505-535`. `frames[i]` is the state after
+  `events[0 ..< i]`, so `frames.len == events.len + 1`. The third argument is the **recorded
+  `config` JSON node** from the replay payload; `replayMatch` **cross-checks** its `grid`, `exit`,
+  `starts` and `keys` against what the seed re-derives and raises `"the recorded maze does not
+  match the seeded one"` on any disagreement — so a wasm/native RNG divergence fails loudly
+  instead of drawing a wrong maze. It is a third argument rather than a field lookup because
+  `GameConfig` (above) carries no `grid`/`exit`/`starts`/`keys`: those are derived from the seed,
+  not configured, and putting them in `GameConfig` would make the runtime config schema lie. Both
+  call sites — `server.nim`'s `statesFromEvents` and `replay-viewer/lighthouse_replay.nim` — pass
+  it, and `tests/test_replay.nim` proves a one-character grid edit raises.
+  Note that the per-tick sub-events (`say`, `key`, `escape`, `drown`) are **derived** by
+  `applyTick` from the `tick` event that follows them, so `replayMatch` buffers the `say` text and
+  replays whole ticks; the frames for the sub-events repeat the pre-tick state and the `tick`
+  event's frame is the post-resolution snapshot the scrubber steps through.
 - `eventToJson*(event)`, `eventFromJson*(node)`.
 
 **Event vocabulary written to the replay** (the complete list; the viewer re-derives every frame
@@ -533,10 +606,10 @@ is the post-resolution snapshot and is what the scrubber steps through.
     "lastMove":"N","blocked":false,"window":["#.#","#@.","###"],
     "notes":"…","scripted":false,"pending":true}
  ],
- "grid": ["#################", "#...#.....#.....#", "…11 strings…"],
- "exit": [7,0], "gateOpen": false,
- "keysOnFloor": [[11,5],[15,3]], "keysCollected": 1, "keyCount": 3,
- "tick": 12, "maxTicks": 45, "clock": 19, "tideRows": 2, "waterLine": 9,
+ "grid": ["#########.#", "#.........#", "…9 strings…"],
+ "exit": [9,0], "gateOpen": false,
+ "keysOnFloor": [[7,5],[9,5]], "keysCollected": 1, "keyCount": 3,
+ "tick": 12, "maxTicks": 45, "clock": 19, "tideRows": 1, "waterLine": 8,
  "message": "Sprocket N; Gizmo E; Ratchet hold", "messageAge": 0, "messageCost": 1,
  "escaped": 0, "drowned": 0, "score": 12.0,
  "phase": "running", "gameDone": false, "reason": ""}
@@ -563,12 +636,12 @@ these bytes, and the only network the viewer does is the S3 `GET` of this file:
 {"protocol": "lighthouse.replay.v1",
  "names": ["Fresnel","Sprocket","Gizmo","Ratchet"],
  "policyNames": ["lighthouse-beacon","lighthouse-pilot","Baseline (1)","Baseline (2)"],
- "config": {"seed": 7, "maxTicks": 45, "width": 17, "height": 11,
-            "tideDelay": 10, "tidePeriod": 4, "keyCount": 3,
+ "config": {"seed": 7, "maxTicks": 45, "width": 11, "height": 9,
+            "tideDelay": 10, "tidePeriod": 7, "keyCount": 3,
             "messageCap": 160, "sampled": true,
-            "grid": ["#################", "…11 strings…"],
-            "exit": [7,0], "starts": [[1,9],[9,9],[15,9]],
-            "keys": [[3,7],[11,5],[15,3]]},
+            "grid": ["#########.#", "#.........#", "…9 strings…"],
+            "exit": [9,0], "starts": [[1,7],[5,7],[9,7]],
+            "keys": [[3,5],[7,5],[9,5]]},
  "events": [ … ],
  "results": { … }}
 ```
@@ -645,7 +718,11 @@ every frame in the browser from the recorded events with the **same Nim sim** th
 server is contacted except S3 for the `.replay` file.
 
 **Chrome reused verbatim.** From `/workspace/starters/cogame-babel`:
-`client/chrome.css` byte-for-byte; `replay-viewer/index.html`'s structure (`#layout`, `#stage`,
+`client/chrome.css` byte-for-byte **except** the scorebug legibility rules below, which babel's
+copy does not contain — `.plate-name { min-width: 3.2em; flex: 1 1 auto }` and the
+`@media (max-width: 640px) { .plate-label { display: none } }` block are taken verbatim from
+`cogame-bullwhip`'s `chrome.css`, which is where they were added; `grid-template-columns` becomes
+`repeat(4, 1fr)` for four plates instead of babel's five; `replay-viewer/index.html`'s structure (`#layout`, `#stage`,
 `#topband` with `#wordmark`/`#clock`/`#statuschip`/`#feedtoggle`, `#scorebug`, `#board-wrap` with
 `#table`/`#lightpool`/`#grain`/`#endscreen`, `#transport` with `#scrub`/`.tbar`/`#play`/`#pos`,
 `#feed`, `#loading`) with only the wordmark text (`LIGHT<span>HOUSE</span>`) and the module/global
@@ -719,8 +796,9 @@ scorebug is checked at that width, not at desktop width: `.plate-name` keeps
 `flex: 1 1 auto; min-width: 3.2em` and the `.plate-label` text hides under 640 px (the starter's
 rule, kept). Below a 520 px stage the three corner thumbnails collapse from the right gutter into
 a single row under the maze; below 420 px they hide entirely and the subtitle plate wraps to at
-most two lines, ellipsised on a rune-safe boundary. At 360 px the 17 × 11 board still gives ~20 px
-cells, so walls, water, keys and the four sprites all read. Nothing is rendered as internal
+most two lines, ellipsised on a rune-safe boundary. At 360 px the 11 × 9 board gives 17–23 px
+cells depending on the stage height (21 px at 360 × 240, against 17 px for the 17 × 11 board this
+note originally specified), so walls, water, keys and the four sprites all read. Nothing is rendered as internal
 notation: the feed says "moves north", not "N"; the clock says "TICK 12 / 45", not "t=12".
 
 **Real art, not placeholders.** The five PNGs and `font.ttf` are the starter's real assets,
@@ -760,8 +838,8 @@ shading rules named above, the same way babel draws its scene cards and shapes. 
   "turn-based","four-player","maze"]`.
   - `config_schema` (`additionalProperties: false`, required `tokens` + `players`): `tokens` and
     `players` `minItems: 4, maxItems: 4`; **`num_agents` integer, minimum 4, maximum 4**; `seed`;
-    `maxTicks` 4..55 default 45; `width` 9..25 default 17 (odd); `height` 9..15 default 11 (odd);
-    `tideDelay` 0..40 default 10; `tidePeriod` 1..12 default 4; `keyCount` 1..5 default 3;
+    `maxTicks` 4..55 default 45; `width` 9..25 default 11 (odd); `height` 9..15 default 9 (odd);
+    `tideDelay` 0..40 default 10; `tidePeriod` 1..12 default 7; `keyCount` 1..5 default 3;
     `episodeTimeoutSeconds` 60..6000 default 1200; `turnDelayMs` 0..2000 default 250; `model`;
     `maxOutputTokens` 64..2000 default 900; `llmTimeoutSeconds` 5..300 default 18;
     `player_connect_timeout_seconds` default 180.
@@ -789,8 +867,8 @@ shading rules named above, the same way babel draws its scene cards and shapes. 
   - **`variants[]` — `num_agents: 4` in every one**:
     | id | game_config |
     |---|---|
-    | `standard` | `players` [Player1..Player4], **`num_agents: 4`**, `maxTicks: 45`, `width: 17`, `height: 11`, `tideDelay: 10`, `tidePeriod: 4`, `keyCount: 3`, `turnDelayMs: 250`, `player_connect_timeout_seconds: 180` |
-    | `spring-tide` | `players` [Player1..Player4], **`num_agents: 4`**, `maxTicks: 45`, `width: 17`, `height: 11`, `tideDelay: 10`, **`tidePeriod: 3`**, `keyCount: 3`, `turnDelayMs: 250`, `player_connect_timeout_seconds: 180` |
+    | `standard` | `players` [Player1..Player4], **`num_agents: 4`**, `maxTicks: 45`, `width: 11`, `height: 9`, `tideDelay: 10`, `tidePeriod: 7`, `keyCount: 3`, `turnDelayMs: 250`, `player_connect_timeout_seconds: 180` |
+    | `spring-tide` | `players` [Player1..Player4], **`num_agents: 4`**, `maxTicks: 45`, `width: 11`, `height: 9`, `tideDelay: 10`, **`tidePeriod: 5`**, `keyCount: 3`, `turnDelayMs: 250`, `player_connect_timeout_seconds: 180` |
   - **`certification`** — `game_config`: `players` `[{"name":"Fresnel"},{"name":"Sprocket"},
     {"name":"Gizmo"},{"name":"Ratchet"}]`, **`num_agents: 4`**, `seed: 11`, `maxTicks: 10`,
     `turnDelayMs: 0`, `player_connect_timeout_seconds: 180`; `players`:
@@ -819,9 +897,10 @@ shading rules named above, the same way babel draws its scene cards and shapes. 
   Champion #1 `lighthouse-beacon` → daveey; champion #2 `lighthouse-pilot` → daveey-1 (uploaded
   while daveey-1 is the active player, hence the `player` field); fillers are the two scripted
   baselines, whose versions must differ from both champions'.
-- **Kept byte-for-byte from the starter**: `client/chrome.css`, `data/arena_floor.png`,
+- **Kept byte-for-byte from the starter**: `data/arena_floor.png`,
   `data/soldier_{red,blue,green,yellow}_front.png`, `data/font.ttf`, `data/FONT_LICENSE.txt`,
-  `nimby.lock`, `LICENSE`, `.gitignore`.
+  `nimby.lock`, `LICENSE`, `.gitignore`. `client/chrome.css` is babel's byte-for-byte apart from
+  the scorebug rules named in §Viewer, which babel does not have.
 
 ---
 
@@ -841,7 +920,9 @@ then the wasm-viewer job. The sandbox cannot run any of this locally; CI is the 
 4. **Tide schedule**: `tideRows(clock)` is monotone non-decreasing, 0 for `clock < tideDelay`,
    `height` at `clock == floodClock`; `waterLine == height - tideRows`; a tile is flooded iff
    `y >= waterLine`.
-5. **Resolution order**, on a hand-built 5 × 5 fixture, one assertion per numbered step: a wall
+5. **Resolution order**, on a hand-built **9 × 9** fixture (the note's own `width`/`height`
+   validation rejects anything below 9, so 5 × 5 cannot be constructed), one assertion per
+   numbered step: a wall
    bump leaves the position unchanged and sets `blocked`; a move into water is a bump, not a
    drowning; a key is taken on entry and `keysCollected` increments; the gate opens exactly when
    the last key is taken and never closes; a runner on the **open** exit escapes and one on a
@@ -858,8 +939,8 @@ then the wasm-viewer job. The sandbox cannot run any of this locally; CI is the 
 9. **Rune truncation**: a 400-rune message of multi-byte runes truncates to 160 runes + `…`,
    `runeLen == 160`, and `validateUtf8` of the serialised event is `-1`. Same for 400/200-rune
    notes.
-10. **Replay re-derivation**: `replayMatch(config, events).len == events.len + 1`; the final
-    frame's `boardStateJson` equals the live sim's; a replay whose recorded `config.grid` is
+10. **Replay re-derivation**: `replayMatch(config, events, recorded).len == events.len + 1`; the
+    final frame's `boardStateJson` equals the live sim's; a replay whose recorded `config.grid` is
     mutated by one character raises `"the recorded maze does not match the seeded one"`.
 11. **Event JSON round-trip**: `eventFromJson(eventToJson(e)) == e` for every one of the seven
     kinds.
@@ -877,8 +958,12 @@ then the wasm-viewer job. The sandbox cannot run any of this locally; CI is the 
 3. **Talk budget**: `lantern` transmits on ≤ 60 % of the ticks it plays.
 4. **Competence floor / tuning oracle**: `lantern` + three `wallhug` gets `keysCollected == 3` on
    at least 3 of the 4 seeds and `escaped == 3` on at least 2 of the 4. If this fails, the fix is
-   to raise `standard`'s `tidePeriod` from 4 to 5 (and `spring-tide`'s from 3 to 4) rather than to
-   weaken the maze — this test is the parameter-tuning decision rule, not a flaky check.
+   to raise `standard`'s `tidePeriod` (and `spring-tide`'s with it) rather than to weaken the maze
+   — this test is the parameter-tuning decision rule, not a flaky check. **Check the oracle first:**
+   if the minimum over key→runner assignments of the maximum over runners of
+   `dist(start, key) + dist(key, exit)` exceeds `maxTicks`, no tide setting can help and the board
+   or the key draw is what has to move (§Tuning revision). Currently measured: keys on 4 of 4
+   seeds, all three out on 3 of 4.
 5. **Instruction following**: counting only ticks on which a fresh message named a given runner,
    that runner moved in the ordered direction on ≥ 80 % of them.
 6. **Role substitution**: a seat registered `lantern` in a runner slot plays `wallhug`, a seat
