@@ -118,8 +118,9 @@ The step order is load-bearing and is the whole point of the file:
    output contains `Replay liveness: skipped (static replay bundle declared`** — that line is
    the proof the replay ships as a static bundle rather than a `/client/replay` pod.
 4. `coworld upload-policy <IMAGE>:latest --name <name> --run <argv…> [--secret-env K=V …]`
-   for every policy. **Before** step 5, because `upload-coworld` prunes the local image the
-   policies are cut from. `run` may be a string (shell-split) or an array; a policy may
+   for every policy. **Before** step 5: observed, `upload-policy` reports the local image
+   missing when it runs after `upload-coworld` (the ordering is empirical — no prune or
+   `rmi` exists in the CLI — but it is reproducible). `run` may be a string (shell-split) or an array; a policy may
    override `image`. The command is never echoed — `--secret-env` values are secrets.
    A policy entry may also carry **`"player": "ply_…"`**: that one upload is wrapped in
    `softmax player use <ply_id>` … `softmax player unset`, so the version is *owned* by that

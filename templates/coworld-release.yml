@@ -8,10 +8,12 @@
 #
 # The step ORDER is load-bearing:
 #   build -> certify -> upload-policy (xN) -> upload-coworld -> secret put
-# Policies MUST be uploaded before `upload-coworld`, because upload-coworld
-# prunes the local image the policies are cut from. `secret put` MUST come
-# after upload-coworld, because the secret namespace does not exist until the
-# Coworld does.
+# Policies MUST be uploaded before `upload-coworld`: OBSERVED, `upload-policy`
+# reports the local image missing when it runs afterwards. (The mechanism is
+# not "upload-coworld prunes the image" -- no prune/rmi exists anywhere in the
+# CLI; only the ordering is established, so treat it as empirical.) `secret
+# put` MUST come after upload-coworld, because the secret namespace does not
+# exist until the Coworld does.
 #
 # Org secrets required on Metta-AI: SOFTMAX_TOKEN, ANTHROPIC_API_KEY.
 #
@@ -196,7 +198,8 @@ jobs:
           PY
 
       - name: Upload the policies
-        # BEFORE upload-coworld: upload-coworld prunes the local image.
+        # BEFORE upload-coworld: observed, upload-policy reports the local
+        # image missing if it runs after upload-coworld.
         run: |
           set -euo pipefail
           echo "Upload the policies" > "$RR/current_step"
