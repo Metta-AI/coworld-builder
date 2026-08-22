@@ -9,3 +9,6 @@
 2026-08-22T23:37:03Z 10 design.md copied to runs/2026-08-22-cogball/design.md; phase -> 20
 2026-08-22T23:37:03Z progress phase=10 marker=runs/2026-08-22-cogball/design.md
 2026-08-22T23:37:03Z heartbeat phase=20
+2026-08-22T23:38:13Z 20 phase entered; prompts/20-build.md read; repo created public (github.com/Metta-AI/cogame-cogball); propagate-secrets run=32605724441 success; gh secret list shows SOFTMAX_TOKEN+ANTHROPIC_API_KEY
+2026-08-22T23:38:13Z 20 dispatching builder sub-agent (implement design note, CI green on main)
+2026-08-22T23:38:13Z heartbeat phase=20
