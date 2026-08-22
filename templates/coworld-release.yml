@@ -214,7 +214,7 @@ jobs:
           ASSIGNMENT = re.compile(r"(?<![\w.-])([A-Za-z_][A-Za-z0-9_]*)=(\S+)")
 
           def redact(text):
-              return ASSIGNMENT.sub(lambda m: f"{m.group(1)}=<redacted>", text or "")
+              return ASSIGNMENT.sub(lambda m: f"{m.group(1)}=***", text or "")
 
           def softmax(*args):
               return subprocess.run(

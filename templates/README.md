@@ -27,8 +27,15 @@ Four other angle-bracket names appear **inside comments and input descriptions o
 runtime values, not substitutions — leave them alone: `<run_id>` (a GitHub Actions run id, in
 the `gh run download` recipes), `<name>` (a policy name, in the `<name>:vN` input
 description), and `<cow_id>` / `<sha>` (in the note about the platform's static replay route
-`/v2/coworlds/replays/static/<cow_id>/<sha>/index.html`). After substitution, a `grep -n '<'`
-over the copied files should return only those.
+`/v2/coworlds/replays/static/<cow_id>/<sha>/index.html`). After substitution, the residue check
+
+```bash
+grep -rnE '<[A-Za-z_][A-Za-z0-9_]*>' .github/workflows tools/ci
+```
+
+should return exactly those four names and nothing else. Grep for the placeholder *shape*, not
+for a bare `<`: the copied files legitimately contain `<<'PY'` heredocs and `slot < seats`
+comparisons, and a gate written against a bare `<` false-positives on every one of them.
 
 ---
 

@@ -102,7 +102,7 @@ if declared is None:
         f"{manifest_path}.\n"
         "  The seat count must be declared in the certification fixture (and in "
         "every variant).\n"
-        '  Add "num_agents": <seats> to certification.game_config and re-run.'
+        '  Add a "num_agents" integer to certification.game_config and re-run.'
     )
 if not isinstance(declared, bool) and isinstance(declared, int) and declared >= 1:
     seats = declared
@@ -126,15 +126,15 @@ if fixture_players and len(fixture_players) != seats:
         f"SEAT-COUNT FAIL: certification.game_config.num_agents is {seats} but "
         f"certification.game_config.players names {len(fixture_players)} seats."
     )
-# SMOKE_SEATS / <SEATS> is an independent second declaration, substituted at
-# scaffold time from the design note. It is a CROSS-CHECK, not a fallback: if
+# SMOKE_SEATS is an independent second declaration, substituted into this file
+# at scaffold time from the design note. It is a CROSS-CHECK, not a fallback: if
 # it disagrees with the manifest, one of the two was edited alone. A
 # non-numeric value means the placeholder was never substituted, which the
 # phase-20 placeholder gate catches separately -- ignore it here.
 if str(seats_expected).isdigit() and int(seats_expected) != seats:
     raise SystemExit(
         f"SEAT-COUNT FAIL: the manifest fixture declares {seats} seats but "
-        f"SMOKE_SEATS/<SEATS> says {seats_expected}. The design note and the "
+        f"SMOKE_SEATS says {seats_expected}. The design note and the "
         "manifest disagree; fix whichever is wrong."
     )
 

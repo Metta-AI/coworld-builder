@@ -156,7 +156,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: docker/setup-buildx-action@v3
 
-      # Invoked by path, not through `bash`: `bash <script>` ignores the exec
+      # Invoked by path, not through `bash`: a `bash SCRIPT` call ignores the exec
       # bit, so a 0644 helper would go green here and only fail wherever it is
       # executed directly.
       - name: Assert the smoke script is present and executable
