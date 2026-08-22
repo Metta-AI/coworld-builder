@@ -62,7 +62,7 @@ Other inputs: `secret_key_name` (default `anthropic_api_key`), `put_secret` (def
 {"version":"0.1.2","ok":true,"cow_id":"cow_…","canonical":true,
  "manifest_sha":"sha256:…","hosted_smoke":"…","hosted_certification":"…",
  "certify":{"ok":true,"replay_liveness":"skipped (static replay bundle declared…)","output_tail":"…"},
- "policies":[{"name":"<slug>-steady","version":"v1","policy_version_id":null,"player_id":null}],
+ "policies":[{"name":"<slug>-<prompt-name-1>","version":"v1","policy_version_id":null,"player_id":null}],
  "secret_put":true,"errors":[],"step_failed":null}
 ```
 
@@ -172,15 +172,26 @@ Notes that survive the move to CI:
 
 ## Phase 2 — Policies
 
-Policies are minted by the `policies` input of the same release dispatch. Identical content
-dedupes to the same version — **vary an env var to mint a distinct version**. You need distinct
-versions for: champion #1, champion #2, and every filler.
+Policies are minted by `tools/ci/policies.json` in the repo (or the `policies` input of the same
+release dispatch, which overrides it for one run). Identical content dedupes to the same version —
+**vary the prompt or the baseline name to mint a distinct version**. You need distinct versions
+for: champion #1, champion #2, and every filler.
+
+The canonical set: **two LLM prompt champions** (champion #1 owned by daveey, champion #2 by
+daveey-1) plus **≥1 scripted filler, normally 2**. Bullwhip's real set was `bullwhip-steady`
+(champion #1), `bullwhip-forecaster` (champion #2), `bullwhip-basestock` and `bullwhip-mirror`
+(fillers):
 
 ```json
-[{"name":"<slug>-steady","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1"}},
- {"name":"<slug>-basestock","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1","BASELINE":"basestock"}},
- {"name":"<slug>-forecaster","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}}]
+[{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}},
+ {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"… different …"},
+  "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"},
+ {"name":"<slug>-<baseline-1>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
+ {"name":"<slug>-<baseline-2>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
 ```
+
+A **scripted policy seated as a champion is a FAILURE state** (see §Definition of done) — both
+champions run `PLAYER_PROMPT`.
 
 `release-result.json.policies[]` gives `{"name","version","policy_version_id":null,"player_id"}`.
 The `policy_version_id` is **always null** — resolve the UUIDs the filler-policy call needs from

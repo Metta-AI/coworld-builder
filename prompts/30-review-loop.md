@@ -108,8 +108,10 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
 12. **Release order and scaffold.** `coworld-release.yml` runs build → certify →
     **upload-policies** → upload-coworld → secret put, in that order, and any smoke step depends on
     a freshly built binary in the same run. All three workflows are present, `tools/ci/docker_smoke.sh`
-    is present and executable, `tools/ci/policies.json` defines five distinct policies with champion
-    #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, and this gate exits 0:
+    is present and executable, `tools/ci/policies.json` defines **at least four distinct policies —
+    two LLM prompt champions (`PLAYER_PROMPT`) plus ≥1 scripted filler (`PLAYER_SCRIPTED=<name>`),
+    normally 2** — with champion #2 (the second `PLAYER_PROMPT` entry) carrying
+    `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`, and this gate exits 0:
     ```bash
     if grep -n '<slug>\|<IMAGE>\|<SEATS>' \
       .github/workflows/ci.yml .github/workflows/coworld-release.yml \

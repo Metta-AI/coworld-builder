@@ -43,8 +43,10 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `tools/ci/docker_smoke.sh` (**`chmod +x`**), and `tools/ci/policies.json` (from
    > `templates/tools/ci/policies.json.example` — copy **and edit**: the example's `bullwhip-*`
    > names and prompts are bullwhip's; rewrite names and prompts for THIS game. Only the shape is
-   > inherited: one LLM policy per champion + two scripted baselines, same image, env-switched,
-   > champion #2 carrying `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
+   > inherited: **two LLM prompt policies** (`PLAYER_PROMPT`, one per champion, different prompts)
+   > **+ ≥1 scripted baseline, normally two** (`PLAYER_SCRIPTED=<baseline name>`), all in the same
+   > image, env-switched, with champion #2 — the second `PLAYER_PROMPT` entry — carrying
+   > `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`).
    > `ci.yml`'s `docker-smoke` job calls `tools/ci/docker_smoke.sh` and its `wasm-viewer` job
    > calls `tools/build_replay_viewer.sh` — if either file is missing or non-executable the repo's
    > CI cannot go green, so both are part of this scaffold, not a later step.

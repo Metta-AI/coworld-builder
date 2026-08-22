@@ -15,17 +15,33 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
    free and are the documented fix for two distinct failures — use them rather than waiting.
 2. Policies come from **`tools/ci/policies.json` in the repo** (scaffolded in phase 20 from
    `templates/tools/ci/policies.json.example`); the `policies` dispatch input is optional and only
-   overrides that file for one run. Either way it must define **five distinct versions** (two
-   champions + three fillers) — identical content dedupes to one version, and fillers must differ
-   from champions:
+   overrides that file for one run.
+
+   **Canonical policy set for every run** (identical content dedupes to one version, so every
+   entry must differ in content):
+
+   | role | name | how it runs | owner |
+   |---|---|---|---|
+   | champion #1 | `<slug>-<prompt-name-1>` | `PLAYER_PROMPT` (LLM prompt policy) | daveey (no `player` field) |
+   | champion #2 | `<slug>-<prompt-name-2>` | `PLAYER_PROMPT`, a **different** prompt | daveey-1 (`"player": "ply_bac48eb1-…"`) |
+   | fillers | `<slug>-<baseline>` | `PLAYER_SCRIPTED=<baseline>` | daveey |
+
+   **Both champions are LLM prompt policies** — a scripted policy seated as a champion fails
+   definition-of-done item 4. **≥1 filler, normally 2**, and every filler is a scripted baseline
+   whose version differs from both champions'. Bullwhip's real set (the shape
+   `templates/tools/ci/policies.json.example` carries verbatim) was champion #1
+   `bullwhip-steady`, champion #2 `bullwhip-forecaster`, fillers `bullwhip-basestock` and
+   `bullwhip-mirror`:
    ```json
-   [{"name":"<slug>-steady","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1"}},
-    {"name":"<slug>-basestock","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1","BASELINE":"basestock"}},
-    {"name":"<slug>-mirror","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"1","BASELINE":"mirror"}},
-    {"name":"<slug>-forecaster","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}},
-    {"name":"<slug>-hedger","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"},
-     "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"}]
+   [{"name":"<slug>-<prompt-name-1>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"…"}},
+    {"name":"<slug>-<prompt-name-2>","run":"/bin/<slug>_player","env":{"PLAYER_PROMPT":"… a different prompt …"},
+     "player":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"},
+    {"name":"<slug>-<baseline-1>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-1>"}},
+    {"name":"<slug>-<baseline-2>","run":"/bin/<slug>_player","env":{"PLAYER_SCRIPTED":"<baseline-2>"}}]
    ```
+   The scripted baselines are selected by **`PLAYER_SCRIPTED=<name>`** — the same env var the
+   builder brief names (`prompts/20-build.md`), with the baseline's name as its value. There is no
+   separate `BASELINE` variable.
    The optional `"player"` field wraps that one `upload-policy` in
    `softmax player use <ply_id>` / `unset` (unset in a `finally`, per policy and around the loop),
    so the version is **owned by daveey-1**. Champion #2 needs this or its submit 409s "already
@@ -48,7 +64,8 @@ Owner: coordinator dispatching `coworld-release.yml` in the coworld repo. No doc
    - `canonical == true`
    - `certify.ok == true` and `certify.replay_liveness` contains
      `skipped (static replay bundle declared`
-   - `policies[]` has one entry per requested policy — `{"name","version","policy_version_id","player_id"}` —
+   - `policies[]` has one entry per requested policy (≥4: two champions + ≥1 filler, normally 2) —
+     `{"name","version","policy_version_id","player_id"}` —
      with distinct `<name>:vN` labels, and champion #2's `player_id` ==
      `ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`.
      **`policy_version_id` is always `null`** (upload-policy prints no uuid). Do not treat that as
@@ -76,8 +93,10 @@ requested policy with distinct `<name>:vN` labels, champion #2's `player_id` ==
 ## Writes
 
 - STATE: `coworld.version`, `coworld.cow_id`, `coworld.manifest_sha`,
-  `policies.champion1`, `policies.champion2`, `policies.fillers[]` — all as `<name>:vN` labels
-  (UUIDs are not available yet; phase 50 resolves and records them),
+  `policies.champion1` (the daveey-owned LLM prompt policy), `policies.champion2` (the
+  daveey-1-owned LLM prompt policy), `policies.fillers[]` (the scripted baselines) — all as
+  `<name>:vN` **labels** (UUIDs are not available yet; phase 50 resolves them into
+  `policies.filler_version_ids[]` and never overwrites these names),
   `phase_attempts["40"]`, `phase: "50"`, `heartbeat_at`.
 - `log.md`: one line per dispatch — version, run id, `step_failed`, decision.
 - Asana: complete the phase-40 subtask; comment with `cow_id`, version, and the release run URL.

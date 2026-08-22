@@ -200,7 +200,7 @@ Inputs: `player_id`, `policy` (`<name>:vN`), `league_id`. `concurrency: coworld-
 `cancel-in-progress: false`. Artifact `submit-result` → `submit-result.json`:
 
 ```json
-{"ok": true, "player_id": "ply_…", "policy": "<slug>-forecaster:v1", "league_id": "league_…",
+{"ok": true, "player_id": "ply_…", "policy": "<slug>-<prompt-name-1>:v1", "league_id": "league_…",
  "exit_code": 0, "output_tail": "…", "error": null}
 ```
 
@@ -209,8 +209,12 @@ Submission stays in its own workflow — do not fold it into the release workflo
 ```bash
 gh workflow run coworld-submit.yml -R Metta-AI/cogame-<slug> --ref main \
   -f player_id=ply_44ae9048-3242-4654-881f-6d9d43347fa3 \
-  -f policy='<slug>-forecaster:v1' -f league_id="$L"
+  -f policy="$CH1" -f league_id="$L"      # CH1 = STATE.policies.champion1, e.g. bullwhip-steady:v1
 ```
+
+Champion #1 is the daveey-owned **LLM prompt** policy; champion #2 is the second LLM prompt policy,
+uploaded while daveey-1 was active. The fillers are the scripted baselines (≥1, normally 2). Never
+submit a scripted baseline as a champion.
 
 Ownership is set at **upload** time, not submit time: give champion #2's policy entry
 `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"` in `coworld-release.yml`'s `policies` JSON,

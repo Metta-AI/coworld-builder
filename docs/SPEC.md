@@ -94,7 +94,11 @@ Degrade-never-hang (assume `episodeTimeoutSeconds` 1200, play inside 60 % of it)
 `num_agents` in every variant and the cert fixture. Upload policies **before**
 `upload-coworld`. Secret put **after** it. Filler versions ≠ champion versions. Fillers set
 **before** the first `trigger-round`. Champion #2 uploaded while `daveey-1` is the active
-player. See `playbooks/make-coworld.md` for the full text and the gotcha table.
+player. **Both champions are LLM prompt policies** (`PLAYER_PROMPT`), champion #1 owned by
+daveey and champion #2 by daveey-1; the fillers are the **scripted baselines**
+(`PLAYER_SCRIPTED=<name>`), **≥1, normally 2**. Bullwhip's set: champion #1
+`bullwhip-steady:v1`, champion #2 `bullwhip-forecaster:v1`, fillers `bullwhip-basestock:v1`
+and `bullwhip-mirror:v1`. See `playbooks/make-coworld.md` for the full text and the gotcha table.
 
 ## Review loop (phase 30)
 
