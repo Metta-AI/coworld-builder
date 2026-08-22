@@ -126,7 +126,7 @@ curl -sS "$BUNDLE/index.html" -o /tmp/idx.html -w 'index.html %{http_code} %{siz
 grep -oE '(src|href)="[^"]+"' /tmp/idx.html            # the asset list, verbatim
 grep -oE '[A-Za-z0-9_.-]+\.wasm' /tmp/idx.html /tmp/*.js   # the wasm the module loader names
 for A in <each asset path from the two greps>; do
-  curl -sSL "$BUNDLE/$A" -o /dev/null -w "$A %{http_code} %{size_download}\n"
+  curl -sSL "$BUNDLE/$A" -o "/tmp/$(basename "$A")" -w "$A %{http_code} %{size_download}\n"
 done
 ```
 

@@ -254,7 +254,7 @@ jobs:
                   if player:
                       switch = softmax("player", "use", player)
                       sys.stdout.write(switch.stdout)
-                      sys.stderr.write(switch.stderr)
+                      sys.stderr.write(redact(switch.stderr))
                       if switch.returncode != 0:
                           print("::endgroup::", flush=True)
                           failures.append(
@@ -269,7 +269,7 @@ jobs:
                       if player:
                           unset_player()
                   sys.stdout.write(proc.stdout)
-                  sys.stderr.write(proc.stderr)
+                  sys.stderr.write(redact(proc.stderr))
                   print("::endgroup::", flush=True)
                   match = re.search(r"^Upload complete: (\S+):(v\d+)$", proc.stdout, re.M)
                   if proc.returncode != 0 or not match:

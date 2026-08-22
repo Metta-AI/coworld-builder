@@ -24,8 +24,9 @@ Every firing of this deployment is a *heartbeat*. Run these steps in order, ever
 2a. **Resumes are raced too.** Before working the phase, mint a session nonce, write it as
    `STATE.session_id` with `heartbeat_at` and `session_ended_at: null`, log
    `<UTC> 00 resume at phase <n> attempt=<k> session=<nonce>`, `git pull --rebase` and push. If
-   the push is rejected, rebase and **exit** if `log.md`'s last `00 resume` line carries a
-   different nonce. Then re-GET the Asana `heartbeat_at` custom field after 20 s and **exit** if
+   the push is rejected, rebase (abort and exit on a conflict) and **exit** if `log.md` now
+   contains any `00 resume` line with a foreign nonce that was not there before your pull —
+   never "the last line", which after a rebase is always your own. Then re-GET the Asana `heartbeat_at` custom field after 20 s and **exit** if
    it moved past your stamp. `prompts/00-claim.md` step 5.0 is the executable version, and it
    applies to the Blocked-resume path in step 3 as well.
 3. Else if a run task is in *Blocked* and its human subtask is complete → move it to

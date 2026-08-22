@@ -26,7 +26,7 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `/workspace/starters/<starter>`. Copy the starter's layout, chrome, and
    > build scripts verbatim where the note does not override them. Deliver on `main`:
    > `src/` (sim module, server, LLM policy, scripted baseline — one image, env-switched
-   > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=1`), `client/` (viewer reusing the starter's
+   > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`), `client/` (viewer reusing the starter's
    > `renderer.js`/`chrome.css` chrome), `replay-viewer/<slug>_replay.nim` +
    > `tools/build_replay_viewer.sh` (the `coworld build` hook, emscripten, same sim module),
    > `compose.yaml` (service name `<slug>`, `platform: linux/amd64`,

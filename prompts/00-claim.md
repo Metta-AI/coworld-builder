@@ -177,10 +177,12 @@ create nothing, write nothing, and do not retry the push.
       `<UTC> 00 resume at phase <n> attempt=<k> session=<nonce>` to `log.md` — that exact
       format, `session=` last — commit and push.
    3. **If the push is rejected**, the other heartbeat got there first: `git pull --rebase`
-      (never force — `AGENT.md` hard rule 2), re-read `log.md`. If its **last `00 resume` line
-      carries a different `session=` nonce**, that session owns the run: append nothing, write
-      nothing, and **exit**. Only if the last resume line is still yours (or there is none) may
-      you push again.
+      (never force — `AGENT.md` hard rule 2). A rebase replays YOUR commit on top of the
+      winner's, so "the last line" is always yours — do not read it. Instead: if the rebase
+      **conflicts** (in `log.md` or `STATE.json`), `git rebase --abort` and **exit**; otherwise
+      re-read `log.md` and **exit** if it now contains **any `00 resume` line with a nonce other
+      than yours that was not there before your pull** (compare against the copy you read in
+      step 1). Only if no such line appeared may you push again.
    4. Write `heartbeat_at` = the same stamp on the Asana task (custom field
       `1217748424048134`). **Wait 20 s and re-GET that field.** If it has moved **past** your
       stamp, another session is heartbeating this run: **exit immediately**, leaving its value
@@ -193,7 +195,8 @@ create nothing, write nothing, and do not retry the push.
    phase 30's four rounds). So:
    - **First, look for progress.** Scan `runs/<run>/log.md` for a
      `<UTC> progress phase=<nn> marker=<value>` line for the **current phase** that is *newer
-     than the last `00 resume` line*. That line is written by the previous session's closing step
+     than the **previous session's** `00 resume` line* (the last one before the line you
+     appended in 5.0 — your own line is always the last one now). That line is written by the previous session's closing step
      (`AGENT.md` §Ending a heartbeat) and names a phase-specific, monotone marker:
 
      | phase | progress marker |

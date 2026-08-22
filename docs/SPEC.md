@@ -36,8 +36,10 @@ that names exactly what is needed, and exits.
      can observe the same free run in the same minute (the hourly cron plus a manual
      `deploy.py run`). The resuming session mints a nonce, writes it as `STATE.session_id` with
      `heartbeat_at`, logs `00 resume at phase <n> attempt=<k> session=<nonce>`, pulls and pushes;
-     a **rejected push** means it rebases and exits if `log.md`'s last `00 resume` line carries a
-     different nonce (never force — the same rejected-push rule covers claims and resumes). It
+     a **rejected push** means it rebases (aborting and exiting on a conflict) and exits if
+     `log.md` now contains any `00 resume` line with a foreign nonce that was not there before
+     its pull — never "the last line", which after a rebase is its own (never force — the same
+     rejected-push rule covers claims and resumes). It
      then re-GETs the Asana `heartbeat_at` custom field after 20 s and exits if the value moved
      past its own stamp. Only a session that survives all three checks works the phase.
      (`prompts/00-claim.md` step 5.0.)
@@ -230,7 +232,9 @@ docs/SPEC.md             this file
 prompts/00…90-*.md       phase prompts (the coordinator reads the phase's prompt when it enters it)
 agents/<role>.md         sub-agent system prompts: designer, builder, reviewer, fixer, judge, verifier
 agents/<role>.json       model + tools manifest (fleetctl-style)
-templates/               ci.yml, coworld-release.yml, run-task.md, blocked-subtask.md, announce.md, STATE.template.json
+templates/               ci.yml, coworld-release.yml, coworld-submit.yml, tools/ci/docker_smoke.sh,
+                         tools/ci/policies.json.example, run-task.md, blocked-subtask.md, announce.md,
+                         STATE.template.json, README.md
 playbooks/make-coworld.md   the make-coworld skill + gotchas (maintained here; copy of the local skill)
 playbooks/observatory-api.md  call shapes that are known to work (from the worked example)
 learnings/LEARNINGS.md   append-only, dated; every run adds a section

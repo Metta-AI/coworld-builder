@@ -28,7 +28,7 @@ Owner: coordinator. Discord, **not** Slack.
    to phase 80. Only if the search comes back empty (widen to `limit=100` once) may you post.
 1. Compose from `templates/announce.md`: name, one sentence on what the game is, one sentence on
    what makes it watchable, the two champions and their current ranks, the play link
-   `https://softmax.com/<slug>`, and the repo link. Keep it under ~1000 characters.
+   `https://softmax.com/<slug>`, and the repo link. Keep it ≤ 1800 characters (the hard limit in `templates/announce.md`).
 2. **Write the attempt marker BEFORE the POST**: set `STATE.announce.attempted_at` = now (UTC
    ISO-8601), commit, **push**. An unpushed marker cannot protect the next heartbeat; that is the
    whole point of writing it first.

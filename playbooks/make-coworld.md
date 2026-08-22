@@ -126,7 +126,7 @@ Pins that are never optional:
 - Repo `Metta-AI/cogame-<slug>`, **public** — public is a certification prerequisite
   (`source-resolves` 404s on private).
 - Build **both** an LLM/strategy policy and a scripted baseline from day one (same image,
-  env-switched: `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=1`).
+  env-switched: `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`).
 - **Watchability is a requirement, not polish:**
   - Reuse the starter's replay-viewer **chrome verbatim** — same scrubber, transport bar,
     scorebug. Treat the starter's `client/renderer.js` as the exact template.

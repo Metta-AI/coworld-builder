@@ -67,7 +67,7 @@ the reason. Never go to phase 90 for a starter choice.
 - [ ] Reply schema with a character cap on every free-text field (and a note that truncation is on
       **rune** boundaries).
 - [ ] Both policies specified: LLM prompt policy **and** scripted baseline, same image,
-      env-switched (`PLAYER_PROMPT` vs `PLAYER_SCRIPTED=1`), plus the baseline's algorithm.
+      env-switched (`PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`), plus the baseline's algorithm.
 - [ ] Simultaneous-decision games: states that all seats' LLM calls go out as **one parallel batch
       per turn**, and gives the per-turn wall-clock budget inside 60 % of `episodeTimeoutSeconds`
       (≈720 s total).
