@@ -22,19 +22,30 @@ that names exactly what is needed, and exits.
   export and no `diff` here**: `deploy.py` has `create`, `update`, `run`, `status` only, and
   `update` is what reconciles live with git. (fleetctl's mirror/diff pair is a cogamer-fleet
   steward duty, not a duty of this repo.)
-- **One deployment, hourly cron** (`*/60`, minute 11). Every run is a *heartbeat*:
-  1. Read the **Coworld Builder** board (the Coworld Builder gid in `fleet/cloud.md`; it is a
-     table row, not an environment variable). If a run task sits in *Running*
-     with `heartbeat_at` < 90 min old **and** `STATE.session_ended_at` is null or older than
-     `heartbeat_at` → another run is live → **exit**. (No dupes.)
-  2. If a run task is in *Running* with a stale heartbeat, **or** with a fresh heartbeat whose
+- **Three deployments, hourly crons staggered 20 minutes apart** (`coworld-builder-a` at minute
+  11, `-b` at 31, `-c` at 51 UTC — `fleet/cloud.md` §Parallelism, applied from
+  `fleet/deployment.json`'s `deployments` list). They are three crons on the **same** coordinator
+  agent, not three different agents. **Several runs in *Running* at once is the normal state**,
+  bounded by `max_parallel_runs` (`fleet/cloud.md` §Parallelism, currently 3). Every firing is a
+  *heartbeat*:
+  1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder**
+     board (the Coworld Builder gid in `fleet/cloud.md`; it is a table row, not an environment
+     variable) and compute `live` = the number of runs in *Running* whose `heartbeat_at` is
+     **fresh** — < 90 min old **and** with no `STATE.session_ended_at ≥ heartbeat_at`. That is
+     exactly the existing freshness rule; only what is done with it changed. A fresh run belongs
+     to a session that is still working it: never touch it.
+  2. Then adopt **at most one** unit of work, in this order — (a), (b), (c), else (d):
+     **(a)** a run in *Running* with a **stale** heartbeat, **or** with a fresh heartbeat whose
      `STATE.session_ended_at` is ≥ `heartbeat_at` (the last session ended cleanly and said so),
      → it is yours: **resume** at `STATE.json.phase`. Without that marker a run that needs more
      than one session would look alive for the full 90 minutes after its session died, and — the
-     cron being hourly — would advance only every other firing.
-  2a. **Every resume — from step 2 or step 3 — is guarded by a session nonce.** Two heartbeats
-     can observe the same free run in the same minute (the hourly cron plus a manual
-     `deploy.py run`). The resuming session mints a nonce, writes it as `STATE.session_id` with
+     crons being hourly — would advance only on the next deployment's firing.
+  2a. **Every resume — from (a) or (b) — is guarded by a session nonce.** Two heartbeats
+     can observe the same free run in the same minute (two crons 20 minutes apart plus a manual
+     `deploy.py run`, or a retried deployment run). The parallel crons do **not** need a new
+     mechanism: the existing claim and resume races already decide who owns a unit of work, and
+     the loser exits having written nothing.
+     The resuming session mints a nonce, writes it as `STATE.session_id` with
      `heartbeat_at`, logs `00 resume at phase <n> attempt=<k> session=<nonce>`, pulls and pushes;
      a **rejected push** means it rebases (aborting and exiting on a conflict) and exits if
      `log.md` now contains any `00 resume` line with a foreign nonce that was not there before
@@ -43,11 +54,18 @@ that names exactly what is needed, and exits.
      then re-GETs the Asana `heartbeat_at` custom field after 20 s and exits if the value moved
      past its own stamp. Only a session that survives all three checks works the phase.
      (`prompts/00-claim.md` step 5.0.)
-  3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
+     **(b)** else a run task in *Blocked* whose `STATE.blocked.subtask` is complete → move it to
      *Running* and **resume** (through the same step 2a guard).
-  4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
-     already have a run task), create the run task, and start at phase 00. A *Blocked* run whose
-     subtask is still open does **not** stop this: concurrency is 1 and the queue keeps moving,
+     **(c)** else, **if `live` < `max_parallel_runs` and fewer than 2 runs are *Blocked***, claim
+     the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
+     already have a run task), create the run task, and start at phase 00 — the existing
+     comment-first claim and SKIPPED rules, unchanged.
+     **(d)** else **exit**, appending one line to the shared `runs/heartbeats.log`:
+     `<UTC> heartbeat: cap reached (live=<n>/<max>)` when the cap is what stopped it, otherwise
+     `<UTC> heartbeat: nothing to do`. (The 2-Blocked bound keeps its own
+     `<UTC> 00 idle: <n> blocked runs, not claiming` line.)
+
+     A *Blocked* run whose subtask is still open does **not** stop (c): the queue keeps moving,
      bounded at **2 simultaneously-Blocked runs** — at 2, the heartbeat claims nothing and exits.
      An idea the coordinator **cannot start** is **SKIPPED**, not Blocked: its text is marked
      confidential (a public repo would publish it), or it cannot be mapped to any starter and the
@@ -55,12 +73,15 @@ that names exactly what is needed, and exits.
      `skipped by coworld-builder: <reason>` comment on the idea task, the gid appended to the
      committed `runs/SKIPPED.json`, and one card in the Builder board's *Fleet* section assigned
      to David Bloomin titled `SKIPPED <idea title>: <reason>` (one per idea, deduped by title);
-     the heartbeat then **continues to the next idea**. Step 4 skips gids listed in
+     the heartbeat then **continues to the next idea**. Step (c) skips gids listed in
      `runs/SKIPPED.json` and ideas already carrying that comment, so a skipped idea never stalls
      the queue. Phase 90 is **never** entered here: it needs a run task and a STATE, and at this
      point neither exists.
-  5. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
-     of work, and on every phase transition.
+  3. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
+     of work, and on every phase transition. Write `STATE.phase` — committed and pushed — at the
+     moment of **every** phase transition, **before** the new phase's first sub-agent is
+     dispatched (§State).
+
 - The sandbox has **no Docker, no Nim, no emsdk**. Every compile / image / certification /
   upload step runs in **GitHub Actions inside the coworld repo** from templates in this repo.
   The agent pushes, dispatches workflows (`gh workflow run`), polls (`gh run watch`), and
@@ -74,6 +95,26 @@ that names exactly what is needed, and exits.
   `cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`,
   `cogame-factorio`. Phase 10 reads the mounts; phase 20 still `git clone`s the chosen starter
   into the new repo's working tree so the new repo gets a clean history.
+
+### Parallelism and per-run isolation
+
+Runs are isolated by construction: each has its own `runs/<run>/` directory, its own Asana run
+task, its own `Metta-AI/cogame-<slug>` repo, its own league, division, champions and fillers.
+Nothing in a run's working set is shared with another run. The only shared surfaces are:
+
+- `runs/heartbeats.log` and `runs/SKIPPED.json` — the two append-only files at the root of
+  `runs/` (`AGENT.md` hard rule 7). Every write is `git pull --rebase` → append → push, never a
+  rewrite of existing lines, so two heartbeats appending in the same minute merge cleanly.
+- the **Coworld Ideas** board — arbitrated by the comment-first claim (§Runtime step (c)).
+
+**Bedrock capacity is the real shared resource.** Parallel runs contend for it, and the symptom
+is `LLM provider is unavailable` in the hosted game log at phase 60. Rail: if that string is
+platform-wide — seen across **two runs at once**, or in another LLM coworld's latest log — the
+run **waits** (polling inside the existing 75-minute bound of phase 60) rather than going
+*Blocked*; a capacity squeeze is not a defect in the coworld. If the 75 minutes expire it is a
+platform outage and phase 90 applies as before. `max_parallel_runs` in `fleet/cloud.md`
+§Parallelism is the throttle an operator lowers when contention is the cause; lowering it stops
+new claims and leaves runs in flight alone.
 
 ## Phases
 
@@ -189,9 +230,15 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
  "heartbeat_at": "2026-08-22T16:40:00Z", "session_ended_at": null, "session_id": "9f3a1c7d",
  "log": "runs/2026-08-22-bullwhip/log.md"}
 ```
+`phase` is written — committed and pushed — at the moment of **every** phase transition,
+**before** the new phase's first sub-agent is dispatched. A `log.md` line tagged with a phase
+number higher than `STATE.phase` is a defect: the next resume would re-enter the older phase and
+redo work already done. `prompts/00-claim.md` step 5 carries the repair for a run that already
+drifted.
+
 `session_ended_at` is written by the closing step of a heartbeat that ended deliberately (SPEC
-step 5 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a session that
-crashed leaves it null or stale, which is exactly the 90-minute case.
+§Runtime step 3 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a
+session that crashed leaves it null or stale, which is exactly the 90-minute case.
 
 `session_id` is the resuming session's **nonce** — 8 hex chars minted at resume, written with
 `heartbeat_at`, and echoed in the `00 resume at phase <n> attempt=<k> session=<nonce>` line of

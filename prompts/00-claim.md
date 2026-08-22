@@ -1,7 +1,15 @@
 # Phase 00 — Claim
 
-Purpose: decide whether this heartbeat owns a run, and if so create/adopt the run task and STATE.
-Owner: coordinator. Every heartbeat starts here, including resumes.
+Purpose: decide **which one** unit of work this heartbeat owns, and if it is a new run, create the
+run task and STATE. Owner: coordinator. Every heartbeat starts here, including resumes.
+
+**Runs are parallel.** Three hourly crons (`coworld-builder-a`/`-b`/`-c`, minutes 11/31/51 UTC)
+drive the same coordinator, and **several run tasks sitting in *Running* at once is the normal
+state**, bounded by `max_parallel_runs` (`fleet/cloud.md` §Parallelism, currently 3). A heartbeat
+adopts **at most one** unit of work — resume a stale run (step 2), resume an unblocked run
+(step 3), or claim one new idea (step 4) — and never two. Order is fixed: 2, then 3, then 4, else
+step 4a (exit). A fresh heartbeat on someone else's run is not a reason to exit any more; it is
+just a run you do not touch.
 
 ## Inputs
 
@@ -35,7 +43,9 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    once you own a run) so the gap is visible. Confirmed-present tooling belongs in
    `fleet/cloud.md` §Sandbox tooling.
 
-1. List *Running* tasks on the Builder board.
+1. List *Running* tasks on the Builder board, and read `max_parallel_runs` out of
+   `fleet/cloud.md` §Parallelism (the `` `max_parallel_runs: N` `` line — never a remembered
+   number). `live` = the count of *Running* tasks that come out **fresh** in step 2.
    ```bash
    curl -sS "https://app.asana.com/api/1.0/tasks?project=1217747772236871&opt_fields=name,completed,memberships.section.gid,custom_fields,notes" \
      -H "Authorization: Bearer $ASANA_PAT"
@@ -56,8 +66,10 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
    whose format is pinned as `<UTC ISO-8601> heartbeat phase=<nn>` (e.g.
    `2026-08-22T16:40:00Z heartbeat phase=40`). Nothing else counts as a heartbeat line.
    - Any *Running* task with `heartbeat_at` **< 90 min old** *and* whose
-     `runs/<run>/STATE.json` has `session_ended_at` null or older than `heartbeat_at` → another
-     run is live. **Exit immediately.** Write nothing.
+     `runs/<run>/STATE.json` has `session_ended_at` null or older than `heartbeat_at` is
+     **live**: a session is working it right now. Count it into `live` and **leave it alone** —
+     do not read its files as work, do not write into its directory, do not touch its task. It
+     does not end this heartbeat; it only consumes one slot of `max_parallel_runs`.
    - A *Running* task with a **stale** `heartbeat_at` (≥ 90 min), **or** one whose
      `session_ended_at` is ≥ its `heartbeat_at` (the previous session ended deliberately and
      said so) → it is yours. Go to step 5 (resume). The second case is what keeps a
@@ -82,16 +94,20 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       unblocked run is as raceable as a stale one. If it is still open, leave the task in *Blocked* and move
       on — never resume on a phase subtask's completion.
    **If a *Blocked* run's subtask is still open, control falls through to step 4 and this
-   heartbeat claims a NEW idea.** That is deliberate: concurrency is 1, and a run waiting on a
-   human must not stop the queue. Two bounds on it:
+   heartbeat claims a NEW idea.** That is deliberate: a run waiting on a human must not stop the
+   queue. Two bounds on it:
    - **At most 2 run tasks may sit in *Blocked* at once.** If there are already 2, do **not**
-     claim a new idea — log `<UTC> 00 idle: <n> blocked runs, not claiming` and exit. A third
+     claim a new idea — log `<UTC> 00 idle: <n> blocked runs, not claiming` to
+     `runs/heartbeats.log` and exit. A third
      blocked run means the humans are the bottleneck and more work would only pile up.
    - Blocked runs are checked (step 3) on **every** heartbeat, before any new claim, so an
      unblocked run always resumes ahead of new work.
 
-4. Else claim work. **Claiming races** — two overlapping heartbeats (the cron plus a manual
-   `deploy.py run`, or a retried deployment run) can both see an empty board. The comment-first
+4. Else claim work — **only if `live` < `max_parallel_runs`** (step 1). At the cap, claim
+   nothing: go to step 4a. Below it, exactly one new idea, by the procedure below.
+
+   **Claiming races** — two overlapping heartbeats (two of the three crons, a manual
+   `deploy.py run`, or a retried deployment run) can both see the same free idea. The comment-first
    claim below is the guard (`/workspace/cogamer/fleet/PROTOCOLS.md` §CLAIM PROTOCOL exists
    because plain "look then create" claims raced four confirmed times); do every step, in order.
    1. **`git pull --rebase`** in `/workspace/coworld-builder` *before* reading anything from it —
@@ -167,6 +183,15 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see its
       STATE, and exit.
 
+4a. **Nothing adopted → exit, and say why.** Reached when step 2 found no stale run, step 3 no
+   unblocked run, and step 4 either could not claim (at the cap) or found no startable idea.
+   Append **one** line to the shared `runs/heartbeats.log` — `git pull --rebase`, append, commit,
+   push (never rewrite an existing line; the file is shared with the other crons):
+   - at the cap: `<UTC> heartbeat: cap reached (live=<n>/<max>)`
+   - otherwise: `<UTC> heartbeat: nothing to do`
+   (The 2-Blocked bound keeps its own `<UTC> 00 idle: <n> blocked runs, not claiming` line, and a
+   lost claim keeps its `00 yield` line.) Then exit: no run task, no STATE, no phase work.
+
 **Rejected-push rule (claims and resumes alike).** A rejected push means another heartbeat wrote
 this repo first. Never force, never `--force-with-lease` (`AGENT.md` hard rule 2). Always
 `git pull --rebase` and then read what landed: on a **claim**, another `runs/<run>/STATE.json` for
@@ -176,8 +201,9 @@ session owns the run → exit (step 5.0.3). In both cases exit silently:
 create nothing, write nothing, and do not retry the push.
 5. **Resume path.** Reached from step 2 (stale/ended session) and from step 3.3 (a human
    unblocked the run). Both arrive here, and **both run the session-nonce guard below** — two
-   heartbeats can observe the same free run at the same moment (the cron plus a manual
-   `deploy.py run`), and without the guard both would resume it and work the same phase.
+   heartbeats can observe the same free run at the same moment (two of the three crons, or a
+   cron plus a manual `deploy.py run`), and without the guard both would resume it and work the
+   same phase.
 
    **5.0 Session-nonce guard — do this before any phase work.**
    1. Mint a nonce for this session: `SESSION=$(python3 -c 'import secrets;print(secrets.token_hex(4))')`.
@@ -197,6 +223,15 @@ create nothing, write nothing, and do not retry the push.
       `1217748424048134`). **Wait 20 s and re-GET that field.** If it has moved **past** your
       stamp, another session is heartbeating this run: **exit immediately**, leaving its value
       in place. Only when the field still holds your stamp do you enter the phase.
+
+   **5.0a Phase-drift repair — after the guard, before any phase work.** Read the highest phase
+   tag `<nn>` on the `log.md` lines newer than the **previous** session's `00 claim` / `00 resume`
+   line (not your own, which 5.0 just appended). If it is **greater** than `STATE.phase`, trust
+   the log: set `STATE.phase` to it — and `review_round` to the highest `r<k>` seen, if that phase
+   is 30 — append `<UTC> 00 resume: STATE phase repaired <old> -> <new> from log`, commit, push,
+   and continue at the repaired phase. Without this a run whose STATE was left behind
+   (2026-08-22: STATE stayed at `"20"` through all of phase 30) is resumed into a phase it has
+   already finished, and redoes it. The 5.1 counter then applies to the **repaired** phase.
 
    **5.1 Count the resume — but only sessions that made no progress.** Read
    `runs/<run>/STATE.json`. The counter exists because a phase that reliably kills the session
@@ -248,7 +283,11 @@ create nothing, write nothing, and do not retry the push.
 ## Exit criterion
 
 Exactly one of:
-(a) exited because another run is live (a fresh `heartbeat_at` with no `session_ended_at`);
+(a) exited at step 4a with nothing to adopt — one line appended to `runs/heartbeats.log`, either
+    `<UTC> heartbeat: cap reached (live=<n>/<max>)` (`live` had reached `max_parallel_runs`, so no
+    new idea was claimed) or `<UTC> heartbeat: nothing to do` (no stale run, no unblocked run, no
+    startable idea). Other runs being *Running* with fresh heartbeats is **not** an exit reason
+    by itself — it only counts toward `live`;
 (b) exited because 2 runs are already *Blocked*, because this heartbeat **yielded** to an
     earlier claim comment, or because it **lost a resume race** at step 5.0 (its push was
     rejected and `log.md` gained a foreign-nonce `00 resume` line, or the rebase conflicted, or the Asana
@@ -276,7 +315,11 @@ shape and gids in `playbooks/observatory-api.md` §Non-Observatory calls and `fl
 - `runs/<run>/STATE.json`, `runs/<run>/log.md` — committed and pushed. A heartbeat that owns no
   run writes to the shared `runs/heartbeats.log` instead, never into another run's directory.
 - `runs/SKIPPED.json` (array of skipped idea gids) and `runs/heartbeats.log` — committed and
-  pushed on every SKIP.
+  pushed on every SKIP. Both are **append-only and shared with the other crons**: `git pull
+  --rebase` → append → push, never a rewrite of a line another heartbeat wrote.
+  `runs/heartbeats.log` also carries step 4a's `heartbeat: cap reached (live=<n>/<max>)` /
+  `heartbeat: nothing to do` line, the `00 idle: <n> blocked runs, not claiming` line, and
+  `00 yield` lines.
 - `log.md` lines: `<UTC ISO-8601> 00 claim <run> idea=<gid> slug=<slug>`, and every heartbeat
   refresh as `<UTC ISO-8601> heartbeat phase=<nn>` — that exact format, since step 2 parses it.
 
