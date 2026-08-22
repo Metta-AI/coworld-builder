@@ -51,3 +51,5 @@
 2026-08-22T22:38:54Z 30 EXIT: zero blocking findings in round 1; phase -> 40
 2026-08-22T22:38:54Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-22T22:38:54Z heartbeat phase=40
+2026-08-22T22:39:35Z 40 phase entered; prompts/40-release.md read; builder dispatched for release (version 0.1.0, policies from repo tools/ci/policies.json, put_secret=true)
+2026-08-22T22:39:35Z heartbeat phase=40
