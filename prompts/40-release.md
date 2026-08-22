@@ -8,7 +8,7 @@ repo (SPEC §Phases, `AGENT.md` §Sub-agents, `agents/builder.md` §Release). No
 
 - `STATE.repo`, `STATE.slug`, `runs/<run>/design.md` (policy prompts and baseline switches).
 - `playbooks/make-coworld.md` §Phase 1/2.
-- The coworld repo's repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; the softmax-agents GitHub App sets them — no org admin, no value ever in the sandbox) — set in phase 20; if `gh secret list -R Metta-AI/cogame-<slug>` does not show both, dispatch it again before the release.
+- The coworld repo's repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; it runs with a user token that is admin on Metta-AI repos — no org admin, no value ever in the sandbox) — set in phase 20; if `gh secret list -R Metta-AI/cogame-<slug>` does not show both, dispatch it again before the release.
 
 ## Procedure
 

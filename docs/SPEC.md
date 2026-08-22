@@ -64,7 +64,7 @@ that names exactly what is needed, and exits.
 - The sandbox has **no Docker, no Nim, no emsdk**. Every compile / image / certification /
   upload step runs in **GitHub Actions inside the coworld repo** from templates in this repo.
   The agent pushes, dispatches workflows (`gh workflow run`), polls (`gh run watch`), and
-  reads logs. CI credentials are repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; the softmax-agents GitHub App sets them — no org admin, no value ever in the sandbox).
+  reads logs. CI credentials are repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; it runs with a user token that is admin on Metta-AI repos — no org admin, no value ever in the sandbox).
 - Everything else (Observatory API, `softmax.com`, Asana, Discord, GitHub) is HTTPS from the
   sandbox using vault credentials substituted at egress (`SOFTMAX_TOKEN`, `GH_TOKEN`,
   `ASANA_PAT`, `DISCORD_BOT_TOKEN`).

@@ -161,7 +161,7 @@ gh run download <run_id> -R Metta-AI/cogame-<slug> -n release-result -D /tmp/rr
 jq . /tmp/rr/release-result.json
 ```
 
-Requires repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; the softmax-agents GitHub App sets them — no org admin, no value ever in the sandbox).
+Requires repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; it runs with a user token that is admin on Metta-AI repos — no org admin, no value ever in the sandbox).
 
 ## `coworld-submit.yml` → `.github/workflows/coworld-submit.yml`
 
