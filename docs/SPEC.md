@@ -81,9 +81,20 @@ is bounded at 75 minutes of wall clock.
    is `/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` (never a
    `/client/replay` pod URL).
 7. Certification output contains `Replay liveness: skipped (static replay bundle declared`.
-8. The verifier's spectator judgment (a short paragraph): the replay is legible and shows
-   the game — written from the static viewer's rendered state (DOM readouts: clock, scorebug,
-   feed lines at three scrub points), since the sandbox has no screen.
+8. The verifier's **spectator judgment** (a short paragraph): the replay is legible and shows
+   the game. The sandbox has no screen and no headless browser, so the judgment is written from
+   three fetched things, never from a rendered page:
+   (a) **the replay JSON** — the events and per-tick states the viewer would draw: read them and
+   say whether the champion seats' activity reads as the game (who did what, when, and how the
+   score moved);
+   (b) **the bundle** — `GET` the iframe `src`'s `index.html` **and every asset it references**
+   (each `<script src>`, each `<link href>`, and the `.wasm` named in the emscripten module
+   loader), all returning **200 with non-trivial sizes** (a 0-byte or HTML-error-page asset is a
+   broken viewer);
+   (c) **the viewer shell's error markers** — the fetched `static_replay.js` (or the index that
+   inlines it) must contain the `coworld-replay` postMessage bridge, including its
+   `tell("ready")` call; its absence means the embedded viewer never signals the host page.
+   No DOM readouts, no browser, no screenshot.
 
 ## Design pins every coworld inherits (from the make-coworld playbook)
 

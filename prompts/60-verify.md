@@ -83,14 +83,45 @@ jq -r '.certify.replay_liveness' /tmp/rr/release-result.json
 ```
 Must contain `Replay liveness: skipped (static replay bundle declared`.
 
-**8. Spectator judgment.** The sandbox has no screen, so read the static viewer's **DOM** at three
-scrub points (start, middle, end) and quote the readouts:
+**8. Spectator judgment — fetched, not rendered.** The sandbox has **no screen and no headless
+browser**: there is nothing to read a DOM from, and `curl` of `index.html` returns the bundle
+shell, not derived state. The judgment is written from three fetches.
+
+*(a) The replay JSON — what the viewer would draw.* From `/tmp/ep.replay` (check 4), read the
+events and per-tick states in order and say whether the champion seats' activity reads as the
+game:
 ```bash
-IFRAME='https://softmax.com/api/observatory/v2/coworlds/replays/static/'$COW'/<sha>/index.html?replay=<s3 url>'
-# fetch the bundle's index + its derived state; report clock, scorebug plates, and feed lines
+jq -r '.events[]|[.tick,.seat,.type,(.summary//.say//.action//"")]|@tsv' /tmp/ep.replay | head -40
+jq -r '.events[]|[.tick,.seat,.type,(.summary//.say//.action//"")]|@tsv' /tmp/ep.replay | tail -20
+jq -r '.results' /tmp/ep.replay
 ```
-Write a short paragraph: is it legible, and does it show the game? Include the three sets of
-readouts as evidence. Confirm the scorebug plates show full player names (not "…") at 360 px.
+
+*(b) The static bundle and every asset it names.* Fetch the iframe `src` from check 6, then every
+asset it references — each `<script src>`, each `<link href>`, and the `.wasm` named in the
+emscripten module loader. All must be **200 with non-trivial sizes**; a 0-byte asset, or one whose
+body is an HTML error page, is a broken viewer:
+```bash
+BUNDLE="https://softmax.com/api/observatory/v2/coworlds/replays/static/$COW/<sha>"
+curl -sS "$BUNDLE/index.html" -o /tmp/idx.html -w 'index.html %{http_code} %{size_download}\n'
+grep -oE '(src|href)="[^"]+"' /tmp/idx.html            # the asset list, verbatim
+grep -oE '[A-Za-z0-9_.-]+\.wasm' /tmp/idx.html /tmp/*.js   # the wasm the module loader names
+for A in <each asset path from the two greps>; do
+  curl -sSL "$BUNDLE/$A" -o /dev/null -w "$A %{http_code} %{size_download}\n"
+done
+```
+
+*(c) The viewer shell's error markers.* The fetched `static_replay.js` (or the index that inlines
+it) must carry the `coworld-replay` postMessage bridge and its ready signal:
+```bash
+grep -c 'coworld-replay' /tmp/static_replay.js
+grep -n 'tell("ready")' /tmp/static_replay.js
+```
+Both must hit. Their absence means the embedded viewer never tells the host page it is ready.
+
+Write a short paragraph: is it legible, and does it show the game? Its evidence is the three
+fetches above — the event/state excerpts, the asset table (URL, status, bytes), and the two greps.
+**No DOM readouts, no browser, no screenshot**: an item claimed from a rendered page is false by
+construction here.
 
 ## Waiting
 

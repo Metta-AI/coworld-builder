@@ -56,10 +56,22 @@ pod URL is a failure, not a variant); the certification output containing
 `Replay liveness: skipped (static replay bundle declared`.
 
 **Item 8 — spectator judgment.** A short paragraph saying whether the replay is legible and
-shows the game. The sandbox has no screen, so write it from the static viewer's *rendered
-state*: load the viewer, read the DOM at three scrub points (early, middle, late), and paste
-the readouts — clock, scorebug, feed lines — at each. The paragraph is your judgment; the DOM
-readouts are the evidence it rests on. Say plainly if the replay is illegible or empty.
+shows the game. The sandbox has **no screen and no headless browser**, so you never render
+anything: write the judgment from three fetches, exactly as `prompts/60-verify.md` check 8 lays
+them out.
+
+1. **The replay JSON** — the events and per-tick states the viewer would draw. Paste ordered
+   excerpts (early, middle, late) and say whether the champion seats' activity reads as the game.
+2. **The static bundle** — `GET` the iframe `src`'s `index.html` *and every asset it references*
+   (each `<script src>`, each `<link href>`, and the `.wasm` named in the emscripten module
+   loader). Paste the table: URL, HTTP status, bytes. All 200, all non-trivial in size; a 0-byte
+   or HTML-error-page asset is a broken viewer and item 8 is false.
+3. **The viewer shell's error markers** — the fetched `static_replay.js` (or the index that
+   inlines it) must contain the `coworld-replay` postMessage bridge including `tell("ready")`.
+   Paste the grep hits.
+
+**No DOM readouts, no browser, no screenshot.** There is no way to render here, so an item
+claimed from a rendered page is fabricated. Say plainly if the replay is illegible or empty.
 
 ## Standards
 
