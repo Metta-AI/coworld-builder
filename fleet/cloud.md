@@ -52,6 +52,13 @@ fleet's crons). Config: `fleet/deployment.json`.
 | David Bloomin (assignee for every Blocked subtask) | `1209016834701578` |
 | `heartbeat_at` custom field (text, UTC ISO-8601; on the Coworld Builder project) | `1217748424048134` |
 
+## Observatory players
+
+| player | id | used for |
+|---|---|---|
+| `daveey` | `ply_44ae9048-3242-4654-881f-6d9d43347fa3` | champion #1 submission (phase 50) |
+| `daveey-1` | `ply_bac48eb1-662e-44f8-973d-f3e016dccf5d` | champion #2: the `"player"` field on its policy entry (phase 40) **and** its submission (phase 50) |
+
 ## Discord
 
 | what | id |

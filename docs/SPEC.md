@@ -31,7 +31,11 @@ that names exactly what is needed, and exits.
   3. Else if a run task is in *Blocked* and its human subtask is complete → move it to
      *Running* and **resume**.
   4. Else claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
-     already have a run task), create the run task, and start at phase 00.
+     already have a run task), create the run task, and start at phase 00. A *Blocked* run whose
+     subtask is still open does **not** stop this: concurrency is 1 and the queue keeps moving,
+     bounded at **2 simultaneously-Blocked runs** — at 2, the heartbeat claims nothing and exits.
+     An idea whose text is marked confidential is never claimed (it would be published in a
+     public repo); it goes to phase 90 instead.
   5. Write `heartbeat_at` on the run task + `runs/<run>/STATE.json` at least every 15 minutes
      of work, and on every phase transition.
 - The sandbox has **no Docker, no Nim, no emsdk**. Every compile / image / certification /

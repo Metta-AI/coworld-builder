@@ -40,6 +40,9 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
      `session_ended_at` is ≥ its `heartbeat_at` (the previous session ended deliberately and
      said so) → it is yours. Go to step 5 (resume). The second case is what keeps a
      multi-session run moving on the very next hourly firing instead of every other one.
+   - If **more than one** *Running* task qualifies, adopt the one with the **oldest**
+     `heartbeat_at`, and **adopt exactly one per heartbeat** — never carry two runs forward in a
+     single session. Log the ones you did not adopt by gid; the next heartbeat takes the next.
 3. Else list *Blocked* tasks. For each, identify **the human subtask** — never "a completed
    subtask": every run task carries eight phase subtasks (10…80) that phase 80 completes as the
    run progresses, so a completed phase subtask means nothing here.
@@ -54,6 +57,15 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       Append `<UTC> 00 resumed after unblock subtask=<gid> attempts_reset=<phase>` to `log.md`,
       commit, push, and go to step 5. If it is still open, leave the task in *Blocked* and move
       on — never resume on a phase subtask's completion.
+   **If a *Blocked* run's subtask is still open, control falls through to step 4 and this
+   heartbeat claims a NEW idea.** That is deliberate: concurrency is 1, and a run waiting on a
+   human must not stop the queue. Two bounds on it:
+   - **At most 2 run tasks may sit in *Blocked* at once.** If there are already 2, do **not**
+     claim a new idea — log `<UTC> 00 idle: <n> blocked runs, not claiming` and exit. A third
+     blocked run means the humans are the bottleneck and more work would only pile up.
+   - Blocked runs are checked (step 3) on **every** heartbeat, before any new claim, so an
+     unblocked run always resumes ahead of new work.
+
 4. Else claim work. **Claiming races** — two overlapping heartbeats (the cron plus a manual
    `deploy.py run`, or a retried deployment run) can both see an empty board. The comment-first
    claim below is the guard (`/workspace/cogamer/fleet/PROTOCOLS.md` §CLAIM PROTOCOL exists
@@ -62,26 +74,33 @@ Owner: coordinator. Every heartbeat starts here, including resumes.
       the dedupe below is only as fresh as the mount.
    2. List incomplete Coworld Ideas tasks in board order, skip any whose gid already appears as
       `idea_task` in some `runs/*/STATE.json`, and take the top one.
-   3. `slug` = kebab-case of the idea title, ≤ 20 chars, no `cogame-` prefix.
+   3. **Confidentiality check — this idea's text becomes public.** Phase 20 creates a *public*
+      repo and phase 10 copies the idea text verbatim into a design note that lands in it. If the
+      idea's title or notes are marked confidential/internal/do-not-publish (any of
+      `confidential`, `internal only`, `do not publish`, `NDA`, or an explicit instruction not to
+      share), do **not** claim it: go to `prompts/90-blocked.md` with the ask "idea <gid> is
+      marked confidential — publish it in a public repo, or reword it?" and exit. Never
+      paraphrase around it and proceed.
+   4. `slug` = kebab-case of the idea title, ≤ 20 chars, no `cogame-` prefix.
       `run` = `<YYYY-MM-DD>-<slug>` (UTC).
-   4. **Re-GET the idea task immediately before claiming it**
+   5. **Re-GET the idea task immediately before claiming it**
       (`GET /tasks/<gid>?opt_fields=completed,name`) plus its comments
       (`GET /tasks/<gid>/stories?opt_fields=text,created_at,created_by.name`). If it is now
       `completed: true`, or a `claimed by coworld-builder run <other>` comment already exists,
       drop it and go back to step 4.2 with the next idea.
-   5. **Post the claim comment BEFORE creating anything**:
+   6. **Post the claim comment BEFORE creating anything**:
       `claimed by coworld-builder run <run>` on the idea task.
-   6. **Wait 20 s, then re-read the idea's comments.** If a `claimed by coworld-builder run …`
+   7. **Wait 20 s, then re-read the idea's comments.** If a `claimed by coworld-builder run …`
       comment for a *different* run exists with an **earlier** `created_at` than yours, that run
       won: append `<UTC> 00 yield idea=<gid> to=<other run>` to the *builder* log (no run
       directory exists yet — write it to `runs/<other-run>/log.md` if present, else say it in the
       heartbeat's closing note), create nothing, and **exit**. Never delete the other claim.
-   7. Create the run task in *Running* from `templates/run-task.md`:
+   8. Create the run task in *Running* from `templates/run-task.md`:
       name `<slug> — coworld run <run>`, notes = the idea text verbatim + a link to the idea task.
       Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 80), unassigned, incomplete.
-   8. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
+   9. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
       `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, and create `runs/<run>/log.md`.
-   9. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
+   10. `git pull --rebase`, commit and push. If the push rejects because another heartbeat already
       pushed a `runs/<run>/STATE.json` for this idea, that run won — **do not force**: rebase, see
       its STATE, and exit.
 5. **Resume path.** Read `runs/<run>/STATE.json`. **Count the resume**: increment

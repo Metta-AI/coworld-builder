@@ -239,8 +239,9 @@ If a direct API route is later discovered, document it here and keep the workflo
 ## Non-Observatory calls
 
 ```bash
-# Asana
-/usr/bin/curl -sS "https://app.asana.com/api/1.0/tasks/<gid>" -H "Authorization: Bearer $ASANA_PAT"
+# Asana — read a task (add opt_fields for custom_fields / memberships / subtasks)
+curl -sS "https://app.asana.com/api/1.0/tasks/<gid>?opt_fields=name,completed,notes,custom_fields,memberships.section.gid" \
+  -H "Authorization: Bearer $ASANA_PAT"
 
 # Discord (Disco bot) — announcements, NOT Slack
 /usr/bin/curl -sS -X POST "https://discord.com/api/v10/channels/1440464430646427718/messages" \
@@ -249,6 +250,44 @@ If a direct API route is later discovered, document it here and keep the workflo
 
 # GitHub
 GH_TOKEN=$GH_TOKEN gh workflow run … -R Metta-AI/cogame-<slug>
+```
+
+### Asana section moves (phases 00, 80, 90)
+
+Moving a task between *Running* / *Blocked* / *Done* is **one call**, against the **section**
+gid (they are in `fleet/cloud.md`; a task is moved *into* a section, never "set" on the task):
+
+```bash
+# section gids: Running 1217747860567752 | Blocked 1217762552336061 | Done 1217748136343842
+curl -sS -X POST "https://app.asana.com/api/1.0/sections/<section_gid>/addTask" \
+  -H "Authorization: Bearer $ASANA_PAT" -H 'content-type: application/json' \
+  -d '{"data":{"task":"<task_gid>"}}'
+```
+
+Creating a task directly in a section uses the same section gid on the create:
+`POST /tasks {"data":{"projects":["1217747772236871"],"memberships":[{"project":"1217747772236871","section":"1217747860567752"}],"name":…,"notes":…}}`.
+
+### `heartbeat_at` (custom field `1217748424048134`)
+
+```bash
+# read (needs opt_fields=custom_fields)
+curl -sS "https://app.asana.com/api/1.0/tasks/<task_gid>?opt_fields=custom_fields" \
+  -H "Authorization: Bearer $ASANA_PAT" \
+ | jq -r '.data.custom_fields[]|select(.gid=="1217748424048134")|.text_value'
+# write (custom_fields is a MAP keyed by field gid)
+curl -sS -X PUT "https://app.asana.com/api/1.0/tasks/<task_gid>" \
+  -H "Authorization: Bearer $ASANA_PAT" -H 'content-type: application/json' \
+  -d '{"data":{"custom_fields":{"1217748424048134":"<UTC ISO-8601>"}}}'
+```
+
+### Comments and subtasks
+
+```bash
+curl -sS -X POST "https://app.asana.com/api/1.0/tasks/<task_gid>/stories" \
+  -H "Authorization: Bearer $ASANA_PAT" -H 'content-type: application/json' \
+  -d '{"data":{"text":"…"}}'
+curl -sS "https://app.asana.com/api/1.0/tasks/<task_gid>/subtasks?opt_fields=name,completed,assignee" \
+  -H "Authorization: Bearer $ASANA_PAT"
 ```
 
 ## Gotchas carried forward from earlier campaigns

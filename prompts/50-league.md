@@ -8,6 +8,9 @@ Owner: coordinator. All HTTPS except champion submission, which is a CI dispatch
 - `STATE.slug`, `STATE.coworld.cow_id`, `STATE.policies.*` (`<name>:vN` labels from
   `release-result.json`; the UUIDs are **not** in that artifact — step 7 resolves them).
 - `playbooks/observatory-api.md` — every body below is quoted from it.
+- `fleet/cloud.md` §Observatory players — the two `ply_` ids. The literals inlined below match
+  that table; if they ever disagree, **`fleet/cloud.md` wins** (`AGENT.md`: never hard-code an id
+  from memory).
 
 ## Procedure
 
