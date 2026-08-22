@@ -41,3 +41,6 @@
 2026-08-22T21:48:09Z 30 builder pushed docs-only clarification 1db815de (green run 32600520418, verified); confirmed to builder: KEEP shipped 11x9/tp7-5 — the message it queried was a stale duplicate of my 20:4x reply. review checkout fast-forwarded to 1db815de (code identical to a16bebc6); runs/design.md refreshed copy committed
 2026-08-22T21:49:03Z 30 builder thread closed: final sha 1db815de, green run 32600520418; handover notes recorded (policies.json needs no release override; oracle precondition folded into note §Tests item 4; starter chrome.css gap — candidates for LEARNINGS at phase 80)
 2026-08-22T21:49:03Z heartbeat phase=30
+2026-08-22T22:01:35Z 30 r1 reviewer returned: 17 findings (F1 wallhug moves into flooded-key tiles via glyph order; F2 legality test 'and' defect; F3 stale replay-reader defaults; F4 missing viewer-smoke repo checks; F5-F17 minor), 5 could-not-determine; reviews/r1-review.md committed
+2026-08-22T22:01:35Z 30 r1: fixer dispatched
+2026-08-22T22:01:35Z heartbeat phase=30
