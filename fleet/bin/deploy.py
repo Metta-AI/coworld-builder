@@ -645,7 +645,7 @@ def cmd_status(args):
         if d.get("paused_reason"):
             print("  paused_reason: %s" % d["paused_reason"])
         runs = api("/deployment_runs?deployment_id=%s&limit=%d" % (dep, args.limit))
-        for r in (runs.get("data") or runs if isinstance(runs, dict) else runs)[: args.limit]:
+        for r in ((runs.get("data") or []) if isinstance(runs, dict) else runs)[: args.limit]:
             sid = r.get("session_id")
             line = "  %s  run=%s" % (r.get("created_at"), r.get("id"))
             if r.get("error"):
