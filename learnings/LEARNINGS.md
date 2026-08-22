@@ -79,3 +79,35 @@ time; all of it is now folded into the playbooks.
 - **Announcements go to Discord, not Slack:** guild `1309708848730345493`, channel `#coworlds`
   `1440464430646427718`, via the Disco bot
   (`authorization: Bot $DISCORD_BOT_TOKEN`, `POST /api/v10/channels/<id>/messages {"content":…}`).
+
+## 2026-08-22 lighthouse
+
+- **Run a solvability oracle before pinning board constants in the design note.** Lighthouse's
+  accepted note pinned 17×11 / farthest-dead-end keys / tidePeriod 4, under which 3 escapes were
+  mathematically unreachable by any policy (min 47–93 ticks needed vs maxTicks ≤ 55). The check
+  that catches it in minutes: min over key→runner assignments of max over runners of
+  `dist(start, key) + dist(key, exit)` must be comfortably < maxTicks. Now recorded in the
+  lighthouse note's §Tests item 4 as a precondition; designers should compute it in phase 10.
+- **`coworld[auth]==0.1.38` cannot publish a static-replay-viewer coworld** — upload-coworld
+  races the server's async bundle expansion and 400s "replay viewer bundle must be uploaded
+  first". 0.1.42 adds the wait. Templates bumped to 0.1.42 this run; the playbook row that said
+  "stale metta checkout" was corrected.
+- **Sandbox git facts:** `gh` is NOT preinstalled (install the release tarball). `git push` works
+  only through the stock `credential.helper=anthropic` (`/usr/local/bin/git-credential-anthropic`);
+  GH_TOKEN cannot authenticate git-over-HTTPS (basic auth hides the placeholder from egress
+  substitution), so sub-agents without the helper push via the Git Data API (blobs→tree→commit→
+  PATCH ref; squashes each push to one commit). **Never run `gh auth setup-git`** — it overwrites
+  the working helper globally and breaks every session sharing the container.
+- **The league's first auto-scheduled round can fire before fillers are registered and fails**
+  ("Temporal RoundWorkflow failed before settling the round"). Expected, does not count toward
+  verification; register fillers immediately after the champion submits, then trigger.
+- **`GET /leagues` returns a bare array**, not `{entries:…}` (playbook §2 updated). The
+  softmax.com page is now client-rendered for the iframe; featured-match evidence comes from the
+  SSR payload / `POST /coworlds/replays/session` (playbook §Featured match updated, incl. the
+  manifest_hash-in-route and softmax-research.net-host facts).
+- **Starter gap:** babel's `client/chrome.css` lacks the 360 px scorebug rules
+  (`.plate-name {flex:1 1 auto; min-width:3.2em}` + label hiding under 640 px) that the pins
+  require — take bullwhip's block verbatim, or fix babel upstream.
+- **Message-delivery to sub-agent threads can arrive out of order / duplicated.** The builder
+  acted correctly by re-asking instead of applying a stale instruction that contradicted a newer
+  one; when steering a long-running sub-agent, timestamp decisions and name superseded messages.

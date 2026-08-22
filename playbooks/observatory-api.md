@@ -42,11 +42,13 @@ curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" \
 
 ```bash
 curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
- | jq -r '.entries[] | select(.game.coworld_name=="<slug>") | .id'
+ | jq -r 'if type=="array" then . else .entries end
+          | .[] | select(.game.coworld_name=="<slug>") | .id'
 ```
 
 Match on **`game.coworld_name`**, not on the league name. `?name=` style filters are unreliable
-here — fetch and filter client-side.
+here — fetch and filter client-side. **`GET /leagues` returns a bare array** (observed 2026-08-22),
+unlike `/rounds` and `/policy-versions` which wrap in `{entries:…}` — handle both shapes.
 
 ## 3. Divisions
 
@@ -308,7 +310,20 @@ curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
 (`?name=` on `/coworlds` is ignored — filter client-side, and select on the key `canonical`.)
 The static replay route is
 `…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>`; a `/client/replay` pod
-URL is a failure either way. When a run learns the answer for certain, record it in this section.
+URL is a failure either way.
+
+**Answered (lighthouse run, 2026-08-22):** the page is now **client-rendered** for the iframe —
+the raw-HTML grep finds nothing for any coworld, and `/coworlds`' `featured_match` is `null`
+platform-wide, so neither is evidence. What works:
+- The featured match is server-rendered into the page's SSR payload at `state.playlist[0]`.
+- The iframe `src` comes from the call the page's own JS makes:
+  `POST $BASE/coworlds/replays/session {"coworld_id":"<cow_id>","replay_uri":"<s3 url>"}` →
+  `{"viewer_url","ready"}`; static delivery ⇔ `ready:true` and the path ends `/index.html`.
+- In the static route, `<sha>` is the coworld's **manifest_hash** (`sha256:…`, URL-encoded), NOT
+  the replay-viewer bundle digest (that 404s).
+- The route is served by `api.observatory.softmax-research.net`; the same path through the
+  `softmax.com/api/observatory` proxy returns `404 {"detail":"Replay viewer shell not found"}`
+  for every coworld — proxy behaviour, not a defect in yours.
 
 ## Gotchas carried forward from earlier campaigns
 
