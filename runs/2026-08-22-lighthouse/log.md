@@ -39,3 +39,5 @@
 2026-08-22T21:44:44Z 30 round 1: reviewer dispatched over clean checkout at a16bebc6 (/workspace/scratch/review-lighthouse); output reviews/r1-review.md
 2026-08-22T21:44:44Z heartbeat phase=30
 2026-08-22T21:48:09Z 30 builder pushed docs-only clarification 1db815de (green run 32600520418, verified); confirmed to builder: KEEP shipped 11x9/tp7-5 — the message it queried was a stale duplicate of my 20:4x reply. review checkout fast-forwarded to 1db815de (code identical to a16bebc6); runs/design.md refreshed copy committed
+2026-08-22T21:49:03Z 30 builder thread closed: final sha 1db815de, green run 32600520418; handover notes recorded (policies.json needs no release override; oracle precondition folded into note §Tests item 4; starter chrome.css gap — candidates for LEARNINGS at phase 80)
+2026-08-22T21:49:03Z heartbeat phase=30
