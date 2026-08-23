@@ -30,3 +30,7 @@
 2026-08-23T23:04:41Z progress phase=30 marker=r1-verdict.md
 2026-08-23T23:04:41Z 30 round -> 2, dispatching reviewer
 2026-08-23T23:04:41Z heartbeat phase=30
+2026-08-23T23:22:20Z 30 r2 reviewer returned r2-review.md: 1 blocking (F1 markBeat shadowing, confirmed in-browser), 6 non-blocking (F2-F7); all 14 r1 fixes intact, no regression
+2026-08-23T23:22:20Z progress phase=30 marker=r2-review.md
+2026-08-23T23:22:20Z 30 r2 dispatching fixer
+2026-08-23T23:22:20Z heartbeat phase=30
