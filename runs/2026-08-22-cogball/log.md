@@ -27,3 +27,6 @@
 2026-08-23T03:03:21Z progress phase=20 marker=ci-run-32613856995
 2026-08-23T03:03:21Z 20 EXIT: ci.yml green on main at 812c661d; phase -> 30
 2026-08-23T03:03:21Z heartbeat phase=30
+2026-08-23T03:21:57Z 30 r1 reviewer returned: 38 findings (F1-F38), none claimed checklist-falsifying; substantive: F14 host_error unreachable, F19 directive-record cap can truncate to unparseable JSON, F25-F27/F30 untested claims, F37 /client/replay residue in league_replayer, F31 baseline constants vs note; review at reviews/r1-review.md
+2026-08-23T03:21:57Z 30 r1: fixer dispatched
+2026-08-23T03:21:57Z heartbeat phase=30
