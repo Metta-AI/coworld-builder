@@ -16,3 +16,8 @@
 2026-08-23T13:29:30Z 20 builder dispatch pending
 2026-08-23T13:20:07Z 20 builder dispatched (thread sthr_01CNk73xmq1jqdgdxm7tH9FD); repo=Metta-AI/cogame-escrow starter=cogame-bullwhip
 2026-08-23T13:20:07Z heartbeat phase=20
+2026-08-23T14:20:16Z 20 builder returned: CI green run 32644872806 on d68c5ecd58c8ebfb0f8c2d3b5ffa7be99c41bceb (jobs test/docker-smoke/wasm-viewer all success); 3 documented small deviations (Sim type in types.nim, renderContract(sim,c), trader surplus never HEARTS + zero-live offer rule)
+2026-08-23T14:20:16Z 20 note: sandbox git-push-over-HTTPS to github.com fails (token auth rejected); builder pushed via git-data API — relayed as data, phases 40/50 use gh workflow dispatch and are unaffected
+2026-08-23T14:20:16Z progress phase=20 marker=ci-run-32644872806
+2026-08-23T14:20:16Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-23T14:20:16Z heartbeat phase=30
