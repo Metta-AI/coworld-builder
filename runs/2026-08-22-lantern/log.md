@@ -60,3 +60,7 @@
 2026-08-23T04:06:30Z progress phase=60 marker=reviews/60-verdict.md
 2026-08-23T04:06:30Z heartbeat phase=70
 2026-08-23T04:07:55Z 70 announce.attempted_at written and pushed BEFORE the POST (message composed, 1767 chars)
+2026-08-23T04:08:20Z 70 announce msg=1540935658288324679
+2026-08-23T04:08:20Z 70 EXIT: message posted (200, id recorded); phase -> 80
+2026-08-23T04:08:20Z progress phase=70 marker=announce.discord_message_id=1540935658288324679
+2026-08-23T04:08:20Z heartbeat phase=80
