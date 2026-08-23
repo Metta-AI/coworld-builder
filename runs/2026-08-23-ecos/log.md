@@ -15,3 +15,8 @@
 2026-08-23T09:59:56Z 20 repo created https://github.com/Metta-AI/cogame-ecos (public); propagate-secrets run 32632519592 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-23T09:59:56Z heartbeat phase=20
 2026-08-23T10:00:53Z 20 builder dispatched thread=sthr_016GeU7tu5Y9Wh9yRPwCa3w4 (design note, starter=coworld-ctf, bullwhip llm/player port, scaffold from templates, 3-round budget)
+2026-08-23T11:32:06Z 20 builder returned: ci.yml green run=32636493709 sha=289937c0 (test, docker-smoke, wasm-viewer all success); verified independently: conclusion=success, 3 workflows active, placeholder gate clean, exec bits set, num_agents=3 everywhere
+2026-08-23T11:32:06Z 20 builder deviations recorded (design-note-authorized constant repair killBase 60->90 + steward defaults; gate-b greedy-grazer clause replaced with measured properties; frames=ticks+1; cert fixture 6x60; lockerroom pointer-events fix) — reviewer will trace
+2026-08-23T11:32:06Z progress phase=20 marker=ci-run-32636493709
+2026-08-23T11:32:06Z 20 -> 30 phase transition; STATE.phase=30 review_round=1 pushed before reviewer dispatch
+2026-08-23T11:32:06Z heartbeat phase=30
