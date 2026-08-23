@@ -5,7 +5,7 @@
   "slug": "ecos",
   "repo": "https://github.com/Metta-AI/cogame-ecos",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 0
   },
@@ -23,11 +23,14 @@
       "ecos-steward:v1",
       "ecos-opportunist:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "8596fd17-4704-4ca9-8359-d2e906bd3e6a",
+      "3b350f40-f9f3-424e-a072-0955190dab24"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_60071522-0ef6-4ad3-b6e3-76651490c3fd",
+    "division": "div_ee91d3a5-2639-415e-9694-b5c1a5b70b43"
   },
   "verify": {
     "rounds": [],
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T13:43:54Z",
+  "heartbeat_at": "2026-08-23T13:47:10Z",
   "session_ended_at": null,
   "session_id": "d859f357",
   "log": "runs/2026-08-23-ecos/log.md"

@@ -59,3 +59,11 @@
 2026-08-23T13:44:50Z 50 division PUT 200 D=div_ee91d3a5-2639-415e-9694-b5c1a5b70b43
 2026-08-23T13:44:50Z 50 settings POST 200 (elo, round_robin, filler_policy, interval 15m)
 2026-08-23T13:44:50Z heartbeat phase=50
+2026-08-23T13:47:10Z 50 champion1 submit run=32643297745 ok=true sub_473cfa01 (ecos-keeper:v1, daveey)
+2026-08-23T13:47:10Z 50 champion2 submit run=32643323938 ok=true sub_54bbe3ef (ecos-bloom:v1, daveey-1)
+2026-08-23T13:47:10Z 50 policy-version uuids resolved: keeper=9a5487b6 bloom=774aa245(daveey-1 confirmed) steward=8596fd17 opportunist=3b350f40
+2026-08-23T13:47:10Z 50 filler-policies POST 200: steward+opportunist registered, neither champion
+2026-08-23T13:47:10Z 50 unpause POST 200; trigger-round POST 200; round 2 pending with both champions in entrant_attributions; round 1 failed=known pre-filler auto-round (excluded, not counted against trigger budget)
+2026-08-23T13:47:10Z progress phase=50 marker=round_09601725-1f08-4736-96cf-d092f1cf3911
+2026-08-23T13:47:10Z 50 -> 60 phase transition; STATE.phase=60 pushed before verifier dispatch
+2026-08-23T13:47:10Z heartbeat phase=60
