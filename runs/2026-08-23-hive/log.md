@@ -51,3 +51,5 @@
 2026-08-23T07:41:09Z 50 unpaused; trigger-round accepted; round 2 pending with BOTH champions in entrant_attributions; round 1 failed (auto-created before fillers/champion2 — predates the trigger, not counted against trigger budget)
 2026-08-23T07:41:09Z progress phase=50 marker=league_2d1d904b-5465-4b84-9845-b28164d22f7e-round2
 2026-08-23T07:41:09Z 50 phase -> 60
+2026-08-23T07:42:09Z 60 verifier dispatched (thread sthr_012F1jpjoGAnFUk8S6bGEdHB); polling bounded 75 min
+2026-08-23T07:42:09Z heartbeat phase=60
