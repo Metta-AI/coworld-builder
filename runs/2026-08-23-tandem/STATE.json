@@ -4,7 +4,7 @@
   "run_task": "1217755663124828",
   "slug": "tandem",
   "repo": "https://github.com/Metta-AI/cogame-tandem",
-  "starter": "",
+  "starter": "Metta-AI/coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
