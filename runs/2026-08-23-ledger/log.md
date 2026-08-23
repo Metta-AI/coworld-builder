@@ -24,3 +24,6 @@
 2026-08-23T22:51:33Z 30 reviewer returned r1-review.md (438 lines, 9 findings N1-N9, reviewer rates 0 blocking) round 1
 2026-08-23T22:51:33Z 30 dispatch fixer brief=address N1-N9, one commit per finding or refute with evidence, CI green
 2026-08-23T22:51:33Z heartbeat phase=30
+2026-08-23T23:12:11Z 30 fixer returned r1-fixes.md: 8 commits (N1-N8; N9 confirmed no-change), HEAD=8f3ffcb6ef3a945e54e6c39fa22147bd2a6c179f, ci run=32672565512 success; N5 test strengthened frame-by-frame, N6+N8 code fixes, note amendments synced to runs/2026-08-23-ledger/design.md
+2026-08-23T23:12:11Z 30 dispatch judge round 1 sha=8f3ffcb6ef3a945e54e6c39fa22147bd2a6c179f
+2026-08-23T23:12:11Z heartbeat phase=30

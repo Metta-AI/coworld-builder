@@ -97,7 +97,13 @@ ultimatum supply the asymmetric-role texture the idea asks for.
 **first mover** (investor / proposer) and a **second mover** (trustee / responder). The first
 mover is the pair member with fewer first-mover assignments so far in the schedule being built;
 a tie is broken by the seeded RNG. Assignment happens in pair order 0..3 while the schedule is
-drawn, so across an episode no seat's first-mover count differs from another's by more than 1.
+drawn, so the guarantee is **local, not global**: at every asymmetric meeting the seat that goes
+first has no *more* first-mover assignments than its partner at that point, and no seat is ever
+first more often than it plays asymmetric subgames. A global "±1 across the episode" balance is
+**not** available and is not claimed: how many asymmetric meetings a seat draws is itself random
+(the subgame is drawn per pairing), so a seat drawn into few of them ends below another by more
+than one. Measured over 10 000 seeds × `rounds` in `{4, 7, 14, 28}`, 58 % of episodes have a
+spread above 1 and the worst spread is 5.
 
 **One move per seat per round — the strategy method.** Trust and ultimatum are sequential games.
 Ledger resolves them with the standard experimental-economics **strategy method**: the second
@@ -122,9 +128,10 @@ a mixed bag of subgames meaningful.
 Investor sends `s` (integer 0..6); the trustee receives `2*s`; the trustee's committed return
 percent is `p` (integer 0..100). `returned = (2*s*p + 50) div 100` (round half up), clamped to
 `0 .. 2*s`. Payoffs: **investor = `6 - s + returned`**, **trustee = `2 + 2*s - returned`**.
-Landmarks: full trust and a fair split (`s = 6, p = 50`) → 6 / 6; full trust betrayed
-(`s = 6, p = 0`) → 0 / 14; no trust (`s = 0`) → 6 / 2. Coin invariant for tests:
-`investor + trustee == 8 + s`.
+Landmarks: an even split of the pot (`s = 4, p = 50`) → 6 / 6 — the coin invariant below fixes
+the pot at `8 + s`, so 6 / 6 is reachable only at `s = 4`; full trust with a fair split
+(`s = 6, p = 50`) → 6 / 8; full trust betrayed (`s = 6, p = 0`) → 0 / 14; no trust (`s = 0`)
+→ 6 / 2. Coin invariant for tests: `investor + trustee == 8 + s`.
 
 *ULTIMATUM* — pie 12 coins. Proposer offers `o` (integer 0..12) to the responder; the responder's
 committed minimum acceptable offer is `m` (integer 0..12). If `o >= m`: **proposer = `12 - o`,
@@ -193,7 +200,9 @@ which is set by its meetings with strangers.
 
 - `inMean(a, b)` = mean over their mutual meetings of `(payoff_a + payoff_b) / 2`;
 - `outMean(a, b)` = mean of the two members' own payoffs over all of their meetings that were
-  *not* with each other;
+  *not* with each other; `0.0` when there are none, which the schedule makes unreachable in play
+  (a pair that has met twice is at least 7 rounds apart, so each member carries at least 6 other
+  meetings) and which only a hand-built history can reach;
 - `delta = inMean - outMean` (coins, reported to one decimal).
 
 The pair is **flagged** when it met `>= 2` times, `inMean >= 6.0` and `delta >= 3.0`. A **ring**
@@ -599,14 +608,32 @@ failure, and removes it on a successful load. `tools/ci/viewer_smoke.mjs` gates 
 babel's names because the whole stack, including `tools/build_replay_viewer.sh` and the server's
 `/client/renderer.js` route, refers to them.
 
-- `client/renderer.js` is **copied byte-for-byte from cogame-babel** and then edited in exactly
-  two places: the *scene* (everything from `computeLayout` through `drawTag`, plus `boothPairs`)
-  is replaced by the plaza scene below, and the *event vocabulary* helpers (`describeEvent`,
-  `phaseText`, `matchHeader`, `updateScorebug`, `updateEndscreen`, `buildScrub` marker classes)
-  learn Ledger's five event kinds. Everything else — `makeRenderer`, `loadImages`, `ellipsize`,
-  `hexToRgb`/`shade`/`rgba`, `roundRect`, `wrapLines`, `drawParchment`, `makeNameMap`,
-  `applyNames`, `clampName`, `isBaselineFiller`, `renderFeed`, `escapeHtml`, `makeEffects`,
-  `bindFeedToggle`, `stateToView`, `attachLive`, `attachReplay` — is untouched babel code.
+- `client/renderer.js` is **copied byte-for-byte from cogame-babel** and then edited only in the
+  scene and in the event vocabulary. Function by function, against
+  `/workspace/starters/cogame-babel/client/renderer.js`:
+  - **Untouched babel code, byte-identical (22):** `makeRenderer`, `loadImages`, `assetUrl`,
+    `ellipsize`, `hexToRgb`, `shade`, `rgba`, `roundRect`, `wrapLines`, `drawParchment`,
+    `drawTag`, `seatBlock`, `noteHeight`, `seatColor`, `makeNameMap`, `applyNames`, `clampName`,
+    `isBaselineFiller`, `roundBase`, `blockHead`, `escapeHtml`, `reasonLine`.
+  - **Removed with babel's card-and-booth scene (9):** `sceneOf`, `sceneText`, `boothPairs`,
+    `pendingSeat`, `drawSeat`, `drawCard`, `drawShape`, `drawRibbon`, `spellTokens`.
+  - **New, all of them the plaza scene, the two DOM overlays or the transport measurement (26):**
+    `gameName`, `roleName`, `moveText`, `isKind`, `seatBlockAbove`, `seatBlockBelow`, `seatAngle`,
+    `seatHome`, `tableSpot`, `plazaPairs`, `eased`, `drawPlaza`, `drawTable`, `drawVerdict`,
+    `drawHandshake`, `drawKnife`, `drawSnappedCoin`, `drawCoins`, `drawThreads`, `drawAvatar`,
+    `drawHalo`, `ringGroups`, `syncRail`, `meetingText`, `medianOf`, `relayout`.
+  - **Changed babel functions (15)**, each edit confined to Ledger's five event kinds, the two
+    new state fields (`gossip`, `rings`) or the plaza geometry — no starter behaviour is dropped:
+    `computeLayout` and `draw` (the plaza instead of the booths); `describeEvent`, `endText` and
+    `phaseText`, `matchHeader`, `updateScorebug` (the event vocabulary and the median readouts);
+    `buildScrub` (Ledger's beat-marker classes, and a `nameMap` argument for the labels);
+    `renderFeed` (the new event kinds, the per-seat payoff ctx, the `RING` lines and the memo
+    say-lines, plus the `rings` argument of "Readouts" above); `updateEndscreen` (the median /
+    mean / meetings / kind / harsh columns and the ring rows, plus the same `rings` argument);
+    `makeEffects` (`speakAt`/`pickAt` → `roundAt`/`meetAt`/`gossipAt`); `stateToView` (`glyphs` →
+    `gossip`/`rings`/`round`/`nameOf`); `attachLive` and `attachReplay` (they pass the frame's
+    `rings` into the feed and the endcard, and `attachReplay` passes `nameMap` into `buildScrub`);
+    `bindFeedToggle` (the two `relayout()` calls of "Transport rules" below).
 - `client/chrome.css` is copied byte-for-byte and only **appended** to (the new beat-marker
   classes, the plaza-specific plate rules, the `--band` rules below). No existing rule is
   rewritten.
@@ -617,10 +644,12 @@ babel's names because the whole stack, including `tools/build_replay_viewer.sh` 
   / `#feed` / `#loading` elements in the same nesting, never a from-scratch page that reuses the
   ids (cogame-gridlock, 2026-08-23). The appended block is a `<div id="gossip-rail">` inside
   `#board-wrap` for the gossip cards and a `<div id="ringnote">` for the ring caption.
-- **Removed from the starter's pages:** nothing structural. The only starter elements deleted are
-  the wordmark's inner text (`BA<span>BEL</span>` → `LED<span>GER</span>`) and babel's glyph-font
-  `@font-face` fallback stack in `chrome.css`, which existed only for the Dingbats alphabet
-  Ledger does not have.
+- **Removed from the starter's pages:** nothing structural, and nothing at all from
+  `chrome.css` — it is strictly append-only (one hunk after babel's last line, zero deletions,
+  zero modifications), so babel's `@font-face` for `rajdhani` at `chrome.css:9` stays, because
+  `data/font.ttf` still ships and `renderer.js`'s `GLYPH_FONT` still names it. The only starter
+  element deleted anywhere is the wordmark's inner text in the pages
+  (`BA<span>BEL</span>` → `LED<span>GER</span>`).
 - **Zoom:** the plaza is a **fixed arena** that always fits the frame, so `#viewpanel` (zoom bar
   + minimap) is **dropped entirely** — babel has none to begin with and none is added.
 
@@ -669,8 +698,11 @@ Round spans (`.round-span`, `.round-span.alt`, `.round-sep`) are babel's, unchan
 - **Gossip rail:** the last 5 notes flutter in as small parchment cards on the right
   (`drawParchment`, babel's), each two lines, ellipsized, captioned `Gizmo on Bolt`.
 - **Red threads:** for each entry in `rings`, a red line drawn *under* the avatars between the
-  two seats, thickness `1 + delta / 2` px, with a `RING` tag at the midpoint; the caption
-  `RING: Bolt · Rivet · Piston` names the connected component. Absent when `rings` is empty.
+  two seats, thickness `1 + delta / 2` px, with a `RING` tag at the midpoint. The `#ringnote`
+  caption `RING: Bolt · Rivet · Piston` names each connected component of size `>= 3` — a
+  **ring** as defined above, the same size filter the sim's `ringComponents` applies. A lone
+  flagged pair is a thread, not a ring: it gets its line and its feed entry, and no caption.
+  The caption is absent when there is no such component.
 - **Memo parchment:** under each avatar, a three-line ellipsized card with the seat's latest
   `memo` — the reasoning in public, babel's notes idea kept.
 - Idle before round 1: avatars in place, halos at the neutral 0.5 ring, tables dark.
@@ -691,7 +723,11 @@ Round spans (`.round-span`, `.round-span.alt`, `.round-sep`) are babel's, unchan
   Kind outcomes carry `feed-score seatN`.
 - **Endcard:** columns `median`, `mean`, `meetings`, `kind`, `harsh`; verdict = the top seat's
   alias + `TOPS THE LEDGER` (or `ALL LEVEL`); title `FINAL — n ROUNDS`; a reason line when
-  `reason == "deadline"`; and the ring findings, one line per flagged pair.
+  `reason == "deadline"`; and the ring findings, one line per flagged pair. `results` carries
+  only `ringPairs` (a count), so the feed's and the endcard's `RING` lines take their pair list
+  from the flagged pairs of **the frame being shown** — `renderFeed` and `updateEndscreen` are
+  passed `currentState().rings`, the same state the canvas is drawn from, never a value left
+  behind by whatever frame was drawn last.
 - **360 px legibility is a hard requirement** (the softmax.com featured-match iframe is ~360 px):
   `.plate-name { flex: 1 1 auto; min-width: 3.2em; }`, plate labels hidden under `640px`, the
   plaza's alias plates drawn at `--hudscale`-scaled sizes with a minimum 11 px font, and the
@@ -800,8 +836,11 @@ re-derived in the browser by the same Nim `sim` module the server ran.
 1. **Schedule.** For seeds `[1, 7, 42, 1234]` and `rounds` in `{4, 7, 14, 28}`: every round is a
    perfect matching of all 8 seats (each seat appears exactly once across the 4 pairs); at
    `rounds = 14` every unordered pair meets **exactly twice**; for any `rounds`, no pair meets
-   more than `ceil(rounds / 7)` times; no pair meets in consecutive rounds; each seat's
-   first-mover count over asymmetric subgames differs from any other seat's by at most 1.
+   more than `ceil(rounds / 7)` times; no pair meets in consecutive rounds; and the greedy
+   first-mover rule holds, re-derived from the stored schedule — at every asymmetric meeting the
+   seat that goes first has no more prior first-mover assignments than its partner, no seat is
+   first more often than it plays asymmetric subgames, and the first-mover counts sum to the
+   number of asymmetric meetings. (Not a global ±1 balance; see "Roles" above.)
 2. **Payoff kernels.** The full 2×2 dilemma matrix; `trustPayoffs` over all
    `s in 0..6 × p in {0, 25, 33, 50, 66, 75, 100}` with the invariant `investor + trustee ==
    8 + s`, `returned` never exceeding `2*s`, and half-up rounding at `p = 25, s = 1`;
@@ -823,8 +862,18 @@ re-derived in the browser by the same Nim `sim` module the server ran.
    round when `done`, applying twice, a move outside range reaching `applyRound` unclamped.
 8. **Endings.** `endEarly` sets `reason == "deadline"` and `done`; a full run sets
    `"complete"`; `resultsJson.reason` is only ever one of those two.
-9. **Replay.** `replayMatch(config, events).len == events.len + 1`; the final frame equals the
-   live sim's `tableStateJson`; a tampered `round` event (a swapped pair) raises; `eventToJson` /
+9. **Replay, frame by frame.** `replayMatch(config, events).len == events.len + 1`; the final
+   frame equals the live sim's `tableStateJson` and `resultsJson`; and then, for **every** `i` in
+   `0 .. events.len`: (a) `frames[i].events == events[0 ..< i]` — every event in the frame was
+   rebuilt by the rules (`beginRound` / `applyMeeting` / `applyGossip` / `settle` each append
+   their own derived event, which `replayMatch` never overwrites with the recorded one), so this
+   compares both payoffs, both moves, both memos, both `scripted` flags, the pairings and the
+   first movers of every tick; (b) `replayMatch(config, events[0 ..< i])` ends on exactly
+   `frames[i]`, so no frame borrows state from an event that has not been played yet; (c) every
+   tick at which the LIVE sim published a state — each round's open, and the settlement — equals
+   the frame with that event count. The round-*close* tick is not a shared tick: the recorded log
+   has no "round closed" event, so `replayMatch` deliberately keeps the round open until the next
+   `round` event arrives. A tampered `round` event (a swapped pair) raises; `eventToJson` /
    `eventFromJson` round-trips every one of the five event kinds with every field.
 10. **Determinism.** The same seed yields identical schedules, subgames, aliases and scripted
     play; different seeds differ.
