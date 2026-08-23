@@ -24,3 +24,6 @@
 2026-08-23T11:25:28Z 30 note: previous commit's 'git add -A' unintentionally included runs/2026-08-23-gridlock/reviews/r1-review.md (shared working tree, untracked file from the concurrent gridlock session). Not reverted — deleting it would harm that run. All further adds use explicit contagion paths only.
 2026-08-23T11:26:08Z 30 r1 fixer dispatched thread=sthr_01Mac1uNzxAdp3vR98BS5u5b (B1 + N1-N12 + 4 undetermined; guidance: N1 refute, N2 fix, N8 fix, grid harness add)
 2026-08-23T11:26:08Z heartbeat phase=30
+2026-08-23T11:52:21Z 30 r1 fixer returned r1-fixes.md: 8 fixed (B1,N2,N8,N9,N10a,CND-4,item7-sweep,N11), 6 refuted, 2 CND settled; main=66e0821 ci=32637561078 success. Sentinel retuned to sweep argmax (rails: parameter tuning) — accepted by coordinator.
+2026-08-23T11:52:21Z progress phase=30 marker=r1-fixes.md
+2026-08-23T11:52:21Z heartbeat phase=30
