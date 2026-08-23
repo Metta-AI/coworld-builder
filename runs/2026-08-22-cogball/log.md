@@ -92,3 +92,6 @@
 2026-08-23T09:38:25Z 60 check 7 TRUE — committed runs/2026-08-22-cogball/release-result.json (0.1.5, run 32624985984, canonical true) → "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"; not re-downloaded
 2026-08-23T09:38:25Z 60 check 8 TRUE — FRESH viewer-check dispatch 32631291526 against check-6 src (round 16, not the older 32630840631 which tested round 15): loaded=true in 4122 ms, data-replay-loaded=true, scrub 0%="3:20 TURN 1/40" 50%="1:38 TURN 21/40" 100%="FINAL GAME OVER", failure null, console_tail empty; 9/9 bundle assets 200 incl. 554655 B wasm; screenshot = 1-1 FULL TIME card reconciling with results
 2026-08-23T09:38:25Z 60 VERDICT: all-true 8/8; VERIFY.md overwritten; viewer-check/ artifacts committed; note for phase 80: feed_lines=0 (commentary feed empty) is a legibility nit, not a check failure
+2026-08-23T09:39:41Z 60 verifier returned: all-true 8/8 (VERIFY.md fc91a4c lineage); judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-23T09:39:41Z progress phase=60 marker=VERIFY.md-all-true-8of8
+2026-08-23T09:39:41Z heartbeat phase=60
