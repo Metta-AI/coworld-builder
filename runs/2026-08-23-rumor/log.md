@@ -47,3 +47,4 @@
 2026-08-23T21:05:58Z heartbeat phase=60
 2026-08-23T21:06:46Z 60 dispatch verifier brief=eight checks, 75-min poll bound -> VERIFY.md + viewer-check/
 2026-08-23T21:16:03Z heartbeat phase=60
+2026-08-23T21:25:52Z heartbeat phase=60
