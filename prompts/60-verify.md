@@ -165,7 +165,11 @@ evidence is now the rendered thing: `viewer-smoke.png` (what a spectator sees), 
 readouts (that it advances), the scorebug and feed-line counts (that it says who is winning and
 why), reconciled against the replay events above. Say plainly if the picture is empty, static,
 or unreadable. **You may describe the screenshot** — for the first time there is one; what you
-may still not do is claim a DOM readout you did not download.
+may still not do is claim a DOM readout you did not download. Also say whether the screenshot
+**looks like the starter's chrome** — the same transport strip, scrubber with momentum graph,
+scorebug and endcard as paintbot/raid/hive. A page that renders but looks like a different product
+is the cogame-gridlock failure (2026-08-23): a rewrite sharing only the ids. That is a phase-30
+item-14 finding; send it back rather than certifying it.
 
 ## Waiting
 

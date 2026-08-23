@@ -131,7 +131,13 @@ Pins that are never optional:
   env-switched: `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`).
 - **Watchability is a requirement, not polish:**
   - Reuse the starter's replay-viewer **chrome verbatim** — same scrubber, transport bar,
-    scorebug. Treat the starter's `client/renderer.js` as the exact template.
+    scorebug. Treat the starter's `client/renderer.js` as the exact template. "Verbatim" means
+    the starter's page **plus an appended game block** and a byte-identical `chrome_common.js`;
+    a from-scratch page that reuses the starter's ids is not it (cogame-gridlock, 2026-08-23).
+    Transport rules: `--band`/`--hudscale` on `:root`, nothing overlaid in the transport band,
+    the endcard stops above it and every seek dismisses it, scrubber beats are clickable labelled
+    buttons. The zoom bar + minimap (`#viewpanel`) exist only for boards larger than the frame —
+    a fixed arena removes them.
   - **Real art, not placeholders.**
   - **Replays are a static file + a browser wasm viewer — NEVER a pod.** The manifest declares
     `"replay_viewer": {"bundle": "static-replay-viewer"}`; the repo ships

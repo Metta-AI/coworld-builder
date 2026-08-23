@@ -426,3 +426,37 @@ in the type system says so.
    Fixers: never fold an existing test into another; add alongside.
 4. **`GET /divisions/<d>/leaderboard` returns `null` (not `[]`) while empty** — one more shape on
    top of the contagion bare-array row; treat null as "no rows yet" and re-poll.
+
+## 2026-08-23 raid / hive / gridlock (operator review of the shipped viewers)
+
+The operator opened the three newest viewers and sent back four things, all about the chrome the
+builder claimed to have inherited verbatim. Folded into `prompts/10-design.md`,
+`prompts/20-build.md` (builder brief), `prompts/30-review-loop.md` (new acceptance item **14**),
+`prompts/60-verify.md` (spectator paragraph) and `playbooks/make-coworld.md` in this commit.
+
+1. **"Chrome verbatim" was satisfied by ids alone.** cogame-gridlock's `client/replay_broadcast.html`
+   was a 329-line page written from scratch that reused every starter id, so the id-presence test
+   and the phase-30 judge passed it; the operator's first look: "looks like not all the elements
+   were ported over." Raid and hive got it right (the starter page + an appended game block,
+   `chrome_common.js` byte-identical). The fix is provenance, not presence: diff `chrome_common.js`
+   against the starter, diff the page's CSS above the game banner against the starter's, and treat
+   a page a fraction of the starter's size as a rewrite. Item 14 says exactly that.
+2. **Zoom bar + minimap shipped on fixed arenas.** Raid, hive and gridlock all fit their whole board
+   in the frame, so `#viewpanel` was dead weight the operator asked to remove from all three. Keep it
+   only when the design note says the board is larger than the viewport; otherwise remove it
+   (markup, CSS, wiring, the ids in the test list) rather than hide it.
+3. **The score screen blocked the scrubber.** Three different bugs, one symptom: raid's
+   `relayout()` never set `--band` (and set `--hudscale` on `#stage`, where `--u` on `:root` never
+   sees it) so the plates and the card rode over the transport, and it showed the card with class
+   `show` against a `#endcard.on` rule; hive dismissed the card only on restart, not on a scrub
+   seek; gridlock's card was `inset: 0`. The rule now: `--band`/`--hudscale` on
+   `document.documentElement`, nothing overlaid inside the band, `#endcard` stops at
+   `bottom: var(--band, 0px)`, and every seek takes it down.
+4. **Events under the scrubber must render and be clickable.** Raid collected `highlights` and
+   toggled a `spoilers` button that drove nothing; hive's cache-spawn beats used a kind (`flag`)
+   with no CSS and so were invisible, and all beats were inert `<div>`s. Beats are now labelled
+   `<button>`s that seek (`markBeat(tick, kind, team, label)`), with a CSS rule per kind.
+
+**Cost.** Three live coworlds re-fixed by hand in one sitting, and gridlock's viewer rebuilt from
+the starter after the fact.
+

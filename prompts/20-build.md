@@ -51,6 +51,18 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `data-replay-loaded="true"` on `<html>` on its first drawn frame and
    > `data-replay-error="<message>"` on failure; `tools/ci/viewer_smoke.mjs` (copied verbatim from
    > `templates/tools/ci/`, no substitutions) is what proves it in CI.
+   > The chrome is the starter's, not a lookalike: copy `client/chrome_common.js` byte-for-byte
+   > and start `client/replay_broadcast.html` as a **copy of the starter's page**, then append
+   > your game's CSS, markup and script under a banner comment
+   > (`<SLUG> additions to the inherited <starter> chrome`) and delete only the starter elements
+   > the design note lists as removed. A page written from scratch that reuses the starter's ids
+   > is a rewrite and fails review (cogame-gridlock, 2026-08-23). Follow `cogame-raid` /
+   > `cogame-hive` as worked examples. Transport rules: `relayout()` sets `--hudscale` and
+   > `--band` on `document.documentElement`; no overlay sits inside the transport band; the
+   > endcard stops at `bottom: var(--band, 0px)` and every seek dismisses it; scrubber beats are
+   > labelled, clickable buttons (`markBeat(tick, kind, team, label)`) with CSS for every kind.
+   > Drop `#viewpanel` (zoom bar + minimap — markup, CSS, wiring, test ids) unless the design
+   > note says the board is larger than the frame.
    > Also deliver `compose.yaml` (service name `<slug>`, `platform: linux/amd64`,
    > `build: {context: ., network: host}`), `coworld_manifest_template.json`
    > (image `{{<SLUG>_IMAGE}}`, `num_agents` in EVERY variant and in the cert fixture,

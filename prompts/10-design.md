@@ -88,6 +88,14 @@ the reason. Never go to phase 90 for a starter choice.
       flags (`MODULARIZE`/`EXPORT_NAME` vs an `onRuntimeInitialized` bootstrap) deadlocks the
       viewer silently — cogame-lantern, 2026-08-23. The note also states that the shell sets
       `data-replay-loaded="true"` on its first drawn frame and `data-replay-error` on failure.
+- [ ] Viewer chrome provenance: the note says `client/chrome_common.js` is copied byte-for-byte
+      and `client/replay_broadcast.html` is the starter's page **with a game block appended**
+      (never a rewrite that reuses the ids — cogame-gridlock, 2026-08-23), lists exactly which
+      starter elements are removed, and decides **zoom**: `#viewpanel` (zoom bar + minimap) is
+      kept only if the board is larger than the frame; a fixed arena drops it entirely.
+- [ ] Transport rules named: `--band`/`--hudscale` set on `:root` by `relayout()`; no overlay
+      sits in the transport band; the endcard stops at `var(--band)` and is dismissed by every
+      seek; scrubber beats are clickable labelled buttons with CSS for every kind emitted.
 - [ ] Replay bytes are self-sufficient: every field the viewer needs is recorded (names, config,
       per-tick state, seed).
 - [ ] Packaging: `compose.yaml`, `coworld_manifest_template.json`, `game.docs`
