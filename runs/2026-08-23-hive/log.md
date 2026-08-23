@@ -53,3 +53,21 @@
 2026-08-23T07:41:09Z 50 phase -> 60
 2026-08-23T07:42:09Z 60 verifier dispatched (thread sthr_012F1jpjoGAnFUk8S6bGEdHB); polling bounded 75 min
 2026-08-23T07:42:09Z heartbeat phase=60
+2026-08-23T07:46:16Z heartbeat phase=60
+2026-08-23T07:51:26Z 60 poll: rounds 2=completed, 1=failed; awaiting round 3 (auto ~07:55Z)
+2026-08-23T07:51:26Z heartbeat phase=60
+2026-08-23T08:00:43Z 60 round 3 completed (round_0eaae974); checks 1-6 re-fetched against round 3; viewer-check re-dispatched run 32627090556
+2026-08-23T08:00:43Z heartbeat phase=60
+2026-08-23T08:06:35Z 60 check 1 TRUE: rounds 2 + 3 completed (both after fillers 07:41:09Z); round 1 failed "Temporal RoundWorkflow failed before settling the round." (predates fillers, not counted)
+2026-08-23T08:06:35Z 60 check 2 TRUE: leaderboard 2 rows — daveey-1/hive-swarmraid:v1 Elo 1001.47 rp=2, daveey/hive-pathwright:v1 Elo 998.53 rp=2; no filler rows
+2026-08-23T08:06:35Z 60 check 3 TRUE: round 3 ereq_4dce5786 completed, replay_url 334e0e3a…; participants daveey + daveey-1 (is_filler false) + 2 fillers
+2026-08-23T08:06:35Z 60 check 4 TRUE: 211002 B strict UTF-8 JSON; protocol hive.replay.v1; complete/full_time; 40/40 champion doctrines source=llm, 0 fallbacks, 39 distinct notes
+2026-08-23T08:06:35Z 60 check 5 TRUE: artifacts/logs 83767 B, grep CLEAN
+2026-08-23T08:06:35Z 60 check 6 TRUE: raw-HTML grep empty (client-rendered) + /coworlds featured_match null -> used SSR state.playlist[0] (hive.r3.e1) + POST /coworlds/replays/session -> static index.html route, ready:true, no /client/replay
+2026-08-23T08:06:35Z 60 check 7 TRUE: committed runs/2026-08-23-hive/release-result.json -> "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-23T08:06:35Z 60 check 8 TRUE: viewer-check run 32627090556 success; loaded=true ms=6611 bridge=[loading,ready]; clocks 3:19 TURN 0/20 -> 1:37 TURN 10/20 -> FINAL GAME OVER; artifact in runs/2026-08-23-hive/viewer-check/
+2026-08-23T08:06:35Z 60 VERIFY.md written: 8/8 TRUE; no writes to league/rounds/policies; nothing pushed (sandbox cannot push)
+2026-08-23T08:06:35Z heartbeat phase=60
+2026-08-23T08:08:43Z 60 verifier returned: 8/8 TRUE (VERIFY.md 860 lines, evidence inline); rounds 2+3 completed, both champions ranked rp=2 (daveey-1 1001.47, daveey 998.53), replay reason=complete 40/40 llm doctrines 0 fallbacks, log CLEAN, static viewer route confirmed, viewer-check run 32627090556 loaded:true clocks differ
+2026-08-23T08:08:43Z progress phase=60 marker=VERIFY.md-8-true
+2026-08-23T08:08:43Z 60 judge adjudication dispatch pending

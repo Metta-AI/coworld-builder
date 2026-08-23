@@ -1,0 +1,42 @@
+{
+  "loaded": true,
+  "ms": 6611,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_89df098f-6f9b-42ee-adc0-ecf1252103cd/sha256%3A8e16a28a45164d671865fee2068f719bf1f57fc2117702d0420b4ede01cf9b2b/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F334e0e3a-c0bb-40d6-81a3-e3bb09d6780d.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "3:19 TURN 0/20",
+  "scorebug": "daveey FOOD 0 Magenta Baseline FOOD 0 Teal 3:19 TURN 0/20 daveey-1 FOOD 0 Amber Baseline (2) FOOD 0 Lime",
+  "status": "",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "3:19 TURN 0/20"
+    },
+    {
+      "at": "50%",
+      "clock": "1:37 TURN 10/20"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
+  ],
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

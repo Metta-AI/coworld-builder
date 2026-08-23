@@ -1,0 +1,3 @@
+{"loaded":true,"ms":6611,"clock":"3:19 TURN 0/20","scorebug":"daveey FOOD 0 Magenta Baseline FOOD 0 Teal 3:19 TURN 0/20 daveey-1 FOOD 0 Amber Baseline (2) FOOD 0 Lime","feed_lines":0}
+scrub readouts: 0%="3:19 TURN 0/20"  50%="1:37 TURN 10/20"  100%="FINAL GAME OVER"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
