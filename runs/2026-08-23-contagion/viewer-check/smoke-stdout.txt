@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1682,"clock":"WEEK 0 / 20","scorebug":"","feed_lines":0}
+scrub readouts: 0%="WEEK 0 / 20"  50%="WEEK 0 / 20 · WAITING ON 6"  100%="WEEK 20 / 20 · VARIANT +25% · FINAL"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

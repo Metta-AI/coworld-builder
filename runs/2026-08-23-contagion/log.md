@@ -63,3 +63,6 @@
 2026-08-23T12:32:00Z 60 re-ran checks 2-6 fresh against r3/ereq_a423e065: leaderboard 2 rounds each; replay af23e250 protocol=contagion.replay.v1 reason=complete champions 20/20 non-scripted; log CLEAN; iframe src static ready=true
 2026-08-23T12:32:14Z 60 check8 viewer-check.yml dispatched run=32639677937
 2026-08-23T12:32:14Z heartbeat phase=60
+2026-08-23T12:38:00Z 60 check8 TRUE viewer-check run=32639677937 success loaded=true ms=1682 bridge=[loading,ready] scrub 0%="WEEK 0 / 20" 50%="WEEK 0 / 20 · WAITING ON 6" 100%="WEEK 20 / 20 · VARIANT +25% · FINAL"; scorebug/feed_lines selector miss (screenshot shows both) — legibility note only
+2026-08-23T12:38:00Z 60 VERIFY.md written: all 8 checks TRUE; replay af23e250-a24b-4f6e-8462-5f124326df11
+2026-08-23T12:38:00Z heartbeat phase=60
