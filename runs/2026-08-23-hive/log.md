@@ -29,3 +29,5 @@
 2026-08-23T06:12:30Z heartbeat phase=30
 2026-08-23T07:07:26Z 30 r1 fixer returned: 20 commits, main -> 34b3dc9e7355d5047e95109ad117f813a509d950, ci run 32624269486 success; B1/B2/B3 fixed, 13 non-blocking fixed, 8+ refuted with evidence, grid harness added (marcher rank 1 of 9); reviews/r1-fixes.md
 2026-08-23T07:07:26Z progress phase=30 marker=r1-fixes.md
+2026-08-23T07:08:15Z 30 r1 judge dispatched (thread sthr_01N9AnxGaCx5SVp3KWBZJaiZ); repo @ 34b3dc9
+2026-08-23T07:08:15Z heartbeat phase=30
