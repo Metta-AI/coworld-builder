@@ -12,3 +12,7 @@
 2026-08-22T23:38:13Z 20 phase entered; prompts/20-build.md read; repo created public (github.com/Metta-AI/cogame-cogball); propagate-secrets run=32605724441 success; gh secret list shows SOFTMAX_TOKEN+ANTHROPIC_API_KEY
 2026-08-22T23:38:13Z 20 dispatching builder sub-agent (implement design note, CI green on main)
 2026-08-22T23:38:13Z heartbeat phase=20
+2026-08-23T00:45:03Z 20 builder returned: CI green on main run=32608381283 sha=67ab6d3 (111 tests, docker-smoke complete, viewer bundle 5 files) — moba-based build, now SUPERSEDED by operator steering below
+2026-08-23T00:45:03Z 00 operator comment acknowledged (David Bloomin / daveey, 2026-08-22T23:32:06Z, run task): use coworld-ctf (paintbot) as starter, NOT cogame-moba; redo phase 10 against ctf (physics sim replaces ctf arena rules, viewer chrome/replay/CI wiring verbatim); matches playbook commit 7572a82. Applying: STATE.starter=Metta-AI/coworld-ctf, STATE.phase 20->10 (operator-directed rollback), design round 2 dispatched. moba-based repo content at 67ab6d3 will be replaced by normal commits (no force-push, no deletion)
+2026-08-23T00:45:03Z 10 dispatching designer sub-agent round 2 (operator-directed ctf redo); output=/workspace/scratch/cogame-cogball/docs/plans/2026-08-22-cogball-design-v2.md
+2026-08-23T00:45:03Z heartbeat phase=10
