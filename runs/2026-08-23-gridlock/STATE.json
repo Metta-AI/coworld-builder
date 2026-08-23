@@ -5,7 +5,7 @@
   "slug": "gridlock",
   "repo": "https://github.com/Metta-AI/cogame-gridlock",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "30": 1
   },
@@ -23,7 +23,10 @@
       "gridlock-dispatcher:v1",
       "gridlock-beeline:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "b72ad0fa-6d39-49dc-894a-45f8194b7912",
+      "74c2a80b-e4c5-4515-90c1-e2e96a2ed13d"
+    ]
   },
   "league": {
     "id": "league_4c0f039e-3a99-48ad-9d72-c3f85a110ea8",
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:15:59Z",
+  "heartbeat_at": "2026-08-23T15:19:01Z",
   "session_ended_at": null,
   "session_id": "a0e45f38",
   "log": "runs/2026-08-23-gridlock/log.md"

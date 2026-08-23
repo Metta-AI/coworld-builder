@@ -49,3 +49,12 @@
 2026-08-23T15:15:59Z 50 settings POST 200 (elo k=32 init=1000 mean, round_robin, filler_policy, interval=15m)
 2026-08-23T15:15:59Z progress phase=50 marker=league_4c0f039e-3a99-48ad-9d72-c3f85a110ea8
 2026-08-23T15:15:59Z heartbeat phase=50
+2026-08-23T15:19:01Z 50 champion1 submitted run=32648018148 ok=true sub=sub_0ae61300-6015-4583-92a5-c7e8eae11d87 policy=gridlock-flowwright:v1 player=daveey
+2026-08-23T15:19:01Z 50 champion2 submitted run=32648049519 ok=true sub=sub_8dc366ca-50d2-48f9-94ad-dc81a588ee13 policy=gridlock-backstreet:v1 player=daveey-1
+2026-08-23T15:19:01Z 50 policy-version UUIDs resolved: flowwright=35bdf51f backstreet=bf5cf3e0(daveey-1) dispatcher=b72ad0fa beeline=74c2a80b
+2026-08-23T15:19:01Z 50 filler-policies POST 200 (dispatcher+beeline only, neither champion)
+2026-08-23T15:19:01Z 50 rounds-paused=false 200; trigger-round 200 workflow=ladder-league_4c0f039e
+2026-08-23T15:19:01Z 50 round 1 status=pending, entrant_attributions carry both champions
+2026-08-23T15:19:01Z progress phase=50 marker=sub_8dc366ca-50d2-48f9-94ad-dc81a588ee13
+2026-08-23T15:19:01Z 50 -> 60 phase transition
+2026-08-23T15:19:01Z heartbeat phase=60
