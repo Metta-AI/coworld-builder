@@ -47,3 +47,5 @@
 2026-08-23T12:13:30Z 50 rounds: r1 failed (auto-created pre-entrants, before my trigger) — r2 pending with both champions in entrant_attributions; EXIT criterion met; phase 50 -> 60
 2026-08-23T12:13:30Z progress phase=50 marker=league_53d9ccfb-round2-pending
 2026-08-23T12:13:30Z heartbeat phase=60
+2026-08-23T12:14:29Z 60 verifier dispatched thread=sthr_01H9Qc7y3WRCbGnmCExXHsuA (75-min poll bound, heartbeats delegated during poll)
+2026-08-23T12:14:29Z heartbeat phase=60
