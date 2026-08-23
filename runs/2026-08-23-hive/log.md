@@ -21,3 +21,5 @@
 2026-08-23T05:54:02Z 20 note: sandbox git-push over HTTPS rejected; builder pushed via Git Data API (blobs/tree/commit/ref) preserving modes
 2026-08-23T05:54:02Z progress phase=20 marker=ci-run-32621277603
 2026-08-23T05:54:02Z 20 phase -> 30 (review_round 1)
+2026-08-23T05:55:50Z 30 r1 reviewer dispatched (thread sthr_01LDLUyjeauT18DotXkXBjDz); repo checkout /workspace/scratch/cogame-hive-repo @ 48465f3
+2026-08-23T05:55:50Z heartbeat phase=30
