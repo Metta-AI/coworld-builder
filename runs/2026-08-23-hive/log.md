@@ -12,3 +12,5 @@
 2026-08-23T04:34:31Z 10 checklist: starter[x] num_agents=4[x] resolution-order-15-steps[x] scoring-share-constant-sum-elo[x] end-conditions-reason-enum-3[x] observation-visible-hidden[x] reply-caps-rune(note140/say32/policy48/detail200/prompt4000)[x] both-policies-marcher-driftling[x] parallel-batch-495s<720s[x] degrade-never-hang-retry-fallback-budget-guard[x] name-spaces-alias-permutation[x] viewer-static-360px[x] replay-self-sufficient-json[x] packaging-docs-protocols-both[x] tests-16-incl-e2e-utf8-viewer-smoke[x] out-of-scope-10-items[x] — ACCEPTED round 1, zero rejections
 2026-08-23T04:34:31Z 10 design.md copied to runs/2026-08-23-hive/design.md; phase -> 20
 2026-08-23T04:34:31Z progress phase=10 marker=runs/2026-08-23-hive/design.md
+2026-08-23T04:35:20Z 20 repo Metta-AI/cogame-hive created public
+2026-08-23T04:35:20Z 20 propagate-secrets run 32618229619 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-hive
