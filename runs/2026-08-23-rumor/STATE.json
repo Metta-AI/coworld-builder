@@ -5,7 +5,7 @@
   "slug": "rumor",
   "repo": "https://github.com/Metta-AI/cogame-rumor",
   "starter": "cogame-bullwhip",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T16:21:18Z",
+  "heartbeat_at": "2026-08-23T16:41:04Z",
   "session_ended_at": null,
   "session_id": "af8f69ce",
   "log": "runs/2026-08-23-rumor/log.md"
