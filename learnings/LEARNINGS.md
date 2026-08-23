@@ -509,3 +509,27 @@ the starter after the fact.
 - **Third parties can join your league mid-run** (two platform players joined Escrow ~40 min after
   seeding). Fillers then go unused (`insufficient_players` never triggers) and DoD item 2 still
   passes — champions ranked and fillers absent is the requirement, not "only our seats".
+
+## 2026-08-23 eleusis
+
+- **`game.config_schema` MUST keep `tokens` in `required`.** Matriculation rejects the manifest
+  otherwise (`manifest_invalid: "game.config_schema must require tokens"`), even though no stored
+  fixture carries `tokens` — the commissioner injects it at episode time. A review round "fixed"
+  variants-don't-validate by dropping it from `required`; the correct shape is `required:
+  ["tokens","players"]` with any schema-preflight in docker_smoke skipping the injected key.
+- **Git Data API pushes silently drop exec bits.** Tree entries default to mode `100644`; a
+  replayed commit turned `tools/ci/docker_smoke.sh` non-executable and CI's `test -x` gate went
+  red. When pushing via blobs→tree→commit, set `"mode":"100755"` explicitly on every script.
+- **Observatory list endpoints disagree on envelope per route** on this deployment: `GET /leagues`
+  and `GET /policy-versions` return bare arrays; `GET /rounds?league_id=` returns `{entries:[…]}`.
+  Write jq that handles both (`if type=="array" then . else .entries end`).
+- **The static viewer's bridge `ready` can beat the first drawn frame** (bullwhip-lineage
+  `static_replay.js` fires `tell("ready")` from `start()`, ~2 rAFs after `attachReplay`, before
+  sprites load). On a cold runner `viewer-check.yml` sampled a blank shell with three identical
+  clocks — a false FAIL cured by re-dispatching. Fix candidate for the starter/template: emit
+  `ready` only after `data-replay-loaded="true"` is set. Until then: treat one blank viewer-check
+  as retryable, not as check-8 FALSE.
+- **Bullwhip lineage has no `chrome_common.js` / `replay_broadcast.html`** — the checklist's
+  provenance items map to `client/chrome.css` (byte-for-byte + appended block) and
+  `client/replay.html` (starter page + appended block). Say the mapping explicitly in the design
+  note so reviewer/judge don't file phantom missing-file findings.
