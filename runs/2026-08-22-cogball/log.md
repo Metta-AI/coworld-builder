@@ -39,3 +39,8 @@
 2026-08-23T05:03:47Z heartbeat phase=40
 2026-08-23T05:04:02Z 40 phase entered; prompts/40-release.md read; secrets verified on repo; builder dispatched for release (version 0.1.0, policies from repo tools/ci/policies.json, put_secret=true)
 2026-08-23T05:04:02Z heartbeat phase=40
+2026-08-23T05:24:55Z 40 dispatch #1 v0.1.0 run=32619464891 FAILED build-manifest (6 pydantic errors) -> fix f16a575 (owner, top-level tags, descriptions)
+2026-08-23T05:24:55Z 40 dispatch #2 v0.1.1 run=32619599698 FAILED certify-local (tokens minItems/maxItems certifier rule) -> fix 568f111 (verified locally vs coworld==0.1.42 certifier)
+2026-08-23T05:24:55Z 40 dispatch #3 v0.1.2 run=32619836836 certify.ok=true hosted=certified policies v1 x4 secret_put=true BUT canonical=false in artifact — documented completion race; platform GET /v2/coworlds already shows cow_23c9b804 canonical=true v0.1.2
+2026-08-23T05:24:55Z 40 DECISION (rail): authorize dispatch #4 v0.1.3 bump-only — the bump-only remedy is the documented cure for this race and is the third DISTINCT retry change (initial attempt + manifest fix + certifier fix so far); not a cert failure surviving three fixes, so phase 90 does not apply
+2026-08-23T05:24:55Z heartbeat phase=40
