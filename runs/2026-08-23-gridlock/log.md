@@ -58,3 +58,4 @@
 2026-08-23T15:19:01Z progress phase=50 marker=sub_8dc366ca-50d2-48f9-94ad-dc81a588ee13
 2026-08-23T15:19:01Z 50 -> 60 phase transition
 2026-08-23T15:19:01Z heartbeat phase=60
+2026-08-23T15:19:29Z 60 verifier dispatched thread=TBD (8 checks, poll bound 75m, output=runs/2026-08-23-gridlock/VERIFY.md + viewer-check/)
