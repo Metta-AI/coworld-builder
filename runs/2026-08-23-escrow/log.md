@@ -65,3 +65,12 @@
 2026-08-23T15:56:41Z 50 settings 200: ladder round_robin/filler_policy, elo mean, round_interval_minutes=15
 2026-08-23T15:56:41Z progress phase=50 marker=league_cc074076-5938-403e-81db-d278c031db6d
 2026-08-23T15:56:41Z heartbeat phase=50
+2026-08-23T15:57:42Z 50 champion1 submit run 32650135326 ok=true sub_45532554-56c2-46e5-8a7f-abb857ee890d (escrow-drafter:v1, daveey)
+2026-08-23T16:00:06Z 50 champion2 submit run 32650182901 ok=true sub_664a688e-c0cd-4712-bd35-b8d962c0ac59 (escrow-swapper:v1, daveey-1)
+2026-08-23T16:00:06Z 50 policy-version UUIDs resolved: drafter=6eb9292a-1189-4f4d-b5ae-191c4b0e1d9d swapper=ae792ad8-75d3-4eb6-aea3-4dfa8548907a(daveey-1) trader=0505950f-bd65-46d4-ac4a-b3d0ad40c11b hoarder=b07b36d6-c4aa-4dce-b5af-a3dc0f7a6016
+2026-08-23T16:00:06Z 50 filler-policies 200: trader + hoarder registered, neither champion
+2026-08-23T16:00:06Z 50 rounds-paused=false 200; trigger-round 200 (workflow ladder-league_cc074076-5938-403e-81db-d278c031db6d)
+2026-08-23T16:00:06Z 50 rounds: round 1 failed (auto-fired at settings time, before fillers/champions — superseded), round 2 pending with both champions in entrant_attributions
+2026-08-23T16:00:06Z progress phase=50 marker=sub_664a688e-c0cd-4712-bd35-b8d962c0ac59
+2026-08-23T16:00:06Z 50 -> 60 phase transition: entering verify
+2026-08-23T16:00:06Z heartbeat phase=60

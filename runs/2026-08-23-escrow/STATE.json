@@ -5,7 +5,7 @@
   "slug": "escrow",
   "repo": "https://github.com/Metta-AI/cogame-escrow",
   "starter": "cogame-bullwhip",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,7 +23,10 @@
       "escrow-trader:v1",
       "escrow-hoarder:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "0505950f-bd65-46d4-ac4a-b3d0ad40c11b",
+      "b07b36d6-c4aa-4dce-b5af-a3dc0f7a6016"
+    ]
   },
   "league": {
     "id": "league_cc074076-5938-403e-81db-d278c031db6d",
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:56:41Z",
+  "heartbeat_at": "2026-08-23T16:00:06Z",
   "session_ended_at": null,
   "session_id": "8bdafd79",
   "log": "runs/2026-08-23-escrow/log.md"
