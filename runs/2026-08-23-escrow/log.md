@@ -185,3 +185,5 @@
 2026-08-23T18:58:23Z 60 verifier attempt 3 returned: ALL-TRUE (8/8). Rounds 12+13 (v4), champion fallbacks 0/32 both rounds, 27 signs/27 settles r13, hosted logs clean (0/0/0/0), iframe static on cow_9b73db59, viewer-check 32659327500 loaded:true 3 differing clocks
 2026-08-23T18:58:23Z progress phase=60 marker=VERIFY.md-all-true-r13
 2026-08-23T18:58:23Z 60 judge dispatch pending (phase-60 adjudication)
+2026-08-23T18:59:11Z 60 judge dispatched (thread sthr_012ATq1iNhzCGFFspHvm1hrD) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-23T18:59:11Z heartbeat phase=60
