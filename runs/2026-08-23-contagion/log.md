@@ -27,3 +27,4 @@
 2026-08-23T11:52:21Z 30 r1 fixer returned r1-fixes.md: 8 fixed (B1,N2,N8,N9,N10a,CND-4,item7-sweep,N11), 6 refuted, 2 CND settled; main=66e0821 ci=32637561078 success. Sentinel retuned to sweep argmax (rails: parameter tuning) — accepted by coordinator.
 2026-08-23T11:52:21Z progress phase=30 marker=r1-fixes.md
 2026-08-23T11:52:21Z heartbeat phase=30
+2026-08-23T11:52:48Z 30 note: shared git index also carried runs/2026-08-23-ecos/reviews/r1-review.md (staged by the concurrent ecos session) into my last commit — benign, content preserved, not reverted.
