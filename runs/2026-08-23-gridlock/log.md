@@ -30,3 +30,7 @@
 2026-08-23T14:36:17Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-08-23T14:36:17Z 00 resume at phase 30 attempt=1 session=a0e45f38
 2026-08-23T14:37:54Z 30 r1 fixer re-dispatch (previous fixer pushed 17 commits F2..F25, CI green run=32638156016 sha=b732790f, but r1-fixes.md missing; new fixer reconciles existing commits + addresses F1,F3,F5,F17,F19,F22,F23,F24 and writes the artifact)
+2026-08-23T14:58:03Z 30 r1 fixer returned thread=sthr_01KJi3zjQHqepVdnnUXimzN2: 6 new commits (F3,F17,F19,F22,F23,+F21-followup), 3 no-change with evidence (F1,F5,F24), head=0decf322 CI GREEN run=32646687184 incl new viewer-native job; r1-fixes.md covers all 25
+2026-08-23T14:58:03Z progress phase=30 marker=r1-fixes.md
+2026-08-23T14:58:03Z 30 r1 judge dispatched (fresh context, target sha=0decf3220186f0ae07d7b03731624c07d1277847, output=reviews/r1-verdict.md)
+2026-08-23T14:58:03Z heartbeat phase=30
