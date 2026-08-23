@@ -12,3 +12,5 @@
 2026-08-23T09:58:56Z progress phase=10 marker=runs/2026-08-23-ecos/design.md
 2026-08-23T09:58:56Z 10 -> 20 phase transition; STATE.phase=20 pushed before builder dispatch
 2026-08-23T09:58:56Z heartbeat phase=20
+2026-08-23T09:59:56Z 20 repo created https://github.com/Metta-AI/cogame-ecos (public); propagate-secrets run 32632519592 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-23T09:59:56Z heartbeat phase=20
