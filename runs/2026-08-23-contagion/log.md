@@ -42,3 +42,8 @@
 2026-08-23T12:09:24Z heartbeat phase=50
 2026-08-23T12:10:58Z 50 seed 200 lseed_e375c698; league=league_53d9ccfb-c943-4b5c-a89f-b9b149365df1 division=div_16e3c809-fd49-46f5-8eae-4fdea07d7733 settings 200 (elo mean, round_robin, filler_policy, 15min)
 2026-08-23T12:10:58Z heartbeat phase=50
+2026-08-23T12:13:30Z 50 ch1 submit run=32638661642 ok sub_dd5a3a1a (contagion-warden:v1, daveey); ch2 submit run=32638690622 ok (contagion-broker:v1, daveey-1)
+2026-08-23T12:13:30Z 50 fillers registered: sentinel=90a1ef43 laggard=d224d741 (neither champion); unpaused; trigger-round accepted
+2026-08-23T12:13:30Z 50 rounds: r1 failed (auto-created pre-entrants, before my trigger) — r2 pending with both champions in entrant_attributions; EXIT criterion met; phase 50 -> 60
+2026-08-23T12:13:30Z progress phase=50 marker=league_53d9ccfb-round2-pending
+2026-08-23T12:13:30Z heartbeat phase=60
