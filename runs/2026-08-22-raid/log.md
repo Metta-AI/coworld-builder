@@ -87,3 +87,5 @@
 2026-08-23T07:51:49Z progress phase=50 marker=sub_0f5e4972+round1-pending
 2026-08-23T07:51:49Z 50 -> 60 phase transition
 2026-08-23T07:51:49Z heartbeat phase=60
+2026-08-23T07:52:07Z 60 verifier dispatched output=runs/2026-08-22-raid/VERIFY.md (8 checks, 75-min round wait bound)
+2026-08-23T07:52:07Z heartbeat phase=60
