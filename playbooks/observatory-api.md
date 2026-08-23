@@ -174,7 +174,10 @@ curl -sS "$BASE/episode-requests/$EREQ/artifacts/results" "${AUTH[@]}" "${ELEV[@
 curl -sS "$BASE/episode-requests/$EREQ/artifacts/replay"  "${AUTH[@]}" "${ELEV[@]}"
 ```
 
-The elevated header is required here even though it is a read. Grep the log for
+The elevated header is required here even though it is a read. The logs body is python
+`b'…'` byte-string reprs under `===== container: <name> =====` headers — **decode before
+grepping** (python3 `ast.literal_eval` per repr), or line-based greps badly undercount
+(escrow, 2026-08-23). Grep the decoded text for
 `falling back|LLM provider is unavailable|cut off at max_tokens|rejected`.
 
 Replay bytes also live at `https://softmax-public.s3.amazonaws.com/replays/<uuid>.replay`

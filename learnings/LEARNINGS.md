@@ -480,3 +480,32 @@ the starter after the fact.
   gap is closable with a committed HSV recolour of a starter sprite (`tools/make_violet_cog.py`).
 - Zero-retry run end to end (design r1 accept, CI green on first push, release first dispatch,
   1 review round): total wall clock ~2.5 h. The templates + playbook pins are doing their job.
+
+## 2026-08-23 escrow
+
+- **Constrained-output (DSL) games: precompute the legal choice set in the observation.** Prompt-only
+  legality drills cut champion fallbacks from 59% to only 31-41%; what took them to **0/32** was
+  game-side: a `SIGNABLE NOW` list in the turn view whose membership is computed by the same
+  predicate `validateMove` applies (list == legality), a precomputed `SPENDABLE THIS TURN` line,
+  tolerant JSON extraction (first balanced object, trailing prose ignored), and pre-parse
+  normalization of the structured field (drop junk before `OFFER`, prose after `ELSE`). If a game
+  asks a model to emit a formal language, budget for one game-side remediation round in phase 60
+  and design the observation to enumerate the legal moves from day one.
+- **Policy uploads never dedupe on this deployment.** Every `coworld-release.yml` dispatch mints a
+  new version for ALL policies — unchanged scripted fillers included (v1→v2→v3→v4 here). After any
+  re-release: resubmit BOTH champions at the new labels and re-register fillers with the new UUIDs
+  before triggering, or the ladder keeps playing the old versions.
+- **Round 1 fails right after seeding — expected.** The seed+settings sequence auto-fires a round
+  before champions/fillers exist; it dies with "Temporal RoundWorkflow failed before settling the
+  round." Not a defect; the round triggered after fillers is what counts. Record it as excluded.
+- **Sandbox `git push` over HTTPS can die mid-session** (auth rejected after working earlier in the
+  same session; `gh api` keeps working). Reliable path: git-data API push — blobs → tree → commit →
+  `PATCH refs/heads/main` with `force:false` (a rejected PATCH = lost race, same as a rejected
+  push). Large/binary blobs must go via `--input <file>` (argv limit breaks `-f content=`).
+- **Hosted episode logs are python `b'…'` reprs** under `===== container: <name> =====` headers —
+  decode before grepping or counts are badly low.
+- **Model routing is platform-side:** the game log announces `model=claude-sonnet-5` while the
+  Bedrock sidecar routes `claude-haiku-4-5`. Write champion prompts for a small model.
+- **Third parties can join your league mid-run** (two platform players joined Escrow ~40 min after
+  seeding). Fillers then go unused (`insufficient_players` never triggers) and DoD item 2 still
+  passes — champions ranked and fillers absent is the requirement, not "only our seats".
