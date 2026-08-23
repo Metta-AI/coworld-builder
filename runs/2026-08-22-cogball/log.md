@@ -23,3 +23,7 @@
 2026-08-23T01:14:45Z heartbeat phase=20
 2026-08-23T01:15:24Z 20 phase re-entered (ctf rebuild); repo + secrets already in place from the superseded round; dispatching builder round 2 (implement v2 design, replace moba implementation with normal commits, CI green on main)
 2026-08-23T01:15:24Z heartbeat phase=20
+2026-08-23T03:03:21Z 20 builder round 2 returned: CI green run=32613856995 sha=812c661d (12 suites debug+release, docker-smoke reason=complete seats=2, wasm determinism gate 0 mismatch); red round 1 run=32613599558 (dist/ mkdir, distinct fix logged); workflows parse, placeholder grep clean
+2026-08-23T03:03:21Z progress phase=20 marker=ci-run-32613856995
+2026-08-23T03:03:21Z 20 EXIT: ci.yml green on main at 812c661d; phase -> 30
+2026-08-23T03:03:21Z heartbeat phase=30
