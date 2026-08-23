@@ -56,11 +56,11 @@
     "verdict": "all-true 8/8"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-23T15:58:16Z",
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:54:30Z",
+  "heartbeat_at": "2026-08-23T15:58:16Z",
   "session_ended_at": null,
   "session_id": "a0e45f38",
   "log": "runs/2026-08-23-gridlock/log.md"
