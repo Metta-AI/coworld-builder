@@ -30,3 +30,6 @@
 2026-08-23T03:21:57Z 30 r1 reviewer returned: 38 findings (F1-F38), none claimed checklist-falsifying; substantive: F14 host_error unreachable, F19 directive-record cap can truncate to unparseable JSON, F25-F27/F30 untested claims, F37 /client/replay residue in league_replayer, F31 baseline constants vs note; review at reviews/r1-review.md
 2026-08-23T03:21:57Z 30 r1: fixer dispatched
 2026-08-23T03:21:57Z heartbeat phase=30
+2026-08-23T04:54:24Z 30 r1 fixer returned: 31 fixed / 8 evidence-refuted (0 unreproducible); 42 commits; CI green run=32618552227 sha=e42bd4ed; one red round (docker-smoke dial race, fixed forward with retry+test); F19 structural JSON-safe capping; F37 pod-route derivation + bundle assertion; F31 grid harness committed+run; fixes at reviews/r1-fixes.md
+2026-08-23T04:54:24Z 30 r1: judge dispatched (fresh context) at e42bd4ed
+2026-08-23T04:54:24Z heartbeat phase=30
