@@ -11,3 +11,5 @@
 2026-08-23T10:16:08Z 20 repo created https://github.com/Metta-AI/cogame-contagion (public); propagate-secrets run=32633275977 success; secrets SOFTMAX_TOKEN+ANTHROPIC_API_KEY confirmed
 2026-08-23T10:16:58Z 20 builder dispatched thread=sthr_01Dy3bFBd1Q6kdCENsLAJQJ5
 2026-08-23T10:16:58Z heartbeat phase=20
+2026-08-23T11:04:30Z 20 builder push attempt 1: `git push` rejected ("No anonymous write access"; the stock credential helper is not allowlisted for this new repo, GH_TOKEN cannot do git-over-HTTPS). Seeded LICENSE via the Contents API, then pushed the 5 commits through the Git Data API (blobs -> tree -> commit -> ref). Remote head 7cba8a07e90dda827d069c12865aedbadfa98e57.
+2026-08-23T11:05:20Z 20 ci.yml run=32635551779 sha=7cba8a07 conclusion=success (test / docker-smoke / wasm-viewer all green, first attempt) https://github.com/Metta-AI/cogame-contagion/actions/runs/32635551779
