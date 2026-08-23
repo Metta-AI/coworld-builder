@@ -23,3 +23,5 @@
 2026-08-23T05:54:02Z 20 phase -> 30 (review_round 1)
 2026-08-23T05:55:50Z 30 r1 reviewer dispatched (thread sthr_01LDLUyjeauT18DotXkXBjDz); repo checkout /workspace/scratch/cogame-hive-repo @ 48465f3
 2026-08-23T05:55:50Z heartbeat phase=30
+2026-08-23T06:11:45Z 30 r1 reviewer returned: 30 findings (3 candidate-blocking: wasm-viewer job missing browser smoke+needs, data-replay-loaded marker shape/timing, recall kernel), 12 traced-consistent; reviews/r1-review.md (558 lines)
+2026-08-23T06:11:45Z 30 r1 fixer dispatch pending
