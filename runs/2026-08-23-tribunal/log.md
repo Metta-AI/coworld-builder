@@ -26,3 +26,7 @@
 2026-08-23T16:39:33Z 30 r1 fixes returned: F1,F2,F3 fixed (c02c4c0,6bcbff1,11ec316), CI green run=32652071584 sha=11ec316; F11 needs-design recorded; rest not-fixed with evidence
 2026-08-23T16:39:33Z 30 r1 judge dispatched sha=11ec316
 2026-08-23T16:39:33Z heartbeat phase=30
+2026-08-23T16:48:43Z 30 r1 verdict: blocking 0 (F1 refuted-at-head; independent checklist all-pass, cited) — loop exits round 1
+2026-08-23T16:48:43Z progress phase=30 marker=r1-verdict.md
+2026-08-23T16:48:43Z 00 phase 30 -> 40
+2026-08-23T16:48:43Z heartbeat phase=40
