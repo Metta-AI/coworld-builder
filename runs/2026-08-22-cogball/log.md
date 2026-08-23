@@ -44,3 +44,8 @@
 2026-08-23T05:24:55Z 40 dispatch #3 v0.1.2 run=32619836836 certify.ok=true hosted=certified policies v1 x4 secret_put=true BUT canonical=false in artifact — documented completion race; platform GET /v2/coworlds already shows cow_23c9b804 canonical=true v0.1.2
 2026-08-23T05:24:55Z 40 DECISION (rail): authorize dispatch #4 v0.1.3 bump-only — the bump-only remedy is the documented cure for this race and is the third DISTINCT retry change (initial attempt + manifest fix + certifier fix so far); not a cert failure surviving three fixes, so phase 90 does not apply
 2026-08-23T05:24:55Z heartbeat phase=40
+2026-08-23T05:38:51Z 40 dispatch #4 v0.1.3 run=32620306477 SUCCESS: ok=true canonical=true certify.ok=true replay_liveness=skipped-static secret_put=true; cow_id=cow_5d14a55f-2647-49fa-95d4-7b37a7463da5; policies v2 x4, champion2 player_id=ply_bac48eb1 verified; version UUIDs resolved (total=0f2edcb1 counter=40f864bb formation=7c11dd63 swarm=259d11a4); v1 labels from 0.1.2 stale — ignored
+2026-08-23T05:38:51Z 40 note: artifact hosted_certification="failed" is a platform-internal certifier-pod 404 (informational, not gated; hosted smoke passed 5/5, coworld canonical); template deltas recorded for phase 80 LEARNINGS (manifest schema: game.owner, top-level tags, descriptions; certifier-only tokens minItems/maxItems rule; local matriculate via pip coworld==0.1.42 as phase-20 prevention)
+2026-08-23T05:38:51Z 40 EXIT: release-result.json committed; phase -> 50
+2026-08-23T05:38:51Z progress phase=40 marker=release-run-32620306477
+2026-08-23T05:38:51Z heartbeat phase=50
