@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_0e95b506-422e-4339-9a9d-8c8a6ecdb4ea",
+    "division": "div_1aa06f49-71bf-4e57-bd88-337261abec99"
   },
   "verify": {
     "rounds": [],
@@ -39,7 +39,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T19:58:02Z",
+  "heartbeat_at": "2026-08-23T19:59:10Z",
   "session_ended_at": null,
   "session_id": "424c931e",
   "log": "runs/2026-08-23-eleusis/log.md"

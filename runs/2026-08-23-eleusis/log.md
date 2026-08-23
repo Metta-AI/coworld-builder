@@ -34,3 +34,7 @@
 2026-08-23T19:58:02Z 40 release-result.json persisted and committed; repo main e245612 (mode-bit fix) ci green 32662685795
 2026-08-23T19:58:02Z progress phase=40 marker=release-run-32662323162
 2026-08-23T19:58:02Z 40 phase -> 50
+2026-08-23T19:59:10Z 50 seed 200 lseed_7a764d82; league league_0e95b506-422e-4339-9a9d-8c8a6ecdb4ea
+2026-08-23T19:59:10Z 50 division 200 div_1aa06f49-71bf-4e57-bd88-337261abec99; settings 200 (round_robin, elo, filler_policy, 15min)
+2026-08-23T19:59:10Z 50 note: GET /leagues returns a bare array on this deployment (playbook shows .entries) — filtered with .[]
+2026-08-23T19:59:10Z heartbeat phase=50
