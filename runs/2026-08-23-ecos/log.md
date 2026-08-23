@@ -28,3 +28,4 @@
 2026-08-23T12:29:22Z 30 r1 fixer returned r1-fixes.md: 21 fixed / 0 refuted / 7 no-change (6 advisory, 1 NEEDS-DESIGN F23 measured+reverted); CI green run=32639042839 sha=b4bb25e9; repo design-note copy diverged from run copy (F3/F5/F10 documented deviations)
 2026-08-23T12:29:22Z progress phase=30 marker=r1-fixes.md
 2026-08-23T12:29:22Z heartbeat phase=30
+2026-08-23T12:30:09Z 30 r1 judge dispatched thread=sthr_01EUZQTsFfhn35kDyiNwxU2x target sha=b4bb25e9 (fresh context; refute-then-checklist; verdict to r1-verdict.md)
