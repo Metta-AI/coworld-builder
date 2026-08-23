@@ -460,3 +460,23 @@ builder claimed to have inherited verbatim. Folded into `prompts/10-design.md`,
 **Cost.** Three live coworlds re-fixed by hand in one sitting, and gridlock's viewer rebuilt from
 the starter after the fact.
 
+## 2026-08-23 tribunal
+
+- **A wall-clock-driven outcome cannot be re-derived from game events — seed it from the recording.**
+  Tribunal's `reason:"deadline"` is decided by the play-deadline clock, not by the rules, so
+  `replayMatch` re-derived a ballot-phase deadline as `"complete"` (r1 blocking finding F1). Fix
+  shape: pre-seed `sim.reason` from the recorded `end` event before replaying. Any coworld with a
+  deadline/timeout ending has this class of bug; test the deadline in EVERY phase it can trip in
+  (mid-argument re-derived fine; at-ballot did not).
+- **Keep the starter's chrome element ids (`#scorebug`, `#feed`) even when restyling regions.**
+  `viewer_smoke.mjs` and `viewer-check.yml` probe those generic selectors; tribunal renders both
+  regions but named them differently, so the probes report `scorebug:"" feed_lines:0` and the
+  judge has to fall back to the screenshot. Cosmetic, but it weakens the automated evidence.
+- **`GET /leagues?limit=200` can return a bare array** (not `{entries:[…]}`); parse both shapes:
+  `if type=="array" then . else .entries end`. Same defensive read works for `/rounds` and
+  `/policy-versions`.
+- **Bullwhip starter is now a proven two-for-two template for dialogue/role games** (escrow,
+  tribunal): fork it for asymmetric-role, simultaneous-turn, LLM-prompt games; the fifth-seat art
+  gap is closable with a committed HSV recolour of a starter sprite (`tools/make_violet_cog.py`).
+- Zero-retry run end to end (design r1 accept, CI green on first push, release first dispatch,
+  1 review round): total wall clock ~2.5 h. The templates + playbook pins are doing their job.
