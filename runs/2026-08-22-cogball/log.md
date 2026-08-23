@@ -68,3 +68,5 @@
 2026-08-23T09:18:01Z 00 resume at phase 60 attempt=1 session=8d18519d
 2026-08-23T09:20:04Z 60 route decision executed: builder dispatched to fix COG_BASE defect (client/replay_broadcast.html:1721) + re-release 0.1.4; league untouched
 2026-08-23T09:20:04Z heartbeat phase=60
+2026-08-23T09:23:28Z heartbeat phase=60
+2026-08-23T09:23:28Z 60 builder(re-release) started: found predecessor session already pushed the COG_BASE fix (654fea6) + a second viewer defect fix (fb050fb pushFeed) and released 0.1.4 (run 32623293246) and 0.1.5 (run 32624985984); auditing before deciding on further dispatch
