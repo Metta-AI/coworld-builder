@@ -23,3 +23,6 @@
 2026-08-23T16:22:16Z 30 r1 review returned (1 blocking-candidate F1 replay re-derivation deadline-at-ballot, 13 advisory)
 2026-08-23T16:22:16Z 30 r1 fixer dispatched
 2026-08-23T16:22:16Z heartbeat phase=30
+2026-08-23T16:39:33Z 30 r1 fixes returned: F1,F2,F3 fixed (c02c4c0,6bcbff1,11ec316), CI green run=32652071584 sha=11ec316; F11 needs-design recorded; rest not-fixed with evidence
+2026-08-23T16:39:33Z 30 r1 judge dispatched sha=11ec316
+2026-08-23T16:39:33Z heartbeat phase=30
