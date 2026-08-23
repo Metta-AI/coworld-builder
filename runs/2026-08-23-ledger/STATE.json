@@ -5,19 +5,22 @@
   "slug": "ledger",
   "repo": "https://github.com/Metta-AI/cogame-ledger",
   "starter": "cogame-babel",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_7754c862-182c-4ec9-bca6-4311d36f2be4",
+    "manifest_sha": "sha256:655ad0565d05b0728371a7808baa372ecac282849127cb3e3bfbb3cdc87652b8",
+    "release_run_id": "32673657033"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "ledger-reputation:v1",
+    "champion2": "ledger-broker:v1",
+    "fillers": [
+      "ledger-mirror:v1",
+      "ledger-shark:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +37,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T23:26:09Z",
+  "heartbeat_at": "2026-08-23T23:34:52Z",
   "session_ended_at": null,
   "session_id": "fa90e4dc",
   "log": "runs/2026-08-23-ledger/log.md"

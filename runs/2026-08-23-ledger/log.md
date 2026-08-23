@@ -32,3 +32,8 @@
 2026-08-23T23:26:09Z 30 -> 40 phase transition: entering release
 2026-08-23T23:26:09Z heartbeat phase=40
 2026-08-23T23:26:52Z 40 dispatch builder brief=coworld-release.yml version 0.1.0, put_secret=true, persist release-result.json
+2026-08-23T23:34:52Z 40 builder returned: release 0.1.0 run=32673657033 ok=true canonical=true certify.ok=true replay_liveness=skipped-static secret_put=true cow_id=cow_7754c862-182c-4ec9-bca6-4311d36f2be4 (1 of 3 dispatches)
+2026-08-23T23:34:52Z 40 policies: champion1=ledger-reputation:v1 (daveey) champion2=ledger-broker:v1 (daveey-1) fillers=ledger-mirror:v1,ledger-shark:v1
+2026-08-23T23:34:52Z progress phase=40 marker=32673657033
+2026-08-23T23:34:52Z 40 -> 50 phase transition: entering league
+2026-08-23T23:34:52Z heartbeat phase=50
