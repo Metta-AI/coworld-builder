@@ -18,3 +18,7 @@
 2026-08-23T21:32:30Z progress phase=20 marker=ci-run-32667457401
 2026-08-23T21:32:30Z 20 phase -> 30 review_round=1
 2026-08-23T21:32:30Z heartbeat phase=30
+2026-08-23T21:49:57Z 30 r1 reviewer returned r1-review.md (189 lines): 1 blocking (B1 missing tuning harness, checklist 7), 14 non-blocking (F2-F15), 9 observations
+2026-08-23T21:49:57Z progress phase=30 marker=r1-review.md
+2026-08-23T21:49:57Z 30 r1 dispatching fixer
+2026-08-23T21:49:57Z heartbeat phase=30
