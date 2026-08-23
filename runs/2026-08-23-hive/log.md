@@ -71,3 +71,5 @@
 2026-08-23T08:08:43Z 60 verifier returned: 8/8 TRUE (VERIFY.md 860 lines, evidence inline); rounds 2+3 completed, both champions ranked rp=2 (daveey-1 1001.47, daveey 998.53), replay reason=complete 40/40 llm doctrines 0 fallbacks, log CLEAN, static viewer route confirmed, viewer-check run 32627090556 loaded:true clocks differ
 2026-08-23T08:08:43Z progress phase=60 marker=VERIFY.md-8-true
 2026-08-23T08:08:43Z 60 judge adjudication dispatch pending
+2026-08-23T08:10:13Z 60 judge dispatched (fresh context, thread sthr_01BjeEiuaDCEvPrEYG4PL8h9) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-23T08:10:13Z heartbeat phase=60
