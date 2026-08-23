@@ -160,3 +160,28 @@
 2026-08-23T18:26:37Z heartbeat phase=60
 2026-08-23T18:27:22Z 60 verifier re-dispatched attempt 3 (thread sthr_01D4M21ZXMCfL1tuBySiz83C) scoped to v4 rounds
 2026-08-23T18:27:22Z heartbeat phase=60
+2026-08-23T18:28:34Z heartbeat phase=60
+2026-08-23T18:28:34Z 60 attempt 3 poll rounds: 12:pending(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 0)
+2026-08-23T18:33:34Z heartbeat phase=60
+2026-08-23T18:33:34Z 60 attempt 3 poll rounds: 12:completed(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 1)
+2026-08-23T18:39:24Z heartbeat phase=60
+2026-08-23T18:39:24Z 60 attempt 3 poll rounds: 12:completed(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 1)
+2026-08-23T18:44:24Z heartbeat phase=60
+2026-08-23T18:44:24Z 60 attempt 3 poll rounds: 13:pending(v4) 12:completed(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 1)
+2026-08-23T18:49:13Z heartbeat phase=60
+2026-08-23T18:49:13Z 60 attempt 3 poll rounds: 13:completed(v4) 12:completed(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 2)
+2026-08-23T18:52:33Z heartbeat phase=60
+2026-08-23T18:52:33Z 60 attempt 3 poll rounds: 13:completed(v4) 12:completed(v4) 11:completed 10:completed 9:completed 8:completed (completed v4: 2)
+2026-08-23T18:57:28Z heartbeat phase=60
+2026-08-23T18:57:28Z 60 attempt 3 check 1 TRUE: v4 rounds 12 (round_3de0946c-72da-465c-bd05-3148da13dfaf, 18:26:27Z) + 13 (round_292146e4-dee4-45f7-9259-79fe08d95198, 18:41:27Z) completed after v4 fillers set ~18:26:3xZ; 12 completed overall; round 1 excluded failed "Temporal RoundWorkflow failed before settling the round."; rounds 2-7 v1, 8-11 v3 excluded
+2026-08-23T18:57:28Z 60 attempt 3 check 2 TRUE: daveey rank1 escrow-drafter:v4 elo 1071.97 rounds_played 12; daveey-1 rank4 escrow-swapper:v4 elo 952.24 rounds_played 12; this run's fillers absent (ranks 2/3 are third-party players richard/relh with co-gas-escrow-baseline-* policies, not fillers)
+2026-08-23T18:57:28Z 60 attempt 3 check 3 TRUE: round 13 ereq_78850370-c03e-4fc0-b663-a59bb5d73f93 completed, replay https://softmax-public.s3.amazonaws.com/replays/1839e1b7-3f2c-418c-9eeb-28c19fd6b5dd.replay, seats 1/2 = drafter:v4 (daveey, 5153a6f7) / swapper:v4 (daveey-1, 228bbef6), all is_filler false
+2026-08-23T18:57:28Z 60 attempt 3 check 4 TRUE: strict UTF-8 JSON ok (jq -e + python decode), protocol escrow.replay.v1, results.reason complete; champion-seat scripted moves 0/32 (0%) round 13 AND 0/32 round 12; 27 sign / 27 settle events round 13 (29/29 round 12) vs 0/0 in attempt 2 round 9; results.signed [12,9,19,14], forfeits all 0
+2026-08-23T18:57:28Z 60 attempt 3 check 5 TRUE: CLEAN after decoding b'...' container reprs (155956 raw -> 155443 bytes, 4 containers): 0 'falling back', 0 'LLM provider is unavailable', 0 'cut off at max_tokens', 0 'rejected'; round 12 same four zeros; only 6 retried attempt-0 validator failures (1 on a champion seat), zero 'not addressed to you'
+2026-08-23T18:57:28Z 60 attempt 3 check 6 TRUE: raw-HTML grep empty (client-rendered); SSR state.playlist[0] = escrow.r13.e1 on cow_9b73db59 v0.1.3 (NEW cow, not stale, 1 of 3 attempts used); POST /coworlds/replays/session -> https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_9b73db59-4be9-4a59-9e56-5eed9151a871/sha256%3Af5e3e157.../index.html?replay=...&v=2 ready:true
+2026-08-23T18:57:28Z 60 attempt 3 check 7 TRUE: committed runs/2026-08-23-escrow/release-result.json (v0.1.3, run 32657361152, cow_9b73db59, manifest_sha f5e3e157) .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-23T18:57:28Z 60 attempt 3 check 8 TRUE: viewer-check run 32659327500 (fresh dispatch 18:50:35Z) loaded:true ms=652 failure:null bridge ["loading","ready"]; scrub 0%="TURN 0" 50%="TURN 0 / 16 · WAITING ON 4" 100%="TURN 16 / 16 · FINAL"; scorebug:""/feed_lines:0 = known generic-probe gap; screenshot shows starter chrome + endcard reconciling to .results; artifacts runs/2026-08-23-escrow/viewer-check/round13-32659327500/
+2026-08-23T18:57:28Z 60 VERIFY.md rewritten (attempt 3): 8 TRUE / 0 FALSE — ALL-TRUE. Remediation 2 effect: champion fallbacks 47-59% -> 31-41% -> 0%; falling-back lines 19 -> 13 -> 0; sign/settle 0/0 -> 27/27
+2026-08-23T18:58:23Z 60 verifier attempt 3 returned: ALL-TRUE (8/8). Rounds 12+13 (v4), champion fallbacks 0/32 both rounds, 27 signs/27 settles r13, hosted logs clean (0/0/0/0), iframe static on cow_9b73db59, viewer-check 32659327500 loaded:true 3 differing clocks
+2026-08-23T18:58:23Z progress phase=60 marker=VERIFY.md-all-true-r13
+2026-08-23T18:58:23Z 60 judge dispatch pending (phase-60 adjudication)
