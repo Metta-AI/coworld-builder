@@ -33,3 +33,5 @@
 2026-08-23T02:20:37Z progress phase=30 marker=r1-review.md
 2026-08-23T02:21:27Z 30 r1 fixer dispatched output=runs/2026-08-22-raid/reviews/r1-fixes.md
 2026-08-23T02:21:27Z heartbeat phase=30
+2026-08-23T05:40:28Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
+2026-08-23T05:40:28Z 00 resume at phase 30 attempt=1 session=36cbd675
