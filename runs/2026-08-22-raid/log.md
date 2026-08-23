@@ -59,3 +59,5 @@
 2026-08-23T07:02:21Z progress phase=30 marker=r2-verdict.md
 2026-08-23T07:02:21Z 30 -> 40 phase transition (2 rounds, zero blocking)
 2026-08-23T07:02:21Z heartbeat phase=40
+2026-08-23T07:02:50Z 40 builder dispatched brief=release cogame-raid 0.1.0 via coworld-release.yml, evidence to runs/2026-08-22-raid/release-result.json
+2026-08-23T07:02:50Z heartbeat phase=40
