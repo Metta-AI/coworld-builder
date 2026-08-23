@@ -14,3 +14,8 @@
 2026-08-23T15:17:59Z 20 propagate-secrets run 32648084059 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on cogame-tribunal
 2026-08-23T15:17:59Z 20 builder dispatched round 1
 2026-08-23T15:17:59Z heartbeat phase=20
+2026-08-23T16:05:09Z 20 builder returned: CI green run=32650232655 sha=d69e4e3 first push; exit criteria all hit; 6 flagged deviations recorded for review
+2026-08-23T16:05:09Z 20 verified: CI success on main head d69e4e3; ci/release/submit workflows all active
+2026-08-23T16:05:09Z progress phase=20 marker=32650232655
+2026-08-23T16:05:09Z 00 phase 20 -> 30
+2026-08-23T16:05:09Z heartbeat phase=30
