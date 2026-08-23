@@ -31,6 +31,13 @@
 #   SMOKE_REQUIRE_REPLAY_JSON  1 = replay must parse as JSON    (1)
 #                              set 0 for binary replay formats
 #   SMOKE_EXTRA_ENV            extra "K=V K=V" for every player (empty)
+#   SMOKE_REPLAY_OUT           where to COPY the replay this smoke produced,
+#                              so it outlives the scratch dir the trap deletes
+#                              (dist/smoke/replay.json). ci.yml uploads it as
+#                              the `smoke-replay` artifact and the wasm-viewer
+#                              job loads it in a real browser -- that is the
+#                              only replay in CI that is known to be readable
+#                              by this game's own viewer.
 #   ANTHROPIC_API_KEY          if set, forwarded to the game so the LLM path
 #                              is exercised; if unset the game must fall back
 #                              to its scripted baselines and still complete
@@ -48,6 +55,7 @@ seats_expected="${SMOKE_SEATS:-<SEATS>}"
 port="${SMOKE_PORT:-8080}"
 timeout_s="${SMOKE_TIMEOUT:-900}"
 require_replay_json="${SMOKE_REQUIRE_REPLAY_JSON:-1}"
+replay_out="${SMOKE_REPLAY_OUT:-${repo_dir}/dist/smoke/replay.json}"
 
 run_id="$$"
 prefix="${slug}-smoke-${run_id}"
@@ -292,3 +300,16 @@ then
   dump_logs
   exit 1
 fi
+
+# --------------------------------------------------------------------------
+# Keep the replay. `work_dir` is a mktemp the EXIT trap removes, so without
+# this the only replay CI ever produced is deleted seconds after it is
+# validated -- and the wasm-viewer job has nothing real to load. ci.yml
+# uploads this copy as the `smoke-replay` artifact.
+# --------------------------------------------------------------------------
+mkdir -p "$(dirname "${replay_out}")"
+cp "${work_dir}/replay.json" "${replay_out}"
+if [ -f "${work_dir}/results.json" ]; then
+  cp "${work_dir}/results.json" "$(dirname "${replay_out}")/results.json"
+fi
+echo "replay saved for the viewer smoke: ${replay_out} ($(wc -c < "${replay_out}" | tr -d ' ') bytes)"

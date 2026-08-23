@@ -9,9 +9,13 @@
 #                      certification.game_config.num_agents and hard-fails if
 #                      this value disagrees with it)
 #
-# The coworld-builder sandbox has no docker, no nim and no emsdk: this
-# workflow is the ONLY place those toolchains run. Phase 20's exit criterion
-# is this workflow green on main.
+# The coworld-builder sandbox has no docker, no nim, no emsdk and no browser:
+# this workflow is the ONLY place those toolchains run. Phase 20's exit
+# criterion is this workflow green on main.
+#
+# It also needs tools/ci/viewer_smoke.mjs (copied verbatim from coworld-builder
+# templates/tools/ci/; no substitutions) -- the wasm-viewer job opens the built
+# bundle in headless chromium and fails if the replay never renders.
 name: CI
 
 on:
@@ -180,6 +184,19 @@ jobs:
           SMOKE_SLUG: ${{ env.SLUG }}
         run: ./tools/ci/docker_smoke.sh "${IMAGE}:ci"
 
+      # The replay this episode produced is the ONLY replay in CI that is
+      # known to be a real, current-format episode of this game. wasm-viewer
+      # downloads it and loads it in a browser, so the viewer is tested
+      # against the bytes the platform will actually serve rather than a
+      # hand-written fixture that can drift.
+      - name: Upload the smoke replay
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-replay
+          path: dist/smoke/
+          if-no-files-found: error
+          retention-days: 14
+
   # ---------------------------------------------------------------------
   # The static replay viewer. The platform serves THIS bundle from
   # /v2/coworlds/replays/static/<cow_id>/<sha>/index.html, so a bundle that
@@ -190,6 +207,9 @@ jobs:
   wasm-viewer:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    # The bundle is EXECUTED here, not merely built, and it is executed against
+    # the replay docker-smoke just produced -- hence the dependency.
+    needs: docker-smoke
     steps:
       - uses: actions/checkout@v5
       - uses: docker/setup-buildx-action@v3
@@ -215,6 +235,16 @@ jobs:
             echo "::error::Fix with: git update-index --chmod=+x tools/build_replay_viewer.sh"
             exit 1; }
 
+      - name: Assert the viewer load test is present
+        run: |
+          set -euo pipefail
+          test -s tools/ci/viewer_smoke.mjs || {
+            echo "::error::tools/ci/viewer_smoke.mjs is missing. It is the only gate that"
+            echo "::error::EXECUTES the replay viewer; without it a bundle that deadlocks"
+            echo "::error::(cogame-lantern, 2026-08-23) ships green. Copy it from"
+            echo "::error::coworld-builder templates/tools/ci/viewer_smoke.mjs."
+            exit 1; }
+
       - name: Build the static replay viewer bundle
         run: ./tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"
 
@@ -232,6 +262,57 @@ jobs:
           fi
           echo "bundle OK:"
           find "${out}" -type f -printf '  %p (%s bytes)\n'
+
+      # -----------------------------------------------------------------
+      # The load test. Everything above only proves files EXIST. cogame-lantern
+      # shipped a viewer whose emscripten link flags (MODULARIZE / EXPORT_NAME)
+      # and whose JS bootstrap came from two different starters: the factory was
+      # never called, no error was thrown, and softmax.com sat on
+      # "Loading replay..." forever with every file present and 200. Only
+      # opening the page in a browser sees that.
+      #
+      # Playwright is pinned to 1.55.0 in BOTH places -- the npm module and the
+      # browser download. Bump them together or the browser 404s.
+      # -----------------------------------------------------------------
+      - name: Download the smoke replay
+        uses: actions/download-artifact@v4
+        with:
+          name: smoke-replay
+          path: dist/smoke
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Playwright (pinned 1.55.0)
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright@1.55.0
+          npx --yes playwright@1.55.0 install --with-deps chromium
+
+      - name: Load the bundle in a real browser
+        run: |
+          set -euo pipefail
+          replay="$(ls dist/smoke/*.replay dist/smoke/replay.json 2>/dev/null | head -1)"
+          test -n "${replay}" || {
+            echo "::error::docker-smoke uploaded no replay to dist/smoke"; ls -la dist/smoke || true; exit 1; }
+          echo "loading ${replay} in dist/static-replay-viewer"
+          node tools/ci/viewer_smoke.mjs \
+            --bundle dist/static-replay-viewer \
+            --replay "${replay}" \
+            --timeout 90
+
+      - name: Upload the viewer smoke evidence
+        # Always: the screenshot and the JSON are most useful when the job is red.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: viewer-smoke
+          path: |
+            viewer-smoke.png
+            viewer-smoke.json
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Upload the bundle
         uses: actions/upload-artifact@v4
