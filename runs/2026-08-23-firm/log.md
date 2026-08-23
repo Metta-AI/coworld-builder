@@ -9,3 +9,8 @@
 2026-08-23T21:58:50Z 10 starter=cogame-bullwhip reason="turn-based economic game, per-seat numeric decisions (effort, pay split) + short text directives = bullwhip's exact shape; newest babel descendant with 360px chrome + manifest runnable-env fixes" seats=5 (idea pins 1 manager + 4 workers)
 2026-08-23T21:58:50Z 10 dispatch designer brief=design note -> runs/2026-08-23-firm/design.md
 2026-08-23T21:58:50Z heartbeat phase=10
+2026-08-23T22:15:22Z 10 designer returned design.md (1137 lines) round 1
+2026-08-23T22:15:22Z 10 checklist: starter[x] num_agents=5-everywhere+SEATS[x] resolution-12-steps-numbered[x] scoring-normalized-net-per-shift-mean-episode[x] endings-complete/deadline[x] observation-split-field-by-field[x] reply-caps-runes[x] both-policies-steady/taskmaster[x] parallel-batch-680s-of-720s[x] degrade-never-hang[x] two-namespaces[x] viewer-static-360px[x] viewer-one-starter-bullwhip-all-four[x] chrome-provenance+no-viewpanel[x] transport-band-beats-buttons[x] replay-self-sufficient[x] packaging-compose+manifest+docs+protocols[x] tests-incl-viewer-smoke-executed[x] out-of-scope-10-items[x] — ACCEPTED round 1
+2026-08-23T22:15:22Z 10 -> 20 phase transition: entering build
+2026-08-23T22:15:22Z progress phase=10 marker=design.md
+2026-08-23T22:15:22Z heartbeat phase=20
