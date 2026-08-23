@@ -67,3 +67,4 @@
 2026-08-23T13:47:10Z progress phase=50 marker=round_09601725-1f08-4736-96cf-d092f1cf3911
 2026-08-23T13:47:10Z 50 -> 60 phase transition; STATE.phase=60 pushed before verifier dispatch
 2026-08-23T13:47:10Z heartbeat phase=60
+2026-08-23T13:48:05Z 60 verifier dispatched thread=sthr_01SdpCZfN9Y52nKSoRXxVTm7 (8 checks; 75-min poll bound; round>=2 rule; doctrine-source adaptation for check 4)
