@@ -18,3 +18,5 @@
 2026-08-23T01:24:11Z progress phase=20 marker=ci-run-32610126558
 2026-08-23T01:24:11Z 30 phase entered; review_round=1
 2026-08-23T01:24:11Z heartbeat phase=30
+2026-08-23T01:31:38Z 30 r1 reviewer dispatched (thread sthr_01BeXdJG1PAHnBQ64gih8SfH); checkout /workspace/scratch/cogame-lantern-review @ 06d4da7; output reviews/r1-review.md
+2026-08-23T01:31:38Z heartbeat phase=30
