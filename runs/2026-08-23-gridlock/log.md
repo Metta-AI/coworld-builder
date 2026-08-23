@@ -90,3 +90,6 @@
 2026-08-23T15:58:39Z progress phase=70 marker=discord_message_id=1541114401652875304
 2026-08-23T15:58:39Z 70 -> 80 phase transition
 2026-08-23T15:58:39Z heartbeat phase=80
+2026-08-23T16:00:45Z 80 close complete: summary on run task (1217754209113345) + idea task (1217754158982006), LEARNINGS entry appended, all 8 phase subtasks complete, idea 1217704767292352 completed, run task moved to Done
+2026-08-23T16:00:45Z progress phase=80 marker=run-task-Done
+2026-08-23T16:00:45Z session end: run complete at phase 80; no next action — run is Done

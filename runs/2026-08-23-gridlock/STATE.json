@@ -60,8 +60,8 @@
     "discord_message_id": "1541114401652875304"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:58:39Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-23T16:00:45Z",
+  "session_ended_at": "2026-08-23T16:00:45Z",
   "session_id": "a0e45f38",
   "log": "runs/2026-08-23-gridlock/log.md"
 }
