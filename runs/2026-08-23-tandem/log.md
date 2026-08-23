@@ -10,3 +10,6 @@
 2026-08-23T19:47:22Z progress phase=10 marker=design.md
 2026-08-23T19:47:22Z 10 phase -> 20
 2026-08-23T19:47:22Z heartbeat phase=20
+2026-08-23T19:48:19Z 20 repo created https://github.com/Metta-AI/cogame-tandem (public)
+2026-08-23T19:48:19Z 20 propagate-secrets run 32662382464 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-tandem
+2026-08-23T19:48:19Z 20 dispatching builder
