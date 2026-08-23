@@ -67,3 +67,6 @@
 2026-08-23T21:49:48Z heartbeat phase=80
 2026-08-23T21:51:08Z 80 summary posted run-task + condensed on idea task; LEARNINGS section appended
 2026-08-23T21:51:08Z heartbeat phase=80
+2026-08-23T21:52:02Z 80 all 8 phase subtasks complete; idea task 1217704658766385 completed; run task moved to Done
+2026-08-23T21:52:02Z progress phase=80 marker=run-task-Done
+2026-08-23T21:52:02Z 80 run closed — session ending; no next action, run is Done
