@@ -31,3 +31,5 @@
 2026-08-23T02:04:05Z 30 r1 reviewer dispatched output=runs/2026-08-22-raid/reviews/r1-review.md
 2026-08-23T02:20:37Z 30 r1 reviewer returned: 19 findings (1 blocking-candidate F1 rune truncation in llm.nim error paths; 18 advisory)
 2026-08-23T02:20:37Z progress phase=30 marker=r1-review.md
+2026-08-23T02:21:27Z 30 r1 fixer dispatched output=runs/2026-08-22-raid/reviews/r1-fixes.md
+2026-08-23T02:21:27Z heartbeat phase=30
