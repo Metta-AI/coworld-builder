@@ -191,3 +191,4 @@
 2026-08-23T19:03:56Z progress phase=60 marker=reviews/60-verdict.md
 2026-08-23T19:03:56Z 60 -> 70 phase transition: entering announce
 2026-08-23T19:03:56Z heartbeat phase=70
+2026-08-23T19:05:15Z 70 announce.attempted_at written and pushed (pre-POST marker); body 1769 chars
