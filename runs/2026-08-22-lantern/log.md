@@ -59,3 +59,4 @@
 2026-08-23T04:06:30Z 60 EXIT: definition-of-done all-true, judge blocking 0; phase -> 70
 2026-08-23T04:06:30Z progress phase=60 marker=reviews/60-verdict.md
 2026-08-23T04:06:30Z heartbeat phase=70
+2026-08-23T04:07:55Z 70 announce.attempted_at written and pushed BEFORE the POST (message composed, 1767 chars)
