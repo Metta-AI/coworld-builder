@@ -109,3 +109,7 @@
 2026-08-23T08:31:04Z progress phase=60 marker=viewer-check-32628145791
 2026-08-23T08:31:04Z 60 judge dispatched to adjudicate VERIFY.md output=runs/2026-08-22-raid/reviews/verify-verdict.md
 2026-08-23T08:31:04Z heartbeat phase=60
+2026-08-23T08:39:36Z 60 judge returned: blocking=0, all 8 items TRUE; item-5 ruled pass-as-defined (latest round clean), throttling residue advisory for 80 (pacing floor + sonnet-4-6 ladder candidate)
+2026-08-23T08:39:36Z progress phase=60 marker=verify-verdict.md
+2026-08-23T08:39:36Z 60 -> 70 phase transition
+2026-08-23T08:39:36Z heartbeat phase=70
