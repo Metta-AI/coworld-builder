@@ -66,3 +66,5 @@
 2026-08-23T06:12:55Z 60 DECISION (rail): check-8 failure is a diagnosed one-line viewer-shell defect -> route back to fix+re-release (bump 0.1.4), not phase 90; league state untouched (champions/fillers stay v2, rounds keep completing)
 2026-08-23T06:12:55Z heartbeat phase=60
 2026-08-23T09:18:01Z 00 resume at phase 60 attempt=1 session=8d18519d
+2026-08-23T09:20:04Z 60 route decision executed: builder dispatched to fix COG_BASE defect (client/replay_broadcast.html:1721) + re-release 0.1.4; league untouched
+2026-08-23T09:20:04Z heartbeat phase=60
