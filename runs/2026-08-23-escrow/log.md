@@ -38,3 +38,5 @@
 2026-08-23T15:06:06Z 30 r1 verdict returned: BLOCKING: 1 ([other] checklist item 7 second sentence — no grid-harness tuning record in the tree); reviews/r1-verdict.md
 2026-08-23T15:06:06Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-23T15:06:06Z 30 round 1 -> 2; plan: reviewer r2 on current head, fixer r2 gets r2-review + the r1-verdict residue (commit a real sweep harness + tuning record), judge r2
+2026-08-23T15:06:39Z 30 r2 reviewer dispatched (thread sthr_011eorMUvcoyKkFi3CcV6mLw) on sha dac4fc4
+2026-08-23T15:06:39Z heartbeat phase=30
