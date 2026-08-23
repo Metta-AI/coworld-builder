@@ -34,3 +34,5 @@
 2026-08-23T07:17:37Z 30 r1 judge returned: blocking 0 (both markers agree); all 13 checklist items pass at 34b3dc9, all 3 review blockers dismissed-as-fixed; reviews/r1-verdict.md
 2026-08-23T07:17:37Z progress phase=30 marker=r1-verdict.md
 2026-08-23T07:17:37Z 30 phase -> 40
+2026-08-23T07:18:27Z 40 builder dispatched for release (same thread sthr_01BuNQZNLLWQj7WpSJXL31LF); start version 0.1.0
+2026-08-23T07:18:27Z heartbeat phase=40
