@@ -60,3 +60,4 @@
 2026-08-23T21:48:10Z 60 asana: phase-60 subtask completing, comment posting
 2026-08-23T21:48:10Z 60 -> 70 phase transition: entering announce
 2026-08-23T21:48:10Z heartbeat phase=70
+2026-08-23T21:49:26Z 70 announce attempted_at written before POST
