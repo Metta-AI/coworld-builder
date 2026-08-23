@@ -40,3 +40,7 @@
 2026-08-23T15:05:48Z heartbeat phase=40
 2026-08-23T15:06:24Z 40 builder dispatched thread=TBD brief=release chain v0.1.0 (dispatch-then-watch, persist release-result.json, no skip_certify)
 2026-08-23T15:13:34Z 40 release dispatch version=0.1.0 run=32647554701 step_failed=none decision=first dispatch (no policies override, no skip_certify) green on attempt 1; cow_id=cow_69f7b3ab-b32d-471d-874a-3ff32543b6f6 canonical=true secret_put=true 4 policies at v1
+2026-08-23T15:14:45Z 40 builder returned thread=sthr_01SFoennpX6UboASv6xkkztq release 0.1.0 GREEN first dispatch run=32647554701 cow=cow_69f7b3ab-b32d-471d-874a-3ff32543b6f6 canonical=true certify.ok=true secret_put=true
+2026-08-23T15:14:45Z progress phase=40 marker=release-run-32647554701
+2026-08-23T15:14:45Z 40 -> 50 phase transition
+2026-08-23T15:14:45Z heartbeat phase=50
