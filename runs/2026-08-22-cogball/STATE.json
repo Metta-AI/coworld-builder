@@ -5,7 +5,7 @@
   "slug": "cogball",
   "repo": "https://github.com/Metta-AI/cogame-cogball",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "60": 1
   },
@@ -35,18 +35,32 @@
   "verify": {
     "rounds": [
       1,
-      2
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/96be8156-bac3-468f-8674-e8b10cb36a98.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/f2133337-531b-4ff6-91d6-1385fb48a307.replay",
     "iframe_static": true,
-    "viewer_check_run": "32630840631"
+    "viewer_check_run": "32631291526"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T09:29:09Z",
+  "heartbeat_at": "2026-08-23T09:45:53Z",
   "session_ended_at": null,
   "session_id": "8d18519d",
   "log": "runs/2026-08-22-cogball/log.md"

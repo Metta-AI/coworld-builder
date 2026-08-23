@@ -95,3 +95,7 @@
 2026-08-23T09:39:41Z 60 verifier returned: all-true 8/8 (VERIFY.md fc91a4c lineage); judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
 2026-08-23T09:39:41Z progress phase=60 marker=VERIFY.md-all-true-8of8
 2026-08-23T09:39:41Z heartbeat phase=60
+2026-08-23T09:45:53Z 60 judge returned: BLOCKING 0 — verdict at reviews/verify-verdict.md; all refutation attempts failed; 8/8 upheld
+2026-08-23T09:45:53Z 60 EXIT: definition-of-done all-true; STATE.verify refreshed (16 rounds, replay f2133337, viewer_check_run 32631291526); phase -> 70
+2026-08-23T09:45:53Z progress phase=60 marker=reviews/verify-verdict.md-BLOCKING-0
+2026-08-23T09:45:53Z heartbeat phase=70
