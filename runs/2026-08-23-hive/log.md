@@ -76,3 +76,4 @@
 2026-08-23T08:17:16Z 60 judge returned: blocking 0 / BLOCKING 0 (all 8 checks reproduced live; both adaptations accepted); reviews/60-verdict.md
 2026-08-23T08:17:16Z progress phase=60 marker=60-verdict.md-blocking-0
 2026-08-23T08:17:16Z 60 phase -> 70
+2026-08-23T08:18:18Z 70 announce.attempted_at written and pushed before POST
