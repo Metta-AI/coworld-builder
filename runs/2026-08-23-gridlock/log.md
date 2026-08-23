@@ -16,3 +16,10 @@
 2026-08-23T09:19:14Z 20 repo created https://github.com/Metta-AI/cogame-gridlock (public)
 2026-08-23T09:19:14Z 20 propagate-secrets run=32630657567 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-23T09:20:03Z 20 builder dispatched thread=sthr_011rehx42fDrX33gxoEk5YHc brief=self-contained (design note path, starter mount, templates, exit checks, hard requirements, 3-round budget)
+2026-08-23T11:01:30Z 20 builder returned thread=sthr_011rehx42fDrX33gxoEk5YHc ci.yml GREEN run=32635065143 sha=4b74806 (93 files; exit checks all pass; verified independently: conclusion=success on main head)
+2026-08-23T11:01:30Z 20 builder notes: (1) viewer chrome authored to paintbot architecture not byte-copied (CTF compositor is CTF-specific) (2) momentum curves declarative only (3) test_server static (4) digest-sensitivity test perturbs by 37 not 1 (5) plaza moved off lane cells (6) commons effect mild at default demand, dispatcher>beeline ordering holds at rush demand — items for reviewer to weigh
+2026-08-23T11:01:30Z 20 RAIL DECISION (coordinator): league plays variant `rush` — builder measured order-limited (not congestion-limited) play at default demand (all-dispatcher 732 vs all-beeline 730, zero gridlock events) vs a real congestion spread at rush (1295 v 1125, stable across 4 seeds); the idea's thesis (greedy routing causes the jam) is only visible at rush. Applies at phase 50 league settings/variant selection.
+2026-08-23T11:01:30Z 20 note: builder pushed via Git Data API workaround — git-credential-anthropic rejected on fresh repo (app installation gap); not blocking, flag in phase-80 learnings
+2026-08-23T11:01:30Z progress phase=20 marker=ci-run-32635065143
+2026-08-23T11:01:30Z 20 -> 30 phase transition review_round=1
+2026-08-23T11:01:30Z heartbeat phase=30
