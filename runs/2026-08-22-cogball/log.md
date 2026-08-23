@@ -60,3 +60,5 @@
 2026-08-23T05:42:09Z 50 EXIT: both champions entrants, fillers set, unpaused, round pending; phase -> 60
 2026-08-23T05:42:09Z progress phase=50 marker=league_e87130ef-ecc6-49d4-9bc1-4014b7141df5
 2026-08-23T05:42:09Z heartbeat phase=60
+2026-08-23T05:42:35Z 60 phase entered; prompts/60-verify.md read; verifier dispatched (75-min poll bound; Asana heartbeat delegated to verifier during polls)
+2026-08-23T05:42:35Z heartbeat phase=60
