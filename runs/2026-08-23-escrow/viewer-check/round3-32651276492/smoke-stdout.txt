@@ -1,0 +1,3 @@
+{"loaded":true,"ms":2033,"clock":"TURN 0","scorebug":"","feed_lines":0}
+scrub readouts: 0%="TURN 0"  50%="TURN 8 / 16 · WAITING ON 4"  100%="TURN 16 / 16 · FINAL"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

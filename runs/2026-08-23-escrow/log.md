@@ -76,3 +76,33 @@
 2026-08-23T16:00:06Z heartbeat phase=60
 2026-08-23T16:01:37Z 60 verifier dispatched (thread sthr_01U2RchApcy8Pu2t2GuRUuKM); 75-min round wait bound, polls refresh heartbeat
 2026-08-23T16:01:37Z heartbeat phase=60
+2026-08-23T16:02:04Z heartbeat phase=60
+2026-08-23T16:02:04Z 60 poll rounds: 2:pending 1:failed (completed>=2: 0)
+2026-08-23T16:07:04Z heartbeat phase=60
+2026-08-23T16:07:04Z 60 poll rounds: 2:completed 1:failed (completed>=2: 1)
+2026-08-23T16:12:51Z heartbeat phase=60
+2026-08-23T16:12:51Z 60 poll rounds: 2:completed 1:failed (completed>=2: 1)
+2026-08-23T16:17:54Z heartbeat phase=60
+2026-08-23T16:17:54Z 60 poll rounds: 3:completed 2:completed 1:failed (completed>=2: 2)
+2026-08-23T16:19:21Z heartbeat phase=60
+2026-08-23T16:19:21Z 60 poll rounds: 3:completed 2:completed 1:failed (completed>=2: 2)
+2026-08-23T16:28:22Z heartbeat phase=60
+2026-08-23T16:28:22Z 60 poll rounds: 3:completed 2:completed 1:failed (completed>=2: 2)
+2026-08-23T16:33:15Z heartbeat phase=60
+2026-08-23T16:33:15Z 60 poll rounds: 4:completed 3:completed 2:completed 1:failed (completed>=2: 3)
+2026-08-23T16:33:17Z heartbeat phase=60
+2026-08-23T16:33:17Z 60 poll rounds: 4:completed 3:completed 2:completed 1:failed (completed>=2: 3)
+2026-08-23T16:43:00Z heartbeat phase=60
+2026-08-23T16:43:00Z 60 check 1 TRUE: rounds 2,3,4 completed (round 1 failed pre-fillers: "Temporal RoundWorkflow failed before settling the round.")
+2026-08-23T16:43:00Z 60 check 2 TRUE: leaderboard daveey rank1 escrow-drafter:v1 elo 1043.75 rounds_played 3; daveey-1 rank2 escrow-swapper:v1 elo 956.25 rounds_played 3; fillers absent
+2026-08-23T16:43:00Z 60 check 3 TRUE: ereq_52e240bb-5356-478b-9240-5505de228f4a completed, replay https://softmax-public.s3.amazonaws.com/replays/f17e146a-7e0d-4d30-85eb-645120b855fc.replay, participants daveey/daveey-1 non-filler + 2 is_filler
+2026-08-23T16:43:00Z 60 check 4 FALSE: strict JSON ok, protocol escrow.replay.v1, results.reason complete — but champion seats 19/32 (59%) moves scripted==true (seat0 12/16, seat1 7/16); same on rounds 2 (18/32) and 3 (15/32)
+2026-08-23T16:43:00Z 60 check 5 FALSE: 19 'falling back' occurrences in hosted log; cause = escrow rune legality rejections (unfunded LOCK, "not addressed to you", bad_condition, EOF expected); 0 'LLM provider is unavailable'; cross-check contagion+raid latest logs clean => not a platform cause
+2026-08-23T16:43:00Z 60 check 6 TRUE: raw-HTML iframe grep empty (client-rendered); SSR state.playlist[0] featured match escrow.r4.e1; POST /coworlds/replays/session -> static /v2/coworlds/replays/static/cow_65c18d00.../sha256%3A0e1cafee.../index.html?replay=... ready:true
+2026-08-23T16:43:00Z 60 check 7 TRUE: committed runs/2026-08-23-escrow/release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-23T16:43:00Z 60 check 8 TRUE: viewer-check run 32652062253 loaded:true ms=4011 failure:null bridge ready; scrub 0%="TURN 0" 50%="TURN 0 / 16 · WAITING ON 4" 100%="TURN 16 / 16 · FINAL"; corroborating run 32651276492 (round 3) 50%="TURN 8 / 16"; artifacts in runs/2026-08-23-escrow/viewer-check/
+2026-08-23T16:43:00Z 60 VERIFY.md written: 6 TRUE / 2 FALSE (checks 4 and 5, single root cause = champion LLM prompts emit illegal contract runes)
+2026-08-23T16:44:31Z 60 verifier returned: 6 TRUE / 2 FALSE (check 4: champion fallback share 59%/47%/56% over rounds 4/3/2; check 5: 19 'falling back' lines — illegal DSL from both champion prompts, 0 Bedrock-capacity, 0 max_tokens); VERIFY.md + viewer-check/ written
+2026-08-23T16:44:31Z progress phase=60 marker=VERIFY.md-r4-checks-6of8
+2026-08-23T16:44:31Z 60 ruling (rails: policy prompts): remediation is prompt-side — rewrite both champion prompts (free-stock accounting before LOCK, SIGN only offers addressed to you and payable, exact IF grammar), re-release v0.1.1, resubmit champions as v2, re-verify checks 1-5 on fresh rounds. Not a Blocked condition.
+2026-08-23T16:44:31Z heartbeat phase=60
