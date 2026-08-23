@@ -54,3 +54,5 @@
 2026-08-23T15:47:20Z progress phase=30 marker=reviews/r2-verdict.md
 2026-08-23T15:47:20Z 30 -> 40 phase transition: entering release
 2026-08-23T15:47:20Z heartbeat phase=40
+2026-08-23T15:48:10Z 40 builder dispatched for release (thread sthr_01Qz3e93WropTT2bvjPwqr3b); version plan 0.1.0+, policies from tools/ci/policies.json
+2026-08-23T15:48:10Z heartbeat phase=40
