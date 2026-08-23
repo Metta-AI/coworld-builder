@@ -29,3 +29,8 @@
 2026-08-23T19:41:38Z 30 phase -> 40
 2026-08-23T19:42:26Z 40 builder dispatched for release chain (v0.1.0 first attempt)
 2026-08-23T19:42:26Z heartbeat phase=40
+2026-08-23T19:58:02Z 40 dispatch 1: v0.1.0 run 32662104716 step_failed=Certify-locally (manifest_invalid: config_schema must require tokens) -> manifest fix f5970ee
+2026-08-23T19:58:02Z 40 dispatch 2: v0.1.1 run 32662323162 step_failed=null SUCCESS — canonical=true certified, secret_put=true, 4 policies uploaded, champion2 owned by daveey-1
+2026-08-23T19:58:02Z 40 release-result.json persisted and committed; repo main e245612 (mode-bit fix) ci green 32662685795
+2026-08-23T19:58:02Z progress phase=40 marker=release-run-32662323162
+2026-08-23T19:58:02Z 40 phase -> 50

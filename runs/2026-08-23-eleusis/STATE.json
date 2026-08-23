@@ -5,19 +5,24 @@
   "slug": "eleusis",
   "repo": "https://github.com/Metta-AI/cogame-eleusis",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_39778f81-c2d7-4aab-9642-f0ef0f16990e",
+    "manifest_sha": "sha256:8dd17e050d7eeea2947ca6a0d255239e5eef43222d7b745f8e53b17a9aba4995",
+    "release_run_id": "32662323162"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "eleusis-empiricist:v1",
+    "champion2": "eleusis-guarded:v1",
+    "fillers": [
+      "eleusis-openbook:v1",
+      "eleusis-hoarder:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +39,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T19:42:26Z",
+  "heartbeat_at": "2026-08-23T19:58:02Z",
   "session_ended_at": null,
   "session_id": "424c931e",
   "log": "runs/2026-08-23-eleusis/log.md"
