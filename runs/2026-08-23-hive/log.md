@@ -80,3 +80,4 @@
 2026-08-23T08:18:42Z 70 announce msg=1540998652669984768
 2026-08-23T08:18:42Z progress phase=70 marker=discord_message_id=1540998652669984768
 2026-08-23T08:18:42Z 70 phase -> 80
+2026-08-23T08:19:55Z 80 LEARNINGS section + 3 playbook common-mistakes rows written

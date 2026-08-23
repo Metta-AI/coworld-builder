@@ -216,3 +216,45 @@ in the type system says so.
 
 **Cost.** A live coworld with a permanently blank theater, undetected through phases 30, 40 and
 60, found only by a human opening the page.
+
+## 2026-08-23 hive
+
+**Run: idea → announced in ~4h10m, one review round, 8/8 DoD first try. What a future run should know:**
+
+1. **The `coworld` 0.1.42 upload contract is stricter than what the sibling-starter manifests
+   suggest.** Release dispatch 1 (0.1.0) died at "Build the Coworld manifest" with 6 pydantic
+   errors. The shape that passes: `game.runnable.type: "game"` is required;
+   `episode_timeout_minutes` is **top-level** (under `game` it is `extra_forbidden`); bundled
+   players are **top-level `player[]`** (not `game.player`) each needing
+   `id`/`type`/`name`/`description`; `variants[].description` is required; `game.config_schema`
+   must be a **real JSON Schema document** (the CLI validates every variant and the cert fixture
+   against it, injecting synthetic `tokens` — so `required: ["tokens"]` with a bounded
+   string-array property); plus `$schema` and ≥3 `tags`. De-risk offline: `pip install
+   coworld[auth]==0.1.42` and run its own `validate_upload_manifest` before dispatching.
+2. **Put `ANTHROPIC_API_KEY_URI: secret://coworld/<slug>/anthropic_api_key` in the game
+   runnable's `env` in the manifest** (bullwhip's shape). Without it the hosted game container
+   never sees the coworld secret and every league episode silently plays scripted — it would
+   surface only as phase-60 check-4 FALSE. Offline the URI doesn't resolve and the LLM client
+   disables itself, so local certify/smoke still pass.
+3. **A round can auto-create the moment the league is seeded/settings are set — before fillers
+   and champion #2 exist — and it fails with `Temporal RoundWorkflow failed before settling the
+   round`.** That failed round predates your trigger: record its error, don't count it against
+   the two-failed-triggers budget, and verify your own trigger's round carries both champions in
+   `round_config.entrant_attributions`.
+4. **Observatory list endpoints disagree on shape** within one day: `GET /leagues` returned a
+   bare array, `GET /rounds?league_id=` an `{entries,…}` object, `/divisions/<id>/leaderboard` a
+   bare array. Always read with `if type=="array" then . else .entries end`.
+5. **`git push` over HTTPS can be rejected sandbox-wide** (`remote: Invalid username or token`)
+   while `gh api` works — the vault placeholder substitutes on gh/curl egress only. Push through
+   the Git Data API (blobs → tree → commit → PATCH refs; `--input` a JSON body file for big/binary
+   blobs — argv dies on a png). After each API push, realign with `git fetch` + `git reset`
+   (mixed) + `git checkout -- <paths>`; a `reset --soft` leaves phantom staged deletions of files
+   other parallel runs pushed, which a later session can commit as real deletions.
+6. **Batched-swarm decision cadence works.** One LLM call per colony per 10 s turn (a 9-integer
+   doctrine reparameterising a deterministic per-body kernel) gave 80 calls/episode for 96
+   bodies, 0 fallbacks in the verified episode, and both champions visibly distinct (raider vs
+   road-builder) on the leaderboard after 2 rounds. A per-ant interface would have been ~5000
+   calls. Reusable pattern for any one-policy-many-bodies idea.
+7. **Paintbot's viewer chrome really is 2–4-team ready** (`ensureScorebug()` two-plates-per-side)
+   — a 4-seat game needs no scorebug rework, only the `.team-name min-width` + 640px media-query
+   gotchas already in the playbook.
