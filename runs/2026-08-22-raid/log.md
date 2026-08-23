@@ -15,3 +15,8 @@
 2026-08-23T00:21:00Z 20 propagate-secrets run 32607598950 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-raid
 2026-08-23T00:21:47Z 20 builder dispatched brief=implement design.md in cogame-raid, drive ci.yml green
 2026-08-23T00:21:47Z heartbeat phase=20
+2026-08-23T02:12:00Z 20 builder push 2 sha=9e67fde932aac914f0a2e1ae4f0e0cf6af169ba4 round 1: wasm-viewer red only (build hook cd'd into a dist/ that did not exist); test + docker-smoke green first try
+2026-08-23T02:12:00Z 20 ci.yml run 32611288140 conclusion=failure (wasm-viewer) test=success docker-smoke=success
+2026-08-23T02:30:00Z 20 builder push 3 sha=501040ded40f71756ecb5a4291490bd40a5e0806 round 2 changed approach: installed emsdk 4.0.15 in the sandbox and reproduced the wasm build locally instead of guessing - found two wasm32-only bugs (RangeDefect writing a u32 digest through 32-bit int; non-MODULARIZE emscripten output discarding the Worker's Module globals)
+2026-08-23T02:45:00Z 20 ci.yml run 32611650222 conclusion=success test=success docker-smoke=success wasm-viewer=success GREEN on main
+2026-08-23T02:45:00Z 20 exit criteria: no unsubstituted placeholders; residue is exactly <run_id> x2, <cow_id>, <sha>, <name>; all three workflows registered/active; release inputs version/policies/put_secret/skip_certify/secret_key_name present; submit inputs player_id/policy/league_id present; release-result + submit-result artifacts present; per-policy "player" field supported
