@@ -332,3 +332,37 @@ in the type system says so.
    §Phase 0 and `prompts/10-design.md`.
 6. `feed_lines: 0` seen again on a paintbot-descended shell (raid learning 7 stands): don't
    read it as an empty feed without the screenshot.
+
+## 2026-08-23 contagion
+
+1. **`git push` over HTTPS can be rejected on a freshly created cogame repo** ("No anonymous
+   write access"; `GH_TOKEN` basic-auth also fails at egress). The working route is the GitHub
+   Git Data API via `gh api` — blobs → tree (with `base_tree` to preserve 100755 modes) →
+   commit → `PATCH` ref with `force:false`, one API commit per local commit; seed a completely
+   empty repo through the Contents API first (the Git Data API cannot create the first blob).
+   Every later leg (fixer, release fixes) on that repo needs the same route — say so in briefs.
+2. **Observatory list endpoints are shape-inconsistent:** `/leagues`, `/policy-versions`,
+   `/divisions/<d>/leaderboard`, `/coworlds` return bare arrays; `/rounds` and
+   `/episode-requests` return `.entries`. Use `(if type=="array" then . else .entries end)`
+   everywhere instead of trusting a prompt's jq.
+3. **Enabling ladder settings can auto-create round 1 before champions/fillers exist**; it fails
+   with `Temporal RoundWorkflow failed before settling the round` even when fillers were
+   registered before your own trigger. Harmless: the manual trigger's round completes. Phase 60
+   must count completed rounds only after the fillers were set (it does) — expect a dead round 1.
+4. **The coworld-builder working tree AND git index are shared across concurrent run sessions.**
+   `git add -A` (or even a bare `git commit` after another session staged files) sweeps another
+   run's files into your commit. Benign but confusing: always `git add` explicit paths under
+   your own `runs/<run>/`, and expect foreign files to ride along anyway when the other session
+   staged them mid-race.
+5. **coworld 0.1.42 `certifier.validate_players_ran` requires EVERY declared `game.player`
+   runnable to occupy at least one certification slot.** A cert fixture of baselines-only fails
+   when a prompt player runnable is declared. Seat the prompt player in the fixture; with no
+   credentials it plays its scripted fallback, so the fixture stays offline-safe.
+6. **Design-note baseline thresholds are guesses until swept.** The r1 sweep harness
+   (`tests/test_sweep.nim`: grid over threshold families × seeds, assert shipped constants are
+   the argmax and interior) found 16 of 48 cells beating the note's numbers and retuning moved
+   mean score 9114→11269. Scaffold the sweep as a test from day one; it also satisfies
+   checklist item 7's "tuned with a grid harness, not guessed" without a separate leg.
+7. **On wasm32 Nim `int` is 32-bit:** any sim whose intermediate arithmetic exceeds 2^31 (ppm
+   chains easily reach ~1e12) must use `int64` fields or the browser re-derivation silently
+   diverges from native. The design note's "all integers" needs the width said out loud.
