@@ -13,3 +13,6 @@
 2026-08-23T10:16:58Z heartbeat phase=20
 2026-08-23T11:04:30Z 20 builder push attempt 1: `git push` rejected ("No anonymous write access"; the stock credential helper is not allowlisted for this new repo, GH_TOKEN cannot do git-over-HTTPS). Seeded LICENSE via the Contents API, then pushed the 5 commits through the Git Data API (blobs -> tree -> commit -> ref). Remote head 7cba8a07e90dda827d069c12865aedbadfa98e57.
 2026-08-23T11:05:20Z 20 ci.yml run=32635551779 sha=7cba8a07 conclusion=success (test / docker-smoke / wasm-viewer all green, first attempt) https://github.com/Metta-AI/cogame-contagion/actions/runs/32635551779
+2026-08-23T11:10:23Z 20 EXIT ci.yml green run=32635551779 sha=7cba8a07; workflows all registered; phase 20 -> 30
+2026-08-23T11:10:23Z progress phase=20 marker=ci-run-32635551779
+2026-08-23T11:10:23Z heartbeat phase=30

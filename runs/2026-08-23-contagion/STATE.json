@@ -5,9 +5,9 @@
   "slug": "contagion",
   "repo": "https://github.com/Metta-AI/cogame-contagion",
   "starter": "cogame-bullwhip",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {},
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T10:16:58Z",
+  "heartbeat_at": "2026-08-23T11:10:23Z",
   "session_ended_at": null,
   "session_id": "457e112a",
   "log": "runs/2026-08-23-contagion/log.md"
