@@ -8,3 +8,5 @@
 2026-08-23T00:00:18Z 10 design.md copied to runs/2026-08-22-lantern/design.md; phase -> 20
 2026-08-23T00:00:18Z progress phase=10 marker=runs/2026-08-22-lantern/design.md
 2026-08-23T00:00:18Z heartbeat phase=20
+2026-08-23T00:01:18Z 20 repo created: https://github.com/Metta-AI/cogame-lantern (public)
+2026-08-23T00:01:18Z 20 propagate-secrets.yml run 32606758102 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-lantern
