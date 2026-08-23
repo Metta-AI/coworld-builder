@@ -24,3 +24,4 @@
 2026-08-23T11:51:58Z 30 r1 reviewer returned r1-review.md (682 lines, 28 findings F1-F28, reviewer-blocking=0; top: F1 viewer/sim generation-window score skew, F2 stale killBase in predator prompt, F4 alarm tick monotonicity, F5 unauthorized cert-fixture deviation)
 2026-08-23T11:51:58Z progress phase=30 marker=r1-review.md
 2026-08-23T11:51:58Z heartbeat phase=30
+2026-08-23T11:52:34Z 30 r1 fixer dispatched thread=sthr_01NBc1i4FebtQeNKm3S9VwxS (28 findings; F1/F2/F4/F5 must get real resolutions; one commit per finding; CI green required)
