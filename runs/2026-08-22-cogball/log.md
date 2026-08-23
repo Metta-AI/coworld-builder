@@ -100,3 +100,7 @@
 2026-08-23T09:45:53Z progress phase=60 marker=reviews/verify-verdict.md-BLOCKING-0
 2026-08-23T09:45:53Z heartbeat phase=70
 2026-08-23T09:47:28Z 70 announce attempt marker written (attempted_at=2026-08-23T09:47:28Z), pushing before POST
+2026-08-23T09:47:44Z 70 announce msg=1541021075784208456
+2026-08-23T09:47:44Z 70 EXIT: Discord message posted and recorded; phase -> 80
+2026-08-23T09:47:44Z progress phase=70 marker=discord_message_id=1541021075784208456
+2026-08-23T09:47:44Z heartbeat phase=80
