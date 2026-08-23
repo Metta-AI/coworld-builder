@@ -55,3 +55,7 @@
 2026-08-23T06:54:36Z 30 templates/ci.yml pipefail-fatal ls glob replaced with for-loop (ported from cogame-raid ed9650f)
 2026-08-23T06:54:36Z 30 r2 judge dispatched output=runs/2026-08-22-raid/reviews/r2-verdict.md sha=dc8ef5d
 2026-08-23T06:54:36Z heartbeat phase=30
+2026-08-23T07:02:21Z 30 r2 judge returned: blocking=0 (B1 refuted-as-fixed at dc8ef5d; all 13 checklist items pass); residue advisory-only (N8 two untested behaviours)
+2026-08-23T07:02:21Z progress phase=30 marker=r2-verdict.md
+2026-08-23T07:02:21Z 30 -> 40 phase transition (2 rounds, zero blocking)
+2026-08-23T07:02:21Z heartbeat phase=40
