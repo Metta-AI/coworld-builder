@@ -99,3 +99,4 @@
 2026-08-23T09:45:53Z 60 EXIT: definition-of-done all-true; STATE.verify refreshed (16 rounds, replay f2133337, viewer_check_run 32631291526); phase -> 70
 2026-08-23T09:45:53Z progress phase=60 marker=reviews/verify-verdict.md-BLOCKING-0
 2026-08-23T09:45:53Z heartbeat phase=70
+2026-08-23T09:47:28Z 70 announce attempt marker written (attempted_at=2026-08-23T09:47:28Z), pushing before POST
