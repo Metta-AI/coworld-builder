@@ -56,3 +56,7 @@
 2026-08-23T17:23:20Z 60 verifier returned: VERIFY.md 8/8 TRUE (rounds 1+2 completed, both champions ranked, replay clean, static iframe, viewer-check loaded:true with 3 differing clocks)
 2026-08-23T17:23:20Z 60 judge dispatched to adjudicate VERIFY.md
 2026-08-23T17:23:20Z heartbeat phase=60
+2026-08-23T17:27:59Z 60 judge verdict: blocking 0 (verify-verdict.md; all 8 DoD items independently re-verified)
+2026-08-23T17:27:59Z progress phase=60 marker=verify-verdict.md
+2026-08-23T17:27:59Z 00 phase 60 -> 70
+2026-08-23T17:27:59Z heartbeat phase=70

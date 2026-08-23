@@ -5,7 +5,7 @@
   "slug": "tribunal",
   "repo": "https://github.com/Metta-AI/cogame-tribunal",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -44,7 +44,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T17:23:20Z",
+  "heartbeat_at": "2026-08-23T17:27:59Z",
   "session_ended_at": null,
   "session_id": "bd0a3a12",
   "log": "runs/2026-08-23-tribunal/log.md"
