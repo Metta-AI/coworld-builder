@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1071,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_39778f81-c2d7-4aab-9642-f0ef0f16990e/sha256%3A8dd17e050d7eeea2947ca6a0d255239e5eef43222d7b745f8e53b17a9aba4995/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F1b93518a-d9d0-4af5-8eec-055f11ec6e61.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 1"
+    },
+    {
+      "at": "100%",
+      "clock": "ROUND 1"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

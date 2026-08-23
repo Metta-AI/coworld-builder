@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1454,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_39778f81-c2d7-4aab-9642-f0ef0f16990e/sha256%3A8dd17e050d7eeea2947ca6a0d255239e5eef43222d7b745f8e53b17a9aba4995/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F1b93518a-d9d0-4af5-8eec-055f11ec6e61.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1 / 24 · 0 OF 5 IN",
+  "scorebug": "daveey $0.0 PUB 0 SEC 0 daveey-1 $0.0 PUB 0 SEC 0 Piston $0.0 PUB 0 SEC 0 Tinker $0.0 PUB 0 SEC 0 Widget $0.0 PUB 0 SEC 0",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 477,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1 / 24 · 0 OF 5 IN"
+    },
+    {
+      "at": "50%",
+      "clock": "PREDICTION TEST 2 / 4 · 1 OF 5 ANSWERED"
+    },
+    {
+      "at": "100%",
+      "clock": "ROUND 24 / 24 · FINAL"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

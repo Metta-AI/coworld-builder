@@ -48,3 +48,7 @@
 2026-08-23T20:02:02Z 50 phase -> 60
 2026-08-23T20:03:02Z 60 verifier dispatched (75-min poll bound; rounds pending)
 2026-08-23T20:03:02Z heartbeat phase=60
+2026-08-23T20:55:31Z 60 verifier returned: 8/8 TRUE; VERIFY.md 729 lines; 3 completed rounds (2,3,4); both champions ranked (empiricist 1043.75, guarded 956.25); replay r4 complete, 140 decisions 0 fallbacks; viewer-check 32665552865 loaded=true 3 differing clocks (first attempt 32665381318 kept as data: premature bridge-ready race, ~1s blank on cold load — phase-30-class advisory)
+2026-08-23T20:55:31Z 60 judge dispatched to adjudicate VERIFY.md
+2026-08-23T20:55:31Z progress phase=60 marker=VERIFY.md+viewer-check-32665552865
+2026-08-23T20:55:31Z heartbeat phase=60
