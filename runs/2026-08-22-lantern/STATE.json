@@ -31,16 +31,19 @@
     "division": "div_af46a8ef-67ec-4780-9c72-0cf70e260999"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_93bc2d0b-7454-41e2-8be6-4612d6b61b70",
+      "round_b878a6b2-fa79-4fe1-a015-d6c0f7ac23ae"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/eb43b47f-b765-4820-a0ca-9e8077f26200.replay",
+    "iframe_static": true
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T03:37:33Z",
+  "heartbeat_at": "2026-08-23T04:02:33Z",
   "session_ended_at": null,
   "session_id": "70b78c30",
   "log": "runs/2026-08-22-lantern/log.md"

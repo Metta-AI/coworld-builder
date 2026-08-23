@@ -51,3 +51,7 @@
 2026-08-23T03:37:33Z heartbeat phase=60
 2026-08-23T03:38:50Z 60 verifier dispatched (thread sthr_01GVCJfnTWVosyYVdUrGaDtH); polling rounds up to 75 min; output VERIFY.md
 2026-08-23T03:38:50Z heartbeat phase=60
+2026-08-23T04:02:33Z 60 verifier returned: all 8 checks TRUE (VERIFY.md 910 lines, evidence inline); rounds 2+3 completed, both champions ranked rounds_played=2 (warren Elo 1030.53 W2, owlnight 969.47), replay strict-UTF8 reason=complete, champion fallbacks 0 (28/28+29/29 llm orders, 57/57 Bedrock 200), log CLEAN, static viewer confirmed (manifest_hash route on api.observatory.softmax-research.net, ready:true), bundle 15/15 assets 200, bridge markers hit (single-quoted tell('ready') documented)
+2026-08-23T04:02:33Z 60 judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-23T04:02:33Z progress phase=60 marker=VERIFY.md
+2026-08-23T04:02:33Z heartbeat phase=60
