@@ -81,3 +81,6 @@
 2026-08-23T12:44:45Z heartbeat phase=80
 2026-08-23T12:45:49Z 80 LEARNINGS.md entry appended (7 items)
 2026-08-23T12:45:49Z heartbeat phase=80
+2026-08-23T12:46:49Z 80 exec summaries posted (run task 1217753167715512, idea task 1217753088773514); all 8 phase subtasks complete; idea 1217704767216131 completed; run task moved to Done
+2026-08-23T12:46:49Z progress phase=80 marker=run-task-Done
+2026-08-23T12:46:49Z 80 close complete — run Done, idea completed, session ended. Next action: none — run is finished.
