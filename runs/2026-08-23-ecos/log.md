@@ -21,3 +21,6 @@
 2026-08-23T11:32:06Z 20 -> 30 phase transition; STATE.phase=30 review_round=1 pushed before reviewer dispatch
 2026-08-23T11:32:06Z heartbeat phase=30
 2026-08-23T11:32:40Z 30 r1 reviewer dispatched thread=sthr_01EDrnbpQENcivujyFqtyV62 target sha=289937c0
+2026-08-23T11:51:58Z 30 r1 reviewer returned r1-review.md (682 lines, 28 findings F1-F28, reviewer-blocking=0; top: F1 viewer/sim generation-window score skew, F2 stale killBase in predator prompt, F4 alarm tick monotonicity, F5 unauthorized cert-fixture deviation)
+2026-08-23T11:51:58Z progress phase=30 marker=r1-review.md
+2026-08-23T11:51:58Z heartbeat phase=30
