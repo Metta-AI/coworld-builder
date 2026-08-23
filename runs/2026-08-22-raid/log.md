@@ -65,3 +65,7 @@
 2026-08-23T07:28:47Z 40 dispatch 4 (0.1.3) authorized: each prior failure a distinct defect with monotonic cert progress, not one cert failure surviving three fixes; fix 4 already CI-verified; precedent cogball dispatch-4 2026-08-23
 2026-08-23T07:28:47Z 40 note: fixture deviation from design.md (baseline x5 -> baseline x3 + greenhorn + raid-player) accepted — players-run check requires every declared player seated; rails: parameter/packaging call
 2026-08-23T07:28:47Z heartbeat phase=40
+2026-08-23T07:35:30Z 40 dispatch 4 (0.1.3) run 32625683588 failed: cert smoke-episode player_error — player exits 1 on unflushed done frame (whisky receiveMessage raises on truncated read); prior blocker players_missing gone
+2026-08-23T07:35:30Z 40 dispatch 5 (0.1.4) authorized: fifth distinct defect, monotone cert progress, fix diagnosed to library source + docker-smoke strengthened to assert player exit codes (cert check now reproduced in CI); if 0.1.4 fails cert on any step -> stop, evidence to 90
+2026-08-23T07:35:30Z 40 note: bare receiveMessage is a latent starter/template defect (bullwhip player same shape) — template delta to record at phase 80
+2026-08-23T07:35:30Z heartbeat phase=40
