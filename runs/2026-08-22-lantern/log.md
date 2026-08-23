@@ -64,3 +64,9 @@
 2026-08-23T04:08:20Z 70 EXIT: message posted (200, id recorded); phase -> 80
 2026-08-23T04:08:20Z progress phase=70 marker=announce.discord_message_id=1540935658288324679
 2026-08-23T04:08:20Z heartbeat phase=80
+2026-08-23T04:10:41Z 80 LEARNINGS section appended + 5 playbook Common-mistakes rows (commit ce1d2b2)
+2026-08-23T04:10:41Z 80 executive summary posted on run task (1217750894706241) and condensed on idea task (1217750780856586); all 8 phase subtasks complete; idea task completed; run task moved to Done
+2026-08-23T04:10:41Z 80 EXIT: run complete — repo public, coworld 0.1.4 canonical+certified, league live with 2 champions + 2 fillers, 2 completed rounds, static replay verified, Discord announced, learnings recorded
+2026-08-23T04:10:41Z progress phase=80 marker=run-task-Done
+2026-08-23T04:10:41Z heartbeat phase=80
+2026-08-23T04:10:41Z session 70b78c30 ends cleanly at phase 80 (run finished); no next action
