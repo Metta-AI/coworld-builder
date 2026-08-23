@@ -42,3 +42,6 @@
 2026-08-23T07:37:46Z 40 release-result.json persisted to runs/2026-08-23-hive/release-result.json
 2026-08-23T07:37:46Z progress phase=40 marker=release-run-32625651640
 2026-08-23T07:37:46Z 40 phase -> 50
+2026-08-23T07:38:54Z 50 seed created lseed_dfccbb9f-a89c-4311-a528-007b27f7a483; league league_2d1d904b-5465-4b84-9845-b28164d22f7e (note: GET /leagues returns a bare array, not .entries)
+2026-08-23T07:38:54Z 50 division div_86b9824f-b420-4d0a-8902-a7878b2102c7 (Competition); settings POST 200 (elo k32 round_robin filler_policy, round_interval 15m)
+2026-08-23T07:38:54Z heartbeat phase=50
