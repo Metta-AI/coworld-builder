@@ -19,3 +19,4 @@
 2026-08-23T20:02:12Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-23T20:02:12Z progress phase=20 marker=ci-run-32654839685
 2026-08-23T20:02:12Z heartbeat phase=30
+2026-08-23T20:03:03Z 30 dispatch reviewer round=1 brief=trace /tmp/cogame-rumor@ed38e35 vs design.md -> reviews/r1-review.md
