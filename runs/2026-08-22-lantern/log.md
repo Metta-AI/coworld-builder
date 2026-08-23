@@ -31,3 +31,5 @@
 2026-08-23T02:38:22Z 30 EXIT: zero blocking findings in round 1; phase -> 40
 2026-08-23T02:38:22Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-23T02:38:22Z heartbeat phase=40
+2026-08-23T02:39:15Z 40 builder re-dispatched on release (thread sthr_0166oazc8ndZMnGuQEUYXkop); coworld-release.yml starting at version 0.1.0
+2026-08-23T02:39:15Z heartbeat phase=40
