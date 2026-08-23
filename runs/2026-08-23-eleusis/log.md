@@ -54,3 +54,4 @@
 2026-08-23T20:55:31Z heartbeat phase=60
 2026-08-23T21:00:25Z 60 judge verdict: blocking 0 (verify-verdict.md, markers agree) — definition of done proven
 2026-08-23T21:00:25Z 60 phase -> 70
+2026-08-23T21:01:31Z 70 announce.attempted_at written pre-POST
