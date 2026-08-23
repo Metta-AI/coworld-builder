@@ -74,3 +74,4 @@
 2026-08-23T12:43:08Z 60 judge verdict BLOCKING: 0 (verify-verdict.md, markers agree) — all 8 checks verified independently
 2026-08-23T12:43:08Z 60 EXIT; phase 60 -> 70
 2026-08-23T12:43:08Z heartbeat phase=70
+2026-08-23T12:44:12Z 70 announce.attempted_at written before POST (body 1799 chars)
