@@ -30,3 +30,6 @@
 2026-08-23T14:42:05Z 30 r1 fixer dispatch pending
 2026-08-23T14:42:46Z 30 r1 fixer dispatched (thread sthr_01BokQzMn9Rhy2r9mTLJgoAh)
 2026-08-23T14:42:46Z heartbeat phase=30
+2026-08-23T14:57:17Z 30 r1 fixer returned: F1/F2/F4/F10 fixed (commits 3b6c3eb,122cf57,1ecfa58,dac4fc4), F3/F5-F9 dismissed with evidence; CI green run 32646647329 @ dac4fc4c6c58a6465bae07f0c1cbc308b5cbf0e6; reviews/r1-fixes.md
+2026-08-23T14:57:17Z progress phase=30 marker=reviews/r1-fixes.md
+2026-08-23T14:57:17Z 30 r1 judge dispatch pending
