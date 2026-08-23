@@ -86,3 +86,7 @@
 2026-08-23T15:54:30Z heartbeat phase=70
 2026-08-23T15:57:23Z 70 RAIL DECISION REVISED: league stays on variant=default. Phase-20 rush decision was motivated by scripted-baseline near-tie at default demand; verified league play shows champion spread at default (r1/r2: flowwright 2-0, elo 1030.5 v 969.5, jam mean 24 peak 31) and the platform requires a pause+lock maintenance window to change variant (POST seed default_variant_id=rush -> 409) — not worth re-opening a verified league pre-announce. Revision logged, noted on run task.
 2026-08-23T15:58:16Z 70 announce.attempted_at written before POST
+2026-08-23T15:58:39Z 70 announce msg=1541114401652875304
+2026-08-23T15:58:39Z progress phase=70 marker=discord_message_id=1541114401652875304
+2026-08-23T15:58:39Z 70 -> 80 phase transition
+2026-08-23T15:58:39Z heartbeat phase=80
