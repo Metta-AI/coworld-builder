@@ -77,3 +77,6 @@
 2026-08-23T09:27:39Z 60 live viewer proof: viewer-check run 32630840631 SUCCESS on the live iframe URL for cow_ff38b98b + round-15 replay e6a6bf9a — loaded=true in 1211ms, data-replay-loaded=true, scrub 0%=":01 STARTING IN" 50%="3:19 TURN 1/40" 100%="FINAL GAME OVER", console clean, screenshot = full-time card; check-8 defect is gone
 2026-08-23T09:27:39Z 60 league untouched and healthy: rounds 1-15 completed (r15 09:14:13Z), leaderboard still total:v2 / counter:v2, filler ids still 7c11dd63+259d11a4, submissions untouched; game canonical_coworld_id auto-followed to cow_ff38b98b
 2026-08-23T09:27:39Z 60 release-result.json overwritten with the 0.1.5 artifact; rerelease-0.1.4.md written (deviations: version 0.1.5 not 0.1.4; cow_id changed by platform design; no new dispatch by this pass)
+2026-08-23T09:29:09Z 60 builder returned: 0.1.5 canonical+certified (run 32624985984), cow_ff38b98b, viewer renders (viewer-check 32630840631 loaded=true); STATE coworld block updated; policies field kept at v2 = the league entrants (v4 additive, not fielded)
+2026-08-23T09:29:09Z progress phase=60 marker=viewer-check-32630840631-loaded-true
+2026-08-23T09:29:09Z heartbeat phase=60
