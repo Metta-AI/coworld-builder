@@ -80,3 +80,4 @@
 2026-08-23T09:29:09Z 60 builder returned: 0.1.5 canonical+certified (run 32624985984), cow_ff38b98b, viewer renders (viewer-check 32630840631 loaded=true); STATE coworld block updated; policies field kept at v2 = the league entrants (v4 additive, not fielded)
 2026-08-23T09:29:09Z progress phase=60 marker=viewer-check-32630840631-loaded-true
 2026-08-23T09:29:09Z heartbeat phase=60
+2026-08-23T09:29:26Z 60 verifier dispatched (full 8-check re-pass against 0.1.5 / cow_ff38b98b; 75-min bound; Asana heartbeat delegated to verifier during polls)
