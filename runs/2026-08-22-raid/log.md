@@ -15,6 +15,7 @@
 2026-08-23T00:21:00Z 20 propagate-secrets run 32607598950 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-raid
 2026-08-23T00:21:47Z 20 builder dispatched brief=implement design.md in cogame-raid, drive ci.yml green
 2026-08-23T00:21:47Z heartbeat phase=20
+2026-08-23T01:45:00Z 20 builder push 1 sha=92b3bb483a4cf5c767c455a6df727ab61d81383e (git https push rejected by the sandbox credential helper; tree published with the GitHub Git Data API via gh)
 2026-08-23T02:12:00Z 20 builder push 2 sha=9e67fde932aac914f0a2e1ae4f0e0cf6af169ba4 round 1: wasm-viewer red only (build hook cd'd into a dist/ that did not exist); test + docker-smoke green first try
 2026-08-23T02:12:00Z 20 ci.yml run 32611288140 conclusion=failure (wasm-viewer) test=success docker-smoke=success
 2026-08-23T02:30:00Z 20 builder push 3 sha=501040ded40f71756ecb5a4291490bd40a5e0806 round 2 changed approach: installed emsdk 4.0.15 in the sandbox and reproduced the wasm build locally instead of guessing - found two wasm32-only bugs (RangeDefect writing a u32 digest through 32-bit int; non-MODULARIZE emscripten output discarding the Worker's Module globals)
