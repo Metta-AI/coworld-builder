@@ -116,3 +116,37 @@
 2026-08-23T17:17:45Z heartbeat phase=60
 2026-08-23T17:18:44Z 60 verifier re-dispatched (thread sthr_01PM3ittaG5y6B317vUVm2xU) for post-remediation verification against v3 rounds (round 8+)
 2026-08-23T17:18:44Z heartbeat phase=60
+2026-08-23T17:19:20Z heartbeat phase=60
+2026-08-23T17:19:20Z 60 poll rounds: 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 0)
+2026-08-23T17:24:28Z heartbeat phase=60
+2026-08-23T17:24:28Z 60 poll rounds: 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 0)
+2026-08-23T17:29:22Z heartbeat phase=60
+2026-08-23T17:29:22Z 60 poll rounds: 8:pending(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 0)
+2026-08-23T17:34:16Z heartbeat phase=60
+2026-08-23T17:34:16Z 60 poll rounds: 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 1)
+2026-08-23T17:39:37Z heartbeat phase=60
+2026-08-23T17:39:37Z 60 poll rounds: 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 1)
+2026-08-23T17:44:30Z heartbeat phase=60
+2026-08-23T17:44:30Z 60 poll rounds: 9:pending(v3) 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 1)
+2026-08-23T17:49:23Z heartbeat phase=60
+2026-08-23T17:49:23Z 60 poll rounds: 9:completed(v3) 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 2)
+2026-08-23T17:49:24Z heartbeat phase=60
+2026-08-23T17:49:24Z 60 poll rounds: 9:completed(v3) 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 2)
+2026-08-23T17:50:57Z heartbeat phase=60
+2026-08-23T17:50:57Z 60 poll rounds: 9:completed(v3) 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 2)
+2026-08-23T17:52:32Z heartbeat phase=60
+2026-08-23T17:52:32Z 60 poll rounds: 9:completed(v3) 8:completed(v3) 7:completed 6:completed 5:completed 4:completed 3:completed 2:completed 1:failed (completed v3: 2)
+2026-08-23T17:57:29Z 60 attempt 2 (post-remediation, v3) check 1 TRUE: v3 rounds 8 (round_946f98fa) + 9 (round_3ee96829) completed after fillers set 17:17:45Z; rounds 2-7 excluded (v1 entrants), round 1 excluded failed "Temporal RoundWorkflow failed before settling the round."
+2026-08-23T17:57:29Z 60 attempt 2 check 2 TRUE: daveey-1 rank1 escrow-swapper:v3 elo 1010.46 rounds_played 8; daveey rank2 escrow-drafter:v3 elo 989.54 rounds_played 8; fillers absent
+2026-08-23T17:57:29Z 60 attempt 2 check 3 TRUE: round 9 ereq_73571e3e-28b4-47aa-8132-ef472f02392e completed, replay https://softmax-public.s3.amazonaws.com/replays/7d6b61ae-7b27-400d-b6e2-310d5c848e11.replay, seats 0/1 = drafter:v3 (daveey) / swapper:v3 (daveey-1) is_filler false
+2026-08-23T17:57:29Z 60 attempt 2 check 4 FALSE: strict JSON ok, protocol escrow.replay.v1, results.reason complete — champion moves scripted 13/32 (40.6%) round 9 (seat0 5/16, seat1 8/16), 10/32 (31.3%) round 8; also signed [0,0,0,0] and 0 sign/settle events in round 9 (14 offers all expired)
+2026-08-23T17:57:29Z 60 attempt 2 check 5 FALSE: 13 'falling back' lines round 9 (10 round 8) after decoding the b'...' container reprs; cause 'C<n> is not addressed to you' 22/35 rejected attempts; 0 'LLM provider is unavailable', 0 'cut off at max_tokens', 0 'rejected' => platform exception not applicable
+2026-08-23T17:57:29Z 60 attempt 2 check 6 TRUE: raw-HTML grep empty (client-rendered); SSR state.playlist[0] = escrow.r9.e1 on cow_add93c03 v0.1.2 (not stale); POST /coworlds/replays/session -> /v2/coworlds/replays/static/cow_add93c03-c2c9-455e-bc63-d2495fdcd2af/sha256%3A292118f0.../index.html?replay=... ready:true
+2026-08-23T17:57:29Z 60 attempt 2 check 7 TRUE: committed runs/2026-08-23-escrow/release-result.json (v0.1.2 run 32653621867) .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-23T17:57:29Z 60 attempt 2 check 8 TRUE: viewer-check run 32656128193 (fresh dispatch 17:50:31Z) loaded:true ms=3034 failure:null bridge ready; scrub 0%="TURN 0" 50%="TURN 0 / 16 · WAITING ON 4" 100%="TURN 16 / 16 · FINAL"; scorebug:""/feed_lines:0 = known generic-probe gap; artifacts runs/2026-08-23-escrow/viewer-check/round9-32656128193/
+2026-08-23T17:57:29Z 60 VERIFY.md rewritten (attempt 2): 6 TRUE / 2 FALSE — checks 4 and 5, root cause unchanged in kind (champion prompts SIGN contracts addressed to another cog) though reduced from 59% to 31-41% fallback
+2026-08-23T17:57:29Z heartbeat phase=60
+2026-08-23T17:58:48Z 60 verifier attempt 2 returned: 6 TRUE / 2 FALSE (check 4: 40.6%/31.3% champion fallbacks on rounds 9/8; check 5: 13/10 falling-back lines). Dominant residual: 22/35 'not addressed to you' signs; new modes: leading-alias syntax 3/35, trailing-prose EOF 6/35. unfunded + bad_condition eliminated by remediation 1.
+2026-08-23T17:58:48Z progress phase=60 marker=VERIFY.md-r9-attempt2
+2026-08-23T17:58:48Z 60 ruling: remediation 2 = different approach (game-side): observation gains precomputed SIGNABLE-NOW list + SPENDABLE per good, extractJsonObject tolerates trailing prose, offer-text normalization (strip leading non-OFFER line, truncate after ELSE); prompts reinforce addressing; release 0.1.3 -> v4
+2026-08-23T17:58:48Z heartbeat phase=60
