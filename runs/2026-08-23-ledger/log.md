@@ -12,3 +12,6 @@
 2026-08-23T21:38:05Z 10 -> 20 phase transition: entering build
 2026-08-23T21:38:05Z progress phase=10 marker=design.md
 2026-08-23T21:38:05Z heartbeat phase=20
+2026-08-23T21:39:00Z 20 repo created https://github.com/Metta-AI/cogame-ledger (public)
+2026-08-23T21:39:00Z 20 propagate-secrets run 32668145098 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-ledger
+2026-08-23T21:39:00Z 20 dispatch builder brief=implement design note, drive ci.yml green on main
