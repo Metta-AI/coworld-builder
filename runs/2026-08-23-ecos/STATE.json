@@ -33,16 +33,20 @@
     "division": "div_ee91d3a5-2639-415e-9694-b5c1a5b70b43"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_09601725-1f08-4736-96cf-d092f1cf3911",
+      "round_b5bc0c39-eb73-4969-b504-1183d8259a26"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/91e62cde-5d4b-42a9-bda2-3fdac44680c8.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32644408716"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T13:47:10Z",
+  "heartbeat_at": "2026-08-23T14:13:04Z",
   "session_ended_at": null,
   "session_id": "d859f357",
   "log": "runs/2026-08-23-ecos/log.md"

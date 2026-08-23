@@ -88,3 +88,6 @@
 2026-08-23T14:07:30Z 60 check8 TRUE (viewer-check run=32644408716 green: loaded=true ms=2900, clocks 0%/50%/100% = GEN1 TICK3 / GEN6 TICK315 / GEN10 10 GENERATIONS, no failure; artifacts in viewer-check/)
 2026-08-23T14:16:00Z 60 VERIFY.md written: 8/8 TRUE, verdict all-true
 2026-08-23T14:16:00Z heartbeat phase=60
+2026-08-23T14:13:04Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; both champions ranked; replay r3 strict-parse ok, 20/20 champion doctrines source=llm; hosted log CLEAN; iframe static; liveness skipped-static; viewer-check 32644408716 loaded=true 3 distinct clocks; feed_lines=0 advisory)
+2026-08-23T14:13:04Z progress phase=60 marker=viewer-check-32644408716
+2026-08-23T14:13:04Z heartbeat phase=60
