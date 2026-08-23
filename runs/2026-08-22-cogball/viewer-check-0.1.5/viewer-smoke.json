@@ -1,0 +1,36 @@
+{
+  "loaded": true,
+  "ms": 1211,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_ff38b98b-f611-4a74-86e1-f2b23cbd6339/sha256%3A495905b153bc98135ae1ec127e8f4abc2b9c88cff6a6d1edf0934d161ec5dce7/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fe6a6bf9a-bd32-45a8-8c86-ce2649163858.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": ":01 STARTING IN",
+  "scorebug": "DAVEEY 0% 0 sh 0 :01 STARTING IN DAVEEY-1 0% 0 sh 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": ":01 STARTING IN"
+    },
+    {
+      "at": "50%",
+      "clock": "3:19 TURN 1/40"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
+  ],
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

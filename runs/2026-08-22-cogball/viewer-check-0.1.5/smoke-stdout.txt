@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1211,"clock":":01 STARTING IN","scorebug":"DAVEEY 0% 0 sh 0 :01 STARTING IN DAVEEY-1 0% 0 sh 0","feed_lines":0}
+scrub readouts: 0%=":01 STARTING IN"  50%="3:19 TURN 1/40"  100%="FINAL GAME OVER"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
