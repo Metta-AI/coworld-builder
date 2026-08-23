@@ -402,3 +402,24 @@ in the type system says so.
 7. **A sub-agent thread can die to "API temporarily overloaded".** The artifact file is the truth:
    no file → the leg did not happen → respawn a clean instance with the same brief. One judge
    thread was lost this way and the retry adjudicated normally.
+
+## 2026-08-23 gridlock
+
+1. **A league's variant is chosen at seed time or never cheaply again.** The phase-50 seed accepts
+   `default_variant_id`; once rounds exist, changing it 409s with "requires a maintenance window:
+   rounds paused + submissions locked". If a phase-20 rail decision picks a non-default league
+   variant, carry it into the seed POST — a decision recorded "for phase 50" that phase 50's
+   prompt body never mentions will be silently dropped on a resume by a session that didn't make
+   it. (Here the drop turned out correct — scripted-baseline near-ties at default demand did NOT
+   predict champion near-ties; flowwright beat backstreet 2-0 with a 61-point elo split — but it
+   was luck, not process. Revising the decision with round evidence, logged at 70, was the fix.)
+2. **A coordinator that dies blocked on a long sub-agent thread leaves code pushed and the report
+   file unwritten** (r1 fixer: 17 commits on main, no r1-fixes.md). Recovery that worked: compare
+   the repo against the reviewed sha to enumerate landed `fix(F<n>)` commits, then re-dispatch the
+   leg as a *reconcile* brief — "these shas landed, verify each from `git show`, work only the
+   remainder, write the report for all findings". No redo, one round, judge BLOCKING: 0.
+3. **A fix commit that renames a test and appends its body reads as a deleted test** to checklist
+   item 1's `git log -p -- tests/` scan. The fixer had to restore it as its own test (0decf32).
+   Fixers: never fold an existing test into another; add alongside.
+4. **`GET /divisions/<d>/leaderboard` returns `null` (not `[]`) while empty** — one more shape on
+   top of the contagion bare-array row; treat null as "no rows yet" and re-poll.
