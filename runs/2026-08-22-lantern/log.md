@@ -20,3 +20,6 @@
 2026-08-23T01:24:11Z heartbeat phase=30
 2026-08-23T01:31:38Z 30 r1 reviewer dispatched (thread sthr_01BeXdJG1PAHnBQ64gih8SfH); checkout /workspace/scratch/cogame-lantern-review @ 06d4da7; output reviews/r1-review.md
 2026-08-23T01:31:38Z heartbeat phase=30
+2026-08-23T01:50:55Z 30 r1 reviewer returned: 1 blocking (F1 byte-sliced LLM error text reaches replay), 15 non-blocking, item-7 grid-harness clause unverifiable; reviews/r1-review.md committed below
+2026-08-23T01:50:55Z 30 r1 fixer dispatched (thread sthr_01KNP6eeAMrnodu6UkeU2BUo); mandate F1 + item-7 harness + cheap non-blocking fixes
+2026-08-23T01:50:55Z heartbeat phase=30
