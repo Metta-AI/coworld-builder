@@ -91,3 +91,4 @@
 2026-08-23T14:13:04Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; both champions ranked; replay r3 strict-parse ok, 20/20 champion doctrines source=llm; hosted log CLEAN; iframe static; liveness skipped-static; viewer-check 32644408716 loaded=true 3 distinct clocks; feed_lines=0 advisory)
 2026-08-23T14:13:04Z progress phase=60 marker=viewer-check-32644408716
 2026-08-23T14:13:04Z heartbeat phase=60
+2026-08-23T14:13:32Z 60 judge dispatched thread=sthr_01QPoGthmBUZeEyiv674W4By (adjudicate VERIFY.md 8/8 against SPEC definition of done)
