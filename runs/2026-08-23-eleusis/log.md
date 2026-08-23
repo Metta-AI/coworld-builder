@@ -55,3 +55,6 @@
 2026-08-23T21:00:25Z 60 judge verdict: blocking 0 (verify-verdict.md, markers agree) — definition of done proven
 2026-08-23T21:00:25Z 60 phase -> 70
 2026-08-23T21:01:31Z 70 announce.attempted_at written pre-POST
+2026-08-23T21:01:47Z 70 announce msg=1541190687117148210 (200, flags=4, embeds=0)
+2026-08-23T21:01:47Z progress phase=70 marker=discord_message_id=1541190687117148210
+2026-08-23T21:01:47Z 70 phase -> 80
