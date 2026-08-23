@@ -33,16 +33,20 @@
     "division": "div_52959ca4-61f9-4828-bbe5-33261daea950"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_e36090b2-ac66-4686-b56a-cafa77b2991a",
+      "round_bc98c02d-5791-4bc8-9ade-365b2a767963"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/829157f1-6642-44f7-9543-566df8ac959c.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32667485621"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T21:35:19Z",
+  "heartbeat_at": "2026-08-23T21:35:43Z",
   "session_ended_at": null,
   "session_id": "e05eed26",
   "log": "runs/2026-08-23-rumor/log.md"
