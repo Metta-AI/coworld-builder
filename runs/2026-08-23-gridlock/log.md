@@ -27,3 +27,5 @@
 2026-08-23T11:19:07Z 30 r1 reviewer returned: 25 findings, 0 blocking per reviewer (r1-review.md); notable: F9 disconnect-degrade unimplemented, F10 default-prompt seat, F15-17 chrome id gaps, F18 viewer_smoke.mjs older template rev, F25 no tuning-harness artefact
 2026-08-23T11:19:07Z progress phase=30 marker=r1-review.md
 2026-08-23T11:19:45Z 30 r1 fixer dispatched thread=sthr_019g963yEg3dbGUtLdBNAAZE (coordinator rulings: dead chrome ids may be hidden/removed rather than wired; momentum layer stays deferred; F25 needs a real committed sweep harness)
+2026-08-23T14:36:17Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
+2026-08-23T14:36:17Z 00 resume at phase 30 attempt=1 session=a0e45f38
