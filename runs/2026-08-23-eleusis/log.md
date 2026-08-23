@@ -21,3 +21,6 @@
 2026-08-23T19:10:31Z 30 r1 reviewer returned: 0 blocking, 12 non-blocking observations (N1-N12); review committed
 2026-08-23T19:10:31Z 30 r1 fixer dispatched
 2026-08-23T19:11:12Z heartbeat phase=30
+2026-08-23T19:31:50Z 30 r1 fixer returned: 12/12 findings addressed (9 code fixes, 3 note-copy corrections), CI green run 32661283184 sha 244401dc (verified); clone updated
+2026-08-23T19:31:50Z 30 r1 judge dispatched (fresh context)
+2026-08-23T19:31:50Z heartbeat phase=30
