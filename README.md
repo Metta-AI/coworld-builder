@@ -109,10 +109,14 @@ because a bundle whose every asset returns 200 can still never draw a frame — 
 2. **`DISCORD_BOT_TOKEN` vault credential** → host `discord.com`, added to the deployment's
    `vault_ids`. Until it exists, phase 70 cannot post and every run ends Blocked at 70. Record
    the vault id in `fleet/cloud.md`.
-3. **The Coworld Builder board** (`1217747772236871`): sections *Running*, *Blocked*, *Done*,
+3. **`GEMINI_API_KEY` vault credential** → host `generativelanguage.googleapis.com`, header-only,
+   in the deployment's `vault_ids` (vault `coworld-builder-gemini`, set 2026-08-23). It is what
+   `playbooks/art-nanobanana.md` uses to render the cog sprites; without it phase 20 falls back to
+   procedural rigs and logs it. Value: AWS Secrets Manager `polis/shared/gemini-api-key`.
+4. **The Coworld Builder board** (`1217747772236871`): sections *Running*, *Blocked*, *Done*,
    *Fleet*; record the section gids in `fleet/cloud.md`. (There is no *Planned* section — the
    input queue is the separate Coworld Ideas board.)
-4. The GitHub identity behind `gh auth token` must be able to create repos under `Metta-AI`.
+5. The GitHub identity behind `gh auth token` must be able to create repos under `Metta-AI`.
 
 ## When a run is Blocked
 
