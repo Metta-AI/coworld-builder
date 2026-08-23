@@ -58,3 +58,8 @@
 2026-08-23T12:23:00Z 60 check6 TRUE static viewer_url via replays/session ready=true (raw-HTML grep empty as documented; featured match in SSR playlist[0])
 2026-08-23T12:23:00Z 60 check7 TRUE committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)"
 2026-08-23T12:23:00Z heartbeat phase=60
+2026-08-23T12:26:27Z 60 poll#3 no r3 yet — completed(>=2)=1
+2026-08-23T12:31:22Z 60 poll#4 r3 completed 12:30:26Z — check1 TRUE (rounds 2,3 completed, both after fillers 12:10-12:12Z; r1 failed pre-filler, excluded)
+2026-08-23T12:32:00Z 60 re-ran checks 2-6 fresh against r3/ereq_a423e065: leaderboard 2 rounds each; replay af23e250 protocol=contagion.replay.v1 reason=complete champions 20/20 non-scripted; log CLEAN; iframe src static ready=true
+2026-08-23T12:32:14Z 60 check8 viewer-check.yml dispatched run=32639677937
+2026-08-23T12:32:14Z heartbeat phase=60
