@@ -31,16 +31,19 @@
     "division": "div_45c40cad-ef84-4d48-a733-59e55f80e24c"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      1,
+      2
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/96be8156-bac3-468f-8674-e8b10cb36a98.replay",
+    "iframe_static": true
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T05:42:09Z",
+  "heartbeat_at": "2026-08-23T06:12:55Z",
   "session_ended_at": null,
   "session_id": "a44eaec9",
   "log": "runs/2026-08-22-cogball/log.md"

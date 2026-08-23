@@ -62,3 +62,6 @@
 2026-08-23T05:42:09Z heartbeat phase=60
 2026-08-23T05:42:35Z 60 phase entered; prompts/60-verify.md read; verifier dispatched (75-min poll bound; Asana heartbeat delegated to verifier during polls)
 2026-08-23T05:42:35Z heartbeat phase=60
+2026-08-23T06:12:55Z 60 verifier returned: 7/8 TRUE (rounds 1+2 completed; both champions ranked 1030.5/969.5; ereq_7edaf74a completed; COWLDBAL replay valid, 80/80 LLM directives 0 fallbacks; hosted log CLEAN; static iframe route; certification liveness skipped-static) — check 8 FALSE: viewer never renders, ReferenceError COG_BASE undefined at replay_broadcast.html:1721 aborts the shell script before createCore(); 3 viewer-check runs (32621157957/32621806164/32621978248) all loaded:false, screenshot = locker-room stall
+2026-08-23T06:12:55Z 60 DECISION (rail): check-8 failure is a diagnosed one-line viewer-shell defect -> route back to fix+re-release (bump 0.1.4), not phase 90; league state untouched (champions/fillers stay v2, rounds keep completing)
+2026-08-23T06:12:55Z heartbeat phase=60

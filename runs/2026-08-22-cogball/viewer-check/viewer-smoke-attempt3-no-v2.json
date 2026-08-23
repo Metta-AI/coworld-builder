@@ -1,0 +1,25 @@
+{
+  "loaded": false,
+  "ms": 120172,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5d14a55f-2647-49fa-95d4-7b37a7463da5/sha256%3Ad488cc06f91a8038667c6b4452031d436b889f5577f65819afc3455b8aa82ccd/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F96be8156-bac3-468f-8674-e8b10cb36a98.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "0:00 IN THE LOCKER ROOM",
+  "scorebug": "0:00 IN THE LOCKER ROOM",
+  "status": "CONNECTING",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [],
+  "failure": "timeout: no data-replay-loaded=\"true\" and no coworld-replay \"ready\" within 120s",
+  "console_tail": [
+    "[pageerror] COG_BASE is not defined"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
