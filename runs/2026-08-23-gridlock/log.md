@@ -6,3 +6,4 @@
 2026-08-23T09:00:48Z 00 STATE written phase=10 session=ffe374dd
 2026-08-23T09:01:25Z 10 starter decided: Metta-AI/coworld-ctf (paintbot) — real-time loop with new rules (signalised road grid, queue/congestion dynamics), RL-vector/code-agent seats; nothing pre-exists to port and no external engine, so rows moba/factorio don't apply
 2026-08-23T09:01:25Z heartbeat phase=10
+2026-08-23T09:02:10Z 10 designer dispatched thread=sthr_01HBvUWjQ9WokQCHyKnMY9Pr brief=self-contained (idea verbatim, checklist path, phase-0 pins, starter=coworld-ctf all four viewer files, output=runs/2026-08-23-gridlock/design.md)
