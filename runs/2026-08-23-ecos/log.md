@@ -20,3 +20,4 @@
 2026-08-23T11:32:06Z progress phase=20 marker=ci-run-32636493709
 2026-08-23T11:32:06Z 20 -> 30 phase transition; STATE.phase=30 review_round=1 pushed before reviewer dispatch
 2026-08-23T11:32:06Z heartbeat phase=30
+2026-08-23T11:32:40Z 30 r1 reviewer dispatched thread=sthr_01EDrnbpQENcivujyFqtyV62 target sha=289937c0
