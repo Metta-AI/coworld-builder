@@ -35,3 +35,5 @@
 2026-08-23T02:21:27Z heartbeat phase=30
 2026-08-23T05:40:28Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-08-23T05:40:28Z 00 resume at phase 30 attempt=1 session=36cbd675
+2026-08-23T05:41:56Z 30 r1 fixer re-dispatched (prior session died before r1-fixes.md; file absent) output=runs/2026-08-22-raid/reviews/r1-fixes.md
+2026-08-23T05:41:56Z heartbeat phase=30
