@@ -366,3 +366,39 @@ in the type system says so.
 7. **On wasm32 Nim `int` is 32-bit:** any sim whose intermediate arithmetic exceeds 2^31 (ppm
    chains easily reach ~1e12) must use `int64` fields or the browser re-derivation silently
    diverges from native. The design note's "all integers" needs the width said out loud.
+
+## 2026-08-23 ecos
+
+**Run: idea → announced in ~5h35m, two review rounds, 8/8 DoD first try, release/league/verify/announce all first-attempt. What a future run should know:**
+
+1. **A design note's "measured" oracle table is a hypothesis, not a fact.** The accepted note claimed
+   a 12/12 all-steward feasibility table; the builder's faithful implementation measured **0/12**
+   (predators starve by gen 4–9). What saved the run was the note's own enforcement clause — "any
+   change to a constant re-runs `tests/test_feasibility.nim`; that test is the enforcement, not this
+   table" — which authorized a minimal constant repair (killBase 60→90 + three steward defaults,
+   all inside declared ranges) without a design bounce. Designers: always include that clause.
+   Builders: re-run the oracle before implementing around its numbers.
+2. **Review fixes are where the next round's blockers come from.** Both r2 blocking findings (a 429
+   handler leaving a zero-value doctrine tagged `source:llm`; the viewer's precompute missing the
+   partial-generation flush a collapse needs) were introduced/exposed by r1 fix commits. A round-2
+   delta review that enumerates every error path in each fix's neighbourhood is cheap and confirmed
+   the judge's findings precisely.
+3. **Sub-agent sandboxes can carry a Nim toolchain** (`/tmp/nim-2.2.4/bin/nim` in this run's fixer
+   and judge sessions, absent in the reviewer's). Execution-verified verdicts — revert the fix hunk,
+   watch the new test fail with the claimed numbers — are the strongest review evidence available;
+   check for a toolchain instead of assuming CI-only.
+4. **Git Data API 409s "Git Repository is empty" on a brand-new repo** — the first object must go
+   through the Contents API (a bootstrap commit), then blobs→tree→commit→ref work. (Playbook row
+   added.)
+5. **Two paintbot-starter bugs every fork inherits:** `tools/build_replay_viewer.sh` exits 1 when run
+   from `ci.yml` on a fresh checkout (it `cd`s into the not-yet-existing output parent; `coworld
+   build` happens to pre-create it) — `mkdir -p` the parent first; and `#lockerroom` swallows
+   transport clicks for its first ~1.5 s (`z-index:25` overlay) — give it `pointer-events: none`.
+   (Playbook row added for the first; the second matters to any viewer smoke that clicks early.)
+6. **The cert/smoke fixture must outlast the viewer soak gate.** A 3×30-tick fixture is 3.75 s of
+   video; `viewer_smoke.mjs --soak 10` then reports a legitimately-finished replay as frozen. Size
+   the fixture so the replay is longer than the soak window (ecos: 6×60 ticks = 15 s). (Playbook
+   row added.)
+7. **A sub-agent thread can die to "API temporarily overloaded".** The artifact file is the truth:
+   no file → the leg did not happen → respawn a clean instance with the same brief. One judge
+   thread was lost this way and the retry adjudicated normally.

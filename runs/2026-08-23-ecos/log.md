@@ -100,3 +100,4 @@
 2026-08-23T14:19:30Z progress phase=70 marker=announce.discord_message_id
 2026-08-23T14:19:30Z 70 -> 80 phase transition
 2026-08-23T14:19:30Z heartbeat phase=80
+2026-08-23T14:21:07Z 80 LEARNINGS entry appended; 3 rows folded into playbooks/make-coworld.md Common mistakes
