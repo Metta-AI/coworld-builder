@@ -139,6 +139,27 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
     residue — do not file them as findings.
     *(category: manifest)*
 
+13. **Viewer executes.** *(category: static-viewer)* Not "the bundle builds" — the bundle
+    **runs**.
+    - `ci.yml`'s `wasm-viewer` job is green on `main` at the reviewed sha **including its
+      `Load the bundle in a real browser` step** (`tools/ci/viewer_smoke.mjs`, headless chromium,
+      loading the replay `docker-smoke` produced). Cite the run id and confirm the step ran — a
+      job green because the smoke step is absent, commented out, or `continue-on-error` is a
+      blocking finding, and so is a `wasm-viewer` that does not `needs: docker-smoke`.
+    - `index.html` / `static_replay*.js` set `data-replay-loaded="true"` on `<html>` on the
+      **first drawn frame** and `data-replay-error="<message>"` on failure. Both markers, both
+      set from the shell's own code paths.
+    - The emscripten link flags in `replay-viewer/config.nims` (`-s MODULARIZE=1`,
+      `-s EXPORT_NAME=<X>`) and the bootstrap in the worker/shell come from the **SAME starter**.
+      Read both and check they agree:
+      a shell that waits for `Module.onRuntimeInitialized` against a `MODULARIZE=1` build is
+      **blocking** (the factory is never called, nothing throws, the page hangs forever), and so
+      is a shell that calls a factory `<X>(...)` that a non-`MODULARIZE` build never defines.
+      This is the cogame-lantern deadlock of 2026-08-23 verbatim: paintbot's bootstrap spliced
+      onto babel's link flags, every file present, every asset 200, `tell("ready")` in the JS,
+      and "Loading replay…" on softmax.com forever. **File presence is not evidence here; the
+      smoke's `loaded: true` is.**
+
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.
 

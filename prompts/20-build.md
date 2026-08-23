@@ -36,8 +36,18 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `src/` (sim module, server, LLM policy, scripted baseline — one image, env-switched
    > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`), `client/` (viewer reusing the starter's
    > `renderer.js`/`chrome.css` chrome), `replay-viewer/<slug>_replay.nim` +
-   > `tools/build_replay_viewer.sh` (the `coworld build` hook, emscripten, same sim module),
-   > `compose.yaml` (service name `<slug>`, `platform: linux/amd64`,
+   > `tools/build_replay_viewer.sh` (the `coworld build` hook, emscripten, same sim module).
+   > Take `replay-viewer/config.nims`, the wasm entry `.nim`, `static_replay*.js` and
+   > `index.html` from **ONE starter only** — the one the design note names — and never splice the
+   > shell of one onto the build flags of another. The emscripten link flags (`-s MODULARIZE=1`,
+   > `-s EXPORT_NAME=<X>`) and the JS bootstrap that starts the module are a matched pair:
+   > babel-lineage shells call the factory `<X>(Module)`, paintbot-lineage shells wait for
+   > `Module.onRuntimeInitialized`, and a mixture throws nothing, logs nothing and hangs on
+   > "Loading replay…" forever (**cogame-lantern, 2026-08-23**). The shell must also set
+   > `data-replay-loaded="true"` on `<html>` on its first drawn frame and
+   > `data-replay-error="<message>"` on failure; `tools/ci/viewer_smoke.mjs` (copied verbatim from
+   > `templates/tools/ci/`, no substitutions) is what proves it in CI.
+   > Also deliver `compose.yaml` (service name `<slug>`, `platform: linux/amd64`,
    > `build: {context: ., network: host}`), `coworld_manifest_template.json`
    > (image `{{<SLUG>_IMAGE}}`, `num_agents` in EVERY variant and in the cert fixture,
    > `"replay_viewer": {"bundle": "static-replay-viewer"}`, `game.docs` =
@@ -51,7 +61,9 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > the design note (or vice versa) gets caught. Files: `.github/workflows/ci.yml`,
    > `.github/workflows/coworld-release.yml`, `.github/workflows/coworld-submit.yml`,
    > `tools/ci/docker_smoke.sh` and `tools/build_replay_viewer.sh` (**both `chmod +x`** — `coworld
-   > build` hard-requires `os.X_OK` on the replay-viewer hook), and `tools/ci/policies.json` (from
+   > build` hard-requires `os.X_OK` on the replay-viewer hook), `tools/ci/viewer_smoke.mjs`
+   > (verbatim, no substitutions — the `wasm-viewer` job's load test), and
+   > `tools/ci/policies.json` (from
    > `templates/tools/ci/policies.json.example` — copy **and edit**: the example's `bullwhip-*`
    > names and prompts are bullwhip's; rewrite names and prompts for THIS game. Only the shape is
    > inherited: **two LLM prompt policies** (`PLAYER_PROMPT`, one per champion, different prompts)
@@ -98,8 +110,8 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
 ## Exit criterion
 
 `ci.yml` conclusion `success` on `main`, at a commit whose tree contains: the manifest template with
-`num_agents` everywhere, `tools/build_replay_viewer.sh` (**executable**), `tools/ci/docker_smoke.sh`
-(**executable**),
+`num_agents` everywhere, `tools/build_replay_viewer.sh` (**executable**),
+`tools/ci/docker_smoke.sh` (**executable**), `tools/ci/viewer_smoke.mjs`,
 `tools/ci/policies.json`, all three workflows, both policy entry points, and the tests the design
 note listed. No unsubstituted placeholder survives:
 

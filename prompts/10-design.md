@@ -48,7 +48,10 @@ the reason. Never go to phase 90 for a starter choice.
    > numbered order, exact scoring formula and sign, exact end conditions and `results.reason`
    > values, the full observation each seat gets, the reply schema with per-field character caps,
    > the event record written to the replay, the viewer's readouts, the manifest variants, and the
-   > test list. Reference `playbooks/make-coworld.md` §Phase 0 for the non-optional pins and state
+   > test list. `## Viewer` must name the **single starter** that supplies all four viewer files
+   > (`replay-viewer/config.nims`, the wasm entry `.nim`, `static_replay*.js`, `index.html`) —
+   > one starter for all four, never a mixture — and state that the shell sets
+   > `data-replay-loaded="true"` on its first drawn frame and `data-replay-error` on failure. Reference `playbooks/make-coworld.md` §Phase 0 for the non-optional pins and state
    > how each is satisfied. Do not write code. Do not ask questions — decide and log the reason.
 
 4. Coordinator reviews the returned note against the **design-note checklist** below. Reject with
@@ -79,12 +82,20 @@ the reason. Never go to phase 90 for a starter choice.
 - [ ] Viewer: static wasm bundle (`replay_viewer.bundle = static-replay-viewer`), the build hook
       `tools/build_replay_viewer.sh`, the starter chrome reused verbatim, the readouts listed, and
       an explicit note that it is legible at **360 px** wide.
+- [ ] Viewer starter named **by name, for all four viewer files**: `replay-viewer/config.nims`,
+      the wasm entry `.nim`, `static_replay*.js` and `index.html` all come from THAT one starter,
+      and the note says so explicitly. Splicing one starter's shell onto another's emscripten link
+      flags (`MODULARIZE`/`EXPORT_NAME` vs an `onRuntimeInitialized` bootstrap) deadlocks the
+      viewer silently — cogame-lantern, 2026-08-23. The note also states that the shell sets
+      `data-replay-loaded="true"` on its first drawn frame and `data-replay-error` on failure.
 - [ ] Replay bytes are self-sufficient: every field the viewer needs is recorded (names, config,
       per-tick state, seed).
 - [ ] Packaging: `compose.yaml`, `coworld_manifest_template.json`, `game.docs`
       (`readme` + `pages`) and `game.protocols` (**both** `player` and `global`).
 - [ ] Tests: sim unit tests, a bounded-orders/legality assertion on the scripted baseline, an
-      end-to-end episode writing a replay, a strict-UTF-8 replay parse, and a viewer smoke.
+      end-to-end episode writing a replay, a strict-UTF-8 replay parse, and a viewer smoke — the
+      last being `tools/ci/viewer_smoke.mjs` run by `ci.yml`'s `wasm-viewer` job against the
+      replay `docker-smoke` produced, i.e. the bundle is **executed**, not merely built.
 - [ ] Out of scope (v1) is non-empty.
 
 ## Exit criterion
