@@ -110,6 +110,10 @@ renamed "Baseline (N)", including a scored champion.
 A `trigger-round` issued before any filler exists fails instantly with
 `Temporal RoundWorkflow failed before settling the round`.
 
+`GET /leagues/$L/filler-policies` (the read) **403s on bare AUTH**
+(`{"detail":"User is not a softmax team member"}`) — it needs
+`X-Use-Elevated-Privileges: true` even though it is a read (raid, 2026-08-23).
+
 ## 7. Unpause and trigger
 
 ```bash

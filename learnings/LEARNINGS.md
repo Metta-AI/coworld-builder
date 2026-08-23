@@ -258,3 +258,42 @@ in the type system says so.
 7. **Paintbot's viewer chrome really is 2–4-team ready** (`ensureScorebug()` two-plates-per-side)
    — a 4-seat game needs no scorebug rework, only the `.team-name min-width` + 640px media-query
    gotchas already in the playbook.
+
+## 2026-08-23 raid
+
+1. **Never let a sub-agent run `gh auth setup-git`.** It replaced the sandbox's working global
+   helper (`/usr/local/bin/git-credential-anthropic`) and broke every subsequent `git push` —
+   including to coworld-builder — with "Invalid username or token". Repair:
+   `git config --global credential.helper /usr/local/bin/git-credential-anthropic`. Fixer/builder
+   briefs now say so explicitly; keep saying it.
+2. **Certification's `players-run` seats the whole manifest roster.** A cert fixture of
+   `baseline × num_agents` fails `players_missing` if the manifest declares any other player
+   entry. Design notes should stop pinning `baseline × N`; seat every declared player once and
+   keep the strong baseline where the fixture's outcome is decided (raid: tank + healer).
+3. **whisky/mummy shutdown race, latent in the bullwhip starter too:** player exits 1 when the
+   game's `quit(0)` outruns the queued `done` frame (whisky raises on close/truncated frames).
+   Player receive loops must `try/except CatchableError` → exit 0; `docker_smoke.sh` must assert
+   **player** container exit codes, or CI passes what certification then fails intermittently.
+   Fix cogame-bullwhip's player and the player template when next touched.
+4. **Sidecar LLM budget is 30 req/min per episode with no wall-clock floor in sim-time pacing.**
+   Fast episodes (2 LLM seats, ~2 s wall/turn ≈ 57 rpm) throttle intermittently; the fallback
+   ladder candidate `us.anthropic.claude-sonnet-4-6` times out on every sidecar call and turns
+   one throttle into a fallback cascade. Future designs: floor inter-batch wall spacing to keep
+   ≤ 30 rpm at max living LLM seats; ship haiku-only ladders.
+5. **Cooperative shared scoring never separates Elo** — both champions sit at 1000.0 forever
+   (`results.scores = [score]×5`; round-robin has no head-to-head signal). Definition-of-done
+   check 2 still passes (ranked = rows present), but a future cooperative design should say what
+   the leaderboard is supposed to show, or pick a scoring rule with per-seat attribution.
+6. Five release dispatches, five **distinct** defects (manifest placeholders → `/client/*` 404s →
+   fixture seating → player exit race), each fixed on first try: the 3-dispatch budget reads best
+   as "one failure surviving three fixes", not "three dispatches total" — authorize extra
+   dispatches when every failure is new, diagnosed, and the fix is CI-verified first (cogball
+   precedent, now raid).
+7. `viewer_smoke.mjs` reports `feed_lines: 0` against a feed that visibly renders (selector
+   mismatch with paintbot-descended shells) — harmless for the loaded/clock checks, but don't
+   read feed_lines as evidence of an empty feed. And the paintbot-descended manifest prose calls
+   the bundle "static **wasm**" even when the shipped viewer is pure-JS canvas — cosmetic,
+   confuses reviewers; fix the prose when scaffolding.
+8. Template fix landed this run: `templates/ci.yml`'s browser-load step no longer uses the
+   pipefail-fatal `ls dist/smoke/*.replay … | head -1` glob (bare exit 2 when only `replay.json`
+   exists); it is now a `for` loop. Repos scaffolded before 2026-08-23 carry the old form.

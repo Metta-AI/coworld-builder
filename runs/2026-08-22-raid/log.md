@@ -118,3 +118,8 @@
 2026-08-23T08:41:03Z progress phase=70 marker=discord-msg-1541004294923493477
 2026-08-23T08:41:03Z 70 -> 80 phase transition
 2026-08-23T08:41:03Z heartbeat phase=80
+2026-08-23T08:43:52Z 80 summary posted (run task story 1217751748038777, idea story 1217752013051785); idea 1217704516752104 completed; all 8 subtasks complete; run task moved to Done
+2026-08-23T08:43:52Z 80 LEARNINGS 2026-08-23 raid appended (8 items); playbook folds: make-coworld common-mistakes +4 rows, observatory-api filler-policies elevated-read note
+2026-08-23T08:43:52Z progress phase=80 marker=LEARNINGS-2026-08-23-raid
+2026-08-23T08:43:52Z 80 run closed. next action: none — run complete
+2026-08-23T08:43:52Z heartbeat phase=80

@@ -64,8 +64,8 @@
     "discord_message_id": "1541004294923493477"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T08:41:03Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-23T08:43:52Z",
+  "session_ended_at": "2026-08-23T08:43:52Z",
   "session_id": "36cbd675",
   "log": "runs/2026-08-22-raid/log.md"
 }
