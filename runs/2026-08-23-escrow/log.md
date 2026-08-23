@@ -196,3 +196,6 @@
 2026-08-23T19:05:41Z progress phase=70 marker=announce.discord_message_id=1541161478823088280
 2026-08-23T19:05:41Z 70 -> 80 phase transition: entering close
 2026-08-23T19:05:41Z heartbeat phase=80
+2026-08-23T19:08:21Z 80 close: exec summary on run task (1217755583055680), condensed on idea task (1217755661549748); LEARNINGS entry + 3 playbook rows committed; all 8 phase subtasks complete; idea 1217704516772355 completed; run task moved to Done
+2026-08-23T19:08:21Z progress phase=80 marker=run-task-Done
+2026-08-23T19:08:21Z 80 close complete — run Done, idea completed, session ended. Next action: none (run finished).
