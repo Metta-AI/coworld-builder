@@ -18,3 +18,5 @@
 2026-08-23T18:53:52Z 20 phase -> 30 review_round=1
 2026-08-23T18:54:36Z 30 r1 reviewer dispatched (repo clone at /workspace/cogame-eleusis sha 529eb68)
 2026-08-23T18:54:36Z heartbeat phase=30
+2026-08-23T19:10:31Z 30 r1 reviewer returned: 0 blocking, 12 non-blocking observations (N1-N12); review committed
+2026-08-23T19:10:31Z 30 r1 fixer dispatched
