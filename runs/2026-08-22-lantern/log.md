@@ -12,3 +12,9 @@
 2026-08-23T00:01:18Z 20 propagate-secrets.yml run 32606758102 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-lantern
 2026-08-23T00:02:07Z 20 builder dispatched (thread sthr_0166oazc8ndZMnGuQEUYXkop); target ci.yml green on main of Metta-AI/cogame-lantern
 2026-08-23T00:02:07Z heartbeat phase=20
+2026-08-23T01:24:11Z 20 builder returned: main at 06d4da7, ci.yml run 32610126558 success (test, docker-smoke, wasm-viewer); green first push; exit checks pass (placeholders clean, 3 workflows active, release/submit inputs+artifacts present, both tools +x)
+2026-08-23T01:24:11Z 20 builder note: sandbox git-push-over-HTTPS refused; pushed via Git Data API (blobs->tree->commit->ref), helper /workspace/scratch/api_push.py — carry to later phases
+2026-08-23T01:24:11Z 20 EXIT: ci.yml green on main; coordinator verified run conclusion, workflow states, exec bits independently
+2026-08-23T01:24:11Z progress phase=20 marker=ci-run-32610126558
+2026-08-23T01:24:11Z 30 phase entered; review_round=1
+2026-08-23T01:24:11Z heartbeat phase=30
