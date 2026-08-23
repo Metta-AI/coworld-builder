@@ -74,3 +74,5 @@
 2026-08-23T16:00:06Z progress phase=50 marker=sub_664a688e-c0cd-4712-bd35-b8d962c0ac59
 2026-08-23T16:00:06Z 50 -> 60 phase transition: entering verify
 2026-08-23T16:00:06Z heartbeat phase=60
+2026-08-23T16:01:37Z 60 verifier dispatched (thread sthr_01U2RchApcy8Pu2t2GuRUuKM); 75-min round wait bound, polls refresh heartbeat
+2026-08-23T16:01:37Z heartbeat phase=60
