@@ -1,7 +1,7 @@
 # Discord announcement template (phase 70)
 
-Goes to: Discord `#coworlds`, posted by the bot with `DISCORD_BOT_TOKEN`.
-Written by `prompts/70-announce.md`. The returned message id goes in
+Goes to: Discord `#coworlds`, posted by the bot with `DISCORD_BOT_TOKEN`, always with
+`"flags": 4` (`SUPPRESS_EMBEDS`) so the links stay plain text. Written by `prompts/70-announce.md`. The returned message id goes in
 `STATE.announce.discord_message_id`.
 
 Substitute: `<slug>`, `<Game Name>`, `<tagline>`, `<emoji>` (one or two), `<player runnable>`,
@@ -44,7 +44,9 @@ Repo: https://github.com/Metta-AI/cogame-<slug>
 - Use the policy names spectators see, not the in-game cog aliases.
 - No hype, no "excited to announce", no adjectives doing the work of a number. State the game.
 - Exactly one emoji cluster, in the title line.
-- Both links are bare URLs on their own line so Discord unfurls them.
+- Both links are bare URLs on their own line so they are easy to copy/click. They must **not**
+  unfurl: the POST carries `"flags": 4` (`SUPPRESS_EMBEDS`). If a post ever shows embed cards,
+  `PATCH .../messages/<id>` with `{"flags":4}` — see `prompts/70-announce.md` step 4b.
 
 ---
 

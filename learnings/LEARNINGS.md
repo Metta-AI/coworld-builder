@@ -78,7 +78,10 @@ time; all of it is now folded into the playbooks.
   cosino / focus. Bullwhip is a fork of babel 0.1.4 and inherited its conventions wholesale.
 - **Announcements go to Discord, not Slack:** guild `1309708848730345493`, channel `#coworlds`
   `1440464430646427718`, via the Disco bot
-  (`authorization: Bot $DISCORD_BOT_TOKEN`, `POST /api/v10/channels/<id>/messages {"content":…}`).
+  (`authorization: Bot $DISCORD_BOT_TOKEN`, `POST /api/v10/channels/<id>/messages
+  {"content":…,"flags":4}`). `flags:4` = `SUPPRESS_EMBEDS`: announcements are plain text, no
+  link-unfurl cards. An already-posted message loses its embeds with
+  `PATCH …/messages/<id> {"flags":4}` (an edit, so it does not break the post-once rule).
 
 ## 2026-08-22 lighthouse
 
