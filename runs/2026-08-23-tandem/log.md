@@ -13,3 +13,8 @@
 2026-08-23T19:48:19Z 20 repo created https://github.com/Metta-AI/cogame-tandem (public)
 2026-08-23T19:48:19Z 20 propagate-secrets run 32662382464 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-tandem
 2026-08-23T19:48:19Z 20 dispatching builder
+2026-08-23T21:32:30Z 20 builder returned: 119 files on main, ci.yml run 32667457401 success at 4b78981e77210a5f910dd679c81a32983e0a333d (verified via gh); all 3 workflows parse; exit checks pass
+2026-08-23T21:32:30Z 20 builder deviations noted for review: mule effort 0.55 + strict-dominance assertion replacing >=14/20 (sum-of-forces makes literal mule unpassable); spin/heading integer-resolution fixes; porter conflict rule rewritten (strain sign); porter 4-state machine; test_viewer ctf-grep scoped around byte-for-byte chrome_common.js; order record +q[] quantised ints; ring rects overhang world box; no nano-banana (design note pins ctf rigs + pixie bakes)
+2026-08-23T21:32:30Z progress phase=20 marker=ci-run-32667457401
+2026-08-23T21:32:30Z 20 phase -> 30 review_round=1
+2026-08-23T21:32:30Z heartbeat phase=30
