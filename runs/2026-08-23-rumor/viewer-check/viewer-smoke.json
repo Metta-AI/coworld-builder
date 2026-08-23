@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 732,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_46b04bae-028d-4f7a-8444-c18590d68521/sha256%3A83e14e8087bf4e1fc862471588e251cb443b2b19dada715d9d0f0c3c97c56c51/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F829157f1-6642-44f7-9543-566df8ac959c.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 1 / 5 · WAITING ON 10"
+    },
+    {
+      "at": "100%",
+      "clock": "TRUTH — FLOODED · HONEST 5/8 · 5 FLOODED · 5 DRY"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

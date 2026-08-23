@@ -53,3 +53,5 @@
 2026-08-23T21:35:43Z 60 verifier returned VERIFY.md (749 lines): 8/8 TRUE in 22 min, 0 retries; rounds 2+3 completed, replay complete, log CLEAN, viewer-check run=32667485621 loaded=true 3 distinct clocks
 2026-08-23T21:35:43Z progress phase=60 marker=VERIFY.md-8of8-true
 2026-08-23T21:35:43Z 60 dispatch judge fresh-context adjudication of VERIFY.md vs SPEC definition-of-done
+2026-08-23T21:41:32Z 60 incident: coordinator apipush reset --hard clobbered verifier files with empty blobs; recovered — viewer-check re-downloaded from run 32667485621, ep.replay re-fetched from S3, VERIFY.md rewritten by verifier from transcript (36152 bytes); apipush fixed with existence guard
+2026-08-23T21:41:32Z heartbeat phase=60
