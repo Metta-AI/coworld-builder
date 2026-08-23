@@ -45,3 +45,6 @@
 2026-08-23T15:16:20Z 30 r2 fixer dispatch pending
 2026-08-23T15:17:02Z 30 r2 fixer dispatched (thread sthr_01NwtfLiAwaGsSnPg8gMFM13); mandate: real grid harness + committed tuning record + CI wiring for F1, F2-F5 fix-or-dismiss
 2026-08-23T15:17:02Z heartbeat phase=30
+2026-08-23T15:38:38Z 30 r2 fixer returned: F1 fixed (grid harness tools/tune_baseline.nim + docs/tuning.md + CI check step; argmax tradeUnits=6/needFills=3 adopted, 2.27x autarky), F2/F4/F5 fixed, F3 dismissed; CI green run 32648809792 @ 798d9504155b23b60210a166bd1871a1a4538327; reviews/r2-fixes.md
+2026-08-23T15:38:38Z progress phase=30 marker=reviews/r2-fixes.md
+2026-08-23T15:38:38Z 30 r2 judge dispatch pending
