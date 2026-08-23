@@ -23,3 +23,5 @@
 2026-08-23T14:20:16Z heartbeat phase=30
 2026-08-23T14:28:24Z 20 asana: phase-20 subtask completed, comment posted, heartbeat_at refreshed
 2026-08-23T14:28:24Z 00 note: coordinator's git push over HTTPS to github.com now also rejected (auth); pushes for this session go via git-data API helper (/tmp/api_push.sh), fast-forward only, never forced
+2026-08-23T14:29:17Z 30 r1 reviewer dispatched (thread sthr_01FhjjRsS7UjZdNQQCncKmRv); repo checkout /workspace/scratch/cogame-escrow-repo @ d68c5ec
+2026-08-23T14:29:17Z heartbeat phase=30
