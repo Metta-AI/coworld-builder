@@ -96,3 +96,4 @@
 2026-08-23T08:12:25Z 60 check2 TRUE: daveey raid-anvil:v1 rank1 rp=2, daveey-1 raid-triage:v1 rank2 rp=2, no fillers
 2026-08-23T08:12:25Z 60 check5 FALSE on round 2 ereq_7cd4e673: sidecar 30 req/min ThrottlingException -> haiku unusable -> sonnet-4-6 timeouts -> 6x "falling back"; round 1 log was CLEAN; bullwhip/lantern/cogtank logs same window CLEAN (not platform-wide) — polling round 3
 2026-08-23T08:12:25Z heartbeat phase=60
+2026-08-23T08:17:46Z heartbeat phase=60
