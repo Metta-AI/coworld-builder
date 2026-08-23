@@ -1,7 +1,7 @@
 # templates/
 
 Files a coworld-builder agent copies into a freshly created `Metta-AI/cogame-<slug>` repo
-(the workflows and the shell/JSON under `tools/`), plus the Asana/Discord/state templates the
+(the workflows and the shell/JS/JSON under `tools/`), plus the Asana/Discord/state templates the
 coordinator fills in from the sandbox.
 
 The sandbox has **no docker, no nim, no emsdk and no coworld CLI**. Everything that needs one
@@ -30,10 +30,13 @@ description), and `<cow_id>` / `<sha>` (in the note about the platform's static 
 `/v2/coworlds/replays/static/<cow_id>/<sha>/index.html`). After substitution, the residue check
 
 ```bash
-grep -rnE '<[A-Za-z_][A-Za-z0-9_]*>' .github/workflows tools/ci
+grep -rnE '<[A-Za-z_][A-Za-z0-9_]*>' .github/workflows tools/ci --exclude=viewer_smoke.mjs
 ```
 
-should return exactly those four names and nothing else. Grep for the placeholder *shape*, not
+should return exactly those four names and nothing else. `tools/ci/viewer_smoke.mjs` is
+excluded because it takes **no** substitutions at all and its header documents a CLI
+(`--bundle <dir>`, `--url <url>`, `--timeout <s>`) and an emscripten `EXPORT_NAME=<X>`; every
+angle-bracket name in it is prose. Grep for the placeholder *shape*, not
 for a bare `<`: the copied files legitimately contain `<<'PY'` heredocs and `slot < seats`
 comparisons, and a gate written against a bare `<` false-positives on every one of them.
 
@@ -58,14 +61,71 @@ file list, default `tests/*.nim`), `NIM_TESTS_DEBUG_ONLY` and `NIM_TESTS_RELEASE
 `gh variable set NIM_TESTS --body "tests/test_sim.nim tests/test_bot.nim"`.
 
 **`docker-smoke`** runs `docker build --platform=linux/amd64 -t <IMAGE>:ci .` and then
-`tools/ci/docker_smoke.sh <IMAGE>:ci`.
+`tools/ci/docker_smoke.sh <IMAGE>:ci`. It then uploads `dist/smoke/` as the **`smoke-replay`**
+artifact — the replay (and `results.json`) that episode produced. That file is the only replay
+in CI known to be a real, current-format episode of this game, and `wasm-viewer` loads it in a
+browser; a hand-written viewer fixture drifts from the writer and stops being evidence.
 
-**`wasm-viewer`** runs `tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"`
-(which falls back to the pinned `emscripten/emsdk:4.0.15` container in
-`Dockerfile.replay-viewer`, since the runner has no `emcc`), asserts `index.html` and at
-least one non-empty `.wasm` exist, and uploads the bundle as the `static-replay-viewer`
-artifact. A bundle that does not build means every hosted replay hangs on the platform's
-static viewer route, so this job is not optional.
+**`wasm-viewer`** (`needs: docker-smoke`) runs
+`tools/build_replay_viewer.sh "$PWD/dist/static-replay-viewer"` (which falls back to the pinned
+`emscripten/emsdk:4.0.15` container in `Dockerfile.replay-viewer`, since the runner has no
+`emcc`), asserts `index.html` and at least one non-empty `.wasm` exist, **then downloads the
+`smoke-replay` artifact, installs Playwright and actually opens the bundle in headless
+chromium** via `tools/ci/viewer_smoke.mjs`. The job is red if the viewer never draws a frame.
+It uploads `viewer-smoke.png` + `viewer-smoke.json` as **`viewer-smoke`** (on success *and*
+failure — the screenshot is most useful when it is red) and the bundle as
+`static-replay-viewer`.
+
+The load step is not decoration. The file-presence assertions above went green over
+cogame-lantern's viewer (2026-08-23), which deadlocked forever: every file present, every
+asset 200, and the emscripten factory never called. A bundle that does not build — or that
+builds and never renders — means every hosted replay hangs on the platform's static viewer
+route, so neither half of this job is optional.
+
+## `tools/ci/viewer_smoke.mjs` → `tools/ci/viewer_smoke.mjs`
+
+**Copied verbatim. No substitutions** — it is starter-agnostic and game-agnostic, and the only
+thing it knows about a specific game is the DOM ids the starter chrome already uses
+(`#clock`, `#scorebug`, `#statuschip`, `#feed`, `#loading`, `#scrub`), each optional.
+
+```bash
+node tools/ci/viewer_smoke.mjs --bundle <dir> --replay <file> [--timeout 60] [--out .]
+node tools/ci/viewer_smoke.mjs --url <full viewer url with ?replay=> [--timeout 90]
+```
+
+`--bundle` serves the directory *and* the replay over a local HTTP server (Node's own, no
+dependency) and opens `index.html?replay=http://127.0.0.1:<port>/<replay name>`. `file://` is
+deliberately not used: `fetch()` and wasm streaming compilation both behave differently there,
+so a `file://` pass would say nothing about the hosted bundle. `--url` points at a live viewer
+instead; that is the mode `coworld-builder`'s `viewer-check.yml` uses for phase 60 check 8.
+
+**Success** is `data-replay-loaded="true"` on `<html>` **or** a `{src:"coworld-replay",
+type:"ready"}` postMessage. New shells must set the attribute (acceptance checklist item 13);
+the bridge is accepted because it predates it. Catching the bridge from a top-level page needs
+a trick, documented in the file: `parent` is a `[Replaceable]` attribute on `Window`, so an
+init script assigns `window.parent = {postMessage: …}` and the shell's
+`if (window.parent === window) return;` guard stops swallowing the message.
+
+**Failure** is `data-replay-error`, a bridge `error`, *or silence until the timeout* — exit 1
+with the last 30 console messages and the `#clock` / `#scorebug` / status / `#loading` text.
+Silence is the important one: it is the lantern deadlock.
+
+On success it prints one JSON line
+(`{"loaded":true,"ms":…,"clock":…,"scorebug":…,"feed_lines":N}`), saves `viewer-smoke.png`,
+and — if the shell has a `#scrub` — clicks it at 50 % and 100 % and records the clock text at
+0 %, 50 % and 100 % into `viewer-smoke.json`. **Three readouts that do not differ mean a
+replay that renders once and freezes**, which phase 60 counts as a failure even with
+`loaded: true`.
+
+Playwright is pinned to **1.55.0**, module and browser together:
+
+```bash
+npm install --no-save playwright@1.55.0
+npx --yes playwright@1.55.0 install --with-deps chromium
+```
+
+Bump both or neither — a mismatched pair 404s on the browser download. `PLAYWRIGHT_MODULE` can
+point at an installed copy if `node_modules` is elsewhere.
 
 ## `tools/ci/docker_smoke.sh` → `tools/ci/docker_smoke.sh` (chmod +x)
 
@@ -93,10 +153,16 @@ game container exits 0, `results.json` is valid UTF-8 JSON with `names`/`scores`
 length, `replay.json` is non-empty (and parses as JSON unless told otherwise), and no
 `player_failure.json` was written; on any failure it dumps every container's logs.
 
+**It also keeps the replay.** The work dir is a `mktemp` the EXIT trap deletes, so without this
+the only replay CI ever produced was gone seconds after being validated. `SMOKE_REPLAY_OUT`
+(default `dist/smoke/replay.json`) is where it is copied — `ci.yml` uploads that directory as
+the `smoke-replay` artifact and the `wasm-viewer` job loads it in a real browser.
+
 Overridable by env: `SMOKE_IMAGE`, `SMOKE_SLUG`, `SMOKE_GAME_BIN` (default `/bin/<slug>`),
 `SMOKE_PLAYER_BIN` (default `/bin/<slug>-player`), `SMOKE_MANIFEST`, `SMOKE_SEATS`
 (cross-check, see above),
-`SMOKE_PORT` (8080), `SMOKE_TIMEOUT` (900), `SMOKE_REQUIRE_REPLAY_JSON` (1 — set `0` for a
+`SMOKE_PORT` (8080), `SMOKE_TIMEOUT` (900), `SMOKE_REPLAY_OUT`
+(`dist/smoke/replay.json`), `SMOKE_REQUIRE_REPLAY_JSON` (1 — set `0` for a
 binary replay format such as CTF's `.bitreplay`), `SMOKE_EXTRA_ENV` (`"K=V K=V"` applied to
 every player). If `ANTHROPIC_API_KEY` is present it is forwarded to the game container so the
 LLM path is exercised; CI does not set it, which is deliberate — the game must complete on

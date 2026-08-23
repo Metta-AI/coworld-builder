@@ -148,3 +148,71 @@ time; all of it is now folded into the playbooks.
   (known bullwhip/lighthouse pattern; round excluded from verification). Registering fillers
   before the first submit would avoid the noise, if the submission does not need the league to be
   non-empty.
+
+## 2026-08-23 lantern (post-mortem: viewer deadlock shipped)
+
+A separate, later entry for the same run: the lantern coworld **shipped a replay viewer that
+never rendered**, and every gate this repo had went green over it. This is the correction.
+
+**What happened.** `replay-viewer/config.nims` carried the babel starter's emscripten link flags
+— `-s MODULARIZE=1 -s EXPORT_NAME=LanternReplayModule` — while `static_replay_worker.js` kept
+paintbot's *non*-modularized bootstrap: `Module.onRuntimeInitialized = …;
+importScripts('./lantern_replay.js')`. With `MODULARIZE=1` the generated JS defines a **factory**
+and does nothing until it is called; `LanternReplayModule(Module)` was never called. Nothing
+threw. Nothing logged. `data-replay-loaded` was never set and softmax.com sat on
+"Loading replay…" forever. The shell of one starter had been spliced onto the build flags of
+another.
+
+**Why every gate passed.** *Nothing executed the viewer.* `ci.yml`'s `wasm-viewer` job asserted
+that `index.html` existed and that some `.wasm` was non-empty. Phase 60 check 8 fetched every
+asset the index named and asserted 200-with-non-trivial-size, then grepped `static_replay.js` for
+`coworld-replay` and `tell("ready")`. All of that was **true of the broken bundle**: the files
+were there, the bytes were there, the bridge code was there — it was simply never reached. A
+presence check cannot distinguish "the code that would signal ready exists" from "the code that
+would signal ready ran". Only opening the page can.
+
+**The general lesson, worth more than the specific bug.** *A gate that asserts the existence of
+the thing that would produce a signal is not a gate on the signal.* Wherever a check greps for
+the source of a runtime behaviour, ask what a build that satisfies the grep and still does
+nothing would look like — and then build the gate that catches it. Two artefacts from **the same
+subsystem** copied from **different starters** is the recurring shape (link flags vs bootstrap;
+also protocol version vs decoder, config schema vs reader): they are a matched pair, and nothing
+in the type system says so.
+
+**What changed (all in this commit's series).**
+1. `templates/tools/ci/viewer_smoke.mjs` — Node + Playwright (pinned **1.55.0**, module and
+   browser together) opens the bundle in headless chromium, serving it and the replay over local
+   HTTP (never `file://`, whose fetch/wasm-streaming behaviour differs from the hosted route).
+   Success is `data-replay-loaded="true"` on `<html>` **or** a `coworld-replay` postMessage
+   `ready`; `data-replay-error`, a bridge `error`, or silence until the timeout all exit 1 with
+   the last 30 console messages and the on-screen readouts. To catch the bridge from a top-level
+   page it assigns `window.parent` in an init script — `parent` is `[Replaceable]` on `Window`,
+   so the shell's `if (window.parent === window) return;` guard passes and its postMessage lands
+   in Node. It also scrubs to 50 % and 100 % and records the clock at each, so a replay that
+   renders one frame and freezes is a failure too.
+2. `templates/ci.yml` — `wasm-viewer` now `needs: docker-smoke`, downloads the `smoke-replay`
+   artifact, installs Playwright and runs the load test against the **real replay this repo's own
+   episode just produced** (a hand-written fixture would drift). Evidence uploads as
+   `viewer-smoke` (png + json) on success *and* failure. `docker_smoke.sh` gained
+   `SMOKE_REPLAY_OUT` (default `dist/smoke/replay.json`) because its work dir is a mktemp the
+   EXIT trap deleted seconds after validating the only replay CI ever made.
+3. `.github/workflows/viewer-check.yml` (this repo) — `workflow_dispatch` with a `url` input, so
+   the verifier can render the **live** iframe `src` even though its own sandbox has no browser.
+   Writes the JSON and the readouts to the step summary, uploads `viewer-check`, fails on
+   not-loaded.
+4. `prompts/60-verify.md` check 8 / `docs/SPEC.md` item 8 / `agents/verifier.md` — the
+   asset-presence procedure is **replaced** by: dispatch `viewer-check.yml` against the check-6
+   iframe `src`, `gh run watch --exit-status`, download the artifact into
+   `runs/<run>/viewer-check/`, paste the JSON line and the three clock readouts. Item 8 is TRUE
+   only if `loaded: true` **and** the readouts differ. The spectator-judgment paragraph stays,
+   now written from a screenshot that exists.
+5. `prompts/30-review-loop.md` — acceptance checklist item **13, blocking**: the `wasm-viewer`
+   job green *including* the smoke step (cited); `data-replay-loaded` / `data-replay-error` set
+   by the shell; and the `config.nims` link flags and the worker/shell bootstrap read together
+   and confirmed to come from the same starter.
+6. `prompts/20-build.md` / `prompts/10-design.md` — the four viewer files (`config.nims`, the
+   wasm entry `.nim`, `static_replay*.js`, `index.html`) come from **one** starter, named in the
+   design note's `## Viewer` section, and the shell sets both data attributes.
+
+**Cost.** A live coworld with a permanently blank theater, undetected through phases 30, 40 and
+60, found only by a human opening the page.
