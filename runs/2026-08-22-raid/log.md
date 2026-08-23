@@ -105,3 +105,7 @@
 2026-08-23T08:29:35Z 60 check8 TRUE: viewer-check run 32628145791 loaded=true ms=3728 bridge=[loading,ready]; clocks 0%=0:00 TURN 0/54, 50%=1:00 TURN 12/54, 100%=1:59 TURN 23/54 (all differ)
 2026-08-23T08:29:35Z 60 VERIFY.md written: 8/8 TRUE with one recorded finding on check 5 (round 2 llm pacing)
 2026-08-23T08:29:35Z heartbeat phase=60
+2026-08-23T08:31:04Z 60 verifier returned: 8/8 TRUE, 3 completed rounds, replay r3 valid (reason=complete, llm 24/24+23/23, 0 fallbacks), viewer-check run 32628145791 loaded=true clocks advance; FINDING on check 5: round 2 throttled (raid-local pacing vs 30rpm sidecar cap + sonnet fallback model times out), round 3 clean
+2026-08-23T08:31:04Z progress phase=60 marker=viewer-check-32628145791
+2026-08-23T08:31:04Z 60 judge dispatched to adjudicate VERIFY.md output=runs/2026-08-22-raid/reviews/verify-verdict.md
+2026-08-23T08:31:04Z heartbeat phase=60
