@@ -37,3 +37,8 @@
 2026-08-23T03:26:11Z 40 retry decision: authorized dispatch #5 at 0.1.4 off ebfbb76 (shutdown-grace fix, locally reproduced PONG OK, CI green run 32615159928) — distinct fix, needed because phase-40 done condition requires hosted certification certified
 2026-08-23T03:26:11Z progress phase=40 marker=release-run-32614470661
 2026-08-23T03:26:11Z heartbeat phase=40
+2026-08-23T03:33:34Z 40 builder returned: 0.1.4 run 32615340953 success — ok:true canonical:true secret_put:true certify.ok:true replay_liveness skipped(static), hosted_certification=certified (all 10 transcript steps, 6/6 hosted episodes with replays); cow_d1fe527f-ee07-42ff-804d-f40be734d05f manifest sha256:8911282...
+2026-08-23T03:33:34Z 40 policies at v3 (v1/v2 exist from stranded 0.1.2/0.1.3 — phase 50 must use v3): warren fe561309, owlnight c380d98e (player ply_bac48eb1), warden 72a889c0, moth 713f2616
+2026-08-23T03:33:34Z 40 EXIT: release-result.json persisted to runs/2026-08-22-lantern/; phase -> 50
+2026-08-23T03:33:34Z progress phase=40 marker=release-run-32615340953
+2026-08-23T03:33:34Z heartbeat phase=50
