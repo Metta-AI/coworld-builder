@@ -39,3 +39,4 @@
 2026-08-23T15:05:48Z 30 -> 40 phase transition (review loop exited round 1, zero blocking)
 2026-08-23T15:05:48Z heartbeat phase=40
 2026-08-23T15:06:24Z 40 builder dispatched thread=TBD brief=release chain v0.1.0 (dispatch-then-watch, persist release-result.json, no skip_certify)
+2026-08-23T15:13:34Z 40 release dispatch version=0.1.0 run=32647554701 step_failed=none decision=first dispatch (no policies override, no skip_certify) green on attempt 1; cow_id=cow_69f7b3ab-b32d-471d-874a-3ff32543b6f6 canonical=true secret_put=true 4 policies at v1
