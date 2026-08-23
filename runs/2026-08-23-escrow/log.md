@@ -108,3 +108,5 @@
 2026-08-23T16:44:31Z heartbeat phase=60
 2026-08-23T16:45:58Z 60 remediation builder dispatched (thread sthr_01UeRakBzEFS3eRKsa9vt4ox): rewrite champion prompts (legality drills), re-release v0.1.1 -> drafter:v2/swapper:v2
 2026-08-23T16:45:58Z heartbeat phase=60
+2026-08-23T17:15:08Z 60 remediation builder returned: prompts rewritten (sha 5f8edf8, CI 32652942677 green); release 0.1.1 run 32653108817 canonical-race fail -> 0.1.2 run 32653621867 ok canonical certified secret_put; cow_add93c03-c2c9-455e-bc63-d2495fdcd2af; labels all :v3 (uploads do not dedupe on this deployment)
+2026-08-23T17:15:08Z progress phase=60 marker=release-run-32653621867

@@ -11,17 +11,17 @@
   },
   "review_round": 2,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_65c18d00-ccaf-4259-bcaa-9046e7072ca9",
-    "manifest_sha": "sha256:0e1cafeeef02b17a8f100c51b972d19696241efc612b511430c3cabe0264bef3",
-    "release_run_id": "32649696984"
+    "version": "0.1.2",
+    "cow_id": "cow_add93c03-c2c9-455e-bc63-d2495fdcd2af",
+    "manifest_sha": "sha256:292118f0112c0ef747617316fad320f856766bced2e6e8f2d793a5aa2272764e",
+    "release_run_id": "32653621867"
   },
   "policies": {
-    "champion1": "escrow-drafter:v1",
-    "champion2": "escrow-swapper:v1",
+    "champion1": "escrow-drafter:v3",
+    "champion2": "escrow-swapper:v3",
     "fillers": [
-      "escrow-trader:v1",
-      "escrow-hoarder:v1"
+      "escrow-trader:v3",
+      "escrow-hoarder:v3"
     ],
     "filler_version_ids": [
       "0505950f-bd65-46d4-ac4a-b3d0ad40c11b",
@@ -47,7 +47,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T16:45:58Z",
+  "heartbeat_at": "2026-08-23T17:15:08Z",
   "session_ended_at": null,
   "session_id": "8bdafd79",
   "log": "runs/2026-08-23-escrow/log.md"
