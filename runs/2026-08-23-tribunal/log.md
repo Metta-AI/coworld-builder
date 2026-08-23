@@ -35,3 +35,7 @@
 2026-08-23T16:56:08Z progress phase=40 marker=32652915687
 2026-08-23T16:56:08Z 00 phase 40 -> 50
 2026-08-23T16:56:08Z heartbeat phase=50
+2026-08-23T16:57:27Z 50 seed 200 league_17699528-4b90-41b4-96e9-7e31a574e504
+2026-08-23T16:57:27Z 50 division 200 div_2b2cf964-e194-4701-9e50-5caf772a323d
+2026-08-23T16:57:27Z 50 settings 200 (elo, round_robin, filler_policy, 15min rounds)
+2026-08-23T16:57:27Z heartbeat phase=50
