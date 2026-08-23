@@ -5,7 +5,7 @@
   "slug": "escrow",
   "repo": "https://github.com/Metta-AI/cogame-escrow",
   "starter": "cogame-bullwhip",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:39:44Z",
+  "heartbeat_at": "2026-08-23T15:47:20Z",
   "session_ended_at": null,
   "session_id": "8bdafd79",
   "log": "runs/2026-08-23-escrow/log.md"

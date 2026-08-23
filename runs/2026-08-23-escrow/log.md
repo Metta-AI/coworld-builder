@@ -50,3 +50,7 @@
 2026-08-23T15:38:38Z 30 r2 judge dispatch pending
 2026-08-23T15:39:44Z 30 r2 judge dispatched (thread sthr_01EwoXCdpgA7NCDSF2zdhJcf) on sha 798d9504155b23b60210a166bd1871a1a4538327
 2026-08-23T15:39:44Z heartbeat phase=30
+2026-08-23T15:47:20Z 30 r2 verdict returned: blocking:0 / BLOCKING:0 agree; all 13 checklist items PASS at 798d9504155b23b60210a166bd1871a1a4538327; reviews/r2-verdict.md
+2026-08-23T15:47:20Z progress phase=30 marker=reviews/r2-verdict.md
+2026-08-23T15:47:20Z 30 -> 40 phase transition: entering release
+2026-08-23T15:47:20Z heartbeat phase=40
