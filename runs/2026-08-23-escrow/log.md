@@ -110,3 +110,7 @@
 2026-08-23T16:45:58Z heartbeat phase=60
 2026-08-23T17:15:08Z 60 remediation builder returned: prompts rewritten (sha 5f8edf8, CI 32652942677 green); release 0.1.1 run 32653108817 canonical-race fail -> 0.1.2 run 32653621867 ok canonical certified secret_put; cow_add93c03-c2c9-455e-bc63-d2495fdcd2af; labels all :v3 (uploads do not dedupe on this deployment)
 2026-08-23T17:15:08Z progress phase=60 marker=release-run-32653621867
+2026-08-23T17:17:45Z 50/60 champions resubmitted as v3: drafter run 32654255979 ok sub_991f6f27, swapper run 32654297598 ok sub_728547e1 (daveey-1)
+2026-08-23T17:17:45Z 50/60 filler-policies updated to v3 UUIDs (trader 9d09a38a, hoarder 3ed1facb); trigger-round issued 2026-08-23T17:17:45Z
+2026-08-23T17:17:45Z progress phase=60 marker=sub_728547e1-caa0-4eef-846c-31160a580fd1
+2026-08-23T17:17:45Z heartbeat phase=60
