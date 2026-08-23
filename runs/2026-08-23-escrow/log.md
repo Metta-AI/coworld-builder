@@ -21,3 +21,5 @@
 2026-08-23T14:20:16Z progress phase=20 marker=ci-run-32644872806
 2026-08-23T14:20:16Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-23T14:20:16Z heartbeat phase=30
+2026-08-23T14:28:24Z 20 asana: phase-20 subtask completed, comment posted, heartbeat_at refreshed
+2026-08-23T14:28:24Z 00 note: coordinator's git push over HTTPS to github.com now also rejected (auth); pushes for this session go via git-data API helper (/tmp/api_push.sh), fast-forward only, never forced
