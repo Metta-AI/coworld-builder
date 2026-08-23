@@ -76,3 +76,7 @@
 2026-08-23T15:48:21Z 60 check7 TRUE certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)" read from committed runs/2026-08-23-gridlock/release-result.json (cb202b3), no re-download needed
 2026-08-23T15:48:21Z 60 check8 TRUE viewer-check run=32649388472 conclusion=success loaded=true ms=3245 bridge=[loading,ready,ready]; clocks 0%=03:20 TURN 0/20 50%=01:37 TURN 10/20 100%=00:00 TURN 19/20; feed_lines=6; finding: corner HUD transposes Cobalt/Copper totals (184<->186) vs results/end-card/depot chips
 2026-08-23T15:48:21Z 60 VERIFY.md written verdict=all-true 8/8; waited 21m of 75m bound (bound NOT hit)
+2026-08-23T15:49:34Z 60 verifier returned thread=sthr_011aeWXnuCJPjemmYy7cXpJv VERIFY.md 8/8 TRUE (2 completed rounds, both champions ranked, replay valid reason=complete, logs CLEAN, static iframe, viewer-check run=32649388472 loaded=true clocks advance; advisory: HUD corner-plate score transposition noted for later version)
+2026-08-23T15:49:34Z progress phase=60 marker=VERIFY.md-all-true
+2026-08-23T15:49:34Z 60 judge dispatched (fresh context, adjudicate VERIFY.md vs SPEC definition of done)
+2026-08-23T15:49:34Z heartbeat phase=60
