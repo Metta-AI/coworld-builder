@@ -152,3 +152,5 @@
 2026-08-23T17:58:48Z heartbeat phase=60
 2026-08-23T17:59:44Z 60 remediation-2 builder dispatched (thread sthr_01TyZ9tJ29bhNkd2C8K1fjij): SIGNABLE-NOW observation, tolerant extraction, offer normalization, prompt tweak, release 0.1.3
 2026-08-23T17:59:44Z heartbeat phase=60
+2026-08-23T18:24:41Z 60 remediation-2 builder returned: 4 commits (head c155695: SIGNABLE-NOW observation + tolerant extraction + offer normalization + prompts v4), CI 32657199935 green, release 0.1.3 run 32657361152 ok/canonical/certified first dispatch; cow_9b73db59-4be9-4a59-9e56-5eed9151a871, labels :v4
+2026-08-23T18:24:41Z progress phase=60 marker=release-run-32657361152
