@@ -13,3 +13,5 @@
 2026-08-23T00:20:05Z heartbeat phase=20
 2026-08-23T00:21:00Z 20 repo Metta-AI/cogame-raid created public
 2026-08-23T00:21:00Z 20 propagate-secrets run 32607598950 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-raid
+2026-08-23T00:21:47Z 20 builder dispatched brief=implement design.md in cogame-raid, drive ci.yml green
+2026-08-23T00:21:47Z heartbeat phase=20
