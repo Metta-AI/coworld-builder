@@ -114,3 +114,5 @@
 2026-08-23T17:17:45Z 50/60 filler-policies updated to v3 UUIDs (trader 9d09a38a, hoarder 3ed1facb); trigger-round issued 2026-08-23T17:17:45Z
 2026-08-23T17:17:45Z progress phase=60 marker=sub_728547e1-caa0-4eef-846c-31160a580fd1
 2026-08-23T17:17:45Z heartbeat phase=60
+2026-08-23T17:18:44Z 60 verifier re-dispatched (thread sthr_01PM3ittaG5y6B317vUVm2xU) for post-remediation verification against v3 rounds (round 8+)
+2026-08-23T17:18:44Z heartbeat phase=60
