@@ -105,3 +105,4 @@
 2026-08-23T14:22:11Z progress phase=80 marker=run-task-done
 2026-08-23T14:22:11Z 80 close complete — run finished. Session ends; no next action.
 2026-08-23T14:22:11Z heartbeat phase=80
+2026-08-23T17:30:00Z post-close: nano-banana art release 0.1.0 -> 0.1.1 (operator, coworld-release.yml dispatch); STATE.coworld.version updated

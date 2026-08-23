@@ -9,7 +9,7 @@
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "cow_id": "cow_e0618924-ab1f-42cc-ae51-8012688aac6e",
     "manifest_sha": "sha256:2cc10989ca7929f00095b81b05a5517d20d0ede0aa38934ebff622a277a092ef",
     "release_run_id": "32603480864"

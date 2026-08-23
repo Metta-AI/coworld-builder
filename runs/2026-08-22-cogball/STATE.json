@@ -11,7 +11,7 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.5",
+    "version": "0.1.6",
     "cow_id": "cow_ff38b98b-f611-4a74-86e1-f2b23cbd6339",
     "manifest_sha": "sha256:495905b153bc98135ae1ec127e8f4abc2b9c88cff6a6d1edf0934d161ec5dce7",
     "release_run_id": "32624985984"

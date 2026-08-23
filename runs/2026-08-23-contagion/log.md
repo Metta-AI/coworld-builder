@@ -84,3 +84,4 @@
 2026-08-23T12:46:49Z 80 exec summaries posted (run task 1217753167715512, idea task 1217753088773514); all 8 phase subtasks complete; idea 1217704767216131 completed; run task moved to Done
 2026-08-23T12:46:49Z progress phase=80 marker=run-task-Done
 2026-08-23T12:46:49Z 80 close complete — run Done, idea completed, session ended. Next action: none — run is finished.
+2026-08-23T17:30:00Z post-close: nano-banana art release 0.1.0 -> 0.1.1 (operator, coworld-release.yml dispatch); STATE.coworld.version updated
