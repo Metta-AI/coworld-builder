@@ -7,3 +7,8 @@
 2026-08-23T08:43:58Z 10 starter decided: Metta-AI/coworld-ctf (paintbot) — real-time continuous-field loop with new rules; new physics/ecology games take paintbot per operator ruling 2026-08-22; hive learning 6 (batched-swarm LLM doctrine over deterministic per-body kernel) fits "RL vector per body" seats
 2026-08-23T08:43:58Z heartbeat phase=10
 2026-08-23T08:44:44Z 10 designer dispatched thread=sthr_01B2pEhwSWScvd15WRKLevSF brief=self-contained (idea verbatim, checklist, pins, hive-6 swarm pattern, feasibility check, viewer=coworld-ctf all four files)
+2026-08-23T09:58:56Z 10 designer returned design.md (817 lines); reviewed against prompts/10-design.md checklist: all 18 items pass round 1 (note: results.reason set reads "four values" listing three — table unambiguous, not blocking; raid-learnings citations are prospective, claims conservative)
+2026-08-23T09:58:56Z 10 accepted round=1; copy at runs/2026-08-23-ecos/design.md
+2026-08-23T09:58:56Z progress phase=10 marker=runs/2026-08-23-ecos/design.md
+2026-08-23T09:58:56Z 10 -> 20 phase transition; STATE.phase=20 pushed before builder dispatch
+2026-08-23T09:58:56Z heartbeat phase=20
