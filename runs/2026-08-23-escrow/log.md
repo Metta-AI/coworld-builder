@@ -150,3 +150,5 @@
 2026-08-23T17:58:48Z progress phase=60 marker=VERIFY.md-r9-attempt2
 2026-08-23T17:58:48Z 60 ruling: remediation 2 = different approach (game-side): observation gains precomputed SIGNABLE-NOW list + SPENDABLE per good, extractJsonObject tolerates trailing prose, offer-text normalization (strip leading non-OFFER line, truncate after ELSE); prompts reinforce addressing; release 0.1.3 -> v4
 2026-08-23T17:58:48Z heartbeat phase=60
+2026-08-23T17:59:44Z 60 remediation-2 builder dispatched (thread sthr_01TyZ9tJ29bhNkd2C8K1fjij): SIGNABLE-NOW observation, tolerant extraction, offer normalization, prompt tweak, release 0.1.3
+2026-08-23T17:59:44Z heartbeat phase=60
