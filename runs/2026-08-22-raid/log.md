@@ -78,3 +78,12 @@
 2026-08-23T07:49:20Z 50 settings 200 elo round_robin filler_policy interval=15m
 2026-08-23T07:49:20Z progress phase=50 marker=league_7a5e52fa-e85e-41ab-8a66-418653b02de2
 2026-08-23T07:49:20Z heartbeat phase=50
+2026-08-23T07:51:49Z 50 champion1 submit run 32626598268 ok sub_0f5e4972 raid-anvil:v1 (daveey)
+2026-08-23T07:51:49Z 50 champion2 submit run 32626626837 ok raid-triage:v1 (daveey-1, pv 03ef2d5f)
+2026-08-23T07:51:49Z 50 policy-versions resolved: anvil=be1bbb8c triage=03ef2d5f stalwart=8885517e greenhorn=03c04710; triage player_name=daveey-1 verified
+2026-08-23T07:51:49Z 50 fillers 200: stalwart+greenhorn registered, neither champion
+2026-08-23T07:51:49Z 50 unpause 200 paused=false; trigger-round 200 workflow ladder-league_7a5e52fa
+2026-08-23T07:51:49Z 50 round 1 pending, no error; entrant_attributions = both champions
+2026-08-23T07:51:49Z progress phase=50 marker=sub_0f5e4972+round1-pending
+2026-08-23T07:51:49Z 50 -> 60 phase transition
+2026-08-23T07:51:49Z heartbeat phase=60

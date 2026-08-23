@@ -5,7 +5,7 @@
   "slug": "raid",
   "repo": "https://github.com/Metta-AI/cogame-raid",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "30": 1
   },
@@ -23,7 +23,10 @@
       "raid-stalwart:v1",
       "raid-greenhorn:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "8885517e-1386-4416-b85c-7490fabf2100",
+      "03c04710-d53e-4445-9340-9160cd5c1237"
+    ]
   },
   "league": {
     "id": "league_7a5e52fa-e85e-41ab-8a66-418653b02de2",
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T07:49:20Z",
+  "heartbeat_at": "2026-08-23T07:51:49Z",
   "session_ended_at": null,
   "session_id": "36cbd675",
   "log": "runs/2026-08-22-raid/log.md"
