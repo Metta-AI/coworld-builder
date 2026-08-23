@@ -34,3 +34,5 @@
 2026-08-23T12:01:02Z 30 EXIT; phase 30 -> 40
 2026-08-23T12:01:02Z progress phase=30 marker=r1-verdict.md
 2026-08-23T12:01:02Z heartbeat phase=40
+2026-08-23T12:02:08Z 40 builder dispatched thread=sthr_01CsmsN4SFZu7vUtHhvEhuMc for coworld-release.yml
+2026-08-23T12:02:08Z heartbeat phase=40
