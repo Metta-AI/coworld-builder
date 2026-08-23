@@ -24,8 +24,8 @@
       "escrow-hoarder:v4"
     ],
     "filler_version_ids": [
-      "9d09a38a-0cd6-4d0b-a4cb-498bcbc85396",
-      "3ed1facb-5183-48c4-98da-ef84e8281862"
+      "fb6d64e0-2e51-41ce-aa20-347cb78f4094",
+      "d9d3f7f8-ae77-4c84-bd91-752744102a6d"
     ]
   },
   "league": {
@@ -47,7 +47,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T18:24:41Z",
+  "heartbeat_at": "2026-08-23T18:26:37Z",
   "session_ended_at": null,
   "session_id": "8bdafd79",
   "log": "runs/2026-08-23-escrow/log.md"
