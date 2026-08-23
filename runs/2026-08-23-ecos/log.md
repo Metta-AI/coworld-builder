@@ -49,3 +49,4 @@
 2026-08-23T13:34:10Z progress phase=30 marker=r2-verdict.md
 2026-08-23T13:34:10Z 30 done in 2 rounds; 30 -> 40 phase transition; STATE.phase=40 pushed before release dispatch
 2026-08-23T13:34:10Z heartbeat phase=40
+2026-08-23T13:35:02Z 40 builder dispatched thread=sthr_01LNwwt5PUrHa8ZTnCNumsNL (release chain: version 0.1.0 first, policies from tools/ci/policies.json, 3-dispatch budget)
