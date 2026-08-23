@@ -33,16 +33,38 @@
     "division": "div_b3560860-5922-48f5-b12a-0a6d57d3c506"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "id": "round_f1ae9fac-5090-4a3b-9ca2-260b90bd450f",
+        "round_number": 1,
+        "status": "completed",
+        "completed_at": "2026-08-23T07:52:07.946310Z"
+      },
+      {
+        "id": "round_ed41bd06-8515-4966-9fdb-a1bf7b470998",
+        "round_number": 2,
+        "status": "completed",
+        "completed_at": "2026-08-23T08:08:08.240779Z"
+      },
+      {
+        "id": "round_ebc98500-336a-465e-bca4-836ccb454378",
+        "round_number": 3,
+        "status": "completed",
+        "completed_at": "2026-08-23T08:22:19.264857Z"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/9648ed23-3a20-480b-bacf-d722e1f4ecc5.replay",
+    "iframe_static": true,
+    "iframe_src": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2e18fdd8-12cc-4ac7-9822-fa162635f3ef/sha256%3Aa5895254dcd6ebb33d5fa029768022f1c81a75a64ae0dd5a7a46a3355dc843e9/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F9648ed23-3a20-480b-bacf-d722e1f4ecc5.replay&v=2",
+    "viewer_check_run": "32628145791",
+    "episode_request": "ereq_cfd10b7d-2d67-47b1-85db-7a014f48512c"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T08:17:46Z",
+  "heartbeat_at": "2026-08-23T08:29:35Z",
   "session_ended_at": null,
   "session_id": "36cbd675",
   "log": "runs/2026-08-22-raid/log.md"

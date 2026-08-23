@@ -97,3 +97,11 @@
 2026-08-23T08:12:25Z 60 check5 FALSE on round 2 ereq_7cd4e673: sidecar 30 req/min ThrottlingException -> haiku unusable -> sonnet-4-6 timeouts -> 6x "falling back"; round 1 log was CLEAN; bullwhip/lantern/cogtank logs same window CLEAN (not platform-wide) — polling round 3
 2026-08-23T08:12:25Z heartbeat phase=60
 2026-08-23T08:17:46Z heartbeat phase=60
+2026-08-23T08:29:35Z 60 check3 TRUE: round 3 ereq_cfd10b7d completed, replay 9648ed23, seats daveey/daveey-1 + 3 fillers
+2026-08-23T08:29:35Z 60 check4 TRUE: 184374 bytes strict-JSON ok, protocol raid.replay.v1, reason=complete, 102 orders, champion seats 47/47 llm, 0 fallbacks
+2026-08-23T08:29:35Z 60 check5 TRUE on latest round 3 (CLEAN); FINDING recorded: round 2 log had 6x "falling back" + 2x "rejected" from the per-episode 30 req/min bedrock sidecar cap (sim outran real time, ~2.1s/turn => ~57rpm) and sonnet-4-6 fallback model times out on the sidecar; bullwhip/cogtank/lantern same window CLEAN so NOT platform-wide
+2026-08-23T08:29:35Z 60 check6 TRUE: raw-HTML grep empty (client-rendered); SSR state.playlist[0] featured match = raid.r3.e1; POST /coworlds/replays/session -> static index.html?replay=, ready:true, no /client/replay
+2026-08-23T08:29:35Z 60 check7 TRUE: committed runs/2026-08-22-raid/release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)" (no re-download needed)
+2026-08-23T08:29:35Z 60 check8 TRUE: viewer-check run 32628145791 loaded=true ms=3728 bridge=[loading,ready]; clocks 0%=0:00 TURN 0/54, 50%=1:00 TURN 12/54, 100%=1:59 TURN 23/54 (all differ)
+2026-08-23T08:29:35Z 60 VERIFY.md written: 8/8 TRUE with one recorded finding on check 5 (round 2 llm pacing)
+2026-08-23T08:29:35Z heartbeat phase=60
