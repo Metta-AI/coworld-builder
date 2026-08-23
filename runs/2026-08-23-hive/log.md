@@ -16,3 +16,8 @@
 2026-08-23T04:35:20Z 20 propagate-secrets run 32618229619 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-hive
 2026-08-23T04:36:08Z 20 builder dispatched (thread sthr_01BuNQZNLLWQj7WpSJXL31LF); target ci.yml green on main of Metta-AI/cogame-hive
 2026-08-23T04:36:08Z heartbeat phase=20
+2026-08-23T05:54:02Z 20 builder returned: ci.yml run 32621277603 success on main sha 48465f363ff1c09079d57fc40da717bd2f37e594 (first attempt); all exit-criteria checks pass (workflows parse, inputs present, artifacts named, hooks 100755, placeholder grep clean) — verified independently by coordinator
+2026-08-23T05:54:02Z 20 builder deviations noted for review: main-thread viewer instead of worker shell; wasm emits packet + JS composites; 2 extra wasm exports; viewer node-smoke moved to wasm-viewer job; authored rock set differs from note's illustrative shapes; golden-digest nudge scope; delivery volume ~150-500/match vs note's 1500-3000 estimate (params as specified — phase 50 knob: sourceLifeTicks/maxOrbits)
+2026-08-23T05:54:02Z 20 note: sandbox git-push over HTTPS rejected; builder pushed via Git Data API (blobs/tree/commit/ref) preserving modes
+2026-08-23T05:54:02Z progress phase=20 marker=ci-run-32621277603
+2026-08-23T05:54:02Z 20 phase -> 30 (review_round 1)
