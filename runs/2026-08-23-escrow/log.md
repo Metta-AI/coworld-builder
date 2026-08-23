@@ -56,3 +56,7 @@
 2026-08-23T15:47:20Z heartbeat phase=40
 2026-08-23T15:48:10Z 40 builder dispatched for release (thread sthr_01Qz3e93WropTT2bvjPwqr3b); version plan 0.1.0+, policies from tools/ci/policies.json
 2026-08-23T15:48:10Z heartbeat phase=40
+2026-08-23T15:55:19Z 40 release dispatch 1 (v0.1.0) run 32649696984: ok=true canonical=true certify.ok=true (replay_liveness skipped/static) hosted_certification=certified secret_put=true; cow_65c18d00-ccaf-4259-bcaa-9046e7072ca9
+2026-08-23T15:55:19Z progress phase=40 marker=release-run-32649696984
+2026-08-23T15:55:19Z 40 -> 50 phase transition: entering league
+2026-08-23T15:55:19Z heartbeat phase=50
