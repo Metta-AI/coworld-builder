@@ -52,3 +52,5 @@
 2026-08-23T20:55:31Z 60 judge dispatched to adjudicate VERIFY.md
 2026-08-23T20:55:31Z progress phase=60 marker=VERIFY.md+viewer-check-32665552865
 2026-08-23T20:55:31Z heartbeat phase=60
+2026-08-23T21:00:25Z 60 judge verdict: blocking 0 (verify-verdict.md, markers agree) — definition of done proven
+2026-08-23T21:00:25Z 60 phase -> 70
