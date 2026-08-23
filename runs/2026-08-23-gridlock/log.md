@@ -59,3 +59,7 @@
 2026-08-23T15:19:01Z 50 -> 60 phase transition
 2026-08-23T15:19:01Z heartbeat phase=60
 2026-08-23T15:19:29Z 60 verifier dispatched thread=TBD (8 checks, poll bound 75m, output=runs/2026-08-23-gridlock/VERIFY.md + viewer-check/)
+2026-08-23T15:20:50Z heartbeat phase=60
+2026-08-23T15:25:58Z heartbeat phase=60
+2026-08-23T15:31:31Z heartbeat phase=60
+2026-08-23T15:31:33Z heartbeat phase=60
