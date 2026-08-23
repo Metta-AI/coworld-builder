@@ -50,3 +50,11 @@
 2026-08-23T12:14:29Z 60 verifier dispatched thread=sthr_01H9Qc7y3WRCbGnmCExXHsuA (75-min poll bound, heartbeats delegated during poll)
 2026-08-23T12:14:29Z heartbeat phase=60
 2026-08-23T12:15:10Z 60 poll#1 rounds: r2 pending, r1 failed (pre-filler) — completed(>=2)=0; check1 not yet true
+2026-08-23T12:20:14Z 60 poll#2 r2 completed 12:15:44Z (r1 failed, pre-filler) — completed(>=2)=1; waiting on r3
+2026-08-23T12:23:00Z 60 check2 TRUE leaderboard daveey-1 1016 / daveey 984, rounds_played=1 each, no fillers
+2026-08-23T12:23:00Z 60 check3 TRUE ereq_f1179838 completed replay_url set, seats 0/1 = daveey/daveey-1, 4 fillers is_filler=true
+2026-08-23T12:23:00Z 60 check4 TRUE protocol=contagion.replay.v1 reason=complete; champion seats 20/20 dials scripted=0
+2026-08-23T12:23:00Z 60 check5 TRUE hosted log CLEAN (no falling back|LLM provider is unavailable|cut off at max_tokens|rejected)
+2026-08-23T12:23:00Z 60 check6 TRUE static viewer_url via replays/session ready=true (raw-HTML grep empty as documented; featured match in SSR playlist[0])
+2026-08-23T12:23:00Z 60 check7 TRUE committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-23T12:23:00Z heartbeat phase=60
