@@ -75,3 +75,7 @@
 2026-08-23T12:43:08Z 60 EXIT; phase 60 -> 70
 2026-08-23T12:43:08Z heartbeat phase=70
 2026-08-23T12:44:12Z 70 announce.attempted_at written before POST (body 1799 chars)
+2026-08-23T12:44:45Z 70 announce msg=1541065596848836618
+2026-08-23T12:44:45Z 70 EXIT; phase 70 -> 80
+2026-08-23T12:44:45Z progress phase=70 marker=discord_message_id=1541065596848836618
+2026-08-23T12:44:45Z heartbeat phase=80
