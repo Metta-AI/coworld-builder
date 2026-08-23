@@ -43,3 +43,5 @@
 2026-08-23T13:17:24Z heartbeat phase=30
 2026-08-23T13:18:12Z 30 r2 judge dispatched thread=sthr_014JSnx4QpUZPmtxSRhv7tvQ target sha=402792be (fresh context)
 2026-08-23T13:24:52Z 30 r2 judge thread failed (API temporarily overloaded); no r2-verdict.md written; retry 1/3 with fresh judge thread
+2026-08-23T13:25:37Z 30 r2 judge re-dispatched thread=sthr_01WyiCkjs4UZaHTumAcJ3zRR (retry 1/3 after API overload)
+2026-08-23T13:25:37Z heartbeat phase=30
