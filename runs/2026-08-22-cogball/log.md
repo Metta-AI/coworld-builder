@@ -106,3 +106,7 @@
 2026-08-23T09:47:44Z heartbeat phase=80
 2026-08-23T09:50:02Z 80 phase entered; LEARNINGS section appended, viewer_smoke.mjs --soak folded into template, 2 playbook Common-mistakes rows added; Asana close next
 2026-08-23T09:50:02Z heartbeat phase=80
+2026-08-23T09:51:15Z 80 close done: exec summary on run task (1217752278134684) + condensed on idea task (1217752278146020); all 8 subtasks complete; idea 1217704774927793 completed; run task moved to Done
+2026-08-23T09:51:15Z progress phase=80 marker=run-task-Done
+2026-08-23T09:51:15Z heartbeat phase=80
+2026-08-23T09:51:15Z session end: run complete at phase 80; no next action — run is Done
