@@ -158,3 +158,5 @@
 2026-08-23T18:26:37Z 60 filler-policies updated to v4 (trader fb6d64e0, hoarder d9d3f7f8); trigger-round issued
 2026-08-23T18:26:37Z progress phase=60 marker=sub_da3bf046-c492-4b45-ab2c-f82868a3138b
 2026-08-23T18:26:37Z heartbeat phase=60
+2026-08-23T18:27:22Z 60 verifier re-dispatched attempt 3 (thread sthr_01D4M21ZXMCfL1tuBySiz83C) scoped to v4 rounds
+2026-08-23T18:27:22Z heartbeat phase=60
