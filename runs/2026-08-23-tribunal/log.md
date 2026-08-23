@@ -20,3 +20,6 @@
 2026-08-23T16:05:09Z 00 phase 20 -> 30
 2026-08-23T16:05:09Z heartbeat phase=30
 2026-08-23T16:05:31Z 30 r1 reviewer dispatched sha=d69e4e3
+2026-08-23T16:22:16Z 30 r1 review returned (1 blocking-candidate F1 replay re-derivation deadline-at-ballot, 13 advisory)
+2026-08-23T16:22:16Z 30 r1 fixer dispatched
+2026-08-23T16:22:16Z heartbeat phase=30
