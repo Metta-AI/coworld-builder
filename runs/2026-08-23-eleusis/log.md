@@ -16,3 +16,5 @@
 2026-08-23T18:53:52Z 20 note: sandbox git-push-over-HTTPS unusable; builder pushed via Git Data API (extra root commit b83707a); future pushes to cogame-eleusis need the same path
 2026-08-23T18:53:52Z progress phase=20 marker=ci-run-32659167800
 2026-08-23T18:53:52Z 20 phase -> 30 review_round=1
+2026-08-23T18:54:36Z 30 r1 reviewer dispatched (repo clone at /workspace/cogame-eleusis sha 529eb68)
+2026-08-23T18:54:36Z heartbeat phase=30
