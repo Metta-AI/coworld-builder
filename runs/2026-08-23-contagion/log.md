@@ -30,3 +30,7 @@
 2026-08-23T11:52:48Z 30 note: shared git index also carried runs/2026-08-23-ecos/reviews/r1-review.md (staged by the concurrent ecos session) into my last commit — benign, content preserved, not reverted.
 2026-08-23T11:53:39Z 30 r1 judge dispatched thread=sthr_01C9cTG5EdHnttY6bi41raZi sha=66e0821
 2026-08-23T11:53:39Z heartbeat phase=30
+2026-08-23T12:01:02Z 30 r1 judge verdict BLOCKING: 0 (both markers agree) — review loop exits after 1 round
+2026-08-23T12:01:02Z 30 EXIT; phase 30 -> 40
+2026-08-23T12:01:02Z progress phase=30 marker=r1-verdict.md
+2026-08-23T12:01:02Z heartbeat phase=40
