@@ -27,3 +27,7 @@
 2026-08-23T23:12:11Z 30 fixer returned r1-fixes.md: 8 commits (N1-N8; N9 confirmed no-change), HEAD=8f3ffcb6ef3a945e54e6c39fa22147bd2a6c179f, ci run=32672565512 success; N5 test strengthened frame-by-frame, N6+N8 code fixes, note amendments synced to runs/2026-08-23-ledger/design.md
 2026-08-23T23:12:11Z 30 dispatch judge round 1 sha=8f3ffcb6ef3a945e54e6c39fa22147bd2a6c179f
 2026-08-23T23:12:11Z heartbeat phase=30
+2026-08-23T23:26:09Z 30 judge returned r1-verdict.md blocking:0/BLOCKING:0 (round 1) sha=8f3ffcb6ef3a945e54e6c39fa22147bd2a6c179f; O1 grid-harness clause noted as observation, substance verified from tree — accepted as non-blocking (rails: coordinator decides)
+2026-08-23T23:26:09Z progress phase=30 marker=r1-verdict.md
+2026-08-23T23:26:09Z 30 -> 40 phase transition: entering release
+2026-08-23T23:26:09Z heartbeat phase=40

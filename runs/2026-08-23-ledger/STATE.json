@@ -5,7 +5,7 @@
   "slug": "ledger",
   "repo": "https://github.com/Metta-AI/cogame-ledger",
   "starter": "cogame-babel",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T22:36:50Z",
+  "heartbeat_at": "2026-08-23T23:26:09Z",
   "session_ended_at": null,
   "session_id": "fa90e4dc",
   "log": "runs/2026-08-23-ledger/log.md"
