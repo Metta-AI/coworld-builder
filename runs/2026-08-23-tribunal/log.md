@@ -19,3 +19,4 @@
 2026-08-23T16:05:09Z progress phase=20 marker=32650232655
 2026-08-23T16:05:09Z 00 phase 20 -> 30
 2026-08-23T16:05:09Z heartbeat phase=30
+2026-08-23T16:05:31Z 30 r1 reviewer dispatched sha=d69e4e3
