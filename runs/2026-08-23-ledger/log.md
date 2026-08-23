@@ -21,3 +21,6 @@
 2026-08-23T22:36:50Z progress phase=20 marker=32670836320
 2026-08-23T22:36:50Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-23T22:36:50Z heartbeat phase=30
+2026-08-23T22:51:33Z 30 reviewer returned r1-review.md (438 lines, 9 findings N1-N9, reviewer rates 0 blocking) round 1
+2026-08-23T22:51:33Z 30 dispatch fixer brief=address N1-N9, one commit per finding or refute with evidence, CI green
+2026-08-23T22:51:33Z heartbeat phase=30
