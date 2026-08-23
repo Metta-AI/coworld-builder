@@ -14,3 +14,4 @@
 2026-08-23T09:58:56Z heartbeat phase=20
 2026-08-23T09:59:56Z 20 repo created https://github.com/Metta-AI/cogame-ecos (public); propagate-secrets run 32632519592 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-23T09:59:56Z heartbeat phase=20
+2026-08-23T10:00:53Z 20 builder dispatched thread=sthr_016GeU7tu5Y9Wh9yRPwCa3w4 (design note, starter=coworld-ctf, bullwhip llm/player port, scaffold from templates, 3-round budget)
