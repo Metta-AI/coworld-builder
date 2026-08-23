@@ -81,3 +81,7 @@
 2026-08-23T08:18:42Z progress phase=70 marker=discord_message_id=1540998652669984768
 2026-08-23T08:18:42Z 70 phase -> 80
 2026-08-23T08:19:55Z 80 LEARNINGS section + 3 playbook common-mistakes rows written
+2026-08-23T08:21:01Z 80 executive summary posted on run task (1217752011582984) and condensed on idea task (1217751782210261)
+2026-08-23T08:21:01Z 80 all 8 phase subtasks complete; idea 1217704658784785 completed; run task 1217750914627503 -> Done section
+2026-08-23T08:21:01Z progress phase=80 marker=run-task-done
+2026-08-23T08:21:01Z 80 run complete — session ending; no next action (run closed)
