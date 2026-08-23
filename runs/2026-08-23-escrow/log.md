@@ -14,3 +14,5 @@
 2026-08-23T13:27:00Z 20 repo created: https://github.com/Metta-AI/cogame-escrow (public)
 2026-08-23T13:29:00Z 20 propagate-secrets run 32641961887 success; gh secret list on cogame-escrow shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-23T13:29:30Z 20 builder dispatch pending
+2026-08-23T13:20:07Z 20 builder dispatched (thread sthr_01CNk73xmq1jqdgdxm7tH9FD); repo=Metta-AI/cogame-escrow starter=cogame-bullwhip
+2026-08-23T13:20:07Z heartbeat phase=20
