@@ -45,3 +45,9 @@
 2026-08-23T07:38:54Z 50 seed created lseed_dfccbb9f-a89c-4311-a528-007b27f7a483; league league_2d1d904b-5465-4b84-9845-b28164d22f7e (note: GET /leagues returns a bare array, not .entries)
 2026-08-23T07:38:54Z 50 division div_86b9824f-b420-4d0a-8902-a7878b2102c7 (Competition); settings POST 200 (elo k32 round_robin filler_policy, round_interval 15m)
 2026-08-23T07:38:54Z heartbeat phase=50
+2026-08-23T07:41:09Z 50 champion1 submit run 32626121206 ok=true (hive-pathwright:v1, daveey)
+2026-08-23T07:41:09Z 50 champion2 submit run 32626144433 ok=true (hive-swarmraid:v1, daveey-1; policy-version row confirms player_name=daveey-1)
+2026-08-23T07:41:09Z 50 fillers registered: hive-marcher:v1 79e9d9b4-bdff-4117-8d92-0eafdc697bfe + hive-driftling:v1 ab07597a-c008-45f4-91f2-14d7594ec4ef (response lists exactly these two, neither champion)
+2026-08-23T07:41:09Z 50 unpaused; trigger-round accepted; round 2 pending with BOTH champions in entrant_attributions; round 1 failed (auto-created before fillers/champion2 — predates the trigger, not counted against trigger budget)
+2026-08-23T07:41:09Z progress phase=50 marker=league_2d1d904b-5465-4b84-9845-b28164d22f7e-round2
+2026-08-23T07:41:09Z 50 phase -> 60
