@@ -31,3 +31,6 @@
 2026-08-23T07:07:26Z progress phase=30 marker=r1-fixes.md
 2026-08-23T07:08:15Z 30 r1 judge dispatched (thread sthr_01N9AnxGaCx5SVp3KWBZJaiZ); repo @ 34b3dc9
 2026-08-23T07:08:15Z heartbeat phase=30
+2026-08-23T07:17:37Z 30 r1 judge returned: blocking 0 (both markers agree); all 13 checklist items pass at 34b3dc9, all 3 review blockers dismissed-as-fixed; reviews/r1-verdict.md
+2026-08-23T07:17:37Z progress phase=30 marker=r1-verdict.md
+2026-08-23T07:17:37Z 30 phase -> 40
