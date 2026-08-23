@@ -10,3 +10,7 @@
 2026-08-23T15:16:54Z progress phase=10 marker=design.md
 2026-08-23T15:16:54Z 00 phase 10 -> 20
 2026-08-23T15:16:54Z heartbeat phase=20
+2026-08-23T15:17:59Z 20 repo created https://github.com/Metta-AI/cogame-tribunal (public)
+2026-08-23T15:17:59Z 20 propagate-secrets run 32648084059 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on cogame-tribunal
+2026-08-23T15:17:59Z 20 builder dispatched round 1
+2026-08-23T15:17:59Z heartbeat phase=20
