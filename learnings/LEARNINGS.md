@@ -111,3 +111,40 @@ time; all of it is now folded into the playbooks.
 - **Message-delivery to sub-agent threads can arrive out of order / duplicated.** The builder
   acted correctly by re-asking instead of applying a stale instruction that contradicted a newer
   one; when steering a long-running sub-agent, timestamp decisions and name superseded messages.
+
+## 2026-08-23 lantern
+
+- **Manifest image placeholders come from compose service names.** `coworld build` maps
+  `services.lantern` → `{{LANTERN_IMAGE}}` and hard-fails anything else; the design note's
+  `{{GAME_IMAGE}}`/`{{PLAYER_IMAGE}}` were fiction. Generate the placeholder from `compose.yaml`
+  (one source of truth) and assert it in the manifest test. (Playbook row added.)
+- **Hosted certification's episode runner probes four HTTP contract routes before player pods
+  start** — `/healthz`, `GET /client/player?slot=0&token=<t>`, a bad-token player websocket, and
+  `GET /client/global` — and later **pings the `/global` websocket with a 2 s deadline after the
+  pods start**. A fast scripted episode (~2 s) had already exited, so the ping hit a dead socket.
+  Fix that generalises: after writing artifacts, keep `/healthz` + `/global` answering for a
+  bounded `shutdownGraceSeconds` (20), then exit — the runner waits on process exit and the grace
+  is free. (Two playbook rows added.)
+- **Policy versions never dedupe across releases** (image digest changes) — every release mints
+  v(N+1) for all names. Resolve UUIDs from `GET /policy-versions` client-side and take the vN of
+  the successful release only. (Playbook row added.)
+- **`git push` via the anthropic credential helper can die mid-session** (worked at 23:41Z, failed
+  01:16Z with "Invalid username or token" while fetch kept working). A delta-only Git Data API
+  pusher (`api_push_delta.py`: changed blobs → tree with `base_tree` → commit → PATCH ref,
+  force:false, then local `fetch + reset` to adopt the remote sha) is much cheaper than the
+  full-index variant for a big repo like coworld-builder, and preserves one-commit-per-finding on
+  the remote. Rejected PATCH = lost race, same semantics as a rejected push.
+- **Design-note physics needs a detection-feasibility check** (lighthouse's solvability oracle,
+  restated for continuous games): with a triangle-sweeping beam crossing a 13 px body in ~7 ticks,
+  `lockOnTicks = 12` could never accumulate — no find was possible by sweeping. The builder added
+  a hold-on-contact aim reflex. Phase 10 should sanity-check every threshold that must be
+  *reachable by the mechanics* (beam dwell vs body width/turn rate, pry time vs hunt length).
+- **The design note's authored map JSON should be treated as a sketch, not an artifact**: the
+  note's nook openings (108–167 px) could not be screened by one 48 px crate, and a sweep lane
+  pinned a seeker against its pen wall. Committing a *generator* (`scripts/art/author_map.py`)
+  that refuses to emit a map violating the invariants (symmetry, reachability, screenability)
+  caught this in CI rather than in a dead replay.
+- The scheduler fired round 1 between champion submission and filler registration → 1 failed round
+  (known bullwhip/lighthouse pattern; round excluded from verification). Registering fillers
+  before the first submit would avoid the noise, if the submission does not need the league to be
+  non-empty.
