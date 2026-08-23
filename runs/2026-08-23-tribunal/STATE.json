@@ -44,8 +44,8 @@
     "discord_message_id": "1541137142888005653"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T17:29:00Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-23T17:31:01Z",
+  "session_ended_at": "2026-08-23T17:31:01Z",
   "session_id": "bd0a3a12",
   "log": "runs/2026-08-23-tribunal/log.md"
 }

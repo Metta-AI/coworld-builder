@@ -65,3 +65,6 @@
 2026-08-23T17:29:00Z progress phase=70 marker=1541137142888005653
 2026-08-23T17:29:00Z 00 phase 70 -> 80
 2026-08-23T17:29:00Z heartbeat phase=80
+2026-08-23T17:31:01Z 80 executive summary posted (run task 1217754961103117, idea task 1217754758717848); LEARNINGS entry committed
+2026-08-23T17:31:01Z 80 all 8 phase subtasks complete; idea task completed; run task moved to Done
+2026-08-23T17:31:01Z 80 run closed in phase 80 — no further action; session ended cleanly
