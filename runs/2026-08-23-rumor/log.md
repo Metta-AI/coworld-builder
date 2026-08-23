@@ -14,3 +14,8 @@
 2026-08-23T16:42:08Z 20 dispatch builder brief=implement design.md, ci.yml green on main
 2026-08-23T16:42:08Z heartbeat phase=20
 2026-08-23T20:00:33Z 00 resume at phase 20 attempt=1 session=e05eed26
+2026-08-23T20:02:12Z 20 CI green run=32654839685 sha=ed38e35 (builder completed after prior session died); exit checks: workflows parse, placeholders clean, exec bits, policies 2+2
+2026-08-23T20:02:12Z 20 asana: phase-20 subtask completed, comment posted
+2026-08-23T20:02:12Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-23T20:02:12Z progress phase=20 marker=ci-run-32654839685
+2026-08-23T20:02:12Z heartbeat phase=30
