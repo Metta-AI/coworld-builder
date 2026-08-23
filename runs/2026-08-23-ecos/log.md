@@ -45,3 +45,7 @@
 2026-08-23T13:24:52Z 30 r2 judge thread failed (API temporarily overloaded); no r2-verdict.md written; retry 1/3 with fresh judge thread
 2026-08-23T13:25:37Z 30 r2 judge re-dispatched thread=sthr_01WyiCkjs4UZaHTumAcJ3zRR (retry 1/3 after API overload)
 2026-08-23T13:25:37Z heartbeat phase=30
+2026-08-23T13:34:10Z 30 r2 judge (retry thread) returned r2-verdict.md blocking=0 (markers agree; both r2 blocking fixes verified by execution incl. revert-fails; full 13-item checklist pass cited CI run 32641507840 at sha 402792be)
+2026-08-23T13:34:10Z progress phase=30 marker=r2-verdict.md
+2026-08-23T13:34:10Z 30 done in 2 rounds; 30 -> 40 phase transition; STATE.phase=40 pushed before release dispatch
+2026-08-23T13:34:10Z heartbeat phase=40
