@@ -12,3 +12,7 @@
 2026-08-23T17:51:31Z 20 propagate-secrets run 32656160199 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
 2026-08-23T17:51:31Z 20 dispatching builder round 1
 2026-08-23T17:51:31Z heartbeat phase=20
+2026-08-23T18:53:52Z 20 builder returned: ci.yml green run 32659167800 sha 529eb6872a91812eb2910b13a691d21e43b7fc05 on main (first push); exit-criterion checks pass (verified: run success on main HEAD, 3 workflows active)
+2026-08-23T18:53:52Z 20 note: sandbox git-push-over-HTTPS unusable; builder pushed via Git Data API (extra root commit b83707a); future pushes to cogame-eleusis need the same path
+2026-08-23T18:53:52Z progress phase=20 marker=ci-run-32659167800
+2026-08-23T18:53:52Z 20 phase -> 30 review_round=1
