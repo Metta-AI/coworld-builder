@@ -21,3 +21,5 @@
 2026-08-23T01:14:45Z 10 v2 design.md copied to runs/2026-08-22-cogball/design.md (v1 preserved as design-v1-moba-superseded.md); phase -> 20
 2026-08-23T01:14:45Z progress phase=10 marker=runs/2026-08-22-cogball/design.md(v2)
 2026-08-23T01:14:45Z heartbeat phase=20
+2026-08-23T01:15:24Z 20 phase re-entered (ctf rebuild); repo + secrets already in place from the superseded round; dispatching builder round 2 (implement v2 design, replace moba implementation with normal commits, CI green on main)
+2026-08-23T01:15:24Z heartbeat phase=20
