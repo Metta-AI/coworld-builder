@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 731,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_074e3eb0-9ad7-4ce4-af3c-4c09578144a2/sha256%3A25965cf8bccb36886763aa5c3a1bc2e2effaf7a18ef8f8938197494b66fef989/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fcd9fe302-26db-435b-b107-30d8294e93e5.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 1 / 4"
+    },
+    {
+      "at": "100%",
+      "clock": "TRUTH — GUILTY · JURY 3/3"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

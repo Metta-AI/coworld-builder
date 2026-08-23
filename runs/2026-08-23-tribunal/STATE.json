@@ -31,9 +31,13 @@
     "division": "div_2b2cf964-e194-4701-9e50-5caf772a323d"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      1,
+      2
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/cd9fe302-26db-435b-b107-30d8294e93e5.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32654376748"
   },
   "announce": {
     "attempted_at": null,
