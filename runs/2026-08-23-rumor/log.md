@@ -33,3 +33,7 @@
 2026-08-23T20:52:43Z heartbeat phase=40
 2026-08-23T20:53:41Z 40 dispatch builder brief=release v0.1.0 via coworld-release.yml, persist release-result.json + release-report.md
 2026-08-23T20:58:12Z heartbeat phase=40
+2026-08-23T21:02:11Z 40 builder returned: release v0.1.0 canonical+certified first dispatch, run=32665829446, cow_46b04bae-028d-4f7a-8444-c18590d68521, 4 policies v1, secret_put=true
+2026-08-23T21:02:11Z progress phase=40 marker=release-run-32665829446
+2026-08-23T21:02:11Z 40 -> 50 phase transition: entering league
+2026-08-23T21:02:11Z heartbeat phase=50
