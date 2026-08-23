@@ -41,3 +41,11 @@
 2026-08-23T23:35:49Z 50 league resolved league_1ad5ff34-7cf7-4940-9ef2-b7690a4bf5aa (GET /leagues returns plain array, filtered client-side)
 2026-08-23T23:35:49Z 50 division PUT 200 div_eb565e12-2c31-4797-bb55-9e4678f54a86; settings POST 200 (round_robin, filler_policy, elo, 15min)
 2026-08-23T23:35:49Z heartbeat phase=50
+2026-08-23T23:38:06Z 50 champion1 submit run=32674076519 ok=true sub_a16b344a-36c1-4b29-beac-0dde59449305 policy=ledger-reputation:v1 player=daveey
+2026-08-23T23:38:06Z 50 champion2 submit run=32674100963 ok=true sub_8e9a7e72-a12a-4dbb-a6c1-2a944d7ca143 policy=ledger-broker:v1 player=daveey-1
+2026-08-23T23:38:06Z 50 policy-version uuids resolved: reputation=2f830fd7 broker=2caa19d3(daveey-1 confirmed) mirror=7ce49bec shark=ac95a3ee
+2026-08-23T23:38:06Z 50 fillers POST 200: mirror+shark registered (neither champion); rounds-paused=false; trigger-round OK
+2026-08-23T23:38:06Z 50 rounds: round1 failed (auto-scheduled pre-fillers, Temporal RoundWorkflow error — superseded), round2 pending with both champions in entrant_attributions
+2026-08-23T23:38:06Z progress phase=50 marker=league_1ad5ff34-7cf7-4940-9ef2-b7690a4bf5aa
+2026-08-23T23:38:06Z 50 -> 60 phase transition: entering verify
+2026-08-23T23:38:06Z heartbeat phase=60
