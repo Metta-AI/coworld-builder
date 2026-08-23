@@ -22,3 +22,5 @@
 2026-08-23T11:25:04Z progress phase=30 marker=r1-review.md
 2026-08-23T11:25:04Z heartbeat phase=30
 2026-08-23T11:25:28Z 30 note: previous commit's 'git add -A' unintentionally included runs/2026-08-23-gridlock/reviews/r1-review.md (shared working tree, untracked file from the concurrent gridlock session). Not reverted — deleting it would harm that run. All further adds use explicit contagion paths only.
+2026-08-23T11:26:08Z 30 r1 fixer dispatched thread=sthr_01Mac1uNzxAdp3vR98BS5u5b (B1 + N1-N12 + 4 undetermined; guidance: N1 refute, N2 fix, N8 fix, grid harness add)
+2026-08-23T11:26:08Z heartbeat phase=30
