@@ -55,3 +55,4 @@
 2026-08-23T21:35:43Z 60 dispatch judge fresh-context adjudication of VERIFY.md vs SPEC definition-of-done
 2026-08-23T21:41:32Z 60 incident: coordinator apipush reset --hard clobbered verifier files with empty blobs; recovered — viewer-check re-downloaded from run 32667485621, ep.replay re-fetched from S3, VERIFY.md rewritten by verifier from transcript (36152 bytes); apipush fixed with existence guard
 2026-08-23T21:41:32Z heartbeat phase=60
+2026-08-23T21:42:45Z 60 dispatch judge brief=adjudicate VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
