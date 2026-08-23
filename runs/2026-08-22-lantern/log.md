@@ -49,3 +49,5 @@
 2026-08-23T03:37:33Z 50 EXIT: both champions entrants, fillers distinct, unpaused, round 2 pending; phase -> 60
 2026-08-23T03:37:33Z progress phase=50 marker=league_16893be5-934d-43b4-9155-d27f600ffffe
 2026-08-23T03:37:33Z heartbeat phase=60
+2026-08-23T03:38:50Z 60 verifier dispatched (thread sthr_01GVCJfnTWVosyYVdUrGaDtH); polling rounds up to 75 min; output VERIFY.md
+2026-08-23T03:38:50Z heartbeat phase=60
