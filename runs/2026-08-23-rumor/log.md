@@ -9,3 +9,7 @@
 2026-08-23T16:41:04Z 10 checklist: starter[x] num_agents=10[x] resolution-order[x] scoring[x] endings[x] observation[x] reply-caps-runes[x] both-policies[x] parallel-batch+budget-605s[x] degrade-never-hang[x] two-namespaces[x] viewer-static-360px[x] viewer-one-starter-bullwhip-all-four[x] replay-self-sufficient[x] packaging[x] tests[x] out-of-scope[x] — ACCEPTED round 1
 2026-08-23T16:41:04Z 10 -> 20 phase transition: entering build
 2026-08-23T16:41:04Z progress phase=10 marker=design.md
+2026-08-23T16:42:08Z 20 repo created https://github.com/Metta-AI/cogame-rumor (public)
+2026-08-23T16:42:08Z 20 propagate-secrets run=32652467485 success — SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-rumor
+2026-08-23T16:42:08Z 20 dispatch builder brief=implement design.md, ci.yml green on main
+2026-08-23T16:42:08Z heartbeat phase=20
