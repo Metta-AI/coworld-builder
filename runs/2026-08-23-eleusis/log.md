@@ -27,3 +27,5 @@
 2026-08-23T19:41:38Z 30 r1 judge verdict: blocking 0 (markers agree); loop exits after 1 round
 2026-08-23T19:41:38Z progress phase=30 marker=r1-verdict.md
 2026-08-23T19:41:38Z 30 phase -> 40
+2026-08-23T19:42:26Z 40 builder dispatched for release chain (v0.1.0 first attempt)
+2026-08-23T19:42:26Z heartbeat phase=40
