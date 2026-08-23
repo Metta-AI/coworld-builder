@@ -49,3 +49,4 @@
 2026-08-23T12:13:30Z heartbeat phase=60
 2026-08-23T12:14:29Z 60 verifier dispatched thread=sthr_01H9Qc7y3WRCbGnmCExXHsuA (75-min poll bound, heartbeats delegated during poll)
 2026-08-23T12:14:29Z heartbeat phase=60
+2026-08-23T12:15:10Z 60 poll#1 rounds: r2 pending, r1 failed (pre-filler) — completed(>=2)=0; check1 not yet true
