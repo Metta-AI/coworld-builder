@@ -38,3 +38,11 @@
 2026-08-23T19:59:10Z 50 division 200 div_1aa06f49-71bf-4e57-bd88-337261abec99; settings 200 (round_robin, elo, filler_policy, 15min)
 2026-08-23T19:59:10Z 50 note: GET /leagues returns a bare array on this deployment (playbook shows .entries) — filtered with .[]
 2026-08-23T19:59:10Z heartbeat phase=50
+2026-08-23T20:02:02Z 50 champion1 submit run 32662976988 ok sub_623b5dc6 (eleusis-empiricist:v1, daveey)
+2026-08-23T20:02:02Z 50 champion2 submit run 32663009030 ok sub_f33da560 (eleusis-guarded:v1, daveey-1)
+2026-08-23T20:02:02Z 50 policy-versions resolved: empiricist 9c39d031 daveey; guarded 1bc93007 daveey-1; openbook 34609da6; hoarder 72102f0f
+2026-08-23T20:02:02Z 50 filler-policies 200: openbook+hoarder registered (neither champion)
+2026-08-23T20:02:02Z 50 unpause 200; trigger-round 200
+2026-08-23T20:02:02Z 50 rounds: r1 failed (Temporal RoundWorkflow failed before settling — unpause/trigger race; fillers WERE set first), r2 pending with both champions in entrant_attributions
+2026-08-23T20:02:02Z progress phase=50 marker=league_0e95b506+round2-pending
+2026-08-23T20:02:02Z 50 phase -> 60
