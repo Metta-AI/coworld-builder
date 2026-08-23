@@ -106,3 +106,5 @@
 2026-08-23T16:44:31Z progress phase=60 marker=VERIFY.md-r4-checks-6of8
 2026-08-23T16:44:31Z 60 ruling (rails: policy prompts): remediation is prompt-side — rewrite both champion prompts (free-stock accounting before LOCK, SIGN only offers addressed to you and payable, exact IF grammar), re-release v0.1.1, resubmit champions as v2, re-verify checks 1-5 on fresh rounds. Not a Blocked condition.
 2026-08-23T16:44:31Z heartbeat phase=60
+2026-08-23T16:45:58Z 60 remediation builder dispatched (thread sthr_01UeRakBzEFS3eRKsa9vt4ox): rewrite champion prompts (legality drills), re-release v0.1.1 -> drafter:v2/swapper:v2
+2026-08-23T16:45:58Z heartbeat phase=60
