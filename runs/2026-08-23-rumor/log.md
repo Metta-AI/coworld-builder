@@ -20,3 +20,6 @@
 2026-08-23T20:02:12Z progress phase=20 marker=ci-run-32654839685
 2026-08-23T20:02:12Z heartbeat phase=30
 2026-08-23T20:03:03Z 30 dispatch reviewer round=1 brief=trace /tmp/cogame-rumor@ed38e35 vs design.md -> reviews/r1-review.md
+2026-08-23T20:17:52Z 30 reviewer returned r1-review.md (589 lines): 0 blocking per reviewer, 17 non-blocking F1-F17, 4 could-not-determine
+2026-08-23T20:17:52Z 30 dispatch fixer round=1 brief=address F1-F17 in /tmp/cogame-rumor, CI green -> reviews/r1-fixes.md
+2026-08-23T20:17:52Z heartbeat phase=30
