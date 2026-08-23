@@ -36,3 +36,9 @@
 2026-08-23T07:17:37Z 30 phase -> 40
 2026-08-23T07:18:27Z 40 builder dispatched for release (same thread sthr_01BuNQZNLLWQj7WpSJXL31LF); start version 0.1.0
 2026-08-23T07:18:27Z heartbeat phase=40
+2026-08-23T07:37:46Z 40 dispatch 1: version 0.1.0 run 32625232683 step_failed="Build the Coworld manifest" (6 pydantic errors vs coworld 0.1.42 upload contract) — decision: fix manifest shape, not a race
+2026-08-23T07:37:46Z 40 dispatch 2: version 0.1.1 run 32625651640 ok=true canonical=true certify.ok=true secret_put=true liveness=skipped(static); fix commit 084391c (manifest to 0.1.42 contract + ANTHROPIC_API_KEY_URI env on game runnable)
+2026-08-23T07:37:46Z 40 hosted certification polled: state=certified, 10/10 steps pass; hosted smoke passed (5 episodes); cow_89df098f-6f9b-42ee-adc0-ecf1252103cd
+2026-08-23T07:37:46Z 40 release-result.json persisted to runs/2026-08-23-hive/release-result.json
+2026-08-23T07:37:46Z progress phase=40 marker=release-run-32625651640
+2026-08-23T07:37:46Z 40 phase -> 50

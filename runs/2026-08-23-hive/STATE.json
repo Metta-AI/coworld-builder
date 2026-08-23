@@ -5,19 +5,24 @@
   "slug": "hive",
   "repo": "Metta-AI/cogame-hive",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 2
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_89df098f-6f9b-42ee-adc0-ecf1252103cd",
+    "manifest_sha": "sha256:8e16a28a45164d671865fee2068f719bf1f57fc2117702d0420b4ede01cf9b2b",
+    "release_run_id": "32625651640"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "hive-pathwright:v1",
+    "champion2": "hive-swarmraid:v1",
+    "fillers": [
+      "hive-marcher:v1",
+      "hive-driftling:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +39,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T07:18:27Z",
+  "heartbeat_at": "2026-08-23T07:37:46Z",
   "session_ended_at": null,
   "session_id": "6f943827",
   "log": "runs/2026-08-23-hive/log.md"
