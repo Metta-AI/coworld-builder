@@ -88,7 +88,8 @@ that names exactly what is needed, and exits.
   reads logs. CI credentials are repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; it runs with a user token that is admin on Metta-AI repos — no org admin, no value ever in the sandbox).
 - Everything else (Observatory API, `softmax.com`, Asana, Discord, GitHub) is HTTPS from the
   sandbox using vault credentials substituted at egress (`SOFTMAX_TOKEN`, `GH_TOKEN`,
-  `ASANA_PAT`, `DISCORD_BOT_TOKEN`).
+  `ASANA_PAT`, `DISCORD_BOT_TOKEN`, `GEMINI_API_KEY` — the last for nano-banana board art, see
+  `playbooks/art-nanobanana.md`).
 - Repos mounted (declared in `fleet/deployment.json`): this repo (read-write,
   `/workspace/coworld-builder`), `daveey/cogamer` (read, `/workspace/cogamer`, for
   `fleet/PROTOCOLS.md`), and all six starters read-only at **`/workspace/starters/<name>`**:

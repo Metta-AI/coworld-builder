@@ -10,13 +10,15 @@ Ids are not secrets. Tokens are — none appear in this file, ever.
 
 - `environment_id: env_017PXeSYBWccAvG8XynueHm6` — the ctf-team cloud environment. Reused
   deliberately: it already has the egress allow-list and the sandbox shape these agents need.
-- `vault_ids: vlt_011CdApMvqzJr9CKNMkuVDW3, vlt_011CeJJ4eJ7h2TKoPBwKhA4M` — the first carries
-  `SOFTMAX_TOKEN`, `GH_TOKEN`, `ASANA_PAT`; the second `DISCORD_BOT_TOKEN`; all substituted at egress.
+- `vault_ids: vlt_011CdApMvqzJr9CKNMkuVDW3, vlt_011CeJJ4eJ7h2TKoPBwKhA4M, vlt_011CeKzkxhfppi8gvSsPT3Fp` — the first carries
+  `SOFTMAX_TOKEN`, `GH_TOKEN`, `ASANA_PAT`; the second `DISCORD_BOT_TOKEN`; the third `GEMINI_API_KEY`
+  (nano-banana board art, `playbooks/art-nanobanana.md`); all substituted at egress.
 
 | vault | id | credentials | status |
 |---|---|---|---|
 | fleet vault (shared) | `vlt_011CdApMvqzJr9CKNMkuVDW3` | `SOFTMAX_TOKEN`, `GH_TOKEN`, `ASANA_PAT` | live |
 | coworld-builder-discord | `vlt_011CeJJ4eJ7h2TKoPBwKhA4M` | `DISCORD_BOT_TOKEN` → host `discord.com` (credential `vcrd_01QU9AwcE3bj7PRqFN1WuvxX`) | live (created 2026-08-22 via `POST /vaults {display_name}` then `POST /vaults/{id}/credentials {display_name, auth:{type:environment_variable, secret_name, secret_value, networking:{type:limited, allowed_hosts}, injection_location:{header,body}}}`) |
+| coworld-builder-gemini | `vlt_011CeKzkxhfppi8gvSsPT3Fp` | `GEMINI_API_KEY` → host `generativelanguage.googleapis.com`, header only (credential `vcrd_01PgxttsNFfkySBA2RP2ErMx`); value from AWS Secrets Manager `polis/shared/gemini-api-key` | live (created 2026-08-23, same two calls) |
 
 
 ## Parallelism
@@ -61,8 +63,8 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 | coworld-builder-reviewer | agent | claude-opus-5 | `agent_01AUUSA9pGCz89r72iyymKLC` | 1 |
 | coworld-builder-fixer | agent | claude-opus-5 | `agent_01VAuffJBu8B3j3GEWphmQ7x` | 1 |
 | coworld-builder-judge | agent | claude-fable-5 | `agent_01QF6UtN7yE5eRTNM4tFkwHH` | 1 |
-| coworld-builder-verifier | agent | claude-opus-5 | `agent_01Grqmo29T2TuAtdS4UNRGV6` | 1 |
-| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 2 |
+| coworld-builder-verifier | agent | claude-opus-5 | `agent_01Grqmo29T2TuAtdS4UNRGV6` | 2 |
+| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 3 |
 | coworld-builder-a | deployment | — | `depl_01YSmungQBmAMerqw9KxGdQs` | — |
 | coworld-builder-b | deployment | — | `depl_01McBgP42628cnvocD3u9Jih` | — |
 | coworld-builder-c | deployment | — | `depl_01HKErKeH5KSxtPa9uRFGBR9` | — |
@@ -89,6 +91,7 @@ used instead and the gap is logged — it is never a reason to block.
 | `curl` | guaranteed | Asana, Observatory, softmax.com, Discord |
 | `python3` | guaranteed | `fleet/bin/deploy.py`; the fallback for every `jq` line |
 | `jq` | expected, preflighted (`prompts/00-claim.md` step 0) | JSON reads/writes in 00, 20, 40, 50, 60, 70 |
+| `Pillow` (python) | not preinstalled — `python3 -m pip install --user pillow` | `playbooks/art-nanobanana.md` step 2 (keying/splitting sprite sheets) |
 | docker / nim / emsdk | **absent by design** | all compilation happens in GitHub Actions |
 
 ## Asana

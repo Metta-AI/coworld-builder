@@ -298,10 +298,12 @@ curl -sS -X POST \
   "https://discord.com/api/v10/channels/1440464430646427718/messages" \
   -H "authorization: Bot $DISCORD_BOT_TOKEN" \
   -H "content-type: application/json" \
-  -d '{"content":"**<Slug>** is live — <one line on the game>. Watch: https://softmax.com/<slug>"}'
+  -d '{"content":"**<Slug>** is live — <one line on the game>. Watch: https://softmax.com/<slug>","flags":4}'
 ```
 
-Response `id` is the message id; record it in STATE.
+`"flags":4` is `SUPPRESS_EMBEDS` — required, the post must not unfurl its links into embed
+cards. Response `id` is the message id; record it in STATE. To strip embeds from a message
+that was already posted without the flag: `PATCH .../messages/<id>` with `{"flags":4}`.
 
 ---
 

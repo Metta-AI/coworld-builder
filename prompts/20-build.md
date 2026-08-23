@@ -37,6 +37,10 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    > `PLAYER_PROMPT` vs `PLAYER_SCRIPTED=<baseline name>`), `client/` (viewer reusing the starter's
    > `renderer.js`/`chrome.css` chrome), `replay-viewer/<slug>_replay.nim` +
    > `tools/build_replay_viewer.sh` (the `coworld build` hook, emscripten, same sim module).
+   > Board art: the character sprites are **nano-banana renders of the Softmax cog, one kit per
+   > role** so roles read at board scale without labels — follow `playbooks/art-nanobanana.md`
+   > (`GEMINI_API_KEY` is in the vault; commit the source sheet and the split script). Procedural
+   > rigs are only the fallback if the API is down, and then a Blocked-visible note in `log.md`.
    > Take `replay-viewer/config.nims`, the wasm entry `.nim`, `static_replay*.js` and
    > `index.html` from **ONE starter only** — the one the design note names — and never splice the
    > shell of one onto the build flags of another. The emscripten link flags (`-s MODULARIZE=1`,
