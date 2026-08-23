@@ -5,7 +5,7 @@
   "slug": "hive",
   "repo": "Metta-AI/cogame-hive",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "70",
+  "phase": "80",
   "phase_attempts": {
     "40": 2
   },
@@ -43,10 +43,10 @@
   },
   "announce": {
     "attempted_at": "2026-08-23T08:18:18Z",
-    "discord_message_id": ""
+    "discord_message_id": "1540998652669984768"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T08:18:18Z",
+  "heartbeat_at": "2026-08-23T08:18:42Z",
   "session_ended_at": null,
   "session_id": "6f943827",
   "log": "runs/2026-08-23-hive/log.md"

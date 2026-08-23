@@ -77,3 +77,6 @@
 2026-08-23T08:17:16Z progress phase=60 marker=60-verdict.md-blocking-0
 2026-08-23T08:17:16Z 60 phase -> 70
 2026-08-23T08:18:18Z 70 announce.attempted_at written and pushed before POST
+2026-08-23T08:18:42Z 70 announce msg=1540998652669984768
+2026-08-23T08:18:42Z progress phase=70 marker=discord_message_id=1540998652669984768
+2026-08-23T08:18:42Z 70 phase -> 80
