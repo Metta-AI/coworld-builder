@@ -38,3 +38,4 @@
 2026-08-23T15:05:48Z progress phase=30 marker=r1-verdict.md
 2026-08-23T15:05:48Z 30 -> 40 phase transition (review loop exited round 1, zero blocking)
 2026-08-23T15:05:48Z heartbeat phase=40
+2026-08-23T15:06:24Z 40 builder dispatched thread=TBD brief=release chain v0.1.0 (dispatch-then-watch, persist release-result.json, no skip_certify)
