@@ -533,3 +533,24 @@ the starter after the fact.
   provenance items map to `client/chrome.css` (byte-for-byte + appended block) and
   `client/replay.html` (starter page + appended block). Say the mapping explicitly in the design
   note so reviewer/judge don't file phantom missing-file findings.
+
+## 2026-08-23 rumor
+
+- **A coordinator death does not kill its sub-agents: check the phase's exit criterion before
+  re-dispatching.** The claiming session died right after dispatching the phase-20 builder; the
+  builder kept running and delivered green CI on its own. The resume verified the phase-20 exit
+  checks against the repo (CI run id, workflow parse, placeholder gate) and transitioned — no
+  second build round burned. Make "is this phase already done?" the first step of any resume into
+  20/30/40.
+- **Never let an API-push helper touch paths it was not given.** A helper that (a) created blobs
+  for files that did not exist yet (base64 of a missing file inside `$( )` produced an EMPTY blob,
+  exit 0) and then (b) `git reset --hard origin/main` materialized those empty tracked files OVER
+  the verifier's just-written untracked VERIFY.md/viewer-check/ep.replay. Guards that fixed it:
+  refuse to push a path that does not exist; replace `reset --hard` with `reset --soft` +
+  `checkout -- <only the pushed paths>`; and don't `git add -A` a run directory while a sub-agent
+  may still be writing into it. Recovery that worked: viewer-check re-downloaded from its run id,
+  replay re-fetched from S3 (both byte-identical), VERIFY.md rewritten by the verifier from its
+  own transcript with a provenance note — the judge then re-fetched every re-fetchable claim and
+  ratified 8/8.
+- **`wc -c` your Discord announcement against 1800 before posting** — the first rumor draft ran
+  1868 chars; cutting the replay paragraph (per the template's own cut order) landed 1730.

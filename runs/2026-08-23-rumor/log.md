@@ -65,3 +65,5 @@
 2026-08-23T21:49:48Z progress phase=70 marker=discord_message_id=1541202774929186886
 2026-08-23T21:49:48Z 70 -> 80 phase transition: entering close
 2026-08-23T21:49:48Z heartbeat phase=80
+2026-08-23T21:51:08Z 80 summary posted run-task + condensed on idea task; LEARNINGS section appended
+2026-08-23T21:51:08Z heartbeat phase=80
