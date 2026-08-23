@@ -34,3 +34,7 @@
 2026-08-23T14:58:03Z progress phase=30 marker=r1-fixes.md
 2026-08-23T14:58:03Z 30 r1 judge dispatched (fresh context, target sha=0decf3220186f0ae07d7b03731624c07d1277847, output=reviews/r1-verdict.md)
 2026-08-23T14:58:03Z heartbeat phase=30
+2026-08-23T15:05:48Z 30 r1 judge returned thread=sthr_01UurAnMuEEum2rkDbo83n7z verdict=r1-verdict.md blocking=0 (all 13 checklist items + batching rule PASS at 0decf322; 21 advisories resolved by commits, 3 no-change upheld)
+2026-08-23T15:05:48Z progress phase=30 marker=r1-verdict.md
+2026-08-23T15:05:48Z 30 -> 40 phase transition (review loop exited round 1, zero blocking)
+2026-08-23T15:05:48Z heartbeat phase=40
