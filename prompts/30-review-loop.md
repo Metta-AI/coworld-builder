@@ -160,6 +160,34 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
       and "Loading replay…" on softmax.com forever. **File presence is not evidence here; the
       smoke's `loaded: true` is.**
 
+14. **Chrome is the starter's, not a lookalike.** *(category: static-viewer)* Id-presence is not
+    evidence — cogame-gridlock (2026-08-23) shipped a 329-line `client/replay_broadcast.html`
+    written from scratch that reused every starter id and passed the id test, and the operator's
+    first look was "looks like not all the elements were ported over". Check provenance:
+    - `client/chrome_common.js` is **byte-identical** to the starter's (`diff` it against
+      `/workspace/starters/<starter>/client/chrome_common.js`); the only admissible change is a
+      named, minimal patch recorded in the design note (e.g. hive's clickable beat markers).
+    - `client/replay_broadcast.html` is the starter's page with a game block appended under a
+      banner comment (`<SLUG> additions to the inherited <starter> chrome`). Diff the CSS above
+      that banner against the starter's: sections 1–5 (stage, scorebug, banner lane, kill feed,
+      transport, scrubber + momentum graph + beat markers + lulls + spoilers, endcard, locker-room
+      curtain) are present and unmodified except for the removals the note lists. A page a
+      fraction of the starter's size is a rewrite and is blocking.
+    - **Transport rules**, each checked in the page: (a) `relayout()` measures `#transport` and
+      sets `--band` (and `--hudscale`) on `document.documentElement` — the variables `--u` and
+      `#board`/`#endcard` read are computed on `:root`, a value on `#stage` never reaches them;
+      (b) nothing fixed-positioned (nameplates, counters, feeds) sits inside the band — they ride
+      `bottom: calc(var(--band, 0px) + …)`; (c) `#endcard` keeps `bottom: var(--band, 0px)`, is
+      shown with the class its CSS rule uses (`#endcard.on`), and **every seek** — scrub click,
+      beat marker, back/forward, keyboard — takes it down, so the scrubber can always pull the
+      match back from the score screen; (d) scrubber beats are labelled `<button>`s that seek to
+      their tick (`chrome_common.markBeat(tick, kind, team, label)`), with CSS for every kind the
+      page emits — a kind with no rule is an invisible marker.
+    - **Zoom bar + minimap (`#viewpanel`) only if the board is pannable.** A game whose whole
+      arena fits the frame (raid, hive, gridlock) removes the panel — markup, CSS, the
+      `core.zoomAt/setZoom/attachMinimap` wiring, and the ids from the test list — rather than
+      hiding it. Keep it only when the design note says the board is larger than the viewport.
+
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.
 
