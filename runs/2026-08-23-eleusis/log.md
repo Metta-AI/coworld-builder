@@ -24,3 +24,6 @@
 2026-08-23T19:31:50Z 30 r1 fixer returned: 12/12 findings addressed (9 code fixes, 3 note-copy corrections), CI green run 32661283184 sha 244401dc (verified); clone updated
 2026-08-23T19:31:50Z 30 r1 judge dispatched (fresh context)
 2026-08-23T19:31:50Z heartbeat phase=30
+2026-08-23T19:41:38Z 30 r1 judge verdict: blocking 0 (markers agree); loop exits after 1 round
+2026-08-23T19:41:38Z progress phase=30 marker=r1-verdict.md
+2026-08-23T19:41:38Z 30 phase -> 40
