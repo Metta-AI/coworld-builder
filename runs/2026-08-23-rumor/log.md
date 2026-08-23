@@ -56,3 +56,7 @@
 2026-08-23T21:41:32Z 60 incident: coordinator apipush reset --hard clobbered verifier files with empty blobs; recovered — viewer-check re-downloaded from run 32667485621, ep.replay re-fetched from S3, VERIFY.md rewritten by verifier from transcript (36152 bytes); apipush fixed with existence guard
 2026-08-23T21:41:32Z heartbeat phase=60
 2026-08-23T21:42:45Z 60 dispatch judge brief=adjudicate VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
+2026-08-23T21:48:10Z 60 judge returned verify-verdict.md: blocking 0 / BLOCKING 0 — all eight checks ratified, evidence chain holds
+2026-08-23T21:48:10Z 60 asana: phase-60 subtask completing, comment posting
+2026-08-23T21:48:10Z 60 -> 70 phase transition: entering announce
+2026-08-23T21:48:10Z heartbeat phase=70
