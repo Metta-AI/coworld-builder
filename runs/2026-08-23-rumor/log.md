@@ -37,3 +37,11 @@
 2026-08-23T21:02:11Z progress phase=40 marker=release-run-32665829446
 2026-08-23T21:02:11Z 40 -> 50 phase transition: entering league
 2026-08-23T21:02:11Z heartbeat phase=50
+2026-08-23T21:05:58Z 50 seed 200 league_21909e9d-0b13-4750-afec-f8a4213c03a7; division 200 div_52959ca4-61f9-4828-bbe5-33261daea950; settings 200
+2026-08-23T21:05:58Z 50 champion1 submit run=32666310981 ok=true sub_7452ea09 rumor-corroborate:v1 daveey
+2026-08-23T21:05:58Z 50 champion2 submit run=32666340588 ok=true rumor-skeptic:v1 daveey-1 (pv e895c6ce)
+2026-08-23T21:05:58Z 50 fillers 200: gossip=1c39bed2 herd=212b1fe4 (neither champion)
+2026-08-23T21:05:58Z 50 unpause 200; trigger 200; round1 failed (auto-round pre-fillers), round2 pending with both champions in entrant_attributions
+2026-08-23T21:05:58Z progress phase=50 marker=league_21909e9d-0b13-4750-afec-f8a4213c03a7
+2026-08-23T21:05:58Z 50 -> 60 phase transition: entering verify
+2026-08-23T21:05:58Z heartbeat phase=60

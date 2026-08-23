@@ -5,7 +5,7 @@
   "slug": "rumor",
   "repo": "https://github.com/Metta-AI/cogame-rumor",
   "starter": "cogame-bullwhip",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1
   },
@@ -23,11 +23,14 @@
       "rumor-gossip:v1",
       "rumor-herd:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "1c39bed2-6a01-445b-8581-a0123b2f58c8",
+      "212b1fe4-1a64-4c1f-a944-3a1439e01c12"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_21909e9d-0b13-4750-afec-f8a4213c03a7",
+    "division": "div_52959ca4-61f9-4828-bbe5-33261daea950"
   },
   "verify": {
     "rounds": [],
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T21:02:11Z",
+  "heartbeat_at": "2026-08-23T21:05:58Z",
   "session_ended_at": null,
   "session_id": "e05eed26",
   "log": "runs/2026-08-23-rumor/log.md"
