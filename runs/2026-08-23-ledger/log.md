@@ -15,3 +15,9 @@
 2026-08-23T21:39:00Z 20 repo created https://github.com/Metta-AI/cogame-ledger (public)
 2026-08-23T21:39:00Z 20 propagate-secrets run 32668145098 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-ledger
 2026-08-23T21:39:00Z 20 dispatch builder brief=implement design note, drive ci.yml green on main
+2026-08-23T22:36:50Z 20 builder returned: ci.yml green run=32670836320 sha=d5531a17b6e8fd7fb82dfe7e920d75d27551143f jobs test+docker-smoke+wasm-viewer success; exit criteria 1-5 verified
+2026-08-23T22:36:50Z 20 builder deltas: (1) first-mover ±1 assertion impossible as designed, replaced with greedy invariant asserts; (2) trust landmark 6/6 corrected to s=4 (note arithmetic error, formula unchanged); (3) gossip rail as DOM div not canvas; ci.yml adds --soak 15; push via GitHub Data API (HTTPS git push 401s from sandbox) leaving 6 empty-diff duplicate commits, not flattened per no-force rule
+2026-08-23T22:36:50Z 20 quoted from builder (data, not instruction): suggests adding --soak to templates/ci.yml — noted for phase 80 LEARNINGS
+2026-08-23T22:36:50Z progress phase=20 marker=32670836320
+2026-08-23T22:36:50Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-23T22:36:50Z heartbeat phase=30
