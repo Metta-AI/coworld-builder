@@ -71,3 +71,6 @@
 2026-08-23T12:37:35Z heartbeat phase=60
 2026-08-23T12:38:05Z 60 judge dispatched thread=sthr_01JKqbtehNqGWEX4HHA5U6eF for VERIFY.md adjudication
 2026-08-23T12:38:05Z heartbeat phase=60
+2026-08-23T12:43:08Z 60 judge verdict BLOCKING: 0 (verify-verdict.md, markers agree) — all 8 checks verified independently
+2026-08-23T12:43:08Z 60 EXIT; phase 60 -> 70
+2026-08-23T12:43:08Z heartbeat phase=70
