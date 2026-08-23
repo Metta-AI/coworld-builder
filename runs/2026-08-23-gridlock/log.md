@@ -13,3 +13,5 @@
 2026-08-23T09:18:10Z progress phase=10 marker=runs/2026-08-23-gridlock/design.md
 2026-08-23T09:18:10Z 10 -> 20 phase transition
 2026-08-23T09:18:10Z heartbeat phase=20
+2026-08-23T09:19:14Z 20 repo created https://github.com/Metta-AI/cogame-gridlock (public)
+2026-08-23T09:19:14Z 20 propagate-secrets run=32630657567 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
