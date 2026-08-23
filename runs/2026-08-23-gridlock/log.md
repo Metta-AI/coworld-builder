@@ -24,3 +24,5 @@
 2026-08-23T11:01:30Z 20 -> 30 phase transition review_round=1
 2026-08-23T11:01:30Z heartbeat phase=30
 2026-08-23T11:02:19Z 30 r1 reviewer dispatched thread=sthr_01QnznsdvzScY77CeNVywTpy target=4b74806 output=runs/2026-08-23-gridlock/reviews/r1-review.md
+2026-08-23T11:19:07Z 30 r1 reviewer returned: 25 findings, 0 blocking per reviewer (r1-review.md); notable: F9 disconnect-degrade unimplemented, F10 default-prompt seat, F15-17 chrome id gaps, F18 viewer_smoke.mjs older template rev, F25 no tuning-harness artefact
+2026-08-23T11:19:07Z progress phase=30 marker=r1-review.md
