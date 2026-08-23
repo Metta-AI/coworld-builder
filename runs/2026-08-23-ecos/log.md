@@ -96,3 +96,7 @@
 2026-08-23T14:18:39Z 60 -> 70 phase transition; STATE.phase=70 pushed before announce
 2026-08-23T14:18:39Z heartbeat phase=70
 2026-08-23T14:19:10Z 70 announce attempted_at written and pushed before POST
+2026-08-23T14:19:30Z 70 announce msg=1541089462824599743
+2026-08-23T14:19:30Z progress phase=70 marker=announce.discord_message_id
+2026-08-23T14:19:30Z 70 -> 80 phase transition
+2026-08-23T14:19:30Z heartbeat phase=80

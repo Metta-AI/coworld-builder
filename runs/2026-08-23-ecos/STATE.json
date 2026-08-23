@@ -5,7 +5,7 @@
   "slug": "ecos",
   "repo": "https://github.com/Metta-AI/cogame-ecos",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "70",
+  "phase": "80",
   "phase_attempts": {
     "40": 0
   },
@@ -43,10 +43,10 @@
   },
   "announce": {
     "attempted_at": "2026-08-23T14:19:10Z",
-    "discord_message_id": ""
+    "discord_message_id": "1541089462824599743"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T14:19:10Z",
+  "heartbeat_at": "2026-08-23T14:19:30Z",
   "session_ended_at": null,
   "session_id": "d859f357",
   "log": "runs/2026-08-23-ecos/log.md"
