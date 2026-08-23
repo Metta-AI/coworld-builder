@@ -5,19 +5,22 @@
   "slug": "tribunal",
   "repo": "https://github.com/Metta-AI/cogame-tribunal",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_074e3eb0-9ad7-4ce4-af3c-4c09578144a2",
+    "manifest_sha": "sha256:25965cf8bccb36886763aa5c3a1bc2e2effaf7a18ef8f8938197494b66fef989",
+    "release_run_id": "32652915687"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "tribunal-advocate:v1",
+    "champion2": "tribunal-juror:v1",
+    "fillers": [
+      "tribunal-tally:v1",
+      "tribunal-hedge:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +37,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T16:48:43Z",
+  "heartbeat_at": "2026-08-23T16:56:08Z",
   "session_ended_at": null,
   "session_id": "bd0a3a12",
   "log": "runs/2026-08-23-tribunal/log.md"

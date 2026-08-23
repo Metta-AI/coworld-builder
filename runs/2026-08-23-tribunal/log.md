@@ -31,3 +31,7 @@
 2026-08-23T16:48:43Z 00 phase 30 -> 40
 2026-08-23T16:48:43Z heartbeat phase=40
 2026-08-23T16:49:02Z 40 builder dispatched for release chain (version 0.1.0)
+2026-08-23T16:56:08Z 40 release v0.1.0 run=32652915687 success first dispatch: canonical=true certified secret_put=true 4 policies v1
+2026-08-23T16:56:08Z progress phase=40 marker=32652915687
+2026-08-23T16:56:08Z 00 phase 40 -> 50
+2026-08-23T16:56:08Z heartbeat phase=50
