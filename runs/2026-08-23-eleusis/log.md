@@ -8,3 +8,7 @@
 2026-08-23T17:50:43Z 10 design accepted round 1, no rejections; copy at runs/2026-08-23-eleusis/design.md
 2026-08-23T17:50:43Z progress phase=10 marker=design.md
 2026-08-23T17:50:43Z 10 phase -> 20
+2026-08-23T17:51:31Z 20 repo Metta-AI/cogame-eleusis created public
+2026-08-23T17:51:31Z 20 propagate-secrets run 32656160199 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-23T17:51:31Z 20 dispatching builder round 1
+2026-08-23T17:51:31Z heartbeat phase=20
