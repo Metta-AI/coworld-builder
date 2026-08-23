@@ -23,3 +23,7 @@
 2026-08-23T01:50:55Z 30 r1 reviewer returned: 1 blocking (F1 byte-sliced LLM error text reaches replay), 15 non-blocking, item-7 grid-harness clause unverifiable; reviews/r1-review.md committed below
 2026-08-23T01:50:55Z 30 r1 fixer dispatched (thread sthr_01KNP6eeAMrnodu6UkeU2BUo); mandate F1 + item-7 harness + cheap non-blocking fixes
 2026-08-23T01:50:55Z heartbeat phase=30
+2026-08-23T02:27:58Z 30 r1 fixer returned: 8 fix commits (F1 blocking fixed, tuning harness added, F2/F3/F5/F6/F11/F13), 9 reasoned no-change; main at 024144d, ci run 32612666063 success; reviews/r1-fixes.md committed below
+2026-08-23T02:27:58Z 30 r1 judge dispatched (thread sthr_018yaeR2JWbdgS48o7nLjoGc, fresh context); judging sha 024144d
+2026-08-23T02:27:58Z progress phase=30 marker=reviews/r1-fixes.md
+2026-08-23T02:27:58Z heartbeat phase=30
