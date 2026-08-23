@@ -31,3 +31,4 @@
 2026-08-23T23:26:09Z progress phase=30 marker=r1-verdict.md
 2026-08-23T23:26:09Z 30 -> 40 phase transition: entering release
 2026-08-23T23:26:09Z heartbeat phase=40
+2026-08-23T23:26:52Z 40 dispatch builder brief=coworld-release.yml version 0.1.0, put_secret=true, persist release-result.json
