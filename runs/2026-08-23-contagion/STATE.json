@@ -5,19 +5,24 @@
   "slug": "contagion",
   "repo": "https://github.com/Metta-AI/cogame-contagion",
   "starter": "cogame-bullwhip",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_6b43a43d-8aa2-41ea-aae6-4dd50f084c54",
+    "manifest_sha": "sha256:16630ba4da43abc5b0abe452be3b5b247a6ce954bdf4b09ecc9355869250c99b",
+    "release_run_id": "32638256991"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "contagion-warden:v1",
+    "champion2": "contagion-broker:v1",
+    "fillers": [
+      "contagion-sentinel:v1",
+      "contagion-laggard:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +39,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T12:01:02Z",
+  "heartbeat_at": "2026-08-23T12:09:24Z",
   "session_ended_at": null,
   "session_id": "457e112a",
   "log": "runs/2026-08-23-contagion/log.md"

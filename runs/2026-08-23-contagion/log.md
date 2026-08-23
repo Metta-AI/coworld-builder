@@ -36,3 +36,7 @@
 2026-08-23T12:01:02Z heartbeat phase=40
 2026-08-23T12:02:08Z 40 builder dispatched thread=sthr_01CsmsN4SFZu7vUtHhvEhuMc for coworld-release.yml
 2026-08-23T12:02:08Z heartbeat phase=40
+2026-08-23T12:08:26Z 40 release dispatch version=0.1.0 run=32638256991 step_failed=none decision=accepted (first dispatch, no change needed; canonical=true, certify.ok=true, replay_liveness skipped-static, 4 policies v1, secret_put=true)
+2026-08-23T12:09:24Z 40 EXIT release-result verified: ok/canonical/secret_put true, certify.ok true, liveness skipped-static, 4 policies v1, broker owned by ply_bac48eb1; phase 40 -> 50
+2026-08-23T12:09:24Z progress phase=40 marker=release-run-32638256991
+2026-08-23T12:09:24Z heartbeat phase=50
