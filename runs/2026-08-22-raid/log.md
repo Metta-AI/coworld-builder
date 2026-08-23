@@ -69,3 +69,7 @@
 2026-08-23T07:35:30Z 40 dispatch 5 (0.1.4) authorized: fifth distinct defect, monotone cert progress, fix diagnosed to library source + docker-smoke strengthened to assert player exit codes (cert check now reproduced in CI); if 0.1.4 fails cert on any step -> stop, evidence to 90
 2026-08-23T07:35:30Z 40 note: bare receiveMessage is a latent starter/template defect (bullwhip player same shape) — template delta to record at phase 80
 2026-08-23T07:35:30Z heartbeat phase=40
+2026-08-23T07:48:09Z 40 builder returned: 0.1.4 released run 32626191497, cow_2e18fdd8-12cc-4ac7-9822-fa162635f3ef canonical+certified, secret_put=true, 4 policies raid-anvil:v1/raid-triage:v1/raid-stalwart:v1/raid-greenhorn:v1, release-result.json committed (263c282)
+2026-08-23T07:48:09Z progress phase=40 marker=release-run-32626191497
+2026-08-23T07:48:09Z 40 -> 50 phase transition
+2026-08-23T07:48:09Z heartbeat phase=50
