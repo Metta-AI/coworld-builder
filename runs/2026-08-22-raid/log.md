@@ -73,3 +73,8 @@
 2026-08-23T07:48:09Z progress phase=40 marker=release-run-32626191497
 2026-08-23T07:48:09Z 40 -> 50 phase transition
 2026-08-23T07:48:09Z heartbeat phase=50
+2026-08-23T07:49:20Z 50 seed 200 lseed_42a89e20 league_7a5e52fa-e85e-41ab-8a66-418653b02de2
+2026-08-23T07:49:20Z 50 division 200 div_b3560860-5922-48f5-b12a-0a6d57d3c506 (note: /leagues returns bare array, not .entries — filtered client-side)
+2026-08-23T07:49:20Z 50 settings 200 elo round_robin filler_policy interval=15m
+2026-08-23T07:49:20Z progress phase=50 marker=league_7a5e52fa-e85e-41ab-8a66-418653b02de2
+2026-08-23T07:49:20Z heartbeat phase=50
