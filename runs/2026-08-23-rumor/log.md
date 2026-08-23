@@ -26,3 +26,8 @@
 2026-08-23T20:42:20Z 30 fixer returned r1-fixes.md (317 lines): 8 fix commits, 13 no-change with evidence; CI green run=32664881692 sha=5ac1631
 2026-08-23T20:42:20Z 30 dispatch judge round=1 fresh-context verdict on 5ac1631 -> reviews/r1-verdict.md
 2026-08-23T20:42:20Z heartbeat phase=30
+2026-08-23T20:52:43Z 30 judge returned r1-verdict.md: blocking 0 / BLOCKING 0 — round 1 closes the loop
+2026-08-23T20:52:43Z 30 asana: phase-30 subtask completed, residue comment posted
+2026-08-23T20:52:43Z progress phase=30 marker=r1-verdict.md
+2026-08-23T20:52:43Z 30 -> 40 phase transition: entering release
+2026-08-23T20:52:43Z heartbeat phase=40
