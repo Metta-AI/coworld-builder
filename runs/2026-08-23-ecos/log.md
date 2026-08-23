@@ -25,3 +25,6 @@
 2026-08-23T11:51:58Z progress phase=30 marker=r1-review.md
 2026-08-23T11:51:58Z heartbeat phase=30
 2026-08-23T11:52:34Z 30 r1 fixer dispatched thread=sthr_01NBc1i4FebtQeNKm3S9VwxS (28 findings; F1/F2/F4/F5 must get real resolutions; one commit per finding; CI green required)
+2026-08-23T12:29:22Z 30 r1 fixer returned r1-fixes.md: 21 fixed / 0 refuted / 7 no-change (6 advisory, 1 NEEDS-DESIGN F23 measured+reverted); CI green run=32639042839 sha=b4bb25e9; repo design-note copy diverged from run copy (F3/F5/F10 documented deviations)
+2026-08-23T12:29:22Z progress phase=30 marker=r1-fixes.md
+2026-08-23T12:29:22Z heartbeat phase=30
