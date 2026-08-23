@@ -33,3 +33,4 @@
 2026-08-23T12:41:44Z progress phase=30 marker=r1-verdict.md
 2026-08-23T12:41:44Z 30 round 2 begins; review_round=2
 2026-08-23T12:41:44Z heartbeat phase=30
+2026-08-23T12:42:15Z 30 r2 reviewer dispatched thread=sthr_01E14CbdrdfBiQmFafV17Las (delta review: B1/B2 + sibling error-paths + fix-commit regression sweep)
