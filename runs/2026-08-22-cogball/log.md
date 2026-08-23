@@ -81,3 +81,14 @@
 2026-08-23T09:29:09Z progress phase=60 marker=viewer-check-32630840631-loaded-true
 2026-08-23T09:29:09Z heartbeat phase=60
 2026-08-23T09:29:26Z 60 verifier dispatched (full 8-check re-pass against 0.1.5 / cow_ff38b98b; 75-min bound; Asana heartbeat delegated to verifier during polls)
+2026-08-23T09:38:25Z heartbeat phase=60
+2026-08-23T09:38:25Z 60 verifier re-pass v0.1.5 started; all evidence re-fetched fresh (no 0.1.3 reuse)
+2026-08-23T09:38:25Z 60 check 1 TRUE — 16 completed rounds (r1 05:44:06Z … r16 09:29:13Z), 0 failed/discarded, all after fillers set 05:42:09Z; live filler-policies GET confirms 7c11dd63+259d11a4
+2026-08-23T09:38:25Z 60 check 2 TRUE — leaderboard: daveey/cogball-total:v2 rank1 1026.85 rp16 w9; daveey-1/cogball-counter:v2 rank2 973.15 rp16 w4; fillers absent (2 rows only)
+2026-08-23T09:38:25Z 60 check 3 TRUE — round 16 round_ce3789ab → ereq_21ccb33a completed, replay f2133337-531b-4ff6-91d6-1385fb48a307, participants daveey + daveey-1 both is_filler:false
+2026-08-23T09:38:25Z 60 check 4 TRUE — 185452 B COWLDBAL; design-declared tools/replay_summary.py → strict JSON ok; protocol cogball/v1 matches manifest docs.pages[1] L141; results.reason complete; 80/80 directives source=llm, fallbacks 0, utf8Repairs 0
+2026-08-23T09:38:25Z 60 check 5 TRUE — artifacts/logs 174583 B over 4 containers, grep CLEAN (no falling back / provider unavailable / max_tokens / rejected); no exception claimed
+2026-08-23T09:38:25Z 60 check 6 TRUE — raw-HTML grep empty (client-rendered, documented); /coworlds shows cow_ff38b98b 0.1.5 canonical=true; SSR playlist[0] featured match cogball.r16.e1; replays/session → static/cow_ff38b98b/sha256%3A495905b1…/index.html?replay=f2133337… ready:true, no /client/replay
+2026-08-23T09:38:25Z 60 check 7 TRUE — committed runs/2026-08-22-cogball/release-result.json (0.1.5, run 32624985984, canonical true) → "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"; not re-downloaded
+2026-08-23T09:38:25Z 60 check 8 TRUE — FRESH viewer-check dispatch 32631291526 against check-6 src (round 16, not the older 32630840631 which tested round 15): loaded=true in 4122 ms, data-replay-loaded=true, scrub 0%="3:20 TURN 1/40" 50%="1:38 TURN 21/40" 100%="FINAL GAME OVER", failure null, console_tail empty; 9/9 bundle assets 200 incl. 554655 B wasm; screenshot = 1-1 FULL TIME card reconciling with results
+2026-08-23T09:38:25Z 60 VERDICT: all-true 8/8; VERIFY.md overwritten; viewer-check/ artifacts committed; note for phase 80: feed_lines=0 (commentary feed empty) is a legibility nit, not a check failure

@@ -1,25 +1,36 @@
 {
-  "loaded": false,
-  "ms": 180107,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5d14a55f-2647-49fa-95d4-7b37a7463da5/sha256%3Ad488cc06f91a8038667c6b4452031d436b889f5577f65819afc3455b8aa82ccd/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F96be8156-bac3-468f-8674-e8b10cb36a98.replay&v=2",
+  "loaded": true,
+  "ms": 4122,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_ff38b98b-f611-4a74-86e1-f2b23cbd6339/sha256%3A495905b153bc98135ae1ec127e8f4abc2b9c88cff6a6d1edf0934d161ec5dce7/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ff2133337-531b-4ff6-91d6-1385fb48a307.replay&v=2",
   "bundle": null,
   "replay": null,
-  "clock": "0:00 IN THE LOCKER ROOM",
-  "scorebug": "0:00 IN THE LOCKER ROOM",
-  "status": "CONNECTING",
+  "clock": "3:20 TURN 1/40",
+  "scorebug": "DAVEEY 0% 0 sh 0 3:20 TURN 1/40 DAVEEY-1 0% 0 sh 0",
+  "status": "OPEN",
   "loading_text": null,
   "feed_lines": 0,
   "signals": {
-    "data_replay_loaded": null,
+    "data_replay_loaded": "true",
     "data_replay_error": null,
     "bridge": [],
     "bridge_ready": false,
     "bridge_error": []
   },
-  "scrub": [],
-  "failure": "timeout: no data-replay-loaded=\"true\" and no coworld-replay \"ready\" within 180s",
-  "console_tail": [
-    "[pageerror] COG_BASE is not defined"
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "3:20 TURN 1/40"
+    },
+    {
+      "at": "50%",
+      "clock": "1:38 TURN 21/40"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
   ],
+  "failure": null,
+  "console_tail": [],
   "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
 }
