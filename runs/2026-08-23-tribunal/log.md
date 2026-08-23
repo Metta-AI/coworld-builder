@@ -39,3 +39,10 @@
 2026-08-23T16:57:27Z 50 division 200 div_2b2cf964-e194-4701-9e50-5caf772a323d
 2026-08-23T16:57:27Z 50 settings 200 (elo, round_robin, filler_policy, 15min rounds)
 2026-08-23T16:57:27Z heartbeat phase=50
+2026-08-23T17:00:11Z 50 champion1 submit run=32653297191 ok=true tribunal-advocate:v1 as daveey
+2026-08-23T17:00:11Z 50 champion2 submit run=32653326010 ok=true tribunal-juror:v1 as daveey-1
+2026-08-23T17:00:11Z 50 fillers registered: tribunal-tally:v1=1a4388ea-facc-4ac6-bf69-a4d5d40abb19 tribunal-hedge:v1=22b44ae0-4e71-43c4-9111-6dc420c09fd1 (before first trigger)
+2026-08-23T17:00:11Z 50 unpaused + trigger-round 200; round 1 pending; entrant_attributions show both champions
+2026-08-23T17:00:11Z progress phase=50 marker=league_17699528-4b90-41b4-96e9-7e31a574e504
+2026-08-23T17:00:11Z 00 phase 50 -> 60
+2026-08-23T17:00:11Z heartbeat phase=60
