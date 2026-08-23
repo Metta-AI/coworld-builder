@@ -297,3 +297,38 @@ in the type system says so.
 8. Template fix landed this run: `templates/ci.yml`'s browser-load step no longer uses the
    pipefail-fatal `ls dist/smoke/*.replay … | head -1` glob (bare exit 2 when only `replay.json`
    exists); it is now a `for` loop. Repos scaffolded before 2026-08-23 carry the old form.
+
+## 2026-08-23 cogball
+
+1. **A cow_id is per-version.** Every release dispatch creates a *new* coworld row with its own
+   id and manifest hash (cogball: 0.1.2 `cow_23c9b804`, 0.1.3 `cow_5d14a55f`, 0.1.4
+   `cow_795268b0`, 0.1.5 `cow_ff38b98b`); only the newest is canonical and
+   `game.canonical_coworld_id` auto-follows. Any post-league re-release therefore changes the
+   cow_id: re-read it from `GET /v2/coworlds` and update STATE / VERIFY / announce copy — the
+   old id is not an error, it is the platform's versioning.
+2. **Two viewer defect classes that only *execution* catches, and the load test alone catches
+   only one:** (a) a boot-time undefined global (`COG_BASE`) aborts the inline shell script —
+   viewer never starts, `loaded:false`; (b) a mid-replay exception (`pushFeed` kept the
+   starter's element signature while callers passed HTML strings) — viewer boots, sets
+   `data-replay-loaded`, then freezes on tick 2 because `static_replay.js` latches `failed` and
+   drops all later Worker messages. Scrub readouts *pass* on (b): seeking clears the feed queue
+   and skips the killing frame. Guards now exist: `tools/ci/viewer_shell_check.cjs` in
+   cogame-cogball (executes bundle page scripts in a DOM-less stub, fails on undefined
+   identifiers / escaping exceptions) and `viewer_smoke.mjs --soak` (uninterrupted playback must
+   keep advancing), folded into `templates/tools/ci/viewer_smoke.mjs` this run. Phase 20 should
+   scaffold both and run soak in the wasm-viewer CI job.
+3. **A dead builder session may have pushed unrecorded work.** Cogball's re-release builder
+   found a predecessor session had already pushed the fix, found a second defect, and run two
+   release dispatches — none in log.md/STATE. Audit the coworld repo's recent commits and
+   Actions runs before re-dispatching a fix/release leg; a blind re-dispatch would have shipped
+   a needless sixth version.
+4. **Re-releases are league-safe and additive.** Policy labels auto-bump per release
+   (v2→v3→v4); league submissions keep the version they were submitted with; rounds kept
+   completing across two releases mid-league. The league fielding older labels than the newest
+   release is expected — record it, do not "fix" it.
+5. **Starter rule reaffirmed the hard way:** the moba→paintbot operator override cost one full
+   design+build cycle. New physics/real-time games take paintbot (coworld-ctf); moba is only
+   for bit-exact ports of an existing env. Already pinned in `playbooks/make-coworld.md`
+   §Phase 0 and `prompts/10-design.md`.
+6. `feed_lines: 0` seen again on a paintbot-descended shell (raid learning 7 stands): don't
+   read it as an empty feed without the screenshot.

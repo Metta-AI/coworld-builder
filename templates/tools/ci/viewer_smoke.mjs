@@ -35,6 +35,8 @@
 //   --replay <file>   the replay to load. Required with --bundle.
 //   --url <url>       a live viewer URL instead (must already carry ?replay=).
 //   --timeout <s>     seconds to wait for the load signal (default 60).
+//   --soak <s>        after the load signal, watch the viewer PLAY for this
+//                     many seconds (default 0 = off). See "SOAK" below.
 //   --out <dir>       where viewer-smoke.png / viewer-smoke.json land
 //                     (default: cwd).
 //   --headed          run headful (local debugging only).
@@ -84,6 +86,17 @@
 // `data-replay-error` (or a bridge `{type:"error"}`) fails immediately and the
 // message is printed. Silence until the timeout is ALSO a failure -- that is
 // the lantern deadlock, and it is the whole point of this file.
+//
+// SOAK -- LOADING IS NOT PLAYING (added after cogball 0.1.4, 2026-08-23)
+// ---------------------------------------------------------
+// `--soak <seconds>`: after the load signal it watches the clock / tick / scorebug for
+// that long and fails if none of them moved, or if an uncaught page error
+// arrived. cogball 0.1.4 loaded, drew one frame, set data-replay-loaded and
+// then threw inside that frame's feed render; static_replay.js caught the
+// throw, latched `failed` and ignored every later Worker message, so the board
+// froze on tick 2 looking entirely healthy. The load signal said yes and the
+// scrub readouts said yes too -- seeking clears the feed queue and skips the
+// frame that did the killing. Only uninterrupted playback shows it.
 
 import { createServer } from "node:http";
 import { createReadStream, existsSync, statSync, writeFileSync } from "node:fs";
@@ -99,7 +112,7 @@ function die(code, message) {
 }
 
 function parseArgs(argv) {
-  const out = { timeout: 60, outDir: process.cwd(), headed: false };
+  const out = { timeout: 60, soak: 0, outDir: process.cwd(), headed: false };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     const next = () => {
@@ -113,6 +126,7 @@ function parseArgs(argv) {
       case "--replay": out.replay = resolve(next()); break;
       case "--url": out.url = next(); break;
       case "--timeout": out.timeout = Number(next()); break;
+      case "--soak": out.soak = Number(next()); break;
       case "--out": out.outDir = resolve(next()); break;
       case "--headed": out.headed = true; break;
       case "-h":
@@ -126,6 +140,7 @@ function parseArgs(argv) {
   if (out.url && out.bundle) die(2, "--bundle and --url are mutually exclusive");
   if (out.bundle && !out.replay) die(2, "--bundle requires --replay");
   if (!Number.isFinite(out.timeout) || out.timeout <= 0) die(2, "--timeout must be a positive number of seconds");
+  if (!Number.isFinite(out.soak) || out.soak < 0) die(2, "--soak must be a non-negative number of seconds");
   return out;
 }
 
@@ -271,6 +286,7 @@ const READOUT_SCRIPT = `(() => {
   const feed = document.querySelector("#feed, .feed, #log");
   return {
     clock: text("#clock"),
+    tick: text("#tick-clock, #tick, .tick-clock"),
     scorebug: text("#scorebug"),
     status: statusNode ? (statusNode.innerText || statusNode.textContent || "").replace(/\\s+/g, " ").trim() : null,
     loading: text("#loading"),
@@ -294,6 +310,7 @@ async function main() {
   }
 
   const consoleLog = [];
+  const pageErrors = [];
   const bridge = [];
   const record = (line) => {
     consoleLog.push(line);
@@ -311,7 +328,10 @@ async function main() {
   await context.addInitScript(INIT_SCRIPT);
 
   page.on("console", (msg) => record(`[${msg.type()}] ${msg.text()}`));
-  page.on("pageerror", (err) => record(`[pageerror] ${err && err.message}`));
+  page.on("pageerror", (err) => {
+    pageErrors.push(String(err && err.message));
+    record(`[pageerror] ${err && err.message}`);
+  });
   page.on("requestfailed", (req) => {
     const failure = req.failure();
     record(`[requestfailed] ${req.url()} ${failure ? failure.errorText : ""}`);
@@ -351,6 +371,56 @@ async function main() {
     failure = `timeout: no data-replay-loaded="true" and no coworld-replay "ready" within ${args.timeout}s`;
   }
   try { readout = await page.evaluate(READOUT_SCRIPT); } catch { /* keep the last good readout */ }
+
+  // ------------------------------------------------------------------
+  // SOAK (--soak). LOADING IS NOT PLAYING. cogball 0.1.4 loaded, drew its
+  // first frame, set data-replay-loaded -- and then threw inside that frame's
+  // feed render. static_replay.js caught the throw, latched `failed` and
+  // dropped every later Worker message, so the board sat frozen on tick 2 with
+  // a full scorebug and a screenshot that looks like a working viewer. No load
+  // signal can see that; watching the readouts move can. Seeking cannot
+  // replace it either -- a scrub clears the feed queue and skips the very
+  // frame that killed this one.
+  // ------------------------------------------------------------------
+  let soak = null;
+  let playFailure = null;
+  if (loaded && args.soak > 0) {
+    // THREE samples, not two. A viewer that dies mid-boot still advances a
+    // tick or two first (cogball 0.1.4 froze on tick 2), so "it moved at some
+    // point during the soak" passes a corpse. The LAST interval is the one
+    // that has to move: still advancing at the end means still playing.
+    const tail = Math.min(2, args.soak / 2);
+    const before = readout;
+    await sleep(Math.max(0, args.soak - tail) * 1000);
+    let middle = before;
+    try { middle = await page.evaluate(READOUT_SCRIPT); } catch { /* keep the last good readout */ }
+    await sleep(tail * 1000);
+    let after = middle;
+    try { after = await page.evaluate(READOUT_SCRIPT); } catch { /* keep the last good readout */ }
+    const advanced = (a, b) => ["clock", "tick", "scorebug"].some(
+      (key) => a && b && a[key] !== b[key]);
+    const moved = advanced(before, middle) && advanced(middle, after);
+    soak = {
+      seconds: args.soak,
+      moved,
+      before: before ? { clock: before.clock, tick: before.tick } : null,
+      middle: middle ? { clock: middle.clock, tick: middle.tick } : null,
+      after: after ? { clock: after.clock, tick: after.tick } : null,
+      status: after ? after.status : null,
+      page_errors: pageErrors.slice(),
+    };
+    readout = after;
+    if (!moved) {
+      playFailure = `frozen: playback stopped advancing within ${args.soak}s ` +
+        `(tick ${JSON.stringify(soak.before && soak.before.tick)} -> ` +
+        `${JSON.stringify(soak.middle && soak.middle.tick)} -> ` +
+        `${JSON.stringify(soak.after && soak.after.tick)}, ` +
+        `status ${JSON.stringify(soak.status)})`;
+    } else if (pageErrors.length) {
+      playFailure = `uncaught page error: ${pageErrors[0]}`;
+    }
+    if (playFailure) failure = failure || playFailure;
+  }
 
   // ------------------------------------------------------------------
   // Scrub readouts. A replay that renders one frame and never advances is
@@ -400,6 +470,7 @@ async function main() {
       bridge_error: bridge.filter((e) => e.type === "error").map((e) => e.message),
     },
     scrub,
+    soak,
     failure: failure || null,
     console_tail: consoleLog.slice(-30),
     screenshot: pngPath,
@@ -409,7 +480,7 @@ async function main() {
   await browser.close().catch(() => {});
   if (hosted) await new Promise((r) => hosted.server.close(r));
 
-  if (!loaded) {
+  if (!loaded || playFailure) {
     console.error(`VIEWER SMOKE FAILED: ${failure}`);
     console.error(`  url        : ${target}`);
     console.error(`  elapsed    : ${elapsedMs} ms`);
@@ -439,6 +510,12 @@ async function main() {
     scorebug: summary.scorebug,
     feed_lines: summary.feed_lines,
   }));
+  if (soak) {
+    console.log(`soak: ${soak.seconds}s of playback kept advancing ` +
+      `(${JSON.stringify(soak.before && soak.before.tick)} -> ` +
+      `${JSON.stringify(soak.middle && soak.middle.tick)} -> ` +
+      `${JSON.stringify(soak.after && soak.after.tick)})`);
+  }
   if (scrub.length) {
     console.log("scrub readouts: " + scrub.map((s) => `${s.at}=${JSON.stringify(s.clock)}`).join("  "));
   }

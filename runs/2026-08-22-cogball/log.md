@@ -104,3 +104,5 @@
 2026-08-23T09:47:44Z 70 EXIT: Discord message posted and recorded; phase -> 80
 2026-08-23T09:47:44Z progress phase=70 marker=discord_message_id=1541021075784208456
 2026-08-23T09:47:44Z heartbeat phase=80
+2026-08-23T09:50:02Z 80 phase entered; LEARNINGS section appended, viewer_smoke.mjs --soak folded into template, 2 playbook Common-mistakes rows added; Asana close next
+2026-08-23T09:50:02Z heartbeat phase=80

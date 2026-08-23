@@ -316,6 +316,8 @@ Response `id` is the message id; record it in STATE.
 | Episode discarded ~20 min | game unaware of timeout — settle early inside 60 % of `episodeTimeoutSeconds` |
 | Zero episodes scheduled | `num_agents` missing from a variant / cert fixture |
 | Upload OK but not canonical | completion race — bump version, re-dispatch |
+| cow_id changed after a re-release | expected, always — cow ids are per-version; only the newest row is canonical and `game.canonical_coworld_id` auto-follows. Update STATE/VERIFY/announce to the new id (cogball 0.1.5, 2026-08-23) |
+| Viewer passes the CI load test but freezes mid-replay when played | mid-replay exception latches `static_replay.js` into `failed` (cogball 0.1.4: starter-inherited `pushFeed` signature drift); scrub readouts pass because seeking skips the killing frame. Run `viewer_smoke.mjs --soak` (uninterrupted playback must keep advancing) in the wasm-viewer job |
 | League "works" but looks dead | only fillers playing — the whole point is champions visibly playing well |
 | `softmax player use <name>` fails | use the `ply_id`; don't `create` (409 at cap) |
 | `upload-policy`: "Docker image is not available locally" | `upload-coworld` pruned the image — policies must run **before** upload-coworld in the workflow |
