@@ -29,3 +29,4 @@
 2026-08-23T11:19:45Z 30 r1 fixer dispatched thread=sthr_019g963yEg3dbGUtLdBNAAZE (coordinator rulings: dead chrome ids may be hidden/removed rather than wired; momentum layer stays deferred; F25 needs a real committed sweep harness)
 2026-08-23T14:36:17Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-08-23T14:36:17Z 00 resume at phase 30 attempt=1 session=a0e45f38
+2026-08-23T14:37:54Z 30 r1 fixer re-dispatch (previous fixer pushed 17 commits F2..F25, CI green run=32638156016 sha=b732790f, but r1-fixes.md missing; new fixer reconciles existing commits + addresses F1,F3,F5,F17,F19,F22,F23,F24 and writes the artifact)
