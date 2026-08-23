@@ -26,3 +26,7 @@
 2026-08-23T22:50:34Z progress phase=30 marker=r1-fixes.md
 2026-08-23T22:50:34Z 30 r1 dispatching judge
 2026-08-23T22:50:34Z heartbeat phase=30
+2026-08-23T23:04:41Z 30 r1 judge returned r1-verdict.md: BLOCKING: 1 — [static-viewer] replay_broadcast.html:1460 markBeat shadowing makes beat buttons dead code (14d); all r1 review findings resolved/rebutted
+2026-08-23T23:04:41Z progress phase=30 marker=r1-verdict.md
+2026-08-23T23:04:41Z 30 round -> 2, dispatching reviewer
+2026-08-23T23:04:41Z heartbeat phase=30
