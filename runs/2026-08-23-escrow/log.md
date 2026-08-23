@@ -28,3 +28,5 @@
 2026-08-23T14:42:05Z 30 r1 review returned: 10 findings (F1 blocking: LLM-fallback seats recorded scripted:false; F2-F10 advisory), 3 could-not-determine; reviews/r1-review.md
 2026-08-23T14:42:05Z progress phase=30 marker=reviews/r1-review.md
 2026-08-23T14:42:05Z 30 r1 fixer dispatch pending
+2026-08-23T14:42:46Z 30 r1 fixer dispatched (thread sthr_01BokQzMn9Rhy2r9mTLJgoAh)
+2026-08-23T14:42:46Z heartbeat phase=30
