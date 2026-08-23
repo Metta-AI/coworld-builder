@@ -49,3 +49,14 @@
 2026-08-23T05:38:51Z 40 EXIT: release-result.json committed; phase -> 50
 2026-08-23T05:38:51Z progress phase=40 marker=release-run-32620306477
 2026-08-23T05:38:51Z heartbeat phase=50
+2026-08-23T05:42:09Z 50 seed 200: lseed_833e8109 league_id=league_e87130ef-ecc6-49d4-9bc1-4014b7141df5
+2026-08-23T05:42:09Z 50 division 200: div_45c40cad-ef84-4d48-a733-59e55f80e24c (Competition, level 1); settings 200 (elo/mean, round_robin, filler_policy, round_interval_minutes=15)
+2026-08-23T05:42:09Z 50 champion1 submit run=32620911016 ok:true sub_71aa526b (cogball-total:v2, daveey)
+2026-08-23T05:42:09Z 50 champion2 submit run=32620938828 ok:true sub_e33fa105 (cogball-counter:v2, daveey-1, player_name verified on policy-versions row 40f864bb)
+2026-08-23T05:42:09Z 50 policy-version UUIDs verified from API: total:v2=0f2edcb1 counter:v2=40f864bb formation:v2=7c11dd63 swarm:v2=259d11a4 (v1 rows from stale 0.1.2 dispatch ignored)
+2026-08-23T05:42:09Z 50 fillers 200: formation:v2 + swarm:v2 registered BEFORE trigger; response contains exactly those two, neither champion
+2026-08-23T05:42:09Z 50 unpause 200 paused:false; trigger-round 200 workflow_id=ladder-league_e87130ef
+2026-08-23T05:42:09Z 50 rounds: round 1 pending, entrant_attributions = both champions (0f2edcb1 + 40f864bb)
+2026-08-23T05:42:09Z 50 EXIT: both champions entrants, fillers set, unpaused, round pending; phase -> 60
+2026-08-23T05:42:09Z progress phase=50 marker=league_e87130ef-ecc6-49d4-9bc1-4014b7141df5
+2026-08-23T05:42:09Z heartbeat phase=60
