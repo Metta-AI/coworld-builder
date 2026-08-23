@@ -16,3 +16,8 @@
 2026-08-23T00:45:03Z 00 operator comment acknowledged (David Bloomin / daveey, 2026-08-22T23:32:06Z, run task): use coworld-ctf (paintbot) as starter, NOT cogame-moba; redo phase 10 against ctf (physics sim replaces ctf arena rules, viewer chrome/replay/CI wiring verbatim); matches playbook commit 7572a82. Applying: STATE.starter=Metta-AI/coworld-ctf, STATE.phase 20->10 (operator-directed rollback), design round 2 dispatched. moba-based repo content at 67ab6d3 will be replaced by normal commits (no force-push, no deletion)
 2026-08-23T00:45:03Z 10 dispatching designer sub-agent round 2 (operator-directed ctf redo); output=/workspace/scratch/cogame-cogball/docs/plans/2026-08-22-cogball-design-v2.md
 2026-08-23T00:45:03Z heartbeat phase=10
+2026-08-23T01:14:45Z 10 designer returned round 2 (ctf redo); note at scratch docs/plans/2026-08-22-cogball-design-v2.md (1188 lines)
+2026-08-23T01:14:45Z 10 checklist round 2: starter[x] num_agents[x] resolution-order[x] scoring[x] end-conditions[x] observation[x] reply-caps-rune[x] both-policies[x] parallel-batch-budget[x] degrade-never-hang[x] name-spaces[x] viewer-static-360px[x] replay-self-sufficient[x] packaging-docs-protocols[x] tests[x] out-of-scope[x] — ACCEPTED round 2 (binary COWLDBAL replay deviation explicitly handled: SMOKE_REQUIRE_REPLAY_JSON=0 + tools/replay_summary.py as check-4 substitute)
+2026-08-23T01:14:45Z 10 v2 design.md copied to runs/2026-08-22-cogball/design.md (v1 preserved as design-v1-moba-superseded.md); phase -> 20
+2026-08-23T01:14:45Z progress phase=10 marker=runs/2026-08-22-cogball/design.md(v2)
+2026-08-23T01:14:45Z heartbeat phase=20
