@@ -28,3 +28,4 @@
 2026-08-23T02:02:33Z progress phase=20 marker=ci-run-32611650222
 2026-08-23T02:02:33Z 20 -> 30 phase transition review_round=1
 2026-08-23T02:02:33Z heartbeat phase=30
+2026-08-23T02:04:05Z 30 r1 reviewer dispatched output=runs/2026-08-22-raid/reviews/r1-review.md
