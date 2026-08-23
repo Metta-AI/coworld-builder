@@ -61,3 +61,7 @@
 2026-08-23T21:48:10Z 60 -> 70 phase transition: entering announce
 2026-08-23T21:48:10Z heartbeat phase=70
 2026-08-23T21:49:26Z 70 announce attempted_at written before POST
+2026-08-23T21:49:48Z 70 announce msg=1541202774929186886 (200, flags=4, embeds=[])
+2026-08-23T21:49:48Z progress phase=70 marker=discord_message_id=1541202774929186886
+2026-08-23T21:49:48Z 70 -> 80 phase transition: entering close
+2026-08-23T21:49:48Z heartbeat phase=80
