@@ -33,16 +33,34 @@
     "division": "div_349162e2-db36-4d23-a13f-49b0bf84df8e"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "id": "round_f7ee30ea-c9b4-4b35-b127-d754dada7d9b",
+        "round_number": 1,
+        "status": "completed",
+        "completed_at": "2026-08-23T15:21:50.690956Z"
+      },
+      {
+        "id": "round_979c1bf0-8ff6-487b-abb6-c5fcdfe089e4",
+        "round_number": 2,
+        "status": "completed",
+        "completed_at": "2026-08-23T15:36:51.388422Z"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/b0474583-f10a-4a2c-b062-fc65175d6d64.replay",
+    "iframe_static": true,
+    "iframe_src": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_69f7b3ab-b32d-471d-874a-3ff32543b6f6/sha256%3A38c6a5c2bc32a7e1cfe66ee6b1c98941974a72d50a93a385a7d1cb4d80ef99fc/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fb0474583-f10a-4a2c-b062-fc65175d6d64.replay&v=2",
+    "episode_request": "ereq_49c11f68-c5df-4791-8a45-ac1743ccf6d2",
+    "viewer_check_run": "32649388472",
+    "viewer_loaded": true,
+    "verdict": "all-true 8/8"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T15:31:33Z",
+  "heartbeat_at": "2026-08-23T15:48:21Z",
   "session_ended_at": null,
   "session_id": "a0e45f38",
   "log": "runs/2026-08-23-gridlock/log.md"

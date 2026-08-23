@@ -63,3 +63,16 @@
 2026-08-23T15:25:58Z heartbeat phase=60
 2026-08-23T15:31:31Z heartbeat phase=60
 2026-08-23T15:31:33Z heartbeat phase=60
+2026-08-23T15:36:24Z heartbeat phase=60
+2026-08-23T15:41:08Z heartbeat phase=60
+2026-08-23T15:42:20Z heartbeat phase=60
+2026-08-23T15:44:56Z heartbeat phase=60
+2026-08-23T15:48:21Z 60 check1 TRUE rounds completed=2 (r1 15:21:50Z, r2 15:36:51Z) both after fillers set 15:19:01Z; 0 failed/discarded
+2026-08-23T15:48:21Z 60 check2 TRUE leaderboard daveey rank1 gridlock-flowwright:v1 elo=1030.53 rp=2 wins=2 | daveey-1 rank2 gridlock-backstreet:v1 elo=969.47 rp=2 wins=0; fillers absent
+2026-08-23T15:48:21Z 60 check3 TRUE ereq_49c11f68-c5df-4791-8a45-ac1743ccf6d2 status=completed replay_url set; seats daveey/daveey-1 is_filler=false, seats 2-3 beeline is_filler=true
+2026-08-23T15:48:21Z 60 check4 TRUE replay 360837B strict-JSON ok protocol=gridlock.replay.v1 reason=complete end_rule=full_time; champion plans 40/40 source=llm, fallbacks 0, 38 distinct notes
+2026-08-23T15:48:21Z 60 check5 TRUE hosted log CLEAN (0 hits raw and un-escaped) for falling back|LLM provider is unavailable|cut off at max_tokens|rejected; game container reason=complete
+2026-08-23T15:48:21Z 60 check6 TRUE iframe src static /v2/coworlds/replays/static/cow_69f7b3ab/sha256:38c6a5c2.../index.html?replay=... ready=true; featured match from SSR state.playlist[0] = gridlock.r2.e1 (raw-HTML grep empty, page client-rendered)
+2026-08-23T15:48:21Z 60 check7 TRUE certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)" read from committed runs/2026-08-23-gridlock/release-result.json (cb202b3), no re-download needed
+2026-08-23T15:48:21Z 60 check8 TRUE viewer-check run=32649388472 conclusion=success loaded=true ms=3245 bridge=[loading,ready,ready]; clocks 0%=03:20 TURN 0/20 50%=01:37 TURN 10/20 100%=00:00 TURN 19/20; feed_lines=6; finding: corner HUD transposes Cobalt/Copper totals (184<->186) vs results/end-card/depot chips
+2026-08-23T15:48:21Z 60 VERIFY.md written verdict=all-true 8/8; waited 21m of 75m bound (bound NOT hit)

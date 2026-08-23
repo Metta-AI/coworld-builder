@@ -1,0 +1,3 @@
+{"loaded":true,"ms":3245,"clock":"03:20 TURN 0/20","scorebug":"daveey Saffron 0 Baseline Cobalt 0 daveey-1 Copper 0 Baseline (2) Verde 0","feed_lines":6}
+scrub readouts: 0%="03:20 TURN 0/20"  50%="01:37 TURN 10/20"  100%="00:00 TURN 19/20"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

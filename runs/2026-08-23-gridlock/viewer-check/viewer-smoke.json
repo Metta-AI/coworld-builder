@@ -1,0 +1,45 @@
+{
+  "loaded": true,
+  "ms": 3245,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_69f7b3ab-b32d-471d-874a-3ff32543b6f6/sha256%3A38c6a5c2bc32a7e1cfe66ee6b1c98941974a72d50a93a385a7d1cb4d80ef99fc/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fb0474583-f10a-4a2c-b062-fc65175d6d64.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "03:20 TURN 0/20",
+  "scorebug": "daveey Saffron 0 Baseline Cobalt 0 daveey-1 Copper 0 Baseline (2) Verde 0",
+  "status": "",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 6,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "03:20 TURN 0/20"
+    },
+    {
+      "at": "50%",
+      "clock": "01:37 TURN 10/20"
+    },
+    {
+      "at": "100%",
+      "clock": "00:00 TURN 19/20"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
