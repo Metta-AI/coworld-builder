@@ -5,7 +5,7 @@
   "slug": "gridlock",
   "repo": "https://github.com/Metta-AI/cogame-gridlock",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T09:01:25Z",
+  "heartbeat_at": "2026-08-23T09:18:10Z",
   "session_ended_at": null,
   "session_id": "ffe374dd",
   "log": "runs/2026-08-23-gridlock/log.md"
