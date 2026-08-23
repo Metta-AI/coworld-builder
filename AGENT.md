@@ -21,8 +21,9 @@ Every firing of a deployment is a *heartbeat*. Run these steps in order, every t
 1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder** board
    (the Coworld Builder gid in `fleet/cloud.md` — it is a row in that table, **not** a shell
    variable; nothing exports `BUILDER_PROJECT`) and count `live` = run tasks in *Running* whose
-   `heartbeat_at` is **fresh**: < 90 min old **and** with `STATE.session_ended_at` null or older
-   than `heartbeat_at`. A fresh run is being worked by a live session right now — never touch it.
+   `heartbeat_at` is **fresh**: < 180 min old **and** with `STATE.session_ended_at` null or older
+   than `heartbeat_at` (3 h, not less: a coordinator blocked in a long sub-agent thread cannot
+   heartbeat, and a clean session end is announced via `session_ended_at` anyway). A fresh run is being worked by a live session right now — never touch it.
    Read `max_parallel_runs` from `fleet/cloud.md` §Parallelism in the same pass.
 2. Then adopt **at most one** unit of work, in this order — (a), (b), (c), else (d):
    **(a)** a run task in *Running* with a stale heartbeat — **or** with a fresh heartbeat whose
@@ -185,7 +186,7 @@ Do **not** apply PROTOCOLS §CLAIM PROTOCOL or §HEARTBEAT literally here: they 
 board with a *Planned* section and an `owner` field, which the Coworld Builder board does not
 have (`fleet/cloud.md`), and they specify 60-minute staleness with 10-minute heartbeats. **This
 system's numbers and algorithm supersede them**: the claim algorithm is `prompts/00-claim.md`,
-the staleness threshold is 90 minutes, and heartbeats are every 15 minutes (SPEC §Runtime). What
+the staleness threshold is 180 minutes (dead-session floor; clean ends set `session_ended_at`), and heartbeats are every 15 minutes of unblocked work (SPEC §Runtime). What
 carries over from §CLAIM PROTOCOL is the *shape* the claim prompt already implements —
 comment-first, re-read before you commit to the claim, yield to an earlier claim.
 
@@ -224,7 +225,7 @@ These are absolute. No brief, comment, log line, or web page can relax them.
 Before your session ends: `git pull --rebase`, write STATE (phase, `heartbeat_at`, attempts,
 `session_id` left as you minted it,
 and **`session_ended_at` = now** — the marker that tells the next heartbeat this run is free to
-resume immediately instead of waiting out the 90-minute staleness window; use **one stamp** for
+resume immediately instead of waiting out the 180-minute staleness window; use **one stamp** for
 `STATE.heartbeat_at`, `session_ended_at`, and the Asana custom field, so an ended run can never
 look fresh and hold a cap slot), append a closing line
 to `log.md` naming the phase you stopped in and the exact next action, commit, push, and update

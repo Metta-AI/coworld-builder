@@ -65,12 +65,15 @@ just a run you do not touch.
    If the field is empty or absent, fall back to the last `heartbeat` line in `runs/<run>/log.md`,
    whose format is pinned as `<UTC ISO-8601> heartbeat phase=<nn>` (e.g.
    `2026-08-22T16:40:00Z heartbeat phase=40`). Nothing else counts as a heartbeat line.
-   - Any *Running* task with `heartbeat_at` **< 90 min old** *and* whose
+   - Any *Running* task with `heartbeat_at` **< 180 min old** *and* whose
      `runs/<run>/STATE.json` has `session_ended_at` null or older than `heartbeat_at` is
-     **live**: a session is working it right now. Count it into `live` and **leave it alone** —
+     **live**: a session is working it right now (a coordinator blocked inside a long builder or
+     reviewer thread cannot heartbeat — 2026-08-23 Raid sat 74 min without one while its builder
+     ran — so the floor is deliberately 3 h, not 90 min; a session that ends cleanly says so via
+     `session_ended_at`, which is the normal hand-off). Count it into `live` and **leave it alone** —
      do not read its files as work, do not write into its directory, do not touch its task. It
      does not end this heartbeat; it only consumes one slot of `max_parallel_runs`.
-   - A *Running* task with a **stale** `heartbeat_at` (≥ 90 min), **or** one whose
+   - A *Running* task with a **stale** `heartbeat_at` (≥ 180 min — a dead session), **or** one whose
      `session_ended_at` is ≥ its `heartbeat_at` (the previous session ended deliberately and
      said so) → it is yours. Go to step 5 (resume). The second case is what keeps a
      multi-session run moving on the very next hourly firing instead of every other one.

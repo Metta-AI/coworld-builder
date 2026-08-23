@@ -77,10 +77,10 @@ Rules (`prompts/00-claim.md` step 2, `AGENT.md` §STATE, log, heartbeat discipli
 - If the field is empty or absent, the fallback is the last
   `<UTC ISO-8601> heartbeat phase=<nn>` line in `runs/<run>/log.md` — that exact format, and
   nothing else counts.
-- Fresh (< 90 min) **and** `STATE.session_ended_at` null or older: a session is working this run
+- Fresh (< 180 min) **and** `STATE.session_ended_at` null or older: a session is working this run
   right now → any other heartbeat leaves it alone and counts it toward `live`
   (`max_parallel_runs`, `fleet/cloud.md` §Parallelism). Several runs fresh at once is normal.
-- Stale (≥ 90 min), **or** `session_ended_at` ≥ `heartbeat_at`: the run is yours → resume at
+- Stale (≥ 180 min — a dead session), **or** `session_ended_at` ≥ `heartbeat_at`: the run is yours → resume at
   `STATE.json.phase`, through the session-nonce guard (`prompts/00-claim.md` step 5.0).
 
 ## Subtasks

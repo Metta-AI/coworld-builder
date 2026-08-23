@@ -31,14 +31,14 @@ that names exactly what is needed, and exits.
   1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder**
      board (the Coworld Builder gid in `fleet/cloud.md`; it is a table row, not an environment
      variable) and compute `live` = the number of runs in *Running* whose `heartbeat_at` is
-     **fresh** — < 90 min old **and** with no `STATE.session_ended_at ≥ heartbeat_at`. That is
+     **fresh** — < 180 min old **and** with no `STATE.session_ended_at ≥ heartbeat_at`. That is
      exactly the existing freshness rule; only what is done with it changed. A fresh run belongs
      to a session that is still working it: never touch it.
   2. Then adopt **at most one** unit of work, in this order — (a), (b), (c), else (d):
      **(a)** a run in *Running* with a **stale** heartbeat, **or** with a fresh heartbeat whose
      `STATE.session_ended_at` is ≥ `heartbeat_at` (the last session ended cleanly and said so),
      → it is yours: **resume** at `STATE.json.phase`. Without that marker a run that needs more
-     than one session would look alive for the full 90 minutes after its session died, and — the
+     than one session would look alive for the full 180 minutes after its session died, and — the
      crons being hourly — would advance only on the next deployment's firing.
   2a. **Every resume — from (a) or (b) — is guarded by a session nonce.** Two heartbeats
      can observe the same free run in the same minute (two crons 20 minutes apart plus a manual
@@ -239,7 +239,7 @@ drifted.
 
 `session_ended_at` is written by the closing step of a heartbeat that ended deliberately (SPEC
 §Runtime step 3 / `AGENT.md` §Ending a heartbeat) and cleared by the next session's resume; a
-session that crashed leaves it null or stale, which is exactly the 90-minute case.
+session that crashed leaves it null or stale, which is exactly the 180-minute case.
 
 `session_id` is the resuming session's **nonce** — 8 hex chars minted at resume, written with
 `heartbeat_at`, and echoed in the `00 resume at phase <n> attempt=<k> session=<nonce>` line of
