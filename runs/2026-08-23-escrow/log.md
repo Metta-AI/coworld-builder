@@ -43,3 +43,5 @@
 2026-08-23T15:16:20Z 30 r2 review returned: 5 findings (F1 blocking = grid-harness tuning record still absent; F2-F5 advisory); four r1 fix commits trace clean; reviews/r2-review.md
 2026-08-23T15:16:20Z progress phase=30 marker=reviews/r2-review.md
 2026-08-23T15:16:20Z 30 r2 fixer dispatch pending
+2026-08-23T15:17:02Z 30 r2 fixer dispatched (thread sthr_01NwtfLiAwaGsSnPg8gMFM13); mandate: real grid harness + committed tuning record + CI wiring for F1, F2-F5 fix-or-dismiss
+2026-08-23T15:17:02Z heartbeat phase=30
