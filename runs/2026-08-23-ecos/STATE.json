@@ -46,8 +46,8 @@
     "discord_message_id": "1541089462824599743"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T14:21:07Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-23T14:22:11Z",
+  "session_ended_at": "2026-08-23T14:22:11Z",
   "session_id": "d859f357",
   "log": "runs/2026-08-23-ecos/log.md"
 }

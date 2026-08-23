@@ -101,3 +101,7 @@
 2026-08-23T14:19:30Z 70 -> 80 phase transition
 2026-08-23T14:19:30Z heartbeat phase=80
 2026-08-23T14:21:07Z 80 LEARNINGS entry appended; 3 rows folded into playbooks/make-coworld.md Common mistakes
+2026-08-23T14:22:11Z 80 executive summary posted (run task + idea task); all 8 phase subtasks complete; idea 1217704767328275 completed; run task moved to Done
+2026-08-23T14:22:11Z progress phase=80 marker=run-task-done
+2026-08-23T14:22:11Z 80 close complete — run finished. Session ends; no next action.
+2026-08-23T14:22:11Z heartbeat phase=80
