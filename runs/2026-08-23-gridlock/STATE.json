@@ -1,0 +1,41 @@
+{
+  "run": "2026-08-23-gridlock",
+  "idea_task": "1217704767292352",
+  "run_task": "1217752130347986",
+  "slug": "gridlock",
+  "repo": "https://github.com/Metta-AI/cogame-gridlock",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-23T09:00:16Z",
+  "session_ended_at": null,
+  "session_id": "ffe374dd",
+  "log": "runs/2026-08-23-gridlock/log.md"
+}
