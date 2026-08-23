@@ -1,0 +1,41 @@
+{
+  "run": "2026-08-23-rumor",
+  "idea_task": "1217704658766385",
+  "run_task": "1217754414846416",
+  "slug": "rumor",
+  "repo": "https://github.com/Metta-AI/cogame-rumor",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-23T16:21:18Z",
+  "session_ended_at": null,
+  "session_id": "af8f69ce",
+  "log": "runs/2026-08-23-rumor/log.md"
+}
