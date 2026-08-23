@@ -37,3 +37,7 @@
 2026-08-23T05:40:28Z 00 resume at phase 30 attempt=1 session=36cbd675
 2026-08-23T05:41:56Z 30 r1 fixer re-dispatched (prior session died before r1-fixes.md; file absent) output=runs/2026-08-22-raid/reviews/r1-fixes.md
 2026-08-23T05:41:56Z heartbeat phase=30
+2026-08-23T06:10:04Z 30 r1 fixer returned: 16 commits (13 fixed incl blocking F1, 6 evidence-no-change), ci.yml run 32621942459 success at sha 6a8a68c23a606cf7c2046568800c753ecee3dd04
+2026-08-23T06:10:04Z progress phase=30 marker=r1-fixes.md
+2026-08-23T06:10:04Z 30 r1 judge dispatched output=runs/2026-08-22-raid/reviews/r1-verdict.md sha=6a8a68c
+2026-08-23T06:10:04Z heartbeat phase=30
