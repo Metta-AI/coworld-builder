@@ -1,0 +1,141 @@
+# Load a LIVE static replay viewer in a real browser and report what it draws.
+#
+# This is phase 60 check 8's instrument. The coworld-builder sandbox has no
+# screen and no browser, so the verifier cannot render the hosted viewer
+# itself; it dispatches this workflow against the iframe `src` it read in
+# check 6 and reads the result out of the artifact.
+#
+#   gh workflow run viewer-check.yml -R Metta-AI/coworld-builder \
+#     -f url='https://api.observatory.softmax-research.net/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 replay url>'
+#
+# It exists because cogame-lantern shipped a viewer that deadlocked forever
+# (2026-08-23): every asset was present and 200, `tell("ready")` was in the
+# JS, and the page never drew a frame because the emscripten MODULARIZE build
+# flags and the JS bootstrap came from two different starters. Fetching assets
+# cannot see that. Opening the page can.
+name: viewer-check
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Full static-viewer URL, including ?replay=<s3 url> (the iframe src from check 6)'
+        required: true
+        type: string
+      timeout:
+        description: 'Seconds to wait for the viewer to draw its first frame'
+        required: false
+        default: '90'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  viewer-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Pinned in both halves: the npm module and the browser download. Bump
+      # them together -- a mismatched pair 404s on the browser fetch.
+      - name: Install Playwright (pinned 1.55.0)
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright@1.55.0
+          npx --yes playwright@1.55.0 install --with-deps chromium
+
+      - name: Load the viewer
+        id: smoke
+        env:
+          URL: ${{ inputs.url }}
+          TIMEOUT: ${{ inputs.timeout }}
+        run: |
+          set -uo pipefail
+          echo "url: ${URL}"
+          node templates/tools/ci/viewer_smoke.mjs \
+            --url "${URL}" \
+            --timeout "${TIMEOUT:-90}" \
+            --out "${GITHUB_WORKSPACE}" \
+            > smoke-stdout.txt 2> smoke-stderr.txt
+          status=$?
+          echo "exit_code=${status}" >> "$GITHUB_OUTPUT"
+          cat smoke-stdout.txt
+          cat smoke-stderr.txt >&2
+          exit "${status}"
+        continue-on-error: true
+
+      - name: Summary
+        if: always()
+        env:
+          URL: ${{ inputs.url }}
+        run: |
+          set -uo pipefail
+          {
+            echo "# viewer-check"
+            echo
+            echo "**URL**"
+            echo
+            echo '```'
+            echo "${URL}"
+            echo '```'
+            echo
+            echo "## Result"
+            echo
+            echo '```json'
+            if [ -s viewer-smoke.json ]; then
+              # The one-line summary the verifier pastes into VERIFY.md, then
+              # the three scrub readouts (0 % / 50 % / 100 %). Readouts that do
+              # not differ mean a replay that renders but never advances --
+              # check 8 is FALSE in that case even with loaded:true.
+              node -e '
+                const s = require("./viewer-smoke.json");
+                console.log(JSON.stringify({loaded: s.loaded, ms: s.ms, clock: s.clock, scorebug: s.scorebug, feed_lines: s.feed_lines}));
+                console.log("signals: " + JSON.stringify(s.signals));
+                console.log("scrub readouts: " + (s.scrub && s.scrub.length ? s.scrub.map(x => x.at + "=" + JSON.stringify(x.clock)).join("  ") : "(no #scrub in this shell)"));
+                if (s.failure) console.log("failure: " + s.failure);
+              '
+            else
+              echo '{"loaded": false, "failure": "viewer_smoke.mjs produced no viewer-smoke.json"}'
+            fi
+            echo '```'
+            echo
+            echo "## stderr (last 60 lines)"
+            echo
+            echo '```'
+            tail -60 smoke-stderr.txt 2>/dev/null || echo "(none)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: viewer-check
+          path: |
+            viewer-smoke.png
+            viewer-smoke.json
+            smoke-stdout.txt
+            smoke-stderr.txt
+          if-no-files-found: warn
+          retention-days: 30
+
+      # The gate. `continue-on-error` above only exists so the summary and the
+      # artifact are produced for a red run; the run still fails here.
+      - name: Fail if the viewer did not load
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s viewer-smoke.json || {
+            echo "::error::no viewer-smoke.json: the load test did not run"; exit 1; }
+          loaded="$(node -p 'require("./viewer-smoke.json").loaded === true')"
+          if [ "${loaded}" != "true" ]; then
+            echo "::error::the viewer did not load: $(node -p 'require("./viewer-smoke.json").failure || "unknown"')"
+            exit 1
+          fi
+          echo "viewer loaded"

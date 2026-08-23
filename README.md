@@ -92,6 +92,14 @@ environment id, the vault ids, the Asana gids and the Discord ids live; the agen
 - **Change a CI workflow all future coworlds get** → edit `templates/`. Existing coworld repos
   keep the copy they were built with.
 
+This repo has two workflows of its own: `.github/workflows/propagate-secrets.yml` (one-time
+setup, below) and `.github/workflows/viewer-check.yml` — the verifier's browser. The sandbox has
+no screen, so phase 60 check 8 dispatches `viewer-check.yml` with the live iframe `src` and it
+opens the hosted replay viewer in headless chromium (Playwright, pinned 1.55.0, running
+`templates/tools/ci/viewer_smoke.mjs`), then uploads a screenshot and a JSON readout. It exists
+because a bundle whose every asset returns 200 can still never draw a frame — cogame-lantern,
+2026-08-23.
+
 ## One-time human setup
 
 1. **CI credentials** live as repo secrets on this repo (`SOFTMAX_TOKEN`, `ANTHROPIC_API_KEY`,
