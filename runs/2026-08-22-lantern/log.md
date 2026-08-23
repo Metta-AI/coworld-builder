@@ -27,3 +27,7 @@
 2026-08-23T02:27:58Z 30 r1 judge dispatched (thread sthr_018yaeR2JWbdgS48o7nLjoGc, fresh context); judging sha 024144d
 2026-08-23T02:27:58Z progress phase=30 marker=reviews/r1-fixes.md
 2026-08-23T02:27:58Z heartbeat phase=30
+2026-08-23T02:38:22Z 30 r1 judge returned: blocking: 0 / BLOCKING: 0 (F1 refuted-as-fixed at 024144d, item-7 tuning settled by grid record, independent checklist pass all 12 + batch rule); reviews/r1-verdict.md committed
+2026-08-23T02:38:22Z 30 EXIT: zero blocking findings in round 1; phase -> 40
+2026-08-23T02:38:22Z progress phase=30 marker=reviews/r1-verdict.md
+2026-08-23T02:38:22Z heartbeat phase=40

@@ -5,7 +5,7 @@
   "slug": "lantern",
   "repo": "https://github.com/Metta-AI/cogame-lantern",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T01:24:11Z",
+  "heartbeat_at": "2026-08-23T02:38:22Z",
   "session_ended_at": null,
   "session_id": "70b78c30",
   "log": "runs/2026-08-22-lantern/log.md"
