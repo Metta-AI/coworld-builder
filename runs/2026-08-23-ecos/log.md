@@ -68,3 +68,23 @@
 2026-08-23T13:47:10Z 50 -> 60 phase transition; STATE.phase=60 pushed before verifier dispatch
 2026-08-23T13:47:10Z heartbeat phase=60
 2026-08-23T13:48:05Z 60 verifier dispatched thread=sthr_01SdpCZfN9Y52nKSoRXxVTm7 (8 checks; 75-min poll bound; round>=2 rule; doctrine-source adaptation for check 4)
+2026-08-23T13:48:20Z 60 poll 1: rounds r2=completed r1=failed(pre-filler, excluded); need a 2nd completed round_number>=2
+2026-08-23T13:49:00Z 60 check2 leaderboard TRUE (daveey-1 rank1 1016.0 rp=1; daveey rank2 984.0 rp=1; no filler rows)
+2026-08-23T13:49:30Z 60 check5 hosted log ereq_5a49b912 CLEAN (200, 46901 bytes)
+2026-08-23T13:49:32Z 60 check8 viewer-check dispatched run=32643528839 (r2 replay)
+2026-08-23T13:50:19Z 60 check8 run 32643528839 green: loaded=true ms=3069 clock advances 0%/50%/100% distinct
+2026-08-23T13:50:30Z heartbeat phase=60
+2026-08-23T13:55:19Z 60 poll 2: still only r2 completed
+2026-08-23T14:00:25Z 60 poll 3: still only r2 completed
+2026-08-23T14:05:17Z 60 poll 4: round 3 (round_b5bc0c39) completed -> check1 satisfied (r2, r3 both round_number>=2)
+2026-08-23T14:05:20Z heartbeat phase=60
+2026-08-23T14:06:00Z 60 check1 TRUE (r2 completed 13:48:08Z, r3 completed 14:03:18Z; r1 failed=pre-filler, excluded with error quoted)
+2026-08-23T14:06:00Z 60 check2 TRUE (daveey-1 rank1 1030.53 rp=2; daveey rank2 969.47 rp=2; fillers absent)
+2026-08-23T14:06:00Z 60 check3 TRUE (round_b5bc0c39 -> ereq_714ef6a3 completed, replay 91e62cde, seats daveey/daveey-1/steward-filler)
+2026-08-23T14:06:10Z 60 check4 TRUE (2273433 bytes strict JSON, protocol ecos.replay.v1 = manifest, reason=complete ending=ten_generations, champion doctrines 20/20 llm, 0 fallback)
+2026-08-23T14:06:15Z 60 check5 TRUE (logs 200 46960 bytes, grep CLEAN, 20/20 bedrock calls completed, 0 fallback)
+2026-08-23T14:06:20Z 60 check6 TRUE (raw-html grep empty=client-rendered; SSR playlist[0]=ecos.r3.e1 featured; replays/session -> static/<cow>/<manifest_sha>/index.html?replay=... ready=true; no /client/replay)
+2026-08-23T14:06:25Z 60 check7 TRUE (committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)")
+2026-08-23T14:07:30Z 60 check8 TRUE (viewer-check run=32644408716 green: loaded=true ms=2900, clocks 0%/50%/100% = GEN1 TICK3 / GEN6 TICK315 / GEN10 10 GENERATIONS, no failure; artifacts in viewer-check/)
+2026-08-23T14:16:00Z 60 VERIFY.md written: 8/8 TRUE, verdict all-true
+2026-08-23T14:16:00Z heartbeat phase=60

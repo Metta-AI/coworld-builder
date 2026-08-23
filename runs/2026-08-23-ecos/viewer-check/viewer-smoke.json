@@ -1,0 +1,37 @@
+{
+  "loaded": true,
+  "ms": 2900,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_7f960dd9-bdfb-49a3-b0b6-09a56cf1905f/sha256%3Abbc83b693c53fe7c391a6a92809a7a3fd106988b899da01ec14f1fe8234335b8/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F91e62cde-5d4b-42a9-bda2-3fdac44680c8.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "GEN 1 / 10 TICK 3 OF 600",
+  "scorebug": "DAVEEY 10 PREDATORS B 2.17k · 0.00 BASELINE 80 GRAZERS B 3.49k · 0.00 GEN 1 / 10 TICK 3 OF 600 DAVEEY-1 164 GRASS B 14.3k · 0.00",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "GEN 1 / 10 TICK 3 OF 600"
+    },
+    {
+      "at": "50%",
+      "clock": "GEN 6 / 10 TICK 315 OF 600"
+    },
+    {
+      "at": "100%",
+      "clock": "GEN 10 / 10 10 GENERATIONS"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

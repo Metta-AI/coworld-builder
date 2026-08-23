@@ -1,0 +1,3 @@
+{"loaded":true,"ms":2900,"clock":"GEN 1 / 10 TICK 3 OF 600","scorebug":"DAVEEY 10 PREDATORS B 2.17k · 0.00 BASELINE 80 GRAZERS B 3.49k · 0.00 GEN 1 / 10 TICK 3 OF 600 DAVEEY-1 164 GRASS B 14.3k · 0.00","feed_lines":0}
+scrub readouts: 0%="GEN 1 / 10 TICK 3 OF 600"  50%="GEN 6 / 10 TICK 315 OF 600"  100%="GEN 10 / 10 10 GENERATIONS"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
