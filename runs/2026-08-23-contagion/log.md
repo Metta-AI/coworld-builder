@@ -40,3 +40,5 @@
 2026-08-23T12:09:24Z 40 EXIT release-result verified: ok/canonical/secret_put true, certify.ok true, liveness skipped-static, 4 policies v1, broker owned by ply_bac48eb1; phase 40 -> 50
 2026-08-23T12:09:24Z progress phase=40 marker=release-run-32638256991
 2026-08-23T12:09:24Z heartbeat phase=50
+2026-08-23T12:10:58Z 50 seed 200 lseed_e375c698; league=league_53d9ccfb-c943-4b5c-a89f-b9b149365df1 division=div_16e3c809-fd49-46f5-8eae-4fdea07d7733 settings 200 (elo mean, round_robin, filler_policy, 15min)
+2026-08-23T12:10:58Z heartbeat phase=50
