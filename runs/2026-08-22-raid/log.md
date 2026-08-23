@@ -41,3 +41,8 @@
 2026-08-23T06:10:04Z progress phase=30 marker=r1-fixes.md
 2026-08-23T06:10:04Z 30 r1 judge dispatched output=runs/2026-08-22-raid/reviews/r1-verdict.md sha=6a8a68c
 2026-08-23T06:10:04Z heartbeat phase=30
+2026-08-23T06:21:35Z 30 r1 judge returned: blocking=1 ([static-viewer] ci.yml wasm-viewer lacks browser-smoke step + viewer_smoke.mjs + needs:docker-smoke); F1 refuted-as-fixed, F12 dismissed
+2026-08-23T06:21:35Z progress phase=30 marker=r1-verdict.md
+2026-08-23T06:21:35Z 30 round 1 -> 2 (blocking>0) review_round=2
+2026-08-23T06:21:35Z 30 r2 reviewer dispatched output=runs/2026-08-22-raid/reviews/r2-review.md
+2026-08-23T06:21:35Z heartbeat phase=30
