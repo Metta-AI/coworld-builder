@@ -61,3 +61,7 @@
 2026-08-23T17:27:59Z 00 phase 60 -> 70
 2026-08-23T17:27:59Z heartbeat phase=70
 2026-08-23T17:28:38Z 70 announce attempted_at written+pushed before POST
+2026-08-23T17:29:00Z 70 announce msg=1541137142888005653 (flags=4, embeds=[])
+2026-08-23T17:29:00Z progress phase=70 marker=1541137142888005653
+2026-08-23T17:29:00Z 00 phase 70 -> 80
+2026-08-23T17:29:00Z heartbeat phase=80
