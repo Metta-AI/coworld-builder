@@ -293,7 +293,13 @@ jobs:
       - name: Load the bundle in a real browser
         run: |
           set -euo pipefail
-          replay="$(ls dist/smoke/*.replay dist/smoke/replay.json 2>/dev/null | head -1)"
+          # A for-loop, not `ls … | head -1`: under `set -o pipefail` an unmatched
+          # glob makes ls exit 2 and kills the step before the harness ever runs
+          # (cogame-raid 2026-08-23, run 32623414696).
+          replay=""
+          for candidate in dist/smoke/*.replay dist/smoke/replay.json; do
+            if [ -f "${candidate}" ]; then replay="${candidate}"; break; fi
+          done
           test -n "${replay}" || {
             echo "::error::docker-smoke uploaded no replay to dist/smoke"; ls -la dist/smoke || true; exit 1; }
           echo "loading ${replay} in dist/static-replay-viewer"

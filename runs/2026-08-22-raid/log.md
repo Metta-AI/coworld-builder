@@ -50,3 +50,8 @@
 2026-08-23T06:34:07Z progress phase=30 marker=r2-review.md
 2026-08-23T06:34:07Z 30 r2 fixer dispatched output=runs/2026-08-22-raid/reviews/r2-fixes.md
 2026-08-23T06:34:07Z heartbeat phase=30
+2026-08-23T06:54:36Z 30 r2 fixer returned: B1 fixed (viewer_smoke.mjs + replay artifact handoff + needs:docker-smoke), browser step loaded:true; ci.yml run 32623861432 success at sha dc8ef5d84dfe1214b0b3e67b83fd101edff2f689
+2026-08-23T06:54:36Z progress phase=30 marker=r2-fixes.md
+2026-08-23T06:54:36Z 30 templates/ci.yml pipefail-fatal ls glob replaced with for-loop (ported from cogame-raid ed9650f)
+2026-08-23T06:54:36Z 30 r2 judge dispatched output=runs/2026-08-22-raid/reviews/r2-verdict.md sha=dc8ef5d
+2026-08-23T06:54:36Z heartbeat phase=30
