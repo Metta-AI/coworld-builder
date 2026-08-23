@@ -90,3 +90,4 @@
 2026-08-23T07:52:07Z 60 verifier dispatched output=runs/2026-08-22-raid/VERIFY.md (8 checks, 75-min round wait bound)
 2026-08-23T07:52:07Z heartbeat phase=60
 2026-08-23T07:54:38Z heartbeat phase=60
+2026-08-23T08:00:36Z heartbeat phase=60
