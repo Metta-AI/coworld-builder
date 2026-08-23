@@ -29,3 +29,7 @@
 2026-08-23T12:29:22Z progress phase=30 marker=r1-fixes.md
 2026-08-23T12:29:22Z heartbeat phase=30
 2026-08-23T12:30:09Z 30 r1 judge dispatched thread=sthr_01EUZQTsFfhn35kDyiNwxU2x target sha=b4bb25e9 (fresh context; refute-then-checklist; verdict to r1-verdict.md)
+2026-08-23T12:41:44Z 30 r1 judge returned r1-verdict.md blocking=2 (B1 llm.nim:478 429-throttle path installs zero doctrine as source=llm, item 8; B2 replays.nim:185 viewer omits partial-generation score on collapse, item 2); markers agree; 0 findings refuted, 21 fixes verified
+2026-08-23T12:41:44Z progress phase=30 marker=r1-verdict.md
+2026-08-23T12:41:44Z 30 round 2 begins; review_round=2
+2026-08-23T12:41:44Z heartbeat phase=30
