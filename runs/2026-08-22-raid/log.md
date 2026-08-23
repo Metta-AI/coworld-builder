@@ -46,3 +46,7 @@
 2026-08-23T06:21:35Z 30 round 1 -> 2 (blocking>0) review_round=2
 2026-08-23T06:21:35Z 30 r2 reviewer dispatched output=runs/2026-08-22-raid/reviews/r2-review.md
 2026-08-23T06:21:35Z heartbeat phase=30
+2026-08-23T06:34:07Z 30 r2 reviewer returned: 1 blocking (B1 item-13 viewer browser-smoke absent: no viewer_smoke.mjs, no needs:docker-smoke, no replay artifact handoff), 10 advisory
+2026-08-23T06:34:07Z progress phase=30 marker=r2-review.md
+2026-08-23T06:34:07Z 30 r2 fixer dispatched output=runs/2026-08-22-raid/reviews/r2-fixes.md
+2026-08-23T06:34:07Z heartbeat phase=30
