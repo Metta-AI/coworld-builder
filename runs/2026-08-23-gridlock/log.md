@@ -15,3 +15,4 @@
 2026-08-23T09:18:10Z heartbeat phase=20
 2026-08-23T09:19:14Z 20 repo created https://github.com/Metta-AI/cogame-gridlock (public)
 2026-08-23T09:19:14Z 20 propagate-secrets run=32630657567 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-23T09:20:03Z 20 builder dispatched thread=sthr_011rehx42fDrX33gxoEk5YHc brief=self-contained (design note path, starter mount, templates, exit checks, hard requirements, 3-round budget)
