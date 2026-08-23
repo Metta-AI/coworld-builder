@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-cogball",
   "starter": "Metta-AI/coworld-ctf",
   "phase": "60",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "60": 1
+  },
   "review_round": 1,
   "coworld": {
     "version": "0.1.3",
@@ -43,8 +45,8 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T06:12:55Z",
+  "heartbeat_at": "2026-08-23T09:18:01Z",
   "session_ended_at": null,
-  "session_id": "a44eaec9",
+  "session_id": "8d18519d",
   "log": "runs/2026-08-22-cogball/log.md"
 }
