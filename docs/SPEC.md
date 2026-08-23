@@ -160,20 +160,23 @@ is bounded at 75 minutes of wall clock.
    `/client/replay` pod URL).
 7. Certification output contains `Replay liveness: skipped (static replay bundle declared` —
    read from the committed `runs/<run>/release-result.json` (phase 40's artifact copy).
-8. The verifier's **spectator judgment** (a short paragraph): the replay is legible and shows
-   the game. The sandbox has no screen and no headless browser, so the judgment is written from
-   three fetched things, never from a rendered page:
-   (a) **the replay JSON** — the events and per-tick states the viewer would draw: read them and
-   say whether the champion seats' activity reads as the game (who did what, when, and how the
-   score moved);
-   (b) **the bundle** — `GET` the iframe `src`'s `index.html` **and every asset it references**
-   (each `<script src>`, each `<link href>`, and the `.wasm` named in the emscripten module
-   loader), all returning **200 with non-trivial sizes** (a 0-byte or HTML-error-page asset is a
-   broken viewer);
-   (c) **the viewer shell's error markers** — the fetched `static_replay.js` (or the index that
-   inlines it) must contain the `coworld-replay` postMessage bridge, including its
-   `tell("ready")` call; its absence means the embedded viewer never signals the host page.
-   No DOM readouts, no browser, no screenshot.
+8. The viewer **actually renders**, proven by executing it, and the verifier's **spectator
+   judgment** (a short paragraph) written from what it drew. The sandbox has no screen, so the
+   verifier dispatches `.github/workflows/viewer-check.yml` in coworld-builder against the check-6
+   iframe `src`; that job opens the live bundle in headless chromium (Playwright, pinned 1.55.0)
+   and runs `templates/tools/ci/viewer_smoke.mjs`. Item 8 is true only when **all three** hold:
+   (a) **`loaded: true`** — the viewer drew a frame and signalled it, via
+   `data-replay-loaded="true"` on `<html>` or the `coworld-replay` postMessage bridge's `ready`.
+   `data-replay-error`, a bridge `error`, or silence until the timeout is a FALSE item. Assets
+   that all return 200 are **not** evidence of this and never were: cogame-lantern (2026-08-23)
+   had a complete, all-200 bundle whose viewer deadlocked forever;
+   (b) **the replay advances** — the clock text differs across the three scrub readouts (0 %,
+   50 %, 100 %) recorded in `viewer-smoke.json`. A frame that renders once and freezes is a
+   failure;
+   (c) **the judgment paragraph** — legible, and it shows the game — written from
+   `viewer-smoke.png`, the clock/scorebug/feed readouts, and the replay JSON's events reconciled
+   against them. The evidence (`viewer-smoke.json` + `viewer-smoke.png`) is committed under
+   `runs/<run>/viewer-check/`.
 
 ## Design pins every coworld inherits (from the make-coworld playbook)
 

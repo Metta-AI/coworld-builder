@@ -1,6 +1,8 @@
 # Phase 60 — Verify
 
-Purpose: prove the definition of done by fetching evidence; never by assuming.
+Purpose: prove the definition of done by fetching evidence; never by assuming. Check 8 is the
+one exception to "fetch only": the viewer is opened in a real browser, in CI, because a viewer
+whose files all fetch 200 can still never draw a frame (cogame-lantern, 2026-08-23).
 Owner: verifier sub-agent, adjudicated by the judge. Output is `runs/<run>/VERIFY.md`.
 
 ## Inputs
@@ -108,48 +110,62 @@ jq -r '.certify.replay_liveness' runs/<run>/release-result.json
 Must contain `Replay liveness: skipped (static replay bundle declared`. Paste the `jq` output and
 say which of the two sources you read it from.
 
-**8. Spectator judgment — fetched, not rendered.** The sandbox has **no screen and no headless
-browser**: there is nothing to read a DOM from, and `curl` of `index.html` returns the bundle
-shell, not derived state. The judgment is written from three fetches.
+**8. Spectator judgment — the viewer is EXECUTED, then judged.** The sandbox has no screen and
+no headless browser, but GitHub Actions does. Do not fetch assets and infer: dispatch
+`viewer-check.yml` in this repo, which opens the live iframe `src` in headless chromium and
+reports whether a frame was ever drawn.
 
-*(a) The replay JSON — what the viewer would draw.* From `/tmp/ep.replay` (check 4), read the
-events and per-tick states in order and say whether the champion seats' activity reads as the
-game:
+*(a) Dispatch the load test against the iframe `src` from check 6.*
+```bash
+SRC='<the full iframe src from check 6, including ?replay=>'
+gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC" -f timeout=90
+# find-the-new-run: the dispatch API returns no run id, so poll for a run created
+# after the dispatch instead of grabbing "the latest", which races other runs.
+sleep 8
+RUN=$(gh run list -R Metta-AI/coworld-builder -w viewer-check.yml \
+      --json databaseId,createdAt,status -L 10 \
+      | jq -r 'sort_by(.createdAt)|reverse|.[0].databaseId')
+gh run watch "$RUN" -R Metta-AI/coworld-builder --exit-status || true   # a red run is DATA, not an abort
+mkdir -p runs/<run>/viewer-check
+gh run download "$RUN" -R Metta-AI/coworld-builder -n viewer-check -D runs/<run>/viewer-check
+```
+Commit `runs/<run>/viewer-check/` (the png and the json) with VERIFY.md — it is this run's only
+rendered evidence and the sandbox that produced it is gone by the next heartbeat.
+
+*(b) Paste the readouts into VERIFY.md.* From `runs/<run>/viewer-check/viewer-smoke.json`:
+```bash
+jq -c '{loaded, ms, clock, scorebug, feed_lines}' runs/<run>/viewer-check/viewer-smoke.json
+jq -c '.signals' runs/<run>/viewer-check/viewer-smoke.json
+jq -r '.scrub[]|"\(.at)\t\(.clock)"' runs/<run>/viewer-check/viewer-smoke.json
+jq -r '.failure // "no failure"' runs/<run>/viewer-check/viewer-smoke.json
+```
+Paste the JSON line verbatim and the **three clock readouts** (0 %, 50 %, 100 %) as a table.
+
+**Item 8 is TRUE only if both hold:**
+1. `loaded: true` — the viewer drew a frame and said so, via `data-replay-loaded="true"` or the
+   `coworld-replay` bridge's `ready`. `loaded: false` is check 8 FALSE, full stop: a viewer that
+   never renders is not a spectator experience, whatever the asset table says. cogame-lantern
+   (2026-08-23) had every asset 200 and `tell("ready")` in the JS and still hung forever on
+   "Loading replay…" — that is precisely what this check now catches.
+2. The **three clock readouts differ**. A replay that renders one frame and never advances is a
+   failure, not a pass. If the shell exposes no `#scrub` the json says so (`"(no #scrub…)"`); say
+   that in VERIFY.md and judge motion from the screenshot plus the replay JSON instead — an
+   absent scrubber is a legibility finding for phase 30, not a licence to skip the question.
+
+*(c) The replay JSON — what the viewer was asked to draw.* From `/tmp/ep.replay` (check 4), so
+the readouts can be reconciled against the recorded episode:
 ```bash
 jq -r '.events[]|[.tick,.seat,.type,(.summary//.say//.action//"")]|@tsv' /tmp/ep.replay | head -40
 jq -r '.events[]|[.tick,.seat,.type,(.summary//.say//.action//"")]|@tsv' /tmp/ep.replay | tail -20
 jq -r '.results' /tmp/ep.replay
 ```
 
-*(b) The static bundle and every asset it names.* Fetch the iframe `src` from check 6, then every
-asset it references — each `<script src>`, each `<link href>`, and the `.wasm` named in the
-emscripten module loader. All must be **200 with non-trivial sizes**; a 0-byte asset, or one whose
-body is an HTML error page, is a broken viewer:
-```bash
-BUNDLE="https://softmax.com/api/observatory/v2/coworlds/replays/static/$COW/<sha>"
-curl -sS "$BUNDLE/index.html" -o /tmp/idx.html -w 'index.html %{http_code} %{size_download}\n'
-grep -oE '(src|href)="[^"]+"' /tmp/idx.html            # pass 1: the asset list, verbatim
-for A in <each src/href path from that grep>; do
-  curl -sSL "$BUNDLE/$A" -o "/tmp/$(basename "$A")" -w "$A %{http_code} %{size_download}\n"
-done
-grep -ohE '[A-Za-z0-9_.-]+\.wasm' /tmp/idx.html /tmp/*.js | sort -u   # pass 2: the wasm the loader names
-for W in <each .wasm name>; do
-  curl -sSL "$BUNDLE/$W" -o "/tmp/$W" -w "$W %{http_code} %{size_download}\n"
-done
-```
-
-*(c) The viewer shell's error markers.* The fetched `static_replay.js` (or the index that inlines
-it) must carry the `coworld-replay` postMessage bridge and its ready signal:
-```bash
-grep -c 'coworld-replay' /tmp/static_replay.js
-grep -n 'tell("ready")' /tmp/static_replay.js
-```
-Both must hit. Their absence means the embedded viewer never tells the host page it is ready.
-
-Write a short paragraph: is it legible, and does it show the game? Its evidence is the three
-fetches above — the event/state excerpts, the asset table (URL, status, bytes), and the two greps.
-**No DOM readouts, no browser, no screenshot**: an item claimed from a rendered page is false by
-construction here.
+**Write the spectator-judgment paragraph** — is it legible, and does it show the game? Its
+evidence is now the rendered thing: `viewer-smoke.png` (what a spectator sees), the three clock
+readouts (that it advances), the scorebug and feed-line counts (that it says who is winning and
+why), reconciled against the replay events above. Say plainly if the picture is empty, static,
+or unreadable. **You may describe the screenshot** — for the first time there is one; what you
+may still not do is claim a DOM readout you did not download.
 
 ## Waiting
 
@@ -166,7 +182,10 @@ output excerpt, verdict) and every one is TRUE. The judge re-reads VERIFY.md aga
 ## Writes
 
 - `runs/<run>/VERIFY.md`.
-- STATE: `verify.rounds[]`, `verify.replay`, `verify.iframe_static`, `phase: "70"`, `heartbeat_at`.
+- `runs/<run>/viewer-check/` — `viewer-smoke.json` and `viewer-smoke.png` from the dispatched
+  `viewer-check.yml` run (committed; the CI sandbox that produced them is gone next heartbeat).
+- STATE: `verify.rounds[]`, `verify.replay`, `verify.iframe_static`, `verify.viewer_check_run`,
+  `phase: "70"`, `heartbeat_at`.
 - `log.md`: one line per poll and per check with its verdict.
 - Asana: complete the phase-60 subtask; comment with the leaderboard rows and the replay URL.
 

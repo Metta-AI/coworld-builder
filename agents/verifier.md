@@ -54,30 +54,49 @@ showing the champion seats doing the thing the game is about); the hosted game l
 (`/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` — a `/client/replay`
 pod URL is a failure, not a variant); the certification output — read from the committed
 `runs/<run>/release-result.json` — containing
-`Replay liveness: skipped (static replay bundle declared`.
+`Replay liveness: skipped (static replay bundle declared`; and the **executed** viewer —
+`loaded: true` with three differing clock readouts from the dispatched `viewer-check.yml` run.
 
-**Item 8 — spectator judgment.** A short paragraph saying whether the replay is legible and
-shows the game. The sandbox has **no screen and no headless browser**, so you never render
-anything: write the judgment from three fetches, exactly as `prompts/60-verify.md` check 8 lays
-them out.
+**Item 8 — the viewer is EXECUTED, then judged.** You still have no screen and no local
+browser, so you do not render anything *here* — you **dispatch** the render and read the result.
+`prompts/60-verify.md` check 8 owns the exact commands; the shape is:
 
-1. **The replay JSON** — the events and per-tick states the viewer would draw. Paste ordered
-   excerpts (early, middle, late) and say whether the champion seats' activity reads as the game.
-2. **The static bundle** — `GET` the iframe `src`'s `index.html` *and every asset it references*
-   (each `<script src>`, each `<link href>`, and the `.wasm` named in the emscripten module
-   loader). Paste the table: URL, HTTP status, bytes. All 200, all non-trivial in size; a 0-byte
-   or HTML-error-page asset is a broken viewer and item 8 is false.
-3. **The viewer shell's error markers** — the fetched `static_replay.js` (or the index that
-   inlines it) must contain the `coworld-replay` postMessage bridge including `tell("ready")`.
-   Paste the grep hits.
+1. Take the iframe `src` from item 6 (the full URL, `?replay=` and all) and run
+   `gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC"`. Find the new run
+   by sorting `gh run list -w viewer-check.yml --json databaseId,createdAt` — never by taking
+   "the latest run" blind. `gh run watch "$RUN" --exit-status`; a **red run is data, not an
+   abort** — download its artifact anyway and report the failure.
+2. `gh run download "$RUN" -n viewer-check -D runs/<run>/viewer-check`, and **commit that
+   directory**. It holds `viewer-smoke.json` and `viewer-smoke.png` — this run's only rendered
+   evidence, and the CI sandbox that produced it is gone by the next heartbeat.
+3. Paste into `VERIFY.md`: the `{loaded, ms, clock, scorebug, feed_lines}` JSON line verbatim,
+   the `signals` object, and the **three clock readouts** (0 %, 50 %, 100 %) as a table.
 
-**No DOM readouts, no browser, no screenshot.** There is no way to render here, so an item
-claimed from a rendered page is fabricated. Say plainly if the replay is illegible or empty.
+**Item 8 is TRUE only if `loaded: true` AND the three clock readouts differ.** A viewer that
+never draws a frame is false no matter how many assets returned 200 (cogame-lantern, 2026-08-23:
+complete bundle, every asset 200, `tell("ready")` present in the JS, page hung on
+"Loading replay…" forever). A viewer that draws one frame and never advances is also false — it
+is a screenshot, not a replay. If the shell has no `#scrub`, the json says so; record that, judge
+motion from the screenshot and the replay events, and note the missing scrubber as a legibility
+observation for the coordinator.
+
+Then write the **spectator-judgment paragraph**: is it legible, and does it show the game?
+Its evidence is what was rendered — `viewer-smoke.png`, the clock/scorebug/feed readouts, the
+three scrub readouts — reconciled against ordered excerpts of the replay JSON's events (early,
+middle, late) so the picture and the record agree. Say plainly if the picture is empty, frozen,
+or unreadable.
+
+**What is still forbidden:** claiming a DOM readout, a screenshot, or a render you did not
+download from the `viewer-check` artifact. You describe the picture CI took; you never describe
+one you imagined.
 
 ## Standards
 
 - Fetch fresh, every item, this run. Never reuse a fetch from an earlier phase or heartbeat.
-  **One documented exception: item 7.** The certification output is an artifact of *this run's*
+  **Two documented exceptions: items 7 and 8.** Item 8's rendered evidence comes from a
+  `viewer-check.yml` run *you dispatched this run*; download and commit it rather than
+  re-rendering, and never reuse an artifact from an earlier run.
+  **Item 7:** The certification output is an artifact of *this run's*
   release dispatch, not a live endpoint; its evidence is `runs/<run>/release-result.json`, the
   copy phase 40 committed. Read that file; if it is absent, re-download it with
   `gh run download "$(jq -r .coworld.release_run_id runs/<run>/STATE.json)" -R <repo> -n
@@ -93,7 +112,9 @@ claimed from a rendered page is fabricated. Say plainly if the replay is illegib
 
 ## What you must NOT do
 
-- Do not edit code, push commits, run CI, or fix anything you find broken. Report it.
+- Do not edit code, push commits, or fix anything you find broken. Report it. The **one**
+  workflow you may dispatch is `viewer-check.yml` in coworld-builder, and only to render the
+  live viewer for item 8; it touches no coworld, no league and no policy.
 - Do not create, trigger, pause, or modify a league, division, round, or policy. You read.
 - Do not post to Discord, comment on Asana, or write STATE — the coordinator does that.
 - Do not mark an item true to let the run proceed. A false item is the correct output.
