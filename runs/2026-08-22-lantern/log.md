@@ -33,3 +33,7 @@
 2026-08-23T02:38:22Z heartbeat phase=40
 2026-08-23T02:39:15Z 40 builder re-dispatched on release (thread sthr_0166oazc8ndZMnGuQEUYXkop); coworld-release.yml starting at version 0.1.0
 2026-08-23T02:39:15Z heartbeat phase=40
+2026-08-23T03:26:11Z 40 builder returned: 0.1.0 fail(manifest placeholder {{GAME_IMAGE}} -> {{LANTERN_IMAGE}}, fix 1db36a4), 0.1.1 fail(cert contract routes /client/player + /client/global 404, fix 12b0940), 0.1.2 fail(canonical=false cold-image race, bump), 0.1.3 release ok+canonical BUT hosted_certification=failed (ping->pong on /global after fast episode exit)
+2026-08-23T03:26:11Z 40 retry decision: authorized dispatch #5 at 0.1.4 off ebfbb76 (shutdown-grace fix, locally reproduced PONG OK, CI green run 32615159928) — distinct fix, needed because phase-40 done condition requires hosted certification certified
+2026-08-23T03:26:11Z progress phase=40 marker=release-run-32614470661
+2026-08-23T03:26:11Z heartbeat phase=40
