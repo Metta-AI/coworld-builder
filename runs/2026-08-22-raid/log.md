@@ -61,3 +61,7 @@
 2026-08-23T07:02:21Z heartbeat phase=40
 2026-08-23T07:02:50Z 40 builder dispatched brief=release cogame-raid 0.1.0 via coworld-release.yml, evidence to runs/2026-08-22-raid/release-result.json
 2026-08-23T07:02:50Z heartbeat phase=40
+2026-08-23T07:28:47Z 40 dispatches 1-3: 0.1.0 run 32624565829 (manifest placeholder, fixed 1d773fd+8db261f), 0.1.1 run 32624750997 (/client/player 404, fixed bdac03a), 0.1.2 run 32625275736 (players_missing, fixed 1c79cef ci-green 32625463065)
+2026-08-23T07:28:47Z 40 dispatch 4 (0.1.3) authorized: each prior failure a distinct defect with monotonic cert progress, not one cert failure surviving three fixes; fix 4 already CI-verified; precedent cogball dispatch-4 2026-08-23
+2026-08-23T07:28:47Z 40 note: fixture deviation from design.md (baseline x5 -> baseline x3 + greenhorn + raid-player) accepted — players-run check requires every declared player seated; rails: parameter/packaging call
+2026-08-23T07:28:47Z heartbeat phase=40
