@@ -50,3 +50,7 @@
 2026-08-23T13:34:10Z 30 done in 2 rounds; 30 -> 40 phase transition; STATE.phase=40 pushed before release dispatch
 2026-08-23T13:34:10Z heartbeat phase=40
 2026-08-23T13:35:02Z 40 builder dispatched thread=sthr_01LNwwt5PUrHa8ZTnCNumsNL (release chain: version 0.1.0 first, policies from tools/ci/policies.json, 3-dispatch budget)
+2026-08-23T13:43:54Z 40 builder returned: release 0.1.0 green first dispatch, run=32642817302, ok/canonical/certified/secret_put all true, liveness skipped-static, 4 policies v1 with champion2 player_id correct; release-result.json persisted and verified
+2026-08-23T13:43:54Z progress phase=40 marker=release-run-32642817302
+2026-08-23T13:43:54Z 40 -> 50 phase transition; STATE.phase=50 pushed before league work
+2026-08-23T13:43:54Z heartbeat phase=50
