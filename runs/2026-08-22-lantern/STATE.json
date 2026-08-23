@@ -5,7 +5,7 @@
   "slug": "lantern",
   "repo": "https://github.com/Metta-AI/cogame-lantern",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,11 +21,14 @@
       "lantern-warden:v3",
       "lantern-moth:v3"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "72a889c0-d72d-4b51-ae07-2cdad871e72c",
+      "713f2616-34a3-44d3-8f6a-321a50d861c0"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_16893be5-934d-43b4-9155-d27f600ffffe",
+    "division": "div_af46a8ef-67ec-4780-9c72-0cf70e260999"
   },
   "verify": {
     "rounds": [],
@@ -37,7 +40,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-23T03:33:34Z",
+  "heartbeat_at": "2026-08-23T03:37:33Z",
   "session_ended_at": null,
   "session_id": "70b78c30",
   "log": "runs/2026-08-22-lantern/log.md"

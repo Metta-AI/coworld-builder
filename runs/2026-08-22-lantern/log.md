@@ -42,3 +42,10 @@
 2026-08-23T03:33:34Z 40 EXIT: release-result.json persisted to runs/2026-08-22-lantern/; phase -> 50
 2026-08-23T03:33:34Z progress phase=40 marker=release-run-32615340953
 2026-08-23T03:33:34Z heartbeat phase=50
+2026-08-23T03:37:33Z 50 seed 200: league_16893be5-934d-43b4-9155-d27f600ffffe (lseed_670431c2); division div_af46a8ef-67ec-4780-9c72-0cf70e260999; settings 200 (elo 1000/K32/mean, round_robin, filler_policy, 15min)
+2026-08-23T03:37:33Z 50 champion1 submit run 32615712546 ok:true sub_7d5ce3eb (lantern-warren:v3, daveey); champion2 submit run 32615737888 ok:true sub_22c59809 (lantern-owlnight:v3, daveey-1, uuid c380d98e confirmed player_name=daveey-1)
+2026-08-23T03:37:33Z 50 fillers registered BEFORE trigger: warden:v3 72a889c0 + moth:v3 713f2616 (response lists exactly these two, neither champion)
+2026-08-23T03:37:33Z 50 unpause 200 paused:false; trigger-round 200; round 1 failed (scheduler fired pre-fillers, error 'Temporal RoundWorkflow failed before settling the round') — round 2 pending with both champions in entrant_attributions
+2026-08-23T03:37:33Z 50 EXIT: both champions entrants, fillers distinct, unpaused, round 2 pending; phase -> 60
+2026-08-23T03:37:33Z progress phase=50 marker=league_16893be5-934d-43b4-9155-d27f600ffffe
+2026-08-23T03:37:33Z heartbeat phase=60
