@@ -21,3 +21,4 @@
 2026-08-23T11:25:04Z 30 r1 reviewer returned r1-review.md: 74 observations (1 blocking B1 scripted-fallback-not-recorded, 12 non-blocking, 4 undetermined)
 2026-08-23T11:25:04Z progress phase=30 marker=r1-review.md
 2026-08-23T11:25:04Z heartbeat phase=30
+2026-08-23T11:25:28Z 30 note: previous commit's 'git add -A' unintentionally included runs/2026-08-23-gridlock/reviews/r1-review.md (shared working tree, untracked file from the concurrent gridlock session). Not reverted — deleting it would harm that run. All further adds use explicit contagion paths only.
