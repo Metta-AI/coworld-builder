@@ -15,3 +15,5 @@
 2026-08-24T02:06:24Z heartbeat phase=20
 2026-08-24T02:07:26Z 20 repo created: https://github.com/Metta-AI/cogame-cogmud (public)
 2026-08-24T02:07:26Z 20 propagate-secrets run 32681973665 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-24T02:08:25Z 20 dispatch builder brief=implement repo from design.md, drive ci.yml green thread=sthr_011r4M7Z5eMcms68W3Nzc77z
+2026-08-24T02:08:25Z heartbeat phase=20
