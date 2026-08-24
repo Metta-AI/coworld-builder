@@ -99,3 +99,7 @@
 2026-08-24T17:21:49Z 75 atlas placed-for-others: chorus Commons(416,574), firm Commons(440,571), cogchemists Tabletop(766,277), cogiavelli Tabletop(754,307), cogplomacy Tabletop(790,280), cogmud Simulations(536,271), cogolf Paintlands(193,249), garble Parlour(438,817)
 2026-08-24T17:21:49Z 75 atlas dispatch=32756151731 region=paintlands at=202,270 clearance=34.1 (retry 2 of 3, fix=extra_cities)
 2026-08-24T17:21:49Z heartbeat phase=75
+2026-08-24T17:25:20Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20276 status=pr_open (branch atlas/grid-wars-32756151731, automerge armed, waits on Graphite merge queue)
+2026-08-24T17:25:20Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20276
+2026-08-24T17:25:20Z 75 phase -> 80
+2026-08-24T17:25:20Z heartbeat phase=80
