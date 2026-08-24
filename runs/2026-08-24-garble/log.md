@@ -19,3 +19,4 @@
 2026-08-24T06:42:01Z 20 builder thread sthr_01NjsxPLMnNc1NthWuXGGAsD FAILED (API temporarily overloaded) — repo still empty, uncommitted working tree left at /workspace/cogame-garble
 2026-08-24T06:42:01Z 20 retry 1: re-dispatch builder to adopt the existing working tree, verify against design.md, commit, push, drive CI
 2026-08-24T06:42:01Z heartbeat phase=20
+2026-08-24T06:42:48Z 20 builder re-dispatched (thread sthr_01Lbn5gLKAux2DDeNGqjsWCr) adopting /workspace/cogame-garble working tree
