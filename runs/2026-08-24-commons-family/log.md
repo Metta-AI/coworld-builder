@@ -14,3 +14,7 @@
 2026-08-24T19:05:00Z 20 coordinator ruling: apply chorus 3c11c953 fix now (ready posted after data-replay-loaded, not from rAF) — builder re-dispatched for the two-line fix
 2026-08-24T19:05:00Z progress phase=20 marker=ci-run-32766440708
 2026-08-24T19:05:00Z heartbeat phase=20
+2026-08-24T19:35:00Z 20 builder returned: chorus fix in, ci.yml green run=32767219248 sha=5c64904 (232 tests) — phase 20 exit criteria verified by coordinator
+2026-08-24T19:35:00Z progress phase=20 marker=ci-run-32767219248
+2026-08-24T19:35:00Z 20 -> 30 phase transition; review_round=1
+2026-08-24T19:35:00Z heartbeat phase=30
