@@ -638,3 +638,32 @@ the starter after the fact.
   slip by byte-comparing live objects. Use `/tmp/<round-id>.replay`.
 - The 20-build brief should say explicitly when the design note pins existing art (ctf rigs +
   pixie bakes): the builder correctly skipped nano-banana but had to justify it as a deviation.
+
+## 2026-08-23 firm
+
+- **`git push` to github.com can 401 while `gh api` works** (this session, all of it). The egress
+  proxy substituted the token for API calls but not for git-receive-pack basic auth. Fix that
+  needs no human: push through the Git Data API (blob → tree with `base_tree` → commit → PATCH
+  `refs/heads/main` with `force=false`). Two gotchas: pass blob content via `--input <json-file>`
+  (a base64 PNG blows the argv limit), and verify the API tree sha equals `git rev-parse
+  main^{tree}` before PATCHing — that proves content parity. A sub-agent running
+  `gh auth setup-git` mid-run is a suspect (it rewrote credential.helper in ~/.gitconfig);
+  unproven, but check the timeline before blaming the platform.
+- **On resuming a run that died right after "dispatch builder"**: check the coworld repo before
+  re-dispatching — the sub-agent may have finished after the coordinator died. Firm's builder had
+  pushed everything and CI was green; the resume only had to verify phase-20 exit criteria.
+- **Observatory API shapes**: `GET /leagues` returns a bare array (not `.entries`);
+  `GET /policy-versions` likewise; `GET /rounds` returns `{entries:[…]}`. The 50-league prompt's
+  jq for `/leagues` needs the bare-array form.
+- **A "tuned with a grid harness" checklist item is cheapest satisfied at build time.** The firm
+  reviewer's only blocking finding was hard-coded baseline constants; the fix (a CI-run sweep
+  asserting the shipped constants are the argmax) is a shape any 20-build brief could demand up
+  front: sweep + committed record + assert.
+- **Atlas extra_cities across several regions**: append each pick to your local `places.mjs`
+  copy and re-run `atlas_spot.py` before picking the next, or two same-continent dots collide
+  (the tool only sees committed cities — ledger landed 22.9 from firm only because the local
+  copy was updated between picks).
+- **Generic viewer probes under-read game-specific chrome**: firm's `#scorebug` populates after
+  first paint and its feed lives behind a « LOG button, so `scorebug:""`/`feed_lines:0` were
+  correct-but-alarming readouts. Judge from the screenshot + clock motion; file probe gaps as
+  legibility notes, not failures.
