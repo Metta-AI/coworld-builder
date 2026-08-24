@@ -37,3 +37,8 @@
 2026-08-24T02:41:17Z 30 -> 40 phase transition: entering release
 2026-08-24T02:41:17Z heartbeat phase=40
 2026-08-24T02:41:59Z 40 dispatch builder brief=release 0.1.0 via coworld-release.yml (plus one-line manifest doc fix for firm-steady description)
+2026-08-24T02:52:59Z 40 pre-release fix 4cd5ef93 (firm-steady manifest description -> shipped nurse), CI 32684004121 success
+2026-08-24T02:52:59Z 40 release 0.1.0 dispatch run=32684174950 step_failed=null: canonical=true certified, cow_39c7f43c-706d-49e0-9259-2686b86c9d71, 4 policies v1 (firm-boss/firm-hand/firm-steady/firm-taskmaster), champion2 player ply_bac48eb1, secret_put=true — first dispatch, no bumps
+2026-08-24T02:52:59Z progress phase=40 marker=32684174950
+2026-08-24T02:52:59Z 40 -> 50 phase transition: entering league
+2026-08-24T02:52:59Z heartbeat phase=50
