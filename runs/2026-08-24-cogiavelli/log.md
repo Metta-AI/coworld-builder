@@ -78,3 +78,4 @@
 2026-08-24T14:48:29Z 60 verifier returned VERIFY.md: 8/8 TRUE (rounds 2,3,4 completed; both champions ranked 3 rounds each; replay cogiavelli.r4.e1 complete; log CLEAN; static iframe; cert static-skip; viewer-check 32740208697 loaded=true, 3 distinct clocks); 2 non-blocking legibility notes
 2026-08-24T14:48:29Z progress phase=60 marker=VERIFY.md-8of8-TRUE
 2026-08-24T14:48:29Z heartbeat phase=60
+2026-08-24T14:48:58Z 60 judge dispatched (thread sthr_01XHEnm3N4AwiTdejyaympLU) over VERIFY.md -> reviews/verify-verdict.md
