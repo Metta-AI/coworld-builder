@@ -27,8 +27,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_f07f6eeb-bdd2-49ec-82bd-a3fa2bb568e5",
+    "division": "div_352d6e5d-d082-4bc7-b84a-5913e32d6082"
   },
   "verify": {
     "rounds": [],
@@ -51,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T16:24:47Z",
+  "heartbeat_at": "2026-08-24T16:26:00Z",
   "session_ended_at": null,
   "session_id": "d1e84720",
   "log": "runs/2026-08-24-grid-wars/log.md"
