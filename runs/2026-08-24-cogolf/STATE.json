@@ -11,17 +11,17 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_db1331d5-6380-4925-a903-6ac5f2cddc61",
-    "manifest_sha": "sha256:14543fea8fd873902382ec932780c78a0e4be424f5b02e0c484a9954b1725369",
-    "release_run_id": "32685409623"
+    "version": "0.1.2",
+    "cow_id": "cow_9cef7a1e-ec19-471d-aeca-0aaee64ae507",
+    "manifest_sha": "sha256:ecaa3322af52d255f83aff956897cd9bd21381c701f9a9b830d8d272aaefc07f",
+    "release_run_id": "32688088347"
   },
   "policies": {
-    "champion1": "cogolf-architect:v2",
-    "champion2": "cogolf-sniper:v2",
+    "champion1": "cogolf-architect:v3",
+    "champion2": "cogolf-sniper:v3",
     "fillers": [
-      "cogolf-literalist:v2",
-      "cogolf-pedant:v2"
+      "cogolf-literalist:v3",
+      "cogolf-pedant:v3"
     ],
     "filler_version_ids": [
       "c466d2ba-e7e2-4d86-a831-3aeb319cd119",
@@ -45,7 +45,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T03:48:20Z",
+  "heartbeat_at": "2026-08-24T04:06:23Z",
   "session_ended_at": null,
   "session_id": "0f57e138",
   "log": "runs/2026-08-24-cogolf/log.md"
