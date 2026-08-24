@@ -109,3 +109,7 @@
 2026-08-24T09:57:35Z 80 subtask bookkeeping corrected: completions from phase 40 on were off by one gid; 40-release completed now, all nine phase subtasks now complete (80-close completed one step early, its phase is executing)
 2026-08-24T09:59:26Z 80 executive summary posted (run task story 1217773342696159, idea task story 1217773504681994)
 2026-08-24T09:59:26Z 80 LEARNINGS section appended + make-coworld Common-mistakes row (game.protocols {type,value})
+2026-08-24T09:59:58Z 80 idea task 1217741052416755 completed; run task 1217763504078050 moved to Done
+2026-08-24T09:59:58Z 80 run closed — all nine subtasks complete, atlas PR 20264 awaiting merge queue
+2026-08-24T09:59:58Z progress phase=80 marker=run-task-Done
+2026-08-24T09:59:58Z heartbeat phase=80
