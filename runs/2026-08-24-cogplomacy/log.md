@@ -95,3 +95,4 @@
 2026-08-24T14:19:29Z 70 -> 75 phase transition (STATE.phase=75)
 2026-08-24T14:19:29Z heartbeat phase=75
 2026-08-24T14:20:20Z 75 atlas slug live in /api/coworlds (cogplomacy, episodes_7d=4); continent=tabletop — faithful port of Calhamer's 1959 board game, "board and card game ports" (rails call); spot 766,277 clearance 22.9
+2026-08-24T14:20:44Z 75 atlas dispatch=32738083089 region=tabletop at=766,277 clearance=22.9
