@@ -32,3 +32,4 @@
 2026-08-24T12:50:24Z 30 r1 fixer returned (thread sthr_019FGo39rFDpa57gcsFGAgjJ): 13 fixed, 1 no-change; main sha 9711b80ccc28aa711872ca007b7d0ccba0134279, CI green run 32728438824 -> reviews/r1-fixes.md
 2026-08-24T12:50:24Z progress phase=30 marker=reviews/r1-fixes.md
 2026-08-24T12:50:24Z heartbeat phase=30
+2026-08-24T12:51:23Z 30 r1 judge dispatched (thread sthr_014GM45sgjmiwQo7tFfaTWgR) -> reviews/r1-verdict.md (fresh context, sha 9711b80)
