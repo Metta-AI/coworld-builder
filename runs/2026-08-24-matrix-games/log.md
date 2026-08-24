@@ -24,3 +24,5 @@
 2026-08-24T16:19:07Z 20 exit criterion verified: placeholders clean; exec bits 100755 on build_replay_viewer.sh+docker_smoke.sh; num_agents=8 in all 7 variants + cert fixture; 3 workflows active; release inputs version/policies/put_secret/skip_certify; submit inputs player_id/policy/league_id; release-result+submit-result artifacts; champion2 player field present
 2026-08-24T16:19:07Z progress phase=20 marker=ci-green-32749463742
 2026-08-24T16:19:07Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
+2026-08-24T16:20:05Z 30 reviewer dispatched round 1 (target sha 7b7d586)
+2026-08-24T16:20:05Z heartbeat phase=30
