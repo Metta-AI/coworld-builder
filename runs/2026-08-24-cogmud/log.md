@@ -31,3 +31,4 @@
 2026-08-24T04:36:04Z progress phase=30 marker=r1-fixes.md
 2026-08-24T04:36:04Z 30 r1 dispatch judge thread=pending
 2026-08-24T04:36:04Z heartbeat phase=30
+2026-08-24T04:37:08Z 30 r1 dispatch judge thread=sthr_01N1JPeEGLLM9s4LnALyXNH2 sha=575c86b
