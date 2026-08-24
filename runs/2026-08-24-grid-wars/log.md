@@ -31,3 +31,5 @@
 2026-08-24T15:42:17Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-08-24T15:42:17Z 00 resume at phase 30 attempt=1 session=d1e84720
 2026-08-24T15:43:33Z 30 r1 fixer thread from dead session left 13 commits (B1,B2,B3,N1-N6,N8-N10,N13) pushed and CI green at e385a8ba run 32730521366, but no r1-fixes.md and N7,N11,N12 unaddressed; re-dispatching fixer to finish round 1
+2026-08-24T15:44:37Z 30 r1 fixer re-dispatched (sthr_01C8c2Y1owtsswsk8mhBiqa4) retry=1 of round 1 — to verify 13 pre-existing commits, address N7/N11/N12, write r1-fixes.md
+2026-08-24T15:44:37Z heartbeat phase=30
