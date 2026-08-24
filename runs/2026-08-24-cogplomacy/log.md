@@ -38,3 +38,7 @@
 2026-08-24T13:04:44Z 30 -> 40 phase transition (STATE.phase=40) — review loop closed in 1 round
 2026-08-24T13:04:44Z heartbeat phase=40
 2026-08-24T13:05:31Z 40 builder dispatched (thread sthr_01GpEbtHAajFSwqgNLsHbeGg) -> coworld-release.yml chain, release-result.json
+2026-08-24T13:15:37Z 40 dispatch 1: v0.1.0 run 32730674425 — ok/canonical/secret_put true, local certify 10/10, hosted smoke passed, 4 policies (diplomat:v1, opportunist:v1 ply_bac48eb1, expander:v1, hedgehog:v1); BUT hosted_certification=failed (cold-image reconciler race, playbook-documented)
+2026-08-24T13:15:37Z 40 retry decision: bump-only re-dispatch v0.1.1 (dispatch 2/3) — builder thread sthr_01GpEbtHAajFSwqgNLsHbeGg re-tasked
+2026-08-24T13:15:37Z progress phase=40 marker=release-run-32730674425
+2026-08-24T13:15:37Z heartbeat phase=40
