@@ -15,3 +15,6 @@
 2026-08-24T10:44:10Z progress phase=10 marker=runs/2026-08-24-cogiavelli/design.md
 2026-08-24T10:44:30Z 20 repo created https://github.com/Metta-AI/cogame-cogiavelli (public); propagate-secrets run 32718249631 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-24T10:47:30Z 20 builder dispatched (thread sthr_011kKtRMq6Nxxo5ePiZbYwb5) — implement design.md, drive ci.yml green on main
+2026-08-24T12:09:34Z 20 builder thread sthr_011kKtRMq6Nxxo5ePiZbYwb5 died (API overloaded) after pushing b619ecc (ci 32725466112 failure) and f6862a3 (ci 32725516744 in_progress); re-dispatching builder to resume
+2026-08-24T12:09:34Z heartbeat phase=20
+2026-08-24T12:09:34Z progress phase=20 marker=ci-run-32725516744
