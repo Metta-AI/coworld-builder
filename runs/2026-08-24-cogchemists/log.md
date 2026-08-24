@@ -90,3 +90,4 @@
 2026-08-24T09:42:23Z 70 announce msg=1541382092896735253 (200, flags=4, embeds=[])
 2026-08-24T09:42:23Z progress phase=70 marker=discord_message_id=1541382092896735253
 2026-08-24T09:42:23Z 70 phase -> 75
+2026-08-24T09:43:19Z 75 atlas dispatch=32713040574 region=tabletop at=766,277 clearance=22.9
