@@ -65,3 +65,6 @@
 2026-08-24T00:08:48Z 60 check7 TRUE release-result.json (committed copy) certify.replay_liveness = skipped (static replay bundle declared...)
 2026-08-24T00:08:48Z 60 check8 TRUE viewer-check run 32675471888 loaded=true clock 0%/50%/100% = ROUND 0 / 14 | ROUND 8 / 14 TABLES MEET | FINAL - 14 ROUNDS; attempt1 32675392403 degraded (probe race, artifact kept)
 2026-08-24T00:08:48Z 60 VERIFY.md written: 8/8 TRUE; viewer-check/ + viewer-check-attempt1/ committed
+2026-08-24T00:10:21Z 60 verifier returned VERIFY.md 8/8 TRUE; rounds 2+3 completed; replay 316d64ba strict-UTF8 complete; viewer-check run 32675471888 loaded:true clocks differ; check-8 attempt1 false-negative kept at viewer-check-attempt1/ (viewer_smoke.mjs ready-race — LEARNINGS candidate)
+2026-08-24T00:10:21Z 60 dispatch judge (fresh context) brief=adjudicate VERIFY.md vs SPEC definition of done
+2026-08-24T00:10:21Z heartbeat phase=60
