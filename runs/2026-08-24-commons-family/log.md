@@ -24,3 +24,7 @@
 2026-08-24T20:26:00Z 30 r1 fixer dispatched thread=sthr_01MFwpEaM22tFtayJdLFzM9B with per-finding rulings output=reviews/r1-fixes.md
 2026-08-24T20:26:00Z progress phase=30 marker=r1-review.md
 2026-08-24T20:26:00Z heartbeat phase=30
+2026-08-24T21:20:00Z 30 r1 fixer returned: 19 commits (12 fixed incl. O1 hang guard, O13 worst-case fixture, O14 say band; 5 refuted with evidence; O4-O6 documentation truth), ci.yml green run=32773426921 sha=ef8e255 (270 tests); design.md provenance section corrected
+2026-08-24T21:21:00Z 30 r1 judge dispatched (fresh context, has not seen r1-fixes.md) sha=ef8e255 output=reviews/r1-verdict.md
+2026-08-24T21:21:00Z progress phase=30 marker=r1-fixes.md
+2026-08-24T21:21:00Z heartbeat phase=30

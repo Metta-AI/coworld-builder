@@ -122,11 +122,20 @@ cap of 3 — the temptation is exactly one unit wide. `property_rights` selects 
 - `open` — any cog may name any patch.
 - `closed` — patch *p* belongs to the cog in seat `owner[p]`, a seeded 1:1 permutation of the six
   seats onto the six patches, **public** to everyone. A demand by a non-owner yields nothing and
-  writes a `trespass` event.
+  writes a `trespass` event. (The deal is `owner[p] = patch_deal[p] mod num_agents`, and it is a
+  1:1 permutation *because* every shipped variant has `patch_count == num_agents == 6` — the
+  manifest pins `num_agents` at 6..6 and `patch_count` at 6 in all six variants. The modulo is
+  what keeps a hand-edited `game_config` legal rather than merely lucky: every patch still has
+  exactly one owner and every allowed set stays inside the patch range, seats just own two patches
+  or none. A parametrised test plays 3, 6 and 12 patches through all three rights.)
 - `partnership` — the six patches are dealt to three seeded pairs, two patches per pair, **public**.
   A patch yields this round only if **both** partners named it this round (either may demand 0 —
   naming it is "holding" it). Otherwise every demand on it yields nothing and writes an `unheld`
-  event.
+  event. **A seat that did not answer names nothing**: a pass, a `no_submission` and a seat that
+  never connected all arrive as the all-zero default decision, and counting that default as
+  "holding patch 0" would let an absent seat's partner harvest patch 0 alone every round while the
+  pair's other patch could never be held at all. The resolver skips a decision whose `src` is
+  `pass` — it names no patch, it cannot trespass, and it draws no `unheld` event of its own.
 
 **Module `allelopathic`.** `field_size = 60` plant slots; colours `red`, `green`, `blue` in that
 canonical order. `planted` starts 20/20/20, `ripe` starts 6/6/6, `ripen_base = 0.5`. Every cog is
@@ -243,9 +252,12 @@ so there is no permanent death in this module).
    `gain_j += 3.0×k/(N−1)`.
 4. `k_i = Σ_c eaten_{i,c}`; if `k_i > 0` then `frozen_until_i = r + ceil(k_i)`.
 
-**Step 7, `mushrooms`:** `eaten_total[c] +=` this round's total per colour; `w[c] = 1 + eaten_total[c]`;
-apportion `spawn_per_round = 3` by largest remainder (ties canonical); `count[c] += alloc[c]`;
-clamp each colour to 15 and the total to 30, dropping excess from the largest colour first.
+**Step 7, `mushrooms`:** `w[c] = 1 + eaten_total[c]`; apportion `spawn_per_round = 3` by largest
+remainder (ties canonical); `count[c] += alloc[c]`; clamp each colour to 15 and the total to 30,
+dropping excess from the largest colour first. `eaten_total[c] +=` this round's total per colour is
+booked in **step 5**, where the eating happens and the numbers are in hand, and step 7 reads the
+already-updated totals — the spawn weights are exactly the same either way, and the accumulator
+lives next to the thing it counts. `tests/test_modules.py` asserts the totals after `resolve`.
 
 ### Scoring, sign, and what the league ranks by
 
@@ -423,7 +435,8 @@ leading or trailing prose is tolerated.
 
 **Every free-text field is truncated on rune boundaries, never byte boundaries.** In Python a
 `str` slice is already a code-point slice, so the truncator is `text.strip()[:cap]` applied in one
-helper (`game/engine.py:truncate_runes`) to `message`, `note`, policy names, and every error
+helper (`game/engine.py:truncate_runes`) to `message`, `note`, policy names, the manifest-authored
+`norm_text` (≤ 400 runes, and `config_schema` carries the same `maxLength`), and every error
 string that can reach the replay; artifacts are written with `ensure_ascii=False` and encoded
 UTF-8 exactly once, so a half rune can never reach the replay bytes (which the strict-UTF-8 test
 asserts). `note` is private: it is echoed back only to its own seat and is **not** written to the
@@ -436,16 +449,27 @@ in-process in the same step. The round barrier releases when the batch is comple
 `round_seconds = 20 s` elapses, whichever comes first, and never before
 `min_round_seconds = 3 s`.
 
-Per-seat worst case inside a round: one call at `decision_timeout_seconds = 8 s`, throttle sleeps
-≤ 3.5 s, one retry at 8 s = **19.5 s < 20 s**. So the round deadline is never the thing that cuts
-a legitimate reply short; it is the backstop.
+Per-seat worst case inside a round, said exactly: each of the two attempts walks the throttle
+ladder, which is **three sleeps and therefore up to four requests** (`llm.py`'s
+`for sleep_seconds in (*THROTTLE_SLEEPS, None)`), so a seat the provider throttles on every call
+issues up to **8 requests** in one round — `tests/test_llm.py` asserts exactly that count. What
+bounds it is not that arithmetic but the clock: every request's timeout is
+`min(decision_timeout_seconds, round_deadline − now)` and every throttle sleep is clamped to the
+same deadline, so the ladder cannot outlive the round and the seat falls back at the barrier. A
+*legitimate* reply is one call at ≤ 8 s inside a 20 s round, so the round deadline never cuts a
+healthy answer short; it is the backstop.
 
 Episode arithmetic, said out loud:
 
-- **Worst case:** 20 rounds × 20 s = **400 s** of play, plus ≤ 180 s of
-  `player_connect_timeout_seconds` if seats are slow to appear, plus meadow's 30 s post-game
-  linger = **610 s**, which is **50.8 %** of the 1200 s `episodeTimeoutSeconds` — inside the 60 %
-  (720 s) rule.
+- **Worst case:** ≤ 180 s of `player_connect_timeout_seconds` if seats are slow to appear, plus
+  the 5 s registration grace, plus 20 rounds × 20 s = **400 s** of play = **585 s** to written
+  artifacts, which is **48.8 %** of the 1200 s `episodeTimeoutSeconds`. Meadow's 30 s post-game
+  linger runs *after* both artifacts are written, so it is outside the settle-and-score budget.
+  The **hard ceiling** is the guard itself: `play_deadline` is anchored at **process start**
+  (`server.py:PROCESS_START`), not when `_play_game` begins, so the connect wait is inside the
+  budget rather than on top of it and the artifacts are on disk by 0.6 × 1200 = **720 s** even
+  with a hand-edited `rounds`/`round_seconds`. Anchoring after the connect wait would have made
+  that ceiling 180 + 5 + 720 = 905 s (75 %).
 - **Typical:** haiku answering a ~900-token prompt with a one-line JSON object in 3–5 s, six in
   parallel → a round settles in ~5 s → 20 rounds ≈ **100–140 s**, plus ~15 s of pod startup.
 - **All-scripted (CI, cert):** the 3 s pacing floor makes the episode 60 s, not 200 ms — long
@@ -454,13 +478,18 @@ Episode arithmetic, said out loud:
 The guard: the game reads `COWORLD_TIMEOUT_SECONDS` if the environment has it and otherwise
 assumes `episode_timeout_seconds = 1200` (it does **not** receive that variable in hosted
 episodes — only the worker sidecar does), and sets
-`play_deadline = start + 0.6 × timeout = start + 720 s`. Step 9 checks it **between rounds**, so a
-deadline settle always lands on a clean round boundary.
+`play_deadline = PROCESS_START + 0.6 × timeout = process start + 720 s`. Step 9 checks it
+**between rounds**, so a deadline settle always lands on a clean round boundary, and it checks it
+**before** a round rather than after one, so the artifacts are written inside the budget instead
+of up to one `round_seconds` past it. Round 0 always plays: a deadline episode is still scored.
 
-**Request rate:** 6 requests per round, and a round is ≥ 3 s, so the game issues at most 120
-requests per minute. It enforces that as an explicit rolling budget (`llm_max_requests_per_minute
-= 120`, retries drawn from the same budget); a seat that cannot be called because the budget is
-exhausted plays its fallback baseline for that round with `fallback` cause `rate_budget`.
+**Request rate:** a healthy round is 6 requests, one per prompt seat. A round in which the
+provider throttles every call is up to 8 per seat and so up to **48**, which is why the ceiling is
+enforced rather than argued: `llm_max_requests_per_minute = 120` is a **rolling 60 s budget shared
+by all six seats**, retries and ladder steps draw from it, and a request that would exceed it is
+not made. That is the bound — the game cannot issue more than 120 requests a minute whatever the
+ladder does. A seat that cannot be called because the budget is exhausted plays its fallback
+baseline for that round with `fallback` cause `rate_budget`, rather than waiting for the window.
 
 ### Scripted baselines (same image, env-switched)
 
@@ -476,11 +505,18 @@ It is meadow's `SustainablePolicy` generalised, and its algorithm is:
    `Σ_c 0.5 × planted[c]² / field_size`; `mushrooms` → `spawn_per_round`.
 2. Its personal quota is `floor(sustainable / num_players)`, at least 0 and at most
    `effort_budget`.
-3. `cleanup`: if `pollution > 0.35`, spend 1 unit on `clean`; harvest the quota with what is left;
+3. `cleanup`: if `pollution > 0.15`, spend 1 unit on `clean`; harvest the quota with what is left;
    harvest 0 while `apples < 30`.
 4. `harvest`: choose the **fullest live patch it is allowed to name** (`open` → any; `closed` →
    its own; `partnership` → the pair patch with the higher stock, always naming it so a partner
    who also names it can be paid); demand `min(quota, floor(stock − 1))` so it never kills a patch.
+   In an **`open` room the ranking is offset by the seat** (`ranked[slot % len(ranked)]`), and
+   only there. Every patch starts identical, so six stewards all reading "the fullest patch" queue
+   on patch 0 and six individually restrained demands strip it in one round: measured over a
+   20-round episode, the plain maximum kills patch 0 and the society scores 126 where the offset
+   scores 240 with every patch alive. `closed` and `partnership` keep the plain maximum, because a
+   partnership patch pays only when BOTH partners name it and partners can only agree on a rule
+   that does not read the seat. A test asserts both halves.
 5. `allelopathic`: eat its favourite while its favourite is the plurality colour; otherwise spend
    1 unit planting the plurality colour and eat the plurality colour with the rest. Never eats
    more than `ripe[c] / num_players`.
@@ -507,14 +543,34 @@ The rest, each a small precise rule:
 - **`random`** — meadow's, unchanged, seeded per slot: uniform over legal decisions. The
   maximum-variance control and the fuzz source for the legality test.
 
+**The steward's two constants are tuned by a grid harness, not guessed.**
+`tools/tune_baselines.py` sweeps `CLEAN_POLLUTION_TRIGGER ∈ {0.05 … 0.55}` × `CLEANUP_STOCK_FLOOR
+∈ {0 … 50}` — 36 combinations — and plays each one through **all four modules** in **three
+societies**: six stewards, the mixed room (two stewards, a cleaner, a punisher, a free rider, a
+random cog) and a pressure room (three stewards, three free riders). Each of those 12 episodes
+scores the combination as *what a steward took plus its equal share of what it left standing*
+(`mean(steward scores) + residual_value / num_agents`), and a combination whose monoculture kills
+the resource in any module is inadmissible whatever it scores. Everything is seeded and
+deterministic, so the table is reproducible and `tests/test_tuning.py` runs the same sweep in CI.
+
+The sweep is what set `CLEAN_POLLUTION_TRIGGER = 0.15`: the original guess of 0.35 scores 384.6
+against the grid's best 409.3 (−6.0 %), and 0.15 scores 405.0 (−1.0 %). The corner the grid likes
+best, `trigger = 0.05`, makes the steward clean whenever the river is dirty at all — an
+unconditional rule, which is exactly the `cleaner` baseline, and the difference between a
+conditional steward and an unconditional contributor is one of the things this coworld measures;
+so the shipped value is the best *conditional* one and the test's tolerance is 2 %.
+`CLEANUP_STOCK_FLOOR = 30` costs 0.5 % against the grid's best floor and buys what the score does
+not price: under pressure it stops a steward taking the last apples of a dying orchard.
+
 ### Degrade, never hang
 
 | failure | response |
 |---|---|
 | a seat's LLM call times out (8 s) or throttles past the ladder | **retry once**, that seat only, with the hint `Your last reply was not usable. Reply with ONE JSON object beginning with { and only the fields in the schema.` |
 | reply is not JSON / has no balanced object / omits every schema field | same single retry |
-| retry also fails | that seat plays `fallback_scripted` (`steward`) for this round; `fallback` event with `cause ∈ {timeout, parse, rate_budget, transport}`; counted in `results.fallbacks[slot]` |
-| no credentials at all (offline CI, cert without a key) | the client marks itself **disabled at startup, makes zero network calls**, and every prompt seat plays `steward` all episode; the episode still finishes `reason: "complete"` |
+| retry also fails | that seat plays `fallback_scripted` (`steward`) for this round; `fallback` event with `cause ∈ {timeout, parse, rate_budget, transport, disabled}`; counted in `results.fallbacks[slot]` |
+| an unclassified transport failure (a rejected credential, a response shape the parser does not expect) | logged with its traceback, then the same retry-once-then-fall-back path with `cause: transport`. It is never allowed out of the batch: an exception escaping `decide` would unwind the round loop, and `_play_game` is a task nobody awaits |
+| no credentials at all (offline CI, cert without a key) | the client marks itself **disabled at startup, makes zero network calls**, and every prompt seat plays `steward` all episode with `cause: disabled` on every `fallback` event — which is the fifth cause, and what a CI replay is full of (`results.fallbacks` counts them); the episode still finishes `reason: "complete"` |
 | a seat's websocket never connects | it passes every round, scores 0, `disconnected: true` in replay and results |
 | every seat disconnects mid-episode | remaining rounds settle with no waiting; `reason: "complete"` |
 | zero seats ever connect | `reason: "no_players"`, artifacts written, exit 0 |
@@ -553,7 +609,7 @@ example is renamed and the resource physics are factored out of the engine into 
 | `…/game/llm.py` | meadow `player/policies.py:LlmPolicy` | moved server-side; truncated throttle ladder; per-call deadline; one parallel batch per round; retry-once-then-fallback |
 | `…/game/baselines.py` | meadow `player/policies.py` (the six scripted classes) | generalised across modules; `steward` is the fallback |
 | `…/game/server.py` | meadow `game/server.py` | round barrier becomes "batch complete or `round_seconds`", with the `min_round_seconds` floor and the `play_deadline` guard; `/player` registration message; alias assignment; the richer replay writer; **linger and artifact handling kept verbatim** |
-| `…/player/player.py` | meadow `player/player.py` | registers `{"type":"prompt","prompt":…,"scripted":…}` from `PLAYER_PROMPT` / `PLAYER_SCRIPTED`, then spectates until `final` |
+| `…/player/player.py` | meadow `player/player.py` | registers `{"type":"prompt","prompt":…,"scripted":…}` from `PLAYER_PROMPT` / `PLAYER_SCRIPTED`, then spectates until `final` — **bounded on both ends**: the connect retries inside a 150 s window, the socket carries `ping_interval = 20 s` / `ping_timeout = 30 s` so a game that died without closing its socket is noticed, and the spectate loop has a 1080 s deadline (past the game's own worst case of a 720 s play budget plus the 90 s hard-cap linger). Every one of those exits 0 |
 | `…/grader/commons_grader.py` | meadow `grader/meadow_grader.py` | per-module `planner_optimum`, plus `public_effort_share` |
 | `…/headless.py` | meadow `headless.py` | unchanged in shape (`parallel_seats=True` is how tests exercise the batch) |
 | `…/shared/{artifact_io,log_shipper}.py` | meadow's | **verbatim, byte-for-byte** |
@@ -675,7 +731,7 @@ lookup, no name service.
             "sanction":null,"message":"one each","src":"llm"}],
             "gains":[1.0,2.0,0.0,1.0,1.0,2.0],"scores":[1.0,2.0,0.0,1.0,1.0,2.0],
             "state_after":{…module_state…},"total_extracted":7.0,"public_effort":3,
-            "collapsed":false}],
+            "seat_public_effort":[1,0,2,0,0,0],"collapsed":false}],
  "events":[{"kind":"round_open","r":0}, …],
  "results":{"reason":"complete","rounds":20,"scores":[…],"total_extracted":[…],
             "public_effort":[…],"sanctions_given":[…],"sanctions_received":[…],
@@ -724,7 +780,7 @@ per-seat rows with a score and a role label, which is our scorebug with two word
 |---|---|---|
 | `replay-viewer/config.nims` | `replay-viewer/config.nims` | output path → `commons_family_replay.js`; `EXPORT_NAME=CommonsReplayModule`; `EXPORTED_FUNCTIONS=_main,_malloc,_free,_cf_load_replay,_cf_payload_ptr,_cf_payload_len,_cf_error_ptr,_cf_error_len`. **Every other flag byte-identical** — keep `MODULARIZE=1`, `ENVIRONMENT=web`, `ALLOW_MEMORY_GROWTH`, `ABORTING_MALLOC=1`, `EXPORTED_RUNTIME_METHODS=HEAPU8`, `--mm:arc`, `--exceptions:goto`, `-d:useMalloc` |
 | wasm entry `replay-viewer/commons_family_replay.nim` | `replay-viewer/bullwhip_replay.nim` | same skeleton, same `exportc` pattern, same `emscripten_exit_with_live_runtime` epilogue (its comment explains why: Nim's generated main would destroy the payload globals JS still reads); exports `cf_load_replay, cf_payload_ptr, cf_payload_len, cf_error_ptr, cf_error_len`; imports **only `std/json`** |
-| `replay-viewer/static_replay.js` | same file | `BullwhipReplayModule` → `CommonsReplayModule`, `_bw_*` → `_cf_*` (renamed on both sides together, never one side), `BullwhipRenderer` → `CommonsRenderer`; the `?replay=` fetch, the 20 s `AbortController` timeout, the Retry button, the `{src:"coworld-replay"}` parent bridge and the `data-replay-error` write are untouched |
+| `replay-viewer/static_replay.js` | same file | `BullwhipReplayModule` → `CommonsReplayModule`, `_bw_*` → `_cf_*` (renamed on both sides together, never one side), `BullwhipRenderer` → `CommonsRenderer`; the header comment; and ONE behavioural edit — the `ready` bridge. Bullwhip posts `tell("ready")` from a double `requestAnimationFrame` at the `attachReplay` call site, which can fire before the renderer's first paint; here a `whenDrawn()` helper waits on `<html data-replay-loaded="true">` (a `MutationObserver` on that one attribute, or straight through if the renderer beat us to it) and posts `ready` from there, so `ready` means a picture and not a parsed payload (chorus 3c11c953, 2026-08-24; `tests/test_viewer_contract.py` asserts it). The `?replay=` fetch, the 20 s `AbortController` timeout, the Retry button, the `{src:"coworld-replay"}` envelope and the `data-replay-error` write/remove are untouched |
 | `replay-viewer/index.html` | same file | wordmark, `<title>`, the extra game-block nodes below; script tags point at `commons_family_replay.js` |
 
 The bundle also carries `client/renderer.js` and `client/chrome.css`, copied from bullwhip.
@@ -743,6 +799,14 @@ each round's fully settled `state_before` / `state_after` / `gains` / `scores`, 
 the event vocabulary, **expands the round records into one renderer state per event** (the
 scrubber indexes events, as bullwhip's does), and emits the payload the renderer reads. A
 malformed replay sets `lastError` and returns 0, which the shell turns into `data-replay-error`.
+
+**The expander derives nothing.** Every number in a `states[i]` is copied out of a round record —
+including each seat's maintenance effort, which the round record carries per seat as
+`seat_public_effort` exactly as the engine booked it in step 8. The wasm module must never
+recompute it from the decision (`clean`, `plant`, `effort_budget − harvest`, a non-red `eat`),
+because that is `Module.public_effort` written a second time in a second language, and the two
+copies drift the first time a module's maintenance act changes. A test asserts both halves: that
+the record carries the per-seat effort the module computes, and that the Nim reads it.
 
 **The exact state JSON the viewer reads** (`cf_payload_ptr` → `JSON.parse` →
 `CommonsRenderer.attachReplay({payload})`):
@@ -770,12 +834,42 @@ is the chart (module-primary quantity and the maintenance quantity, cumulative t
 
 ### Chrome provenance
 
-- **`client/renderer.js` and `client/chrome.css` are copied byte-for-byte from bullwhip** except
-  for the four surgical edits listed below; the identifier rename `BullwhipRenderer` →
-  `CommonsRenderer` is applied to the export object and its two call sites, and nothing else in
-  those files is rewritten. (Bullwhip's lineage keeps its chrome in `renderer.js` + `chrome.css`;
-  it has no `chrome_common.js` and no `replay_broadcast.html` — those are the paintbot lineage's
-  names, and this repo does not take anything from paintbot.)
+- **`client/renderer.js` is bullwhip's file: its chrome scaffolding kept, its board block
+  replaced.** Said exactly, because "byte-for-byte" is not true of this file and the difference is
+  what a reviewer needs to check: the *scaffolding* — `makeRenderer`, `attachLive`,
+  `attachReplay`, `stateToView`, `makeEffects`, `makeNameMap`, `applyNames`, `renderFeed`,
+  `bindFeedToggle`, `buildScrub`, `blockHead`, `describeEvent`, `reasonLine`, `matchHeader`,
+  `updateScorebug`, `updateEndscreen`, `drawChart`, `computeLayout`, `wrapLines`, `drawBubble`,
+  `roundRect`, `ellipsize`, `escapeHtml`, `clampName`, `seatColor`, `hexToRgb`, `rgba`,
+  `assetUrl`, `loadImages`, `isBaselineFiller` — keeps the starter's names, its call graph and its
+  structure, and eight of them are byte-identical to bullwhip's; the rest differ only in this
+  game's strings, its six seats and its module fields. The *board* is the retarget §Readouts
+  describes: bullwhip's supply-chain drawing functions (`drawBelt`, `drawCrate`, `drawDock`,
+  `drawStation`, `drawShipment`, `drawProduction`, `drawCustomers`, `drawSlip`, `drawStack`,
+  `drawTag`, `drawCrateCluster`, `drawCustomerDelivery`, `slotX`, `stageOfSeat`, `peakOrders`,
+  `playerFrameToState`) are gone and this game's four module boards (`drawOrchard`, `drawPatches`,
+  `drawField`, `drawMushrooms`, `drawFlow`, `drawCogRow` and their helpers `cogCentre`,
+  `mushroomRowY`, `moduleBadge`, `maintenanceChip`, `beatLabel`, `chartTitle`) stand in their
+  place, called from the same `draw()` switch. Three further named edits sit outside that: `money`
+  is renamed `score` (the same function, a different unit); `paint()` is added, and every board
+  string is drawn through it, so each one is ellipsized to the frame and its box clamped inside
+  the canvas; and `String()` coercions in `escapeHtml`/`wrapLines` plus a radius clamp in
+  `roundRect` harden those three helpers against non-string and degenerate input. The identifier
+  rename `BullwhipRenderer` → `CommonsRenderer` is applied to the export object and its two call
+  sites, and the export object's key set is unchanged.
+- **`client/chrome.css` is bullwhip's file with three in-place edits and one appended block.** The
+  three, and there are no others (`diff` against the starter is exactly these hunks plus the
+  append): the header comment, which now records this provenance; `#scorebug`
+  `grid-template-columns: repeat(4, 1fr)` → `repeat(6, 1fr)`, because this game seats six where
+  bullwhip seats four; and `#endscreen { bottom: var(--band, 0px) }`, which is transport edit 2
+  below. Everything above the banner comment is otherwise the starter's, unmodified — the stage,
+  the top band, the scorebug plates (`.plate-name { flex: 1 1 auto; min-width: 3.2em }` included),
+  the feed, the transport and scrubber, the endscreen and both narrow-width media queries. The
+  appended block under the banner `commons-family additions to the inherited cogame-bullwhip
+  chrome` carries the beat-kind rules, the plate decorations and `#modulebar`/`#patchgrid`.
+  (Bullwhip's lineage keeps its chrome in `renderer.js` + `chrome.css`; it has no
+  `chrome_common.js` and no `replay_broadcast.html` — those are the paintbot lineage's names, and
+  this repo does not take anything from paintbot.)
 - **`replay-viewer/index.html` is bullwhip's page with a game block appended** — not a rewrite that
   reuses its ids (cogame-gridlock, 2026-08-23). The `<head>`, `#layout`, `#stage`, `#topband`,
   `#wordmark`, `#clock`, `#topright`, `#statuschip`, `#feedtoggle`, `#scorebug`, `#board-wrap`,
@@ -849,6 +943,21 @@ The four surgical edits to the copied chrome, and nothing else:
 - **Legible at 360 px wide.** The softmax.com featured-match iframe is about that wide, so the
   scorebug, clock, chart and feed are checked at 360 px, not at desktop width, and
   `viewer-smoke.png` is the evidence.
+- **The say band, and the worst-case text fixture.** A seat's remark is model-authored text drawn
+  on the canvas, and the server caps it at `chat_max_chars = 140` runes. The layout **reserves a
+  band for it above the cog row**, sized from that cap in the bubble's own font (`sayMetrics()` in
+  `renderer.js`) and reserved whether or not anyone is speaking, so the board does not jump when a
+  remark lands; the bubble wraps to as many lines as the text needs and a word wider than the box
+  is broken on rune boundaries. **A remark is never ellipsized** — ellipsis is for a label, and
+  when the band would take more than 45 % of the frame the font shrinks instead of the text.
+  Because every replay CI can produce is written by scripted baselines (no `ANTHROPIC_API_KEY`, so
+  the longest thing anyone says is 40 runes), that path is exercised by a **worst-case renderer
+  fixture**: `tools/ci/text_fixture/index.html` loads the real `client/renderer.js` and hands it a
+  full-cap remark on **every** seat at once — Latin, one unbroken 140-rune word, CJK,
+  surrogate-pair emoji — over each of the four module boards at five canvas sizes down to 360 px.
+  It asserts its own strings are still 140 runes and that every rune of them came back out of a
+  `fillText` call with no ellipsis, and `ci.yml`'s own step drives it with
+  `viewer_smoke.mjs --strict-text-bounds`, whose `canvas_text` line is the evidence.
 
 ---
 
@@ -888,8 +997,11 @@ never receives the secret and every league episode silently plays scripted);
 maxItems: 6` on `tokens` and `players`; a `results_schema` covering every results key above with
 `reason` an enum of exactly `["complete","deadline","no_players"]`.
 
-**`game.docs`** — `readme` `{"type":"uri","value":"https://github.com/Metta-AI/cogame-commons-family/blob/main/src/coworld/examples/commons_family/README.md"}`
-plus `pages[]`: `rules.md` (the shared round and the scoring formula), `modules.md` (the four
+**`game.docs`** — `readme` `{"type":"text","value":"<the whole of
+src/coworld/examples/commons_family/README.md, inline>"}`, **inline text and not a `uri`**: the
+acceptance checklist spells this member out literally, and a reader of the manifest should not
+have to fetch a URL to read the game's own front page (a test asserts the value is byte-identical
+to the README). Plus `pages[]`: `rules.md` (the shared round and the scoring formula), `modules.md` (the four
 physics with their numbers), `institutions.md` (ledger / sanctions / norm / chat and what each
 variant switches on), `policies.md` (how to field a policy: `PLAYER_PROMPT` vs `PLAYER_SCRIPTED`,
 the reply schema and its caps). **`game.protocols` carries BOTH `player` and `global`**, each an
