@@ -4,7 +4,7 @@
   "run_task": "1217783004692520",
   "slug": "cogchemists",
   "repo": "https://github.com/Metta-AI/cogame-cogchemists",
-  "starter": "",
+  "starter": "Metta-AI/cogame-bullwhip",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T06:20:47Z",
+  "heartbeat_at": "2026-08-24T06:22:03Z",
   "session_ended_at": null,
   "session_id": "11fadfc7",
   "log": "runs/2026-08-24-cogchemists/log.md"
