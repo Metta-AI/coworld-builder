@@ -83,3 +83,6 @@
 2026-08-24T09:35:47Z progress phase=60 marker=VERIFY.md-all-true
 2026-08-24T09:35:47Z 60 dispatching judge on VERIFY.md
 2026-08-24T09:35:47Z heartbeat phase=60
+2026-08-24T09:40:39Z 60 judge returned verify-verdict.md: blocking 0 (six live re-fetches, replay sha256 match, screenshot inspected)
+2026-08-24T09:40:39Z progress phase=60 marker=verify-verdict.md
+2026-08-24T09:40:39Z 60 phase -> 70
