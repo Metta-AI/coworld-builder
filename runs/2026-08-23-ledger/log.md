@@ -68,3 +68,7 @@
 2026-08-24T00:10:21Z 60 verifier returned VERIFY.md 8/8 TRUE; rounds 2+3 completed; replay 316d64ba strict-UTF8 complete; viewer-check run 32675471888 loaded:true clocks differ; check-8 attempt1 false-negative kept at viewer-check-attempt1/ (viewer_smoke.mjs ready-race — LEARNINGS candidate)
 2026-08-24T00:10:21Z 60 dispatch judge (fresh context) brief=adjudicate VERIFY.md vs SPEC definition of done
 2026-08-24T00:10:21Z heartbeat phase=60
+2026-08-24T00:18:20Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 — all 8 checks confirmed on independent re-fetch; artifacts byte-verified
+2026-08-24T00:18:20Z progress phase=60 marker=verify-verdict.md
+2026-08-24T00:18:20Z 60 -> 70 phase transition: entering announce
+2026-08-24T00:18:20Z heartbeat phase=70
