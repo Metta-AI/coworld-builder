@@ -37,3 +37,4 @@
 2026-08-24T13:04:44Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-24T13:04:44Z 30 -> 40 phase transition (STATE.phase=40) — review loop closed in 1 round
 2026-08-24T13:04:44Z heartbeat phase=40
+2026-08-24T13:05:31Z 40 builder dispatched (thread sthr_01GpEbtHAajFSwqgNLsHbeGg) -> coworld-release.yml chain, release-result.json
