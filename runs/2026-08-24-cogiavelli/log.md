@@ -38,3 +38,8 @@
 2026-08-24T13:38:26Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-24T13:38:26Z heartbeat phase=40
 2026-08-24T13:39:10Z 40 builder dispatched (thread sthr_01AzJDnqLLQwZRUvHzvRfqux) — coworld-release.yml from 0.1.0, put_secret=true, policies from tools/ci/policies.json
+2026-08-24T14:00:37Z 40 dispatch 1: v0.1.0 run 32733995798 success but hosted_certification failed (platform 404 on episode-requests, smoke-episode step; documented cold class) — decision: bump
+2026-08-24T14:00:37Z 40 dispatch 2: v0.1.1 run 32734996838 SUCCESS — canonical=true, certify.ok, replay_liveness static-skip, secret_put=true, 4 policies at v2, borgia player_id=ply_bac48eb1; hosted certification state=certified (10/10 steps)
+2026-08-24T14:00:37Z 40 release-result.json persisted; phase -> 50
+2026-08-24T14:00:37Z progress phase=40 marker=release-run-32734996838
+2026-08-24T14:00:37Z heartbeat phase=50

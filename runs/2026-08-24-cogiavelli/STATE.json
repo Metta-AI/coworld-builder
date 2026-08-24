@@ -5,19 +5,24 @@
   "slug": "cogiavelli",
   "repo": "https://github.com/Metta-AI/cogame-cogiavelli",
   "starter": "cogame-babel",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 2
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_f54e03ab-39e9-4763-b46f-51556727bdd4",
+    "manifest_sha": "sha256:0489a9e732975007d7b46680c736750b23180dbcd61078ddc3337df27aaa9bbb",
+    "release_run_id": "32734996838"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "cogiavelli-medici:v2",
+    "champion2": "cogiavelli-borgia:v2",
+    "fillers": [
+      "cogiavelli-condottiere:v2",
+      "cogiavelli-banker:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T13:38:26Z",
+  "heartbeat_at": "2026-08-24T14:00:37Z",
   "session_ended_at": null,
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"
