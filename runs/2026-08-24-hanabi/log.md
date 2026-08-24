@@ -13,3 +13,7 @@
 2026-08-24T20:43:27Z 20 builder dispatched (sthr_01Ta6T9AG9ZiyodwfA3sEpKB) round=1
 2026-08-24T20:43:27Z heartbeat phase=20
 2026-08-24T23:47:57Z 00 resume at phase 20 attempt=1 session=c2a0a349
+2026-08-24T23:50:07Z 20 builder work found complete on resume: CI green run=32780954392 sha=b06d9fee (dead session dc9a9e8c had dispatched builder; repo verified: placeholders clean, workflows parse, inputs+artifacts present, exec bits set, policies.json 2 prompt + 2 scripted, manifest num_agents=4 everywhere)
+2026-08-24T23:50:07Z progress phase=20 marker=ci-run-32780954392
+2026-08-24T23:50:07Z 20 phase -> 30
+2026-08-24T23:50:07Z heartbeat phase=30
