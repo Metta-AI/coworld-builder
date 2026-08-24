@@ -16,3 +16,7 @@
 2026-08-24T10:18:50Z 20 repo created: https://github.com/Metta-AI/cogame-cogplomacy (public)
 2026-08-24T10:18:50Z 20 propagate-secrets run 32716113428 green; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-cogplomacy
 2026-08-24T10:19:47Z 20 builder dispatched (thread sthr_0181x8KZ1QbwBNYy9JXsYgtE) -> implement design, drive ci.yml green on main
+2026-08-24T11:36:45Z 20 builder returned (thread sthr_0181x8KZ1QbwBNYy9JXsYgtE): ci.yml green run 32722300699 on main sha 1b9ddad8d7e1fef17b5fc537c47911d1167c5bc3, round 1, no red rounds; 7 minor deviations logged in builder report; sandbox git push 401s — builder pushed via Git Data API
+2026-08-24T11:36:45Z progress phase=20 marker=ci-run-32722300699
+2026-08-24T11:36:45Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
+2026-08-24T11:36:45Z heartbeat phase=30
