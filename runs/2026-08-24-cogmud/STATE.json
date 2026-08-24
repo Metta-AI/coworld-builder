@@ -5,7 +5,7 @@
   "slug": "cogmud",
   "repo": "https://github.com/Metta-AI/cogame-cogmud",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,7 +21,10 @@
       "cogmud-factor:v1",
       "cogmud-magpie:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "49ce2430-abf2-45bb-98ff-443e35f00218",
+      "4d6d9b09-6d81-4aa4-acab-67df0d3ae532"
+    ]
   },
   "league": {
     "id": "league_c8ba20f2-f4b2-4e68-b8ad-ba75c5eca66a",
@@ -37,7 +40,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T05:00:28Z",
+  "heartbeat_at": "2026-08-24T05:03:28Z",
   "session_ended_at": null,
   "session_id": "b3f1c02e",
   "log": "runs/2026-08-24-cogmud/log.md"

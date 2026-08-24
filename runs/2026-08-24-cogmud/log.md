@@ -46,3 +46,10 @@
 2026-08-24T05:00:28Z 50 divisions PUT 200 division=div_711fc80a-6b0f-453c-9e31-a4816e7eefd8
 2026-08-24T05:00:28Z 50 settings POST 200 (round_robin, filler_policy, elo, round_interval_minutes=15)
 2026-08-24T05:00:28Z heartbeat phase=50
+2026-08-24T05:03:28Z 50 champion1 submit run=32692027315 ok sub_3c2d62c7 (cogmud-merchant:v1, daveey)
+2026-08-24T05:03:28Z 50 champion2 submit run=32692072238 ok sub_d5ff40ce (cogmud-broker:v1, daveey-1, pv df2537fd verified daveey-1-owned)
+2026-08-24T05:03:28Z 50 filler-policies POST 200: cogmud-factor:v1 49ce2430, cogmud-magpie:v1 4d6d9b09 (neither champion)
+2026-08-24T05:03:28Z 50 unpause 200; trigger-round 200; round 1 failed (pre-filler auto round, known pattern, excluded), round 2 pending with both champions in entrant_attributions
+2026-08-24T05:03:28Z progress phase=50 marker=round-2-pending
+2026-08-24T05:03:28Z 50 -> 60 phase transition: entering verify
+2026-08-24T05:03:28Z heartbeat phase=60
