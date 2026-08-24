@@ -32,3 +32,8 @@
 2026-08-24T07:14:26Z progress phase=20 marker=ci-run-32700138054
 2026-08-24T07:26:00Z 30 r1 reviewer dispatched (thread sthr_01NMnFBR75Xayc9vCsP7eJbi) over main@d76e12c3
 2026-08-24T07:26:00Z heartbeat phase=30
+2026-08-24T07:35:19Z 30 r1 reviewer returned: reviews/r1-review.md, 21 findings (F1-F21) + conformant section
+2026-08-24T07:35:19Z 30 r1 coordinator ruling: F1 art deviation stands (playbook binds over note); F2 and F8/F9/F10 flagged blocking-class to fixer
+2026-08-24T07:35:19Z 30 r1 fixer dispatched (thread sthr_01KWfEHwsPreCvdGmXLha61y)
+2026-08-24T07:35:19Z heartbeat phase=30
+2026-08-24T07:35:19Z progress phase=30 marker=r1-review.md
