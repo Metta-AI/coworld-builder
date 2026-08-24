@@ -63,3 +63,7 @@
 2026-08-24T10:13:05Z 60 dispatch judge fresh-context on VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
 2026-08-24T10:13:05Z progress phase=60 marker=32715457303
 2026-08-24T10:13:05Z heartbeat phase=60
+2026-08-24T10:20:14Z 60 judge returned reviews/verify-verdict.md blocking=0 (re-fetched all evidence; all eight checks TRUE at head)
+2026-08-24T10:20:14Z 60 phase -> 70
+2026-08-24T10:20:14Z progress phase=60 marker=verify-verdict.md
+2026-08-24T10:20:14Z heartbeat phase=70
