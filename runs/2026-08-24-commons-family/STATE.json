@@ -5,7 +5,7 @@
   "slug": "commons-family",
   "repo": "Metta-AI/cogame-commons-family",
   "starter": "Metta-AI/coworld-meadow",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "commons-family-freerider:v3",
       "commons-family-cleaner:v3"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "4df6a8b8-f6e1-427c-8c18-6cecade39977",
+      "46442064-7138-4cbc-8029-3014f7c5f83a"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_a95d0e60-1042-4981-bcdc-ead449bfa783",
+    "division": "div_83b3f90b-ecc3-4052-9c14-c45173886c79"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T23:20:00Z",
+  "heartbeat_at": "2026-08-24T21:22:00Z",
   "session_ended_at": null,
   "session_id": "36dff424",
   "log": "runs/2026-08-24-commons-family/log.md"

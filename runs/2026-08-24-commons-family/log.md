@@ -42,3 +42,13 @@
 2026-08-24T23:20:00Z progress phase=40 marker=release-run-32777830776
 2026-08-24T23:20:00Z 40 -> 50 phase transition
 2026-08-24T23:20:00Z heartbeat phase=50
+2026-08-24T21:16:47Z 50 seed POST 200 (coworld_name=commons_family — slug 404s, platform keys on game.name) league=league_a95d0e60-1042-4981-bcdc-ead449bfa783
+2026-08-24T21:17:10Z 50 division PUT 200 div_83b3f90b-ecc3-4052-9c14-c45173886c79; settings POST 200 (elo, round_robin, filler_policy, 15min)
+2026-08-24T21:17:33Z 50 champion1 submit run=32778699140 ok=true sub_08d92734 (steward:v3, daveey)
+2026-08-24T21:18:05Z 50 champion2 submit run=32778748305 ok=true sub_3a263e28 (warden:v3, daveey-1)
+2026-08-24T21:19:30Z 50 fillers POST 200: freerider:v3=4df6a8b8, cleaner:v3=46442064 (neither champion)
+2026-08-24T21:20:00Z 50 unpause 200; trigger-round 200
+2026-08-24T21:21:30Z 50 round 1 failed (auto-triggered pre-fillers race), round 2 pending with both champions in entrant_attributions -> exit criterion met
+2026-08-24T21:22:00Z progress phase=50 marker=league_a95d0e60-1042-4981-bcdc-ead449bfa783
+2026-08-24T21:22:00Z 50 -> 60 phase transition
+2026-08-24T21:22:00Z heartbeat phase=60
