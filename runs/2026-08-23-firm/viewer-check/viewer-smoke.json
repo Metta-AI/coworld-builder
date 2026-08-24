@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1339,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_39c7f43c-706d-49e0-9259-2686b86c9d71/sha256%3A5ddddfc0545dc05e591a875a896c11b47a0fb85e9899892d5ae7877d1f0d793e/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F74f5cf6e-dcb1-499a-94fe-32c4fee6cb86.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "SHIFT 0",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SHIFT 0"
+    },
+    {
+      "at": "50%",
+      "clock": "SHIFT 0 / 8 · WAITING ON 5"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL · PROFIT $2,279.20"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

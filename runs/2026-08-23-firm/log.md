@@ -56,3 +56,20 @@
 2026-08-24T02:57:29Z 50 -> 60 phase transition: entering verify
 2026-08-24T02:57:29Z heartbeat phase=60
 2026-08-24T02:58:07Z 60 dispatch verifier brief=execute prompts/60-verify.md eight checks -> VERIFY.md (75min poll bound)
+2026-08-24T02:59:22Z heartbeat phase=60
+2026-08-24T03:04:22Z heartbeat phase=60
+2026-08-24T03:09:22Z heartbeat phase=60
+2026-08-24T03:14:22Z heartbeat phase=60
+2026-08-24T03:20:00Z 60 check1 TRUE rounds 1+2 completed (02:57:15Z, 03:12:35Z), both seated after fillers 4ef7b5b5+c99a2095
+2026-08-24T03:20:00Z 60 check2 TRUE leaderboard daveey-1/firm-hand:v1 rank1 1001.47 rp=2, daveey/firm-boss:v1 rank2 998.53 rp=2; no filler rows
+2026-08-24T03:20:00Z 60 check3 TRUE ereq_2045780a completed, replay_url set, seats 0/1 = daveey/daveey-1 is_filler=false
+2026-08-24T03:20:00Z 60 check4 TRUE strict JSON ok, protocol firm.replay.v1, reason=complete, 16/16 champion decisions scripted=false, 0 fallbacks
+2026-08-24T03:20:00Z 60 check5 TRUE hosted log CLEAN (decoded 37800 chars, 4 containers, no falling back|LLM unavailable|max_tokens|rejected)
+2026-08-24T03:20:00Z 60 check6 TRUE featured match firm.r2.e1 in SSR playlist[0]; iframe src = /v2/coworlds/replays/static/cow_39c7f43c/sha256%3A5ddddfc0.../index.html?replay=... ready:true HTTP 200
+2026-08-24T03:20:00Z 60 check7 TRUE committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-24T03:20:00Z 60 check8 TRUE viewer-check run 32685986524 loaded:true ms=1339; clocks SHIFT 0 / "SHIFT 0 / 8 · WAITING ON 5" / "FINAL · PROFIT $2,279.20" (all differ); artifact in runs/2026-08-23-firm/viewer-check/
+2026-08-24T03:20:00Z 60 VERIFY.md written: 8/8 TRUE
+2026-08-24T03:23:53Z 60 verifier returned VERIFY.md — all 8 checks TRUE (rounds round_9dd7c937+round_1456d48a completed, both champions ranked rounds_played=2, replay complete 0 fallbacks, logs CLEAN, static iframe, viewer-check 32685986524 loaded:true 3 distinct clocks)
+2026-08-24T03:23:53Z progress phase=60 marker=round_1456d48a
+2026-08-24T03:23:53Z 60 dispatch judge on VERIFY.md vs SPEC definition-of-done
+2026-08-24T03:23:53Z heartbeat phase=60
