@@ -8,3 +8,4 @@
 2026-08-24T22:40:27Z progress phase=10 marker=design.md
 2026-08-24T22:40:27Z heartbeat phase=20
 2026-08-24T22:41:25Z 20 repo created https://github.com/Metta-AI/cogame-coins; propagate-secrets run 32785830363 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-24T22:42:14Z 20 builder dispatched (sthr_01WEaDsPcrPZzEB4gCRGDxwG) round=1
