@@ -57,3 +57,9 @@
 2026-08-24T19:16:35Z 40 policies: reader:v2 (daveey), brinkman:v2 (daveey-1), counter:v1, tit-for-tat:v2
 2026-08-24T19:16:35Z progress phase=40 marker=release-run-32766185820
 2026-08-24T19:16:35Z 40 -> 50 phase transition (STATE.phase=50)
+2026-08-24T19:20:35Z 50 seed 200 league_2d6cdf8d-1f9d-4311-80ed-13616f5a8476; division 200 div_3fc50172-46fb-44bf-994d-906fc48890c8; settings 200 (elo k32, round_robin, filler_policy, 15min)
+2026-08-24T19:20:35Z 50 champion1 submit run 32767335696 ok=true sub_70c5b4b2 (reader:v2, daveey); champion2 submit run 32767398071 ok=true (brinkman:v2, daveey-1)
+2026-08-24T19:20:35Z 50 fillers 200: counter:v1=5939afa6-7331-456a-8934-753afeefc81d, tit-for-tat:v2=051a7a8d-15f9-416e-9107-f0910e7a951f (neither champion)
+2026-08-24T19:20:35Z 50 unpause 200; trigger 200; round 1 auto-created pre-fillers failed (Temporal RoundWorkflow), round 2 (post-fillers trigger) pending with both champions in entrant_attributions
+2026-08-24T19:20:35Z progress phase=50 marker=league_2d6cdf8d-1f9d-4311-80ed-13616f5a8476
+2026-08-24T19:20:35Z 50 -> 60 phase transition (STATE.phase=60)

@@ -5,7 +5,7 @@
   "slug": "matrix-games",
   "repo": "https://github.com/Metta-AI/cogame-matrix-games",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 0
   },
@@ -23,11 +23,14 @@
       "matrix-games-counter:v1",
       "matrix-games-tit-for-tat:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "5939afa6-7331-456a-8934-753afeefc81d",
+      "051a7a8d-15f9-416e-9107-f0910e7a951f"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_2d6cdf8d-1f9d-4311-80ed-13616f5a8476",
+    "division": "div_3fc50172-46fb-44bf-994d-906fc48890c8"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T19:16:35Z",
+  "heartbeat_at": "2026-08-24T19:20:35Z",
   "session_ended_at": null,
   "session_id": "eebc5410",
   "log": "runs/2026-08-24-matrix-games/log.md"
