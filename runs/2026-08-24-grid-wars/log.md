@@ -21,3 +21,5 @@
 2026-08-24T12:10:44Z heartbeat phase=30
 2026-08-24T12:11:29Z 30 r1 reviewer dispatched (sthr_01T8Ut4oBK8w9dX8xhsvhfJP) at sha dbffed23da0d4f001151d6c7a3a2c0654fcb6955
 2026-08-24T12:11:29Z heartbeat phase=30
+2026-08-24T12:12:20Z 30 r1 reviewer thread died (API overload) with no file written; re-dispatched (sthr_01DwdQazgAb6KAKG6Tu3nUdV) retry=1 of round 1
+2026-08-24T12:12:20Z heartbeat phase=30
