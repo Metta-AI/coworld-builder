@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_5ba37909-d5ac-4ba5-8c51-842326b999e4",
+    "division": "div_827c9f85-5ef5-4999-b89f-4ea572d4c48f"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T14:00:37Z",
+  "heartbeat_at": "2026-08-24T14:01:51Z",
   "session_ended_at": null,
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"

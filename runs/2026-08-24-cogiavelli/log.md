@@ -43,3 +43,6 @@
 2026-08-24T14:00:37Z 40 release-result.json persisted; phase -> 50
 2026-08-24T14:00:37Z progress phase=40 marker=release-run-32734996838
 2026-08-24T14:00:37Z heartbeat phase=50
+2026-08-24T14:01:51Z 50 seed 200 lseed_407bfa49; league L=league_5ba37909-d5ac-4ba5-8c51-842326b999e4
+2026-08-24T14:01:51Z 50 division 200 D=div_827c9f85-5ef5-4999-b89f-4ea572d4c48f; settings 200 (round_robin, filler_policy, elo mean, interval 15m)
+2026-08-24T14:01:51Z heartbeat phase=50
