@@ -90,3 +90,5 @@
 2026-08-24T09:41:15Z 60 judge dispatch next to adjudicate VERIFY.md vs SPEC definition of done
 2026-08-24T09:41:15Z heartbeat phase=60
 2026-08-24T09:41:15Z progress phase=60 marker=VERIFY.md
+2026-08-24T09:42:02Z 60 judge dispatched (thread sthr_01BeZQCUM9ZrwASNHCBLdEX2) to adjudicate VERIFY.md; rulings requested on hollow round 1 and scrub-readout note
+2026-08-24T09:42:02Z heartbeat phase=60
