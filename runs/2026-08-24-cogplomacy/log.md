@@ -103,3 +103,6 @@
 2026-08-24T14:27:30Z 75 -> 80 phase transition (STATE.phase=80)
 2026-08-24T14:27:30Z heartbeat phase=80
 2026-08-24T14:28:51Z 80 summaries posted (run task 1217787746940746, idea task 1217787601887008); LEARNINGS section appended
+2026-08-24T14:29:28Z 80 close: all 9 phase subtasks complete, idea 1217740659570260 completed, run task 1217773636283142 moved to Done
+2026-08-24T14:29:28Z progress phase=80 marker=run-task-done
+2026-08-24T14:29:28Z 80 run closed — session end; next action: none (run complete)
