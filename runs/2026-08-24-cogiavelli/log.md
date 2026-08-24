@@ -18,3 +18,4 @@
 2026-08-24T12:09:34Z 20 builder thread sthr_011kKtRMq6Nxxo5ePiZbYwb5 died (API overloaded) after pushing b619ecc (ci 32725466112 failure) and f6862a3 (ci 32725516744 in_progress); re-dispatching builder to resume
 2026-08-24T12:09:34Z heartbeat phase=20
 2026-08-24T12:09:34Z progress phase=20 marker=ci-run-32725516744
+2026-08-24T12:10:26Z 20 builder re-dispatched (thread sthr_01VY89w2u4q6cTtUJwQDvVLh) — resume from f6862a3 / ci 32725516744
