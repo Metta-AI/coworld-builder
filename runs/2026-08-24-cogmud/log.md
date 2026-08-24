@@ -8,3 +8,8 @@
 2026-08-24T01:46:17Z 10 starter=Metta-AI/cogame-bullwhip reason="6-seat free-form NL dialogue/economy game, logic native, policy=LLM prompt = parley-stack row; bullwhip is the proven dialogue/role template (escrow, tribunal, eleusis, firm) and carries the 360px chrome + manifest runnable-env fixes babel lacks" seats=6 (idea pins 6)
 2026-08-24T01:46:17Z heartbeat phase=10
 2026-08-24T01:47:15Z 10 dispatch designer brief=design note -> runs/2026-08-24-cogmud/design.md thread=sthr_01ULVpYAXJHK2yR34TzNbWDy
+2026-08-24T02:06:24Z 10 designer returned design.md (1486 lines) round 1
+2026-08-24T02:06:24Z 10 checklist: starter[x] num_agents=6-everywhere+SEATS[x] resolution-numbered-open/deadline/batch/parse/resolve-classes-initiative[x] scoring-(wealth+3*qp-40)/40-mean-episode[x] endings-complete/deadline-only[x] observation-visible/hidden-split[x] reply-caps-240/160/600/4000-runes[x] both-policies-player/factor/magpie-env-switched[x] parallel-batch-704s-of-720s[x] degrade-24s-timeout-retry-once-then-scripted[x] two-namespaces-policyNames[x] viewer-static-360px[x] viewer-one-starter-bullwhip-all-four[x] chrome-provenance-appended-nothing-removed-no-viewpanel[x] transport-band-endcard-beats-buttons[x] replay-self-sufficient-config.world[x] packaging-compose+manifest+docs+protocols-both[x] tests-incl-viewer-smoke-executed-soak15[x] out-of-scope-14-items[x] — ACCEPTED round 1
+2026-08-24T02:06:24Z 10 -> 20 phase transition: entering build
+2026-08-24T02:06:24Z progress phase=10 marker=design.md
+2026-08-24T02:06:24Z heartbeat phase=20
