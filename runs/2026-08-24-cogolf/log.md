@@ -18,3 +18,6 @@
 2026-08-24T02:30:40Z 30 r1 dispatch fixer
 2026-08-24T02:49:16Z 30 r1 fixer returned r1-fixes.md: B1 fixed 9a63d64, B2 fixed 46eecce, N7 fixed 529c0f8; N3/N4/N9 refuted, N1/N2 needs-design, rest deferred; ci run 32683809005 success at 529c0f8
 2026-08-24T02:49:16Z 30 r1 dispatch judge
+2026-08-24T02:58:57Z 30 r1 judge returned r1-verdict.md: blocking=0/BLOCKING=0 (B1,B2 verified fixed at 529c0f8; independent checklist all-pass; 3 advisories recorded)
+2026-08-24T02:58:57Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-24T02:58:57Z heartbeat phase=40
