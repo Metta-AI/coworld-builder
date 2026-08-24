@@ -17,3 +17,8 @@
 2026-08-24T02:07:26Z 20 propagate-secrets run 32681973665 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-24T02:08:25Z 20 dispatch builder brief=implement repo from design.md, drive ci.yml green thread=sthr_011r4M7Z5eMcms68W3Nzc77z
 2026-08-24T02:08:25Z heartbeat phase=20
+2026-08-24T03:25:43Z 20 builder returned: ci.yml run 32685902639 success on main sha dd6f018d7b135f3e5cfbbd0349193dbf04ddfa9b, round 1, all exit checks pass (verified via gh: conclusion success, 3 workflows parse)
+2026-08-24T03:25:43Z 20 builder deltas noted for LEARNINGS: docker_smoke.sh player-exit-code assertion + ci.yml --soak 15 (template gaps); rails call: retainer literal-note implementation kept (2 effective guard turns), magpie dark-preference + parse-verb additions accepted as note-consistent
+2026-08-24T03:25:43Z progress phase=20 marker=ci-run-32685902639
+2026-08-24T03:25:43Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-24T03:25:43Z heartbeat phase=30
