@@ -36,3 +36,6 @@
 2026-08-24T07:41:38Z 20 note: template deltas builder applied per design — ci.yml viewer_smoke --soak 15; docker_smoke asserts player containers exit 0
 2026-08-24T07:41:38Z progress phase=20 marker=ci-run-32702248279
 2026-08-24T07:41:38Z 20 phase -> 30 review_round=1
+2026-08-24T07:57:12Z 30 r1 reviewer returned r1-review.md: 14 findings (1 blocking B1 scripted-flag on LLM fallback; 13 non-blocking)
+2026-08-24T07:57:12Z 30 r1 dispatching fixer
+2026-08-24T07:57:12Z heartbeat phase=30
