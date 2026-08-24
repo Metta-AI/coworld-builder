@@ -63,3 +63,5 @@
 2026-08-24T08:59:09Z 50 round 1 status=completed error=-; leaderboard shows both champions (daveey, daveey-1)
 2026-08-24T08:59:09Z 50 -> 60 phase transition (STATE.phase=60)
 2026-08-24T08:59:09Z progress phase=50 marker=league_4eb352ae-4a7e-42a2-a7a2-6b3a23dc0b4a
+2026-08-24T08:59:57Z 60 verifier dispatched (thread sthr_015B8eEJj32muhxkuJ5cKwt9), 75-min bound, heartbeat delegation noted
+2026-08-24T08:59:57Z heartbeat phase=60
