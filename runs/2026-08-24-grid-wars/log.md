@@ -62,3 +62,4 @@
 2026-08-24T16:30:48Z heartbeat phase=60
 2026-08-24T16:32:47Z heartbeat phase=60
 2026-08-24T16:33:05Z heartbeat phase=60
+2026-08-24T16:38:05Z 60 poll: rounds completed=1 (round 2); waiting for round 3
