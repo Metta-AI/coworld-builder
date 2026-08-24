@@ -5,7 +5,7 @@
   "slug": "chorus",
   "repo": "https://github.com/Metta-AI/cogame-chorus",
   "starter": "cogame-bullwhip",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "20": 1,
     "40": 2
@@ -48,7 +48,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-24T10:21:39Z",
-    "discord_message_id": ""
+    "discord_message_id": "1541392082730745857"
   },
   "atlas": {
     "status": "",
@@ -62,7 +62,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T10:21:39Z",
+  "heartbeat_at": "2026-08-24T10:22:03Z",
   "session_ended_at": null,
   "session_id": "25f4a313",
   "log": "runs/2026-08-24-chorus/log.md"
