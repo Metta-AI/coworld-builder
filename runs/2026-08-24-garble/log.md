@@ -12,3 +12,6 @@
 2026-08-24T06:06:46Z 10 design ACCEPTED round 1 — no rejections
 2026-08-24T06:06:46Z 10 -> 20 phase transition (STATE.phase=20)
 2026-08-24T06:06:46Z progress phase=10 marker=runs/2026-08-24-garble/design.md
+2026-08-24T06:07:48Z 20 repo created: https://github.com/Metta-AI/cogame-garble (public)
+2026-08-24T06:07:48Z 20 propagate-secrets run 32696013830 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on cogame-garble
+2026-08-24T06:07:48Z heartbeat phase=20
