@@ -8,3 +8,5 @@
 2026-08-24T20:41:27Z progress phase=10 marker=design.md written and accepted round 1
 2026-08-24T20:41:27Z 10 phase -> 20
 2026-08-24T20:41:27Z heartbeat phase=20
+2026-08-24T20:42:28Z 20 repo created public: https://github.com/Metta-AI/cogame-hanabi
+2026-08-24T20:42:28Z 20 propagate-secrets run 32775375568 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
