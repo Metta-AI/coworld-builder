@@ -5,7 +5,7 @@
   "slug": "cogmud",
   "repo": "https://github.com/Metta-AI/cogame-cogmud",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -44,7 +44,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T05:53:10Z",
+  "heartbeat_at": "2026-08-24T06:00:18Z",
   "session_ended_at": null,
   "session_id": "b3f1c02e",
   "log": "runs/2026-08-24-cogmud/log.md"

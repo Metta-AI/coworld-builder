@@ -66,3 +66,7 @@
 2026-08-24T05:53:10Z progress phase=60 marker=VERIFY.md-8of8
 2026-08-24T05:53:10Z heartbeat phase=60
 2026-08-24T05:54:01Z 60 dispatch judge on VERIFY.md vs SPEC definition-of-done thread=sthr_01YLQBGyVryXb71YF1cTPMxW
+2026-08-24T06:00:18Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 — definition-of-done all-true, every check independently re-fetched; non-blocking follow-ups noted (reply-parser strictness, viewer name-swap inconsistency)
+2026-08-24T06:00:18Z progress phase=60 marker=verify-verdict.md
+2026-08-24T06:00:18Z 60 -> 70 phase transition: entering announce
+2026-08-24T06:00:18Z heartbeat phase=70
