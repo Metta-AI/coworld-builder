@@ -757,3 +757,30 @@ the starter after the fact.
   run logs / PR branches have them) so the queue's rebases collapse to identical lines; compute
   fresh spots only for leagues with no PR yet, and hand-check those against dots pending in open
   PRs (chorus/garble vs rumor@459,808), since `atlas_spot.py` on main can't see them.
+
+## 2026-08-24 garble
+
+- **`game.protocols.player` and `.global` must be `{"type":"text","value":…}` objects, not bare
+  strings.** The platform's upload-manifest pydantic validator rejects strings ("2 validation
+  errors for Coworld Manifest") even though repo CI and docker-smoke pass; `game.docs.readme`
+  had the same rule already. Cost one release dispatch (v0.1.0). Folded into the make-coworld
+  Common-mistakes table.
+- **The git-credential outage can cover ALL of github.com, including coworld-builder itself** —
+  earlier note said fresh `cogame-<slug>` repos; today `git push` to coworld-builder began
+  failing mid-session too while `gh api` kept working. Replay commits via Git Data API
+  (blobs → trees → commits → PATCH ref, delete = tree entry `"sha": null`), verify
+  `git diff HEAD origin/main` is empty after, then reset local to origin/main. Never chain the
+  reset unconditionally after the push script — a newline-separated `git checkout -B` after a
+  failed push discards the unpushed commit (recovered from log copy this run).
+- **A league's first round can be a hollow completion**: `status:"completed"` seconds after
+  creation with `replay_url:null`, empty scores, artifact 404s. It still counts in
+  `GET /rounds` filters. Rest phase-60 item 1 on *scored* rounds and disclose the hollow one;
+  the judge accepted exactly that framing.
+- **Sub-agent threads can die to platform API overload without writing anything.** Two builder
+  threads died back-to-back mid-phase-20; the uncommitted working tree survived in the shared
+  filesystem. Brief builders to push a first coherent commit early, and on re-dispatch point
+  them at the leftover tree rather than restarting.
+- **Complete Asana phase subtasks by name, not by remembered gid order** — an off-by-one in the
+  gid list marked 50–80 complete one phase early each and left 40 open; harmless here but only
+  because every later phase succeeded. `GET /tasks/<run>/subtasks?opt_fields=name,completed`
+  first, then PUT the gid whose name matches the phase.

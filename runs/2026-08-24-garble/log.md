@@ -106,3 +106,6 @@
 2026-08-24T09:56:58Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20264 status=pr_open (approved automerge armed; lands via Graphite merge queue — human merges)
 2026-08-24T09:56:58Z 75 -> 80 phase transition (STATE.phase=80)
 2026-08-24T09:56:58Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20264
+2026-08-24T09:57:35Z 80 subtask bookkeeping corrected: completions from phase 40 on were off by one gid; 40-release completed now, all nine phase subtasks now complete (80-close completed one step early, its phase is executing)
+2026-08-24T09:59:26Z 80 executive summary posted (run task story 1217773342696159, idea task story 1217773504681994)
+2026-08-24T09:59:26Z 80 LEARNINGS section appended + make-coworld Common-mistakes row (game.protocols {type,value})
