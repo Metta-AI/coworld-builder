@@ -30,3 +30,4 @@
 2026-08-24T23:18:16Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-08-24T23:18:16Z 00 resume at phase 30 attempt=1 session=38114ce0
 2026-08-24T23:19:19Z 30 r1 fixer re-dispatched (prior thread pushed B1-B4 fixes 591f8f1a, CI green 32774674232, but died before writing r1-fixes.md; new fixer verifies B1-B4 and dispositions N1-N20+N13b)
+2026-08-24T23:19:51Z 30 r1 fixer dispatched thread=sthr_01EDsYbRReVWfbAefSJ7iooU output=reviews/r1-fixes.md
