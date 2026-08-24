@@ -92,3 +92,6 @@
 2026-08-24T17:16:53Z progress phase=70 marker=announce.discord_message_id=1541496430525546598
 2026-08-24T17:16:53Z 70 phase -> 75
 2026-08-24T17:16:53Z heartbeat phase=75
+2026-08-24T17:17:54Z 75 atlas continent=paintlands (zero-sum Core-Wars-style territory combat); slug live in /api/coworlds (episodes_7d=4)
+2026-08-24T17:17:54Z 75 atlas dispatch=32755783022 region=paintlands at=202,270 clearance=34.1
+2026-08-24T17:17:54Z heartbeat phase=75
