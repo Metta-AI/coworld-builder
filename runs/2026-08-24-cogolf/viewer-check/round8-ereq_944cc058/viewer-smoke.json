@@ -1,0 +1,49 @@
+{
+  "loaded": true,
+  "ms": 2354,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_9cef7a1e-ec19-471d-aeca-0aaee64ae507/sha256%3Aecaa3322af52d255f83aff956897cd9bd21381c701f9a9b830d8d272aaefc07f/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc1bf5608-26ff-4383-885c-69130305e99a.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "HOLE 1 / 9 COUNT THE WORDS",
+  "scorebug": "COGOLF game GV01 COUNT THE WORDS — CORE/CORE-1 HOLE 1 / 9 COUNT THE WORDS THIS HOLE Ash SHOTS 0 BREACH 0 HELD 0 ILLEGAL 0 PAR ✗ — #1 ASH DAVEEY +1 #2 BASIL DAVEEY-1 -1",
+  "status": "raising the fortresses …",
+  "loading_text": null,
+  "feed_lines": 1,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "HOLE 1 / 9 COUNT THE WORDS"
+    },
+    {
+      "at": "50%",
+      "clock": "HOLE 5 / 9 LETTER GRADE"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL REPLAYING IN 10S"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[info] [replay-worker] worker script start @ 0 ms",
+    "[info] [replay-worker] importScripts done @ 787 ms",
+    "[info] [replay-worker] wasm runtime initialized @ 1051 ms",
+    "[info] [replay-worker] start @ 1051 ms",
+    "[info] [replay-worker] atlas decoded natively @ 1061 ms",
+    "[info] [replay-worker] replay bytes ready @ 1061 ms",
+    "[info] [replay-worker] wasm load_replay done (238854 B first packet) @ 1096 ms",
+    "[info] [replay-worker] wasm load profile: load atlas manifest=2ms parse replay=7ms render first frame=1ms bake arena (1280x704)=3ms bake ground=3ms bake platforms=0ms bake scroll=1ms emit arena bands=9ms render beat=1ms total=30ms packet=238854B",
+    "[info] [replay-worker] first packet ingested @ 1108 ms",
+    "[info] [replay] first frame at 1527 ms",
+    "[info] [replay] worker load profile {worker script start: 0, importScripts done: 787, wasm runtime initialized: 1051, start: 1051, atlas decoded natively: 1061}"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

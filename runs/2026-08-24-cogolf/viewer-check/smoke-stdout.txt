@@ -1,3 +1,3 @@
-{"loaded":true,"ms":1303,"clock":"HOLE 1 / 9 MEDIAN OF A LIST","scorebug":"COGOLF game GV01 MEDIAN OF A LIST — CORE/CORE-1 HOLE 1 / 9 MEDIAN OF A LIST THIS HOLE Ash SHOTS 0 BREACH 0 HELD 0 ILLEGAL 0 PAR ✗ — #1 ASH DAVEEY 0 #2 BASIL DAVEEY-1 0","feed_lines":1}
-scrub readouts: 0%="HOLE 1 / 9 MEDIAN OF A LIST"  50%="HOLE 5 / 9 COUNT THE WORDS"  100%="FINAL REPLAYING IN 10S"
+{"loaded":true,"ms":4308,"clock":"HOLE 1 / 9 TITLE CASE A SENTENCE","scorebug":"COGOLF game GV01 TITLE CASE A SENTENCE — CORE/CORE-1 HOLE 1 / 9 TITLE CASE A SENTENCE THIS HOLE Ash SHOTS 0 BREACH 0 HELD 0 ILLEGAL 0 PAR ✗ — #1 BASIL DAVEEY-1 +13 #2 ASH DAVEEY -13","feed_lines":1}
+scrub readouts: 0%="HOLE 1 / 9 TITLE CASE A SENTENCE"  50%="HOLE 5 / 9 LONGEST RUN"  100%="FINAL REPLAYING IN 10S"
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

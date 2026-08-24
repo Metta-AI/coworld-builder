@@ -34,18 +34,21 @@
   },
   "verify": {
     "rounds": [
-      "1",
-      "2"
+      "6",
+      "7",
+      "8",
+      "9"
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/bfc82136-1b02-44ce-9566-b8c80feabb5c.replay",
-    "iframe_static": true
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/ff031f16-d234-4846-bd72-0c3dd28f8f52.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32692217118"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T04:10:11Z",
+  "heartbeat_at": "2026-08-24T05:16:41Z",
   "session_ended_at": null,
   "session_id": "0f57e138",
   "log": "runs/2026-08-24-cogolf/log.md"
