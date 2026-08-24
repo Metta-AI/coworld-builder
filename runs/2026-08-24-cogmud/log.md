@@ -7,3 +7,4 @@
 2026-08-24T01:46:17Z 00 -> 10 phase transition: entering design
 2026-08-24T01:46:17Z 10 starter=Metta-AI/cogame-bullwhip reason="6-seat free-form NL dialogue/economy game, logic native, policy=LLM prompt = parley-stack row; bullwhip is the proven dialogue/role template (escrow, tribunal, eleusis, firm) and carries the 360px chrome + manifest runnable-env fixes babel lacks" seats=6 (idea pins 6)
 2026-08-24T01:46:17Z heartbeat phase=10
+2026-08-24T01:47:15Z 10 dispatch designer brief=design note -> runs/2026-08-24-cogmud/design.md thread=sthr_01ULVpYAXJHK2yR34TzNbWDy
