@@ -28,3 +28,4 @@
 2026-08-24T12:09:02Z 30 r1 fixer thread failed (API overloaded), no file, main unchanged — retry 1/3
 2026-08-24T12:09:34Z 30 r1 fixer re-dispatched (thread sthr_01X3qjxBJDkUQPDPXkpAAQ3E) -> reviews/r1-fixes.md
 2026-08-24T12:11:53Z 30 r1 fixer thread failed again (API overloaded), no file, main unchanged — waited 120s, retry 2/3
+2026-08-24T12:12:27Z 30 r1 fixer re-dispatched retry 2/3 (thread sthr_019FGo39rFDpa57gcsFGAgjJ) -> reviews/r1-fixes.md
