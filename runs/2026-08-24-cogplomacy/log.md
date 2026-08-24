@@ -84,3 +84,4 @@
 2026-08-24T14:12:14Z 60 verifier returned (thread sthr_01ExNHmXLMTNcF9GGnjdWx9o): VERIFY.md 8/8 TRUE; rounds 2/3/4 completed, both champions ranked (1013.08 / 973.82, 2 rounds each), replay r4 complete 4/4 years, log CLEAN, static iframe, viewer loaded:true 3 differing clocks; round 2 hollow-settle flagged as platform observation; 3 legibility notes (advisory)
 2026-08-24T14:12:14Z progress phase=60 marker=VERIFY.md-8of8-true
 2026-08-24T14:12:14Z heartbeat phase=60
+2026-08-24T14:12:39Z 60 judge dispatched (thread sthr_01EPMV4Q2CDZUAxiK5kFAhEq) -> reviews/r-verify-verdict.md
