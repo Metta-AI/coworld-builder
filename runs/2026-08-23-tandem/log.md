@@ -64,3 +64,7 @@
 2026-08-24T01:27:27Z progress phase=60 marker=VERIFY.md-all-true
 2026-08-24T01:27:27Z 60 dispatching judge for adjudication
 2026-08-24T01:27:27Z heartbeat phase=60
+2026-08-24T01:36:49Z 60 judge returned verify-verdict.md: BLOCKING: 0; independent re-fetch of all 8 items held (round 5 now completed too); audit note: check-4 hexdump paste was round 2's file (evidence-provenance, non-blocking, LEARNINGS candidate)
+2026-08-24T01:36:49Z progress phase=60 marker=verify-verdict.md
+2026-08-24T01:36:49Z 60 phase -> 70
+2026-08-24T01:36:49Z heartbeat phase=70
