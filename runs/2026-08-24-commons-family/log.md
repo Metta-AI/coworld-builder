@@ -20,3 +20,7 @@
 2026-08-24T19:35:00Z heartbeat phase=30
 2026-08-24T19:40:00Z 30 r1 reviewer dispatched thread=sthr_01XZDTH74T2axAnWoS8vAXTr sha=5c64904 output=reviews/r1-review.md
 2026-08-24T19:40:00Z heartbeat phase=30
+2026-08-24T20:25:00Z 30 r1 reviewer returned: 19 observations (O1 reproduced hang on unclassified transport error; O2 pause bypasses deadline; O3 deadline anchor 905s worst case; O4-O6 chrome provenance wording; O7 public_effort re-derived in Nim; O13/O14 canvas model text without worst-case fixture; rest minor), 10 verified claims
+2026-08-24T20:26:00Z 30 r1 fixer dispatched thread=sthr_01MFwpEaM22tFtayJdLFzM9B with per-finding rulings output=reviews/r1-fixes.md
+2026-08-24T20:26:00Z progress phase=30 marker=r1-review.md
+2026-08-24T20:26:00Z heartbeat phase=30
