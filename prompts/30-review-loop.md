@@ -213,6 +213,21 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
     - Ellipsis is a design choice for **labels** (a card name in a 52 px card) and a defect for
       **sentences**. If `ellipsized` counts a remark rather than a nameplate, the box is too small
       — widen the band, do not shorten the text.
+    - **The CI replay cannot talk.** `docker_smoke.sh` runs without an `ANTHROPIC_API_KEY`, so
+      every seat falls back to the scripted baseline, and a scripted baseline emits no `say` and
+      no `notes`. **Every replay CI can produce carries zero LLM text**, so `viewer_smoke.mjs` on
+      that replay never draws a speech bubble, a remark feed line, or a notes panel — the whole
+      class of chrome that exists only to show what a model said is untested by every gate above.
+      cogchemists' bubbles shipped clipped with a fully green board for exactly this reason.
+      A repo whose viewer draws LLM-authored text must therefore ship a **worst-case renderer
+      fixture**: a page that loads the real `client/renderer.js`, hands it a frame built to hurt
+      (a full-cap remark on *every* seat at once, the tallest station block, an entrance
+      animation played through to settle), renders it at several canvas sizes, sets
+      `data-replay-loaded`, and is driven by `viewer_smoke.mjs --strict-text-bounds` in its own
+      `ci.yml` step. The fixture asserts its own strings are still full-length — one quietly
+      shortened remark leaves it passing while testing nothing. Cite the step and its
+      `canvas_text` line; a repo that draws model text and has no such fixture is a blocking
+      `legibility` finding.
 
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.
