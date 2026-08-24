@@ -77,3 +77,6 @@
 2026-08-24T22:45:00Z 75 -> 80 phase transition
 2026-08-24T22:45:00Z heartbeat phase=80
 2026-08-24T22:52:00Z 80 LEARNINGS entry + 2 playbook common-mistakes rows written; executive summary composed
+2026-08-24T22:58:00Z 80 close: summaries posted (run task + idea task), all 9 subtasks complete, idea 1217747795476358 completed, run task moved to Done
+2026-08-24T22:58:00Z progress phase=80 marker=run-task-done
+2026-08-24T22:58:00Z 80 run complete — session ending; no next action (run is Done)
