@@ -46,3 +46,6 @@
 2026-08-24T05:26:27Z progress phase=60 marker=verify-verdict.md blocking=0
 2026-08-24T05:26:27Z heartbeat phase=70
 2026-08-24T05:28:05Z 70 announce attempted_at written before POST
+2026-08-24T05:28:38Z 70 announce msg=1541318222354321510 (200, flags=4, embeds=[])
+2026-08-24T05:28:38Z progress phase=70 marker=discord_message_id=1541318222354321510
+2026-08-24T05:28:38Z heartbeat phase=75
