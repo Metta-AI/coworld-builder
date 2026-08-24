@@ -91,6 +91,10 @@ thing it knows about a specific game is the DOM ids the starter chrome already u
 ```bash
 node tools/ci/viewer_smoke.mjs --bundle <dir> --replay <file> [--timeout 60] [--out .]
 node tools/ci/viewer_smoke.mjs --url <full viewer url with ?replay=> [--timeout 90]
+
+`--strict-text-bounds` fails the run if the viewer drew any text outside its canvas. Keep it for
+a FIXED arena (every board that wholly fits the frame); drop it for a pannable board, where the
+count is still reported as `canvas_text` in `viewer-smoke.json`.
 ```
 
 `--bundle` serves the directory *and* the replay over a local HTTP server (Node's own, no

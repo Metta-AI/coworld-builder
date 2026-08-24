@@ -188,6 +188,28 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
       `core.zoomAt/setZoom/attachMinimap` wiring, and the ids from the test list — rather than
       hiding it. Keep it only when the design note says the board is larger than the viewport.
 
+15. **Every drawn string fits its frame.** *(category: legibility)* A canvas accepts a draw at a
+    negative coordinate without complaint, so text with nowhere to go is invisible to the load
+    signal, to the soak, and to a screenshot. cogchemists (2026-08-24) drew each seat's speech
+    bubble upward from the top of its cog, and the cog sat at the top of the arena: every bubble
+    body landed at a negative y and four sentences rendered as four white slivers. Everything was
+    green.
+    - `tools/ci/viewer_smoke.mjs` reports `canvas_text: {total, outside, ellipsized}` in
+      `viewer-smoke.json`. For a **fixed arena** — any board that wholly fits the frame —
+      `outside` must be **0**, and `ci.yml`'s smoke step must carry `--strict-text-bounds` so a
+      regression is red rather than merely logged. A pannable board draws off-frame legitimately;
+      there the flag is dropped and the count is read, not gated. `total: 0` means the check
+      covered nothing (a worker/OffscreenCanvas or WebGL renderer) and is not evidence of anything.
+    - Any text laid out **relative to another element** — a speech bubble over a cog, a callout on
+      a card, a floating damage number — gets a **reserved band in the layout**, sized from the
+      cap the server enforces on that string (`MaxSayLen` and its kin) and measured in the font it
+      will be drawn in. Sizing by eye, or letting the bubble grow into whatever happens to be
+      above it, is the bug above. The band is reserved whether or not anything is speaking, so the
+      scene does not jump when a remark lands.
+    - Ellipsis is a design choice for **labels** (a card name in a 52 px card) and a defect for
+      **sentences**. If `ellipsized` counts a remark rather than a nameplate, the box is too small
+      — widen the band, do not shorten the text.
+
 Additionally, for simultaneous-decision games: all seats' LLM calls go out as **one parallel batch
 per turn**. Sequential calls are a blocking `timeout` finding.
 
