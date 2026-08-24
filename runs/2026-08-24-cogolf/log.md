@@ -26,3 +26,8 @@
 2026-08-24T03:15:49Z 40 released 0.1.1 cow_db1331d5-6380-4925-a903-6ac5f2cddc61; policies architect:v2 sniper:v2(daveey-1) literalist:v2 pedant:v2; release-result.json committed
 2026-08-24T03:15:49Z progress phase=40 marker=release-run-32685409623 cow_db1331d5
 2026-08-24T03:15:49Z heartbeat phase=50
+2026-08-24T03:19:21Z 50 seed 200 lseed_d8c3899c league_4cb6dc9b-be72-44f7-8713-1b6fc9e1880c; division div_b4ac4e81 200; settings 200 (note: /leagues and /rounds return bare arrays, not .entries)
+2026-08-24T03:19:21Z 50 champion1 architect:v2 submit run 32685930787 ok sub_5b202f31; champion2 sniper:v2 submit run 32685956880 ok sub_d1a5f4b3 (daveey-1 verified on pv 71ca4c9d)
+2026-08-24T03:19:21Z 50 fillers set BEFORE trigger: literalist:v2 c466d2ba + pedant:v2 6813522f (200); unpause 200; trigger 200; round 1 pending, both champions in entrant_attributions
+2026-08-24T03:19:21Z progress phase=50 marker=league_4cb6dc9b round1-pending
+2026-08-24T03:19:21Z heartbeat phase=60
