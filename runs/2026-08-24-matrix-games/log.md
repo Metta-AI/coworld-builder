@@ -84,3 +84,7 @@
 2026-08-24T19:51:07Z 60 judge dispatched (adjudicate VERIFY.md)
 2026-08-24T19:51:07Z progress phase=60 marker=viewer-check-32769835228
 2026-08-24T19:51:07Z heartbeat phase=60
+2026-08-24T19:55:39Z 60 judge returned verify-verdict.md BLOCKING: 0 (all 8 items VERIFIED, spot-checks agree)
+2026-08-24T19:55:39Z 60 -> 70 phase transition (STATE.phase=70)
+2026-08-24T19:55:39Z 70 announce.attempted_at written and pushed BEFORE the POST
+2026-08-24T19:55:39Z heartbeat phase=70
