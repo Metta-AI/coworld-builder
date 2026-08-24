@@ -619,9 +619,12 @@ whose matrix never gets exercised is a dead replay:
 - **(b) The matrix bites.** In `prisoners-dilemma`, a room of seven `always-first` plus one
   `always-second` gives the `always-second` seat the top score. In `stag-hunt`, an all-`always-first`
   room's mean score strictly exceeds an all-`always-second` room's. In `running-with-scissors`,
-  `counter` outscores `fixed-pick` over seeds 1..8. In `chicken`, one `always-second` in a room of
-  `always-first` tops the table, and an all-`always-second` room's mean is the lowest of the five
-  scripted rooms. In `bach-or-stravinsky`, zero same-camp resolutions occur and both camps' mean
+  `counter` outscores `fixed-pick` over seeds 1..8. In `chicken`, the hawk out-earns the dove in
+  every mixed (hawk-vs-dove) resolution, and an all-`always-second` room is the worst of the five
+  scripted rooms per resolution. (Amended by the coordinator in round 2: the original "a lone
+  `always-second` tops the table" is positionally false — doves interact freely while the lone
+  hawk is frozen out, so it never tops the table on seeds 1..8; the per-resolution form is the
+  property the game actually guarantees and the one `tests/test_indices.nim` asserts.) In `bach-or-stravinsky`, zero same-camp resolutions occur and both camps' mean
   scores are positive.
 - **(c) Every cell is reachable.** Across seeds 1..8 per variant, every one of the K×K cells of
   `conventionCounts` is hit at least once by *some* room in the scripted sweep — otherwise the

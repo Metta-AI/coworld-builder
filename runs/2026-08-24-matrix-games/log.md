@@ -43,3 +43,7 @@
 2026-08-24T17:52:36Z 30 fixer dispatched round 2
 2026-08-24T17:52:36Z progress phase=30 marker=r2-review.md
 2026-08-24T17:52:36Z heartbeat phase=30
+2026-08-24T18:40:17Z 30 fixer returned r2-fixes.md (14 commits, final a301f70, ci 32761793533 success)
+2026-08-24T18:40:17Z 30 coordinator amended design note chicken clause (b) to per-resolution form (F25) — runs/design.md + repo docs/plans copy, repo commit 1e4da29
+2026-08-24T18:40:17Z progress phase=30 marker=r2-fixes.md
+2026-08-24T18:40:17Z heartbeat phase=30
