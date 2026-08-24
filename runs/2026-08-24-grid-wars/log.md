@@ -67,3 +67,4 @@
 2026-08-24T16:46:22Z 60 check3: round 3 ereq_ecc55c98 status=completed but replay_url=null and episode_id=null (no scores); re-polling and awaiting round 4
 2026-08-24T16:50:31Z 60 poll: rounds 2,3 completed; r3 ereq still replay_url=null; awaiting round 4 (~16:57)
 2026-08-24T16:55:26Z 60 poll: still rounds 2,3; awaiting round 4
+2026-08-24T17:00:33Z 60 check1 TRUE (rounds 2,3,4 completed); check2 TRUE (daveey-1 1030.53 r2, daveey 969.47 r2); check3 TRUE round 4 ereq_4c689bac replay cd187239
