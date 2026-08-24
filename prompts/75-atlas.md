@@ -103,7 +103,7 @@ every compile in this system — you decide, and GitHub Actions does the mechani
 
    | `.status` | what it means | what you do |
    |---|---|---|
-   | `pr_open` | the PR is open and auto-merge is armed | record `pr_url`, go to 7 |
+   | `pr_open` | the PR is open, approved automatically, and queued behind a human's merge-when-ready | record `pr_url`, go to 7 |
    | `already_placed` | the slug already had a `CITIES` line and the page was current | record it, go to 7 |
    | `failed` | `.error` names the step and the last 20 lines | step 8 |
 
@@ -117,9 +117,14 @@ every compile in this system — you decide, and GitHub Actions does the mechani
    `<UTC> 75 atlas pr=<url> status=<status>` and `<UTC> progress phase=75 marker=<pr url>`.
    Complete the phase-75 subtask on the run task and comment the PR url on it.
 
-   **Do not wait for the merge.** `auto-approve-ai-docs.yml` in metta approves an atlas-only diff
-   and the workflow armed `--squash --auto`, so the PR lands when metta's CI goes green — minutes
-   or hours later, on nobody's heartbeat. Phase 80 re-reads it once and reports where it got to.
+   **Do not wait for the merge, and do not expect to be the one who merges it.**
+   `auto-approve-ai-docs.yml` in metta approves an atlas-only diff by itself (verified 2026-08-24),
+   and the workflow arms `--squash --auto`. But **metta lands every PR through Graphite's merge
+   queue** — `gh pr merge --auto` sits at `mergeStateStatus: BLOCKED` there no matter how green
+   CI is, and a queued merge shows up on GitHub as *CLOSED* with `mergedAt: null`, which is not a
+   failure. The sandbox has no Graphite credential, so the last step is a human's
+   `gt submit --merge-when-ready` (or the Merge-when-ready button). Record the PR and move on;
+   phase 80 reports it as `open (approved, waiting on the merge queue)`.
    Never merge it by hand, never `gh pr merge --admin`, and **never add the `blessed` label**:
    blessing is a human's, by policy.
 

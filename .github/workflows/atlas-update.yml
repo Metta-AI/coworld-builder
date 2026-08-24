@@ -14,6 +14,11 @@
 # dispatch branches from a fresh origin/main under a run-unique name, so a retry
 # is a new branch and never a force-push (AGENT.md hard rule 2).
 #
+# The PR approves itself (metta's auto-approve-ai-docs.yml covers atlas DATA
+# paths) but does not merge itself: metta merges through Graphite's queue, so a
+# human finishes it with `gt submit --merge-when-ready`. A queued merge appears
+# on GitHub as CLOSED with mergedAt: null -- that is a merge, not a rejection.
+#
 # It deliberately does NOT run fetch-ideas.mjs: that would pull unbuilt Coworld
 # Ideas cards into data/ideas.json, and build.mjs refuses to run while any of
 # them is unplaced — an unrelated human's new idea card would fail this build.
@@ -203,8 +208,11 @@ jobs:
                   --title "atlas: $SLUG" --body "$BODY")
           echo "pr_url=$URL" >> "$GITHUB_OUTPUT"
           echo "status=pr_open" >> "$GITHUB_OUTPUT"
-          # Auto-merge, never --admin: the PR still needs the review that
-          # auto-approve-ai-docs.yml gives an atlas-only diff.
+          # Arm auto-merge, never --admin. auto-approve-ai-docs.yml gives an
+          # atlas-only diff its approving review, but metta lands PRs through
+          # Graphite's merge queue, which this job has no credential for: the
+          # last step is a human's `gt submit --merge-when-ready`. Arming --auto
+          # costs nothing and lands the PR the day that policy changes.
           if gh pr merge "$URL" --squash --auto; then
             echo "automerge=armed" >> "$GITHUB_OUTPUT"
           else
