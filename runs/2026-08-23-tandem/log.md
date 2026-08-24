@@ -42,3 +42,8 @@
 2026-08-24T00:18:58Z progress phase=30 marker=r2-verdict.md
 2026-08-24T00:18:58Z 30 phase -> 40
 2026-08-24T00:18:58Z heartbeat phase=40
+2026-08-24T00:33:49Z 40 dispatch 1: 0.1.0 run 32676351806 step_failed="Certify locally" (manifest_invalid: config_schema.tokens lacks minItems/maxItems) -> manifest fix a5e9ef1+32d4111
+2026-08-24T00:33:49Z 40 dispatch 2: 0.1.1 run 32676640602 success — ok/canonical/secret_put true, certify ok, replay_liveness skipped-static, cow_77d94979-f003-494d-8c60-6bd97b97b9db; release-result.json committed
+2026-08-24T00:33:49Z progress phase=40 marker=release-run-32676640602
+2026-08-24T00:33:49Z 40 phase -> 50
+2026-08-24T00:33:49Z heartbeat phase=50
