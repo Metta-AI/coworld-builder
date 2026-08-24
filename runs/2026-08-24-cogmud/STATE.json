@@ -1,0 +1,41 @@
+{
+  "run": "2026-08-24-cogmud",
+  "idea_task": "1217704658800505",
+  "run_task": "1217760078573505",
+  "slug": "cogmud",
+  "repo": "https://github.com/Metta-AI/cogame-cogmud",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-24T01:44:33Z",
+  "session_ended_at": null,
+  "session_id": "b3f1c02e",
+  "log": "runs/2026-08-24-cogmud/log.md"
+}
