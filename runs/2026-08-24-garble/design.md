@@ -92,13 +92,15 @@ metered in characters, the market walks every turn, and portfolio value at the h
   **surplus** `sur[s] = deal[s mod 4]`; its **demand** is `dem[s] = deal[(s + 1 + rng.rand(2)) mod 4]`
   redrawn until `dem[s] != sur[s]`. Seat `s` starts with `units[s][sur[s]] = 20`, `0` of everything
   else, and `cash[s] = 120` credits.
-- **Contract.** Seat `s` is paid `premium[s] = 6 + rng.rand(4)` (6…9) credits for each unit of
-  `dem[s]` it holds at the horizon, up to `quota[s] = 12 + rng.rand(8)` (12…19) units. Beyond the
+- **Contract.** Seat `s` is paid `premium[s] = 6 + rng.rand(3)` (6…9) credits for each unit of
+  `dem[s]` it holds at the horizon, up to `quota[s] = 12 + rng.rand(7)` (12…19) units. Beyond the
   quota the units are worth only the market price. **A seat's own contract is private**; nobody else
   learns its demand commodity, its premium or its quota except by inference from what it says.
-- Every draw above comes from **one** RNG stream at `initSim`, in this order: aliases, prices,
-  surplus/demand deal, premiums, quotas, interference phase, burst table. `seed` alone reproduces
-  all of it.
+- Every draw above comes from the **seed**, through two seeded streams and nothing else: the
+  aliases from `tableNames`' own stream (`initRand(seed * 6779 + 31)`, the starter's shape, because
+  the aliases are drawn before a `Sim` exists), and everything else from one stream at `initSim`
+  (`initRand(seed * 7919 + 17)`) in this order: prices, surplus/demand deal, premiums, quotas,
+  interference phase, burst table. `seed` alone reproduces all of it.
 
 ### The wire — the exact scanner, lexicon and noise model
 
@@ -146,12 +148,16 @@ P    = max(6, turns div 2)                  # swell period, in turns
 phi  = rng.rand(P - 1)                      # drawn at initSim
 base = 0.15 + 0.60 * (0.5 - 0.5*cos(2*PI*(t + phi)/P))
 burst[t] = (rng.rand(1.0) < 0.12)           # drawn for every t at initSim
+curve[t] = clamp(base * config.noiseScale, 0.05, 0.95)   # PUBLISHED, burst-free
 raw  = (base + (if burst[t]: 0.35 else: 0.0)) * config.noiseScale
 interference[t] = clamp(raw, 0.05, 0.95)    # rounded to 3 decimals
 ```
 
 The **base curve for every turn of the episode is published** to all seats and to spectators from
-turn 0 — a policy can plan to talk in the quiet. The **bursts are not**: they are the surprise. The
+turn 0 — a policy can plan to talk in the quiet. It carries `noiseScale`, exactly as
+`interference[t]` does, so the forecast a seat reads is on the same scale as the meter it will
+play into; the two differ only by the burst. The **bursts are not** published: they are the
+surprise. The
 meter therefore swells and fades on screen exactly as the idea asks, and it is derivable from
 `seed` + `turns` + `noiseScale` alone.
 
@@ -515,8 +521,14 @@ The **CONFIRMABLE TICKETS** block prints the ready-made JSON skeleton for each t
 the same code that validates it. That is the escrow 0.1.3 lesson applied: precompute the legal
 choice set in the observation instead of drilling the prompt, or a formal-output game falls back to
 scripted on a large share of turns. `HeardWindow = 3`: the last three turns of heard traffic are
-printed in full, earlier turns compress to `turn t  <alias> → <channel>: <first 40 runes>…`, which
-bounds the prompt at roughly 3 000 runes on a twelve-turn episode.
+printed in full, earlier turns compress to `turn t  <alias> → <channel>: <first 40 runes>…`. The
+heard window is the only block that is *windowed*; the public tape and the confirmable-ticket
+block are printed in full, so the observation grows with the episode rather than sitting at a
+fixed size. Measured over 20 seeds of a full scripted table, the peak user prompt is **≈ 5 400
+runes at 12 turns**, ≈ 7 100 at 18 and ≈ 8 100 at the 24-turn cap, against a constant **≈ 3 060
+rune** system prompt — about 3 000 tokens at the cap, comfortably inside one request and well
+under `maxOutputTokens`' companion input limits, but not the "roughly 3 000 runes" this note first
+estimated.
 
 ### Reply schema, and the caps
 
@@ -569,6 +581,14 @@ bounded text, never raise).
    `price ≤ price[t][dem] + premium - 1`, or selling `sur` at `price ≥ price[t][sur] + 1` — and
    asserts **exactly the fields it heard**.
 4. It stops transmitting when `airtime < 30`, keeping the meter for confirms.
+
+Those five numbers — the `min(5, …)` lot, the `+3` ask, the `+1` bid, the `0.5` loud band and the
+`30`-rune floor — are `BaselineParams.DefaultBaseline` in `src/garble/llm.nim`, and they are swept,
+not guessed: `scripts/tune_baselines.nim` plays the whole 576-point grid around them over 60 seeds
+× four tables and scores every point against the four properties the baselines must hold (a deal
+on every seed and ≥ 3 on the median seed; a shark-heavy table mishears more than an honest one;
+the quiet band outscores the storm; the mean quoter score is above 1.0). The table it prints, and
+the per-parameter reading of it, are committed at `docs/tuning/baseline-grid.md`.
 
 **`shark`** — filler #2, the antagonist that makes the shield legible.
 
@@ -695,7 +715,7 @@ truth and the viewer computes the lie.
 
 `wire` holds the **live turn's** transmissions (or the last completed turn once `done`), each with
 its per-recipient garbling, word by word — that is what the stage draws SAID over HEARD. `curve` is
-the published interference base for every turn. `band` is `CLEAR` (< 0.25), `HAZY` (< 0.50),
+the published interference base for every turn, on the `noiseScale` scale (§*The wire*). `band` is `CLEAR` (< 0.25), `HAZY` (< 0.50),
 `ROUGH` (< 0.75) or `STORM`.
 
 ### `resultsJson` — platform-facing, policy names
@@ -877,7 +897,8 @@ committed **`chmod +x`**) is the `coworld build` hook: it compiles
 the pinned `emscripten/emsdk` container from `Dockerfile.replay-viewer`, then copies
 `garble_replay.js`, `garble_replay.wasm`, `replay-viewer/index.html`,
 `replay-viewer/static_replay.js`, **`client/chrome_common.js`**, `client/renderer.js`,
-`client/chrome.css` and the six `data/` assets into the bundle. It **`mkdir -p`s the output parent
+`client/chrome.css` and the seven `data/` assets (the five cog sprites, `arena_floor.png`,
+`font.ttf`) into the bundle. It **`mkdir -p`s the output parent
 before the containment check** (ecos, 2026-08-23: the inherited hook exits 1 on a fresh CI checkout
 because `coworld build` pre-creates that directory and CI does not). The final `grep -q 'data-replay'`
 assertion on the copied `static_replay.js` is kept.
@@ -900,8 +921,9 @@ assertion on the copied `static_replay.js` is kept.
   `/* ---------- garble additions ---------- */`; no existing rule is edited.
 - **`client/replay_broadcast.html` is the starter's page with a game block appended.** It *is*
   `cogame-babel/client/replay.html`, with (a) the identifier renames a fork requires —
-  `BabelRenderer` → `GarbleRenderer`, the `<title>`, and the `#wordmark` text `BA<span>BEL` →
-  `GAR<span>BLE` — (b) **one inserted line**,
+  `BabelRenderer` → `GarbleRenderer`, the `<title>`, the `#wordmark` text `BA<span>BEL` →
+  `GAR<span>BLE`, and the `#clock` placeholder `ROUND 0` → `TURN 0` (Garble counts turns, and the
+  renderer overwrites it on the first frame anyway) — (b) **one inserted line**,
   `<script src="/client/chrome_common.js"></script>` immediately *before* the starter's
   `<script src="/client/renderer.js">` (the game block reads `window.GarbleChrome` lazily inside
   functions, but the chrome module must exist before the inline bootstrap calls `bindFeedToggle`),
@@ -976,10 +998,12 @@ Canvas scene over `data/arena_floor.png` in babel's Ink & Print palette; seat co
   word renders the *heard* word **in red with a red underline** and the said word ghosted above it
   at 60 % size. A clean word is ink. This is SAID vs HEARD side by side, word for word, and the
   audience always knows what was actually said.
-- **The five cogs** ring the card. Seats 0–3 use babel's `soldier_<red|blue|green|yellow>_front.png`
-  sprites verbatim; **seat 4 uses `soldier_red_front.png` drawn through a violet tint** (offscreen
-  canvas, `source-atop` fill at 0.75 with `COLOR_HEX.violet`) so the fifth cog is real art in the
-  same hand, not a placeholder box. Under each cog: name, portfolio in credits, score as `1.42×`,
+- **The five cogs** ring the card. Each seat has its **own** finished sprite —
+  `data/cog_<red|blue|green|yellow|violet>_front.png`, 128×128 RGBA, one radio kit per seat (whip
+  antenna, dish, headset-and-key, crank set, rabbit ears) — generated for this game with
+  nano-banana from the Softmax cog reference (§*Packaging*) and loaded by name in
+  `client/renderer.js`. **There is no tint path**: the fifth cog is real art in its own colour, not
+  the red sprite recoloured at draw time. Under each cog: name, portfolio in credits, score as `1.42×`,
   and an **airtime meter** (a small bar, `airtime / 900`) that visibly drains; a `SILENT` tag when
   it is empty, a `RADIO` or `LINE → Gizmo` tag for what the cog transmitted this turn.
 - **The tape** runs along the bottom: settled deals as trade tickets. A clean deal prints one line.
@@ -1064,9 +1088,17 @@ not at desktop width.
   **`Dockerfile.replay-viewer`** — babel's, renamed.
 - **`garble.nimble`** — version `0.1.0`, `srcDir = "src"`, `requires "nim >= 2.2.4"`, `bitworld`,
   `mummy >= 0.4.7`, `curly >= 1.1.1`, `whisky`; `nimby.lock` copied from babel.
-- **`data/`** — babel's `arena_floor.png`, `font.ttf`, `FONT_LICENSE.txt` and the four
-  `soldier_<red|blue|green|yellow>_front.png` sprites, unchanged. Real art from the starter; the
-  fifth cog is the red sprite violet-tinted at draw time (§*Viewer*). No placeholder art anywhere.
+- **`data/`** — babel's `arena_floor.png`, `font.ttf` and `FONT_LICENSE.txt`, unchanged, plus the
+  five generated cog sprites `cog_<red|blue|green|yellow|violet>_front.png` (128×128 RGBA). The
+  starter's four `soldier_*_front.png` sprites are **not** shipped: nothing references them.
+  Real art, not placeholders, per `playbooks/make-coworld.md` §Phase 0 and
+  `playbooks/art-nanobanana.md` — a deviation from this note's original violet-tint plan, accepted
+  by the coordinator on 2026-08-24.
+- **`scripts/art/`** — how that art was made, committed so it is reproducible:
+  `gen_cog_sheet.py` (one nano-banana / Gemini render of five cogs in a row from
+  `scripts/art/source/cog_reference.png`, written to `scripts/art/source/cogs_sheet.png`) and
+  `split_cog_sheet.py` (backdrop key-out, split, crop, pad, resize → the five `data/cog_*.png`).
+  The derived PNGs are committed; CI never regenerates art and never needs an image-model key.
 - **`README.md`** — the game in a paragraph, the layout list, the local loop, how to field a policy.
 
 ### `coworld_manifest_template.json`

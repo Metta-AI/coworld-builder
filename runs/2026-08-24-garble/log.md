@@ -37,3 +37,7 @@
 2026-08-24T07:35:19Z 30 r1 fixer dispatched (thread sthr_01KWfEHwsPreCvdGmXLha61y)
 2026-08-24T07:35:19Z heartbeat phase=30
 2026-08-24T07:35:19Z progress phase=30 marker=r1-review.md
+2026-08-24T08:32:58Z 30 r1 fixer returned: 20/21 fixed, F19 refuted; CI green run 32706190772 at main@de841a15; reviews/r1-fixes.md
+2026-08-24T08:32:58Z 30 r1 design.md mirrored from repo copy (7 note amendments: F1,F3,F4,F5,F16,F17,F18)
+2026-08-24T08:32:58Z heartbeat phase=30
+2026-08-24T08:32:58Z progress phase=30 marker=r1-fixes.md
