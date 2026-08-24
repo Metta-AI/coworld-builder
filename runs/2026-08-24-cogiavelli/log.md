@@ -82,3 +82,7 @@
 2026-08-24T14:53:50Z 60 judge returned verify-verdict.md: blocking 0 / BLOCKING 0; all 8 items proven, reconciliation to the digit; phase -> 70
 2026-08-24T14:53:50Z heartbeat phase=70
 2026-08-24T14:55:00Z 70 announce.attempted_at written and pushed before POST
+2026-08-24T14:55:24Z 70 announce msg=1541460871652581431 (200, flags=4, embeds=0, 1777 chars)
+2026-08-24T14:55:24Z 70 phase -> 75
+2026-08-24T14:55:24Z progress phase=70 marker=discord-msg-1541460871652581431
+2026-08-24T14:55:24Z heartbeat phase=75
