@@ -42,3 +42,16 @@
 2026-08-24T02:52:59Z progress phase=40 marker=32684174950
 2026-08-24T02:52:59Z 40 -> 50 phase transition: entering league
 2026-08-24T02:52:59Z heartbeat phase=50
+2026-08-24T02:54:24Z 50 seed 200 lseed_365d68f0 league_31edf62a-9174-4975-b39b-cd1555853bff
+2026-08-24T02:54:24Z 50 division 200 div_ec0a2aaa-96cf-4fe2-8327-485c316ad4e6
+2026-08-24T02:54:24Z 50 settings 200 (round_robin, filler_policy, elo mean, 15min)
+2026-08-24T02:54:24Z 50 dispatch coworld-submit champion1 firm-boss:v1 player=ply_44ae9048
+2026-08-24T02:55:03Z 50 champion1 submit ok run=32684599121 sub_6c34d359-d788-42ba-bfc9-30f7d4c53fa7 firm-boss:v1
+2026-08-24T02:55:03Z 50 dispatch coworld-submit champion2 firm-hand:v1 player=ply_bac48eb1
+2026-08-24T02:57:29Z 50 champion2 submit ok run=32684636135 sub_c64778bd-5a66-4453-a896-f39aff2ad986 firm-hand:v1 (daveey-1 confirmed on policy-version 8250a440)
+2026-08-24T02:57:29Z 50 fillers 200 registered [firm-steady:v1=4ef7b5b5, firm-taskmaster:v1=c99a2095] — neither champion
+2026-08-24T02:57:29Z 50 unpause 200 paused=false; trigger-round 200 workflow=ladder-league_31edf62a
+2026-08-24T02:57:29Z 50 round 1 pending, entrant_attributions = both champions (ply_44ae9048+bc171418, ply_bac48eb1+8250a440)
+2026-08-24T02:57:29Z progress phase=50 marker=league_31edf62a-9174-4975-b39b-cd1555853bff
+2026-08-24T02:57:29Z 50 -> 60 phase transition: entering verify
+2026-08-24T02:57:29Z heartbeat phase=60
