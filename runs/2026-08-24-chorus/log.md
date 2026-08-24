@@ -26,3 +26,8 @@
 2026-08-24T08:17:47Z progress phase=30 marker=r1-verdict.md
 2026-08-24T08:18:30Z 40 dispatch builder brief=coworld-release.yml v0.1.0 dispatch-then-watch -> runs/2026-08-24-chorus/release-result.json
 2026-08-24T08:18:30Z heartbeat phase=40
+2026-08-24T08:34:21Z 40 dispatch v0.1.0 run=32705702571 step_failed=null canonical=false (completion race) -> bump
+2026-08-24T08:34:21Z 40 dispatch v0.1.1 run=32706360654 success: canonical=true cert=certified cow_id=cow_dad8e6aa-4174-47fa-acb6-ef8157559b45 secret_put=true; release-result.json persisted
+2026-08-24T08:34:21Z 40 phase -> 50
+2026-08-24T08:34:21Z progress phase=40 marker=32706360654
+2026-08-24T08:34:21Z heartbeat phase=50
