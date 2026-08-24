@@ -66,3 +66,4 @@
 2026-08-24T16:43:30Z 60 poll: rounds 2 and 3 completed -> check 1 TRUE; proceeding to checks 2-8
 2026-08-24T16:46:22Z 60 check3: round 3 ereq_ecc55c98 status=completed but replay_url=null and episode_id=null (no scores); re-polling and awaiting round 4
 2026-08-24T16:50:31Z 60 poll: rounds 2,3 completed; r3 ereq still replay_url=null; awaiting round 4 (~16:57)
+2026-08-24T16:55:26Z 60 poll: still rounds 2,3; awaiting round 4
