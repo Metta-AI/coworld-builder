@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2430,"clock":"BEAT 1 / 12 TICK 1 OF 600","scorebug":"daveey 0.00 0 enc daveey-1 0.00 0 enc Baseline 0.00 0 enc Baseline (2) 0.00 0 enc BEAT 1 / 12 TICK 1 OF 600 Baseline (3) 0.00 0 enc Baseline (4) 0.00 0 enc Baseline (5) 0.00 0 enc Baseline (6) 0.00 0 enc","feed_lines":6}
+scrub readouts: 0%="BEAT 1 / 12 TICK 1 OF 600"  50%="BEAT 7 / 12 TICK 317 OF 600"  100%="BEAT 12 / 12 TICK 599 OF 600"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

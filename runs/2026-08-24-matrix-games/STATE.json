@@ -33,9 +33,19 @@
     "division": "div_3fc50172-46fb-44bf-994d-906fc48890c8"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "id": "round_86e8a1ca-5add-4ea4-b18d-6d7a8d31890f",
+        "number": 2
+      },
+      {
+        "id": "round_0d15648c-0c6b-4cee-8a10-05a86a95cfc2",
+        "number": 3
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/29fb36db-2f98-4ba2-b7b8-71f7b4f092a6.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32769835228"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +63,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T19:20:35Z",
+  "heartbeat_at": "2026-08-24T19:51:07Z",
   "session_ended_at": null,
   "session_id": "eebc5410",
   "log": "runs/2026-08-24-matrix-games/log.md"

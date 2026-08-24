@@ -65,3 +65,22 @@
 2026-08-24T19:20:35Z 50 -> 60 phase transition (STATE.phase=60)
 2026-08-24T19:21:42Z 60 verifier dispatched (eight checks, 75-min poll bound; round 2 pending at dispatch)
 2026-08-24T19:21:42Z heartbeat phase=60
+2026-08-24T19:22:23Z heartbeat phase=60
+2026-08-24T19:27:19Z heartbeat phase=60
+2026-08-24T19:32:43Z heartbeat phase=60
+2026-08-24T19:37:52Z heartbeat phase=60
+2026-08-24T19:42:50Z heartbeat phase=60
+2026-08-24T19:50:17Z 60 poll: rounds 2+3 completed post-fillers (round 1 failed pre-fillers, Temporal RoundWorkflow) — bound not hit (17 min of 75)
+2026-08-24T19:50:17Z 60 check 1 TRUE rounds 2 (round_86e8a1ca-5add-4ea4-b18d-6d7a8d31890f) + 3 (round_0d15648c-0c6b-4cee-8a10-05a86a95cfc2) completed
+2026-08-24T19:50:17Z 60 check 2 TRUE leaderboard: 1 daveey-1 matrix-games-brinkman:v2 1001.47 rp=2; 2 daveey matrix-games-reader:v2 998.53 rp=2; no filler rows
+2026-08-24T19:50:17Z 60 check 3 TRUE ereq_00d096dc-c968-46b8-a037-f0e2960a660d completed, replay 29fb36db-2f98-4ba2-b7b8-71f7b4f092a6.replay, champions seated 0/1, 6 is_filler seats
+2026-08-24T19:50:17Z 60 check 4 TRUE strict UTF-8 264160 B, protocol matrix.replay.v1, reason complete/full_match, champion orders 24/24 source=llm, 0 fallback (vocabulary k/source, not type/fallback)
+2026-08-24T19:50:17Z 60 check 5 TRUE hosted log CLEAN (52691 B, byte-repr decoded before grep); round 2 log also CLEAN
+2026-08-24T19:50:17Z 60 check 6 TRUE source=SSR state.playlist[0] + POST /coworlds/replays/session; static route ready=true; raw-HTML grep empty (client-rendered), /coworlds featured_match null platform-wide
+2026-08-24T19:50:17Z 60 check 7 TRUE runs/.../release-result.json certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)" (committed copy, no re-download)
+2026-08-24T19:50:17Z 60 check 8 TRUE viewer-check run 32769835228 loaded=true ms=2430 bridge ready; clocks 0%=BEAT 1/12 TICK 1, 50%=BEAT 7/12 TICK 317, 100%=BEAT 12/12 TICK 599; artifact in runs/.../viewer-check/
+2026-08-24T19:50:17Z 60 VERIFY.md written — 8/8 TRUE, 75-min bound not hit
+2026-08-24T19:51:07Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; both champions ranked rp=2; replay complete, 24/24 llm orders 0 fallback; log CLEAN; static iframe; liveness skipped; viewer-check 32769835228 loaded=true 3 distinct clocks)
+2026-08-24T19:51:07Z 60 judge dispatched (adjudicate VERIFY.md)
+2026-08-24T19:51:07Z progress phase=60 marker=viewer-check-32769835228
+2026-08-24T19:51:07Z heartbeat phase=60

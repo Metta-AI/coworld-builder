@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2430,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e8a973ea-c4f1-4c99-8a84-a776f1cde531/sha256%3A344375ca76bdfcc1a6f59ca91d552d6ec5ab24a1b94dc0f60b5f42c80d181636/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F29fb36db-2f98-4ba2-b7b8-71f7b4f092a6.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "BEAT 1 / 12 TICK 1 OF 600",
+  "scorebug": "daveey 0.00 0 enc daveey-1 0.00 0 enc Baseline 0.00 0 enc Baseline (2) 0.00 0 enc BEAT 1 / 12 TICK 1 OF 600 Baseline (3) 0.00 0 enc Baseline (4) 0.00 0 enc Baseline (5) 0.00 0 enc Baseline (6) 0.00 0 enc",
+  "status": "",
+  "loading_text": null,
+  "feed_lines": 6,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "BEAT 1 / 12 TICK 1 OF 600"
+    },
+    {
+      "at": "50%",
+      "clock": "BEAT 7 / 12 TICK 317 OF 600"
+    },
+    {
+      "at": "100%",
+      "clock": "BEAT 12 / 12 TICK 599 OF 600"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
