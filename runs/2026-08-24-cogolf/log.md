@@ -31,3 +31,6 @@
 2026-08-24T03:19:21Z 50 fillers set BEFORE trigger: literalist:v2 c466d2ba + pedant:v2 6813522f (200); unpause 200; trigger 200; round 1 pending, both champions in entrant_attributions
 2026-08-24T03:19:21Z progress phase=50 marker=league_4cb6dc9b round1-pending
 2026-08-24T03:19:21Z heartbeat phase=60
+2026-08-24T03:48:20Z 60 verifier returned VERIFY.md: checks 1,2,3,5,6,7,8 TRUE; check 4 FALSE — both champions played scripted literalist verbatim 18/18 submissions, no player bedrock sidecar in episode
+2026-08-24T03:48:20Z 60 check4 root cause: platform attaches player bedrock sidecar only when policy secret env has USE_BEDROCK=true (coworld/runner/bedrock_enablement.py resolve_player_bedrock; starter llm_player.py documents upload-policy --use-bedrock); cogolf champions had only PLAYER_PROMPT. Fix: add USE_BEDROCK=true to both champion entries, release 0.1.2, re-submit champions (check4 attempt 1 -> fix)
+2026-08-24T03:48:20Z 60 dispatch builder for policies.json fix + release 0.1.2
