@@ -57,3 +57,9 @@
 2026-08-24T09:04:17Z 50 division div_be88c7cd-0b21-4468-a404-c5c9cc767d25 created 200; settings posted (elo, round_robin, filler_policy, 15min) 200
 2026-08-24T09:04:17Z progress phase=50 marker=league_7a7ba378-a709-4b1a-b8c1-b21b6577025a
 2026-08-24T09:04:17Z heartbeat phase=50
+2026-08-24T09:06:52Z 50 champion1 submit run=32709532342 ok sub_cfa1fc9b policy=cogchemists-empiricist:v2 player=daveey
+2026-08-24T09:06:52Z 50 champion2 submit run=32709590517 ok policy=cogchemists-careerist:v2 player=daveey-1 (pv c252d902)
+2026-08-24T09:06:52Z 50 filler-policies registered: assayer:v2=8f3133d9-c511-493e-847d-60b1cef09a6f quack:v2=cb0dabf3-0197-409f-8020-ed84b7d84435 (200, exactly the two baselines)
+2026-08-24T09:06:52Z 50 unpaused 200; trigger-round 200; round 1 failed (auto-scheduled pre-fillers, documented symptom), round 2 pending with both champions in entrant_attributions
+2026-08-24T09:06:52Z progress phase=50 marker=round-2-pending
+2026-08-24T09:06:52Z 50 phase -> 60
