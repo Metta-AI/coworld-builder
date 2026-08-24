@@ -4,7 +4,7 @@
   "run_task": "1217788157017901",
   "slug": "matrix-games",
   "repo": "https://github.com/Metta-AI/cogame-matrix-games",
-  "starter": "",
+  "starter": "Metta-AI/coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T14:38:20Z",
+  "heartbeat_at": "2026-08-24T14:39:37Z",
   "session_ended_at": null,
   "session_id": "eebc5410",
   "log": "runs/2026-08-24-matrix-games/log.md"
