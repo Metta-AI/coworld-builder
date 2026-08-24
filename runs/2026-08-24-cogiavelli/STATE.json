@@ -58,8 +58,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T15:01:05Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-24T15:03:10Z",
+  "session_ended_at": "2026-08-24T15:03:10Z",
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"
 }
