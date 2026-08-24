@@ -99,3 +99,7 @@
 2026-08-24T20:01:06Z 75 atlas placed-for-others: firm=commons(440,571) chorus=parlour(438,817) cogchemists=parlour(441,793) cogmud=parlour(456,832) garble=parlour(477,823) cogiavelli=tabletop(766,277) cogplomacy=tabletop(790,280) cogolf=paintlands(202,270) grid-wars=paintlands(193,249)
 2026-08-24T20:01:06Z 75 atlas dispatch=32771464097 region=commons at=416,574 clearance=22.9 extra_cities=9
 2026-08-24T20:01:06Z heartbeat phase=75
+2026-08-24T20:03:06Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20305 status=pr_open (automerge armed; merge queue is a human step)
+2026-08-24T20:03:06Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20305
+2026-08-24T20:03:06Z 75 -> 80 phase transition (STATE.phase=80)
+2026-08-24T20:03:06Z heartbeat phase=80
