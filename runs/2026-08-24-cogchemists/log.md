@@ -6,3 +6,8 @@
 2026-08-24T06:21:30Z 00 claim 2026-08-24-cogchemists idea=1217741083868316 slug=cogchemists session=11fadfc7
 2026-08-24T06:22:03Z 10 starter=Metta-AI/cogame-bullwhip reason=turn-based LLM-prompt hidden-chemistry deduction game; bullwhip is the newest parley descendant, used by eleusis/tribunal/escrow/rumor/chorus
 2026-08-24T06:22:03Z 10 dispatching designer
+2026-08-24T06:40:05Z 10 designer returned design.md (1200 lines) round 1
+2026-08-24T06:40:05Z 10 checklist: starter[x] num_agents=4[x] resolution-order[x] scoring[x] end-conditions[x] observation[x] reply-schema-caps[x] both-policies[x] parallel-batch-budget[x] degrade-never-hang[x] name-spaces[x] viewer-static-wasm[x] viewer-one-starter[x] chrome-provenance[x] transport-rules[x] replay-self-sufficient[x] packaging[x] tests[x] out-of-scope[x]
+2026-08-24T06:40:05Z 10 design accepted round 1, no rejections; copy at runs/2026-08-24-cogchemists/design.md
+2026-08-24T06:40:05Z progress phase=10 marker=design.md
+2026-08-24T06:40:05Z 10 phase -> 20
