@@ -1,0 +1,3 @@
+{"loaded":true,"ms":2013,"clock":"R1 / 5 · SUBMITTING","scorebug":"daveey 0.0 0 TILES 12 ENERGY daveey-1 0.0 0 TILES 12 ENERGY Piston ▶ 0.0 0 TILES 12 ENERGY Gizmo ▶ 0.0 0 TILES 12 ENERGY","feed_lines":36}
+scrub readouts: 0%="R1 / 5 · SUBMITTING"  50%="R3 / 5 · TICK 198 / 400"  100%="R5 / 5 · FINAL"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

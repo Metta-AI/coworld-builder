@@ -68,3 +68,12 @@
 2026-08-24T16:50:31Z 60 poll: rounds 2,3 completed; r3 ereq still replay_url=null; awaiting round 4 (~16:57)
 2026-08-24T16:55:26Z 60 poll: still rounds 2,3; awaiting round 4
 2026-08-24T17:00:33Z 60 check1 TRUE (rounds 2,3,4 completed); check2 TRUE (daveey-1 1030.53 r2, daveey 969.47 r2); check3 TRUE round 4 ereq_4c689bac replay cd187239
+2026-08-24T17:06:00Z 60 check1 TRUE rounds 2,3,4 completed (round 1 failed: "Temporal RoundWorkflow failed before settling the round."; round 3 completed with no episode -- episode_id/replay_url null)
+2026-08-24T17:06:00Z 60 check2 TRUE leaderboard: 1 daveey-1 grid-wars-cartographer:v1 1030.53 rounds_played=2 wins=2; 2 daveey grid-wars-tactician:v1 969.47 rounds_played=2 wins=0; fillers absent
+2026-08-24T17:06:00Z 60 check3 TRUE round 4 round_5b56c0c7 -> ereq_4c689bac completed, replay cd187239-0cf3-456b-a8f3-4c260ef93dbd, seats 0/1 daveey/daveey-1
+2026-08-24T17:06:00Z 60 check4 TRUE strict JSON ok, protocol gridwars.replay.v1, results.reason=complete, champion submits 10/10 origin=llm, fallbacks [0,0,0,0], faults [0,0,0,0]
+2026-08-24T17:06:00Z 60 check5 TRUE hosted logs CLEAN (raw and ast-decoded, 24009 chars)
+2026-08-24T17:06:00Z 60 check6 TRUE featured match from SSR playlist[0] (r4.e1); iframe src static /v2/coworlds/replays/static/cow_f009d83c/sha256%3A126e3dfb.../index.html?replay=... ready:true
+2026-08-24T17:06:00Z 60 check7 TRUE release-result.json (committed) certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-24T17:06:00Z 60 check8 TRUE viewer-check run 32754228468 loaded=true ms=2013 clocks 0%=R1/5 SUBMITTING 50%=R3/5 TICK 198/400 100%=R5/5 FINAL; artifact committed
+2026-08-24T17:06:00Z 60 VERIFY.md written: 8/8 TRUE

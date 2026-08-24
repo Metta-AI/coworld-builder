@@ -34,9 +34,14 @@
     "division": "div_352d6e5d-d082-4bc7-b84a-5913e32d6082"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_93498091-e059-48fe-a187-c2a6d7b2da08",
+      "round_0ded5fb9-e724-4a7d-8eac-d5ba3552a801",
+      "round_5b56c0c7-0f09-4c2e-b8f8-2fa278c601ac"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/cd187239-0cf3-456b-a8f3-4c260ef93dbd.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32754228468"
   },
   "announce": {
     "attempted_at": null,

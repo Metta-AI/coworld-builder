@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 2013,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f009d83c-de26-4ab4-8e56-742cbdb4a124/sha256%3A126e3dfbf26e122623d8909b5a9264994d0fe3e2a9f7ea6d3075ca0e16818c5b/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fcd187239-0cf3-456b-a8f3-4c260ef93dbd.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "R1 / 5 · SUBMITTING",
+  "scorebug": "daveey 0.0 0 TILES 12 ENERGY daveey-1 0.0 0 TILES 12 ENERGY Piston ▶ 0.0 0 TILES 12 ENERGY Gizmo ▶ 0.0 0 TILES 12 ENERGY",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 36,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "R1 / 5 · SUBMITTING"
+    },
+    {
+      "at": "50%",
+      "clock": "R3 / 5 · TICK 198 / 400"
+    },
+    {
+      "at": "100%",
+      "clock": "R5 / 5 · FINAL"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
