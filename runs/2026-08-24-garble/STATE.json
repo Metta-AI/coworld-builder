@@ -33,9 +33,13 @@
     "division": "div_6540c330-b71d-4663-ac20-13929cd7e160"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      2,
+      3
+    ],
+    "replay": "f062ea29-ad73-435c-ba67-716c89c50095.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32712220489"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T08:59:09Z",
+  "heartbeat_at": "2026-08-24T09:41:15Z",
   "session_ended_at": null,
   "session_id": "a7522635",
   "log": "runs/2026-08-24-garble/log.md"

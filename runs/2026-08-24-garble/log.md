@@ -65,3 +65,28 @@
 2026-08-24T08:59:09Z progress phase=50 marker=league_4eb352ae-4a7e-42a2-a7a2-6b3a23dc0b4a
 2026-08-24T08:59:57Z 60 verifier dispatched (thread sthr_015B8eEJj32muhxkuJ5cKwt9), 75-min bound, heartbeat delegation noted
 2026-08-24T08:59:57Z heartbeat phase=60
+2026-08-24T09:00:35Z heartbeat phase=60
+2026-08-24T09:16:38Z heartbeat phase=60
+2026-08-24T09:32:19Z heartbeat phase=60
+2026-08-24T09:36:23Z heartbeat phase=60
+2026-08-24T09:00:15Z 60 poll 1/7: completed rounds=1 (r1 08:58:13Z)
+2026-08-24T09:06:33Z 60 poll 2/7: completed rounds=1
+2026-08-24T09:11:29Z 60 poll 3/7: completed rounds=1
+2026-08-24T09:16:30Z 60 poll 4/7: completed rounds=2 (r2 09:16:07Z, replay present)
+2026-08-24T09:22:31Z 60 poll 5/7: completed rounds=2
+2026-08-24T09:27:25Z 60 poll 6/7: completed rounds=2
+2026-08-24T09:32:19Z 60 poll 7/7: completed rounds=3 (r3 09:31:06Z, replay present) — bound not reached
+2026-08-24T09:32:26Z 60 check 1 TRUE: 3 rounds completed, 0 failed/discarded; fillers seated from r1 (ereq created 08:58:02Z); r1 hollow (no replay/scores/artifacts), r2+r3 scored
+2026-08-24T09:32:33Z 60 check 2 TRUE: daveey-1 garble-shortwave:v1 1016 rp=2 wins=1 / daveey garble-signal:v1 984 rp=2 wins=0; fillers absent
+2026-08-24T09:32:37Z 60 check 3 TRUE: ereq_00f32fd9-cab8-456f-bd8c-8037f601dec0 completed, replay f062ea29-ad73-435c-ba67-716c89c50095, seats 0/1 = daveey/daveey-1, 2-4 fillers
+2026-08-24T09:32:55Z 60 check 4 TRUE: strict JSON ok, protocol=garble.replay.v1, reason=complete, 112 events, 60 says, champion seats 24 says / 0 scripted
+2026-08-24T09:33:20Z 60 check 5 TRUE CLEAN: 0 grep matches decoded (216 lines) and 0 raw; one recovered llm retry line at turn 2 (not a fallback), 5 shutdown-grace drops
+2026-08-24T09:33:37Z 60 check 6 TRUE: raw-HTML iframe grep empty (client-rendered); featured match garble.r3.e1 from SSR playlist[0]; POST /coworlds/replays/session -> static /index.html?replay= with manifest sha, ready:true
+2026-08-24T09:38:00Z 60 check 7 TRUE: committed release-result.json -> "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-24T09:34:30Z 60 check 8 TRUE: viewer-check run 32712220489 success; loaded=true ms=1176 feed_lines=325; scrub 0%/50%/100% = "TURN 1 / 12 · HAZY 30%" / "... · WAITING ON 5" / "FINAL — DAVEEY-1 1.10×"; artifact committed to runs/2026-08-24-garble/viewer-check/
+2026-08-24T09:40:17Z 60 VERIFY.md written — all 8 checks TRUE
+2026-08-24T09:40:17Z heartbeat phase=60
+2026-08-24T09:41:15Z 60 verifier returned: VERIFY.md 8/8 TRUE; viewer-check run 32712220489 loaded:true; rounds 2+3 scored (round 1 hollow: replay_url null, no scores — excluded from evidence); replay f062ea29 reason=complete
+2026-08-24T09:41:15Z 60 judge dispatch next to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-24T09:41:15Z heartbeat phase=60
+2026-08-24T09:41:15Z progress phase=60 marker=VERIFY.md

@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1176,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_cb2293f4-2825-41d3-831b-7f3a690474a6/sha256%3A41c6b5f1c725f042aa93bf56748e906b5218fede82b16156c18010549321a012/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ff062ea29-ad73-435c-ba67-716c89c50095.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TURN 1 / 12 · HAZY 30%",
+  "scorebug": "daveey 300 CREDITS 1.00× daveey-1 300 CREDITS 1.00× Gasket 380 CREDITS 1.00× Rivet 360 CREDITS 1.00× Sprocket 300 CREDITS 1.00×",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 325,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TURN 1 / 12 · HAZY 30%"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 1 / 12 · HAZY 30% · WAITING ON 5"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL — DAVEEY-1 1.10×"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
