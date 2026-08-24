@@ -25,3 +25,6 @@
 2026-08-24T12:13:14Z progress phase=20 marker=ci-green-32725516744
 2026-08-24T12:13:14Z heartbeat phase=30
 2026-08-24T12:14:20Z 30 r1 reviewer dispatched (thread sthr_01WsxsqJWyWpwgfioxDqbKh9) over /workspace/build/cogame-cogiavelli @ f6862a3 -> reviews/r1-review.md
+2026-08-24T12:31:58Z 30 r1 reviewer returned r1-review.md (774 lines): 0 blocking, 20 non-blocking N1-N20, 3 could-not-determine (grid-harness tuning chief among them)
+2026-08-24T12:31:58Z progress phase=30 marker=reviews/r1-review.md
+2026-08-24T12:31:58Z heartbeat phase=30
