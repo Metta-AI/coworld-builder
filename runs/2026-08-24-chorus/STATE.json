@@ -4,7 +4,7 @@
   "run_task": "1217761550386793",
   "slug": "chorus",
   "repo": "https://github.com/Metta-AI/cogame-chorus",
-  "starter": "",
+  "starter": "cogame-bullwhip",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
