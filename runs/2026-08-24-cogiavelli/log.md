@@ -57,3 +57,5 @@
 2026-08-24T14:08:27Z 60 poll 1: rounds completed=[2]; round 1 failed "Temporal RoundWorkflow failed before settling the round."
 2026-08-24T14:14:41Z heartbeat phase=60
 2026-08-24T14:14:41Z 60 poll 2: completed=[2]; awaiting round 3 (interval 15m from 14:04)
+2026-08-24T14:19:43Z heartbeat phase=60
+2026-08-24T14:19:43Z 60 poll 3: round 3 created 14:19:00 status=pending; completed=[2]
