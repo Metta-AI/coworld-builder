@@ -96,3 +96,5 @@
 2026-08-24T14:19:29Z heartbeat phase=75
 2026-08-24T14:20:20Z 75 atlas slug live in /api/coworlds (cogplomacy, episodes_7d=4); continent=tabletop — faithful port of Calhamer's 1959 board game, "board and card game ports" (rails call); spot 766,277 clearance 22.9
 2026-08-24T14:20:44Z 75 atlas dispatch=32738083089 region=tabletop at=766,277 clearance=22.9
+2026-08-24T14:25:05Z 75 atlas dispatch 1 (32738083089) failed step=build: unplaced leagues chorus,cogchemists,cogiavelli,cogmud,cogolf,firm,garble (their PRs queued unmerged)
+2026-08-24T14:25:05Z 75 atlas dispatch=32738518556 region=tabletop at=790,280 clearance=23.4 (moved off 766,277 to clear cogchemists) + extra_cities: garble@438,817 parlour; chorus@416,574 commons; cogchemists@766,277 tabletop; cogmud@440,571 commons; cogolf@202,270 paintlands; firm@425,553 commons (all six reused from their runs' STATE) + cogiavelli@751,295 tabletop (placed for it: Machiavelli board-game port, no atlas STATE yet)
