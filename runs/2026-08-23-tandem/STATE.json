@@ -33,16 +33,21 @@
     "division": "div_fdb4b69f-5586-4239-87f1-b9afeeb34ce5"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_6d086d3b-95bf-4d93-883a-6ead1f033c16",
+      "round_e572c0da-3392-492d-ad11-48d93ece2a5b",
+      "round_40503f65-bd38-459f-a0c2-87a0f48d5b60"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/090b12fd-a443-40a8-9707-d7ade2673313.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32679404498"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T00:38:19Z",
+  "heartbeat_at": "2026-08-24T01:27:27Z",
   "session_ended_at": null,
   "session_id": null,
   "log": "runs/2026-08-23-tandem/log.md"

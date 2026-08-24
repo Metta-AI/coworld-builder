@@ -1,0 +1,3 @@
+{"loaded":true,"ms":5067,"clock":"1:40 TIME LEFT","scorebug":"Cobalt daveey 218 N ⬇ 0 scuff 0 1:40 TIME LEFT Rust daveey-1 145 N ⬇ 0 scuff 0","feed_lines":0}
+scrub readouts: 0%="1:40 TIME LEFT"  50%="0:49 TIME LEFT"  100%="FINAL GAME OVER"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

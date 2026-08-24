@@ -59,3 +59,8 @@
 2026-08-24T00:38:19Z progress phase=50 marker=round_6d086d3b-pending
 2026-08-24T00:38:19Z 50 phase -> 60
 2026-08-24T00:38:19Z heartbeat phase=60
+2026-08-24T01:27:27Z 60 verifier returned VERIFY.md (733 lines): 8/8 TRUE; 3 completed rounds (2,3,4; round 1 failed=unpause race, round 3 completed empty — platform dispatch drop, recorded); viewer-check run 32679404498 loaded=true clocks differ
+2026-08-24T01:27:27Z 60 observations recorded: round-2 champion#2 seat played scripted (register never sent, intermittent — round 4 clean 50/50 LLM); feed_lines=0 in smoke DOM
+2026-08-24T01:27:27Z progress phase=60 marker=VERIFY.md-all-true
+2026-08-24T01:27:27Z 60 dispatching judge for adjudication
+2026-08-24T01:27:27Z heartbeat phase=60

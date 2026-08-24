@@ -1,0 +1,37 @@
+{
+  "loaded": true,
+  "ms": 5067,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_77d94979-f003-494d-8c60-6bd97b97b9db/sha256%3A92cde32571d96247e869b40211e13c200d2b66897791688025b44344ac5147f4/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F090b12fd-a443-40a8-9707-d7ade2673313.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:40 TIME LEFT",
+  "scorebug": "Cobalt daveey 218 N ⬇ 0 scuff 0 1:40 TIME LEFT Rust daveey-1 145 N ⬇ 0 scuff 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:40 TIME LEFT"
+    },
+    {
+      "at": "50%",
+      "clock": "0:49 TIME LEFT"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
