@@ -30,3 +30,5 @@
 2026-08-24T07:14:26Z 20 NOTE for future sessions: git-over-HTTPS push to cogame-garble rejected in sandbox; builder wrote via Git Data API (blobs->trees->commits->PATCH refs); remote shas re-authored; helper /tmp/ghsync.py (uncommitted)
 2026-08-24T07:14:26Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
 2026-08-24T07:14:26Z progress phase=20 marker=ci-run-32700138054
+2026-08-24T07:26:00Z 30 r1 reviewer dispatched (thread sthr_01NMnFBR75Xayc9vCsP7eJbi) over main@d76e12c3
+2026-08-24T07:26:00Z heartbeat phase=30
