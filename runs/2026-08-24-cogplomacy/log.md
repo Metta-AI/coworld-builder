@@ -21,3 +21,6 @@
 2026-08-24T11:36:45Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
 2026-08-24T11:36:45Z heartbeat phase=30
 2026-08-24T11:37:36Z 30 r1 reviewer dispatched (thread sthr_01HRVYuEJuaY6s8GAQ64BaxP) -> reviews/r1-review.md
+2026-08-24T11:58:12Z 30 r1 reviewer returned: 0 blocking, 14 non-blocking findings -> reviews/r1-review.md
+2026-08-24T11:58:12Z progress phase=30 marker=reviews/r1-review.md
+2026-08-24T11:58:12Z heartbeat phase=30
