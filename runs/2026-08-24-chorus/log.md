@@ -31,3 +31,13 @@
 2026-08-24T08:34:21Z 40 phase -> 50
 2026-08-24T08:34:21Z progress phase=40 marker=32706360654
 2026-08-24T08:34:21Z heartbeat phase=50
+2026-08-24T08:37:43Z 50 seed 200 league_472f2259-1529-44a4-937f-50deb5e3be63
+2026-08-24T08:37:43Z 50 division 200 div_1bedcae9-38f6-40fe-b614-27c97e216c28
+2026-08-24T08:37:43Z 50 settings 200 (elo k=32, round_robin, filler_policy, 15min)
+2026-08-24T08:37:43Z 50 champion1 submit run=32707084677 ok=true sub_dfd85c54-4c40-4354-aa8a-3b6870a71279 chorus-cantor:v2 as daveey
+2026-08-24T08:37:43Z 50 champion2 submit run=32707133395 ok=true sub_3cdba063-d52c-4696-9ae3-7cc4962d4fa7 chorus-weaver:v2 as daveey-1
+2026-08-24T08:37:43Z 50 fillers 200 arpeggio:v2=cf7bc5fd-8997-45bc-8ef9-9f9642b75976 pedal:v2=d2103485-522f-4cb6-9c79-c9a1b696cd00
+2026-08-24T08:37:43Z 50 unpause 200; trigger-round 200; round 1 pending round_38403aa6-afd4-4199-9ccd-a0bb9a982227, both champions in entrant_attributions
+2026-08-24T08:37:43Z 50 phase -> 60
+2026-08-24T08:37:43Z progress phase=50 marker=round_38403aa6-afd4-4199-9ccd-a0bb9a982227
+2026-08-24T08:37:43Z heartbeat phase=60
