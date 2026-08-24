@@ -76,3 +76,4 @@
 2026-08-24T03:30:30Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 — definition-of-done all-true, every check independently re-fetched
 2026-08-24T03:30:30Z 60 -> 70 phase transition: entering announce
 2026-08-24T03:30:30Z heartbeat phase=70
+2026-08-24T03:31:34Z 70 announce attempted_at written before POST
