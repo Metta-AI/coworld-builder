@@ -5,21 +5,25 @@
   "slug": "grid-wars",
   "repo": "https://github.com/Metta-AI/cogame-grid-wars",
   "starter": "cogame-bullwhip",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "30": 1
+    "30": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_f009d83c-de26-4ab4-8e56-742cbdb4a124",
+    "manifest_sha": "sha256:126e3dfbf26e122623d8909b5a9264994d0fe3e2a9f7ea6d3075ca0e16818c5b",
+    "release_run_id": "32749896631"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "grid-wars-tactician:v1",
+    "champion2": "grid-wars-cartographer:v1",
+    "fillers": [
+      "grid-wars-painter:v1",
+      "grid-wars-bomber:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -47,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T16:16:19Z",
+  "heartbeat_at": "2026-08-24T16:24:47Z",
   "session_ended_at": null,
   "session_id": "d1e84720",
   "log": "runs/2026-08-24-grid-wars/log.md"
