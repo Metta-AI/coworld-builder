@@ -45,3 +45,4 @@
 2026-08-24T05:26:27Z 60 judge returned verify-verdict.md: blocking=0/BLOCKING=0 (independent re-fetch of all 8; hole-1 cold-start substitution noted non-blocking)
 2026-08-24T05:26:27Z progress phase=60 marker=verify-verdict.md blocking=0
 2026-08-24T05:26:27Z heartbeat phase=70
+2026-08-24T05:28:05Z 70 announce attempted_at written before POST
