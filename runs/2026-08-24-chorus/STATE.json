@@ -12,10 +12,10 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_dad8e6aa-4174-47fa-acb6-ef8157559b45",
-    "manifest_sha": "sha256:f3a3b9c13c6820db542e7420b74ce69831960a263957e8a0c386901ee80198a4",
-    "release_run_id": "32706360654"
+    "version": "0.1.3",
+    "cow_id": "cow_4a630880-4b06-4857-93a5-c05ad2a3e0d2",
+    "manifest_sha": "sha256:a2b167967dc76dbfbfbb1455b272169e1a1468309d217a5d5afa2da9d17e7281",
+    "release_run_id": "32713685596"
   },
   "policies": {
     "champion1": "chorus-cantor:v2",
@@ -54,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T08:37:43Z",
+  "heartbeat_at": "2026-08-24T10:00:30Z",
   "session_ended_at": null,
   "session_id": "25f4a313",
   "log": "runs/2026-08-24-chorus/log.md"

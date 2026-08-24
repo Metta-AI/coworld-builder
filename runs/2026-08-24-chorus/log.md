@@ -54,3 +54,8 @@
 2026-08-24T09:39:43Z heartbeat phase=60
 2026-08-24T09:50:14Z 60 re-release dispatch v0.1.2 run=32712787708: canonical=false completion race (smoke passed, cert certified) -> bump to 0.1.3
 2026-08-24T09:50:14Z heartbeat phase=60
+2026-08-24T10:00:29Z 60 re-release v0.1.3 run=32713685596 success: canonical=true cert=certified cow_id=cow_4a630880-4b06-4857-93a5-c05ad2a3e0d2 manifest_sha=sha256:a2b16796...e7281; policies re-uploaded v4 (league entrants stay v2)
+2026-08-24T10:00:29Z 60 check-8 re-run vs new bundle: viewer-check run=32714429435 loaded=true data_replay_loaded=true clocks differ (BAR 0 -> BAR 4 -> FINAL PIECE 62.1) — fix verified on shipped bundle
+2026-08-24T10:00:29Z 60 waiting for a new-cow replay so the page's featured-match embed resolves the fixed bundle (old replays are bound to cow_dad8e6aa/old bundle)
+2026-08-24T10:00:29Z progress phase=60 marker=32714429435
+2026-08-24T10:00:29Z heartbeat phase=60
