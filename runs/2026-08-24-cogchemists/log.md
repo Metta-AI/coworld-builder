@@ -86,3 +86,4 @@
 2026-08-24T09:40:39Z 60 judge returned verify-verdict.md: blocking 0 (six live re-fetches, replay sha256 match, screenshot inspected)
 2026-08-24T09:40:39Z progress phase=60 marker=verify-verdict.md
 2026-08-24T09:40:39Z 60 phase -> 70
+2026-08-24T09:41:58Z 70 announce attempted_at written and pushed before POST
