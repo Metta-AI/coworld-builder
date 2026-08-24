@@ -5,7 +5,7 @@
   "slug": "commons-family",
   "repo": "Metta-AI/cogame-commons-family",
   "starter": "Metta-AI/coworld-meadow",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "40": 1
   },
@@ -44,7 +44,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-24T22:30:00Z",
-    "discord_message_id": ""
+    "discord_message_id": "1541569309413744640"
   },
   "atlas": {
     "status": "",
@@ -58,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T22:30:00Z",
+  "heartbeat_at": "2026-08-24T22:32:00Z",
   "session_ended_at": null,
   "session_id": "36dff424",
   "log": "runs/2026-08-24-commons-family/log.md"
