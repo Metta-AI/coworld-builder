@@ -10,3 +10,7 @@
 2026-08-24T00:57:46Z 20 repo created https://github.com/Metta-AI/cogame-cogolf (public)
 2026-08-24T00:57:46Z 20 propagate-secrets run 32678253984 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on repo
 2026-08-24T00:57:46Z 20 dispatch builder round 1
+2026-08-24T02:11:00Z 20 builder returned: main=a60233b8aad39e22890f3b3c31cde05dee3b7e79 ci run 32681786000 success (test,docker-smoke,wasm-viewer); nano-banana art OK; 6 deliberate deltas reported, none silent
+2026-08-24T02:11:00Z 20 verified: ci.yml success at main sha a60233b; 3 workflows parse+active; secrets present
+2026-08-24T02:11:00Z progress phase=20 marker=ci-run-32681786000-green
+2026-08-24T02:11:00Z heartbeat phase=30
