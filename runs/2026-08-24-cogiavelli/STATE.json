@@ -4,7 +4,7 @@
   "run_task": "1217774261385899",
   "slug": "cogiavelli",
   "repo": "https://github.com/Metta-AI/cogame-cogiavelli",
-  "starter": "",
+  "starter": "cogame-babel",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
