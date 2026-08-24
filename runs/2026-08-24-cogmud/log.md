@@ -27,3 +27,7 @@
 2026-08-24T03:45:29Z progress phase=30 marker=r1-review.md
 2026-08-24T03:45:29Z 30 r1 dispatch fixer thread=sthr_01Ruz3Tq2akT7YoHHBG2hbtF
 2026-08-24T03:45:29Z heartbeat phase=30
+2026-08-24T04:36:04Z 30 r1 fixer returned r1-fixes.md: 17 commits (one per finding), F1 discharged with grid harness test_tuning.nim; CI green run 32690212886 sha 575c86b (verified)
+2026-08-24T04:36:04Z progress phase=30 marker=r1-fixes.md
+2026-08-24T04:36:04Z 30 r1 dispatch judge thread=pending
+2026-08-24T04:36:04Z heartbeat phase=30
