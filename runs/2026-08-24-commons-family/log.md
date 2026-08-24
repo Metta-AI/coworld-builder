@@ -34,3 +34,11 @@
 2026-08-24T21:55:00Z heartbeat phase=40
 2026-08-24T21:58:00Z 40 builder dispatched (release brief, version 0.1.0 first, policies from tools/ci/policies.json) thread=sthr_01XbdpBLS6aSnczZM9KZc6Md
 2026-08-24T21:58:00Z heartbeat phase=40
+2026-08-24T23:18:00Z 40 dispatch 1 v0.1.0 run=32775332432 step_failed=certify (60s local cap; fix ea4b84c adaptive grace + fixture min_round_seconds 1)
+2026-08-24T23:18:00Z 40 dispatch 2 v0.1.1 run=32776397495 step_failed=upload (secret namespace keys on game.name commons_family not slug; fix f508b52)
+2026-08-24T23:18:00Z 40 dispatch 3 v0.1.2 run=32777119805 canonical=false (documented cold-upload completion race)
+2026-08-24T23:18:00Z 40 dispatch 4 v0.1.3 run=32777830776 SUCCESS: canonical=true certify.ok=true replay_liveness=skipped(static) secret_put=true policies 4x :v3, warden owned by daveey-1
+2026-08-24T23:20:00Z 40 release-result.json persisted; cow_id=cow_73578681-ae8b-4ec8-b0ef-9622d639c09a version=0.1.3
+2026-08-24T23:20:00Z progress phase=40 marker=release-run-32777830776
+2026-08-24T23:20:00Z 40 -> 50 phase transition
+2026-08-24T23:20:00Z heartbeat phase=50
