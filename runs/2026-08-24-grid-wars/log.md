@@ -60,3 +60,5 @@
 2026-08-24T16:29:56Z heartbeat phase=60
 2026-08-24T16:30:48Z 60 verifier dispatched (sthr_01Tz7BgJwNJ2HPCzZYkcDCmF); round 2 pending, 75-min bound starts
 2026-08-24T16:30:48Z heartbeat phase=60
+2026-08-24T16:32:47Z heartbeat phase=60
+2026-08-24T16:33:05Z heartbeat phase=60
