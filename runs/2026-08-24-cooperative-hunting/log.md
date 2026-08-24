@@ -18,3 +18,8 @@
 2026-08-24T16:21:38Z 20 builder thread sthr_01MQYnvdjBpwBkKaR8mfgQNd died within 1 min (API overloaded, 3rd); waited 9 min; re-dispatched thread=sthr_01E1NCeHHMRHDbLVGTBZXZ8K (infra retry 3)
 2026-08-24T16:21:38Z heartbeat phase=20
 2026-08-24T19:42:25Z 00 resume at phase 20 attempt=1 session=8e02e220
+2026-08-24T19:43:53Z 20 builder thread sthr_01E1NCeHHMRHDbLVGTBZXZ8K completed while coordinator session was dead: 5 pushes, CI red 32753506131, red 32754459911, then green 32755899301, 32757058914, 32758098973 (HEAD 10564b04)
+2026-08-24T19:43:53Z 20 exit criteria verified on 10564b04: files+exec bits+no placeholders; 3 workflows parse; release inputs version/policies/put_secret/skip_certify; submit inputs player_id/policy/league_id; release-result+submit-result artifacts; policies.json 2 champions (quartermaster carries ply_bac48eb1)+2 baselines; num_agents=6 in 4 variants+cert fixture
+2026-08-24T19:43:53Z progress phase=20 marker=32758098973
+2026-08-24T19:43:53Z 20 done (CI green 32758098973) -> phase 30
+2026-08-24T19:43:53Z heartbeat phase=30
