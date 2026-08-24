@@ -10,3 +10,4 @@
 2026-08-24T04:21:51Z 20 rails: art = bullwhip data/ sprites as seat portraits per design note §Packaging (voices read via lane labels + seat colors, not sprite kits; real starter art, no placeholders) — nano-banana not required for this game
 2026-08-24T04:21:51Z 20 dispatch builder brief=implement design.md round 1
 2026-08-24T04:23:01Z heartbeat phase=20
+2026-08-24T07:35:52Z 00 resume at phase 20 attempt=1 session=25f4a313
