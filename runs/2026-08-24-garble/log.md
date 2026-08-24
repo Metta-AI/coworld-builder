@@ -92,3 +92,6 @@
 2026-08-24T09:41:15Z progress phase=60 marker=VERIFY.md
 2026-08-24T09:42:02Z 60 judge dispatched (thread sthr_01BeZQCUM9ZrwASNHCBLdEX2) to adjudicate VERIFY.md; rulings requested on hollow round 1 and scrub-readout note
 2026-08-24T09:42:02Z heartbeat phase=60
+2026-08-24T09:49:55Z 60 judge returned: reviews/verify-verdict.md blocking: 0 / BLOCKING: 0 — both rulings satisfied (rounds 2+3 carry item 1; scrub strings pairwise distinct for 8b)
+2026-08-24T09:49:55Z 60 -> 70 phase transition (STATE.phase=70)
+2026-08-24T09:49:55Z progress phase=60 marker=verify-verdict.md
