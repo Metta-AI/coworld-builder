@@ -15,3 +15,4 @@
 2026-08-24T06:07:48Z 20 repo created: https://github.com/Metta-AI/cogame-garble (public)
 2026-08-24T06:07:48Z 20 propagate-secrets run 32696013830 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on cogame-garble
 2026-08-24T06:07:48Z heartbeat phase=20
+2026-08-24T06:08:39Z 20 builder dispatched (thread sthr_01NjsxPLMnNc1NthWuXGGAsD) — implement from design.md, CI is the verdict
