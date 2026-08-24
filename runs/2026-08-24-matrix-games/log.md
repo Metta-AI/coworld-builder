@@ -63,3 +63,5 @@
 2026-08-24T19:20:35Z 50 unpause 200; trigger 200; round 1 auto-created pre-fillers failed (Temporal RoundWorkflow), round 2 (post-fillers trigger) pending with both champions in entrant_attributions
 2026-08-24T19:20:35Z progress phase=50 marker=league_2d6cdf8d-1f9d-4311-80ed-13616f5a8476
 2026-08-24T19:20:35Z 50 -> 60 phase transition (STATE.phase=60)
+2026-08-24T19:21:42Z 60 verifier dispatched (eight checks, 75-min poll bound; round 2 pending at dispatch)
+2026-08-24T19:21:42Z heartbeat phase=60
