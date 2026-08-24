@@ -14,3 +14,5 @@
 2026-08-24T02:11:00Z 20 verified: ci.yml success at main sha a60233b; 3 workflows parse+active; secrets present
 2026-08-24T02:11:00Z progress phase=20 marker=ci-run-32681786000-green
 2026-08-24T02:11:00Z heartbeat phase=30
+2026-08-24T02:30:40Z 30 r1 reviewer returned r1-review.md (879 lines): 2 blocking (B1 data-replay-error not set by page failure paths, checklist 13; B2 no test asserts event-fold reproduces recorded per-hole state, checklist 2), 10 non-blocking
+2026-08-24T02:30:40Z 30 r1 dispatch fixer
