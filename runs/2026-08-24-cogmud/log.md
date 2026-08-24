@@ -23,3 +23,7 @@
 2026-08-24T03:25:43Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-24T03:25:43Z heartbeat phase=30
 2026-08-24T03:26:33Z 30 r1 dispatch reviewer thread=sthr_015bVjy9d8HzDj2nEHniwTtV repo-clone=/workspace/cogame-cogmud sha=dd6f018
+2026-08-24T03:45:29Z 30 r1 reviewer returned r1-review.md: 17 findings, F1 blocking (no grid-tuning harness, checklist item 7), F2-F17 non-blocking
+2026-08-24T03:45:29Z progress phase=30 marker=r1-review.md
+2026-08-24T03:45:29Z 30 r1 dispatch fixer thread=sthr_01Ruz3Tq2akT7YoHHBG2hbtF
+2026-08-24T03:45:29Z heartbeat phase=30
