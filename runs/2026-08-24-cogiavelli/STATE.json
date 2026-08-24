@@ -33,9 +33,14 @@
     "division": "div_827c9f85-5ef5-4999-b89f-4ea572d4c48f"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      2,
+      3,
+      4
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/1071e912-8357-44ef-9745-7d71d59ca586.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32740208697"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T14:07:02Z",
+  "heartbeat_at": "2026-08-24T14:48:29Z",
   "session_ended_at": null,
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"

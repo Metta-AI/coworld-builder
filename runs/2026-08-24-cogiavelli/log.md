@@ -75,3 +75,6 @@
 2026-08-24T14:47:00Z 60 check 7 TRUE: committed release-result.json -> "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
 2026-08-24T14:47:00Z 60 check 8 TRUE: viewer-check run 32740208697 success, loaded=true ms=1095 feed_lines=758, clocks SPRING 1499 / SPRING 1501 LETTERS TURK / FINAL VENICE 6 CITIES (all differ)
 2026-08-24T14:47:00Z 60 VERIFY.md written: 8/8 TRUE
+2026-08-24T14:48:29Z 60 verifier returned VERIFY.md: 8/8 TRUE (rounds 2,3,4 completed; both champions ranked 3 rounds each; replay cogiavelli.r4.e1 complete; log CLEAN; static iframe; cert static-skip; viewer-check 32740208697 loaded=true, 3 distinct clocks); 2 non-blocking legibility notes
+2026-08-24T14:48:29Z progress phase=60 marker=VERIFY.md-8of8-TRUE
+2026-08-24T14:48:29Z heartbeat phase=60
