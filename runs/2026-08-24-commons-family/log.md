@@ -72,3 +72,7 @@
 2026-08-24T22:35:00Z 75 atlas dispatch=32783035515 region=commons at=416,574 clearance=22.9
 2026-08-24T22:40:00Z 75 atlas dispatch 1 run=32783035515 failed: 10 unplaced leagues (their atlas PRs 20252-20305 queued unmerged behind the Graphite merge queue)
 2026-08-24T22:41:00Z 75 atlas dispatch=32783389747 region=commons at=404,544 clearance=22.9 extra_cities=10 (placed for: firm@425,553 cogolf@202,270 cogmud@440,571 cogchemists@766,277 garble@438,817 chorus@416,574 cogplomacy@790,280 cogiavelli@751,295(moved off cogchemists collision) grid-wars@193,249(moved off cogolf) matrix-games@446,544(moved off chorus) — regions kept from each run's own PR, collisions resolved via atlas_spot)
+2026-08-24T22:45:00Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20326 status=pr_open (automerge armed; lands via Graphite merge queue, human merge-when-ready)
+2026-08-24T22:45:00Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20326
+2026-08-24T22:45:00Z 75 -> 80 phase transition
+2026-08-24T22:45:00Z heartbeat phase=80
