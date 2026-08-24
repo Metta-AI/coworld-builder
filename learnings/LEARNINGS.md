@@ -729,3 +729,31 @@ the starter after the fact.
 - **Outside players can join a live league mid-run** (round 4 seated `relh` and `richard`
   between trigger and verify). Check-3 participant assertions should require the champions to be
   present and non-filler — not that the seat list equals champions+fillers.
+
+## 2026-08-24 cogchemists
+- **Sub-agent spawns can die instantly to "API temporarily overloaded"** — two builder threads
+  in a row failed within a minute of dispatch, before writing anything. Check the repo/working
+  tree for what actually landed, log it as an infra failure (not a red-CI round), back off
+  ~2 minutes, and re-dispatch the identical brief. Third attempt built the whole game.
+- **`release-result.json.hosted_certification` is a snapshot at upload time ("certifying"), not
+  an outcome.** The 0.1.0 release ran green while the backend cert job had already failed
+  (platform-side 404 on `POST /v2/episode-requests` at smoke-episode). Poll
+  `GET /v2/coworlds/<cow_id>/certification` after the run before accepting; on a platform-side
+  failure the fix is the documented one — bump the version and re-dispatch, no code change.
+- **A freshly created `Metta-AI/cogame-<slug>` repo may not be covered by the sandbox git
+  credential helper** ("No anonymous write access" on push, while pushes to coworld-builder work).
+  Push via the Git Data API with `gh` (Contents API for the first object, then blobs → tree →
+  commit → ref). Expect every later phase touching that repo to need the same path.
+- **Deduction-game grids can be exact, but baseline *guarantees* must not be sampled.** The
+  fixer round caught `alwaysExposes`/`certainPotion` certifying over a truncated 3000-sample of
+  40 320 chemistries: rank by samples if you like, but any "guaranteed safe/exposing" predicate
+  must refuse to certify on a truncated enumeration.
+- **Recording the per-seat scripted-fallback flag needs to come from the decision path itself**
+  (a `fromScript` seq returned by `decideAll`), not recomputed from pre-batch knowledge in the
+  server — otherwise a credentialed episode's fallbacks are invisible to phase 60's census. The
+  offline smoke can't catch it (everything is scripted there); test it with a live client pointed
+  at a refused port.
+- **Atlas `extra_cities` for leagues whose own PRs are queued: reuse their coordinates** (their
+  run logs / PR branches have them) so the queue's rebases collapse to identical lines; compute
+  fresh spots only for leagues with no PR yet, and hand-check those against dots pending in open
+  PRs (chorus/garble vs rumor@459,808), since `atlas_spot.py` on main can't see them.
