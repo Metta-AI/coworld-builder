@@ -36,3 +36,6 @@
 2026-08-24T03:48:20Z 60 dispatch builder for policies.json fix + release 0.1.2
 2026-08-24T04:06:23Z 60 fix landed: 68034be (USE_BEDROCK on both champions), ci 32687797201 green; release 0.1.2 run 32688088347 canonical+certified cow_9cef7a1e; policies v3; release-result.json overwritten
 2026-08-24T04:06:23Z progress phase=60 marker=release-0.1.2-cow_9cef7a1e check4-fix
+2026-08-24T04:10:11Z 60 champions re-submitted at v3: architect run 32688808315 sub_bce26e05; sniper run 32688838073 sub_359e2d1f; round 5 pending carries architect:v3 + sniper:v2 (async placement lag); ladder unpaused, next rounds will carry both v3
+2026-08-24T04:10:11Z 60 dispatch verifier attempt 2 (verify on both-v3 rounds)
+2026-08-24T04:10:11Z heartbeat phase=60
