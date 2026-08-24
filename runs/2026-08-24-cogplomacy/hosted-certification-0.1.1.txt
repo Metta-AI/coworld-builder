@@ -1,0 +1,37 @@
+Command: coworld status cow_9f7d3cbd-97fa-4d04-a835-1ad0661ca3a1
+Package: coworld[auth]==0.1.42
+Captured: 2026-08-24 UTC, after release run 32731635069 (version 0.1.1)
+Why: release-result.json records hosted_certification as "certifying" because
+     upload-coworld snapshots that string the instant the upload returns, while the
+     async backend certification is still in flight. This is the settled state.
+
+--- verbatim output ---
+
+Coworld: cow_9f7d3cbd-97fa-4d04-a835-1ad0661ca3a1
+Name: cogplomacy
+Version: 0.1.1
+Canonical: yes
+Manifest hash: 
+sha256:2c811d5e1f50082629e8265d0d72a0feb23e4d41a5363e24bcf59ad188d792c3
+Size: 25713 bytes
+Hosted certification: certified (main-04b1b4c5f4b4)
+  pass  matriculate
+  pass  source-resolves
+  pass  images-reachable
+  pass  fixture-conforms
+  pass  smoke-episode
+  pass  results-conform
+  pass  replay-present
+  pass  replay-loadable
+  pass  players-run
+  pass  supporting-roles
+Hosted smoke certification: passed
+                                                                 
+  Episode request                             Status      Error  
+ ─────────────────────────────────────────────────────────────── 
+  ereq_235ebc19-b7aa-4782-904f-f83d937ff97e   completed   -      
+  ereq_33e8196e-0752-427e-ad72-4a8543089087   completed   -      
+  ereq_47e702a8-59d5-41a4-9026-4536429e4748   completed   -      
+  ereq_482b8794-7aaa-4012-8f57-691bed893948   completed   -      
+  ereq_716d8402-9fe5-429c-b0fa-d32ad4e5d03c   completed   -      
+                                                                 

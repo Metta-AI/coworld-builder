@@ -5,21 +5,23 @@
   "slug": "cogplomacy",
   "repo": "https://github.com/Metta-AI/cogame-cogplomacy",
   "starter": "cogame-bullwhip",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_f4a1bd3f-09f7-4ff1-9fca-bdf84b8ccb29",
-    "manifest_sha": "sha256:8e6e1c90654383857387de73ee42e256006eb8b2063a061549c01fb29e2c5c70",
-    "release_run_id": "32730674425"
+    "version": "0.1.1",
+    "cow_id": "cow_9f7d3cbd-97fa-4d04-a835-1ad0661ca3a1",
+    "manifest_sha": "sha256:2c811d5e1f50082629e8265d0d72a0feb23e4d41a5363e24bcf59ad188d792c3",
+    "release_run_id": "32731635069"
   },
   "policies": {
-    "champion1": "cogplomacy-diplomat:v1",
-    "champion2": "cogplomacy-opportunist:v1",
+    "champion1": "cogplomacy-diplomat:v2",
+    "champion2": "cogplomacy-opportunist:v2",
     "fillers": [
-      "cogplomacy-expander:v1",
-      "cogplomacy-hedgehog:v1"
+      "cogplomacy-expander:v2",
+      "cogplomacy-hedgehog:v2"
     ],
     "filler_version_ids": []
   },
@@ -48,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T13:15:37Z",
+  "heartbeat_at": "2026-08-24T13:25:04Z",
   "session_ended_at": null,
   "session_id": "8f502d65",
   "log": "runs/2026-08-24-cogplomacy/log.md"
