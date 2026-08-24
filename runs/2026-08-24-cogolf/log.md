@@ -7,3 +7,6 @@
 2026-08-24T00:56:35Z 10 design accepted round 1; copy at runs/2026-08-24-cogolf/design.md
 2026-08-24T00:56:35Z progress phase=10 marker=design.md written and accepted
 2026-08-24T00:56:35Z heartbeat phase=20
+2026-08-24T00:57:46Z 20 repo created https://github.com/Metta-AI/cogame-cogolf (public)
+2026-08-24T00:57:46Z 20 propagate-secrets run 32678253984 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on repo
+2026-08-24T00:57:46Z 20 dispatch builder round 1
