@@ -602,3 +602,39 @@ the starter after the fact.
   direct-Anthropic-only scope. Forks cut from the starter BEFORE this fix still print the
   misleading banner — verify phases should check which lineage they're reading, and new games
   should copy the post-fix wording.
+
+## 2026-08-23 tandem
+
+- **Matriculate rejects `game.config_schema` array properties without `minItems`/`maxItems`.**
+  0.1.0 failed cert with `manifest_invalid: game.config_schema.properties.tokens must declare
+  minItems and maxItems` — `required: [tokens]` (the escrow learning) is not enough; bound every
+  array property (tandem: `minItems: 2, maxItems: 2` matching num_agents). Fixed in
+  `tools/build_manifest.py`, bumped to 0.1.1, passed.
+- **The chrome alias block can shadow game-block functions silently.** paintbot-lineage pages
+  open with `var markBeat = C.markBeat, …` aliases; a game-block `function markBeat(…)` in the
+  same IIFE is rebound at alias-assignment time (hoisting), so the labelled-button builder was
+  dead code while every static grep passed — beats rendered as chrome_common's unlabeled divs and
+  never seeked. Caught only by a fresh-context judge executing the page. Fix: rename the
+  game-block builder (`markTandemBeat`); prevention: a scope-duplication test asserting the alias
+  list shares no name with any top-level `function`/`var` below the banner
+  (`tests/test_viewer.nim` `noAliasIsShadowed`, fails on the pre-fix page).
+- **A round can settle `completed` with no episode at all**: `results: []`, episode request
+  `completed` with `episode_id: null`, `replay_url: null`, artifacts 404, ~11 s after creation
+  (round 3). It does not count toward the ≥2-completed check and does not increment leaderboard
+  `rounds_played` — verify on `rounds_played` and on rounds that carry results, and record the
+  empty round rather than excusing it.
+- **A champion seat can silently play scripted in a scored round.** Round 2's replay carried only
+  one `register`; champion #2 connected but its register never arrived, so the server degraded
+  the seat to the scripted fallback for the whole episode (by design). Intermittent — round 4 was
+  50/50 LLM. Phase-60 verifiers should count `register` records and per-seat `source:"llm"`
+  orders in the fetched replay, not trust the roster.
+- **Design-pinned integer physics needs quantisation-floor checks before building.** The note's
+  pinned `Δspin = τ·28294/(I·100000)` truncated to zero below 491 N·m and `headingQ += spin div 4`
+  discarded slow turns entirely — the couch could not turn slowly or stop spinning. Builder added
+  fine-resolution carries (1/256-step spin, substep heading remainder) inside gameHash. When a
+  note pins integer formulas, sanity-check the smallest meaningful input produces a nonzero step.
+- **Name /tmp evidence files per round.** The verifier pasted round 2's hexdump under round 4's
+  commands because both landed at `/tmp/ep.replay`-style paths; the judge caught the provenance
+  slip by byte-comparing live objects. Use `/tmp/<round-id>.replay`.
+- The 20-build brief should say explicitly when the design note pins existing art (ctf rigs +
+  pixie bakes): the builder correctly skipped nano-banana but had to justify it as a deviation.

@@ -328,6 +328,8 @@ that was already posted without the flag: `PATCH .../messages/<id>` with `{"flag
 | Viewer passes the CI load test but freezes mid-replay when played | mid-replay exception latches `static_replay.js` into `failed` (cogball 0.1.4: starter-inherited `pushFeed` signature drift); scrub readouts pass because seeking skips the killing frame. Run `viewer_smoke.mjs --soak` (uninterrupted playback must keep advancing) in the wasm-viewer job |
 | League "works" but looks dead | only fillers playing — the whole point is champions visibly playing well |
 | `softmax player use <name>` fails | use the `ply_id`; don't `create` (409 at cap) |
+| Cert fails `manifest_invalid: game.config_schema.properties.<arr> must declare minItems and maxItems` | every ARRAY property in `config_schema` needs `minItems`/`maxItems` bounds, not just `required` membership (tandem 0.1.0, 2026-08-23; bound `tokens` to num_agents) |
+| Scrubber beats render as unlabeled divs / never seek, all static greps green | game-block `function markBeat` shadowed by the chrome alias block's `var markBeat = C.markBeat` (hoisting) — rename the game-block builder and add a scope-duplication test over the alias list (tandem, 2026-08-23) |
 | `upload-policy`: "Docker image is not available locally" | `upload-coworld` pruned the image — policies must run **before** upload-coworld in the workflow |
 | Cert fails "completed without a replay URL", artifacts exist in S3 | reconciler race on a cold image — **bump version, re-upload**; it passes the second time |
 | daveey-1 submit 409 "already assigned to player" | version owned by daveey — upload a fresh policy while daveey-1 is active |

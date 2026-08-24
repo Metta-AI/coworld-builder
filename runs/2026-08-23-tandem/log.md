@@ -73,3 +73,6 @@
 2026-08-24T01:38:05Z progress phase=70 marker=discord_message_id=1541260237766393977
 2026-08-24T01:38:05Z 70 phase -> 80
 2026-08-24T01:38:05Z heartbeat phase=80
+2026-08-24T01:40:25Z 80 summary posted on run task (1217759950202660) and idea task (1217759818745919); LEARNINGS entry + 2 make-coworld Common-mistakes rows
+2026-08-24T01:40:25Z 80 all 8 phase subtasks complete; idea 1217704688296935 completed; run task moved to Done
+2026-08-24T01:40:25Z 80 close complete — run Done, idea completed, session ended. Run finished in one session (phases 00-80).
