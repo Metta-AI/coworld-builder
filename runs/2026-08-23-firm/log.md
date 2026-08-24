@@ -25,3 +25,6 @@
 2026-08-24T01:20:51Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-24T01:20:51Z heartbeat phase=30
 2026-08-24T01:21:24Z 30 dispatch reviewer round=1 repo-checkout=/tmp/cogame-firm sha=10fbf896 -> reviews/r1-review.md
+2026-08-24T01:36:26Z 30 reviewer returned r1-review.md (1 blocking F1 grid-tuning-harness, F2-F12 non-blocking, 4 undetermined)
+2026-08-24T01:36:26Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
+2026-08-24T01:36:26Z heartbeat phase=30
