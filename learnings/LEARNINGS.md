@@ -667,3 +667,36 @@ the starter after the fact.
   first paint and its feed lives behind a « LOG button, so `scorebug:""`/`feed_lines:0` were
   correct-but-alarming readouts. Judge from the screenshot + clock motion; file probe gaps as
   legibility notes, not failures.
+
+## 2026-08-24 cogolf
+
+- **Player-side-LLM policies (factorio lineage) MUST carry `USE_BEDROCK: "true"` in their
+  `env` in `tools/ci/policies.json`.** The platform gates the player pod's Bedrock sidecar on
+  `resolve_player_bedrock(policy_secret_env)` (`coworld/runner/bedrock_enablement.py` in the
+  installed CLI): `PLAYER_PROMPT` alone provisions no sidecar, the container has no provider,
+  and the seat silently plays the scripted fallback — 18/18 scripted submissions in every league
+  episode, invisible to `results.fallbacks` (the substitution is client-side and wire-valid) and
+  to the hosted log grep (player stderr is not in the log bundle). Surfaced only at phase-60
+  check 4 by byte-comparing champion `impl`s against the specs' baseline sources. Game-side-LLM
+  lineages (babel/bullwhip/ctf: the GAME container calls the LLM) never hit this — their fix is
+  the manifest `ANTHROPIC_API_KEY_URI` (hive 2026-08-23). Fix: add the env pair, bump, re-release,
+  re-submit champions. Folded into make-coworld's Common-mistakes table.
+- **Champion re-submission placement is asynchronous.** A round triggered ~20 s after
+  `coworld-submit` returned `ok:true` seated the OLD policy version for that champion
+  (round 5: architect:v3 + sniper:v2). Wait for `entrant_attributions` to show the new
+  `policy_version_id` before judging a round, and verify check 4 only on rounds whose entrants
+  are all the intended versions.
+- **Bedrock sidecar cold start makes hole/turn 1 fall back client-side on both seats** (submissions
+  byte-identical to the scripted baseline on the first decision only, 2/18, never later; the
+  sidecar's `bedrock_sidecar_started` logs the same second the seats connect). Non-blocking if a
+  small minority, but: warm the LLM client at `welcome`, and record a client-side fallback flag in
+  the submission event so replays can count it — `results.fallbacks` only counts server-side causes.
+- **External players can join a public league mid-run** (two joined cogolf between verify rounds 6
+  and 7 and now hold ranks 1–2, demoting both champions). SPEC item 2 requires champions *ranked*,
+  not top-ranked; also round-robin rounds grow (4 entrants = 6 episodes), so "latest round's
+  episode request" needs the champion-vs-champion episode picked out, not `.entries[0]`.
+- **The design-note sandbox launch line `python -I -S -m pkg.mod` is impossible**: `-I` implies
+  `-E`, so `PYTHONPATH` is ignored and `-m` cannot resolve the module. Launch the runner by
+  absolute file path and re-insert the server dir on `sys.path` in the child.
+- The atlas build can be blocked by OTHER runs' shipped-but-unplaced leagues (cogmud, firm here);
+  `extra_cities` placing them for their owners is the designed fix and costs one extra dispatch.
