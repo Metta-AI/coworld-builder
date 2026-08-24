@@ -26,3 +26,7 @@
 2026-08-24T16:19:07Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
 2026-08-24T16:20:05Z 30 reviewer dispatched round 1 (target sha 7b7d586)
 2026-08-24T16:20:05Z heartbeat phase=30
+2026-08-24T16:42:15Z 30 reviewer returned r1-review.md (71 findings: 43 match, 21 gap, 7 unclear)
+2026-08-24T16:42:15Z 30 fixer dispatched round 1
+2026-08-24T16:42:15Z progress phase=30 marker=r1-review.md
+2026-08-24T16:42:15Z heartbeat phase=30
