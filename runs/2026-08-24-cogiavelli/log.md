@@ -53,3 +53,5 @@
 2026-08-24T14:07:02Z progress phase=50 marker=round-2-pending-league_5ba37909
 2026-08-24T14:07:02Z heartbeat phase=60
 2026-08-24T14:08:04Z 60 verifier dispatched (thread sthr_01XXy4myULCACymDxoPqoQBV) -> VERIFY.md; 75-min poll bound, viewer-check via CI
+2026-08-24T14:08:27Z heartbeat phase=60
+2026-08-24T14:08:27Z 60 poll 1: rounds completed=[2]; round 1 failed "Temporal RoundWorkflow failed before settling the round."
