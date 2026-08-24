@@ -832,3 +832,32 @@ the starter after the fact.
 - When adopting grid-tuned argmax constants into a scripted baseline, make affordability/legality an invariant of the baseline code (clamp the spend gate to the price), not a property of the tuned numbers — a raw `bribe>=8` argmax briefly let the baseline write bribes it could not afford and broke test_bot.
 - Atlas phase now regularly needs `extra_cities`: 7 unplaced leagues had accumulated from same-day runs. Budget one failed dispatch for the "unplaced leagues" error, pick continents from /api/coworlds descriptions, and use atlas_spot's runners-up (~32 units apart) when placing two dots in one continent.
 - Phase-60 check 4's `select(.type=="decision")` does not fit babel-lineage replays (kind-tagged events, no decision type): census `press`+`orders` events with `scripted: true` as the fallback marker instead, and say so in VERIFY.md.
+
+## 2026-08-24 grid-wars
+
+- **A sub-agent thread can outlive its dead coordinator session.** Resuming mid-phase-30, the
+  "dispatched" r1 fixer had already pushed 13 finding-commits (CI green) but written no
+  r1-fixes.md. Before re-dispatching a leg on resume, read the coworld repo's commit log for
+  `r<n>-` commit messages and write the re-dispatch brief as "verify existing commits, finish
+  the gaps" — the second fixer only had to fix 3 findings and write the report.
+- **`GET /leagues` and `GET /rounds` return a bare array**, not `{entries:[…]}` — the prompts'
+  `.entries[]` jq lines error. Guard with `if type=="array" then . else .entries end`.
+- **A round can be `completed` with no episode** (round 3: settled 11 s after creation,
+  `episode_id: null`, `participant_scores: []`). Count rounds with scored episodes for DoD
+  check 1, not just `status=="completed"` rows; leaderboard `rounds_played` reflects only the
+  scored ones.
+- **Atlas batch-placing works.** Dispatch 1 failed on 8 unplaced shipped coworlds; one retry
+  with `extra_cities` placed all 8 + grid-wars in one PR. For several new dots in one region,
+  append each pick to a local copy of places.mjs and re-run `atlas_spot.py` so the batch keeps
+  ≥22 px clearance against itself, not just against the live map.
+- **Grid-wars replay events use `kind`/`round`/`seat`**, not the `type`/`tick`/`summary` keys in
+  60-verify's example jq — paste schema-correct equivalents next to the literal output so the
+  zeros are not misread.
+- **Count the Discord announce BEFORE posting**: 1838 chars slipped past the template's 1800
+  cap (Discord's 2000 saved it). Compose, `${#BODY}`, trim, then POST.
+- **GitHub artifacts API can 503 transiently** right after a run completes;
+  `gh api .../actions/artifacts/<id>/zip` + python zipfile is a working fallback.
+- **`gh auth setup-git` breaks the sandbox git credential helper** (known gotcha, hit again):
+  the fixer repaired ~/.gitconfig but git-over-https pushes to the coworld repo still failed
+  ("No anonymous write access"); pushing via the GitHub Git Data API (create blobs/trees/
+  commits, assert tree shas match local) worked cleanly.
