@@ -57,3 +57,5 @@
 2026-08-24T22:05:00Z 60 verifier returned: 8/8 TRUE (rounds 2,3,4 completed; both champions ranked, warden 1030.53 / steward 969.47, rounds_played=2 each; replay complete, 40/40 champion decisions llm, 0 fallbacks; iframe static route; viewer-check run=32781916776 loaded=true 3 distinct clocks; round-3 ingestion gap documented as platform-side)
 2026-08-24T22:05:00Z progress phase=60 marker=viewer-check-32781916776
 2026-08-24T22:05:00Z heartbeat phase=60
+2026-08-24T22:08:00Z 60 judge dispatched (fresh context) thread=sthr_01PpeY5sReSMQjsAP4VCdXzc output=reviews/verify-verdict.md
+2026-08-24T22:08:00Z heartbeat phase=60
