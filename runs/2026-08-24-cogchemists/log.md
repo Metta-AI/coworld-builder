@@ -17,3 +17,4 @@
 2026-08-24T06:41:12Z heartbeat phase=20
 2026-08-24T06:42:40Z 20 builder thread sthr_01USGCLnjPkAbev6uVCDz1iJ died (API overloaded) before any push; repo still empty; re-dispatching same brief (infra failure, not a CI round)
 2026-08-24T06:42:40Z heartbeat phase=20
+2026-08-24T06:46:26Z 20 builder thread sthr_01Kj7ktE98omn2vis5iNge1y also died immediately (API overloaded); waited 150s; third dispatch attempt
