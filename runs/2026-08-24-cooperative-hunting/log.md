@@ -12,3 +12,4 @@
 2026-08-24T16:04:23Z 20 builder thread sthr_01NmM3UGaexUzaB6gVnWkCf2 died: API temporarily overloaded; repo still empty — re-dispatching same brief (infra retry 1)
 2026-08-24T16:05:25Z 20 builder re-dispatched thread=sthr_01BJUC2XDPzvHEcX4ZHzewsT (same brief; prior thread died pre-push)
 2026-08-24T16:05:25Z heartbeat phase=20
+2026-08-24T16:05:47Z 20 builder thread sthr_01BJUC2XDPzvHEcX4ZHzewsT died: API temporarily overloaded (2nd); repo still empty — will wait then re-dispatch (infra retry 2)
