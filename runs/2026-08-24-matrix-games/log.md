@@ -30,3 +30,7 @@
 2026-08-24T16:42:15Z 30 fixer dispatched round 1
 2026-08-24T16:42:15Z progress phase=30 marker=r1-review.md
 2026-08-24T16:42:15Z heartbeat phase=30
+2026-08-24T17:19:15Z 30 fixer returned r1-fixes.md (15 commits, final sha af5c704, ci 32755082249 success)
+2026-08-24T17:19:15Z 30 judge dispatched round 1 (target sha af5c704)
+2026-08-24T17:19:15Z progress phase=30 marker=r1-fixes.md
+2026-08-24T17:19:15Z heartbeat phase=30
