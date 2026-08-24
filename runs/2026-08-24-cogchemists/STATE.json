@@ -31,9 +31,13 @@
     "division": "div_be88c7cd-0b21-4468-a404-c5c9cc767d25"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "2",
+      "3"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/73254d72-43c1-41df-a2ff-b2fcfdb16885.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32711872593"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T09:06:52Z",
+  "heartbeat_at": "2026-08-24T09:35:47Z",
   "session_ended_at": null,
   "session_id": "11fadfc7",
   "log": "runs/2026-08-24-cogchemists/log.md"

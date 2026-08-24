@@ -65,3 +65,21 @@
 2026-08-24T09:06:52Z 50 phase -> 60
 2026-08-24T09:07:44Z 60 verifier dispatched (league league_7a7ba378, division div_be88c7cd, cow cow_a9d9a26c, 75-min bound)
 2026-08-24T09:07:44Z heartbeat phase=60
+2026-08-24T09:08:34Z 60 poll rounds completed=0
+2026-08-24T09:13:19Z 60 poll rounds completed=1
+2026-08-24T09:18:18Z 60 poll rounds completed=1
+2026-08-24T09:23:10Z 60 poll rounds completed=1
+2026-08-24T09:28:03Z 60 poll rounds completed=2
+2026-08-24T09:34:34Z 60 check1 TRUE rounds 2,3 completed (round1 failed = pre-filler symptom)
+2026-08-24T09:34:34Z 60 check2 TRUE leaderboard daveey 1016 / daveey-1 984, rounds_played=2 each, no filler rows
+2026-08-24T09:34:34Z 60 check3 TRUE ereq_4082c439 completed replay_url s3 73254d72 participants daveey/daveey-1/2x Baseline
+2026-08-24T09:34:34Z 60 check4 TRUE strict JSON ok protocol=cogchemists.replay.v1 reason=complete champion seats 24/24 non-scripted
+2026-08-24T09:34:34Z 60 check5 TRUE 0 LLM-health hits, 24/24 bedrock ok:true; 7 "rejected" = documented in-game already_claimed by Baseline seats
+2026-08-24T09:34:34Z 60 check6 TRUE static route .../replays/static/cow_a9d9a26c/sha256%3A967ac7cc.../index.html?replay=... ready:true featured=cogchemists.r3.e1
+2026-08-24T09:34:34Z 60 check7 TRUE release-result.json certify.replay_liveness = "skipped (static replay bundle declared..."
+2026-08-24T09:34:34Z 60 check8 TRUE viewer-check run=32711872593 loaded=true ms=1072 clock 0%/50%/100% all differ feed_lines=123
+2026-08-24T09:34:34Z 60 VERIFY.md written: 8/8 TRUE
+2026-08-24T09:35:47Z 60 verifier returned VERIFY.md: all 8 checks TRUE (rounds 2+3 completed; leaderboard daveey 1016 / daveey-1 984; replay complete 6/6 rounds, 0 champion fallbacks; viewer-check run 32711872593 loaded=true, 3 distinct clocks)
+2026-08-24T09:35:47Z progress phase=60 marker=VERIFY.md-all-true
+2026-08-24T09:35:47Z 60 dispatching judge on VERIFY.md
+2026-08-24T09:35:47Z heartbeat phase=60

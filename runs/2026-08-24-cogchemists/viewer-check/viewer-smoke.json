@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1072,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_a9d9a26c-cf74-403a-85f9-542ca3bd61c9/sha256%3A967ac7cc48105407d8bf726c725452d102166dcfcee569ae3cacfc687ac2a431/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F73254d72-43c1-41df-a2ff-b2fcfdb16885.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "THE ACADEMY · 6 ROUNDS",
+  "scorebug": "daveey 10 REP 4c 0 SOLVED daveey-1 10 REP 4c 0 SOLVED Gizmo 10 REP 4c 0 SOLVED Widget 10 REP 4c 0 SOLVED",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 123,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "THE ACADEMY · 6 ROUNDS"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 4 / 6 · MARKET · MOVES IN"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL · WIDGET 18.0"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

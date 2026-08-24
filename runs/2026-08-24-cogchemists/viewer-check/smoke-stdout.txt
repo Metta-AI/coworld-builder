@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1072,"clock":"THE ACADEMY · 6 ROUNDS","scorebug":"daveey 10 REP 4c 0 SOLVED daveey-1 10 REP 4c 0 SOLVED Gizmo 10 REP 4c 0 SOLVED Widget 10 REP 4c 0 SOLVED","feed_lines":123}
+scrub readouts: 0%="THE ACADEMY · 6 ROUNDS"  50%="ROUND 4 / 6 · MARKET · MOVES IN"  100%="FINAL · WIDGET 18.0"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
