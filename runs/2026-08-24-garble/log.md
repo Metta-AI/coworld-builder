@@ -20,3 +20,6 @@
 2026-08-24T06:42:01Z 20 retry 1: re-dispatch builder to adopt the existing working tree, verify against design.md, commit, push, drive CI
 2026-08-24T06:42:01Z heartbeat phase=20
 2026-08-24T06:42:48Z 20 builder re-dispatched (thread sthr_01Lbn5gLKAux2DDeNGqjsWCr) adopting /workspace/cogame-garble working tree
+2026-08-24T06:43:15Z 20 builder thread sthr_01Lbn5gLKAux2DDeNGqjsWCr FAILED (API temporarily overloaded, second consecutive) — no commits made, tree unchanged
+2026-08-24T06:43:15Z 20 retry 2: waiting ~3 min for overload to clear, then third builder dispatch; platform-outage clock started ~06:12Z (45-min bound per AGENT.md §Rails)
+2026-08-24T06:43:15Z heartbeat phase=20
