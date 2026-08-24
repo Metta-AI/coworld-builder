@@ -52,3 +52,11 @@
 2026-08-24T13:26:41Z 50 division 200: div_832f5cdb-747d-4f93-958f-597a8cd44553; settings 200: round_robin/filler_policy/elo/mean, interval 15m
 2026-08-24T13:26:41Z progress phase=50 marker=league_cb035e15-dbab-4478-9528-64a997be502a
 2026-08-24T13:26:41Z heartbeat phase=50
+2026-08-24T13:29:57Z 50 champion1 submit: run 32732746728 ok=true sub_671835a2 (cogplomacy-diplomat:v2, daveey)
+2026-08-24T13:29:57Z 50 champion2 submit: run 32732808217 ok=true sub_d4cf72d7 (cogplomacy-opportunist:v2, daveey-1; policy-versions row confirms player_name=daveey-1)
+2026-08-24T13:29:57Z 50 fillers 200: expander:v2 04470444-d193-4c62-a6a0-6b2f9cb238ca + hedgehog:v2 984a3f62-73c2-47c1-aa5f-3295986829d8 (neither champion)
+2026-08-24T13:29:57Z 50 unpause 200 (paused=false); trigger-round 200 (workflow ladder-league_cb035e15)
+2026-08-24T13:29:57Z 50 rounds: round 1 failed pre-trigger ("Temporal RoundWorkflow failed before settling the round", created 13:28:02); round 2 round_31429ce9 COMPLETED 13:28:46 with both champions in entrant_attributions, 1 episode completed; leaderboard shows daveey + daveey-1
+2026-08-24T13:29:57Z progress phase=50 marker=round_31429ce9-e728-407e-91ef-12fd049c9f1d
+2026-08-24T13:29:57Z 50 -> 60 phase transition (STATE.phase=60)
+2026-08-24T13:29:57Z heartbeat phase=60
