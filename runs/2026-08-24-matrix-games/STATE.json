@@ -5,19 +5,24 @@
   "slug": "matrix-games",
   "repo": "https://github.com/Metta-AI/cogame-matrix-games",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 0
+  },
   "review_round": 2,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_e8a973ea-c4f1-4c99-8a84-a776f1cde531",
+    "manifest_sha": "sha256:344375ca76bdfcc1a6f59ca91d552d6ec5ab24a1b94dc0f60b5f42c80d181636",
+    "release_run_id": "32766185820"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "matrix-games-reader:v2",
+    "champion2": "matrix-games-brinkman:v2",
+    "fillers": [
+      "matrix-games-counter:v1",
+      "matrix-games-tit-for-tat:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T19:00:11Z",
+  "heartbeat_at": "2026-08-24T19:16:35Z",
   "session_ended_at": null,
   "session_id": "eebc5410",
   "log": "runs/2026-08-24-matrix-games/log.md"

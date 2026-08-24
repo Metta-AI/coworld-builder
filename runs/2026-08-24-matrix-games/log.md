@@ -52,3 +52,8 @@
 2026-08-24T19:00:11Z 30 -> 40 phase transition (STATE.phase=40)
 2026-08-24T19:01:09Z 40 builder dispatched (release chain, version from 0.1.0)
 2026-08-24T19:01:09Z heartbeat phase=40
+2026-08-24T19:16:35Z 40 dispatch 1 v0.1.0 run 32765742077 step_failed='Upload the policies' (backend 500 on counter upload; transient) -> bump
+2026-08-24T19:16:35Z 40 dispatch 2 v0.1.1 run 32766185820 SUCCESS: ok canonical certify.ok liveness-skipped secret_put; cow_e8a973ea-c4f1-4c99-8a84-a776f1cde531
+2026-08-24T19:16:35Z 40 policies: reader:v2 (daveey), brinkman:v2 (daveey-1), counter:v1, tit-for-tat:v2
+2026-08-24T19:16:35Z progress phase=40 marker=release-run-32766185820
+2026-08-24T19:16:35Z 40 -> 50 phase transition (STATE.phase=50)
