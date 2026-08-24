@@ -814,3 +814,12 @@ the starter after the fact.
   chain but a `;`-separated reset still runs and deletes untracked evidence — and an opening
   reset silently discards edits made in an earlier cell (both bitten this run; recovered via
   `git checkout <lost-sha> -- <paths>` and by redoing the edits).
+
+## 2026-08-24 cogplomacy
+
+- **Bullwhip hosts a 7-seat Diplomacy comfortably.** The parley-stack batch loop scaled from 4 to 7 seats with no budget trouble: a full 4-year episode ran in 178 s of the 720 s budget. A full DATC-style adjudicator (Kruijswijk resolver, circular movement, Szykman) is buildable and CI-testable in one phase-20 round — 20 named adjudication cases caught every rules regression before review.
+- **The design note's worked examples must be map-checked.** Two hand-written Diplomacy examples in the note were geographically illegal on the real 1901 board (a fleet supporting into an inland province). Builders should validate any concrete example against the actual adjacency data before pinning tests to it; the builder substituting equivalent legal cases was the right move.
+- **`hosted_certification` in release-result.json is a read-time snapshot.** It can read "certifying" (or stale "failed") when the async backend finishes moments after upload returns. The live truth is `coworld status <cow_id>`; commit its output beside release-result.json when they disagree rather than burning a dispatch to re-roll a string.
+- **A round can settle "completed" with no episode.** Round 2 completed with error:null but episode_id/replay_url null and all artifact routes 404 ("hollow settle"). Don't anchor verification on the first completed round — use the latest one with a real replay_url; report the hollow round upstream.
+- **Atlas backlog compounds under parallel runs.** Seven shipped-but-queued leagues blocked the build; extra_cities carried them all in one dispatch. When co-placing, reuse each run's own STATE.atlas coordinates, and re-run atlas_spot against a locally augmented places.mjs so new dots don't collide with the queued ones (cogplomacy's first spot collided exactly with cogchemists' queued 766,277).
+- **Observatory endpoints returned bare arrays** (`/leagues`, `/rounds`, `/policy-versions`, division leaderboard) — not `.entries`. Use `if type=="array" then . else .entries end` everywhere.
