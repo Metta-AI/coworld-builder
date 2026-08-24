@@ -94,3 +94,6 @@
 2026-08-24T09:47:12Z 75 atlas dispatch 32713040574 failed: unplaced leagues chorus,cogmud,cogolf,firm,garble — placing them too via extra_cities (fix 1 of 3)
 2026-08-24T09:47:12Z 75 atlas continents: chorus=parlour(co-op performance/party)@438,817; garble=parlour(negotiation-language)@468,829; cogmud=commons@440,571, cogolf=paintlands@202,270, firm=commons@425,553 (each from its own run's open PR)
 2026-08-24T09:47:28Z 75 atlas dispatch=32713399957 region=tabletop at=766,277 clearance=22.9 extra_cities=5
+2026-08-24T09:49:25Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20263 status=pr_open (placed cogchemists + 5 unplaced leagues: chorus, garble, cogmud, cogolf, firm)
+2026-08-24T09:49:25Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20263
+2026-08-24T09:49:25Z 75 phase -> 80
