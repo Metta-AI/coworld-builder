@@ -5,7 +5,7 @@
   "slug": "grid-wars",
   "repo": "https://github.com/Metta-AI/cogame-grid-wars",
   "starter": "cogame-bullwhip",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "30": 1,
     "40": 1
@@ -24,7 +24,10 @@
       "grid-wars-painter:v1",
       "grid-wars-bomber:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "4b25c767-62d5-4a4d-94bd-5743cd2e7cac",
+      "e8fb1301-d7cf-4894-935f-dce8d246179f"
+    ]
   },
   "league": {
     "id": "league_f07f6eeb-bdd2-49ec-82bd-a3fa2bb568e5",
@@ -51,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T16:26:00Z",
+  "heartbeat_at": "2026-08-24T16:29:56Z",
   "session_ended_at": null,
   "session_id": "d1e84720",
   "log": "runs/2026-08-24-grid-wars/log.md"

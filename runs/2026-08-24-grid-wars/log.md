@@ -52,3 +52,9 @@
 2026-08-24T16:24:47Z heartbeat phase=50
 2026-08-24T16:26:00Z 50 seed 200 lseed_aefb525e; league L=league_f07f6eeb-bdd2-49ec-82bd-a3fa2bb568e5; division 200 D=div_352d6e5d-d082-4bc7-b84a-5913e32d6082; settings 200 (elo mean, round_robin filler_policy, 15min)
 2026-08-24T16:26:00Z heartbeat phase=50
+2026-08-24T16:29:56Z 50 champ1 submit run 32750814964 ok sub_6ab3e26f (tactician:v1, daveey); champ2 submit run 32750866218 ok sub_408f35fa (cartographer:v1, daveey-1 confirmed on policy-versions row)
+2026-08-24T16:29:56Z 50 fillers registered 200: painter 4b25c767-62d5-4a4d-94bd-5743cd2e7cac, bomber e8fb1301-d7cf-4894-935f-dce8d246179f (neither champion)
+2026-08-24T16:29:56Z 50 unpaused 200; trigger 200; round 1 failed (Temporal RoundWorkflow race, fillers were already set), round 2 pending with both champions in entrant_attributions
+2026-08-24T16:29:56Z progress phase=50 marker=league league_f07f6eeb-bdd2-49ec-82bd-a3fa2bb568e5 round_93498091 pending
+2026-08-24T16:29:56Z 50 phase -> 60
+2026-08-24T16:29:56Z heartbeat phase=60
