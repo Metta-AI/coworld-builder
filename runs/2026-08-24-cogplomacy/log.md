@@ -25,3 +25,4 @@
 2026-08-24T11:58:12Z progress phase=30 marker=reviews/r1-review.md
 2026-08-24T11:58:12Z heartbeat phase=30
 2026-08-24T11:58:52Z 30 r1 fixer dispatched (thread sthr_01LdwxhusZYndDvTorfTR6Hg) -> reviews/r1-fixes.md
+2026-08-24T12:09:02Z 30 r1 fixer thread failed (API overloaded), no file, main unchanged — retry 1/3
