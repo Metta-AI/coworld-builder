@@ -63,3 +63,5 @@
 2026-08-24T09:06:52Z 50 unpaused 200; trigger-round 200; round 1 failed (auto-scheduled pre-fillers, documented symptom), round 2 pending with both champions in entrant_attributions
 2026-08-24T09:06:52Z progress phase=50 marker=round-2-pending
 2026-08-24T09:06:52Z 50 phase -> 60
+2026-08-24T09:07:44Z 60 verifier dispatched (league league_7a7ba378, division div_be88c7cd, cow cow_a9d9a26c, 75-min bound)
+2026-08-24T09:07:44Z heartbeat phase=60
