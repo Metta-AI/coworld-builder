@@ -102,8 +102,10 @@ There are exactly `bars` turns, one per bar. Turn `t` runs 0 … `bars-1`:
 1. **Open.** For every voice `v`: `grid[v][t] := grid[v][t-1]` — a **hold** — or 16 rests when
    `t = 0`. `heard := says`; `says := ["","","",""]`; `orders`-equivalent `barIn := [false]*4`;
    `phase := phBars`. Append a **`turn`** event carrying `t`, `chords[t]`, and the running score of
-   bars `0 .. t-1` (`piece`, `parts`, `credits`); at `t = 0` that score is `0.0` with all-zero
-   parts and credits.
+   bars `0 .. t-1` (`piece`, `parts`, `credits`); at `t = 0` nothing has been written, so the three
+   heard components are `0` and novelty takes its neutral `raw = 0.5` (§*Novelty*, `n < 2`) → `N = 1`,
+   giving `piece = 100 × 0.15 = 15.0`, `parts = [0, 0, 0, 1]` and **all-zero credits** (every voice's
+   counterfactual is the same empty piece).
 2. **Observe.** Build one observation per seat from the state at open (§*Server, player, protocol*
    → *Observation*). All four observations describe the same public grid; only the credit line, the
    notes and the operator prompt differ.
@@ -225,7 +227,7 @@ Exactly two values are legal. Anything else is a defect.
 | `reason` | when | scoring |
 |---|---|---|
 | `complete` | all `bars` turns resolved | over all `bars` bars |
-| `deadline` | the play deadline was crossed **between turns** (step 0 above) | over `turnsPlayed` bars, which is always a well-formed piece (possibly 0 bars → `piece = 0`, all credits `0`) |
+| `deadline` | the play deadline was crossed **between turns** (step 0 above) | over `turnsPlayed` bars, which is always a well-formed piece (possibly 0 bars → the neutral-novelty floor `piece = 15.0`, all credits `0`) |
 
 `deadline` is an **acceptable** ending for phase-60 verification: the piece is honestly scored on
 what was written, the replay is complete, and the results are valid. There is no third path: an
@@ -299,8 +301,13 @@ container's environment (it always is — only the worker sidecar gets it). `Pla
 - Typical (haiku answering in ~4–8 s): the 20 s spacing floor dominates → `8 × 20 = 160 s`.
 - The `bars = 16` ceiling is `16 × 60.4 ≈ 966 s` > 720 s. That is *why* the deadline path exists and
   why it is scored rather than discarded; the shipped variants stay under the budget by design.
-- Container start, the 180 s player-connect wait and artifact writing all live in the other 40 %
-  (480 s).
+- Container start and artifact writing live in the other 40 % (480 s). The up-to-180 s
+  player-connect wait does **not**: `playDeadline` is measured from `gameStart`, before the wait, so
+  a slow connect eats into the 720 s of play rather than extending the episode. That is deliberate
+  and conservative — the worst case is bars given up to the `deadline` path (an acceptable ending),
+  never an overrun that the platform discards whole. Worst case in wall clock: `playDeadline`
+  (720 s) + the turn in flight when it passes (2 × 30 s LLM + pacing) + the 500 ms flush + the 20 s
+  shutdown grace ≈ **801 s**, ~400 s clear of the 1200 s kill.
 
 ### Degrade, never hang
 
@@ -687,7 +694,11 @@ WS  /global                      -> spectator snapshots
 WS  /replay                      -> the enriched replay payload (replay mode)
 ```
 
-Neither `/client/` HTML route opens a player socket. `mummy` hands `Ping` frames to the application,
+`/client/global` and `/client/replay` are spectator pages and open only `/global` (or `/replay`).
+`/client/player` is the seat-operator page kept from bullwhip verbatim: it opens
+`/player?slot=N&token=T` with the slot and token from its own query string, and
+`playerUpgradeHandler` rejects any mismatch with **401** before registering anything, so the page is
+useless without a live seat token. `mummy` hands `Ping` frames to the application,
 so the websocket handler answers a `Ping` with a `Pong` (bullwhip's code, kept verbatim — the
 certifier pings `/global`).
 

@@ -17,3 +17,7 @@
 2026-08-24T07:37:42Z 30 r1 dispatch reviewer brief=trace repo@8777d56 vs design.md -> reviews/r1-review.md
 2026-08-24T07:53:38Z 30 r1 reviewer returned reviews/r1-review.md (1 blocking F1 scripted-flag provenance; 9 advisory; 4 could-not-determine)
 2026-08-24T07:53:38Z heartbeat phase=30
+2026-08-24T08:06:12Z 30 r1 fixer returned reviews/r1-fixes.md; repo main 8777d56 -> 5e2dbe4 (F1 80e5205, F8 5e2dbe4), CI green run=32704049550; design.md amended for F2/F4/F5; note: sandbox git-push-over-HTTPS refused, fixer used GitHub Git Data API fast-forward
+2026-08-24T08:06:12Z 30 r1 dispatch judge fresh-context on repo@5e2dbe4 -> reviews/r1-verdict.md
+2026-08-24T08:06:12Z heartbeat phase=30
+2026-08-24T08:06:12Z progress phase=30 marker=r1-fixes.md
