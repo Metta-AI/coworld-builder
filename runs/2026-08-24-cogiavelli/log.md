@@ -29,3 +29,6 @@
 2026-08-24T12:31:58Z progress phase=30 marker=reviews/r1-review.md
 2026-08-24T12:31:58Z heartbeat phase=30
 2026-08-24T12:32:48Z 30 r1 fixer dispatched (thread sthr_014ybM7JRtYo3MZWYeugcvTz) -> reviews/r1-fixes.md; priorities: N1 frame-by-frame replayMatch, grid-harness tuning record, N3 stab detector, N2, N14, N17
+2026-08-24T13:24:40Z 30 r1 fixer returned r1-fixes.md: 12 fixed + item7 grid harness (tools/tune_baseline.nim + docs/tuning.md + tests/test_tuning.nim), 7 refuted with evidence; head 044223b, ci 32731615199 success (one intermediate red 32730784263 fixed forward)
+2026-08-24T13:24:40Z progress phase=30 marker=reviews/r1-fixes.md
+2026-08-24T13:24:40Z heartbeat phase=30
