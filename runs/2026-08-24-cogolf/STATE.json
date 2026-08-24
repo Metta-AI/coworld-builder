@@ -5,7 +5,7 @@
   "slug": "cogolf",
   "repo": "https://github.com/Metta-AI/cogame-cogolf",
   "starter": "cogame-factorio",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1
   },
@@ -48,8 +48,18 @@
     "discord_message_id": "1541318222354321510"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T05:28:38Z",
+  "heartbeat_at": "2026-08-24T05:34:34Z",
   "session_ended_at": null,
   "session_id": "0f57e138",
-  "log": "runs/2026-08-24-cogolf/log.md"
+  "log": "runs/2026-08-24-cogolf/log.md",
+  "atlas": {
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20258",
+    "branch": "atlas/cogolf-32693902532",
+    "region": "paintlands",
+    "x": 202,
+    "y": 270,
+    "dispatch_run_id": "32693902532",
+    "attempted_at": "2026-08-24T05:34:34Z"
+  }
 }

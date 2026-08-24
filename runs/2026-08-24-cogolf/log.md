@@ -51,3 +51,6 @@
 2026-08-24T05:28:38Z heartbeat phase=75
 2026-08-24T05:30:23Z 75 atlas dispatch=32693758887 region=paintlands at=202,270 clearance=34.1
 2026-08-24T05:32:49Z 75 atlas dispatch=32693902532 region=paintlands at=202,270 clearance=34.1 extra_cities=cogmud@536,271(simulations),firm@416,574(commons) — placed for their runs per step-8 fix 1
+2026-08-24T05:34:34Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20258 status=pr_open
+2026-08-24T05:34:34Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20258
+2026-08-24T05:34:34Z heartbeat phase=80
