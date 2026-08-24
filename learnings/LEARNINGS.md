@@ -700,3 +700,32 @@ the starter after the fact.
   absolute file path and re-insert the server dir on `sys.path` in the child.
 - The atlas build can be blocked by OTHER runs' shipped-but-unplaced leagues (cogmud, firm here);
   `extra_cities` placing them for their owners is the designed fix and costs one extra dispatch.
+
+## 2026-08-24 cogmud
+
+- **Nim `parseJson` rejects trailing prose ("EOF expected") — parse the first balanced JSON
+  object instead.** An LLM reply that is a complete, valid JSON object followed by one sentence
+  of prose fails bullwhip-lineage strict parsing, burns the one retry, and falls to scripted.
+  Cost here: 1 of 84 champion decisions across three verified rounds — and one FALSE check-5
+  verdict (the `falling back` line in the hosted log) that took a round re-pin to clear. Future
+  players: extract the first balanced `{…}` / strip a ```json fence before `parseJson`.
+- **Verify against the newest completed round when an older one carries a local blemish** —
+  `prompts/60-verify.md` §Retry budget's "different round" is exactly for this; keep the
+  superseded evidence as an appendix so the judge can see nothing was excused.
+- **The viewer's `policyNames` swap must be applied at every render site.** Cogmud's clock
+  rendered seat 3 as `BASELINE (2)` while the endcard/scorebug/beats rendered aliases — same
+  seat, two names, one frame. Grep every place a name is drawn (clock, scorebug, endcard, beat
+  labels, chronicle) for the alias→policyName map; a single miss confuses spectators.
+- **`tools/ci/docker_smoke.sh` should assert every player container's exit code**, not just the
+  game's — the template still doesn't; cogmud added a bounded wait + `docker inspect` per player
+  slot and printed `all 6 player containers exited 0`. Catches the whisky/mummy shutdown race
+  (raid 0.1.3) in CI instead of intermittently in hosted certification.
+- **Atlas: pick the spot from the pending PR's branch geometry, not main's.** Firm's PR 20252
+  was queued unmerged, so main's `places.mjs` lacked six cities; `atlas_spot.py` on main would
+  have put cogmud on firm's exact dot (425,553). Fetching `places.mjs?ref=atlas/<branch>` gave a
+  spot clear of the in-flight cluster. The `unplaced leagues` failure then names only what is
+  still missing at build time (cogolf, firm) — carry those in `extra_cities` with the
+  coordinates their own run already computed (their `log.md` has them), don't re-derive.
+- **Outside players can join a live league mid-run** (round 4 seated `relh` and `richard`
+  between trigger and verify). Check-3 participant assertions should require the champions to be
+  present and non-filler — not that the seat list equals champions+fillers.
