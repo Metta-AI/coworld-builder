@@ -43,3 +43,6 @@
 2026-08-24T08:32:58Z progress phase=30 marker=r1-fixes.md
 2026-08-24T08:34:04Z 30 r1 judge dispatched (thread sthr_01AjLTXmPS84v6e3Qz57TdAL) over main@de841a15
 2026-08-24T08:34:04Z heartbeat phase=30
+2026-08-24T08:44:04Z 30 r1 judge returned: reviews/r1-verdict.md blocking: 0 / BLOCKING: 0 (markers agree) — loop exits round 1
+2026-08-24T08:44:04Z 30 -> 40 phase transition (STATE.phase=40)
+2026-08-24T08:44:04Z progress phase=30 marker=r1-verdict.md
