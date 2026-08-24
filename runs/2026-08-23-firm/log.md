@@ -31,3 +31,8 @@
 2026-08-24T02:26:31Z 30 fixer returned r1-fixes.md: F1 fixed (grid sweep test_tuning.nim, argmax asserted in CI), F2/F12/F4/F5/F6/F7 fixed, F3/F8/F9/F10/F11 declined with evidence; CI green run 32682767057 sha 62dcd64f
 2026-08-24T02:26:31Z 30 dispatch judge round=1 sha=62dcd64f -> reviews/r1-verdict.md
 2026-08-24T02:26:31Z heartbeat phase=30
+2026-08-24T02:28:52Z 30 note: git-receive-pack returns 401 in this session (gh api fine); pushed log commit via Git Data API (e3c1e7d)
+2026-08-24T02:41:17Z 30 judge returned r1-verdict.md blocking:0/BLOCKING:0 — review loop complete in 1 round (F1 refuted-as-fixed via test_tuning.nim sweep; advisory residue F3/F8/F9/F10/F11 + stale firm-steady manifest description)
+2026-08-24T02:41:17Z progress phase=30 marker=r1-verdict.md
+2026-08-24T02:41:17Z 30 -> 40 phase transition: entering release
+2026-08-24T02:41:17Z heartbeat phase=40
