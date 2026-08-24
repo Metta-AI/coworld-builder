@@ -16,3 +16,5 @@
 2026-08-24T02:11:00Z heartbeat phase=30
 2026-08-24T02:30:40Z 30 r1 reviewer returned r1-review.md (879 lines): 2 blocking (B1 data-replay-error not set by page failure paths, checklist 13; B2 no test asserts event-fold reproduces recorded per-hole state, checklist 2), 10 non-blocking
 2026-08-24T02:30:40Z 30 r1 dispatch fixer
+2026-08-24T02:49:16Z 30 r1 fixer returned r1-fixes.md: B1 fixed 9a63d64, B2 fixed 46eecce, N7 fixed 529c0f8; N3/N4/N9 refuted, N1/N2 needs-design, rest deferred; ci run 32683809005 success at 529c0f8
+2026-08-24T02:49:16Z 30 r1 dispatch judge
