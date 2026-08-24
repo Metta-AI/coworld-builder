@@ -784,3 +784,33 @@ the starter after the fact.
   gid list marked 50–80 complete one phase early each and left 40 open; harmless here but only
   because every later phase succeeded. `GET /tasks/<run>/subtasks?opt_fields=name,completed`
   first, then PUT the gid whose name matches the phase.
+
+## 2026-08-24 chorus
+- **A bridge `ready` fired before the first drawn frame is invisible to the template smoke.**
+  `tools/ci/viewer_smoke.mjs:365-366` accepts `data-replay-loaded` and the `coworld-replay`
+  bridge `ready` interchangeably and breaks on whichever arrives first — so a shell that posts
+  `ready` from rAF timing at the call site (bullwhip-lineage `static_replay.js`) passes CI while
+  softmax.com embeds sample an unpainted shell (clock stuck on the `BAR 0` placeholder, dead
+  scrubber). Caught only by phase 60's three-clock check. Fix pattern: `attachReplay` gains an
+  `onLoaded` callback fired right after it sets `data-replay-loaded="true"`, and the static shell
+  posts `ready` from there (cogame-chorus `3c11c953`). Check the starter's ready-timing during
+  phase 20, not after certification.
+- **The replay session route binds a replay to the cow whose episode produced it.** After a
+  re-release, `POST /coworlds/replays/session` with the new canonical cow_id 404s
+  ("Replay for Coworld … not found") for every pre-release replay; the page only serves the fixed
+  bundle once a **new round's** replay exists under the new cow (~15 min). Budget that wait into
+  any viewer-bundle fix, and smoke the new bundle immediately by constructing the static URL by
+  hand (`static/<new cow>/<url-encoded manifest_sha>/index.html?replay=<any s3 replay>` — the
+  static route serves the shell regardless of registration).
+- **The canonical completion race is ~50 % here, not rare**: releases 0.1.0 and 0.1.2 both read
+  `canonical:false` with hosted_smoke passed + cert certified; 0.1.1 and 0.1.3 (pure version
+  bumps) both passed. Treat one bump-and-redispatch as the expected cost of a release, not a
+  retry of last resort.
+- **Rounds can complete hollow mid-league, not just round 1**: rounds 2 and 6 completed with
+  `replay_url:null` (round 6 even listed 4 participants), and round 2 seated the same filler in
+  both slots. Platform-side; skip to the next scored round rather than debugging the coworld.
+- **When chaining recovery after an API-push script, never put `git reset --hard` after a `;`
+  (or at the top of a cell with uncommitted work).** A failed fast-forward check aborts the `&&`
+  chain but a `;`-separated reset still runs and deletes untracked evidence — and an opening
+  reset silently discards edits made in an earlier cell (both bitten this run; recovered via
+  `git checkout <lost-sha> -- <paths>` and by redoing the edits).

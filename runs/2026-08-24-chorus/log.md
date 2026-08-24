@@ -82,3 +82,4 @@
 2026-08-24T10:29:59Z 80 close: summary on run task (1217774263592476) + idea task (1217774544242363); LEARNINGS section added; make-coworld common-mistakes row added; all 9 subtasks complete; idea 1217704767329653 completed; run task moved to Done
 2026-08-24T10:29:59Z 80 run complete — session ends; no next action
 2026-08-24T10:29:59Z heartbeat phase=80
+2026-08-24T10:30:54Z 80 close addendum: LEARNINGS section + make-coworld row re-committed (first commit lost them to an opening reset)
