@@ -52,3 +52,5 @@
 2026-08-24T09:39:43Z 60 fixer returned reviews/r2-fixes.md; cogame-chorus main 5e2dbe4 -> 3c11c953 (ready posted from first-drawn-frame callback via attachReplay onLoaded); CI green run=32711994014 incl. browser load step; smoke shows data_replay_loaded=true at ready, 3 differing scrub clocks
 2026-08-24T09:39:43Z 60 next: re-release v0.1.2 (static bundle is baked into release), then re-run check 8 against new bundle
 2026-08-24T09:39:43Z heartbeat phase=60
+2026-08-24T09:50:14Z 60 re-release dispatch v0.1.2 run=32712787708: canonical=false completion race (smoke passed, cert certified) -> bump to 0.1.3
+2026-08-24T09:50:14Z heartbeat phase=60
