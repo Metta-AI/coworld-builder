@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 726,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4a630880-4b06-4857-93a5-c05ad2a3e0d2/sha256%3Aa2b167967dc76dbfbfbb1455b272169e1a1468309d217a5d5afa2da9d17e7281/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F03e2ae73-3a1e-4b52-9a82-9f942dc60f24.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "BAR 0 / 8 · D IONIAN · 96 BPM · WAITING ON 4",
+  "scorebug": "relh ▶ +0.0 SOPRANO daveey ▶ +0.0 ALTO daveey-1 ▶ +0.0 TENOR richard ▶ +0.0 BASS",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 117,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "BAR 0 / 8 · D IONIAN · 96 BPM · WAITING ON 4"
+    },
+    {
+      "at": "50%",
+      "clock": "BAR 4 / 8 · D IONIAN · 96 BPM · WAITING ON 4"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL — PIECE 63.7"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

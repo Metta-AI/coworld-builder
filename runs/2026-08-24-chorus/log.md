@@ -59,3 +59,7 @@
 2026-08-24T10:00:29Z 60 waiting for a new-cow replay so the page's featured-match embed resolves the fixed bundle (old replays are bound to cow_dad8e6aa/old bundle)
 2026-08-24T10:00:29Z progress phase=60 marker=32714429435
 2026-08-24T10:00:29Z heartbeat phase=60
+2026-08-24T10:13:05Z 60 round 7 replay bound to new cow; session ready=true static path new sha; viewer-check run=32715457303 loaded=true clocks differ (BAR 0 -> BAR 4 -> FINAL 63.7); check 8 TRUE — all eight checks TRUE; VERIFY.md re-run section appended
+2026-08-24T10:13:05Z 60 dispatch judge fresh-context on VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
+2026-08-24T10:13:05Z progress phase=60 marker=32715457303
+2026-08-24T10:13:05Z heartbeat phase=60

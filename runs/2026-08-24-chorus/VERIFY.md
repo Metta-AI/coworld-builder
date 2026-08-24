@@ -628,3 +628,60 @@ Status: **FALSE** — `loaded: true` but the three clock readouts do not differ 
 `BAR 0`, the shell placeholder). Root cause is a premature `ready` signal in
 `replay-viewer/static_replay.js`; it is reproducible and it is in this coworld's code, not in the
 harness.
+
+---
+
+## Check 8 — RE-RUN after remediation (2026-08-24T10:15Z): TRUE
+
+The FALSE above was remediated inside phase 60:
+
+1. **Fix** — `Metta-AI/cogame-chorus` commit `3c11c9530e5b821ad3229f867982c540418cf4ac`:
+   `attachReplay` gained an `onLoaded` callback fired on the line after it sets
+   `data-replay-loaded="true"` (client/renderer.js:1346), and `replay-viewer/static_replay.js:118-126`
+   now posts the bridge `ready` from there instead of two rAFs after the call site — `ready` can no
+   longer precede the first drawn frame. CI green on that sha: run 32711994014 (test, docker-smoke,
+   wasm-viewer incl. the "Load the bundle in a real browser" step). See `reviews/r2-fixes.md`.
+2. **Re-release** — the static bundle is baked into the release, so v0.1.3 was dispatched:
+   run 32713685596, `ok:true`, `canonical:true`, `cow_id cow_4a630880-4b06-4857-93a5-c05ad2a3e0d2`,
+   `manifest_sha sha256:a2b167967dc76dbfbfbb1455b272169e1a1468309d217a5d5afa2da9d17e7281`,
+   hosted certification `certified`, replay-liveness skipped (static bundle declared), secret_put
+   true. (v0.1.2, run 32712787708, hit the documented canonical completion race — smoke passed,
+   cert certified, canonical read false; bump fixed it, same as 0.1.0→0.1.1.)
+   The committed `release-result.json` beside this file is now v0.1.3's. Checks 6/7 remain TRUE
+   under the new release: the session route returns the static path with the new cow/sha (below),
+   and `certify.replay_liveness` in the committed artifact carries the same skipped-static text.
+3. **Live embed re-verified** — round 7 (`round_74bcd0cc-f7f5-495f-8dab-bbea4aaefc81`, completed)
+   produced `ereq_e4c3b612-34c5-4639-bf2b-69fb15de0e56` with replay
+   `https://softmax-public.s3.amazonaws.com/replays/03e2ae73-3a1e-4b52-9a82-9f942dc60f24.replay`,
+   registered under the new canonical cow. `POST /coworlds/replays/session
+   {"coworld_id":"cow_4a630880-…","replay_uri":"…03e2ae73….replay"}` →
+   `ready: true`, `viewer_url` =
+   `https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4a630880-4b06-4857-93a5-c05ad2a3e0d2/sha256%3Aa2b167967dc76dbfbfbb1455b272169e1a1468309d217a5d5afa2da9d17e7281/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F03e2ae73-3a1e-4b52-9a82-9f942dc60f24.replay&v=2`
+   — still the static route, still the manifest sha, no `/client/replay` pod path. The round-7
+   episode's participants include both champions: `chorus-cantor:v2` (daveey), `chorus-weaver:v2`
+   (daveey-1), plus outside entrants `relh` and `richard`.
+
+**viewer-check.yml run `32715457303`** against that exact live iframe src
+(artifacts committed as `viewer-check/final-viewer-smoke.{json,png}`):
+
+```
+{"loaded":true,"ms":726,"clock":"BAR 0 / 8 · D IONIAN · 96 BPM · WAITING ON 4"}
+signals: {"data_replay_loaded":"true","data_replay_error":null,"bridge":["loading","ready"],"bridge_ready":true,"bridge_error":[]}
+failure: no failure
+```
+
+| scrub | clock readout |
+|---|---|
+| 0 % | BAR 0 / 8 · D IONIAN · 96 BPM · WAITING ON 4 |
+| 50 % | BAR 4 / 8 · D IONIAN · 96 BPM · WAITING ON 4 |
+| 100 % | FINAL — PIECE 63.7 |
+
+Both conditions hold: `loaded: true` with `data_replay_loaded="true"` set (no longer null at
+sampling time), and the three clock readouts differ — the replay renders AND advances. An interim
+run against the same new bundle with a different replay (run `32714429435`, artifacts
+`viewer-check/post-fix-viewer-smoke.{json,png}`) read BAR 0 → BAR 4 → FINAL — PIECE 62.1, same
+result. The screenshot shows the populated sequencer grid with notes drawn mid-piece, the
+4-plate scorebug with signed credits, the chord ribbon, and the starter's transport/scrubber
+chrome — same product as the starter, now provably in motion.
+
+**Check 8: TRUE.** All eight checks TRUE as of 2026-08-24T10:15Z.

@@ -34,9 +34,17 @@
     "division": "div_1bedcae9-38f6-40fe-b614-27c97e216c28"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_38403aa6-afd4-4199-9ccd-a0bb9a982227",
+      "round_b26afe84-9d49-475b-9a59-cb02b5d86f2d",
+      "round_45e3a692-ab90-4e48-bc9d-c703f4b4a1df",
+      "round_cda3e866-2d5c-4517-90af-68d010c0cd90",
+      "round_753fc8f9-4d8d-429d-b360-1acf71685ab1",
+      "round_74bcd0cc-f7f5-495f-8dab-bbea4aaefc81"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/03e2ae73-3a1e-4b52-9a82-9f942dc60f24.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32715457303"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +62,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T10:00:30Z",
+  "heartbeat_at": "2026-08-24T10:13:05Z",
   "session_ended_at": null,
   "session_id": "25f4a313",
   "log": "runs/2026-08-24-chorus/log.md"
