@@ -89,3 +89,4 @@
 2026-08-24T14:18:12Z progress phase=60 marker=reviews/r-verify-verdict.md
 2026-08-24T14:18:12Z 60 -> 70 phase transition (STATE.phase=70)
 2026-08-24T14:18:12Z heartbeat phase=70
+2026-08-24T14:19:07Z 70 announce attempted_at written (pre-POST marker), body 1747 chars
