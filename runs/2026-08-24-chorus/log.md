@@ -72,3 +72,5 @@
 2026-08-24T10:22:03Z 70 phase -> 75
 2026-08-24T10:22:03Z progress phase=70 marker=1541392082730745857
 2026-08-24T10:22:03Z heartbeat phase=75
+2026-08-24T10:22:59Z 75 atlas continent=commons reason=mixed-motive shared artifact (one piece, counterfactual per-seat credit); spot 416,574 clearance=22.9
+2026-08-24T10:22:59Z 75 atlas dispatch=32716500586 region=commons at=416,574 clearance=22.9
