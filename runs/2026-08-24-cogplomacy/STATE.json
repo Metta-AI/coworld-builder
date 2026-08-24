@@ -33,9 +33,14 @@
     "division": "div_832f5cdb-747d-4f93-958f-597a8cd44553"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_31429ce9-e728-407e-91ef-12fd049c9f1d",
+      "round-3",
+      "round-4 (latest, ereq_bf75023f-d606-4ef4-bc4a-2bd7a81e7476)"
+    ],
+    "replay": "https://softmax.com/api/observatory/v2 replay a4d57c16-78e5-4073-8385-8a0b9f836265.replay (round 4)",
+    "iframe_static": true,
+    "viewer_check_run": "32736614525"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T13:29:57Z",
+  "heartbeat_at": "2026-08-24T14:12:14Z",
   "session_ended_at": null,
   "session_id": "8f502d65",
   "log": "runs/2026-08-24-cogplomacy/log.md"
