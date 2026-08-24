@@ -24,3 +24,5 @@
 2026-08-24T08:17:47Z 30 r1 judge returned reviews/r1-verdict.md blocking=0 (BLOCKING: 0 agrees); loop exit round 1
 2026-08-24T08:17:47Z 30 phase -> 40
 2026-08-24T08:17:47Z progress phase=30 marker=r1-verdict.md
+2026-08-24T08:18:30Z 40 dispatch builder brief=coworld-release.yml v0.1.0 dispatch-then-watch -> runs/2026-08-24-chorus/release-result.json
+2026-08-24T08:18:30Z heartbeat phase=40
