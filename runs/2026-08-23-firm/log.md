@@ -81,3 +81,13 @@
 2026-08-24T03:31:58Z progress phase=70 marker=1541288885055787010
 2026-08-24T03:31:58Z 70 -> 75 phase transition
 2026-08-24T03:31:58Z heartbeat phase=75
+2026-08-24T03:32:44Z 75 atlas slug=firm live in /api/coworlds (episodes_7d=3); continent=commons (mixed-motive principal-agent economics, per design note — commons holds supply chains and incentive games)
+2026-08-24T03:32:44Z heartbeat phase=75
+2026-08-24T03:32:44Z 75 atlas dispatch=32686813679 region=commons at=425,553 clearance=42.6
+2026-08-24T03:35:27Z 75 atlas dispatch 32686813679 failed: unplaced leagues cogolf,eleusis,ledger,rumor,tandem — placing them too via extra_cities (fix 1 of 3)
+2026-08-24T03:35:27Z 75 atlas continents: ledger=commons(mixed-motive dilemma), cogolf=paintlands(zero-sum code duel), eleusis=tabletop(card-game port), rumor=parlour(hidden-role talk), tandem=shire(cozy physics co-op); spots ledger=416,574@22.9 cogolf=202,270@34.1 eleusis=775,298@53.1 rumor=459,808@76.5 tandem=202,565@44.9
+2026-08-24T03:35:42Z 75 atlas dispatch=32686980370 region=commons at=425,553 clearance=42.6 extra_cities=5
+2026-08-24T03:37:08Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20252 status=pr_open (placed firm + 5 unplaced leagues: ledger, cogolf, eleusis, rumor, tandem)
+2026-08-24T03:37:08Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20252
+2026-08-24T03:37:08Z 75 -> 80 phase transition: entering close
+2026-08-24T03:37:08Z heartbeat phase=80
