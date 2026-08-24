@@ -14,3 +14,6 @@
 2026-08-24T16:04:55Z 20 builder thread died (API overloaded) after pushing 599f4ad; ci run 32748546759 in_progress — re-dispatching builder to watch and iterate (retry uses same approach: thread death was infra, not a build failure)
 2026-08-24T16:04:55Z progress phase=20 marker=ci-run-32748546759
 2026-08-24T16:04:55Z heartbeat phase=20
+2026-08-24T16:07:50Z 20 second builder thread died (API overloaded); coordinator watched ci 32748546759 itself: test+docker-smoke success, wasm-viewer FAIL — bridge error "Cannot read properties of undefined (reading 'variant')", data-replay-loaded=null
+2026-08-24T16:07:50Z 20 builder dispatched round 2 (narrow brief: fix wasm-viewer failure, evidence attached)
+2026-08-24T16:07:50Z heartbeat phase=20
