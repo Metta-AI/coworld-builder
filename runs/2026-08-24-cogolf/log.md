@@ -54,3 +54,6 @@
 2026-08-24T05:34:34Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20258 status=pr_open
 2026-08-24T05:34:34Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20258
 2026-08-24T05:34:34Z heartbeat phase=80
+2026-08-24T05:37:20Z 80 close — summaries posted (run task + idea), LEARNINGS appended, gotcha folded into make-coworld, all 9 subtasks complete, idea 1217704516788789 completed, run task moved to Done
+2026-08-24T05:37:20Z progress phase=80 marker=run-closed idea-completed task-done
+2026-08-24T05:37:20Z 80 done — run closed. session ended cleanly; no next action
