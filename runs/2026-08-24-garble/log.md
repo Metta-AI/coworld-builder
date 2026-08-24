@@ -48,3 +48,9 @@
 2026-08-24T08:44:04Z progress phase=30 marker=r1-verdict.md
 2026-08-24T08:44:50Z 40 builder dispatched for release (thread sthr_01AzsraDnZzDuEEq2rvXJPu7), version plan 0.1.0
 2026-08-24T08:44:50Z heartbeat phase=40
+2026-08-24T08:55:45Z 40 dispatch 1: v0.1.0 run 32707910308 step_failed="Build the Coworld manifest" (game.protocols entries were strings, schema wants {type,value}) -> manifest fix
+2026-08-24T08:55:45Z 40 dispatch 2: v0.1.1 run 32708082253 SUCCESS — ok/canonical/secret_put true, certified, replay_liveness skipped-static; repo main -> 3985733c (manifest fix via ghsync)
+2026-08-24T08:55:45Z 40 policies uploaded: garble-signal:v1 (champ1), garble-shortwave:v1 (champ2, ply_bac48eb1), garble-quoter:v1 + garble-shark:v1 (fillers)
+2026-08-24T08:55:45Z 40 release-result.json persisted to run dir (3862B)
+2026-08-24T08:55:45Z 40 -> 50 phase transition (STATE.phase=50)
+2026-08-24T08:55:45Z progress phase=40 marker=release-run-32708082253
