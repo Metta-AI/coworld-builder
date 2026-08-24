@@ -13,3 +13,4 @@
 2026-08-24T10:44:00Z 10 checklist: starter+reason OK; num_agents=6 everywhere OK; resolution order numbered OK; scoring+sign+ranking OK; end conditions+reasons OK; observation split OK; reply caps rune-safe OK; both policies env-switched OK; one-batch-per-phase+budget OK; degrade-never-hang OK; two name spaces OK; viewer static bundle+hook+360px OK; all four viewer files from babel OK; chrome provenance+zoom decided OK; transport rules+beat CSS OK; replay self-sufficient OK; packaging both protocols+docs OK; tests incl bot-legality+utf8+executed viewer smoke OK; out-of-scope non-empty OK
 2026-08-24T10:44:10Z 10 design accepted round 1; phase -> 20
 2026-08-24T10:44:10Z progress phase=10 marker=runs/2026-08-24-cogiavelli/design.md
+2026-08-24T10:44:30Z 20 repo created https://github.com/Metta-AI/cogame-cogiavelli (public); propagate-secrets run 32718249631 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
