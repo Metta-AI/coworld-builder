@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1325,"clock":"ROUND 0 / 14","scorebug":"daveey 0.0 MEDIAN daveey-1 0.0 MEDIAN Piston 0.0 MEDIAN Tinker 0.0 MEDIAN Ratchet 0.0 MEDIAN Flywheel 0.0 MEDIAN Bolt 0.0 MEDIAN Sprocket 0.0 MEDIAN","feed_lines":141}
+scrub readouts: 0%="ROUND 0 / 14"  50%="ROUND 8 / 14 · TABLES MEET"  100%="FINAL — 14 ROUNDS"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1325,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_7754c862-182c-4ec9-bca6-4311d36f2be4/sha256%3A655ad0565d05b0728371a7808baa372ecac282849127cb3e3bfbb3cdc87652b8/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F316d64ba-52ed-466b-bea3-a364c679727b.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 0 / 14",
+  "scorebug": "daveey 0.0 MEDIAN daveey-1 0.0 MEDIAN Piston 0.0 MEDIAN Tinker 0.0 MEDIAN Ratchet 0.0 MEDIAN Flywheel 0.0 MEDIAN Bolt 0.0 MEDIAN Sprocket 0.0 MEDIAN",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 141,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 0 / 14"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 8 / 14 · TABLES MEET"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL — 14 ROUNDS"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -56,3 +56,12 @@
 2026-08-23T23:53:29Z heartbeat phase=60
 2026-08-23T23:57:49Z heartbeat phase=60
 2026-08-24T00:02:43Z heartbeat phase=60
+2026-08-24T00:08:48Z 60 check1 TRUE rounds 2+3 completed after fillers (round1 failed pre-fillers, superseded)
+2026-08-24T00:08:48Z 60 check2 TRUE leaderboard daveey=1001.47 rp2, daveey-1=998.53 rp2; fillers absent
+2026-08-24T00:08:48Z 60 check3 TRUE ereq_e23450b7-fb5c-4a9e-818b-f3f5d3f06f9e completed, replay_url set, champions at seats 0/1
+2026-08-24T00:08:48Z 60 check4 TRUE ledger.replay.v1 reason=complete 28922B strict-JSON; champion seats 28/28 decisions live, 0 scripted
+2026-08-24T00:08:48Z 60 check5 TRUE hosted log CLEAN (decoded 64306 chars, 4 containers); no falling-back line
+2026-08-24T00:08:48Z 60 check6 TRUE static iframe src via /coworlds/replays/session ready=true; featured match ledger.r3.e1 from SSR playlist[0] (raw-HTML grep empty, client-rendered)
+2026-08-24T00:08:48Z 60 check7 TRUE release-result.json (committed copy) certify.replay_liveness = skipped (static replay bundle declared...)
+2026-08-24T00:08:48Z 60 check8 TRUE viewer-check run 32675471888 loaded=true clock 0%/50%/100% = ROUND 0 / 14 | ROUND 8 / 14 TABLES MEET | FINAL - 14 ROUNDS; attempt1 32675392403 degraded (probe race, artifact kept)
+2026-08-24T00:08:48Z 60 VERIFY.md written: 8/8 TRUE; viewer-check/ + viewer-check-attempt1/ committed

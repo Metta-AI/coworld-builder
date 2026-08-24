@@ -31,16 +31,30 @@
     "division": "div_eb565e12-2c31-4797-bb55-9e4678f54a86"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "id": "round_3b6b2b34-ff6c-4abc-a039-322caa46c841",
+        "round_number": 2,
+        "status": "completed",
+        "completed_at": "2026-08-23T23:42:29.803785Z"
+      },
+      {
+        "id": "round_9010fafa-8aca-4ea7-b61a-653628f0cf32",
+        "round_number": 3,
+        "status": "completed",
+        "completed_at": "2026-08-23T23:58:10.183081Z"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/316d64ba-52ed-466b-bea3-a364c679727b.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32675471888"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T00:02:43Z",
+  "heartbeat_at": "2026-08-24T00:08:37Z",
   "session_ended_at": null,
   "session_id": "fa90e4dc",
   "log": "runs/2026-08-23-ledger/log.md"
