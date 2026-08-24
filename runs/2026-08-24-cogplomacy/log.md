@@ -29,3 +29,6 @@
 2026-08-24T12:09:34Z 30 r1 fixer re-dispatched (thread sthr_01X3qjxBJDkUQPDPXkpAAQ3E) -> reviews/r1-fixes.md
 2026-08-24T12:11:53Z 30 r1 fixer thread failed again (API overloaded), no file, main unchanged — waited 120s, retry 2/3
 2026-08-24T12:12:27Z 30 r1 fixer re-dispatched retry 2/3 (thread sthr_019FGo39rFDpa57gcsFGAgjJ) -> reviews/r1-fixes.md
+2026-08-24T12:50:24Z 30 r1 fixer returned (thread sthr_019FGo39rFDpa57gcsFGAgjJ): 13 fixed, 1 no-change; main sha 9711b80ccc28aa711872ca007b7d0ccba0134279, CI green run 32728438824 -> reviews/r1-fixes.md
+2026-08-24T12:50:24Z progress phase=30 marker=reviews/r1-fixes.md
+2026-08-24T12:50:24Z heartbeat phase=30
