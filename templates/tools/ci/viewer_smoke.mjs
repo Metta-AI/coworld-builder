@@ -37,6 +37,10 @@
 //   --timeout <s>     seconds to wait for the load signal (default 60).
 //   --soak <s>        after the load signal, watch the viewer PLAY for this
 //                     many seconds (default 0 = off). See "SOAK" below.
+//   --strict-text-bounds
+//                     fail if the viewer drew any text outside its canvas.
+//                     Use it for a FIXED arena; leave it off for a pannable
+//                     board. See "TEXT BOUNDS" below.
 //   --out <dir>       where viewer-smoke.png / viewer-smoke.json land
 //                     (default: cwd).
 //   --headed          run headful (local debugging only).
@@ -97,6 +101,45 @@
 // froze on tick 2 looking entirely healthy. The load signal said yes and the
 // scrub readouts said yes too -- seeking clears the feed queue and skips the
 // frame that did the killing. Only uninterrupted playback shows it.
+//
+// TEXT BOUNDS -- DRAWN IS NOT THE SAME AS VISIBLE (added after cogchemists,
+// 2026-08-24)
+// ---------------------------------------------------------------
+// A canvas silently accepts a draw at a negative coordinate. cogchemists drew
+// each seat's speech bubble UPWARD from the top of its cog, and the cog sat at
+// the top of the arena: every bubble body landed at a negative y and the
+// viewer showed four white slivers where four sentences should have been.
+// Nothing errored, the load signal said yes, the soak said yes, and the
+// screenshot looked like a working viewer to anything that was not reading it.
+//
+// So `CanvasRenderingContext2D.prototype.fillText` / `strokeText` are hooked
+// in the init script and every drawn string is measured against its canvas.
+// The summary carries
+// `canvas_text: {total, outside, never_inside, ellipsized, samples}`:
+//
+//   outside       DRAWS whose measured box crossed a canvas edge. Reported,
+//                 never gated: an animation that slides a card on from
+//                 off-frame is outside for a few frames by design
+//                 (cogchemists' own lab bench does exactly that).
+//   never_inside  distinct STRINGS that crossed an edge on every single draw
+//                 and never once landed inside. That is the defect -- a
+//                 caption anchored where there is no room exists off-frame
+//                 for its whole life, while a sliding card settles. For a
+//                 FIXED arena (the whole board fits the frame) this must be
+//                 0, and `--strict-text-bounds` makes a nonzero count exit 1.
+//                 A pannable board parks text off-frame legitimately, so the
+//                 flag is dropped there and the number is read, not gated.
+//   ellipsized    draws the renderer itself cut with an ellipsis. Card labels
+//                 and nameplates do this on purpose; a sentence doing it
+//                 means the text has outgrown the box it was given. Never a
+//                 failure, always worth a look when a caption reads short.
+//
+// Strings are tallied by their text, capped at 4000 distinct
+// (`distinct_capped` says when that cap was hit).
+//
+// Only main-thread 2D contexts are seen. A viewer that draws into an
+// OffscreenCanvas inside a worker reports total: 0 -- which is itself the
+// signal that this check did not cover it.
 
 import { createServer } from "node:http";
 import { createReadStream, existsSync, statSync, writeFileSync } from "node:fs";
@@ -112,7 +155,7 @@ function die(code, message) {
 }
 
 function parseArgs(argv) {
-  const out = { timeout: 60, soak: 0, outDir: process.cwd(), headed: false };
+  const out = { timeout: 60, soak: 0, outDir: process.cwd(), headed: false, strictTextBounds: false };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     const next = () => {
@@ -127,11 +170,12 @@ function parseArgs(argv) {
       case "--url": out.url = next(); break;
       case "--timeout": out.timeout = Number(next()); break;
       case "--soak": out.soak = Number(next()); break;
+      case "--strict-text-bounds": out.strictTextBounds = true; break;
       case "--out": out.outDir = resolve(next()); break;
       case "--headed": out.headed = true; break;
       case "-h":
       case "--help":
-        die(0, "usage: viewer_smoke.mjs (--bundle <dir> --replay <file> | --url <url>) [--timeout 60] [--out dir]");
+        die(0, "usage: viewer_smoke.mjs (--bundle <dir> --replay <file> | --url <url>) [--timeout 60] [--soak 0] [--strict-text-bounds] [--out dir]");
         break;
       default: die(2, `unknown argument: ${arg}`);
     }
@@ -274,6 +318,101 @@ const INIT_SCRIPT = `(() => {
     window.postMessage = function (data, ...rest) { relay(data); return original(data, ...rest); };
   } catch (ignore) {}
   window.addEventListener("message", (event) => relay(event.data));
+
+  // ---- Text bounds. See "TEXT BOUNDS" in the header. -------------------
+  // Every fillText/strokeText is measured against its own canvas. A draw
+  // that crosses an edge is invisible to the viewer and to a screenshot
+  // diff, but it is exactly what a bubble or a caption with nowhere to go
+  // looks like.
+  const seen = { total: 0, outside: 0, ellipsized: 0, samples: [] };
+  // Per drawn STRING: how many of its draws landed inside the canvas and how
+  // many crossed an edge. A card that slides on from off-frame is outside for
+  // a few frames and inside for the rest; a caption anchored where there is no
+  // room is outside for every frame it exists. Only the second is a defect,
+  // so the gate is "never once inside", not "ever outside".
+  const byText = new Map();
+  const TEXT_CAP = 4000;
+  const TOL = 1;
+  const SAMPLE_CAP = 12;
+  const note = (entry) => {
+    if (seen.samples.length < SAMPLE_CAP) seen.samples.push(entry);
+  };
+  seen.report = () => {
+    const never = [];
+    for (const [text, tally] of byText) {
+      if (tally.out > 0 && tally.in === 0) never.push({ text, ...tally });
+    }
+    return {
+      total: seen.total,
+      outside: seen.outside,
+      ellipsized: seen.ellipsized,
+      never_inside: never.length,
+      never_inside_samples: never.slice(0, SAMPLE_CAP).map((n) => ({
+        kind: "never-inside", edges: n.edges, text: n.text.slice(0, 60),
+        box: n.box, canvas: n.canvas, draws: n.out,
+      })),
+      distinct_capped: byText.size >= TEXT_CAP,
+      samples: seen.samples,
+    };
+  };
+  window.__coworldTextBounds = seen;
+  const wrap = (name) => {
+    const proto = window.CanvasRenderingContext2D && window.CanvasRenderingContext2D.prototype;
+    if (!proto || typeof proto[name] !== "function") return;
+    const real = proto[name];
+    proto[name] = function (text, x, y, ...rest) {
+      const out = real.call(this, text, x, y, ...rest);
+      try {
+        const str = String(text);
+        seen.total += 1;
+        if (/\u2026\s*$/.test(str)) {
+          seen.ellipsized += 1;
+          note({ kind: "ellipsized", text: str.slice(0, 60) });
+        }
+        const canvas = this.canvas;
+        if (!canvas || !canvas.width || !canvas.height) return out;
+        const m = this.measureText(str);
+        const align = this.textAlign;
+        let left = x;
+        if (align === "center") left = x - m.width / 2;
+        else if (align === "right" || align === "end") left = x - m.width;
+        const right = left + m.width;
+        // Chromium's actualBoundingBox* are measured from the alignment
+        // point and already account for textBaseline.
+        const asc = Number.isFinite(m.actualBoundingBoxAscent) ? m.actualBoundingBoxAscent : 0;
+        const desc = Number.isFinite(m.actualBoundingBoxDescent) ? m.actualBoundingBoxDescent : 0;
+        const top = y - asc;
+        const bottom = y + desc;
+        const edges = [];
+        if (top < -TOL) edges.push("top");
+        if (left < -TOL) edges.push("left");
+        if (bottom > canvas.height + TOL) edges.push("bottom");
+        if (right > canvas.width + TOL) edges.push("right");
+        let tally = byText.get(str);
+        if (!tally && byText.size < TEXT_CAP) {
+          tally = { in: 0, out: 0, edges: "", box: null, canvas: null };
+          byText.set(str, tally);
+        }
+        if (edges.length) {
+          seen.outside += 1;
+          const box = [Math.round(left), Math.round(top), Math.round(right), Math.round(bottom)];
+          const size = [canvas.width, canvas.height];
+          if (tally) {
+            tally.out += 1;
+            tally.edges = edges.join("+");
+            tally.box = box;
+            tally.canvas = size;
+          }
+          note({ kind: "outside", edges: edges.join("+"), text: str.slice(0, 60), box, canvas: size });
+        } else if (tally) {
+          tally.in += 1;
+        }
+      } catch (ignore) {}
+      return out;
+    };
+  };
+  wrap("fillText");
+  wrap("strokeText");
 })();`;
 
 const READOUT_SCRIPT = `(() => {
@@ -445,6 +584,25 @@ async function main() {
     }
   }
 
+  // ------------------------------------------------------------------
+  // Text bounds. See "TEXT BOUNDS" in the header. Read after the soak and
+  // the scrub, so it covers every frame the run actually drew.
+  // ------------------------------------------------------------------
+  let canvasText = null;
+  try {
+    canvasText = await page.evaluate(`(() => {
+      const t = window.__coworldTextBounds;
+      return t && t.report ? t.report() : null;
+    })()`);
+  } catch (error) {
+    record(`[text-bounds] ${error && error.message}`);
+  }
+  let boundsFailure = "";
+  if (args.strictTextBounds && canvasText && canvasText.never_inside > 0) {
+    boundsFailure = `${canvasText.never_inside} string(s) were NEVER drawn inside the ` +
+      `canvas (--strict-text-bounds)`;
+  }
+
   const pngPath = join(args.outDir, "viewer-smoke.png");
   const jsonPath = join(args.outDir, "viewer-smoke.json");
   try { await page.screenshot({ path: pngPath, fullPage: false }); } catch (error) {
@@ -471,7 +629,8 @@ async function main() {
     },
     scrub,
     soak,
-    failure: failure || null,
+    canvas_text: canvasText,
+    failure: failure || boundsFailure || null,
     console_tail: consoleLog.slice(-30),
     screenshot: pngPath,
   };
@@ -480,8 +639,15 @@ async function main() {
   await browser.close().catch(() => {});
   if (hosted) await new Promise((r) => hosted.server.close(r));
 
-  if (!loaded || playFailure) {
-    console.error(`VIEWER SMOKE FAILED: ${failure}`);
+  if (!loaded || playFailure || boundsFailure) {
+    console.error(`VIEWER SMOKE FAILED: ${failure || boundsFailure}`);
+    if (boundsFailure && canvasText) {
+      console.error("  never drawn inside the canvas -- no room was reserved for these:");
+      for (const sample of canvasText.never_inside_samples) {
+        console.error(`    ${sample.edges} [${sample.box.join(",")}] in ` +
+          `${sample.canvas.join("x")}, ${sample.draws} draws: ${JSON.stringify(sample.text)}`);
+      }
+    }
     console.error(`  url        : ${target}`);
     console.error(`  elapsed    : ${elapsedMs} ms`);
     console.error(`  signals    : data-replay-loaded=${summary.signals.data_replay_loaded} ` +
@@ -518,6 +684,21 @@ async function main() {
   }
   if (scrub.length) {
     console.log("scrub readouts: " + scrub.map((s) => `${s.at}=${JSON.stringify(s.clock)}`).join("  "));
+  }
+  if (canvasText) {
+    console.log(`canvas text: ${canvasText.total} drawn, ${canvasText.never_inside} never inside ` +
+      `the canvas (${canvasText.outside} draws crossed an edge), ` +
+      `${canvasText.ellipsized} ellipsized` +
+      (args.strictTextBounds ? " (--strict-text-bounds)" : ""));
+    for (const sample of canvasText.never_inside_samples) {
+      console.log(`  never-inside ${sample.edges}: ${JSON.stringify(sample.text)}`);
+    }
+    for (const sample of canvasText.samples.filter((x) => x.kind === "ellipsized")) {
+      console.log(`  ellipsized: ${JSON.stringify(sample.text)}`);
+    }
+  } else {
+    console.log("canvas text: no main-thread 2D text seen -- this check covered nothing " +
+      "(worker/OffscreenCanvas renderer, or a WebGL viewer)");
   }
   console.log(`artifacts: ${pngPath} ${jsonPath}`);
 }

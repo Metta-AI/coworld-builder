@@ -303,10 +303,19 @@ jobs:
           test -n "${replay}" || {
             echo "::error::docker-smoke uploaded no replay to dist/smoke"; ls -la dist/smoke || true; exit 1; }
           echo "loading ${replay} in dist/static-replay-viewer"
+          # --strict-text-bounds fails the job if the viewer drew any text
+          # outside its canvas -- a bubble, caption or nameplate with nowhere
+          # to go, invisible to the load signal and to the screenshot
+          # (cogchemists 2026-08-24: four speech bubbles drawn at a negative y
+          # and clipped to slivers). Keep it for a FIXED arena, which is every
+          # coworld whose whole board fits the frame. DROP THIS FLAG ONLY if
+          # the board is pannable, where drawing off-frame is normal -- the
+          # count is still reported on stdout and in viewer-smoke.json.
           node tools/ci/viewer_smoke.mjs \
             --bundle dist/static-replay-viewer \
             --replay "${replay}" \
-            --timeout 90
+            --timeout 90 \
+            --strict-text-bounds
 
       - name: Upload the viewer smoke evidence
         # Always: the screenshot and the JSON are most useful when the job is red.
