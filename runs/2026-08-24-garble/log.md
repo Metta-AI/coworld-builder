@@ -103,3 +103,6 @@
 2026-08-24T09:52:55Z 75 atlas dispatch=32713850328 region=parlour at=438,817 clearance=22.9
 2026-08-24T09:55:24Z 75 atlas dispatch 1 failed: unplaced leagues chorus,cogchemists,cogmud,cogolf,firm (their PRs unmerged/absent)
 2026-08-24T09:55:24Z 75 atlas dispatch=32714065810 region=parlour at=438,817 clearance=22.9 extra_cities: cogolf@202,270 paintlands + cogmud@536,271 simulations + firm@416,574 commons (reused from open metta PR 20258); chorus@468,829 parlour (party co-creation game); cogchemists@766,277 tabletop (Alchemists board-game adaptation)
+2026-08-24T09:56:58Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20264 status=pr_open (approved automerge armed; lands via Graphite merge queue — human merges)
+2026-08-24T09:56:58Z 75 -> 80 phase transition (STATE.phase=80)
+2026-08-24T09:56:58Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20264
