@@ -80,3 +80,7 @@
 2026-08-24T06:02:53Z 75 atlas dispatch=32695718162 region=commons at=440,571 clearance=23.4
 2026-08-24T06:04:58Z 75 atlas dispatch 32695718162 failed: unplaced leagues cogolf,firm — re-dispatch with extra_cities (fix 1 of 3; coords from firm run's own log: firm=425,553 commons, cogolf=202,270 paintlands)
 2026-08-24T06:04:58Z 75 atlas dispatch=32695850171 region=commons at=440,571 clearance=23.4 extra_cities=2
+2026-08-24T06:06:59Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20260 status=pr_open (placed cogmud + 2 unplaced leagues: cogolf, firm)
+2026-08-24T06:06:59Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20260
+2026-08-24T06:06:59Z 75 -> 80 phase transition: entering close
+2026-08-24T06:06:59Z heartbeat phase=80
