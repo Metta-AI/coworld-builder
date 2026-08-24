@@ -99,3 +99,5 @@
 2026-08-24T09:51:33Z 70 announce msg=1541384406609174568 (flags=4, embeds=[], 1752 chars)
 2026-08-24T09:51:33Z 70 -> 75 phase transition (STATE.phase=75)
 2026-08-24T09:51:33Z progress phase=70 marker=discord-msg-1541384406609174568
+2026-08-24T09:52:55Z 75 atlas continent=parlour (talk game: the noisy channel is the mechanic; trade is the scoring vehicle)
+2026-08-24T09:52:55Z 75 atlas dispatch=32713850328 region=parlour at=438,817 clearance=22.9
