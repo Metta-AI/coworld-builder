@@ -31,16 +31,20 @@
     "division": "div_711fc80a-6b0f-453c-9e31-a4816e7eefd8"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_578a4ce5-cc9d-45a0-93b6-6b8cc8eef912",
+      "round_e3d754d0-d3ec-43ec-836f-6e54c9b44488"
+    ],
+    "replay": "https://softmax.com/api/observatory/v2 replays f2ecf3e4-dc96-43b5-b3e2-1768038352c2.replay (round 4); featured cogmud.r3.e1 632e1ef6",
+    "iframe_static": true,
+    "viewer_check_run": "32693641402"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T05:47:00Z",
+  "heartbeat_at": "2026-08-24T05:53:10Z",
   "session_ended_at": null,
   "session_id": "b3f1c02e",
   "log": "runs/2026-08-24-cogmud/log.md"

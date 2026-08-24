@@ -62,3 +62,6 @@
 2026-08-24T05:47:00Z progress phase=60 marker=VERIFY.md
 2026-08-24T05:47:00Z 60 retry check 3/4/5: re-pin to round 4 (latest completed, log clean) — documented retry approach 'different round', attempt 1
 2026-08-24T05:47:00Z heartbeat phase=60
+2026-08-24T05:53:10Z 60 verifier retry returned: checks 3/4/5 re-pinned to round 4 (ereq_2fc0e53e, CLEAN, 0 champion fallbacks) — VERIFY.md 8/8 TRUE; two outside players (relh, richard) joined round 4
+2026-08-24T05:53:10Z progress phase=60 marker=VERIFY.md-8of8
+2026-08-24T05:53:10Z heartbeat phase=60
