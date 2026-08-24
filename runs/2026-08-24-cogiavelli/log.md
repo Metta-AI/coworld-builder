@@ -19,3 +19,8 @@
 2026-08-24T12:09:34Z heartbeat phase=20
 2026-08-24T12:09:34Z progress phase=20 marker=ci-run-32725516744
 2026-08-24T12:10:26Z 20 builder re-dispatched (thread sthr_01VY89w2u4q6cTtUJwQDvVLh) — resume from f6862a3 / ci 32725516744
+2026-08-24T12:13:14Z 20 ci.yml GREEN on main at f6862a3 (run 32725516744: test+docker-smoke+wasm-viewer all success) — first builder finished before its thread died; second thread died pre-work (overload)
+2026-08-24T12:13:14Z 20 exit checks all pass: placeholders clean; 3 workflows active; release/submit inputs present; release-result+submit-result artifacts present; player field in release; build hook + docker_smoke 100755; tree complete per design note
+2026-08-24T12:13:14Z 20 phase -> 30 review_round=1
+2026-08-24T12:13:14Z progress phase=20 marker=ci-green-32725516744
+2026-08-24T12:13:14Z heartbeat phase=30
