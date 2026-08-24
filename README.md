@@ -47,11 +47,13 @@ every write, so any heartbeat can resume where the last one stopped.
 | 50 | `prompts/50-league.md` | coordinator | league, division, settings, champions, fillers, trigger | both champions entrants; round triggered |
 | 60 | `prompts/60-verify.md` | verifier → judge | `runs/<run>/VERIFY.md` with fetched evidence | the definition-of-done checklist all-true |
 | 70 | `prompts/70-announce.md` | coordinator | Discord message id | message posted, id in STATE |
+| 75 | `prompts/75-atlas.md` | coordinator | one PR against `Metta-AI/metta` placing the coworld on `softmax.com/atlas` | PR opened (auto-merge armed), or the gap filed as a Fleet card |
 | 80 | `prompts/80-close.md` | coordinator | summaries, `learnings/LEARNINGS.md` entry | run task *Done*, idea task completed |
 | 90 | `prompts/90-blocked.md` | coordinator | run task *Blocked*, subtask assigned to a human | used by any phase that exhausts its retry budget |
 
 Each phase may retry its own failing step 3× (a different approach each time, logged) before
-going to 90. Phase 30 caps at 4 review rounds; phase 60 waits at most 75 minutes for rounds.
+going to 90 — except phase 75, which files a Fleet card and continues to 80 rather than parking a
+finished coworld in *Blocked* over a map. Phase 30 caps at 4 review rounds; phase 60 waits at most 75 minutes for rounds.
 
 ## Deploy and update
 

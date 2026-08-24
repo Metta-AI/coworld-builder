@@ -1,0 +1,250 @@
+# Put a newly shipped coworld on the Softmax Atlas (https://softmax.com/atlas).
+#
+# This is phase 75's instrument. The coworld-builder sandbox has no node and no
+# metta mount, and the atlas is a build-time snapshot: adding a coworld means
+# editing `places.mjs` in Metta-AI/metta, re-running two node scripts, and
+# committing the regenerated page. So the coordinator picks the coordinates and
+# this workflow does the mechanical half.
+#
+#   gh workflow run atlas-update.yml -R Metta-AI/coworld-builder \
+#     -f slug=escrow -f label=Escrow -f x=512 -f y=470 -f region=commons \
+#     -f anchor=c -f run=2026-08-23-escrow
+#
+# It opens ONE pull request against Metta-AI/metta and arms auto-merge. Every
+# dispatch branches from a fresh origin/main under a run-unique name, so a retry
+# is a new branch and never a force-push (AGENT.md hard rule 2).
+#
+# It deliberately does NOT run fetch-ideas.mjs: that would pull unbuilt Coworld
+# Ideas cards into data/ideas.json, and build.mjs refuses to run while any of
+# them is unplaced — an unrelated human's new idea card would fail this build.
+# The committed ideas.json is left exactly as it is.
+name: atlas-update
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'League slug exactly as /api/coworlds reports it (sub-leagues look like paintbot/ctf)'
+        required: true
+        type: string
+      label:
+        description: 'Short display label drawn on the map'
+        required: true
+        type: string
+      x:
+        description: 'X in OVERVIEW units (the map as 1024x1024), inside the region box'
+        required: true
+        type: string
+      y:
+        description: 'Y in overview units'
+        required: true
+        type: string
+      region:
+        description: 'paintlands | simulations | tabletop | shire | commons | parlour'
+        required: true
+        type: string
+      territory:
+        description: 'Territory id when the coworld fields several leagues (else empty)'
+        required: false
+        default: ''
+        type: string
+      anchor:
+        description: "'c' centres the label under the dot; empty hangs it to the right"
+        required: false
+        default: 'c'
+        type: string
+      run:
+        description: 'coworld-builder run id, e.g. 2026-08-23-escrow (PR body only)'
+        required: false
+        default: ''
+        type: string
+      extra_cities:
+        description: 'JSON array of additional CITIES entries [[slug,label,x,y,region,territory,anchor],...] — used to clear OTHER unplaced leagues the build names'
+        required: false
+        default: '[]'
+        type: string
+      drop_slugs:
+        description: 'Comma-separated slugs whose CITIES line must go because the league no longer exists on softmax.com'
+        required: false
+        default: ''
+        type: string
+
+# One atlas PR at a time. Parallel coworld runs would otherwise branch from the
+# same main and collide on the regenerated index.html.
+concurrency:
+  group: atlas-update
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  atlas-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+      METTA: metta
+      ATLAS: metta/web/softmax.com/src/scripts/atlas
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: Metta-AI/metta
+          path: metta
+          token: ${{ secrets.GH_PAT }}
+          # Cone mode also brings the root files, which is where biome.json is.
+          sparse-checkout: web/softmax.com
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Branch from a fresh main
+        id: branch
+        run: |
+          set -euo pipefail
+          BRANCH="atlas/${SLUG//\//-}-${{ github.run_id }}"
+          git -C "$METTA" config user.name "coworld-builder"
+          git -C "$METTA" config user.email "coworld-builder@users.noreply.github.com"
+          git -C "$METTA" fetch --depth=1 origin main
+          git -C "$METTA" checkout -B "$BRANCH" FETCH_HEAD
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+        env:
+          SLUG: ${{ inputs.slug }}
+
+      - name: Place the coworld in places.mjs
+        id: place
+        run: |
+          set -euo pipefail
+          ADD=$(python3 - <<'PY'
+          import json, os
+          e = [os.environ["SLUG"], os.environ["LABEL"], int(os.environ["X"]), int(os.environ["Y"]),
+               os.environ["REGION"], os.environ["TERRITORY"] or None, os.environ["ANCHOR"] or None]
+          extra = json.loads(os.environ["EXTRA"] or "[]")
+          print(json.dumps([e] + extra))
+          PY
+          )
+          if ! python3 tools/atlas_place.py \
+                 --places "$ATLAS/places.mjs" --add "$ADD" --drop "$DROP" 2>&1 | tee /tmp/place.log; then
+            { echo "step=place"; tail -20 /tmp/place.log; } > /tmp/atlas-error.txt
+            exit 1
+          fi
+        env:
+          SLUG: ${{ inputs.slug }}
+          LABEL: ${{ inputs.label }}
+          X: ${{ inputs.x }}
+          Y: ${{ inputs.y }}
+          REGION: ${{ inputs.region }}
+          TERRITORY: ${{ inputs.territory }}
+          ANCHOR: ${{ inputs.anchor }}
+          EXTRA: ${{ inputs.extra_cities }}
+          DROP: ${{ inputs.drop_slugs }}
+
+      # fetch-stats reads softmax.com (~1 min) and exits non-zero if a league
+      # page fails or fewer than half yield standings; build.mjs then refuses a
+      # stats file carrying an `error` entry, and refuses to render at all while
+      # any live league has no CITIES line. Both failures are reported verbatim
+      # to the coordinator through atlas-result.json.
+      - name: Refresh the standings snapshot and rebuild the page
+        id: build
+        run: |
+          set -euo pipefail
+          cd "$METTA/web/softmax.com"
+          if ! node src/scripts/atlas/fetch-stats.mjs 2>&1 | tee /tmp/fetch.log; then
+            { echo "step=fetch-stats"; tail -20 /tmp/fetch.log; } > /tmp/atlas-error.txt
+            exit 1
+          fi
+          if ! node src/scripts/atlas/build.mjs 2>&1 | tee /tmp/build.log; then
+            { echo "step=build"; tail -20 /tmp/build.log; } > /tmp/atlas-error.txt
+            exit 1
+          fi
+
+      # places.mjs and the stats JSON are biome-formatted in this repo; the
+      # generated page is not (biome.json excludes **/public).
+      - name: Format what we touched
+        run: |
+          set -euo pipefail
+          cd "$METTA"
+          if ! npx --yes @biomejs/biome@2.5.6 format --write \
+                 web/softmax.com/src/scripts/atlas/places.mjs \
+                 web/softmax.com/src/scripts/atlas/data/coworld-stats.json 2>&1 | tee /tmp/fmt.log; then
+            { echo "step=format"; tail -20 /tmp/fmt.log; } > /tmp/atlas-error.txt
+            exit 1
+          fi
+
+      - name: Commit, open the PR, arm auto-merge
+        id: pr
+        run: |
+          set -euo pipefail
+          cd "$METTA"
+          git add web/softmax.com/src/scripts/atlas/places.mjs \
+                  web/softmax.com/src/scripts/atlas/data/coworld-stats.json \
+                  web/softmax.com/public/atlas/index.html
+          if git diff --cached --quiet; then
+            echo "status=already_placed" >> "$GITHUB_OUTPUT"
+            echo "Nothing to commit: $SLUG is already on the atlas and the page is current."
+            exit 0
+          fi
+          git commit -m "atlas: $SLUG" -m "Placed by coworld-builder${RUN:+ run $RUN}."
+          git push origin "HEAD:${BRANCH}"
+          BODY=$(printf '%s\n' \
+            "Adds \`$SLUG\` to the atlas and refreshes the standings snapshot." \
+            "" \
+            "- league: https://softmax.com/$SLUG" \
+            "- run: ${RUN:-(manual dispatch)} (Metta-AI/coworld-builder, phase 75)" \
+            "- dispatch: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            "" \
+            "\`places.mjs\` gains one CITIES line; \`data/coworld-stats.json\` and" \
+            "\`public/atlas/index.html\` are regenerated by \`fetch-stats.mjs\` +" \
+            "\`build.mjs\`. \`data/ideas.json\` is deliberately untouched.")
+          URL=$(gh pr create -R Metta-AI/metta --base main --head "$BRANCH" \
+                  --title "atlas: $SLUG" --body "$BODY")
+          echo "pr_url=$URL" >> "$GITHUB_OUTPUT"
+          echo "status=pr_open" >> "$GITHUB_OUTPUT"
+          # Auto-merge, never --admin: the PR still needs the review that
+          # auto-approve-ai-docs.yml gives an atlas-only diff.
+          if gh pr merge "$URL" --squash --auto; then
+            echo "automerge=armed" >> "$GITHUB_OUTPUT"
+          else
+            echo "automerge=failed" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          SLUG: ${{ inputs.slug }}
+          RUN: ${{ inputs.run }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
+
+      - name: Write atlas-result.json
+        if: always()
+        run: |
+          python3 - <<'PY' > atlas-result.json
+          import json, os, pathlib
+          err = pathlib.Path("/tmp/atlas-error.txt")
+          print(json.dumps({
+            "slug": os.environ["SLUG"],
+            "run": os.environ["RUN"],
+            "status": os.environ["STATUS"] or "failed",
+            "branch": os.environ["BRANCH"],
+            "pr_url": os.environ["PR_URL"],
+            "automerge": os.environ["AUTOMERGE"],
+            "error": err.read_text().strip() if err.exists() else "",
+            "dispatch_run_id": os.environ["RUN_ID"],
+          }, indent=2))
+          PY
+          cat atlas-result.json
+          { echo '### atlas-update'; echo '```json'; cat atlas-result.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          SLUG: ${{ inputs.slug }}
+          RUN: ${{ inputs.run }}
+          STATUS: ${{ steps.pr.outputs.status }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+          AUTOMERGE: ${{ steps.pr.outputs.automerge }}
+          RUN_ID: ${{ github.run_id }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-result
+          path: atlas-result.json

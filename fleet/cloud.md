@@ -131,4 +131,5 @@ One message per run, phase 70 only. See AGENT.md §Hard safety rules.
 | cogamer (read mount at `/workspace/cogamer`, for `fleet/PROTOCOLS.md`) | `https://github.com/daveey/cogamer` |
 | starters (read mounts at `/workspace/starters/<name>`) | `Metta-AI/`: `cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`, `cogame-factorio` |
 | coworld repos created per run | `https://github.com/Metta-AI/cogame-<slug>` |
+| the atlas (phase 75) | `Metta-AI/metta` — **not mounted**; `atlas-update.yml` checks it out in CI with `GH_PAT` and opens one PR per run against `web/softmax.com/src/scripts/atlas/`. The agent never pushes to `metta` main and never merges the PR by hand |
 | CI credentials | repo secrets on `Metta-AI/coworld-builder`: `SOFTMAX_TOKEN`, `ANTHROPIC_API_KEY`, `GH_PAT` (user token, admin on Metta-AI repos — the fleet mount-token convention); `.github/workflows/propagate-secrets.yml` copies the first two onto any `Metta-AI/<repo>` with it. No GitHub App: the org apps are installed on softmax-agents, not Metta-AI |

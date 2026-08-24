@@ -8,8 +8,8 @@ it first, then them.
 A managed agent takes one **Coworld Idea** (Asana project `1217704774784096`, "Coworld Ideas")
 and carries it to **done**: a public `Metta-AI/cogame-<slug>` repo, a certified coworld on
 softmax.com, a league with two ranked champions and fillers, ≥2 completed rounds with valid
-replays rendered by a **static** viewer on `https://softmax.com/<slug>`, and an announcement in
-Discord `#coworlds`. When it cannot, it marks the run **Blocked** with a subtask for a human
+replays rendered by a **static** viewer on `https://softmax.com/<slug>`, an announcement in
+Discord `#coworlds`, and a dot on the Softmax Atlas (`https://softmax.com/atlas`). When it cannot, it marks the run **Blocked** with a subtask for a human
 that names exactly what is needed, and exits.
 
 ## Runtime
@@ -129,11 +129,15 @@ new claims and leaves runs in flight alone.
 | 50 | `prompts/50-league.md` | coordinator | league seed, division, settings, champion #1 (daveey), champion #2 (daveey-1), fillers, unpause, trigger | both champions show as entrants; round triggered |
 | 60 | `prompts/60-verify.md` | verifier → judge | `runs/<run>/VERIFY.md` with fetched evidence | the *definition of done* checklist all-true |
 | 70 | `prompts/70-announce.md` | coordinator | Discord message id | message posted, id in STATE |
+| 75 | `prompts/75-atlas.md` | coordinator | one PR against `Metta-AI/metta`: the coworld's `CITIES` line in `places.mjs` + the regenerated `public/atlas/index.html` | `STATE.atlas.status` is `pr_open`, `already_placed` or `unplaced` |
 | 80 | `prompts/80-close.md` | coordinator | executive summary on run task + idea task, `learnings/LEARNINGS.md` entry, run task → *Done*, idea task completed | — |
 | 90 | `prompts/90-blocked.md` | coordinator | run task → *Blocked*, subtask → human, STATE.blocked | used by any phase on exhausting its retry budget |
 
 Retry budgets: each phase may retry its own failing step 3× (with a different approach each
-time, logged) before going to 90. Phase 80 (close) is retried across heartbeats without counting,
+time, logged) before going to 90. **Phase 75 is the one phase that never goes to 90**: a shipped,
+announced coworld must not sit in *Blocked* holding a `max_parallel_runs` slot over a missing dot
+on a map, so an exhausted atlas phase files a Fleet card, records `atlas.status: "unplaced"`, and
+continues to 80, which names it. Phase 80 (close) is retried across heartbeats without counting,
 but after 3 `close-failed` heartbeats it too goes to 90 so a run can never sit in *Running*
 forever and stall the queue. The resume counter (`prompts/00-claim.md` step 5.1) counts
 only sessions that ended **without progress**: a closing step that recorded a
@@ -231,6 +235,9 @@ in `prompts/30-review-loop.md` and is the only source of "blocking".
  "league": {"id": "league_…", "division": "div_…"},
  "verify": {"rounds": [3, 4], "replay": "https://…replay", "iframe_static": true},
  "announce": {"attempted_at": "2026-08-22T17:02:00Z", "discord_message_id": "…"},
+ "atlas": {"status": "pr_open", "pr_url": "https://github.com/Metta-AI/metta/pull/20260",
+           "branch": "atlas/bullwhip-17431…", "region": "commons", "x": 425, "y": 553,
+           "dispatch_run_id": "17431…", "attempted_at": "2026-08-22T17:20:00Z"},
  "blocked": null,
  "heartbeat_at": "2026-08-22T16:40:00Z", "session_ended_at": null, "session_id": "9f3a1c7d",
  "log": "runs/2026-08-22-bullwhip/log.md"}
@@ -254,6 +261,11 @@ produced the accepted `release-result.json`. Phase 40 also copies that artifact 
 `runs/<run>/release-result.json` and commits it; phase 60 check 7 reads the committed copy and
 falls back to `gh run download <release_run_id> -n release-result`. `/tmp` never crosses a
 heartbeat.
+
+`atlas.status` is `pr_open` (the atlas PR is open with auto-merge armed), `already_placed` (the
+slug was on the map already), or `unplaced` (three dispatches failed; `atlas.reason` carries the
+last error and a Fleet card names it). Any of the three means phase 75 is finished — it is the
+resume guard, and the run never opens a second atlas PR.
 
 `policies.champion1` / `champion2` / `fillers[]` are always `<name>:vN` **labels**, written by
 phase 40. `policies.filler_version_ids[]` holds the policy-version **UUIDs** phase 50 resolves
@@ -286,6 +298,8 @@ docs/SPEC.md             this file
 prompts/00…90-*.md       phase prompts (the coordinator reads the phase's prompt when it enters it)
 agents/<role>.md         sub-agent system prompts: designer, builder, reviewer, fixer, judge, verifier
 agents/<role>.json       model + tools manifest (fleetctl-style)
+tools/atlas_place.py     edits CITIES in metta's places.mjs (run by atlas-update.yml, phase 75)
+tools/atlas_spot.py      picks free coordinates on a continent (run in the sandbox, phase 75)
 templates/               ci.yml, coworld-release.yml, coworld-submit.yml, tools/ci/docker_smoke.sh,
                          tools/ci/policies.json.example, run-task.md, blocked-subtask.md, announce.md,
                          STATE.template.json, README.md

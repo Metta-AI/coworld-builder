@@ -5,7 +5,7 @@ Owner: coordinator. This is the only phase that may complete the idea task.
 
 ## Inputs
 
-- `runs/<run>/{STATE.json,log.md,VERIFY.md,design.md,reviews/*}`.
+- `runs/<run>/{STATE.json,log.md,VERIFY.md,design.md,reviews/*}`, and `STATE.atlas` (phase 75).
 - `learnings/LEARNINGS.md` (append-only).
 - Asana: run task `STATE.run_task`, idea task `STATE.idea_task`, Builder project
   `1217747772236871` (section *Done* — gid in `fleet/cloud.md`).
@@ -18,6 +18,10 @@ Owner: coordinator. This is the only phase that may complete the idea task.
    - the two champions with their leaderboard rows, and the fillers;
    - rounds completed and the verified replay URL;
    - the Discord message link;
+   - the atlas: `STATE.atlas.pr_url` and where it got to — re-read it once
+     (`gh pr view <url> --json state,mergedAt -q '.state'`) and say `merged`, `open (auto-merge
+     armed)`, or, when `STATE.atlas.status` is `unplaced`, name it under what was left undone
+     together with the Fleet card phase 75 filed;
    - what went wrong and how it was fixed (one line per phase that used a retry);
    - anything left undone, named explicitly — a silent TODO is failure, not completion.
 2. Post it as a comment on the **run task** and, condensed to 5 lines + links, on the **idea task**.
@@ -26,8 +30,8 @@ Owner: coordinator. This is the only phase that may complete the idea task.
    API shapes that changed, starter advice. No restating the playbook. If a learning is general,
    also fold it into `playbooks/make-coworld.md` (the Common-mistakes table) or
    `playbooks/observatory-api.md` in the same commit.
-4. Verify every phase subtask on the run task is complete; complete any that are not, or say in the
-   summary why not.
+4. Verify every phase subtask on the run task is complete (there are nine: 10…80); complete any
+   that are not, or say in the summary why not.
 5. Complete the **idea task** first; then move the run task to *Done* (the *Done* move is the last
    step, so a failure before it leaves the run in *Running* where the next heartbeat retries it).
 6. STATE: `phase: "80"`, `heartbeat_at`, and a final `log.md` line. Commit and push everything.
