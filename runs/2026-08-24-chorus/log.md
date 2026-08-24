@@ -79,3 +79,6 @@
 2026-08-24T10:27:36Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20265
 2026-08-24T10:27:36Z 75 phase -> 80
 2026-08-24T10:27:36Z heartbeat phase=80
+2026-08-24T10:29:59Z 80 close: summary on run task (1217774263592476) + idea task (1217774544242363); LEARNINGS section added; make-coworld common-mistakes row added; all 9 subtasks complete; idea 1217704767329653 completed; run task moved to Done
+2026-08-24T10:29:59Z 80 run complete — session ends; no next action
+2026-08-24T10:29:59Z heartbeat phase=80

@@ -61,8 +61,8 @@
     "attempted_at": "2026-08-24T10:27:36Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T10:27:36Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-24T10:29:59Z",
+  "session_ended_at": "2026-08-24T10:29:59Z",
   "session_id": "25f4a313",
   "log": "runs/2026-08-24-chorus/log.md"
 }
