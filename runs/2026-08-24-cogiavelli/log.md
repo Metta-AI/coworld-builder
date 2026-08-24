@@ -37,3 +37,4 @@
 2026-08-24T13:38:26Z 30 review loop closed after 1 round; phase -> 40
 2026-08-24T13:38:26Z progress phase=30 marker=reviews/r1-verdict.md
 2026-08-24T13:38:26Z heartbeat phase=40
+2026-08-24T13:39:10Z 40 builder dispatched (thread sthr_01AzJDnqLLQwZRUvHzvRfqux) — coworld-release.yml from 0.1.0, put_secret=true, policies from tools/ci/policies.json
