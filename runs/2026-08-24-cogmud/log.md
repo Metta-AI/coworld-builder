@@ -71,3 +71,7 @@
 2026-08-24T06:00:18Z 60 -> 70 phase transition: entering announce
 2026-08-24T06:00:18Z heartbeat phase=70
 2026-08-24T06:01:13Z 70 announce.attempted_at written (pre-POST marker)
+2026-08-24T06:01:32Z 70 announce msg=1541326530402189342 (HTTP 200, flags 4, embeds 0)
+2026-08-24T06:01:32Z progress phase=70 marker=announce.discord_message_id
+2026-08-24T06:01:32Z 70 -> 75 phase transition: entering atlas
+2026-08-24T06:01:32Z heartbeat phase=75
