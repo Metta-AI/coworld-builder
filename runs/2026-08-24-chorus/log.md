@@ -42,4 +42,13 @@
 2026-08-24T08:37:43Z progress phase=50 marker=round_38403aa6-afd4-4199-9ccd-a0bb9a982227
 2026-08-24T08:37:43Z heartbeat phase=60
 2026-08-24T08:38:09Z 60 dispatch verifier brief=execute prompts/60-verify.md -> runs/2026-08-24-chorus/VERIFY.md
+2026-08-24T09:26:29Z 60 verifier returned VERIFY.md: checks 1-7 TRUE (3 completed rounds, both champions ranked, replay valid+complete, log CLEAN, static iframe, cert static-bundle), check 8 FALSE
+2026-08-24T09:26:29Z 60 check-8 root cause: static_replay.js posts bridge ready 2 rAFs after attachReplay call, before makeRenderer's loadImages callback draws frame/wires #scrub — readouts BAR 0 at 0/50/100%; viewer-check runs 32710507461/32710843104/32710988177 (3 distinct attempts)
+2026-08-24T09:26:29Z 60 decision: fixable code defect (static-viewer), not Blocked-class; dispatch fixer for ready-timing fix, then re-release bumped version, then re-run check 8
+2026-08-24T09:26:29Z progress phase=60 marker=VERIFY.md
+2026-08-24T09:26:29Z heartbeat phase=60
 2026-08-24T09:28:47Z 60 dispatch fixer brief=check-8 ready-before-first-frame fix in replay-viewer/static_replay.js -> reviews/r2-fixes.md (CI green required)
+2026-08-24T09:39:43Z 00 note: VERIFY.md/viewer-check evidence from 09:27 was never pushed (push-script binary bug + reset); restored from local object store 22aa89a, no data lost
+2026-08-24T09:39:43Z 60 fixer returned reviews/r2-fixes.md; cogame-chorus main 5e2dbe4 -> 3c11c953 (ready posted from first-drawn-frame callback via attachReplay onLoaded); CI green run=32711994014 incl. browser load step; smoke shows data_replay_loaded=true at ready, 3 differing scrub clocks
+2026-08-24T09:39:43Z 60 next: re-release v0.1.2 (static bundle is baked into release), then re-run check 8 against new bundle
+2026-08-24T09:39:43Z heartbeat phase=60
