@@ -32,3 +32,7 @@
 2026-08-24T04:36:04Z 30 r1 dispatch judge thread=pending
 2026-08-24T04:36:04Z heartbeat phase=30
 2026-08-24T04:37:08Z 30 r1 dispatch judge thread=sthr_01N1JPeEGLLM9s4LnALyXNH2 sha=575c86b
+2026-08-24T04:46:38Z 30 r1 judge returned r1-verdict.md: blocking 0 (first/last lines agree); F1 refuted at head (test_tuning.nim grid harness ran in CI 32690212886); independent checklist pass clean
+2026-08-24T04:46:38Z progress phase=30 marker=r1-verdict.md
+2026-08-24T04:46:38Z 30 -> 40 phase transition: review loop complete in 1 round
+2026-08-24T04:46:38Z heartbeat phase=40
