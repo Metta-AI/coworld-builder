@@ -13,3 +13,9 @@
 2026-08-24T11:03:46Z 20 repo created Metta-AI/cogame-grid-wars (public); propagate-secrets run 32719884342 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-24T11:04:40Z 20 builder dispatched (sthr_016QwFocyYwRYSbekSziZDq9) round=1
 2026-08-24T11:04:40Z heartbeat phase=20
+2026-08-24T12:10:44Z 20 builder thread died (API overload) after pushing all work; coordinator verified exit criteria directly
+2026-08-24T12:10:44Z 20 ci.yml green on main: run 32725270946 sha dbffed23da0d4f001151d6c7a3a2c0654fcb6955 (2 earlier pushes: 1 red 32724657238, 1 green 32724866082)
+2026-08-24T12:10:44Z 20 exit checks: placeholders CLEAN; 3 workflows active; release inputs version/policies/put_secret/skip_certify OK; submit inputs player_id/policy/league_id OK; release-result+submit-result artifacts OK; player field OK; exec bits 755 OK; manifest num_agents=4 everywhere, static-replay-viewer, both protocols, docs readme+pages OK; policies.json 2 prompt champions (champ2 player id) + 2 scripted fillers OK; 6 test files OK
+2026-08-24T12:10:44Z progress phase=20 marker=ci run 32725270946 green
+2026-08-24T12:10:44Z 20 phase -> 30 review_round=1
+2026-08-24T12:10:44Z heartbeat phase=30
