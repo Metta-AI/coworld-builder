@@ -87,3 +87,6 @@
 2026-08-24T09:40:39Z progress phase=60 marker=verify-verdict.md
 2026-08-24T09:40:39Z 60 phase -> 70
 2026-08-24T09:41:58Z 70 announce attempted_at written and pushed before POST
+2026-08-24T09:42:23Z 70 announce msg=1541382092896735253 (200, flags=4, embeds=[])
+2026-08-24T09:42:23Z progress phase=70 marker=discord_message_id=1541382092896735253
+2026-08-24T09:42:23Z 70 phase -> 75
