@@ -26,3 +26,5 @@
 2026-08-24T12:30:41Z 30 r1 reviewer returned: r1-review.md (499 lines), 16 findings (3 blocking: B1 byte-boundary error truncation, B2 wasm32 int-size divergence, B3 painter loses to sentry)
 2026-08-24T12:30:41Z progress phase=30 marker=r1-review.md
 2026-08-24T12:30:41Z heartbeat phase=30
+2026-08-24T12:31:28Z 30 r1 fixer dispatched (sthr_01BXfapaxhc6zkr7cz53TREx)
+2026-08-24T12:31:28Z heartbeat phase=30
