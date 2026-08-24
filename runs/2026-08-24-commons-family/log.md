@@ -68,3 +68,5 @@
 2026-08-24T22:32:00Z progress phase=70 marker=announce.discord_message_id
 2026-08-24T22:32:00Z 70 -> 75 phase transition
 2026-08-24T22:32:00Z heartbeat phase=75
+2026-08-24T22:35:00Z 75 atlas region=commons (mixed-motive shared-stock commons game — definitional fit) label="Commons Family"
+2026-08-24T22:35:00Z 75 atlas dispatch=32783035515 region=commons at=416,574 clearance=22.9
