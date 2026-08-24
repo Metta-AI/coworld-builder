@@ -92,3 +92,6 @@
 2026-08-24T19:56:20Z progress phase=70 marker=announce.discord_message_id=1541536598896676956
 2026-08-24T19:56:20Z 70 -> 75 phase transition (STATE.phase=75)
 2026-08-24T19:56:20Z heartbeat phase=75
+2026-08-24T19:57:17Z 75 atlas continent=commons reason=mixed-motive matrix family (PD/chicken/stag-hunt/coordination; only RWS zero-sum)
+2026-08-24T19:57:17Z 75 atlas dispatch=32771101898 region=commons at=416,574 clearance=22.9
+2026-08-24T19:57:17Z heartbeat phase=75
