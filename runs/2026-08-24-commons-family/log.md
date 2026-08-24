@@ -76,3 +76,4 @@
 2026-08-24T22:45:00Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20326
 2026-08-24T22:45:00Z 75 -> 80 phase transition
 2026-08-24T22:45:00Z heartbeat phase=80
+2026-08-24T22:52:00Z 80 LEARNINGS entry + 2 playbook common-mistakes rows written; executive summary composed

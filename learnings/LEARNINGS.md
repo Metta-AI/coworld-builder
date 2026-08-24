@@ -895,3 +895,36 @@ the starter after the fact.
   one is placed — the fix is one re-dispatch with `extra_cities`. `atlas_spot.py` has no
   `--avoid`: to space several dots in one region, append each pick as a synthetic CITIES line to a
   working copy of places.mjs and re-run the tool against that copy.
+
+## 2026-08-24 commons-family
+
+- **The coworld secret namespace is `game.name`, not the slug.** `secret://coworld/<ns>/…` on the
+  runnable must use `game.name` (`commons_family`); with the slug (`commons-family`) local certify
+  passes and only `upload-coworld` rejects ("secret … cannot be used by Coworld"). Every
+  single-word coworld has `game.name == slug` and never sees this. The repo's release workflow now
+  reads `game.name` out of the manifest for `secret put`/`secret list`; the template
+  `coworld-release.yml` still hardcodes `$SLUG` and should be fixed the same way.
+- **`coworld certify` caps the local smoke episode at 60 s** (`--timeout-seconds` default),
+  covering container start, connect grace, all rounds AND the post-game linger. Size the cert
+  fixture so `grace + rounds×pacing_floor + linger < 50 s`, and pin it with a test. "Long enough
+  for the viewer soak" pushes the other way — resolve it by shrinking the pacing floor in the
+  fixture only, never in league variants.
+- **League seeding keys on the platform coworld name** (`game.name`, `commons_family`), while
+  `/api/coworlds` and the public page use the directory slug (`commons-family`). `POST
+  /coworld-league-seeds` with the slug 404s "Canonical Coworld not found".
+- **A Python coworld (meadow fork) fits the pipeline**: template `test` job → setup-python +
+  pytest; viewer = bullwhip's four files with an expand-only wasm module (the replay records
+  per-round `state_before`/`state_after`/gains/scores; the Nim never re-derives physics). Record
+  every quantity the viewer displays (e.g. per-round `seat_public_effort`) — anything recomputed
+  browser-side is a second implementation and a review finding.
+- **The sandbox git credential can lack a grant on a brand-new Metta-AI repo** (401 on push to the
+  new repo while coworld-builder pushes fine). `gh` has push: use the Git Data API
+  (blobs → tree → commit → ref), preserving 100755 modes.
+- **Atlas placement collisions are systematic**: every queued run's `atlas_spot` picks the same
+  roomiest spot in a region (three pairs collided across the 10-PR backlog). When placing others'
+  leagues via `extra_cities`, keep each run's own-slug region/coords from ITS queued PR, and
+  re-spot only the collisions with `atlas_spot` against a working places.mjs augmented with the
+  kept dots.
+- **An adaptive registration grace beats a fixed one**: returning as soon as every connected
+  socket has registered (bounding only a connected-but-silent socket) cut 5 s from every episode
+  and was what brought the cert fixture under the 60 s cap without touching the game.

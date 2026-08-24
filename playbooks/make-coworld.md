@@ -319,6 +319,8 @@ that was already posted without the flag: `PATCH .../messages/<id>` with `{"flag
 |---|---|
 | "replay viewer bundle must be uploaded first" | the pinned `coworld` CLI is < 0.1.42: it does not wait for the server to finish expanding the replay-viewer bundle before POSTing the manifest (`_wait_for_replay_viewer_bundle` added in 0.1.42). Bump `COWORLD_PKG` in the workflow (seen: cogame-lighthouse run 32603113899, 2026-08-22) |
 | `coworld secret put` 404 | ran before `upload-coworld` — order matters |
+| Upload rejects "Coworld secret <ns> cannot be used by Coworld" though local certify passed | the secret namespace must be **`game.name`**, not the slug — they differ whenever the game name has an underscore (`commons_family` vs `commons-family`). Read `game.name` from the manifest in the `secret put` step (cogame-commons-family 0.1.1, 2026-08-24) |
+| Local `Certify locally` times out at ~61 s on a fixture that plays fine | `coworld certify` defaults to `--timeout-seconds 60` covering start + connect grace + every round + post-game linger. Size the cert fixture to `grace + rounds×pacing_floor + linger < 50 s` and pin it with a test (cogame-commons-family 0.1.0, 2026-08-24) |
 | Manifest upload: "2 validation errors for Coworld Manifest" on `game.protocols` | `game.protocols.player`/`.global` (like `game.docs.readme`) must be `{"type":"text","value":…}` objects, not bare strings — repo CI does not catch it, the platform validator does (cogame-garble v0.1.0, 2026-08-24) |
 | Champion renamed "Baseline (N)" | champion version listed as filler — mint distinct filler versions |
 | "No featured match yet" | only one ranked player — submit the daveey-1 champion |
