@@ -54,3 +54,12 @@
 2026-08-24T08:55:45Z 40 release-result.json persisted to run dir (3862B)
 2026-08-24T08:55:45Z 40 -> 50 phase transition (STATE.phase=50)
 2026-08-24T08:55:45Z progress phase=40 marker=release-run-32708082253
+2026-08-24T08:56:16Z 50 seed POST /coworld-league-seeds 200 -> league_4eb352ae-4a7e-42a2-a7a2-6b3a23dc0b4a (lseed_74aa11ac)
+2026-08-24T08:56:40Z 50 PUT divisions 200 -> div_6540c330-b71d-4663-ac20-13929cd7e160; POST settings 200 (round_robin, filler_policy, elo k=32, 15min)
+2026-08-24T08:57:20Z 50 champion1 submit run 32708880302 ok:true sub_31567ab1 (daveey, garble-signal:v1)
+2026-08-24T08:58:00Z 50 champion2 submit run 32708926443 ok:true sub_ef3629ff (daveey-1, garble-shortwave:v1)
+2026-08-24T08:59:00Z 50 policy-versions resolved: signal=efd90000 shortwave=85ebf17e(daveey-1 ok) quoter=bde285de shark=bbe732d1
+2026-08-24T08:59:30Z 50 POST filler-policies 200 (quoter+shark only, neither champion); rounds-paused false; trigger-round dispatched
+2026-08-24T08:59:09Z 50 round 1 status=completed error=-; leaderboard shows both champions (daveey, daveey-1)
+2026-08-24T08:59:09Z 50 -> 60 phase transition (STATE.phase=60)
+2026-08-24T08:59:09Z progress phase=50 marker=league_4eb352ae-4a7e-42a2-a7a2-6b3a23dc0b4a

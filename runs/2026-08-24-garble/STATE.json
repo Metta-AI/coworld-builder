@@ -5,7 +5,7 @@
   "slug": "garble",
   "repo": "https://github.com/Metta-AI/cogame-garble",
   "starter": "cogame-babel",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 2
   },
@@ -23,11 +23,14 @@
       "garble-quoter:v1",
       "garble-shark:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "bde285de-6d42-4d6f-a4bc-f7f9b96f8e76",
+      "bbe732d1-5559-4e28-8f7c-05f91f75fa7b"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_4eb352ae-4a7e-42a2-a7a2-6b3a23dc0b4a",
+    "division": "div_6540c330-b71d-4663-ac20-13929cd7e160"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T08:55:45Z",
+  "heartbeat_at": "2026-08-24T08:59:09Z",
   "session_ended_at": null,
   "session_id": "a7522635",
   "log": "runs/2026-08-24-garble/log.md"
