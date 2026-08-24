@@ -63,3 +63,15 @@
 2026-08-24T14:31:10Z 60 checks 1-5 TRUE (rounds 2+3 completed; both champions ranked rounds_played=2; ereq_6f473fbd completed w/ replay; protocol cogiavelli.replay.v1 reason=complete, champion seats 0/1 scripted=0; log CLEAN)
 2026-08-24T14:31:10Z 60 check 8 viewer-check run 32738798949 success: loaded=true ms=2162 clock advances SPRING 1499 -> SPRING 1501 LETTERS NAPLES -> FINAL MILAN 7 CITIES
 2026-08-24T14:31:10Z 60 check 6 ISSUE: static iframe src confirmed (session route, ready=true) but SSR state.playlist is EMPTY — relh/richard joined division at Elo 1000 rounds_played=0 and now outrank daveey (969.47); investigating
+2026-08-24T14:47:00Z heartbeat phase=60
+2026-08-24T14:47:00Z 60 round 4 completed 14:38:39Z; relh+richard submitted own policies and joined; featured match returned as cogiavelli.r4.e1
+2026-08-24T14:47:00Z 60 checks re-anchored to round 4 / ereq_12b0cd3d-09f0-40fb-ac32-35e64ff8787c (also the featured match)
+2026-08-24T14:47:00Z 60 check 1 TRUE: 3 completed rounds (2,3,4) after fillers set 14:03Z; round 1 failed "Temporal RoundWorkflow failed before settling the round."
+2026-08-24T14:47:00Z 60 check 2 TRUE: daveey-1 rank1 borgia:v2 1072.94 rounds=3; daveey rank4 medici:v2 927.06 rounds=3; fillers absent (relh rank2, richard rank3 are other platform players)
+2026-08-24T14:47:00Z 60 check 3 TRUE: ereq_12b0cd3d completed, replay_url 1071e912-8357-44ef-9745-7d71d59ca586, participants incl daveey + daveey-1
+2026-08-24T14:47:00Z 60 check 4 TRUE: strict UTF-8 JSON ok, protocol=cogiavelli.replay.v1, reason=complete, champion seats 1+2 scripted=0/24, 8 stabs recorded
+2026-08-24T14:47:00Z 60 check 5 TRUE: hosted log CLEAN (decoded 199391 chars, 4 containers, 96 bedrock calls / 96 completions)
+2026-08-24T14:47:00Z 60 check 6 TRUE: raw-HTML grep empty (client-rendered); SSR state.playlist[0]=cogiavelli.r4.e1 present; session route -> static /v2/coworlds/replays/static/COW/sha256:0489a9e9.../index.html?replay=... ready=true (no /client/replay)
+2026-08-24T14:47:00Z 60 check 7 TRUE: committed release-result.json -> "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-24T14:47:00Z 60 check 8 TRUE: viewer-check run 32740208697 success, loaded=true ms=1095 feed_lines=758, clocks SPRING 1499 / SPRING 1501 LETTERS TURK / FINAL VENICE 6 CITIES (all differ)
+2026-08-24T14:47:00Z 60 VERIFY.md written: 8/8 TRUE
