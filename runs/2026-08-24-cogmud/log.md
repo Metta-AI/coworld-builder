@@ -13,3 +13,5 @@
 2026-08-24T02:06:24Z 10 -> 20 phase transition: entering build
 2026-08-24T02:06:24Z progress phase=10 marker=design.md
 2026-08-24T02:06:24Z heartbeat phase=20
+2026-08-24T02:07:26Z 20 repo created: https://github.com/Metta-AI/cogame-cogmud (public)
+2026-08-24T02:07:26Z 20 propagate-secrets run 32681973665 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
