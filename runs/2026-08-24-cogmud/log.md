@@ -22,3 +22,4 @@
 2026-08-24T03:25:43Z progress phase=20 marker=ci-run-32685902639
 2026-08-24T03:25:43Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-24T03:25:43Z heartbeat phase=30
+2026-08-24T03:26:33Z 30 r1 dispatch reviewer thread=sthr_015bVjy9d8HzDj2nEHniwTtV repo-clone=/workspace/cogame-cogmud sha=dd6f018
