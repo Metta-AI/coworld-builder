@@ -78,3 +78,5 @@
 2026-08-24T06:02:53Z 75 atlas slug=cogmud live in /api/coworlds (episodes_7d=4); continent=commons (mixed-motive emergent economy — trade, commissions, theft; language is the interface, not a hidden-role talk game, so commons over parlour)
 2026-08-24T06:02:53Z 75 atlas spot from PR-20252 branch geometry (firm's 6 pending cities accounted for): 440,571 clearance=23.4
 2026-08-24T06:02:53Z 75 atlas dispatch=32695718162 region=commons at=440,571 clearance=23.4
+2026-08-24T06:04:58Z 75 atlas dispatch 32695718162 failed: unplaced leagues cogolf,firm — re-dispatch with extra_cities (fix 1 of 3; coords from firm run's own log: firm=425,553 commons, cogolf=202,270 paintlands)
+2026-08-24T06:04:58Z 75 atlas dispatch=32695850171 region=commons at=440,571 clearance=23.4 extra_cities=2
