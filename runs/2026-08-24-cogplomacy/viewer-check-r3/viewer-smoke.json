@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 2243,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_9f7d3cbd-97fa-4d04-a835-1ad0661ca3a1/sha256%3A2c811d5e1f50082629e8265d0d72a0feb23e4d41a5363e24bcf59ad188d792c3/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc5a7c4ff-ccef-4949-bc48-26c13a4c41b1.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "SPRING 1901",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SPRING 1901"
+    },
+    {
+      "at": "50%",
+      "clock": "SPRING 1901 · PRESS · WAITING ON 7"
+    },
+    {
+      "at": "100%",
+      "clock": "FALL 1904 · FINAL · RUSSIA 5 CENTRES"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

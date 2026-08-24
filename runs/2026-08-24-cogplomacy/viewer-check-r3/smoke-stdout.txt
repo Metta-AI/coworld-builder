@@ -1,0 +1,3 @@
+{"loaded":true,"ms":2243,"clock":"SPRING 1901","scorebug":"","feed_lines":0}
+scrub readouts: 0%="SPRING 1901"  50%="SPRING 1901 · PRESS · WAITING ON 7"  100%="FALL 1904 · FINAL · RUSSIA 5 CENTRES"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

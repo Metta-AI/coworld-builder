@@ -70,3 +70,14 @@
 2026-08-24T13:53:49Z heartbeat phase=60
 2026-08-24T13:54:57Z heartbeat phase=60
 2026-08-24T14:00:07Z heartbeat phase=60
+2026-08-24T14:08:30Z 60 check1 TRUE: 3 completed rounds (2,3,4) after fillers 13:29Z; round 1 failed pre-filler-trigger; round 2 hollow settle (no episode/artifacts, 404 logs/results/replay) — rounds 3 & 4 substantive
+2026-08-24T14:08:30Z 60 check2 TRUE: leaderboard daveey rank2 cogplomacy-diplomat:v2 rounds_played=2, daveey-1 rank4 cogplomacy-opportunist:v2 rounds_played=2; fillers absent (relh/richard are third-party submissions)
+2026-08-24T14:08:30Z 60 check3 TRUE: round 4 ereq_bf75023f completed, replay a4d57c16, participants daveey pos1 / daveey-1 pos2 / 3 fillers is_filler=true, 7 scores
+2026-08-24T14:08:30Z 60 check4 TRUE: strict JSON ok, protocol cogplomacy.replay.v1, reason=complete 4/4 years, 0 scripted events on the 4 LLM seats (53 scripted all on the 3 baselines), champions 16 press+orders each, 104 letters, 62 pledges
+2026-08-24T14:08:30Z 60 check5 TRUE: decoded hosted logs CLEAN (falling back|LLM provider is unavailable|cut off at max_tokens|rejected = 0); 7/7 seats connected, 4 years in 178s of 720s budget
+2026-08-24T14:08:30Z 60 check6 TRUE: raw-HTML grep empty (client-rendered) -> SSR state.playlist[0] featured match cogplomacy.r4.e1 + POST /coworlds/replays/session ready=true, static path with manifest_sha, no /client/replay
+2026-08-24T14:08:30Z 60 check7 TRUE: committed release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"; hosted-certification-0.1.1.txt = certified 10/10
+2026-08-24T14:08:30Z 60 check8 TRUE: viewer-check run 32736614525 loaded=true ms=1797 bridge ready; scrub 0%=SPRING 1901 / 50%=SPRING 1901 PRESS WAITING ON 7 / 100%=WINTER 1904 FINAL GERMANY 7 CENTRES (three differ); second render run 32735338630 (round 3) also loaded=true
+2026-08-24T14:08:30Z 60 VERIFY.md written: 8/8 TRUE; viewer-check/ + viewer-check-r3/ artifacts committed
+2026-08-24T14:08:30Z progress phase=60 marker=runs/2026-08-24-cogplomacy/VERIFY.md
+2026-08-24T14:08:30Z heartbeat phase=60
