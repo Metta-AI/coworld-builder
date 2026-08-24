@@ -1,1 +1,2 @@
 2026-08-24T17:42:30Z 00 claim 2026-08-24-commons-family idea=1217747795476358 slug=commons-family session=36dff424
+2026-08-24T17:47:00Z 10 starter=coworld-meadow (idea pins the base: EXTENSION of the live commons coworld; closest-coworld fork beats reimplementing — cooperative-hunting precedent); repo=Metta-AI/cogame-commons-family per SPEC pin; four Melting Pot substrates become in-repo resource modules; rail decision: abstract-round granularity, not a new grid layer (idea names it as preserving Meadow's exact solvability)
