@@ -33,3 +33,7 @@
 2026-08-24T15:43:33Z 30 r1 fixer thread from dead session left 13 commits (B1,B2,B3,N1-N6,N8-N10,N13) pushed and CI green at e385a8ba run 32730521366, but no r1-fixes.md and N7,N11,N12 unaddressed; re-dispatching fixer to finish round 1
 2026-08-24T15:44:37Z 30 r1 fixer re-dispatched (sthr_01C8c2Y1owtsswsk8mhBiqa4) retry=1 of round 1 — to verify 13 pre-existing commits, address N7/N11/N12, write r1-fixes.md
 2026-08-24T15:44:37Z heartbeat phase=30
+2026-08-24T16:02:50Z 30 r1 fixer returned: r1-fixes.md covers all 16 findings; 3 new commits (b4e0c5d N7 pod-path removal, 0cfa867 N11, ae1f3ea N12); CI green run 32747821831 at ae1f3ea; no test loosened
+2026-08-24T16:02:50Z progress phase=30 marker=r1-fixes.md
+2026-08-24T16:02:50Z 30 r1 judge dispatch next at sha ae1f3ea99eb91acda05d0603847eea242bb8a98b
+2026-08-24T16:02:50Z heartbeat phase=30
