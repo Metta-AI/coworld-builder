@@ -24,8 +24,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_c8ba20f2-f4b2-4e68-b8ad-ba75c5eca66a",
+    "division": "div_711fc80a-6b0f-453c-9e31-a4816e7eefd8"
   },
   "verify": {
     "rounds": [],
@@ -37,7 +37,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T04:58:31Z",
+  "heartbeat_at": "2026-08-24T05:00:28Z",
   "session_ended_at": null,
   "session_id": "b3f1c02e",
   "log": "runs/2026-08-24-cogmud/log.md"
