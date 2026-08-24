@@ -17,3 +17,6 @@
 2026-08-24T16:07:50Z 20 second builder thread died (API overloaded); coordinator watched ci 32748546759 itself: test+docker-smoke success, wasm-viewer FAIL — bridge error "Cannot read properties of undefined (reading 'variant')", data-replay-loaded=null
 2026-08-24T16:07:50Z 20 builder dispatched round 2 (narrow brief: fix wasm-viewer failure, evidence attached)
 2026-08-24T16:07:50Z heartbeat phase=20
+2026-08-24T16:16:18Z 20 third builder thread died at spawn (API overloaded); retry approach changed: coordinator diagnosed+fixed wasm-viewer itself — worker called packetAt(0) after mg_load_replay, rebuilding the packet without meta; fix reads the load-built packet (commit 7b7d586, pushed via GitHub Data API because git-over-https basic auth rejects the token)
+2026-08-24T16:16:18Z 20 ci run 32749463742 started for 7b7d586 — watching
+2026-08-24T16:16:18Z heartbeat phase=20
