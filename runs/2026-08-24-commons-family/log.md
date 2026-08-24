@@ -10,3 +10,7 @@
 2026-08-24T18:12:10Z 20 propagate-secrets run=32760054264 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present on repo
 2026-08-24T18:13:00Z 20 builder dispatched round=1 thread=sthr_01XbdpBLS6aSnczZM9KZc6Md repo=Metta-AI/cogame-commons-family
 2026-08-24T18:13:00Z heartbeat phase=20
+2026-08-24T19:05:00Z 20 builder returned round=1: ci.yml green run=32766440708 sha=32a5e5c (jobs test/docker-smoke/wasm-viewer success); acceptance sweep pass; 10 logged deviations, all sound; pushed via gh Data API (sandbox git helper has no grant on the new repo — 401)
+2026-08-24T19:05:00Z 20 coordinator ruling: apply chorus 3c11c953 fix now (ready posted after data-replay-loaded, not from rAF) — builder re-dispatched for the two-line fix
+2026-08-24T19:05:00Z progress phase=20 marker=ci-run-32766440708
+2026-08-24T19:05:00Z heartbeat phase=20
