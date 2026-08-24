@@ -33,3 +33,7 @@
 2026-08-24T13:24:40Z progress phase=30 marker=reviews/r1-fixes.md
 2026-08-24T13:24:40Z heartbeat phase=30
 2026-08-24T13:25:36Z 30 r1 judge dispatched (thread sthr_013aRtF8k4D9RBEZ2ZE5iGYZ) over 044223b -> reviews/r1-verdict.md
+2026-08-24T13:38:26Z 30 r1 judge returned r1-verdict.md: blocking 0 / BLOCKING 0 (markers agree); all 14 checklist items + batch addendum pass at 044223b; 2 advisory notes logged
+2026-08-24T13:38:26Z 30 review loop closed after 1 round; phase -> 40
+2026-08-24T13:38:26Z progress phase=30 marker=reviews/r1-verdict.md
+2026-08-24T13:38:26Z heartbeat phase=40
