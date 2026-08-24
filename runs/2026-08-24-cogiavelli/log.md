@@ -91,3 +91,7 @@
 2026-08-24T14:59:29Z 75 atlas dispatch 1 (32741804570) failed: unplaced leagues chorus,cogchemists,cogmud,cogolf,cogplomacy,firm,garble — fix: place them via extra_cities
 2026-08-24T14:59:29Z 75 atlas placed for others: chorus=shire(193,586) cogchemists=commons(416,574) firm=commons(446,562) cogmud=parlour(438,817) garble=parlour(468,829) cogolf=paintlands(202,270) cogplomacy=tabletop(754,307)
 2026-08-24T14:59:29Z 75 atlas dispatch=32742086445 region=tabletop at=766,277 clearance=22.9 (dispatch 2, extra_cities x7)
+2026-08-24T15:01:05Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20268 status=pr_open (automerge armed; lands via Graphite merge queue, human merges)
+2026-08-24T15:01:05Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20268
+2026-08-24T15:01:05Z 75 phase -> 80
+2026-08-24T15:01:05Z heartbeat phase=80

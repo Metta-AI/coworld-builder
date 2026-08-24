@@ -5,7 +5,7 @@
   "slug": "cogiavelli",
   "repo": "https://github.com/Metta-AI/cogame-cogiavelli",
   "starter": "cogame-babel",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 2
   },
@@ -47,18 +47,18 @@
     "discord_message_id": "1541460871652581431"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20268",
+    "branch": "atlas/cogiavelli-32742086445",
+    "region": "tabletop",
+    "x": 766,
+    "y": 277,
+    "dispatch_run_id": "32742086445",
+    "attempted_at": "2026-08-24T15:01:05Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T14:55:24Z",
+  "heartbeat_at": "2026-08-24T15:01:05Z",
   "session_ended_at": null,
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"
