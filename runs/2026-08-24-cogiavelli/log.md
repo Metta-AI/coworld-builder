@@ -28,3 +28,4 @@
 2026-08-24T12:31:58Z 30 r1 reviewer returned r1-review.md (774 lines): 0 blocking, 20 non-blocking N1-N20, 3 could-not-determine (grid-harness tuning chief among them)
 2026-08-24T12:31:58Z progress phase=30 marker=reviews/r1-review.md
 2026-08-24T12:31:58Z heartbeat phase=30
+2026-08-24T12:32:48Z 30 r1 fixer dispatched (thread sthr_014ybM7JRtYo3MZWYeugcvTz) -> reviews/r1-fixes.md; priorities: N1 frame-by-frame replayMatch, grid-harness tuning record, N3 stab detector, N2, N14, N17
