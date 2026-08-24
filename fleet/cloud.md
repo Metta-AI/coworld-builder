@@ -64,7 +64,7 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 | coworld-builder-fixer | agent | claude-opus-5 | `agent_01VAuffJBu8B3j3GEWphmQ7x` | 1 |
 | coworld-builder-judge | agent | claude-fable-5 | `agent_01QF6UtN7yE5eRTNM4tFkwHH` | 1 |
 | coworld-builder-verifier | agent | claude-opus-5 | `agent_01Grqmo29T2TuAtdS4UNRGV6` | 2 |
-| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 3 |
+| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 4 |
 | coworld-builder-a | deployment | — | `depl_01YSmungQBmAMerqw9KxGdQs` | — |
 | coworld-builder-b | deployment | — | `depl_01McBgP42628cnvocD3u9Jih` | — |
 | coworld-builder-c | deployment | — | `depl_01HKErKeH5KSxtPa9uRFGBR9` | — |
