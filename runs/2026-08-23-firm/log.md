@@ -28,3 +28,6 @@
 2026-08-24T01:36:26Z 30 reviewer returned r1-review.md (1 blocking F1 grid-tuning-harness, F2-F12 non-blocking, 4 undetermined)
 2026-08-24T01:36:26Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
 2026-08-24T01:36:26Z heartbeat phase=30
+2026-08-24T02:26:31Z 30 fixer returned r1-fixes.md: F1 fixed (grid sweep test_tuning.nim, argmax asserted in CI), F2/F12/F4/F5/F6/F7 fixed, F3/F8/F9/F10/F11 declined with evidence; CI green run 32682767057 sha 62dcd64f
+2026-08-24T02:26:31Z 30 dispatch judge round=1 sha=62dcd64f -> reviews/r1-verdict.md
+2026-08-24T02:26:31Z heartbeat phase=30
