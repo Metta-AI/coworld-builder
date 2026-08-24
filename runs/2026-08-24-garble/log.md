@@ -41,3 +41,5 @@
 2026-08-24T08:32:58Z 30 r1 design.md mirrored from repo copy (7 note amendments: F1,F3,F4,F5,F16,F17,F18)
 2026-08-24T08:32:58Z heartbeat phase=30
 2026-08-24T08:32:58Z progress phase=30 marker=r1-fixes.md
+2026-08-24T08:34:04Z 30 r1 judge dispatched (thread sthr_01AjLTXmPS84v6e3Qz57TdAL) over main@de841a15
+2026-08-24T08:34:04Z heartbeat phase=30
