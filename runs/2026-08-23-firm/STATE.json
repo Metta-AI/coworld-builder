@@ -5,7 +5,7 @@
   "slug": "firm",
   "repo": "https://github.com/Metta-AI/cogame-firm",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "20": 1,
     "40": 0
@@ -34,16 +34,20 @@
     "division": "div_ec0a2aaa-96cf-4fe2-8327-485c316ad4e6"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_9dd7c937",
+      "round_1456d48a"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/74f5cf6e-dcb1-499a-94fe-32c4fee6cb86.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32685986524"
   },
   "announce": {
     "attempted_at": null,
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T02:57:29Z",
+  "heartbeat_at": "2026-08-24T03:30:30Z",
   "session_ended_at": null,
   "session_id": "4cd6933a",
   "log": "runs/2026-08-23-firm/log.md"
