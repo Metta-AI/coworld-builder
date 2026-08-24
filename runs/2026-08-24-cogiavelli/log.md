@@ -59,3 +59,7 @@
 2026-08-24T14:14:41Z 60 poll 2: completed=[2]; awaiting round 3 (interval 15m from 14:04)
 2026-08-24T14:19:43Z heartbeat phase=60
 2026-08-24T14:19:43Z 60 poll 3: round 3 created 14:19:00 status=pending; completed=[2]
+2026-08-24T14:31:10Z heartbeat phase=60
+2026-08-24T14:31:10Z 60 checks 1-5 TRUE (rounds 2+3 completed; both champions ranked rounds_played=2; ereq_6f473fbd completed w/ replay; protocol cogiavelli.replay.v1 reason=complete, champion seats 0/1 scripted=0; log CLEAN)
+2026-08-24T14:31:10Z 60 check 8 viewer-check run 32738798949 success: loaded=true ms=2162 clock advances SPRING 1499 -> SPRING 1501 LETTERS NAPLES -> FINAL MILAN 7 CITIES
+2026-08-24T14:31:10Z 60 check 6 ISSUE: static iframe src confirmed (session route, ready=true) but SSR state.playlist is EMPTY — relh/richard joined division at Elo 1000 rounds_played=0 and now outrank daveey (969.47); investigating

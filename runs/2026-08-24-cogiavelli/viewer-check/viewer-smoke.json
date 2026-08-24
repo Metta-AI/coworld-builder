@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 2162,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f54e03ab-39e9-4763-b46f-51556727bdd4/sha256%3A0489a9e732975007d7b46680c736750b23180dbcd61078ddc3337df27aaa9bbb/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F235316f3-dbd5-492e-8543-2f2fa8194fd8.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "SPRING 1499",
+  "scorebug": "NAPLES daveey ▶ 3 CITIES 3 units · 12đ MILAN daveey-1 ▶ 3 CITIES 3 units · 12đ TURK Sprocket ▶ 3 CITIES 3 units · 12đ FLORENCE Bolt ▶ 3 CITIES 3 units · 12đ PAPACY Gizmo ▶ 3 CITIES 3 units · 12đ VENICE Ratchet ▶ 3 CITIES 3 units · 12đ",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 503,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SPRING 1499"
+    },
+    {
+      "at": "50%",
+      "clock": "SPRING 1501 · LETTERS · NAPLES"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL · MILAN 7 CITIES"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
