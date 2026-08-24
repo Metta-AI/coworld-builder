@@ -11,3 +11,7 @@
 2026-08-24T06:40:05Z 10 design accepted round 1, no rejections; copy at runs/2026-08-24-cogchemists/design.md
 2026-08-24T06:40:05Z progress phase=10 marker=design.md
 2026-08-24T06:40:05Z 10 phase -> 20
+2026-08-24T06:41:12Z 20 repo Metta-AI/cogame-cogchemists created public
+2026-08-24T06:41:12Z 20 propagate-secrets run 32698304106 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-24T06:41:12Z 20 dispatching builder
+2026-08-24T06:41:12Z heartbeat phase=20
