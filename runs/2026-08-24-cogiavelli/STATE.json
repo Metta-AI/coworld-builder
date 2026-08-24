@@ -5,7 +5,7 @@
   "slug": "cogiavelli",
   "repo": "https://github.com/Metta-AI/cogame-cogiavelli",
   "starter": "cogame-babel",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T10:23:08Z",
+  "heartbeat_at": "2026-08-24T10:42:56Z",
   "session_ended_at": null,
   "session_id": "0b50512c",
   "log": "runs/2026-08-24-cogiavelli/log.md"

@@ -9,3 +9,7 @@
 2026-08-24T10:25:30Z 10 starter chosen: cogame-babel (turn-based negotiation with LLM press + structured orders — babel is the pinned parley-stack template; bullwhip no closer in turn structure)
 2026-08-24T10:25:40Z 10 designer dispatched: design note docs/plans/2026-08-24-cogiavelli-design.md
 2026-08-24T10:28:10Z 10 designer dispatched (thread sthr_01BFLum5YFxqBkyEzRgrqd9M) -> runs/2026-08-24-cogiavelli/design.md
+2026-08-24T10:42:00Z 10 designer returned design.md (1332 lines), thread sthr_01BFLum5YFxqBkyEzRgrqd9M
+2026-08-24T10:44:00Z 10 checklist: starter+reason OK; num_agents=6 everywhere OK; resolution order numbered OK; scoring+sign+ranking OK; end conditions+reasons OK; observation split OK; reply caps rune-safe OK; both policies env-switched OK; one-batch-per-phase+budget OK; degrade-never-hang OK; two name spaces OK; viewer static bundle+hook+360px OK; all four viewer files from babel OK; chrome provenance+zoom decided OK; transport rules+beat CSS OK; replay self-sufficient OK; packaging both protocols+docs OK; tests incl bot-legality+utf8+executed viewer smoke OK; out-of-scope non-empty OK
+2026-08-24T10:44:10Z 10 design accepted round 1; phase -> 20
+2026-08-24T10:44:10Z progress phase=10 marker=runs/2026-08-24-cogiavelli/design.md
