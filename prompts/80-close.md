@@ -19,9 +19,11 @@ Owner: coordinator. This is the only phase that may complete the idea task.
    - rounds completed and the verified replay URL;
    - the Discord message link;
    - the atlas: `STATE.atlas.pr_url` and where it got to — re-read it once
-     (`gh pr view <url> --json state,mergedAt -q '.state'`) and say `merged`, `open (auto-merge
-     armed)`, or, when `STATE.atlas.status` is `unplaced`, name it under what was left undone
-     together with the Fleet card phase 75 filed;
+     (`gh pr view <url> --json state,mergedAt -q '.state'`) and say `merged`, `open (approved,
+     waiting on metta's merge queue — a human runs merge-when-ready)`, or, when
+     `STATE.atlas.status` is `unplaced`, name it under what was left undone together with the
+     Fleet card phase 75 filed. **`CLOSED` with `mergedAt: null` is how Graphite's queue merges in
+     metta — read that as merged, not as rejected.**
    - what went wrong and how it was fixed (one line per phase that used a retry);
    - anything left undone, named explicitly — a silent TODO is failure, not completion.
 2. Post it as a comment on the **run task** and, condensed to 5 lines + links, on the **idea task**.
