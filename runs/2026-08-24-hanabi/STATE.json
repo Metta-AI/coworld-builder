@@ -4,7 +4,7 @@
   "run_task": "1217803618386448",
   "slug": "hanabi",
   "repo": "https://github.com/Metta-AI/cogame-hanabi",
-  "starter": "",
+  "starter": "Metta-AI/cogame-bullwhip",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
