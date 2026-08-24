@@ -45,3 +45,4 @@
 2026-08-24T16:15:13Z heartbeat phase=40
 2026-08-24T16:16:19Z 40 builder dispatched (sthr_01LSMkWuGaBFcaiPGdtx9sMC) for release chain, version 0.1.0 first
 2026-08-24T16:16:19Z heartbeat phase=40
+2026-08-24T16:23:55Z 40 release dispatch 1: version=0.1.0 run=32749896631 step_failed=null -> ACCEPTED (ok/canonical/certify.ok true, replay_liveness skipped static, 4 policies v1, champ2 player_id ply_bac48eb1, secret_put true); cow_id=cow_f009d83c-de26-4ab4-8e56-742cbdb4a124
