@@ -3,3 +3,7 @@
 2026-08-24T14:38:20Z 00 -> 10 phase transition (STATE.phase=10) session=eebc5410
 2026-08-24T14:39:37Z 10 starter=Metta-AI/coworld-ctf reason=real-time grid loop with new rules (per-tick move/turn/interact, token grid, interaction beam) — table row 2; staghunt/BitWorld not a mounted starter
 2026-08-24T14:39:37Z 10 designer dispatched (design note for cogame-matrix-games)
+2026-08-24T14:57:23Z 10 designer returned design.md (1104 lines) round 1
+2026-08-24T14:57:23Z 10 checklist: starter[x] num_agents[x] tick-order[x] scoring[x] end-conditions[x] observation[x] reply-schema[x] both-policies[x] parallel-batch-budget[x] degrade[x] name-spaces[x] viewer-static[x] viewer-one-starter[x] chrome-provenance[x] transport[x] replay-self-sufficient[x] packaging[x] tests[x] out-of-scope[x] — accepted round 1
+2026-08-24T14:57:23Z progress phase=10 marker=design.md written and accepted
+2026-08-24T14:57:23Z 10 -> 20 phase transition (STATE.phase=20)
