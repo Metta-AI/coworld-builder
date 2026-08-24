@@ -194,12 +194,16 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
     bubble upward from the top of its cog, and the cog sat at the top of the arena: every bubble
     body landed at a negative y and four sentences rendered as four white slivers. Everything was
     green.
-    - `tools/ci/viewer_smoke.mjs` reports `canvas_text: {total, outside, ellipsized}` in
-      `viewer-smoke.json`. For a **fixed arena** — any board that wholly fits the frame —
-      `outside` must be **0**, and `ci.yml`'s smoke step must carry `--strict-text-bounds` so a
-      regression is red rather than merely logged. A pannable board draws off-frame legitimately;
-      there the flag is dropped and the count is read, not gated. `total: 0` means the check
-      covered nothing (a worker/OffscreenCanvas or WebGL renderer) and is not evidence of anything.
+    - `tools/ci/viewer_smoke.mjs` reports `canvas_text: {total, outside, never_inside,
+      ellipsized}` in `viewer-smoke.json`. The gated number is **`never_inside`** — strings that
+      crossed an edge on *every* draw and never once landed inside. `outside` counts draws and is
+      reported only: an entrance animation that slides a card on from off-frame is legitimately
+      outside for a few frames, and gating on that fires on healthy viewers. For a **fixed
+      arena** — any board that wholly fits the frame — `never_inside` must be **0**, and
+      `ci.yml`'s smoke step must carry `--strict-text-bounds` so a regression is red rather than
+      merely logged. A pannable board parks text off-frame legitimately; there the flag is dropped
+      and the number is read, not gated. `total: 0` means the check covered nothing (a
+      worker/OffscreenCanvas or WebGL renderer) and is not evidence of anything.
     - Any text laid out **relative to another element** — a speech bubble over a cog, a callout on
       a card, a floating damage number — gets a **reserved band in the layout**, sized from the
       cap the server enforces on that string (`MaxSayLen` and its kin) and measured in the font it

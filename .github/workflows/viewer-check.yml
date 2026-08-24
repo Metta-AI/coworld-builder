@@ -98,15 +98,17 @@ jobs:
                 console.log(JSON.stringify({loaded: s.loaded, ms: s.ms, clock: s.clock, scorebug: s.scorebug, feed_lines: s.feed_lines}));
                 console.log("signals: " + JSON.stringify(s.signals));
                 console.log("scrub readouts: " + (s.scrub && s.scrub.length ? s.scrub.map(x => x.at + "=" + JSON.stringify(x.clock)).join("  ") : "(no #scrub in this shell)"));
-                // Text the viewer drew outside its canvas. For a fixed arena
-                // any nonzero count is a caption with nowhere to go and check
-                // 8 is FALSE, loaded:true or not (cogchemists 2026-08-24).
+                // Strings the viewer never once drew inside its canvas. For
+                // a fixed arena any nonzero count is a caption with nowhere to
+                // go and check 8 is FALSE, loaded:true or not (cogchemists
+                // 2026-08-24). `outside` counts draws and includes normal
+                // slide-on animations -- read it, do not judge on it.
                 const t = s.canvas_text;
                 console.log("canvas text: " + (t
-                  ? `${t.total} drawn, ${t.outside} outside the canvas, ${t.ellipsized} ellipsized`
+                  ? `${t.total} drawn, ${t.never_inside} never inside the canvas (${t.outside} draws crossed an edge), ${t.ellipsized} ellipsized`
                   : "(not seen -- worker/OffscreenCanvas or WebGL renderer)"));
-                if (t && t.samples && t.samples.length) {
-                  for (const x of t.samples) console.log("  " + x.kind + (x.edges ? " " + x.edges : "") + ": " + JSON.stringify(x.text));
+                if (t && t.never_inside_samples) {
+                  for (const x of t.never_inside_samples) console.log("  never-inside " + x.edges + ": " + JSON.stringify(x.text));
                 }
                 if (s.failure) console.log("failure: " + s.failure);
               '

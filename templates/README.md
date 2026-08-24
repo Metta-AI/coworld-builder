@@ -92,9 +92,12 @@ thing it knows about a specific game is the DOM ids the starter chrome already u
 node tools/ci/viewer_smoke.mjs --bundle <dir> --replay <file> [--timeout 60] [--out .]
 node tools/ci/viewer_smoke.mjs --url <full viewer url with ?replay=> [--timeout 90]
 
-`--strict-text-bounds` fails the run if the viewer drew any text outside its canvas. Keep it for
-a FIXED arena (every board that wholly fits the frame); drop it for a pannable board, where the
-count is still reported as `canvas_text` in `viewer-smoke.json`.
+`--strict-text-bounds` fails the run if any string was drawn outside the canvas on **every** draw
+and never once landed inside (`canvas_text.never_inside`) — a caption anchored where there is no
+room. Draws that merely cross an edge (`canvas_text.outside`) are reported, not gated: sliding a
+card on from off-frame is a normal entrance animation. Keep the flag for a FIXED arena (every
+board that wholly fits the frame); drop it for a pannable board, where the numbers are still
+reported as `canvas_text` in `viewer-smoke.json`.
 ```
 
 `--bundle` serves the directory *and* the replay over a local HTTP server (Node's own, no

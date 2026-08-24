@@ -114,17 +114,28 @@
 //
 // So `CanvasRenderingContext2D.prototype.fillText` / `strokeText` are hooked
 // in the init script and every drawn string is measured against its canvas.
-// The summary carries `canvas_text: {total, outside, ellipsized, samples}`:
+// The summary carries
+// `canvas_text: {total, outside, never_inside, ellipsized, samples}`:
 //
-//   outside     strings whose measured box crosses a canvas edge. For a FIXED
-//               arena (the whole board fits the frame) this must be 0 --
-//               `--strict-text-bounds` makes a nonzero count exit 1. A
-//               pannable board legitimately draws text off-frame, so it stays
-//               a reported number there rather than a gate.
-//   ellipsized  strings the renderer itself cut with an ellipsis. Card labels
-//               and nameplates do this on purpose; a sentence doing it means
-//               the text has outgrown the box it was given. Never a failure,
-//               always worth a look when a caption reads short.
+//   outside       DRAWS whose measured box crossed a canvas edge. Reported,
+//                 never gated: an animation that slides a card on from
+//                 off-frame is outside for a few frames by design
+//                 (cogchemists' own lab bench does exactly that).
+//   never_inside  distinct STRINGS that crossed an edge on every single draw
+//                 and never once landed inside. That is the defect -- a
+//                 caption anchored where there is no room exists off-frame
+//                 for its whole life, while a sliding card settles. For a
+//                 FIXED arena (the whole board fits the frame) this must be
+//                 0, and `--strict-text-bounds` makes a nonzero count exit 1.
+//                 A pannable board parks text off-frame legitimately, so the
+//                 flag is dropped there and the number is read, not gated.
+//   ellipsized    draws the renderer itself cut with an ellipsis. Card labels
+//                 and nameplates do this on purpose; a sentence doing it
+//                 means the text has outgrown the box it was given. Never a
+//                 failure, always worth a look when a caption reads short.
+//
+// Strings are tallied by their text, capped at 4000 distinct
+// (`distinct_capped` says when that cap was hit).
 //
 // Only main-thread 2D contexts are seen. A viewer that draws into an
 // OffscreenCanvas inside a worker reports total: 0 -- which is itself the
@@ -314,12 +325,37 @@ const INIT_SCRIPT = `(() => {
   // diff, but it is exactly what a bubble or a caption with nowhere to go
   // looks like.
   const seen = { total: 0, outside: 0, ellipsized: 0, samples: [] };
-  window.__coworldTextBounds = seen;
+  // Per drawn STRING: how many of its draws landed inside the canvas and how
+  // many crossed an edge. A card that slides on from off-frame is outside for
+  // a few frames and inside for the rest; a caption anchored where there is no
+  // room is outside for every frame it exists. Only the second is a defect,
+  // so the gate is "never once inside", not "ever outside".
+  const byText = new Map();
+  const TEXT_CAP = 4000;
   const TOL = 1;
   const SAMPLE_CAP = 12;
   const note = (entry) => {
     if (seen.samples.length < SAMPLE_CAP) seen.samples.push(entry);
   };
+  seen.report = () => {
+    const never = [];
+    for (const [text, tally] of byText) {
+      if (tally.out > 0 && tally.in === 0) never.push({ text, ...tally });
+    }
+    return {
+      total: seen.total,
+      outside: seen.outside,
+      ellipsized: seen.ellipsized,
+      never_inside: never.length,
+      never_inside_samples: never.slice(0, SAMPLE_CAP).map((n) => ({
+        kind: "never-inside", edges: n.edges, text: n.text.slice(0, 60),
+        box: n.box, canvas: n.canvas, draws: n.out,
+      })),
+      distinct_capped: byText.size >= TEXT_CAP,
+      samples: seen.samples,
+    };
+  };
+  window.__coworldTextBounds = seen;
   const wrap = (name) => {
     const proto = window.CanvasRenderingContext2D && window.CanvasRenderingContext2D.prototype;
     if (!proto || typeof proto[name] !== "function") return;
@@ -352,13 +388,24 @@ const INIT_SCRIPT = `(() => {
         if (left < -TOL) edges.push("left");
         if (bottom > canvas.height + TOL) edges.push("bottom");
         if (right > canvas.width + TOL) edges.push("right");
+        let tally = byText.get(str);
+        if (!tally && byText.size < TEXT_CAP) {
+          tally = { in: 0, out: 0, edges: "", box: null, canvas: null };
+          byText.set(str, tally);
+        }
         if (edges.length) {
           seen.outside += 1;
-          note({
-            kind: "outside", edges: edges.join("+"), text: str.slice(0, 60),
-            box: [Math.round(left), Math.round(top), Math.round(right), Math.round(bottom)],
-            canvas: [canvas.width, canvas.height],
-          });
+          const box = [Math.round(left), Math.round(top), Math.round(right), Math.round(bottom)];
+          const size = [canvas.width, canvas.height];
+          if (tally) {
+            tally.out += 1;
+            tally.edges = edges.join("+");
+            tally.box = box;
+            tally.canvas = size;
+          }
+          note({ kind: "outside", edges: edges.join("+"), text: str.slice(0, 60), box, canvas: size });
+        } else if (tally) {
+          tally.in += 1;
         }
       } catch (ignore) {}
       return out;
@@ -545,15 +592,15 @@ async function main() {
   try {
     canvasText = await page.evaluate(`(() => {
       const t = window.__coworldTextBounds;
-      return t ? { total: t.total, outside: t.outside, ellipsized: t.ellipsized, samples: t.samples } : null;
+      return t && t.report ? t.report() : null;
     })()`);
   } catch (error) {
     record(`[text-bounds] ${error && error.message}`);
   }
   let boundsFailure = "";
-  if (args.strictTextBounds && canvasText && canvasText.outside > 0) {
-    boundsFailure = `text drawn outside the canvas: ${canvasText.outside} of ` +
-      `${canvasText.total} strings (--strict-text-bounds)`;
+  if (args.strictTextBounds && canvasText && canvasText.never_inside > 0) {
+    boundsFailure = `${canvasText.never_inside} string(s) were NEVER drawn inside the ` +
+      `canvas (--strict-text-bounds)`;
   }
 
   const pngPath = join(args.outDir, "viewer-smoke.png");
@@ -595,10 +642,10 @@ async function main() {
   if (!loaded || playFailure || boundsFailure) {
     console.error(`VIEWER SMOKE FAILED: ${failure || boundsFailure}`);
     if (boundsFailure && canvasText) {
-      console.error("  text outside the canvas:");
-      for (const sample of canvasText.samples.filter((x) => x.kind === "outside")) {
+      console.error("  never drawn inside the canvas -- no room was reserved for these:");
+      for (const sample of canvasText.never_inside_samples) {
         console.error(`    ${sample.edges} [${sample.box.join(",")}] in ` +
-          `${sample.canvas.join("x")}: ${JSON.stringify(sample.text)}`);
+          `${sample.canvas.join("x")}, ${sample.draws} draws: ${JSON.stringify(sample.text)}`);
       }
     }
     console.error(`  url        : ${target}`);
@@ -639,12 +686,15 @@ async function main() {
     console.log("scrub readouts: " + scrub.map((s) => `${s.at}=${JSON.stringify(s.clock)}`).join("  "));
   }
   if (canvasText) {
-    console.log(`canvas text: ${canvasText.total} drawn, ${canvasText.outside} outside the ` +
-      `canvas, ${canvasText.ellipsized} ellipsized` +
+    console.log(`canvas text: ${canvasText.total} drawn, ${canvasText.never_inside} never inside ` +
+      `the canvas (${canvasText.outside} draws crossed an edge), ` +
+      `${canvasText.ellipsized} ellipsized` +
       (args.strictTextBounds ? " (--strict-text-bounds)" : ""));
-    for (const sample of canvasText.samples) {
-      console.log(`  ${sample.kind}${sample.edges ? " " + sample.edges : ""}: ` +
-        JSON.stringify(sample.text));
+    for (const sample of canvasText.never_inside_samples) {
+      console.log(`  never-inside ${sample.edges}: ${JSON.stringify(sample.text)}`);
+    }
+    for (const sample of canvasText.samples.filter((x) => x.kind === "ellipsized")) {
+      console.log(`  ellipsized: ${JSON.stringify(sample.text)}`);
     }
   } else {
     console.log("canvas text: no main-thread 2D text seen -- this check covered nothing " +
