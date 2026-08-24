@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2722,"clock":"ROUND 1 OF 20 · WAITING ON 6","scorebug":"Cog-B ▶ 0.0 DAVEEY CLEAN ×0 Cog-D ▶ 0.0 DAVEEY-1 CLEAN ×0 Cog-F ▶ 0.0 CLEAN ×0 Cog-C ▶ 0.0 CLEAN ×0 Cog-E ▶ 0.0 CLEAN ×0 Cog-A ▶ 0.0 CLEAN ×0","feed_lines":338}
+scrub readouts: 0%="ROUND 1 OF 20 · WAITING ON 6"  50%="ROUND 10 OF 20 · WAITING ON 3"  100%="ROUND 20 OF 20 · FINAL"
+canvas text: 3076 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

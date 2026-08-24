@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2722,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_73578681-ae8b-4ec8-b0ef-9622d639c09a/sha256%3Ad1ca46483f8fe5aa627a23f46c7b520fdcb968cdfeceeb269b786dc2e818b2fa/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F0faa1de2-b956-42c3-b2c5-566c8b4dd61b.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1 OF 20 · WAITING ON 6",
+  "scorebug": "Cog-B ▶ 0.0 DAVEEY CLEAN ×0 Cog-D ▶ 0.0 DAVEEY-1 CLEAN ×0 Cog-F ▶ 0.0 CLEAN ×0 Cog-C ▶ 0.0 CLEAN ×0 Cog-E ▶ 0.0 CLEAN ×0 Cog-A ▶ 0.0 CLEAN ×0",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 338,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1 OF 20 · WAITING ON 6"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 10 OF 20 · WAITING ON 3"
+    },
+    {
+      "at": "100%",
+      "clock": "ROUND 20 OF 20 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 3076,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
