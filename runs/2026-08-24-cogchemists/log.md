@@ -53,3 +53,7 @@
 2026-08-24T09:03:23Z 40 builder returned: release 0.1.1 accepted run=32708476022 cow_id=cow_a9d9a26c-cf74-403a-85f9-542ca3bd61c9 hosted-cert=certified; release-result.json persisted
 2026-08-24T09:03:23Z progress phase=40 marker=release-run-32708476022
 2026-08-24T09:03:23Z 40 phase -> 50
+2026-08-24T09:04:17Z 50 league seeded league_7a7ba378-a709-4b1a-b8c1-b21b6577025a (lseed_d407d243) 200
+2026-08-24T09:04:17Z 50 division div_be88c7cd-0b21-4468-a404-c5c9cc767d25 created 200; settings posted (elo, round_robin, filler_policy, 15min) 200
+2026-08-24T09:04:17Z progress phase=50 marker=league_7a7ba378-a709-4b1a-b8c1-b21b6577025a
+2026-08-24T09:04:17Z heartbeat phase=50
