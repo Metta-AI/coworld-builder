@@ -16,3 +16,6 @@
 2026-08-24T06:07:48Z 20 propagate-secrets run 32696013830 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on cogame-garble
 2026-08-24T06:07:48Z heartbeat phase=20
 2026-08-24T06:08:39Z 20 builder dispatched (thread sthr_01NjsxPLMnNc1NthWuXGGAsD) — implement from design.md, CI is the verdict
+2026-08-24T06:42:01Z 20 builder thread sthr_01NjsxPLMnNc1NthWuXGGAsD FAILED (API temporarily overloaded) — repo still empty, uncommitted working tree left at /workspace/cogame-garble
+2026-08-24T06:42:01Z 20 retry 1: re-dispatch builder to adopt the existing working tree, verify against design.md, commit, push, drive CI
+2026-08-24T06:42:01Z heartbeat phase=20
