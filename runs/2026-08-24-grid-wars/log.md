@@ -43,3 +43,5 @@
 2026-08-24T16:15:13Z progress phase=30 marker=r1-verdict.md
 2026-08-24T16:15:13Z 30 phase -> 40
 2026-08-24T16:15:13Z heartbeat phase=40
+2026-08-24T16:16:19Z 40 builder dispatched (sthr_01LSMkWuGaBFcaiPGdtx9sMC) for release chain, version 0.1.0 first
+2026-08-24T16:16:19Z heartbeat phase=40
