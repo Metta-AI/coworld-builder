@@ -74,3 +74,4 @@
 2026-08-24T10:22:03Z heartbeat phase=75
 2026-08-24T10:22:59Z 75 atlas continent=commons reason=mixed-motive shared artifact (one piece, counterfactual per-seat credit); spot 416,574 clearance=22.9
 2026-08-24T10:22:59Z 75 atlas dispatch=32716500586 region=commons at=416,574 clearance=22.9
+2026-08-24T10:25:39Z 75 atlas dispatch=32716726414 region=commons at=416,574 clearance=22.9 attempt=2 fix=extra_cities placed-for-others: cogchemists(tabletop 766,277) cogmud(simulations 536,271) cogolf(parlour 438,817) firm(commons 446,562) garble(parlour 468,829)
