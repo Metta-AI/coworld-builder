@@ -7,3 +7,9 @@
 2026-08-24T10:00:08Z 00 phase -> 10
 2026-08-24T10:02:00Z 10 starter decided: cogame-bullwhip — simultaneous per-turn batched LLM decisions, structured order + private free-text messages per seat, turn loop: the closest turn structure to Diplomacy's simultaneous orders + press (rail, not asked; babel is pairwise speaker/listener, farther)
 2026-08-24T10:02:45Z 10 designer dispatched (thread sthr_01WXxxKM2qCgpC3GYfbejNjb) -> runs/2026-08-24-cogplomacy/design.md
+2026-08-24T10:17:59Z 10 designer returned design.md (1081 lines), thread sthr_01WXxxKM2qCgpC3GYfbejNjb
+2026-08-24T10:17:59Z 10 checklist: starter[x] num_agents=7[x] resolution-order-12-steps[x] scoring+sign+rank[x] end-conditions+reason{solo,complete,deadline}[x] per-seat-observation[x] reply-schema+rune-caps[x] both-policies-env-switched(expander,hedgehog)[x] parallel-batch+440s<720s[x] degrade-never-hang[x] two-name-spaces[x] viewer-static-wasm+360px[x] four-viewer-files-from-bullwhip[x] chrome-provenance+no-viewpanel(bullwhip-ships-renderer.js/chrome.css/replay.html-verified-on-mount)[x] transport-rules[x] replay-self-sufficient[x] packaging-compose+manifest+docs+protocols[x] tests-incl-viewer-smoke-executed[x] out-of-scope-nonempty[x]
+2026-08-24T10:17:59Z 10 design ACCEPTED round 1 — no rejections
+2026-08-24T10:17:59Z progress phase=10 marker=runs/2026-08-24-cogplomacy/design.md
+2026-08-24T10:17:59Z 10 -> 20 phase transition (STATE.phase=20)
+2026-08-24T10:17:59Z heartbeat phase=20
