@@ -5,7 +5,7 @@
   "slug": "cooperative-hunting",
   "repo": "Metta-AI/cogame-cooperative-hunting",
   "starter": "coworld-staghunt",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T15:23:32Z",
+  "heartbeat_at": "2026-08-24T15:41:35Z",
   "session_ended_at": null,
   "session_id": "b466a29f",
   "log": "runs/2026-08-24-cooperative-hunting/log.md"
