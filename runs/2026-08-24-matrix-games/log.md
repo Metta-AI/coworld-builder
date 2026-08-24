@@ -34,3 +34,7 @@
 2026-08-24T17:19:15Z 30 judge dispatched round 1 (target sha af5c704)
 2026-08-24T17:19:15Z progress phase=30 marker=r1-fixes.md
 2026-08-24T17:19:15Z heartbeat phase=30
+2026-08-24T17:35:23Z 30 judge returned r1-verdict.md BLOCKING: 1 ([correctness] docker_smoke.sh:369-371 results.reason==complete not asserted) — markers agree
+2026-08-24T17:35:23Z 30 round 2 begins (review_round=2); reviewer dispatched (target sha af5c704, scope: delta since r1 + the r1 verdict's blocking item)
+2026-08-24T17:35:23Z progress phase=30 marker=r1-verdict.md
+2026-08-24T17:35:23Z heartbeat phase=30
