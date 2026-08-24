@@ -42,3 +42,4 @@
 2026-08-24T08:37:43Z progress phase=50 marker=round_38403aa6-afd4-4199-9ccd-a0bb9a982227
 2026-08-24T08:37:43Z heartbeat phase=60
 2026-08-24T08:38:09Z 60 dispatch verifier brief=execute prompts/60-verify.md -> runs/2026-08-24-chorus/VERIFY.md
+2026-08-24T09:28:47Z 60 dispatch fixer brief=check-8 ready-before-first-frame fix in replay-viewer/static_replay.js -> reviews/r2-fixes.md (CI green required)
