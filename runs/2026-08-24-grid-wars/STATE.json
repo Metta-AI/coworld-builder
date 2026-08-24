@@ -4,7 +4,7 @@
   "run_task": "1217774767332067",
   "slug": "grid-wars",
   "repo": "https://github.com/Metta-AI/cogame-grid-wars",
-  "starter": "",
+  "starter": "cogame-bullwhip",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T10:40:26Z",
+  "heartbeat_at": "2026-08-24T10:42:06Z",
   "session_ended_at": null,
   "session_id": "6839b164",
   "log": "runs/2026-08-24-grid-wars/log.md"
