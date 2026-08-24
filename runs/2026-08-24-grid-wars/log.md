@@ -83,3 +83,7 @@
 2026-08-24T17:07:49Z heartbeat phase=60
 2026-08-24T17:08:20Z 60 judge dispatched (sthr_01QLHo5A2w8GAo4NugCx4vxj) to adjudicate VERIFY.md against SPEC definition of done
 2026-08-24T17:08:20Z heartbeat phase=60
+2026-08-24T17:15:05Z 60 judge returned: verify-verdict.md blocking=0 (all 8 DoD items re-fetched and confirmed)
+2026-08-24T17:15:05Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-24T17:15:05Z 60 phase -> 70
+2026-08-24T17:15:05Z heartbeat phase=70
