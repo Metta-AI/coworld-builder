@@ -101,3 +101,5 @@
 2026-08-24T09:51:33Z progress phase=70 marker=discord-msg-1541384406609174568
 2026-08-24T09:52:55Z 75 atlas continent=parlour (talk game: the noisy channel is the mechanic; trade is the scoring vehicle)
 2026-08-24T09:52:55Z 75 atlas dispatch=32713850328 region=parlour at=438,817 clearance=22.9
+2026-08-24T09:55:24Z 75 atlas dispatch 1 failed: unplaced leagues chorus,cogchemists,cogmud,cogolf,firm (their PRs unmerged/absent)
+2026-08-24T09:55:24Z 75 atlas dispatch=32714065810 region=parlour at=438,817 clearance=22.9 extra_cities: cogolf@202,270 paintlands + cogmud@536,271 simulations + firm@416,574 commons (reused from open metta PR 20258); chorus@468,829 parlour (party co-creation game); cogchemists@766,277 tabletop (Alchemists board-game adaptation)
