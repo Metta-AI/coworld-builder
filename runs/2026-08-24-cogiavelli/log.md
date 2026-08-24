@@ -24,3 +24,4 @@
 2026-08-24T12:13:14Z 20 phase -> 30 review_round=1
 2026-08-24T12:13:14Z progress phase=20 marker=ci-green-32725516744
 2026-08-24T12:13:14Z heartbeat phase=30
+2026-08-24T12:14:20Z 30 r1 reviewer dispatched (thread sthr_01WsxsqJWyWpwgfioxDqbKh9) over /workspace/build/cogame-cogiavelli @ f6862a3 -> reviews/r1-review.md
