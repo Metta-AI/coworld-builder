@@ -23,3 +23,4 @@
 2026-08-24T19:43:53Z progress phase=20 marker=32758098973
 2026-08-24T19:43:53Z 20 done (CI green 32758098973) -> phase 30
 2026-08-24T19:43:53Z heartbeat phase=30
+2026-08-24T19:44:59Z 30 r1 reviewer dispatched thread=sthr_01AsGZVQwTdaNjgvLv5yJGR8 sha=10564b04 output=reviews/r1-review.md
