@@ -81,3 +81,4 @@
 2026-08-24T14:48:58Z 60 judge dispatched (thread sthr_01XHEnm3N4AwiTdejyaympLU) over VERIFY.md -> reviews/verify-verdict.md
 2026-08-24T14:53:50Z 60 judge returned verify-verdict.md: blocking 0 / BLOCKING 0; all 8 items proven, reconciliation to the digit; phase -> 70
 2026-08-24T14:53:50Z heartbeat phase=70
+2026-08-24T14:55:00Z 70 announce.attempted_at written and pushed before POST
