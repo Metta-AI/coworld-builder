@@ -86,3 +86,5 @@
 2026-08-24T14:55:24Z 70 phase -> 75
 2026-08-24T14:55:24Z progress phase=70 marker=discord-msg-1541460871652581431
 2026-08-24T14:55:24Z heartbeat phase=75
+2026-08-24T14:56:43Z 75 atlas continent=tabletop (port of an existing board game, Avalon Hill Machiavelli)
+2026-08-24T14:56:43Z 75 atlas dispatch=32741804570 region=tabletop at=766,277 clearance=22.9
