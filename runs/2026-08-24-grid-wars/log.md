@@ -39,3 +39,7 @@
 2026-08-24T16:02:50Z heartbeat phase=30
 2026-08-24T16:03:46Z 30 r1 judge dispatched (sthr_015WXtpt4scwHDJyyfFrMmtx) at sha ae1f3ea99eb91acda05d0603847eea242bb8a98b
 2026-08-24T16:03:46Z heartbeat phase=30
+2026-08-24T16:15:13Z 30 r1 judge returned: r1-verdict.md blocking=0 (all 16 findings resolved at ae1f3ea; independent 14-item checklist all PASS)
+2026-08-24T16:15:13Z progress phase=30 marker=r1-verdict.md
+2026-08-24T16:15:13Z 30 phase -> 40
+2026-08-24T16:15:13Z heartbeat phase=40
