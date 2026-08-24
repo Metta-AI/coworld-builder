@@ -7,3 +7,5 @@
 2026-08-24T15:41:35Z progress phase=10 marker=design-r1.md
 2026-08-24T15:42:41Z 20 repo created https://github.com/Metta-AI/cogame-cooperative-hunting (public)
 2026-08-24T15:42:41Z 20 propagate-secrets run=32746456504 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present on repo
+2026-08-24T15:43:51Z 20 builder dispatched round=1 thread=sthr_01NmM3UGaexUzaB6gVnWkCf2 repo=Metta-AI/cogame-cooperative-hunting
+2026-08-24T15:43:51Z heartbeat phase=20
