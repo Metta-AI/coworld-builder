@@ -28,3 +28,7 @@
 2026-08-24T21:21:00Z 30 r1 judge dispatched (fresh context, has not seen r1-fixes.md) sha=ef8e255 output=reviews/r1-verdict.md
 2026-08-24T21:21:00Z progress phase=30 marker=r1-fixes.md
 2026-08-24T21:21:00Z heartbeat phase=30
+2026-08-24T21:55:00Z 30 r1 verdict: blocking=0 (all 15 checklist items pass; 3 advisory residues logged) -> phase 40
+2026-08-24T21:55:00Z progress phase=30 marker=r1-verdict.md
+2026-08-24T21:55:00Z 30 -> 40 phase transition
+2026-08-24T21:55:00Z heartbeat phase=40
