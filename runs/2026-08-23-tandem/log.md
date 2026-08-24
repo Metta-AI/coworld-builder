@@ -38,3 +38,7 @@
 2026-08-24T00:01:49Z progress phase=30 marker=r2-fixes.md
 2026-08-24T00:01:49Z 30 r2 dispatching judge
 2026-08-24T00:01:49Z heartbeat phase=30
+2026-08-24T00:18:58Z 30 r2 judge returned r2-verdict.md: BLOCKING: 0 (first/last lines agree); all findings resolved at ac662b2af8e3802b12dfc5c3e67d19feed3dc8c5
+2026-08-24T00:18:58Z progress phase=30 marker=r2-verdict.md
+2026-08-24T00:18:58Z 30 phase -> 40
+2026-08-24T00:18:58Z heartbeat phase=40

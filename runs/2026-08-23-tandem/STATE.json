@@ -5,7 +5,7 @@
   "slug": "tandem",
   "repo": "https://github.com/Metta-AI/cogame-tandem",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -34,7 +34,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T00:01:49Z",
+  "heartbeat_at": "2026-08-24T00:18:58Z",
   "session_ended_at": null,
   "session_id": null,
   "log": "runs/2026-08-23-tandem/log.md"
