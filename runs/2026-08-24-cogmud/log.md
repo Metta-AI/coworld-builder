@@ -54,3 +54,11 @@
 2026-08-24T05:03:28Z 50 -> 60 phase transition: entering verify
 2026-08-24T05:03:28Z heartbeat phase=60
 2026-08-24T05:04:46Z 60 dispatch verifier thread=sthr_01K8VA9xke9tnZFS3eZgcbH5 (8 checks, 75-min poll bound)
+2026-08-24T05:05:27Z heartbeat phase=60
+2026-08-24T05:21:13Z heartbeat phase=60
+2026-08-24T05:30:41Z heartbeat phase=60
+2026-08-24T05:45:34Z heartbeat phase=60
+2026-08-24T05:47:00Z 60 verifier returned VERIFY.md: 7 TRUE, check 5 FALSE (round 3 log: 1 local 'falling back' hit — strict parseJson EOF; rounds 2 and 4 CLEAN, no platform symptom)
+2026-08-24T05:47:00Z progress phase=60 marker=VERIFY.md
+2026-08-24T05:47:00Z 60 retry check 3/4/5: re-pin to round 4 (latest completed, log clean) — documented retry approach 'different round', attempt 1
+2026-08-24T05:47:00Z heartbeat phase=60

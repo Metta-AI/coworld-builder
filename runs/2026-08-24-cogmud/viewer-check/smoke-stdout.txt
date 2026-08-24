@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1833,"clock":"TURN 1 / 14 · WAITING ON 6","scorebug":"daveey THE SMITHY 0.00 40C 0 items daveey-1 THE CHAPEL 0.00 40C 0 items Gasket THE COPPER KETTLE 0.00 40C 0 items Ratchet CUTPURSE ALLEY 0.00 40C 0 items Rivet THE DOCKS 0.00 40C 0 items Widget WAREHOUSE YARD 0.00 40C 0 items","feed_lines":235}
+scrub readouts: 0%="TURN 1 / 14 · WAITING ON 6"  50%="TURN 8 / 14 · WAITING ON 6"  100%="FINAL · BASELINE (2) 1.85"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -1,0 +1,43 @@
+{
+  "loaded": true,
+  "ms": 1833,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_42773bd0-0a21-4cca-94b2-41cd26b2d6ed/sha256%3A83f70a45599da40dd1afe2e20176a5d32d5c71fee7b655ab0abc38751cad01a7/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F632e1ef6-7d66-4ad6-afd7-67aa2e772f97.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TURN 1 / 14 · WAITING ON 6",
+  "scorebug": "daveey THE SMITHY 0.00 40C 0 items daveey-1 THE CHAPEL 0.00 40C 0 items Gasket THE COPPER KETTLE 0.00 40C 0 items Ratchet CUTPURSE ALLEY 0.00 40C 0 items Rivet THE DOCKS 0.00 40C 0 items Widget WAREHOUSE YARD 0.00 40C 0 items",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 235,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TURN 1 / 14 · WAITING ON 6"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 8 / 14 · WAITING ON 6"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL · BASELINE (2) 1.85"
+    }
+  ],
+  "soak": null,
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
