@@ -13,3 +13,5 @@
 2026-08-24T10:17:59Z progress phase=10 marker=runs/2026-08-24-cogplomacy/design.md
 2026-08-24T10:17:59Z 10 -> 20 phase transition (STATE.phase=20)
 2026-08-24T10:17:59Z heartbeat phase=20
+2026-08-24T10:18:50Z 20 repo created: https://github.com/Metta-AI/cogame-cogplomacy (public)
+2026-08-24T10:18:50Z 20 propagate-secrets run 32716113428 green; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-cogplomacy
