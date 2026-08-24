@@ -47,3 +47,15 @@
 2026-08-24T00:33:49Z progress phase=40 marker=release-run-32676640602
 2026-08-24T00:33:49Z 40 phase -> 50
 2026-08-24T00:33:49Z heartbeat phase=50
+2026-08-24T00:38:19Z 50 note: git-over-HTTPS push to Metta-AI now 403s in this sandbox; publishing coworld-builder commits via GitHub Data API (fast-forward only, never force)
+2026-08-24T00:38:19Z 50 seed 200 lseed_4c5b536a league_50c18e88-ed54-4cd7-be36-4748d79b5a9b
+2026-08-24T00:38:19Z 50 division 200 div_fdb4b69f-5586-4239-87f1-b9afeeb34ce5; settings 200 elo round_robin filler_policy interval=15m (round_scoring_rule=mean per design note)
+2026-08-24T00:38:19Z 50 champion1 submit run 32677188078 ok sub_bf53aef1 tandem-anchor:v1 (daveey, pv 9807948b)
+2026-08-24T00:38:19Z 50 champion2 submit run 32677217291 ok sub_990c7185 tandem-feather:v1 (daveey-1, pv bdc8fd6d, player_name=daveey-1 verified)
+2026-08-24T00:38:19Z 50 policy-versions resolved: anchor=9807948b feather=bdc8fd6d porter=98d8389d mule=47069cde
+2026-08-24T00:38:19Z 50 fillers 200: porter+mule registered, neither champion
+2026-08-24T00:38:19Z 50 unpause 200 paused=false; trigger-round 200 workflow ladder-league_50c18e88
+2026-08-24T00:38:19Z 50 round 1 failed (Temporal RoundWorkflow failed before settling — raced the unpause; fillers were already set); round 2 pending round_6d086d3b, entrant_attributions = both champions
+2026-08-24T00:38:19Z progress phase=50 marker=round_6d086d3b-pending
+2026-08-24T00:38:19Z 50 phase -> 60
+2026-08-24T00:38:19Z heartbeat phase=60

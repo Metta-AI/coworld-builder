@@ -5,7 +5,7 @@
   "slug": "tandem",
   "repo": "https://github.com/Metta-AI/cogame-tandem",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "tandem-porter:v1",
       "tandem-mule:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "98d8389d-2935-41e4-a96a-29c330835822",
+      "47069cde-a3e6-4ccf-a668-9cd29b0cd387"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_50c18e88-ed54-4cd7-be36-4748d79b5a9b",
+    "division": "div_fdb4b69f-5586-4239-87f1-b9afeeb34ce5"
   },
   "verify": {
     "rounds": [],
@@ -39,7 +42,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T00:33:49Z",
+  "heartbeat_at": "2026-08-24T00:38:19Z",
   "session_ended_at": null,
   "session_id": null,
   "log": "runs/2026-08-23-tandem/log.md"
