@@ -5,9 +5,9 @@
   "slug": "cogchemists",
   "repo": "https://github.com/Metta-AI/cogame-cogchemists",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {},
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T06:40:05Z",
+  "heartbeat_at": "2026-08-24T07:41:38Z",
   "session_ended_at": null,
   "session_id": "11fadfc7",
   "log": "runs/2026-08-24-cogchemists/log.md"

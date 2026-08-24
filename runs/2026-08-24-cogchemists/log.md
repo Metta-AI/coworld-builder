@@ -18,3 +18,21 @@
 2026-08-24T06:42:40Z 20 builder thread sthr_01USGCLnjPkAbev6uVCDz1iJ died (API overloaded) before any push; repo still empty; re-dispatching same brief (infra failure, not a CI round)
 2026-08-24T06:42:40Z heartbeat phase=20
 2026-08-24T06:46:26Z 20 builder thread sthr_01Kj7ktE98omn2vis5iNge1y also died immediately (API overloaded); waited 150s; third dispatch attempt
+
+## Phase 20 — build (builder)
+
+- 2026-08-24 07:30Z push f20d2a3 (initial tree, 45 files) — ci.yml run 32701824490 **failure**
+  (`test` job: test_bot's bounded/legal assertion; the quack baseline named symmetric pairs in
+  card-position order while LEGAL MOVES enumerates them lowest-ingredient-first). docker-smoke and
+  wasm-viewer were green on this run.
+- 2026-08-24 07:37Z push 5a82157 (approach change: fix the baseline's spelling rather than relax the
+  assertion; also converted the in-proc `check`s to `doAssert` so a failure names the move) —
+  ci.yml run 32702248279 **success** on main (test, docker-smoke, wasm-viewer all green).
+- Note: the sandbox git credential helper cannot push to Metta-AI/cogame-cogchemists (it pushes fine
+  to coworld-builder and cogame-bullwhip), so both commits went in through the GitHub Git Data API
+  with `gh` — Contents API for the repo's first object, then blobs -> tree -> commit -> ref.
+2026-08-24T07:41:38Z 20 builder returned: ci.yml green on main sha=5a82157c24e0 run=32702248279 (1 red round: quack pair-order in test_bot, fixed in baseline)
+2026-08-24T07:41:38Z 20 note: git push blocked on this repo (no anonymous write access); builder pushed via Git Data API (ecos workaround) — resumes should expect the same
+2026-08-24T07:41:38Z 20 note: template deltas builder applied per design — ci.yml viewer_smoke --soak 15; docker_smoke asserts player containers exit 0
+2026-08-24T07:41:38Z progress phase=20 marker=ci-run-32702248279
+2026-08-24T07:41:38Z 20 phase -> 30 review_round=1
