@@ -586,3 +586,19 @@ the starter after the fact.
   Both cost a review round to repair. Landmarks and invariants in a note should be derivable
   from its own tables; anything statistical should be stated as the greedy/structural invariant
   actually enforced.
+
+## 2026-08-23 bullwhip starter family (bedrock model vs config.model)
+
+- **On hosted Bedrock the `model` config field is ignored BY DESIGN — do not re-flag the
+  mismatch.** In the bullwhip-lineage `llm.nim`, `bedrockModelIds()` supplies its own
+  haiku-first candidate list (`us.anthropic.claude-haiku-4-5-…` leads because hosted Bedrock
+  capacity is shared account-wide); `config.model` (default `claude-sonnet-5`) applies only to
+  the direct-Anthropic transport (`ANTHROPIC_API_KEY`), and `BEDROCK_MODEL` pins a single
+  Bedrock id. Escrow's verifier flagged the startup banner `model=<config.model>` as a
+  mismatch on rounds 8/9 of `league_cc074076-…`; the real bug was the LOG, not the routing.
+  Fixed family-wide 2026-08-23 (bullwhip/escrow/tribunal/rumor/eleusis PR #1 each):
+  `newLlmClient` logs the Bedrock model actually invoked, the entrypoint banner no longer
+  prints `model=`, and the manifest template's `model` description states the
+  direct-Anthropic-only scope. Forks cut from the starter BEFORE this fix still print the
+  misleading banner — verify phases should check which lineage they're reading, and new games
+  should copy the post-fix wording.
