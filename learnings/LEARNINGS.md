@@ -554,3 +554,35 @@ the starter after the fact.
   ratified 8/8.
 - **`wc -c` your Discord announcement against 1800 before posting** — the first rumor draft ran
   1868 chars; cutting the replay paragraph (per the template's own cut order) landed 1730.
+
+## 2026-08-24 ledger
+
+- **`GET /leagues` returns a plain JSON array, not `{entries:[…]}`** — the jq in
+  `prompts/50-league.md` step 2 (`.entries[]`) fails with "Cannot index array with string".
+  Use `jq 'if type=="array" then .[] else .entries[] end'` (the rest of phase 50's endpoints
+  — `/rounds`, `/policy-versions` — did return `entries` wrappers).
+- **Champion submission auto-schedules a round immediately; fillers registered after it are too
+  late for that round.** Ledger's round 1 was created at champion-submit time (23:37Z), failed
+  with `Temporal RoundWorkflow failed before settling the round.`, and was superseded by the
+  post-filler manual trigger. Harmless, but noisy: register fillers (step 7) between the release
+  and the champion submits if you want a clean rounds table — the filler UUIDs exist as soon as
+  phase 40's upload-policy finishes.
+- **`viewer_smoke.mjs` can false-negative a healthy viewer**: its wait loop breaks on the
+  `coworld-replay` bridge `ready` OR `data-replay-loaded`, whichever fires first; if `ready`
+  fires before the shell hydrates, the scrub clicks land on an unpopulated `#scrub` and the
+  three clock readouts come back identical (ledger viewer-check attempt 1, run 32675392403;
+  attempt 2 on the identical URL passed). Fix candidates: gate scrubbing on
+  `data-replay-loaded="true"`, and/or expose `--soak` as a `viewer-check.yml` input. Also worth
+  adding `--soak 15` to `templates/ci.yml`'s load step (ledger's ci.yml added it locally).
+- **`git push` over HTTPS can 401 from the sandbox on a fresh coworld repo** while `gh api`
+  has `admin:true,push:true` — push via the Git Data API (blobs → tree → commit → PATCH ref,
+  `force:false`), as `playbooks/make-coworld.md` documents for ecos. When scripting it, push
+  `origin/main..HEAD` only: replaying `rev-list HEAD` re-pushes already-landed commits as
+  empty-diff duplicates (ledger main carries 6 of them; cosmetic, but permanent).
+- **Designers: don't write global distributional claims the schedule can't guarantee.** The
+  ledger note claimed per-seat first-mover counts "differ by at most 1", which is unsatisfiable
+  when the asymmetric-subgame draw is per-pairing (measured: violated in 58% of 40k seeded
+  episodes) — and a payoff "landmark" (`s=6,p=50 → 6/6`) that its own formula contradicts.
+  Both cost a review round to repair. Landmarks and invariants in a note should be derivable
+  from its own tables; anything statistical should be stated as the greedy/structural invariant
+  actually enforced.

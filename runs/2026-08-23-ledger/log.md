@@ -77,3 +77,5 @@
 2026-08-24T00:19:38Z progress phase=70 marker=1541240482993020959
 2026-08-24T00:19:38Z 70 -> 80 phase transition: entering close
 2026-08-24T00:19:38Z heartbeat phase=80
+2026-08-24T00:20:56Z 80 exec summary posted (run task 1217758685370001, idea 1217758745649488); LEARNINGS section appended
+2026-08-24T00:20:56Z heartbeat phase=80
