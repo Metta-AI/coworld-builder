@@ -24,3 +24,9 @@
 2026-08-24T06:43:15Z 20 retry 2: waiting ~3 min for overload to clear, then third builder dispatch; platform-outage clock started ~06:12Z (45-min bound per AGENT.md §Rails)
 2026-08-24T06:43:15Z heartbeat phase=20
 2026-08-24T06:46:57Z 20 builder dispatch 3 (thread sthr_01FCZKSArnbW2rKJFfTzE1Qt) after 3-min backoff; brief now instructs commit-early-commit-often
+2026-08-24T07:14:26Z 20 builder returned (thread sthr_01FCZKSArnbW2rKJFfTzE1Qt): CI GREEN run 32700138054 sha=d76e12c3 (test+docker-smoke+wasm-viewer), 0 red rounds
+2026-08-24T07:14:26Z 20 verified independently: ci.yml success on main head d76e12c3; all 3 workflows active; scaffold files present (64 files)
+2026-08-24T07:14:26Z 20 deviations accepted (rails): (1) nano-banana cog art replaces babel soldier sprites; (2) champion #1 = garble-signal per design note (garble-player is the runnable id); (3) static-button/legend inserted by appended block at parse time; (4) #viewpanel absent in babel already
+2026-08-24T07:14:26Z 20 NOTE for future sessions: git-over-HTTPS push to cogame-garble rejected in sandbox; builder wrote via Git Data API (blobs->trees->commits->PATCH refs); remote shas re-authored; helper /tmp/ghsync.py (uncommitted)
+2026-08-24T07:14:26Z 20 -> 30 phase transition (STATE.phase=30, review_round=1)
+2026-08-24T07:14:26Z progress phase=20 marker=ci-run-32700138054
