@@ -63,8 +63,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T20:03:06Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-24T20:05:35Z",
+  "session_ended_at": "2026-08-24T20:05:35Z",
   "session_id": "eebc5410",
   "log": "runs/2026-08-24-matrix-games/log.md"
 }

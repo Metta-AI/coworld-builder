@@ -48,7 +48,8 @@ curl -sS "$BASE/leagues?limit=200" "${AUTH[@]}" \
 
 Match on **`game.coworld_name`**, not on the league name. `?name=` style filters are unreliable
 here — fetch and filter client-side. **`GET /leagues` returns a bare array** (observed 2026-08-22),
-unlike `/rounds` and `/policy-versions` which wrap in `{entries:…}` — handle both shapes.
+and by 2026-08-24 **`/rounds` and `/policy-versions` return bare arrays too** (they used to wrap in
+`{entries:…}`) — always handle both shapes: `jq 'if type=="array" then . else .entries end'`.
 
 ## 3. Divisions
 
@@ -84,11 +85,13 @@ curl -sS -X POST "$BASE/leagues/$L/settings" "${AUTH[@]}" "${ELEV[@]}" \
 ```bash
 # The name= filter is SILENTLY IGNORED. Fetch, then filter client-side.
 curl -sS "$BASE/policy-versions?limit=200" "${AUTH[@]}" \
- | jq -r '.entries[] | select(.policy_name|startswith("<slug>-"))
+ | jq -r 'if type=="array" then . else .entries end | .[]
+          | select(.policy_name|startswith("<slug>-"))
           | [.policy_name, .policy_version_id, .player_name] | @tsv'
 ```
 
-List key: `entries`. Row fields used: **`policy_name`**, **`policy_version_id`**, **`player_name`**.
+List key: `entries` — **or a bare array** (observed 2026-08-24; use the dual-shape jq above).
+Row fields used: **`policy_name`**, **`policy_version_id`**, **`player_name`**.
 
 **This is the only source of policy-version UUIDs.** `release-result.json.policies[]` reports
 `policy_version_id: null` for every policy — `coworld upload-policy` prints only
