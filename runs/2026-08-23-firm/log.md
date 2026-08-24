@@ -19,3 +19,8 @@
 2026-08-23T22:16:09Z 20 dispatch builder brief=implement design note, drive ci.yml green on main
 2026-08-23T22:16:09Z heartbeat phase=20
 2026-08-24T01:19:27Z 00 resume at phase 20 attempt=1 session=4cd6933a
+2026-08-24T01:20:51Z 20 builder work found complete on resume: 4 commits on main, ci.yml run 32672093025 success at 10fbf896
+2026-08-24T01:20:51Z 20 exit checks passed: placeholders clean, exec bits set, 3 workflows parse+inputs, release/submit artifacts, champion#2 player field, num_agents=5 everywhere, static-replay-viewer bundle
+2026-08-24T01:20:51Z progress phase=20 marker=32672093025
+2026-08-24T01:20:51Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-24T01:20:51Z heartbeat phase=30
