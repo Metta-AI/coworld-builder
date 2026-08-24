@@ -14,3 +14,4 @@
 2026-08-24T10:44:10Z 10 design accepted round 1; phase -> 20
 2026-08-24T10:44:10Z progress phase=10 marker=runs/2026-08-24-cogiavelli/design.md
 2026-08-24T10:44:30Z 20 repo created https://github.com/Metta-AI/cogame-cogiavelli (public); propagate-secrets run 32718249631 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-24T10:47:30Z 20 builder dispatched (thread sthr_011kKtRMq6Nxxo5ePiZbYwb5) — implement design.md, drive ci.yml green on main
