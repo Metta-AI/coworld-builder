@@ -11,3 +11,6 @@
 2026-08-24T04:21:51Z 20 dispatch builder brief=implement design.md round 1
 2026-08-24T04:23:01Z heartbeat phase=20
 2026-08-24T07:35:52Z 00 resume at phase 20 attempt=1 session=25f4a313
+2026-08-24T07:37:20Z 20 done: CI green run=32692450898 sha=8777d56 on main; exit-criteria checks all pass (placeholders clean, exec bits, 3 workflows parse, inputs+artifacts present, champion#2 player id, 2 LLM + 2 scripted policies)
+2026-08-24T07:37:20Z 20 phase -> 30
+2026-08-24T07:37:20Z progress phase=20 marker=32692450898
