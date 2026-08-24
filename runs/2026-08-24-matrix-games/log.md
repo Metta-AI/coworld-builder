@@ -95,3 +95,7 @@
 2026-08-24T19:57:17Z 75 atlas continent=commons reason=mixed-motive matrix family (PD/chicken/stag-hunt/coordination; only RWS zero-sum)
 2026-08-24T19:57:17Z 75 atlas dispatch=32771101898 region=commons at=416,574 clearance=22.9
 2026-08-24T19:57:17Z heartbeat phase=75
+2026-08-24T20:01:06Z 75 atlas dispatch 1 (32771101898) failed: unplaced leagues chorus cogchemists cogiavelli cogmud cogolf cogplomacy firm garble grid-wars
+2026-08-24T20:01:06Z 75 atlas placed-for-others: firm=commons(440,571) chorus=parlour(438,817) cogchemists=parlour(441,793) cogmud=parlour(456,832) garble=parlour(477,823) cogiavelli=tabletop(766,277) cogplomacy=tabletop(790,280) cogolf=paintlands(202,270) grid-wars=paintlands(193,249)
+2026-08-24T20:01:06Z 75 atlas dispatch=32771464097 region=commons at=416,574 clearance=22.9 extra_cities=9
+2026-08-24T20:01:06Z heartbeat phase=75
