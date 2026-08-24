@@ -13,7 +13,7 @@ Owner: coordinator. Discord, **not** Slack.
 ## Procedure
 
 0. **Resume guard — run this before composing anything.** If `STATE.announce.discord_message_id`
-   is set, the run has already announced: do nothing, go to phase 80. If
+   is set, the run has already announced: do nothing, go to phase 75. If
    `STATE.announce.attempted_at` is set but the id is **not**, a previous session died between the
    POST and the STATE write. **Never post blind in that case** — search the channel first and
    adopt the id if the message is already there:
@@ -25,7 +25,7 @@ Owner: coordinator. Discord, **not** Slack.
    ```
    A row whose `content` contains this run's play link `https://softmax.com/<slug>` **is** our
    message: record its `.id` in STATE, log `<UTC> 70 announce adopted existing msg=<id>`, run
-   step 4b on it (older posts may still carry embeds), and go to phase 80. Only if the search comes back empty (widen to `limit=100` once) may you post.
+   step 4b on it (older posts may still carry embeds), and go to phase 75. Only if the search comes back empty (widen to `limit=100` once) may you post.
 1. Compose from `templates/announce.md`: name, one sentence on what the game is, one sentence on
    what makes it watchable, the two champions and their current ranks, the play link
    `https://softmax.com/<slug>`, and the repo link. Keep it ≤ 1800 characters (the hard limit in `templates/announce.md`).
@@ -68,7 +68,7 @@ HTTP 200 from the POST and a non-empty `.id`, recorded in STATE, and the message
 ## Writes
 
 - STATE: `announce.attempted_at` (pushed **before** the POST), `announce.discord_message_id`
-  (pushed immediately after the 200), `phase: "80"`, `heartbeat_at`.
+  (pushed immediately after the 200), `phase: "75"`, `heartbeat_at`.
 - `log.md`: `<UTC> 70 announce msg=<id>` (plus `embeds-suppressed` if step 4b had to PATCH).
 - Asana: complete the phase-70 subtask; comment with the message id and the posted text.
 

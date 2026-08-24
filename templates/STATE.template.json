@@ -33,6 +33,17 @@
     "attempted_at": null,
     "discord_message_id": ""
   },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
   "blocked": null,
   "heartbeat_at": "",
   "session_ended_at": null,

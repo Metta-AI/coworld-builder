@@ -47,6 +47,8 @@ Phases (SPEC §Phases). The current phase is the first unchecked line.
                       fillers set BEFORE the first trigger-round
 - [ ] 60 verify     — runs/<run>/VERIFY.md; every line of SPEC §Definition of done fetched
 - [ ] 70 announce   — posted in Discord #coworlds; message id in STATE
+- [ ] 75 atlas      — one PR against Metta-AI/metta placing the coworld on
+                      softmax.com/atlas; auto-merge armed
 - [ ] 80 close      — executive summary here and on the idea task; LEARNINGS entry;
                       this task Done, idea task completed
 
@@ -85,6 +87,7 @@ Rules (`prompts/00-claim.md` step 2, `AGENT.md` §STATE, log, heartbeat discipli
 
 ## Subtasks
 
-Phase 00 creates one subtask per phase, titled `<n> <name>` (`10 design`, `20 build`, …),
+Phase 00 creates one subtask per phase, titled `<n> <name>` (`10 design`, `20 build`, … `75
+atlas`, `80 close`),
 unassigned, and completes each one as its phase finishes. They are progress reporting for
 humans; the checklist above and `STATE.json.phase` are the machine-readable truth.

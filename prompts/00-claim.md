@@ -81,7 +81,7 @@ just a run you do not touch.
      `heartbeat_at`, and **adopt exactly one per heartbeat** — never carry two runs forward in a
      single session. Log the ones you did not adopt by gid; the next heartbeat takes the next.
 3. Else list *Blocked* tasks. For each, identify **the human subtask** — never "a completed
-   subtask": every run task carries eight phase subtasks (10…80) that phase 80 completes as the
+   subtask": every run task carries nine phase subtasks (10…80) that phase 80 completes as the
    run progresses, so a completed phase subtask means nothing here.
    1. Read `runs/<run>/STATE.json` and take **`STATE.blocked.subtask`** (the gid phase 90
       recorded at `prompts/90-blocked.md` step 1). That is the human subtask.
@@ -177,7 +177,7 @@ just a run you do not touch.
       Create nothing else, and **exit**. Never delete the other claim.
    8. Create the run task in *Running* from `templates/run-task.md`:
       name `<slug> — coworld run <run>`, notes = the idea text verbatim + a link to the idea task.
-      Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 80), unassigned, incomplete.
+      Create **one subtask per phase** (10, 20, 30, 40, 50, 60, 70, 75, 80), unassigned, incomplete.
    9. Write `runs/<run>/STATE.json` from `templates/STATE.template.json` with `phase: "10"`,
       `phase_attempts: {}`, `blocked: null`, `heartbeat_at` = now, `session_ended_at: null`, and
       create `runs/<run>/log.md`.
@@ -230,7 +230,8 @@ create nothing, write nothing, and do not retry the push.
    **5.0a Phase-drift repair — a read-only scan done BEFORE the 5.0 step-2 write, folded into
    that single write.** Scan the `log.md` lines newer than the **previous** session's `00 claim`
    / `00 resume` line for phase tags, using exactly this grammar: a line starting
-   `<UTC> (\d\d) ` or containing `phase=(\d\d)`. **Consider only tags `10`…`80`.** Ignore `00`
+   `<UTC> (\d\d) ` or containing `phase=(\d\d)`. **Consider only tags `10`…`80`** (`75`, the atlas
+   phase, is one of them). Ignore `00`
    (heartbeat/claim/resume lines) and **`90`** (`90 blocked …` lines are an outcome, not a phase —
    treating them as one re-enters 90 on every unblock-resume and re-blocks the run forever).
    Let `<new>` be the highest such tag. Only if `<new>` is **greater** than `STATE.phase` (this
@@ -262,6 +263,7 @@ create nothing, write nothing, and do not retry the push.
      | 50 | a new league, division, submission, or filler registration id |
      | 60 | a new completed round id, or a check that turned TRUE in `VERIFY.md` |
      | 70 | `announce.attempted_at` written, or the message id adopted |
+     | 75 | an atlas dispatch run id, or the atlas PR url |
 
      If such a line exists, the last session progressed: set
      `STATE.phase_attempts[<STATE.phase>] = 0` and log
@@ -316,7 +318,7 @@ shape and gids in `playbooks/observatory-api.md` §Non-Observatory calls and `fl
 
 ## Writes
 
-- Asana: run task (+ 8 phase subtasks), section *Running*, `heartbeat_at` (custom field
+- Asana: run task (+ 9 phase subtasks), section *Running*, `heartbeat_at` (custom field
   `1217748424048134`); one comment on the idea. On a SKIP: one
   `skipped by coworld-builder: <reason>` comment on the idea task and one Fleet-section card
   (`1217747860605582`) assigned to `1209016834701578`, titled `SKIPPED <idea title>: <reason>`,
