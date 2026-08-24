@@ -26,3 +26,4 @@
 2026-08-24T19:44:59Z 30 r1 reviewer dispatched thread=sthr_01AsGZVQwTdaNjgvLv5yJGR8 sha=10564b04 output=reviews/r1-review.md
 2026-08-24T20:04:30Z 30 r1 review in (25 findings: B1-B4 blocking, N1-N20+N13b advisory) file=reviews/r1-review.md
 2026-08-24T20:04:30Z progress phase=30 marker=r1-review.md
+2026-08-24T20:05:04Z 30 r1 fixer dispatched thread=sthr_01BhWe3byg6rCggTC4ETQVns output=reviews/r1-fixes.md
