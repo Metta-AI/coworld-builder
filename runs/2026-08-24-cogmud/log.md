@@ -37,3 +37,8 @@
 2026-08-24T04:46:38Z 30 -> 40 phase transition: review loop complete in 1 round
 2026-08-24T04:46:38Z heartbeat phase=40
 2026-08-24T04:47:15Z 40 dispatch builder (release chain) thread=sthr_013QtbLt54V1C9gALtVixjEa
+2026-08-24T04:58:31Z 40 release dispatch v0.1.0 run=32691323905 step_failed=null decision=accepted (canonical:true, certified, secret_put:true, 4 policies v1, champion2 owned by ply_bac48eb1)
+2026-08-24T04:58:31Z 40 release-result.json persisted to run dir (verified: ok/canonical/certified/liveness-skipped-static)
+2026-08-24T04:58:31Z progress phase=40 marker=release-run-32691323905
+2026-08-24T04:58:31Z 40 -> 50 phase transition: entering league setup
+2026-08-24T04:58:31Z heartbeat phase=50
