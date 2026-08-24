@@ -19,3 +19,5 @@
 2026-08-24T12:10:44Z progress phase=20 marker=ci run 32725270946 green
 2026-08-24T12:10:44Z 20 phase -> 30 review_round=1
 2026-08-24T12:10:44Z heartbeat phase=30
+2026-08-24T12:11:29Z 30 r1 reviewer dispatched (sthr_01T8Ut4oBK8w9dX8xhsvhfJP) at sha dbffed23da0d4f001151d6c7a3a2c0654fcb6955
+2026-08-24T12:11:29Z heartbeat phase=30
