@@ -11,3 +11,6 @@
 2026-08-24T14:58:42Z 20 ruling: compose service name 'game' -> {{GAME_IMAGE}} per design note (hyphenated-slug placeholder derivation unspecified; matches certified cogame-moba/cogame-factorio); overrides brief-template's '<slug>' service name
 2026-08-24T14:58:42Z 20 builder dispatched round 1
 2026-08-24T14:58:42Z heartbeat phase=20
+2026-08-24T16:04:55Z 20 builder thread died (API overloaded) after pushing 599f4ad; ci run 32748546759 in_progress — re-dispatching builder to watch and iterate (retry uses same approach: thread death was infra, not a build failure)
+2026-08-24T16:04:55Z progress phase=20 marker=ci-run-32748546759
+2026-08-24T16:04:55Z heartbeat phase=20
