@@ -60,3 +60,4 @@
 2026-08-24T13:29:57Z progress phase=50 marker=round_31429ce9-e728-407e-91ef-12fd049c9f1d
 2026-08-24T13:29:57Z 50 -> 60 phase transition (STATE.phase=60)
 2026-08-24T13:29:57Z heartbeat phase=60
+2026-08-24T13:30:59Z 60 verifier dispatched (thread sthr_01ExNHmXLMTNcF9GGnjdWx9o) -> VERIFY.md + viewer-check/
