@@ -42,3 +42,6 @@
 2026-08-24T05:16:41Z 60 verifier attempt 2 returned: all 8 checks TRUE; verified on round 9 (both-v3 champions, 16/18 LLM, breaches 1/7, killer test present); round 8 corroborates 18/18 LLM; viewer-check 32692217118 loaded=true clocks differ; 3 observations recorded (hole-1 cold-start client fallback, 2 external players joined, transient replay_url-null anomaly resolved)
 2026-08-24T05:16:41Z progress phase=60 marker=VERIFY.md all-8-true round9
 2026-08-24T05:16:41Z 60 dispatch judge for definition-of-done adjudication
+2026-08-24T05:26:27Z 60 judge returned verify-verdict.md: blocking=0/BLOCKING=0 (independent re-fetch of all 8; hole-1 cold-start substitution noted non-blocking)
+2026-08-24T05:26:27Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-24T05:26:27Z heartbeat phase=70
