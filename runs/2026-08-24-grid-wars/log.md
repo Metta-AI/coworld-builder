@@ -95,3 +95,7 @@
 2026-08-24T17:17:54Z 75 atlas continent=paintlands (zero-sum Core-Wars-style territory combat); slug live in /api/coworlds (episodes_7d=4)
 2026-08-24T17:17:54Z 75 atlas dispatch=32755783022 region=paintlands at=202,270 clearance=34.1
 2026-08-24T17:17:54Z heartbeat phase=75
+2026-08-24T17:21:49Z 75 atlas dispatch 1 (32755783022) failed: unplaced leagues chorus,cogchemists,cogiavelli,cogmud,cogolf,cogplomacy,firm,garble — placing them via extra_cities
+2026-08-24T17:21:49Z 75 atlas placed-for-others: chorus Commons(416,574), firm Commons(440,571), cogchemists Tabletop(766,277), cogiavelli Tabletop(754,307), cogplomacy Tabletop(790,280), cogmud Simulations(536,271), cogolf Paintlands(193,249), garble Parlour(438,817)
+2026-08-24T17:21:49Z 75 atlas dispatch=32756151731 region=paintlands at=202,270 clearance=34.1 (retry 2 of 3, fix=extra_cities)
+2026-08-24T17:21:49Z heartbeat phase=75
