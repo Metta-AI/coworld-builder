@@ -28,3 +28,5 @@
 2026-08-24T12:30:41Z heartbeat phase=30
 2026-08-24T12:31:28Z 30 r1 fixer dispatched (sthr_01BXfapaxhc6zkr7cz53TREx)
 2026-08-24T12:31:28Z heartbeat phase=30
+2026-08-24T15:42:17Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
+2026-08-24T15:42:17Z 00 resume at phase 30 attempt=1 session=d1e84720
