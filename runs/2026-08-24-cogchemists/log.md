@@ -39,3 +39,7 @@
 2026-08-24T07:57:12Z 30 r1 reviewer returned r1-review.md: 14 findings (1 blocking B1 scripted-flag on LLM fallback; 13 non-blocking)
 2026-08-24T07:57:12Z 30 r1 dispatching fixer
 2026-08-24T07:57:12Z heartbeat phase=30
+2026-08-24T08:28:04Z 30 r1 fixer returned r1-fixes.md: 9 fixed (one commit each), 5 refuted with evidence; ci green sha=11aa1a1d819f run=32705845919
+2026-08-24T08:28:04Z progress phase=30 marker=r1-fixes.md
+2026-08-24T08:28:04Z 30 r1 dispatching judge on sha 11aa1a1d819f
+2026-08-24T08:28:04Z heartbeat phase=30
