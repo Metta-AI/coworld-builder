@@ -77,3 +77,7 @@
 2026-08-24T17:06:00Z 60 check7 TRUE release-result.json (committed) certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
 2026-08-24T17:06:00Z 60 check8 TRUE viewer-check run 32754228468 loaded=true ms=2013 clocks 0%=R1/5 SUBMITTING 50%=R3/5 TICK 198/400 100%=R5/5 FINAL; artifact committed
 2026-08-24T17:06:00Z 60 VERIFY.md written: 8/8 TRUE
+2026-08-24T17:07:49Z 60 verifier returned: VERIFY.md all 8 checks TRUE (commit a647dda); rounds 2,3,4 completed; both champs ranked (daveey-1 1030.5, daveey 969.5); viewer-check run 32754228468 loaded=true, 3 clocks differ
+2026-08-24T17:07:49Z progress phase=60 marker=VERIFY.md all checks TRUE
+2026-08-24T17:07:49Z 60 judge dispatch next to adjudicate VERIFY.md
+2026-08-24T17:07:49Z heartbeat phase=60
