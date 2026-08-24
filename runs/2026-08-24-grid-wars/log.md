@@ -88,3 +88,7 @@
 2026-08-24T17:15:05Z 60 phase -> 70
 2026-08-24T17:15:05Z heartbeat phase=70
 2026-08-24T17:16:13Z 70 announce attempted_at written before POST
+2026-08-24T17:16:53Z 70 announce msg=1541496430525546598 (flags=4, embeds=0; 1838 chars — 38 over the templates 1800 soft cap, under Discord 2000, posted fine; noting for LEARNINGS)
+2026-08-24T17:16:53Z progress phase=70 marker=announce.discord_message_id=1541496430525546598
+2026-08-24T17:16:53Z 70 phase -> 75
+2026-08-24T17:16:53Z heartbeat phase=75
