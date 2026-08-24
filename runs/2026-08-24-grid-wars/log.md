@@ -37,3 +37,5 @@
 2026-08-24T16:02:50Z progress phase=30 marker=r1-fixes.md
 2026-08-24T16:02:50Z 30 r1 judge dispatch next at sha ae1f3ea99eb91acda05d0603847eea242bb8a98b
 2026-08-24T16:02:50Z heartbeat phase=30
+2026-08-24T16:03:46Z 30 r1 judge dispatched (sthr_015WXtpt4scwHDJyyfFrMmtx) at sha ae1f3ea99eb91acda05d0603847eea242bb8a98b
+2026-08-24T16:03:46Z heartbeat phase=30
