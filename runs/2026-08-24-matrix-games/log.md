@@ -47,3 +47,6 @@
 2026-08-24T18:40:17Z 30 coordinator amended design note chicken clause (b) to per-resolution form (F25) — runs/design.md + repo docs/plans copy, repo commit 1e4da29
 2026-08-24T18:40:17Z progress phase=30 marker=r2-fixes.md
 2026-08-24T18:40:17Z heartbeat phase=30
+2026-08-24T19:00:11Z 30 judge returned r2-verdict.md BLOCKING: 0 (markers agree; r1 blocking item closed; all 15 checklist items pass at 1e4da29)
+2026-08-24T19:00:11Z progress phase=30 marker=r2-verdict.md
+2026-08-24T19:00:11Z 30 -> 40 phase transition (STATE.phase=40)
