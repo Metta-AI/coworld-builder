@@ -46,3 +46,9 @@
 2026-08-24T14:01:51Z 50 seed 200 lseed_407bfa49; league L=league_5ba37909-d5ac-4ba5-8c51-842326b999e4
 2026-08-24T14:01:51Z 50 division 200 D=div_827c9f85-5ef5-4999-b89f-4ea572d4c48f; settings 200 (round_robin, filler_policy, elo mean, interval 15m)
 2026-08-24T14:01:51Z heartbeat phase=50
+2026-08-24T14:07:02Z 50 champion1 submit run 32736199713 ok=true (medici:v2, daveey); champion2 submit run 32736264052 ok=true (borgia:v2, daveey-1)
+2026-08-24T14:07:02Z 50 filler-policies 200: condottiere:v2 bddc599d-011d-49f3-b23e-4deb83f6f707, banker:v2 4ce9c9d1-9297-4639-8f77-e7c13ef919c7
+2026-08-24T14:07:02Z 50 unpaused 200; trigger-round 200; round 1 failed (auto-scheduled race, pre-trigger), round 2 pending with both champions in entrant_attributions
+2026-08-24T14:07:02Z 50 phase -> 60
+2026-08-24T14:07:02Z progress phase=50 marker=round-2-pending-league_5ba37909
+2026-08-24T14:07:02Z heartbeat phase=60
