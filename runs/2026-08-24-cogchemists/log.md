@@ -46,3 +46,5 @@
 2026-08-24T08:39:51Z 30 r1 judge returned r1-verdict.md: blocking 0 / BLOCKING 0 — B1 fixed at 11aa1a1d819f, all refutations confirmed, full checklist pass
 2026-08-24T08:39:51Z progress phase=30 marker=r1-verdict.md
 2026-08-24T08:39:51Z 30 phase -> 40
+2026-08-24T08:40:54Z 40 builder dispatched for release (version 0.1.0 first, policies from tools/ci/policies.json)
+2026-08-24T08:40:54Z heartbeat phase=40
