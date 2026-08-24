@@ -42,3 +42,5 @@
 2026-08-24T13:15:37Z 40 retry decision: bump-only re-dispatch v0.1.1 (dispatch 2/3) — builder thread sthr_01GpEbtHAajFSwqgNLsHbeGg re-tasked
 2026-08-24T13:15:37Z progress phase=40 marker=release-run-32730674425
 2026-08-24T13:15:37Z heartbeat phase=40
+2026-08-24T13:23:57Z 40 dispatch 2: v0.1.1 run 32731635069 SUCCESS — ok/canonical/secret_put true, certify 10/10 static-skip, hosted smoke passed, policies :v2 (opportunist:v2 ply_bac48eb1); release-result hosted_certification="certifying" (read-time snapshot) but live coworld status = certified (all 10 steps); 0.1.0 demoted to non-canonical, 0.1.1 sole canonical
+2026-08-24T13:23:57Z 40 rails decision: accept 0.1.1 (backend state certified; snapshot string lag is not a failure); dispatch 3 held in reserve; evidence file hosted-certification-0.1.1.txt requested from builder
