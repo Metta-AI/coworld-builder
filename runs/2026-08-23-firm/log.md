@@ -24,3 +24,4 @@
 2026-08-24T01:20:51Z progress phase=20 marker=32672093025
 2026-08-24T01:20:51Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-24T01:20:51Z heartbeat phase=30
+2026-08-24T01:21:24Z 30 dispatch reviewer round=1 repo-checkout=/tmp/cogame-firm sha=10fbf896 -> reviews/r1-review.md
