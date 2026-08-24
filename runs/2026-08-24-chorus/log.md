@@ -15,3 +15,5 @@
 2026-08-24T07:37:20Z 20 phase -> 30
 2026-08-24T07:37:20Z progress phase=20 marker=32692450898
 2026-08-24T07:37:42Z 30 r1 dispatch reviewer brief=trace repo@8777d56 vs design.md -> reviews/r1-review.md
+2026-08-24T07:53:38Z 30 r1 reviewer returned reviews/r1-review.md (1 blocking F1 scripted-flag provenance; 9 advisory; 4 could-not-determine)
+2026-08-24T07:53:38Z heartbeat phase=30
