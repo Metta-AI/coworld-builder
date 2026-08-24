@@ -81,3 +81,5 @@
 2026-08-24T17:07:49Z progress phase=60 marker=VERIFY.md all checks TRUE
 2026-08-24T17:07:49Z 60 judge dispatch next to adjudicate VERIFY.md
 2026-08-24T17:07:49Z heartbeat phase=60
+2026-08-24T17:08:20Z 60 judge dispatched (sthr_01QLHo5A2w8GAo4NugCx4vxj) to adjudicate VERIFY.md against SPEC definition of done
+2026-08-24T17:08:20Z heartbeat phase=60
