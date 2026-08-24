@@ -85,3 +85,7 @@
 2026-08-24T14:12:14Z progress phase=60 marker=VERIFY.md-8of8-true
 2026-08-24T14:12:14Z heartbeat phase=60
 2026-08-24T14:12:39Z 60 judge dispatched (thread sthr_01EPMV4Q2CDZUAxiK5kFAhEq) -> reviews/r-verify-verdict.md
+2026-08-24T14:18:12Z 60 judge returned (thread sthr_01EPMV4Q2CDZUAxiK5kFAhEq): blocking 0 / BLOCKING 0 -> reviews/r-verify-verdict.md; all 8 DoD items independently re-verified
+2026-08-24T14:18:12Z progress phase=60 marker=reviews/r-verify-verdict.md
+2026-08-24T14:18:12Z 60 -> 70 phase transition (STATE.phase=70)
+2026-08-24T14:18:12Z heartbeat phase=70
