@@ -15,3 +15,5 @@
 2026-08-24T06:41:12Z 20 propagate-secrets run 32698304106 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
 2026-08-24T06:41:12Z 20 dispatching builder
 2026-08-24T06:41:12Z heartbeat phase=20
+2026-08-24T06:42:40Z 20 builder thread sthr_01USGCLnjPkAbev6uVCDz1iJ died (API overloaded) before any push; repo still empty; re-dispatching same brief (infra failure, not a CI round)
+2026-08-24T06:42:40Z heartbeat phase=20
