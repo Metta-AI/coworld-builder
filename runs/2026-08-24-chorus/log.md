@@ -9,3 +9,4 @@
 2026-08-24T04:21:51Z 20 repo Metta-AI/cogame-chorus created public; propagate-secrets run 32689702342 green; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on repo
 2026-08-24T04:21:51Z 20 rails: art = bullwhip data/ sprites as seat portraits per design note §Packaging (voices read via lane labels + seat colors, not sprite kits; real starter art, no placeholders) — nano-banana not required for this game
 2026-08-24T04:21:51Z 20 dispatch builder brief=implement design.md round 1
+2026-08-24T04:23:01Z heartbeat phase=20
