@@ -38,3 +38,8 @@
 2026-08-24T17:35:23Z 30 round 2 begins (review_round=2); reviewer dispatched (target sha af5c704, scope: delta since r1 + the r1 verdict's blocking item)
 2026-08-24T17:35:23Z progress phase=30 marker=r1-verdict.md
 2026-08-24T17:35:23Z heartbeat phase=30
+2026-08-24T17:52:36Z 30 reviewer returned r2-review.md (36 findings: 17 match, 11 gap, 8 unclear); r1 blocking item CONFIRMED at af5c704
+2026-08-24T17:52:36Z 30 ruling: checklist item 15 (added 4709caa 17:23Z, mid-run) applies as: update viewer_smoke.mjs to current template + --strict-text-bounds in ci.yml (fixed arena, canvas text total=0 so never_inside trivially 0) + worst-case model-text fixture step (say/notes at caps on all 8 seats) since the viewer draws LLM text in DOM chrome
+2026-08-24T17:52:36Z 30 fixer dispatched round 2
+2026-08-24T17:52:36Z progress phase=30 marker=r2-review.md
+2026-08-24T17:52:36Z heartbeat phase=30
