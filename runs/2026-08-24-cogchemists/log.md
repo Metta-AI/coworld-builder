@@ -48,3 +48,8 @@
 2026-08-24T08:39:51Z 30 phase -> 40
 2026-08-24T08:40:54Z 40 builder dispatched for release (version 0.1.0 first, policies from tools/ci/policies.json)
 2026-08-24T08:40:54Z heartbeat phase=40
+2026-08-24T08:50:20Z 40 dispatch 1 version=0.1.0 run=32707574009 step_failed=null ok/canonical/secret_put all true, but hosted_certification=failed (cert job 404 on POST /v2/episode-requests at smoke-episode; every other coworld today is certified) — decision: bump version, re-dispatch
+2026-08-24T09:02:18Z 40 dispatch 2 version=0.1.1 run=32708476022 step_failed=null ok=true canonical=true certify.ok=true liveness=skipped(static) 4 policies :v2 secret_put=true hosted_certification=certified — accepted
+2026-08-24T09:03:23Z 40 builder returned: release 0.1.1 accepted run=32708476022 cow_id=cow_a9d9a26c-cf74-403a-85f9-542ca3bd61c9 hosted-cert=certified; release-result.json persisted
+2026-08-24T09:03:23Z progress phase=40 marker=release-run-32708476022
+2026-08-24T09:03:23Z 40 phase -> 50
