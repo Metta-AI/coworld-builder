@@ -9,3 +9,4 @@
 2026-08-24T15:42:41Z 20 propagate-secrets run=32746456504 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present on repo
 2026-08-24T15:43:51Z 20 builder dispatched round=1 thread=sthr_01NmM3UGaexUzaB6gVnWkCf2 repo=Metta-AI/cogame-cooperative-hunting
 2026-08-24T15:43:51Z heartbeat phase=20
+2026-08-24T16:04:23Z 20 builder thread sthr_01NmM3UGaexUzaB6gVnWkCf2 died: API temporarily overloaded; repo still empty — re-dispatching same brief (infra retry 1)
