@@ -55,3 +55,5 @@
 2026-08-24T14:08:04Z 60 verifier dispatched (thread sthr_01XXy4myULCACymDxoPqoQBV) -> VERIFY.md; 75-min poll bound, viewer-check via CI
 2026-08-24T14:08:27Z heartbeat phase=60
 2026-08-24T14:08:27Z 60 poll 1: rounds completed=[2]; round 1 failed "Temporal RoundWorkflow failed before settling the round."
+2026-08-24T14:14:41Z heartbeat phase=60
+2026-08-24T14:14:41Z 60 poll 2: completed=[2]; awaiting round 3 (interval 15m from 14:04)
