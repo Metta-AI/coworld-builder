@@ -97,3 +97,8 @@
 2026-08-24T09:49:25Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20263 status=pr_open (placed cogchemists + 5 unplaced leagues: chorus, garble, cogmud, cogolf, firm)
 2026-08-24T09:49:25Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20263
 2026-08-24T09:49:25Z 75 phase -> 80
+2026-08-24T09:51:35Z 80 executive summary posted on run task; condensed summary on idea task
+2026-08-24T09:51:35Z 80 LEARNINGS.md entry appended (2026-08-24 cogchemists)
+2026-08-24T09:51:35Z 80 all 9 phase subtasks complete; idea 1217741083868316 completed; run task 1217783004692520 moved to Done
+2026-08-24T09:51:35Z progress phase=80 marker=run-closed
+2026-08-24T09:51:35Z 80 close complete — run Done, idea completed
