@@ -11,3 +11,5 @@
 2026-08-24T11:02:54Z 10 phase -> 20
 2026-08-24T11:02:54Z heartbeat phase=20
 2026-08-24T11:03:46Z 20 repo created Metta-AI/cogame-grid-wars (public); propagate-secrets run 32719884342 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-24T11:04:40Z 20 builder dispatched (sthr_016QwFocyYwRYSbekSziZDq9) round=1
+2026-08-24T11:04:40Z heartbeat phase=20
