@@ -5,19 +5,24 @@
   "slug": "cogolf",
   "repo": "https://github.com/Metta-AI/cogame-cogolf",
   "starter": "cogame-factorio",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_db1331d5-6380-4925-a903-6ac5f2cddc61",
+    "manifest_sha": "sha256:14543fea8fd873902382ec932780c78a0e4be424f5b02e0c484a9954b1725369",
+    "release_run_id": "32685409623"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "cogolf-architect:v2",
+    "champion2": "cogolf-sniper:v2",
+    "fillers": [
+      "cogolf-literalist:v2",
+      "cogolf-pedant:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -34,7 +39,7 @@
     "discord_message_id": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T02:58:57Z",
+  "heartbeat_at": "2026-08-24T03:15:49Z",
   "session_ended_at": null,
   "session_id": "0f57e138",
   "log": "runs/2026-08-24-cogolf/log.md"

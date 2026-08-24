@@ -21,3 +21,8 @@
 2026-08-24T02:58:57Z 30 r1 judge returned r1-verdict.md: blocking=0/BLOCKING=0 (B1,B2 verified fixed at 529c0f8; independent checklist all-pass; 3 advisories recorded)
 2026-08-24T02:58:57Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-24T02:58:57Z heartbeat phase=40
+2026-08-24T03:15:49Z 40 dispatch 1 v0.1.0 run 32684890900 success but hosted_certification failed (platform 404 on episode-requests; cogball precedent) — decision: bump
+2026-08-24T03:15:49Z 40 dispatch 2 v0.1.1 run 32685409623 success: canonical=true certify.ok=true liveness-skipped secret_put=true; hosted certification now state=certified (verified via GET /coworlds/<cow>/certification)
+2026-08-24T03:15:49Z 40 released 0.1.1 cow_db1331d5-6380-4925-a903-6ac5f2cddc61; policies architect:v2 sniper:v2(daveey-1) literalist:v2 pedant:v2; release-result.json committed
+2026-08-24T03:15:49Z progress phase=40 marker=release-run-32685409623 cow_db1331d5
+2026-08-24T03:15:49Z heartbeat phase=50
