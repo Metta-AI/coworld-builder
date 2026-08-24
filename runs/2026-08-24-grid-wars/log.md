@@ -58,3 +58,5 @@
 2026-08-24T16:29:56Z progress phase=50 marker=league league_f07f6eeb-bdd2-49ec-82bd-a3fa2bb568e5 round_93498091 pending
 2026-08-24T16:29:56Z 50 phase -> 60
 2026-08-24T16:29:56Z heartbeat phase=60
+2026-08-24T16:30:48Z 60 verifier dispatched (sthr_01Tz7BgJwNJ2HPCzZYkcDCmF); round 2 pending, 75-min bound starts
+2026-08-24T16:30:48Z heartbeat phase=60
