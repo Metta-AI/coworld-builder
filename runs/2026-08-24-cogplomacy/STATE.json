@@ -5,7 +5,7 @@
   "slug": "cogplomacy",
   "repo": "https://github.com/Metta-AI/cogame-cogplomacy",
   "starter": "cogame-bullwhip",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1
   },
@@ -47,18 +47,18 @@
     "discord_message_id": "1541451830377189477"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20266",
+    "branch": "atlas/cogplomacy-32738518556",
+    "region": "tabletop",
+    "x": 790,
+    "y": 280,
+    "dispatch_run_id": "32738518556",
+    "attempted_at": "2026-08-24T14:27:30Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-24T14:19:29Z",
+  "heartbeat_at": "2026-08-24T14:27:30Z",
   "session_ended_at": null,
   "session_id": "8f502d65",
   "log": "runs/2026-08-24-cogplomacy/log.md"
