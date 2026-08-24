@@ -8,3 +8,4 @@
 2026-08-24T10:23:30Z 00 STATE written phase=10; entering prompts/10-design.md
 2026-08-24T10:25:30Z 10 starter chosen: cogame-babel (turn-based negotiation with LLM press + structured orders — babel is the pinned parley-stack template; bullwhip no closer in turn structure)
 2026-08-24T10:25:40Z 10 designer dispatched: design note docs/plans/2026-08-24-cogiavelli-design.md
+2026-08-24T10:28:10Z 10 designer dispatched (thread sthr_01BFLum5YFxqBkyEzRgrqd9M) -> runs/2026-08-24-cogiavelli/design.md
