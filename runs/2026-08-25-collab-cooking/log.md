@@ -87,3 +87,5 @@
 2026-08-25T10:14:26Z 60 fillers re-registered v3 (brigade c56ed34b, passer 71a84f9c) while paused; champions resubmitted expo:v3 run=32835990942 sub_347c6127, linecook:v3 run=32836035135 sub_c27bd22f; unpaused + triggered; round 8 pending, ereq_35289237 status=submitted (previously instant-failed); note: third entrant ply_ded11f40 appeared in round 8 (external submission, not ours)
 2026-08-25T10:14:26Z progress phase=60 marker=release-0.1.3-cow_19938c0f
 2026-08-25T10:14:26Z heartbeat phase=60
+2026-08-25T10:24:26Z 60 ereq_35289237 completed with replay (first post-fix episode); verifier attempt 2 dispatched thread=sthr_01G2y7aA9aAWFYw6RarPiT1u
+2026-08-25T10:24:26Z heartbeat phase=60
