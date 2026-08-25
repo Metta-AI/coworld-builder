@@ -5,7 +5,7 @@
   "slug": "daycare",
   "repo": "https://github.com/Metta-AI/cogame-daycare",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,11 +21,14 @@
       "daycare-caretaker:v1",
       "daycare-stubborn:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "f6155ca7-d319-4639-936c-ead67d116419",
+      "085a01ae-7273-4fce-ab52-15a4e1b262cd"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_b3316d91-3a90-41b6-9370-4c6644e51b9c",
+    "division": "div_6fc85068-9784-4bdc-905b-c78b33c106d3"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T15:00:22Z",
+  "heartbeat_at": "2026-08-25T15:04:15Z",
   "session_ended_at": null,
   "session_id": "d79addf3",
   "log": "runs/2026-08-25-daycare/log.md"

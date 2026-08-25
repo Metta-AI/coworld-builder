@@ -40,3 +40,13 @@
 2026-08-25T15:00:22Z progress phase=40 marker=release-run-32862166190
 2026-08-25T15:00:22Z 40 -> 50 phase transition
 2026-08-25T15:00:22Z heartbeat phase=50
+2026-08-25T15:04:15Z 50 seed POST 200 lseed_d8e97386 league_b3316d91-3a90-41b6-9370-4c6644e51b9c (default_variant_id=daycare-sparse accepted top-level -> commissioner_config; overrides.default_variant_id was extra_forbidden)
+2026-08-25T15:04:15Z 50 division PUT 200 div_6fc85068-9784-4bdc-905b-c78b33c106d3 (Competition L1); settings POST 200 (round_robin, filler_policy, elo k32, 15min)
+2026-08-25T15:04:15Z 50 policy-versions ownership verified: attentive/caretaker/stubborn=daveey, provider=daveey-1; filler UUIDs caretaker=f6155ca7-d319-4639-936c-ead67d116419 stubborn=085a01ae-7273-4fce-ab52-15a4e1b262cd
+2026-08-25T15:04:15Z 50 champ1 submit run=32863259661 ok=true (daycare-attentive:v1, daveey)
+2026-08-25T15:04:15Z 50 champ2 submit run=32863325403 ok=true (daycare-provider:v1, daveey-1)
+2026-08-25T15:04:15Z 50 fillers POST 200: caretaker+stubborn (both daveey, neither champion); unpause 200 paused=null; trigger-round 200 workflow ladder-league_b3316d91
+2026-08-25T15:04:15Z 50 round 1 failed (pre-filler auto-trigger race, chemistry/commons-family precedent); round 2 pending round_34cae2b4 with entrant_attributions = both champions (4908ae78 daveey, 542b3475 daveey-1) -> exit criterion met
+2026-08-25T15:04:15Z progress phase=50 marker=league_b3316d91-3a90-41b6-9370-4c6644e51b9c
+2026-08-25T15:04:15Z 50 -> 60 phase transition
+2026-08-25T15:04:15Z heartbeat phase=60
