@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2725,"clock":"TICK 1 OF 480 1 ORDER LIVE","scorebug":"Cog-B coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-C coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 TICK 1 OF 480 1 ORDER LIVE Cog-A coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-D coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0","feed_lines":0}
+scrub readouts: 0%="TICK 1 OF 480 1 ORDER LIVE"  50%="TICK 258 OF 480 2 ORDERS LIVE · 1 EXPIRING"  100%="TICK 480 OF 480 0 ORDERS LIVE"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

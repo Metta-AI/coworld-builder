@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 2725,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_127a462a-6f7f-457f-aa7b-95652aae11d4/sha256%3Ae577c452bdb928afc16b6872016540e14c0b9c65eed4a00ca564871c8bd32c7f/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fad24f497-8ea8-4e68-90bb-64a70644db3e.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TICK 1 OF 480 1 ORDER LIVE",
+  "scorebug": "Cog-B coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-C coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 TICK 1 OF 480 1 ORDER LIVE Cog-A coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-D coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0",
+  "status": "",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TICK 1 OF 480 1 ORDER LIVE"
+    },
+    {
+      "at": "50%",
+      "clock": "TICK 258 OF 480 2 ORDERS LIVE · 1 EXPIRING"
+    },
+    {
+      "at": "100%",
+      "clock": "TICK 480 OF 480 0 ORDERS LIVE"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
