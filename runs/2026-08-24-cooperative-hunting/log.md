@@ -39,3 +39,4 @@
 2026-08-25T00:45:34Z 30 r1 judge returned thread=sthr_011Nm2R4G9zcjU4E9zcrfXTH blocking=0 -> phase 40
 2026-08-25T00:45:34Z progress phase=30 marker=r1-verdict.md
 2026-08-25T00:45:34Z heartbeat phase=40
+2026-08-25T00:46:41Z 40 builder dispatched thread=sthr_01YM7fdpDDvivEJTBc1uKcFF (release chain; folds 4KB->12288 doc residue pre-dispatch)
