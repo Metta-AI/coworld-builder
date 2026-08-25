@@ -58,3 +58,5 @@
 2026-08-25T08:42:05Z 50 rounds: r1 failed (Temporal RoundWorkflow — auto-round raced the filler registration on unpause), r2 pending with both champions in entrant_attributions; exit criterion met
 2026-08-25T08:42:05Z progress phase=50 marker=league_592e6ed0
 2026-08-25T08:42:05Z 50 -> 60 phase transition, STATE.phase=60
+2026-08-25T08:43:23Z 60 verifier dispatched thread=sthr_01Ke9zYsmjqhRwgcRn1t8q5W output=VERIFY.md (75-min bound, polls r>=2 completed)
+2026-08-25T08:43:23Z heartbeat phase=60
