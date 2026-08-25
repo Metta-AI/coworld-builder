@@ -53,3 +53,5 @@
 2026-08-25T04:04:28Z 00 attempts_reset phase=40 reason=progress marker=32797631189 (three 40 release dispatched run ids newer than previous 00 resume; session died before writing progress line)
 2026-08-25T04:04:28Z 00 resume at phase 40 attempt=1 session=ea323071
 2026-08-25T04:05:38Z 40 rails decision: fix#3 = --timeout-seconds 300 on certify step (coworld certify default 60s < fixture ~150s wall clock; builder recommended flag over fixture-shrink which the wasm-viewer soak constrains). Dispatching builder for 0.1.3
+2026-08-25T04:06:23Z 40 builder dispatched thread=sthr_01YSmjVrrVLCePkfj4ZugJYv (fix#3 certify --timeout-seconds 300; version 0.1.3; report=release-r2-report.md)
+2026-08-25T04:06:23Z heartbeat phase=40
