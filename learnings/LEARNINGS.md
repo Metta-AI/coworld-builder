@@ -960,3 +960,29 @@ the starter after the fact.
    then hung/401'd. The restore is one line:
    `git config --global credential.https://github.com.helper /usr/local/bin/git-credential-anthropic`.
    Prefer `--unset-all` of the two gh-added values over removing the whole section.
+
+## 2026-08-25 cooperative-hunting
+
+- **`coworld certify` defaults `--timeout-seconds 60` and applies it to waiting for the game
+  container to exit.** A cert fixture longer than ~40 s of wall clock (rounds × ticks ÷ tickHz
+  + ShutdownGraceSeconds) can never pass — ours needed ~150 s and failed `episode_timeout`
+  after two unrelated cert fixes. Add `--timeout-seconds 300` to the certify step in
+  `coworld-release.yml` instead of shrinking the fixture (the wasm-viewer soak consumes the
+  smoke replay derived from the same fixture and needs it long).
+- **The Coworld secret namespace must equal `game.name` exactly.** The template's single `SLUG`
+  serves both as image/repo slug (hyphenated) and secret namespace; any coworld whose
+  `game.name` is underscored fails `upload-coworld` with HTTP 400 "Coworld secret <ns> cannot
+  be used by Coworld '<name>'" — and certify cannot catch it (certify never uploads a
+  manifest). Split the notions: keep ci.yml's SLUG hyphenated, set the release workflow's
+  secret namespace (and the `secret://coworld/<ns>/…` refs in the manifest template +
+  build_manifest.py) to `game.name`.
+- **League seeding keys on the canonical Coworld name, not the page slug.**
+  `POST /coworld-league-seeds` with the hyphenated slug 404s "Canonical Coworld not found" when
+  `game.name` is underscored; the public page still lives at the hyphenated
+  `softmax.com/<slug>` and `/api/coworlds` lists the hyphenated slug. Three different name
+  spaces — seed with `game.name`, verify the page with the slug.
+- **The atlas build fails on ANY unplaced live league, and they accumulate.** 13 shipped
+  coworlds had no dot; dispatch #1 died on the full list. When placing many at once with
+  `extra_cities`, run `atlas_spot.py` iteratively against a working copy of `places.mjs` that
+  you append each chosen dot to — otherwise several new dots in one region all get the same
+  "roomiest" spot.
