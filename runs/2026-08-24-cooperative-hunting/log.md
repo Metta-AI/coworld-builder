@@ -82,3 +82,5 @@
 2026-08-25T05:34:29Z 60 verifier returned thread=sthr_01WFDinQP6MtXoMvtVU9dVqW file=VERIFY.md (8/8 TRUE; rounds 2-4 completed; viewer-check 32812865316 loaded=true, clocks differ; round-4 log CLEAN, rounds 2-3 single 429 fallback-line cross-checked vs hanabi ereq_3c48da04)
 2026-08-25T05:34:29Z progress phase=60 marker=VERIFY.md-8of8-true
 2026-08-25T05:34:29Z heartbeat phase=60
+2026-08-25T05:35:04Z 60 judge dispatched thread=sthr_01B6Z8QFVvDxxKFpYieig8LP output=runs/2026-08-24-cooperative-hunting/verify-verdict.md
+2026-08-25T05:35:04Z heartbeat phase=60
