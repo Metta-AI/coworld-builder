@@ -1,0 +1,55 @@
+{
+  "loaded": true,
+  "ms": 1648,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc9b78e5f-ad7a-4a03-9321-e6d494207a88.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD",
+  "scorebug": "COINS-PLAYER 0 STOLE 0 took 22 · restraint 100% BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD COINS-PLAYER 0 STOLE 0 took 22 · restraint 100%",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD"
+    },
+    {
+      "at": "50%",
+      "clock": "BEAT 13 / 24 TICK 256 OF 480 · 1 COIN ON THE BOARD"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL 24 BEATS · BEAT_CAP"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/font.ttf",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[requestfailed] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/font.ttf net::ERR_ABORTED",
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

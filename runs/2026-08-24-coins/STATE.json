@@ -31,9 +31,17 @@
     "division": "div_d7a79bf3-f8b7-40f7-b838-45aa275d7913"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_daad8f3a",
+      "round_e36cead8",
+      "round_921b4c22",
+      "round_a88d95be",
+      "round_8c676b41",
+      "round_51c0c7e3"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/c9b78e5f-ad7a-4a03-9321-e6d494207a88.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32804445583"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T01:56:08Z",
+  "heartbeat_at": "2026-08-25T03:22:29Z",
   "session_ended_at": null,
   "session_id": "933b3aa3",
   "log": "runs/2026-08-24-coins/log.md"

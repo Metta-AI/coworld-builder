@@ -1,0 +1,4 @@
+{"loaded":true,"ms":1648,"clock":"BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD","scorebug":"COINS-PLAYER 0 STOLE 0 took 22 · restraint 100% BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD COINS-PLAYER 0 STOLE 0 took 22 · restraint 100%","feed_lines":0}
+scrub readouts: 0%="BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD"  50%="BEAT 13 / 24 TICK 256 OF 480 · 1 COIN ON THE BOARD"  100%="FINAL 24 BEATS · BEAT_CAP"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -86,3 +86,34 @@
 2026-08-25T01:56:08Z 50 done -> phase 60
 2026-08-25T01:56:08Z heartbeat phase=60
 2026-08-25T01:57:04Z 60 verifier dispatched (sthr_014YU9c2VoTfE8bAFhybwsby)
+2026-08-25T01:57:45Z heartbeat phase=60
+2026-08-25T02:04:13Z heartbeat phase=60
+2026-08-25T02:09:08Z heartbeat phase=60
+2026-08-25T02:14:02Z heartbeat phase=60
+2026-08-25T02:20:29Z heartbeat phase=60
+2026-08-25T02:25:25Z heartbeat phase=60
+2026-08-25T02:30:20Z heartbeat phase=60
+2026-08-25T02:30:21Z heartbeat phase=60
+2026-08-25T02:35:22Z heartbeat phase=60
+2026-08-25T02:40:17Z heartbeat phase=60
+2026-08-25T02:45:11Z heartbeat phase=60
+2026-08-25T02:50:14Z heartbeat phase=60
+2026-08-25T02:55:09Z heartbeat phase=60
+2026-08-25T03:00:04Z heartbeat phase=60
+2026-08-25T03:00:05Z heartbeat phase=60
+2026-08-25T03:05:23Z heartbeat phase=60
+2026-08-25T03:10:20Z heartbeat phase=60
+2026-08-25T03:12:37Z heartbeat phase=60
+2026-08-25T03:16:30Z 60 check1 TRUE: 6 completed rounds (1-6), 0 failed/discarded; fillers a652fffc+9356e1ac registered before round 1
+2026-08-25T03:16:30Z 60 check2 TRUE: leaderboard daveey-1/coins-ledger:v2 rank1 elo1012.3 rp6 wins3 | daveey/coins-truce:v2 rank2 elo987.7 rp6 wins2; fillers absent
+2026-08-25T03:16:30Z 60 check3 TRUE: round6 round_51c0c7e3 -> ereq_e20c40b7 completed, replay c9b78e5f, participants daveey(coins-truce:v2)/daveey-1(coins-ledger:v2), scores 22-22
+2026-08-25T03:16:30Z 60 check4 FALSE: replay strict-UTF8 ok, protocol coins.replay.v1 ok, reason beat_cap ok — but 41/48 orders (85.4%) source=fallback; all 6 rounds 61.5-100% fallback; thefts [0,0] every round
+2026-08-25T03:16:30Z 60 check5 FALSE: log has 41 'falling back' + 2 'rejected'; 86x 429 ThrottlingException "Too many tokens per day" on claude-haiku-4-5; cross-checked platform-wide against hanabi ereq_003e88da (same model, same message, 02:09Z) — coins is haiku-only by design so it cannot fall back to sonnet as hanabi does; 75-min bound expired 03:12:14Z with condition unchanged -> outage for phase 90
+2026-08-25T03:16:30Z 60 check6 TRUE: raw-HTML iframe grep empty (client-rendered); SSR playlist[0]=coins.r6.e1; POST /coworlds/replays/session -> ready:true viewer_url .../replays/static/cow_e5c32ad5/sha256%3Aa0ef3142.../index.html?replay=<s3>; no /client/replay
+2026-08-25T03:16:30Z 60 check7 TRUE: committed runs/2026-08-24-coins/release-result.json -> "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"; 10/10 cert steps
+2026-08-25T03:16:30Z 60 check8 TRUE: viewer-check run 32804445583 green; loaded=true ms=1648 bridge ready; scrub 0%/50%/100% = "BEAT 1 / 24 TICK 0 OF 480 · 6 COINS" / "BEAT 13 / 24 TICK 256 OF 480 · 1 COIN" / "FINAL 24 BEATS · BEAT_CAP" (all differ); canvas_text never_inside=0; artifacts committed at runs/2026-08-24-coins/viewer-check/
+2026-08-25T03:16:30Z 60 VERIFY.md written — verdict: 2 items false (4, 5), single cause = Bedrock daily-token throttle
+2026-08-25T03:20:28Z heartbeat phase=60
+2026-08-25T03:22:29Z 60 verifier returned: VERIFY.md — checks 1,2,3,6,7,8 TRUE; 4,5 FALSE (Bedrock haiku daily-token quota 429 platform-wide, cross-checked vs hanabi ereq_003e88da; 41/48 orders fallback in r6; thefts [0,0] all six rounds); 75-min bound expired 01:57->03:12
+2026-08-25T03:22:29Z 60 non-check findings recorded for resume: (a) replay policyNames=["coins-player","coins-player"] — plates/endcard show manifest player id not policy label (replay-writer legibility item); (b) retry doubles sidecar rate: 4 req/5s=48/min > 30/min cap under throttling (6 of 86 429s were sidecar episode_total)
+2026-08-25T03:22:29Z progress phase=60 marker=viewer-check-32804445583
