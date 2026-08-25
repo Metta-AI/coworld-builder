@@ -32,13 +32,12 @@
   },
   "verify": {
     "rounds": [
-      "round_201d9765-4ea3-4391-9393-b486cc36eb54",
-      "round_31a882c6-ee31-42b1-a1e2-8870cc0ab6b7",
-      "round_f48e29f0-a9f2-4002-9739-1469bb48182d"
+      "round_8784fbcb-4de5-4649-8c23-e3b631150523",
+      "round_8f0dfbaa-2912-482f-95e0-179e79ba9894"
     ],
-    "replay": "",
-    "iframe_static": false,
-    "viewer_check_run": "32830082226"
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32838395169"
   },
   "announce": {
     "attempted_at": null,
@@ -56,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T10:33:33Z",
+  "heartbeat_at": "2026-08-25T10:47:07Z",
   "session_ended_at": null,
   "session_id": "67d9a57c",
   "log": "runs/2026-08-25-collab-cooking/log.md"

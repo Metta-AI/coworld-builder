@@ -1,648 +1,709 @@
-# VERIFY — collab-cooking   (2026-08-25T09:15Z)
+# VERIFY — collab-cooking   (2026-08-25T10:45Z, attempt 2, post-remediation)
 
-Verdict: **5 items false** (1 TRUE, 2 TRUE, 3 FALSE, 4 FALSE, 5 FALSE, 6 FALSE, 7 TRUE, 8 FALSE)
+Verdict: **all-true (8/8)**
 
-**Headline.** The ladder is running and the leaderboard is right, but **no episode has ever
-produced a replay**. Every league episode dies at container start:
-`error_type: "game_unhealthy"`, `error: "Game container exited with code 1"` — three consecutive
-rounds (2, 3, 4), same variant, dead within seconds of dispatch every time. So there is no replay to validate, no
-game log to grep, no featured match on the public page and no live iframe to render. Root cause
-is diagnosed and reproduced locally at the bottom of this file: **every variant declares
-`max_steps: 900`, and this game's own `create_app()` cannot build a mission that long** — the
-per-ticket resource encoding scales with `max_steps` and blows past mettagrid's 256-feature-id
-cap at `max_steps >= 640`. The certification fixture uses `max_steps: 480`, which is why
-certification passed and the ladder cannot.
-
-Environment for every call below:
+Attempt 1 (2026-08-25T09:20Z, preserved in git history) returned 5 items false: every league
+episode died `game_unhealthy` from a mettagrid feature-id overflow at `max_steps=900`. That was
+fixed (recycled 10-slot ticket pool, 313 → 153 feature ids) and re-released as **v0.1.3**
+(`cow_19938c0f-195a-45f8-95da-761f0ffe04cb`, manifest_sha
+`sha256:ae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1`). Every fetch below is
+fresh, made this run between 10:24Z and 10:45Z. Headers sent on every call:
+`Authorization: Bearer $SOFTMAX_TOKEN` and `User-Agent: coworld-builder/1.0`; where noted also
+`X-Use-Elevated-Privileges: true`. No header value is printed anywhere in this document.
 
 ```bash
 BASE=https://softmax.com/api/observatory/v2
-AUTH=(-H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0")   # value never printed
-ELEV=(-H "X-Use-Elevated-Privileges: true")
 L=league_592e6ed0-3f01-4084-bb90-75ace0db0063
 D=div_027403b9-3208-43b8-b2e6-499bd18681e5
-COW=cow_127a462a-6f7f-457f-aa7b-95652aae11d4
+COW=cow_19938c0f-195a-45f8-95da-761f0ffe04cb
 ```
+
+| # | check | verdict |
+|---|---|---|
+| 1 | ≥2 completed rounds after fillers were set | TRUE |
+| 2 | both champions ranked, fillers absent/Baseline | TRUE |
+| 3 | latest round's episode request completed with a replay | TRUE |
+| 4 | replay bytes valid and show the game | TRUE |
+| 5 | hosted game log clean | TRUE (documented, cross-checked exception) |
+| 6 | public page uses the static replay path | TRUE |
+| 7 | certification declared the static bundle | TRUE |
+| 8 | spectator judgment — viewer EXECUTED | TRUE |
 
 ---
 
-## 1. ≥2 completed rounds after the fillers were set — **TRUE**
+## 1. ≥2 completed rounds after the fillers were set
+
+```
+GET $BASE/rounds?league_id=$L&limit=30
+```
+Response shape: `{"entries":[…]}`, 10 rows, 8 with `status=="completed"`.
 
 ```bash
-curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
- | jq -r 'if type=="array" then . else .entries end
-          | .[] | [.round_number,.id,.status,(.created_at),(.completed_at),(.error//"-")]|@tsv'
+curl -sS "$BASE/rounds?league_id=$L&limit=30" "${AUTH[@]}" \
+ | jq -r 'if type=="array" then . else .entries end|[.[]|select(.status=="completed")]|length'
+```
+```
+8
 ```
 
+Full listing (`round_number, id, status, created_at, completed_at, error`):
+
 ```
-4	round_f48e29f0-a9f2-4002-9739-1469bb48182d	completed	2026-08-25T09:10:50.809299Z	2026-08-25T09:11:12.188592Z	-
-3	round_31a882c6-ee31-42b1-a1e2-8870cc0ab6b7	completed	2026-08-25T08:55:50.415385Z	2026-08-25T08:56:42.446039Z	-
-2	round_201d9765-4ea3-4391-9393-b486cc36eb54	completed	2026-08-25T08:40:49.983322Z	2026-08-25T08:42:33.787355Z	-
 1	round_fe61851d-5d71-41d6-853f-8eba11675499	failed	2026-08-25T08:40:01.020101Z	2026-08-25T08:40:01.325872Z	Temporal RoundWorkflow failed before settling the round.
+2	round_201d9765-4ea3-4391-9393-b486cc36eb54	completed	2026-08-25T08:40:49.983322Z	2026-08-25T08:42:33.787355Z	-
+3	round_31a882c6-ee31-42b1-a1e2-8870cc0ab6b7	completed	2026-08-25T08:55:50.415385Z	2026-08-25T08:56:42.446039Z	-
+4	round_f48e29f0-a9f2-4002-9739-1469bb48182d	completed	2026-08-25T09:10:50.809299Z	2026-08-25T09:11:12.188592Z	-
+5	round_bba778bc-f095-42ab-97ae-cf6e12946dc4	completed	2026-08-25T09:25:51.141455Z	2026-08-25T09:27:23.638240Z	-
+6	round_777a16e9-6f4b-4b80-b168-b022a26f186d	completed	2026-08-25T09:40:52.208003Z	2026-08-25T09:41:36.822785Z	-
+7	round_5f218a7f-cb2a-4cbd-aa75-d39ebbfdbfd1	completed	2026-08-25T09:55:53.041117Z	2026-08-25T09:56:24.913772Z	-
+8	round_8784fbcb-4de5-4649-8c23-e3b631150523	completed	2026-08-25T10:11:50.890406Z	2026-08-25T10:21:06.127940Z	-
+9	round_8f0dfbaa-2912-482f-95e0-179e79ba9894	completed	2026-08-25T10:27:28.245834Z	2026-08-25T10:33:54.769639Z	-
+10	round_e75b7054-3b8c-486b-b06a-d232e22a7626	pending	2026-08-25T10:42:28.631149Z	-	-
 ```
 
-```bash
-curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
- | jq -r '[(if type=="array" then . else .entries end)[]|select(.status=="completed")]|length'
-```
+Round 1's `error` verbatim (it does **not** count): `Temporal RoundWorkflow failed before settling
+the round.` — the auto-round on unpause raced the filler registration (log.md:58), the documented
+failure mode in `playbooks/observatory-api.md` §6.
+
+Fillers were registered at **2026-08-25T08:42:05Z** (log.md:57, `brigade=6f226863 passer=fb542fe5`)
+and re-registered at v3 at **≈2026-08-25T10:14Z** (log.md:87). The current registered filler list,
+fetched fresh (this read needs the elevated header):
 
 ```
-3
+GET $BASE/leagues/$L/filler-policies      (headers: Authorization, User-Agent, X-Use-Elevated-Privileges)
 ```
-
-Round 1's error verbatim: `Temporal RoundWorkflow failed before settling the round.` — the
-auto-round that fired on unpause before the filler registration landed (phase 50's log line
-`2026-08-25T08:42:05Z 50 rounds: r1 failed (Temporal RoundWorkflow — auto-round raced the filler
-registration on unpause)`); it is `failed`, so it does not count.
-
-Fillers are registered, and rounds 2–4 each seated both of them, which puts all three counted
-rounds after the registration:
-
-```bash
-curl -sS "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" | jq -c .
-```
-
-```json
-{"filler_policy_versions":[{"policy_version_id":"6f226863-ecbf-4823-9f57-829a436e7c6e","policy_id":"63b52580-0f48-43ea-8893-497e92a5b7af","policy_name":"collab-cooking-brigade","version":1,"player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey","display_name":null},{"policy_version_id":"fb542fe5-7dfa-4e8e-ab9c-1ca19751d633","policy_id":"3901cad8-a08e-475f-a590-02e6533bfd49","policy_name":"collab-cooking-passer","version":1,"player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey","display_name":null}]}
-```
-
-Round 2's entrant attributions (both champions, from the same fetch):
-
-```json
-{"round_number":2,"created_at":"2026-08-25T08:40:49.983322Z","entrants":[
- {"subject_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","subject_type":"player","policy_version_id":"b26fe220-13ee-417f-8b32-45b54be54ee4","league_policy_membership_id":"lpm_3e5ad34a-6fad-4cde-972a-7ad8792aad5b"},
- {"subject_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d","subject_type":"player","policy_version_id":"9ef2fbd1-b439-4926-a110-eede864f49ac","league_policy_membership_id":"lpm_8f405338-6594-4fd1-84b8-ceae0e52a3c6"}]}
-```
-
-Status: **TRUE** — rounds 2, 3 and 4 are `completed` (3 ≥ 2), all after the fillers were set
-(each of their episode requests seats `collab-cooking-brigade`/`collab-cooking-passer` with
-`is_filler: true` — see item 3). **Caveat for the judge:** "round completed" here means the
-ladder settled the round, not that a match was played — all three rounds settled with a *failed*
-episode (items 3–5).
-
----
-
-## 2. Both champions ranked — **TRUE**
-
-```bash
-curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" \
- | jq -r '.[]|[.rank,.player_name,.policy_label,.score,.rounds_played,.episode_wins]|@tsv'
-```
-
-```
-1	daveey	collab-cooking-expo:v1	1000.0	3	0.0
-2	daveey-1	collab-cooking-linecook:v1	1000.0	3	0.0
-```
-
-Full first row, unedited:
-
-```json
-{"rank":1,"player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey","score":1000.0,"score_label":"Elo","score_value_type":"integer","rounds_played":3,"episode_wins":0.0,"episodes_played":null,"win_rate":0.0,"policy_label":"collab-cooking-expo:v1","recent_rounds":null}
-```
-
-Status: **TRUE** — both `daveey` (`collab-cooking-expo:v1`) and `daveey-1`
-(`collab-cooking-linecook:v1`) are ranked with `rounds_played = 3 ≥ 1`; the two filler policies
-appear nowhere in the list. **Caveat:** both scores are still the `initial_rating` 1000.0 with
-`episode_wins: 0.0` — the ladder credited three rounds whose episodes never ran, so the ranking
-is real but carries no played result.
-
----
-
-## 3. Latest completed round's episode request completed with a replay — **FALSE**
-
-```bash
-R=$(curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
-    | jq -r '[(if type=="array" then . else .entries end)[]|select(.status=="completed")]|max_by(.round_number).id')
-# R=round_f48e29f0-a9f2-4002-9739-1469bb48182d   (round 4)
-curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}" \
- | jq -c '(if type=="array" then . else .entries end)|map({id,status,replay_url})'
-```
-
-```json
-[{"id":"ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058","status":"failed","replay_url":null}]
-```
-
-```bash
-curl -sS "$BASE/episode-requests/ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058" "${AUTH[@]}" \
- | jq '{status, replay_url, error_type, error, variant_name,
-        participants:[.participants[]|{position,policy_name,player_name,is_filler}], participant_scores}'
-```
-
 ```json
 {
-  "status": "failed",
-  "replay_url": null,
-  "error_type": "game_unhealthy",
-  "error": "Game container exited with code 1",
-  "variant_name": "Open Kitchen",
-  "participants": [
-    {"position": 0, "policy_name": "collab-cooking-expo",     "player_name": "daveey",   "is_filler": false},
-    {"position": 1, "policy_name": "collab-cooking-linecook", "player_name": "daveey-1", "is_filler": false},
-    {"position": 2, "policy_name": "collab-cooking-passer",   "player_name": "daveey",   "is_filler": true},
-    {"position": 3, "policy_name": "collab-cooking-brigade",  "player_name": "daveey",   "is_filler": true}
-  ],
-  "participant_scores": []
+  "filler_policy_versions": [
+    {"policy_version_id": "c56ed34b-abb8-4118-a42b-3963b77690a0", "policy_name": "collab-cooking-brigade",
+     "version": 3, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey"},
+    {"policy_version_id": "71a84f9c-a4c5-4ace-912d-c327f3b6d26e", "policy_name": "collab-cooking-passer",
+     "version": 3, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey"}
+  ]
 }
 ```
 
-The same failure on every counted round — all episode requests ever issued for this coworld:
-
-```bash
-curl -sS "$BASE/episode-requests?coworld_id=$COW&limit=50" "${AUTH[@]}" \
- | jq -r '(if type=="array" then . else .entries end)|.[]|[.id,.created_at,.status,(.error_type//"-"),(.error//"-"),(.variant_name//"-")]|@tsv'
-```
+**Per-round episode outcome** (the spirit of the check — a round that "completed" while its episode
+died proves nothing). One `GET $BASE/episode-requests?round_id=<r>&limit=20` per completed round:
 
 ```
-ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058	2026-08-25T09:10:51.211192Z	failed	game_unhealthy	Game container exited with code 1	Open Kitchen
-ereq_ce167142-be9f-498f-9ec9-74248ac21af7	2026-08-25T08:55:50.824843Z	failed	game_unhealthy	Game container exited with code 1	Open Kitchen
-ereq_b5042a23-1f40-4ee0-a387-ebb0706639e1	2026-08-25T08:40:50.344129Z	failed	game_unhealthy	Game container exited with code 1	Open Kitchen
-ereq_c0e0e4dc-dd6d-4d89-9d99-3d4cdcbf7367	2026-08-25T08:29:47.542640Z	completed	-	-	-
-ereq_30eee579-863b-4246-8e5c-f7330c216ce9	2026-08-25T08:29:47.536190Z	completed	-	-	-
-ereq_3e56317b-eed1-40c8-89af-9d984be81c59	2026-08-25T08:29:47.529432Z	completed	-	-	-
-ereq_eefd6281-4cde-4d50-a908-8057a41ccb5a	2026-08-25T08:29:47.523431Z	completed	-	-	-
-ereq_f37248b5-ff08-4e58-a574-bb9cacfb5882	2026-08-25T08:29:47.518913Z	completed	-	-	-
+round_201d9765 (r2)  ereq_b5042a23-1f40-4ee0-a387-ebb0706639e1	failed	-
+round_31a882c6 (r3)  ereq_ce167142-be9f-498f-9ec9-74248ac21af7	failed	-
+round_f48e29f0 (r4)  ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058	failed	-
+round_bba778bc (r5)  ereq_69d9b8a0-180f-4424-85ea-49e9b2f0be1a	failed	-
+round_777a16e9 (r6)  ereq_e28a6dfe-ad5b-43c0-9c7e-836693262011	failed	-
+round_5f218a7f (r7)  ereq_6c51303b-d2b8-48a6-a1cc-9dc10e5c9649	failed	-
+round_8784fbcb (r8)  ereq_35289237-a003-40f4-b3e8-4e08482f6854	completed	https://softmax-public.s3.amazonaws.com/replays/2be74c60-3f6c-41eb-b34e-e03824ab3352.replay
+round_8f0dfbaa (r9)  ereq_876d0e7c-bc10-4c59-aa07-31f2cf46aa1c	completed	https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay
 ```
 
-The three `failed` rows are the league rounds (variant **Open Kitchen**); the five `completed`
-rows at 08:29:47 are the release run's certification/smoke episodes (`variant_name: null`,
-`layout: "cramped"`, `policy_name: "coworld-smoke/cow_127a462a-…"`).
-
-Timing of the crash (round 4's request, same fetch):
-
-```bash
-curl -sS "$BASE/episode-requests/ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058" "${AUTH[@]}" \
- | jq -c '{created_at,dispatched_at,running_at,completed_at,cost_usd,job_id}'
-```
-
-```json
-{"created_at":"2026-08-25T09:10:51.211192Z","dispatched_at":"2026-08-25T09:10:51.475127Z","running_at":null,"completed_at":"2026-08-25T09:11:10.806979Z","cost_usd":0.001126,"job_id":"38a14e05-4571-48d6-9dff-ac54e6113753"}
-```
-
-`running_at` is **null** — this episode never reached the running state at all; it went from
-dispatch to failure in 19 s. Round 2's request did briefly reach running
-(`running_at 2026-08-25T08:42:16.75`, `completed_at 2026-08-25T08:42:23.78` — dead ~7 s later),
-which is still far short of `player_connect_timeout_seconds: 120`. The seats are correct
-(`daveey`, `daveey-1`, two fillers); the container just never came up.
-
-**Not a platform outage** — the same window, other live coworlds:
-
-```bash
-for c in cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e; do
-  curl -sS "$BASE/episode-requests?coworld_id=$c&limit=8" "${AUTH[@]}" \
-   | jq -r '(if type=="array" then . else .entries end)|.[]|[.created_at,.status,(.error_type//"-")]|@tsv'; done
-```
-
-```
-=== cooperative_hunting cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d ===
-2026-08-25T08:33:41.514326Z	completed	-
-2026-08-25T08:18:41.250085Z	completed	-
-2026-08-25T08:03:38.385282Z	completed	-
-2026-08-25T07:48:37.953287Z	completed	-
-2026-08-25T07:33:35.948426Z	completed	-
-=== coins cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e ===
-2026-08-25T08:42:49.550028Z	running	-
-2026-08-25T08:42:49.540920Z	completed	-
-2026-08-25T08:42:49.530582Z	completed	-
-2026-08-25T08:42:49.522399Z	completed	-
-2026-08-25T08:27:48.697255Z	completed	-
-```
-
-Status: **FALSE** — `status: "failed"`, `replay_url: null`. Participants *are* correct
-(`daveey`, `daveey-1`, and both fillers flagged `is_filler: true`), so the seating half of the
-requirement holds; the episode itself never ran. Deterministic across rounds 2, 3 and 4, and
-collab-cooking-specific (cooperative_hunting and coins completed episodes in the same minutes).
+**Status: TRUE.** 8 rounds `completed`. Rounds 3–9 (seven of them) were created after the
+08:42:05Z filler registration; rounds 2–9 are all after the 08:41–08:42Z registration window.
+Post-fix rounds with a **COMPLETED episode**: **round 8** (created 10:11:50Z, episode completed
+10:21:06Z) and **round 9** (created 10:27:28Z, episode completed 10:33:54Z) — two, so the wait
+condition set for this attempt is satisfied and no further waiting was needed (round 9 landed at
+10:38Z, 13 minutes into the 75-minute bound that started at 10:25Z). Rounds 2–7's episodes are the
+attempt-1 `game_unhealthy` defect; they are recorded here for completeness and are not counted.
 
 ---
 
-## 4. Replay bytes valid and showing the game — **FALSE (NOT FETCHED)**
+## 2. Both champions ranked
 
-There is no replay to fetch. Both routes to the round-4 episode's bytes:
+```
+GET $BASE/divisions/$D/leaderboard
+```
+Bare JSON list (not `.entries`), fetched 10:38Z:
+
+```json
+[
+  {"rank": 1, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
+   "score": 1000.0, "score_label": "Elo", "rounds_played": 8, "episode_wins": 0.0, "win_rate": 0.0,
+   "policy_label": "collab-cooking-expo:v3"},
+  {"rank": 2, "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
+   "score": 1000.0, "score_label": "Elo", "rounds_played": 8, "episode_wins": 0.0, "win_rate": 0.0,
+   "policy_label": "collab-cooking-linecook:v3"},
+  {"rank": 3, "player_id": "ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83", "player_name": "richard",
+   "score": 1000.0, "score_label": "Elo", "rounds_played": 4, "episode_wins": 0.0, "win_rate": 0.0,
+   "policy_label": "co-gas-collab-cooking-runner-richard:v1"}
+]
+```
+
+`rank / player_name / policy_label / score / rounds_played / episode_wins` as tsv:
+
+```
+1	daveey	collab-cooking-expo:v3	1000.0	8	0.0
+2	daveey-1	collab-cooking-linecook:v3	1000.0	8	0.0
+3	richard	co-gas-collab-cooking-runner-richard:v1	1000.0	4	0.0
+```
+
+**Status: TRUE.** `daveey` (rank 1, `collab-cooking-expo:v3`, `rounds_played: 8`) and `daveey-1`
+(rank 2, `collab-cooking-linecook:v3`, `rounds_played: 8`) are both ranked with `rounds_played ≥ 1`.
+Neither filler (`collab-cooking-brigade:v3` `c56ed34b…`, `collab-cooking-passer:v3` `71a84f9c…`)
+appears as a row — fillers absent, which the checklist accepts. Row 3, `richard`
+(`ply_ded11f40`, `co-gas-collab-cooking-runner-richard:v1`), is a **third-party external entrant**,
+not one of ours and not a filler; it does not displace either champion. Both champions' labels now
+read `:v3`, i.e. the placement lag noted at dispatch has cleared. Elo is still 1000.0/0 wins for
+all three because every completed episode so far has been a draw on team score (see check 4 —
+`scores` differ only by the 0.01·delivered epsilon).
+
+---
+
+## 3. Latest round's episode request completed with a replay
+
+Latest completed round **with a completed episode** = round 9, `round_8f0dfbaa-2912-482f-95e0-179e79ba9894`.
+
+```
+GET $BASE/episode-requests?round_id=round_8f0dfbaa-2912-482f-95e0-179e79ba9894&limit=20
+  -> ereq_876d0e7c-bc10-4c59-aa07-31f2cf46aa1c	completed
+GET $BASE/episode-requests/ereq_876d0e7c-bc10-4c59-aa07-31f2cf46aa1c
+```
+```json
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay",
+  "participants": [
+    {"position": 0, "policy_name": "collab-cooking-expo",   "version": 3, "player_name": "daveey",
+     "is_filler": false, "policy_version_id": "ff80304d-80c3-407e-b3e3-5ee5d8cabf68"},
+    {"position": 1, "policy_name": "collab-cooking-linecook","version": 3, "player_name": "daveey-1",
+     "is_filler": false, "policy_version_id": "98d3999f-1484-4572-9f7c-874735b47d17"},
+    {"position": 2, "policy_name": "co-gas-collab-cooking-runner-richard", "version": 1,
+     "player_name": "richard", "is_filler": false, "policy_version_id": "f3debab3-a36c-493a-aa7a-de63b617ece8"},
+    {"position": 3, "policy_name": "collab-cooking-brigade","version": 3, "player_name": "daveey",
+     "is_filler": true,  "policy_version_id": "c56ed34b-abb8-4118-a42b-3963b77690a0"}
+  ],
+  "participant_scores": [
+    {"position": 0, "score": 3.0}, {"position": 1, "score": 3.0},
+    {"position": 2, "score": 3.0}, {"position": 3, "score": 3.03}
+  ]
+}
+```
+
+The previous post-fix round (8) for corroboration — same query, `ereq_35289237-a003-40f4-b3e8-4e08482f6854`:
+`status: "completed"`, `replay_url: https://…/2be74c60-3f6c-41eb-b34e-e03824ab3352.replay`, seats
+0/1 `collab-cooking-expo`/`collab-cooking-linecook` (daveey / daveey-1, `is_filler:false`), seat 2
+`richard`, seat 3 `collab-cooking-passer` `is_filler:true`; scores `[1.0, 1.0, 1.0, 1.01]`.
+
+**Status: TRUE.** `status == "completed"`, `replay_url` non-null (S3), and `participants` names
+`daveey` (seat 0, champion #1 at v3, `ff80304d…`) and `daveey-1` (seat 1, champion #2 at v3,
+`98d3999f…`), with the filler at seat 3 flagged `is_filler: true` and rendered `Baseline`
+spectator-side (see the replay `seats`/`results.names` in check 4). Seat 2 is the external entrant
+`richard`.
+
+---
+
+## 4. Replay bytes are valid and show the game
 
 ```bash
-curl -sS "$BASE/episode-requests/ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058" "${AUTH[@]}" | jq -r '.replay_url'
+curl -sSL "https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay" -o /tmp/ep9.replay
+# HTTP:200 bytes:403849
+jq -e . /tmp/ep9.replay >/dev/null && echo "strict UTF-8 JSON: ok"
+jq -r '.format, .protocol, .version, .coworld, .generated_at, (.ticks|length)' /tmp/ep9.replay
 ```
-
 ```
-null
-```
-
-```bash
-curl -sS -w "\nHTTP %{http_code}\n" "$BASE/episode-requests/ereq_b5042a23-1f40-4ee0-a387-ebb0706639e1/artifacts/replay" "${AUTH[@]}" "${ELEV[@]}"
-curl -sS -w "\nHTTP %{http_code}\n" "$BASE/episode-requests/ereq_b5042a23-1f40-4ee0-a387-ebb0706639e1/artifacts/results" "${AUTH[@]}" "${ELEV[@]}"
-```
-
-```
-{"detail":"No replay found for job 879fe498-5c6c-4144-8721-62c289aec73a"}
-HTTP 404
-{"detail":"No results found for job 879fe498-5c6c-4144-8721-62c289aec73a"}
-HTTP 404
-```
-
-Status: **FALSE — NOT FETCHED.** `replay_url` is `null` on all three league episodes and the
-artifact endpoints 404 (`No replay found for job …`). No `protocol`, no `results.reason`, no
-plan events exist for a league match.
-
-### 4b. Supplementary (NOT a substitute for item 4): the certification replay does parse
-
-The only collab_cooking replay bytes in existence are the release run's smoke episode. Fetched
-fresh this run, and reported here only because it is the input to item 8's render and it shows
-the *format* is sound:
-
-```bash
-U=$(curl -sS "$BASE/episode-requests/ereq_c0e0e4dc-dd6d-4d89-9d99-3d4cdcbf7367" "${AUTH[@]}" | jq -r .replay_url)
-# https://softmax-public.s3.amazonaws.com/replays/ad24f497-8ea8-4e68-90bb-64a70644db3e.replay
-curl -sSL "$U" -o /tmp/smoke.replay -w "HTTP %{http_code} bytes %{size_download}\n"
-jq -e . /tmp/smoke.replay >/dev/null && echo "strict UTF-8 JSON: ok"
-jq -r '.format, .protocol, .results.reason, (.ticks|length)' /tmp/smoke.replay
-```
-
-```
-HTTP 200 bytes 252380
 strict UTF-8 JSON: ok
 collab-cooking/1
 collab-cooking.replay.v1
-complete
-480
+0.1.0
+collab_cooking
+2026-08-25T10:27:47Z
+900
 ```
 
+`protocol` match: `collab-cooking.replay.v1` is the envelope declared in
+`runs/2026-08-25-collab-cooking/design.md:815`; the hosted manifest for `cow_19938c0f…` declares
+`game.results_schema.properties.protocol.const == "collab-cooking.results.v1"`, which matches
+`.results.protocol` below.
+
 ```bash
-jq -c '.results' /tmp/smoke.replay
+jq '.results' /tmp/ep9.replay
 ```
+```json
+{
+  "game": "collab_cooking", "protocol": "collab-cooking.results.v1", "reason": "complete",
+  "layout": "open-kitchen", "steps": 900, "dishes": 3,
+  "scores": [3.0, 3.0, 3.0, 3.03], "delivered": [0, 0, 0, 3],
+  "served_by_recipe": {"salad": 1, "soup": 2, "fries": 0},
+  "orders_arrived": 50, "orders_expired": 47, "burned": {"pot": 3, "fryer": 0},
+  "blocked_moves": [313, 356, 384, 381], "handoffs": [2, 0, 7, 2],
+  "names": ["daveey", "daveey-1", "richard", "Baseline"],
+  "aliases": ["Cog-B", "Cog-C", "Cog-D", "Cog-A"],
+  "seat_kinds": ["prompt", "prompt", "scripted:runner", "scripted:brigade"],
+  "cross_play": true, "disconnected": [false, false, false, false],
+  "fallbacks": [6, 6, 0, 0], "llm_requests": 48
+}
+```
+
+Requested fields, called out: **`results.cross_play`: `true`** · **`results.dishes`: `3`** ·
+**`results.seat_kinds`: `["prompt","prompt","scripted:runner","scripted:brigade"]`** (two LLM prompt
+seats vs two scripted seats — genuine cross-play) · `results.reason`: **`complete`** (900/900 ticks,
+not `deadline`).
+
+Decisions are `plan` events inside each tick's `ev` array; the phase prompt's `.events[]` jq is
+adapted to this schema:
+
+```bash
+# adapted from prompts/60-verify.md check 4 for schema {"ticks":[{"t":…,"ev":[{"ev":"plan",…}]}]}
+jq -r '[.ticks[].ev[]?|select(.ev=="plan")]|group_by(.slot)|map({slot:.[0].slot, alias:.[0].alias,
+        total:length, llm:([.[]|select(.src=="llm")]|length),
+        fallback:([.[]|select(.src|startswith("fallback"))]|length)})' /tmp/ep9.replay
+```
+```json
+[
+  {"slot": 0, "alias": "Cog-B", "total": 12, "llm": 12, "fallback": 0},
+  {"slot": 1, "alias": "Cog-C", "total": 12, "llm": 12, "fallback": 0}
+]
+```
+```bash
+jq -c '[.ticks[].ev[]?|select(.ev=="fallback")]|group_by(.slot)
+        |map({slot:.[0].slot,alias:.[0].alias,n:length,causes:([.[].cause]|unique)})' /tmp/ep9.replay
+```
+```json
+[{"slot":0,"alias":"Cog-B","n":6,"causes":["transport"]},
+ {"slot":1,"alias":"Cog-C","n":6,"causes":["transport"]}]
+```
+
+Event-type census over the whole episode (the game is visibly being played, not idling):
+
+```bash
+jq -r '[.ticks[].ev[]?.ev]|group_by(.)|map({(.[0]):length})|add' /tmp/ep9.replay
+```
+```json
+{"blocked":1434,"chop_done":17,"chop_start":17,"deposit":97,"episode_end":1,"episode_start":1,
+ "fallback":12,"order_arrive":50,"order_expire":47,"pickup":107,"plan":24,"plate_up":3,
+ "pot_burn":3,"pot_clear":5,"pot_load":6,"pot_ready":5,"pot_start":5,"serve":3,
+ "wash_done":3,"wash_start":3}
+```
+
+Champion-seat decision content — every `plan` and `fallback`, in tick order (abridged to the plan
+line; all 24 plans carry `src:"llm"`):
+
+```
+11	0	Cog-B	plan	Taking soup ticket, fetching veg first
+61	0	Cog-B	plan	Chopping veg for soup
+64	1	Cog-C	plan	Fetching meat for soup, Cog-B has veg
+102	0	Cog-B	fallback	transport
+102	1	Cog-C	fallback	transport
+164	0	Cog-B	plan	Chopping veg for soup (1 of 3 uses). Cog-C: get meat chopped, we'll pot together.
+165	1	Cog-C	plan	Potting chopped veg now, pot was ready. Need chopped meat to complete soup.
+263	0	Cog-B	plan	Chopped veg ready, moving to pot. Waiting for Cog-C's chopped meat to complete soup.
+267	1	Cog-C	plan	Getting meat chopped for soup. Cog-B: finish veg, I'll bring chopped meat to pot.
+365	0	Cog-B	plan	B here with chopped_veg for soup. Going to pot to meet Cog-C's chopped meat.
+367	1	Cog-C	plan	Fetching meat now. Will chop and meet you at pot for soup.
+414	0	Cog-B	plan	Going to pot with chopped_veg, waiting for Cog-C's chopped_meat to complete soup
+417	1	Cog-C	plan	Going meat for soup. Pot loaded, B waiting with veg. I'll chop meat fast.
+513	1	Cog-C	plan	Going to pot with chopped_veg. Cog-B bring chopped_meat to complete soup fast.
+515	0	Cog-B	plan	B at pot with meat, ready to combine with veg for soup
+564	0	Cog-B	plan	Fetching meat for soup. Cog-C at pot waiting for chopped_meat.
+567	1	Cog-C	plan	Moving to pot with chopped veg. Cog-B bring chopped meat to combine. Fryer next for fries.
+611	0	Cog-B	plan	Chopping meat for soup. Will deliver chopped meat to pot.
+613	1	Cog-C	plan	Moving to pot with chopped_veg. Cog-B bring chopped_meat - soup combo ready!
+666	1	Cog-C	plan	Moving to counter (5,3) for chopped_veg, then pot to combine with meat
+713	1	Cog-C	plan	Moving to chop. Cog-B: deliver meat to pot when ready. I'll grab chopped_veg at (5,3) next.
+715	0	Cog-B	plan	Chopping meat for soup, will handoff to Cog-C at pot
+764	0	Cog-B	plan	Fetching meat for soup. Will chop and deliver to pot for Cog-C.
+767	1	Cog-C	plan	Moving to pot with chopped_veg, ready to combine with Cog-B's meat for soup
+862	0	Cog-B	plan	Chopping meat for soup, will deliver to pot after
+865	1	Cog-C	plan	Moving to pot with meat. Cog-B bringing chopped meat. Will assemble soup immediately.
+```
+
+One plan verbatim, full record (the fields the design's reply schema defines):
 
 ```json
-{"game":"collab_cooking","protocol":"collab-cooking.results.v1","reason":"complete","layout":"cramped","steps":480,"dishes":12,"scores":[12.0,12.01,12.01,12.1],"delivered":[0,1,1,10],"served_by_recipe":{"salad":4,"soup":5,"fries":3},"orders_arrived":27,"orders_expired":15,"burned":{"pot":1,"fryer":1},"blocked_moves":[48,77,270,110],"handoffs":[0,0,0,0],"names":["coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a","coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a","coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a","coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a"],"aliases":["Cog-B","Cog-A","Cog-C","Cog-D"],"seat_kinds":["prompt","prompt","prompt","prompt"],"cross_play":false,"disconnected":[false,false,false,false],"fallbacks":[1,1,0,1],"llm_requests":7}
+{"t":865,"slot":1,"alias":"Cog-C","station":"pot","recipe":"soup","zone":"any","handoff":"none",
+ "yield_to":"Cog-B","say":"Moving to pot with meat. Cog-B bringing chopped meat. Will assemble soup immediately.","src":"llm"}
 ```
 
-```bash
-# schema-adapted from the phase prompt: decisions are `plan` events inside ticks[].ev[]
-jq -r '[.ticks[]|.ev[]?|select(.ev=="plan")]|group_by(.src)|map({src:.[0].src,n:length})|@json' /tmp/smoke.replay
-jq -r '[.ticks[]|.ev[]?|select(.ev=="fallback")]|length' /tmp/smoke.replay
-```
+Round 8's replay was parsed the same way, as a same-coworld comparison point:
+`strict UTF-8 JSON: ok`, 372544 bytes, `collab-cooking.replay.v1`, `results.reason: "complete"`,
+900 ticks, `dishes: 1`, `cross_play: true`,
+`seat_kinds: ["prompt","prompt","scripted:runner","scripted:passer"]`, `fallbacks: [1,1,0,0]`,
+`llm_requests: 34`, and **30 `plan` events, all 30 `src:"llm"`, 0 with `src:"fallback:*"`**.
 
-```
-[{"src":"llm","n":1}]
-3
-```
+**Status: TRUE.**
+- strict UTF-8 JSON under `jq -e`: **ok** (403849 bytes).
+- `protocol` matches the design/manifest declaration: **yes**.
+- `results.reason == "complete"`: **yes** (not `deadline`).
+- champion seats' plans are non-scripted with non-trivial content: **every one of the 24 `plan`
+  records carries `src:"llm"`, with real coordination language** (station/recipe/handoff/yield_to
+  set, `say` naming the other cog and the missing ingredient). Not one plan is a fallback plan.
+- fallbacks a minority: **12 of 36 plan turns (33 %) in round 9; 2 of 32 (6 %) in round 8.**
+  Both are minorities and neither is "all fallbacks". The round-9 elevation has a single cause,
+  fetched in check 5 and cross-checked there against two other live LLM coworlds: the shared
+  provider answering `http 429 {"message":"Too many tokens per day, please wait before trying
+  again."}` — a platform-wide capacity/quota symptom, which SPEC/`prompts/60-verify.md` check 5
+  explicitly allows when documented and cross-checked. The coworld's own degrade path behaved
+  exactly as the design says it should: retry once, then that seat plays `brigade` for one turn and
+  emits a `fallback` event naming the cause; the episode still finished `complete` at 900/900.
 
-This confirms `protocol == "collab-cooking.replay.v1"` matches the manifest and
-`results.reason == "complete"` is reachable — but it is a **smoke** episode
-(`cross_play: false`, four identical `coworld-smoke/...` seats, 1 llm plan vs 3 fallbacks, 480
-ticks not 900). It says nothing about whether the champions play well, and it cannot satisfy
-item 4, which asks for the latest completed round's replay.
+Legibility observations for the coordinator (not check failures): the two LLM champions delivered
+**0** dishes each while the scripted `brigade` filler delivered all 3, 47 of 50 tickets expired,
+and `blocked` fires 1434 times — the prompt seats spend the episode shuttling half-assembled soup
+and never close the loop. Team score is shared, so all four seats score 3.x and Elo does not move;
+the ladder is currently a draw machine.
 
 ---
 
-## 5. Hosted game log clean — **FALSE**
+## 5. Hosted game log is clean
+
+```
+GET $BASE/episode-requests/ereq_876d0e7c-bc10-4c59-aa07-31f2cf46aa1c/artifacts/logs
+     (headers: Authorization, User-Agent, X-Use-Elevated-Privileges)   -> HTTP:200
+```
+
+The body is python `b'…'` byte-string reprs under four `===== container: … =====` headers
+(`coworld-init-config`, `bedrock-sidecar`, `game`, `worker`), so it was decoded with
+`ast.literal_eval` per repr before grepping (104693 bytes of decoded text):
 
 ```bash
-curl -sS "$BASE/episode-requests/ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" \
- | tee /tmp/logs.txt
-grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs.txt || echo CLEAN
-wc -c /tmp/logs.txt
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs9.txt
+```
+```
+191:INFO:     connection rejected (403 Forbidden)
 ```
 
-```
-Error type: game_unhealthy
-
-Game container exited with code 1
---- grep:
-CLEAN
-61 /tmp/logs.txt
-```
-
-Identical 61-byte body for rounds 2 and 3 (`ereq_b5042a23…`, `ereq_ce167142…`). There are no
-`===== container: … =====` sections and no python `b'…'` reprs — the game container produced no
-captured output at all. Probes for a fuller log all fail:
+Per-pattern counts on the decoded text:
 
 ```
-GET …/artifacts/logs?container=game  -> HTTP 200, same 61 bytes
-GET …/episode-requests/<ereq>/logs   -> HTTP 404 {"detail":"Not Found"}
-GET …/jobs/<job_id>/logs             -> HTTP 404 {"detail":"Not Found"}
-GET …/jobs/<job_id>                  -> HTTP 404 {"detail":"Not Found"}
+falling back                     0
+LLM provider is unavailable      0
+cut off at max_tokens            0
+rejected                         1
 ```
 
-Status: **FALSE.** The grep is *literally* `CLEAN`, but only because there is no game log to
-grep: the body is a 61-byte crash notice, and the episode it describes never started. I will not
-record a pass off a degenerate match — the check asks that the hosted game log be clean, and no
-hosted game log exists. No `LLM provider is unavailable` / `max_tokens` / `rejected` evidence was
-found anywhere, so this is **not** the Bedrock-capacity symptom; cooperative_hunting and coins
-were completing episodes in the same window (item 3).
+The single hit in context (lines 188–194 verbatim):
+
+```
+INFO:     127.0.0.1:48852 - "GET /healthz HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48868 - "GET /client/player?slot=0&token=90L1HPVfQPBfY4j7OEbDqw HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48872 - "WebSocket /player?slot=0&token=bad" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     127.0.0.1:48882 - "GET /client/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48884 - "WebSocket /global" [accepted]
+INFO:     connection open
+```
+
+**Documented exception, cited.** This is the platform certification runner's own negative probe —
+a `token=bad` websocket from `127.0.0.1` at pod startup, *before* any real player connected, which
+the server correctly refuses; the real slot-0 player then connects with a valid token. It is
+evidence that token auth works, not an LLM degradation, and it is the identical line the
+commons-family run's phase-60 adjudication accepted as a documented exception
+(`runs/2026-08-24-commons-family/reviews/verify-verdict.md` §"Check 5 — one `rejected` grep hit →
+PROPERLY DOCUMENTED EXCEPTION, check stands TRUE", and `runs/2026-08-24-commons-family/VERIFY.md`
+lines 313/339/354). Round 8's log, fetched the same way, has exactly the same single hit
+(`191:` there too is the `token=bad` 403; `falling back` / `LLM provider is unavailable` /
+`cut off at max_tokens` all 0).
+
+**Per-seat fallback causes (this game logs them) — distinguished from the above.** The 12
+round-9 fallbacks do not match any of the four patterns, but they are the reason check 4's fallback
+share rose, so their cause is fetched here verbatim. 24 lines, i.e. 12 turns × (attempt 0 + attempt
+1 retry), all of one kind:
+
+```bash
+grep -E '^collab-cooking llm: ' /tmp/logs9.txt | head -6
+```
+```
+collab-cooking llm: slot 1 attempt 0: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+collab-cooking llm: slot 1 attempt 1: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+collab-cooking llm: slot 0 attempt 0: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+collab-cooking llm: slot 1 attempt 0: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+collab-cooking llm: slot 0 attempt 1: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+collab-cooking llm: slot 0 attempt 1: transport http 429: {"message":"Too many tokens per day, please wait before trying again."}
+```
+```
+$ grep -cE '^collab-cooking llm: ' /tmp/logs9.txt      -> 24
+$ grep -E '^collab-cooking llm: ' /tmp/logs9.txt | grep -c '429'   -> 24
+$ grep -E '^collab-cooking llm: ' /tmp/logs9.txt | grep -v '429'   -> (no output)
+```
+
+Every one is `http 429` from the shared provider; there are no timeouts, no schema rejections, no
+`rate_budget` skips, no `max_tokens` truncations. The successful calls show the provider and that
+`max_output_tokens` is 900, not 400:
+
+```
+bedrock_sidecar_complete {… "model":"global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "operation":"InvokeModel", "ok":true, "status_code":200, "latency_ms":1680.68,
+  "error_kind":null, "cache_strategy":"sidecar_v1", "cache_decision":"first_sighting" …}
+bedrock_sidecar_usage {… "usage":{"input_tokens":718,"output_tokens":103,
+  "cache_read_input_tokens":0,"cache_write_input_tokens":0}}
+```
+```bash
+jq -r '.config|{model, max_output_tokens, plan_interval_steps, llm_max_requests_per_minute}' /tmp/ep9.replay
+# {"model":"claude-haiku-4-5-20251001","max_output_tokens":900,
+#  "plan_interval_steps":50,"llm_max_requests_per_minute":26}
+```
+
+**Platform-wide cross-check (two other live LLM coworlds, same wall-clock window).** Both fetched
+fresh with the elevated header:
+
+- `coins` (`cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e`), latest episode
+  `ereq_7c6ddebe-788b-4369-ae27-500ab36b781a` (created 2026-08-25T10:29:13Z):
+  `Too many tokens per day, please wait before trying again.` × **24**, plus its own explicit
+  `coins llm: seat 0 falling back to scripted intent` lines (5 shown at lines 88/92/99/104/109) —
+  i.e. that coworld's log is *dirtier* under the same regex than collab-cooking's.
+- `cooperative-hunting` (`cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d`), latest completed episode
+  `ereq_089f819e-a39c-42da-9689-2511fa30d637` (created 2026-08-25T10:18:44Z):
+  `Too many tokens per day…` × **2**, and at line 697
+  `cooperative-hunting llm: us.anthropic.claude-haiku-4-5-20251001-v1:0 unusable (throttled);
+  falling back to us.anthropic.claude-sonnet-4-5-20250929-v1:0` — the same Haiku-4.5 throttle,
+  named.
+
+**Status: TRUE.** Zero hits for `falling back`, `LLM provider is unavailable` and
+`cut off at max_tokens`. The one `rejected` hit is the pod-local `token=bad` auth probe — a
+documented exception with the precedent cited. The 429 daily-token cap that produced the 12
+fallbacks is a platform-wide capacity symptom, cross-checked against two other coworlds' logs from
+the same fifteen minutes, exactly the cause `prompts/60-verify.md` check 5 says to document rather
+than treat as a defect in this coworld. The game container also shut down cleanly
+(`Shutting down` → `Application shutdown complete.` → `Finished server process [1]`).
 
 ---
 
-## 6. Public page uses the static replay path — **FALSE**
+## 6. The public page uses the static replay path
 
-Source A — raw HTML (the documented grep):
-
-```bash
-curl -sS "https://softmax.com/collab-cooking" -o /tmp/page.html -w "page HTTP %{http_code} bytes %{size_download}\n"
-grep -o '<iframe[^>]*src="[^"]*"' /tmp/page.html || echo "(no match)"
-```
-
-```
-page HTTP 200 bytes 538034
-(no match)
-```
-
-Per `playbooks/observatory-api.md` §Featured match, an empty grep is *unknown*, not a failure —
-so I read the SSR payload and the page copy from the same fetched bytes:
+Source (a) — raw HTML grep:
 
 ```bash
-grep -o 'playlist\\":\[[^]]*\]' /tmp/page.html
-grep -o 'No featured match yet[^<]*' /tmp/page.html
+curl -sS "https://softmax.com/collab-cooking" | grep -o '<iframe[^>]*src="[^"]*"'
+# HTTP:200 bytes:550571
+# NO MATCH
 ```
+Not a false negative: the page is client-rendered for the iframe (documented in
+`playbooks/observatory-api.md` §Featured match / replay route, lighthouse run 2026-08-22). So:
 
-```
-playlist\":[]
-No featured match yet
-```
-
-Page copy in context: `>No featured match yet</h1><div …>The next round is expected in ~11m.</div>`
-
-Source B — the coworld detail API:
+Source (b) — the coworld detail API. `featured_match` is `null` platform-wide, so it is not
+evidence either; recorded for completeness:
 
 ```bash
-curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
- | jq -c '(if type=="array" then . else .entries end)[]|select(.name=="collab_cooking")|{id,name,version,canonical,replay_viewer,featured_match}'
+curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" | jq -r '…|select(.name=="collab_cooking")|{id,canonical,replay_viewer,featured_match,manifest_hash}'
 ```
+```json
+{"id":"cow_19938c0f-195a-45f8-95da-761f0ffe04cb","name":"collab_cooking","version":"0.1.3","canonical":true,
+ "replay_viewer":null,"featured_match":null,
+ "manifest_hash":"sha256:ae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1"}
+{"id":"cow_7785231a-793b-440e-8e1b-0f4f5df5ada4","version":"0.1.2","canonical":false, …}
+{"id":"cow_127a462a-6f7f-457f-aa7b-95652aae11d4","version":"0.1.1","canonical":false, …}
+```
+
+Source (c) — **the source used for the verdict**: the featured match server-rendered into the
+page's SSR payload at `state.playlist[0]`, extracted from the same `GET https://softmax.com/collab-cooking`
+body fetched at 10:39Z:
 
 ```json
-{"id":"cow_127a462a-6f7f-457f-aa7b-95652aae11d4","name":"collab_cooking","version":"0.1.1","canonical":true,"replay_viewer":null,"featured_match":null}
+{
+  "episodeId": "b08e760c-9c75-42a6-aeb9-c0b428884067",
+  "coworldId": "cow_19938c0f-195a-45f8-95da-761f0ffe04cb",
+  "coworldName": "collab_cooking",
+  "coworldVersion": "0.1.3",
+  "replayUrl": "https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay",
+  "finishedAt": "2026-08-25T10:33:47.933542Z",
+  "roundNumber": 9,
+  "episodeNumber": 1,
+  "code": "collab_cooking.r9.e1",
+  "inspectUrl": "/observatory/v2?tab=episode-requests&detail=episode-request:ereq_876d0e7c-bc10-4c59-aa07-31f2cf46aa1c",
+  "matchup": {
+    "divisionId": "div_027403b9-3208-43b8-b2e6-499bd18681e5", "divisionName": "Competition",
+    "first":  {"rank":1,"player_name":"daveey",  "policy_label":"collab-cooking-expo:v3",    "rounds_played":8,"score":1000},
+    "second": {"rank":2,"player_name":"daveey-1","policy_label":"collab-cooking-linecook:v3","rounds_played":8,"score":1000}
+  }
+}
 ```
 
-Status: **FALSE.** Sources used: the raw HTML **and** its SSR payload (`state.playlist`), plus
-the `/coworlds` API. `playlist` is `[]` and the page renders "No featured match yet", so there is
-**no iframe `src` at all** — neither a static one nor a `/client/replay` pod URL. The cause is
-upstream, not a routing defect: a featured match needs a completed episode with a replay, and
-there are none (item 3).
-
-For completeness, the static route itself resolves for this coworld — the page's own call, made
-by hand against the certification replay:
+And the call the page's own JS makes to turn that into the iframe `src`:
 
 ```bash
 curl -sS -X POST "$BASE/coworlds/replays/session" "${AUTH[@]}" -H 'content-type: application/json' \
- -d '{"coworld_id":"cow_127a462a-…","replay_uri":"https://softmax-public.s3.amazonaws.com/replays/ad24f497-….replay"}'
+  -d '{"coworld_id":"cow_19938c0f-195a-45f8-95da-761f0ffe04cb",
+       "replay_uri":"https://softmax-public.s3.amazonaws.com/replays/d0c99032-68e2-478a-9007-84fdf727336b.replay"}'
 ```
-
 ```json
-{"viewer_url":"https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_127a462a-6f7f-457f-aa7b-95652aae11d4/sha256%3Ae577c452bdb928afc16b6872016540e14c0b9c65eed4a00ca564871c8bd32c7f/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fad24f497-8ea8-4e68-90bb-64a70644db3e.replay&v=2","ready":true}
+{
+  "viewer_url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_19938c0f-195a-45f8-95da-761f0ffe04cb/sha256%3Aae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fd0c99032-68e2-478a-9007-84fdf727336b.replay&v=2",
+  "ready": true
+}
 ```
 
-`ready: true`, path ends `/index.html`, `<sha>` is the coworld's manifest hash
-`sha256:e577c452bdb928afc16b6872016540e14c0b9c65eed4a00ca564871c8bd32c7f` — i.e. **when** a
-league replay exists the page will get a static src, not a pod URL. That is a property of the
-route, not evidence for item 6, which requires a featured match on the page. Item 6 stays FALSE.
+**Status: TRUE.** Source used: the page's SSR payload (`state.playlist[0]`) plus
+`POST /coworlds/replays/session` — sources (a) and (b) are uninformative platform-wide, as the
+playbook records. A **featured match is present** (`collab_cooking.r9.e1`, the round-9 episode,
+finished 10:33:47Z, with both champions as the `first`/`second` matchup — the "fewer than two
+ranked players" absence that attempt 1 hit is gone). The iframe `src` is the **static** route
+`…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>`, with `<cow_id>` =
+`cow_19938c0f-195a-45f8-95da-761f0ffe04cb` (the canonical v0.1.3 coworld) and `<sha>` =
+`sha256:ae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1` URL-encoded (the
+coworld's manifest_hash, matching STATE). `ready: true`. It is **not** a `/client/replay` pod URL.
 
 ---
 
-## 7. Certification declared the static bundle — **TRUE**
+## 7. Certification declared the static bundle
 
-Source: the committed artifact `runs/2026-08-25-collab-cooking/release-result.json` (downloaded
-and committed by phase 40 from release run 32826526376). It was present, so no re-download was
-needed.
+Source read: **the committed `runs/2026-08-25-collab-cooking/release-result.json`** — not `/tmp`,
+and not re-downloaded: the file is present in the working tree and `git log` shows it was committed
+by this run's remediation release (`1c6747b collab-cooking: 60 remediation release v0.1.3`,
+superseding `d4b714c collab-cooking: 40 release-result v0.1.1`), i.e. it is the v0.1.3 artifact of
+release run `32834816635`. No `gh run download` fallback was needed.
 
 ```bash
 jq -r '.certify.replay_liveness' runs/2026-08-25-collab-cooking/release-result.json
 ```
-
 ```
 Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
 ```
 
-Status: **TRUE** — contains `Replay liveness: skipped (static replay bundle declared`.
+The surrounding transcript from the same file (`.certify.output_tail`, all ten steps):
+
+```
+Certifying dist/coworld_manifest.json against transcript coworld-executable
+  [pass] matriculate: manifest conforms to the Coworld schema
+  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source
+  [pass] images-reachable: every declared image is pullable or inspectable
+  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection
+  [pass] smoke-episode: the game and certification players run one episode
+  [pass] results-conform: episode results validate against results_schema
+  [pass] replay-present: a replay artifact was produced
+  [pass] replay-loadable: the replay artifact has a declared viewer path
+  [pass] players-run: every declared player actually started on the smoke episode (not just declared)
+  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks
+Certified dist/coworld_manifest.json
+Transcript: coworld-executable (10 steps passed)
+…
+Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
+```
+`.certify.ok` is `true` and `.ok` is `true`.
+
+**Status: TRUE.** The string contains `Replay liveness: skipped (static replay bundle declared`,
+read from the committed `runs/2026-08-25-collab-cooking/release-result.json`.
 
 ---
 
-## 8. Spectator judgment — the viewer is EXECUTED, then judged — **FALSE**
+## 8. Spectator judgment — the viewer was EXECUTED
 
-**Why FALSE:** item 8 renders "the iframe `src` from item 6". Item 6 produced **no iframe src** —
-`playlist: []`, `featured_match: null` — because no league episode has a replay. There is
-nothing a spectator arriving at `softmax.com/collab-cooking` can watch, so the spectator
-experience does not exist and item 8 cannot be true.
-
-I did dispatch and download a real render anyway, so the coordinator knows whether the *viewer*
-is also broken or only the game. **The URL rendered is the static route built from the
-certification smoke replay (`ad24f497-…`), not a featured league match** — a clearly-labelled
-substitute, not the item-6 src.
+Dispatched against the item-6 iframe `src` verbatim (the full URL including `?replay=` and `&v=2`):
 
 ```bash
-SRC='https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_127a462a-6f7f-457f-aa7b-95652aae11d4/sha256%3Ae577c452bdb928afc16b6872016540e14c0b9c65eed4a00ca564871c8bd32c7f/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fad24f497-8ea8-4e68-90bb-64a70644db3e.replay&v=2'
+SRC="$(jq -r .viewer_url /tmp/session9.json)"
 gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC" -f timeout=90
-# dispatched 2026-08-25T09:05:42Z; new run found by sorting createdAt, not by "latest":
-gh run list -R Metta-AI/coworld-builder -w viewer-check.yml --json databaseId,createdAt,status -L 10 \
- | jq -r 'sort_by(.createdAt)|reverse|.[0:3]|.[]|[.databaseId,.createdAt,.status]|@tsv'
+# dispatched 2026-08-25T10:40:30Z
+gh run list -R Metta-AI/coworld-builder -w viewer-check.yml --json databaseId,createdAt,status -L 5 \
+  | jq -r 'sort_by(.createdAt)|reverse|.[0]'      # -> 32838395169  2026-08-25T10:40:30Z
+gh run watch 32838395169 -R Metta-AI/coworld-builder --exit-status
+# {"conclusion":"success","status":"completed","url":"https://github.com/Metta-AI/coworld-builder/actions/runs/32838395169"}
+gh run download 32838395169 -R Metta-AI/coworld-builder -n viewer-check -D runs/2026-08-25-collab-cooking/viewer-check
 ```
 
-```
-32830082226	2026-08-25T09:05:44Z	in_progress      <- created after the 09:05:42Z dispatch
-32825902427	2026-08-25T08:18:04Z	completed
-32822191156	2026-08-25T07:33:38Z	completed
-```
-
-```bash
-gh run watch 32830082226 -R Metta-AI/coworld-builder --exit-status   # -> green, 1m2s, rc=0
-gh run download 32830082226 -R Metta-AI/coworld-builder -n viewer-check -D runs/2026-08-25-collab-cooking/viewer-check
-```
-
-Artifact committed at `runs/2026-08-25-collab-cooking/viewer-check/`
-(`viewer-smoke.json`, `viewer-smoke.png`, `smoke-stdout.txt`, `smoke-stderr.txt` — 0 bytes).
+The new run was found by sorting `createdAt`, not by taking "the latest" blind. Artifacts committed
+with this file at `runs/2026-08-25-collab-cooking/viewer-check/` (`viewer-smoke.json`,
+`viewer-smoke.png`, `smoke-stdout.txt`, `smoke-stderr.txt` — the last is 0 bytes).
 
 ```bash
 jq -c '{loaded, ms, clock, scorebug, feed_lines}' runs/2026-08-25-collab-cooking/viewer-check/viewer-smoke.json
 ```
-
 ```json
-{"loaded":true,"ms":2725,"clock":"TICK 1 OF 480 1 ORDER LIVE","scorebug":"Cog-B coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-C coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 TICK 1 OF 480 1 ORDER LIVE Cog-A coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0 Cog-D coworld-smoke/cow_127a462a-6f7f-457f-aa7b-95652a working ▶ 0","feed_lines":0}
+{"loaded":true,"ms":2424,"clock":"TICK 2 OF 900 1 ORDER LIVE","scorebug":"Cog-B daveey working ▶ 0 Cog-D richard working ▶ 0 TICK 2 OF 900 1 ORDER LIVE Cog-C daveey-1 working ▶ 0 Cog-A Baseline working ▶ 0","feed_lines":0}
 ```
-
 ```bash
-jq -c '.signals' runs/2026-08-25-collab-cooking/viewer-check/viewer-smoke.json
-jq -r '.failure // "no failure"' runs/2026-08-25-collab-cooking/viewer-check/viewer-smoke.json
+jq -c '.signals' …/viewer-smoke.json
 ```
-
 ```json
 {"data_replay_loaded":"true","data_replay_error":null,"bridge":["ready"],"bridge_ready":true,"bridge_error":[]}
 ```
-
+```bash
+jq -r '.failure // "no failure"' …/viewer-smoke.json   ->  no failure
+jq -r '.console_tail[]' …/viewer-smoke.json            ->  [bridge] ready
+jq -r '.url' …/viewer-smoke.json
+# https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_19938c0f-195a-45f8-95da-761f0ffe04cb/sha256%3Aae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fd0c99032-68e2-478a-9007-84fdf727336b.replay&v=2
 ```
-no failure
-```
 
-Three clock readouts (`jq -r '.scrub[]|"\(.at)\t\(.clock)"'`):
+The three scrub readouts (`jq -r '.scrub[]|"\(.at)\t\(.clock)"'`):
 
-| scrub | clock readout |
+| scrub position | clock readout |
 |---|---|
-| 0 % | `TICK 1 OF 480 1 ORDER LIVE` |
-| 50 % | `TICK 258 OF 480 2 ORDERS LIVE · 1 EXPIRING` |
-| 100 % | `TICK 480 OF 480 0 ORDERS LIVE` |
+| 0 % | `TICK 2 OF 900 1 ORDER LIVE` |
+| 50 % | `TICK 468 OF 900 3 ORDERS LIVE` |
+| 100 % | `TICK 900 OF 900 0 ORDERS LIVE` |
 
-`console_tail`: `["[bridge] ready"]`. `canvas_text`: `{"total":0,"outside":0,"ellipsized":0,"never_inside":0}`.
+All three differ, in both the tick counter and the live-order counter — the timeline advances and
+the HUD tracks it. `canvas_text` reports `total: 0` (this shell paints its board on the canvas and
+its text in DOM chrome, so there is no clipped-label finding to make).
 
-Replay events the viewer was asked to draw (schema-adapted; `/tmp/smoke.replay` from item 4b).
-Event census first, so the selects below are not cherry-picked:
+A second viewer-check run dispatched earlier this same phase against the round-8 replay through the
+same static route (run **32837285266**, dispatched 10:27:07Z, conclusion `success`) reproduced the
+result independently: `{"loaded":true,"ms":3535,"clock":"TICK 4 OF 900 1 ORDER LIVE","feed_lines":1}`,
+signals `{"data_replay_loaded":"true","bridge":["ready"],"bridge_ready":true}`, scrub
+`0% TICK 4 OF 900 1 ORDER LIVE / 50% TICK 467 OF 900 2 ORDERS LIVE / 100% TICK 900 OF 900 0 ORDERS LIVE`,
+`no failure`. The committed artifact directory holds run **32838395169** (the round-9 featured
+match, i.e. the item-6 `src`).
 
-```bash
-jq -r '[.ticks[]|.ev[]?|.ev]|group_by(.)|map({ev:.[0],n:length})|@json' /tmp/smoke.replay
-```
+**Item 8 gate:** `loaded: true` ✅ and the three clock readouts differ ✅ → **TRUE**.
 
-```json
-[{"ev":"blocked","n":505},{"ev":"chop_done","n":29},{"ev":"chop_start","n":29},{"ev":"deposit","n":91},{"ev":"episode_end","n":1},{"ev":"episode_start","n":1},{"ev":"fallback","n":3},{"ev":"fry_burn","n":1},{"ev":"fry_clear","n":4},{"ev":"fry_ready","n":4},{"ev":"fry_start","n":4},{"ev":"order_arrive","n":27},{"ev":"order_expire","n":15},{"ev":"pickup","n":117},{"ev":"plan","n":1},{"ev":"plate_up","n":12},{"ev":"pot_burn","n":1},{"ev":"pot_clear","n":6},{"ev":"pot_load","n":7},{"ev":"pot_ready","n":6},{"ev":"pot_start","n":6},{"ev":"serve","n":12},{"ev":"wash_done","n":12},{"ev":"wash_start","n":12}]
-```
+### What the screenshot shows
 
-```bash
-jq -r '.ticks[]|.t as $t|(.ev[]?|select(.ev=="plan" or .ev=="serve" or .ev=="order_expire" or .ev=="episode_start")|[$t,(.alias//.slot//"-"),.ev,(.say//.recipe//.dish//"")]|@tsv)' /tmp/smoke.replay | head -8
-jq -r '.ticks[]|.t as $t|(.ev[]?|select(.ev=="plan" or .ev=="serve" or .ev=="episode_end")|[$t,(.alias//.slot//"-"),.ev,(.say//.recipe//.dish//"")]|@tsv)' /tmp/smoke.replay | tail -8
-```
+`runs/2026-08-25-collab-cooking/viewer-check/viewer-smoke.png` (1280×800, 233537 bytes), captured
+at the end of the scrub sweep, i.e. at `TICK 900 OF 900`:
 
-```
-=== early ===
-1	-	episode_start	
-50	-	order_expire	soup
-62	Cog-D	serve	soup
-68	-	order_expire	salad
-79	Cog-C	serve	salad
-89	Cog-D	serve	fries
-114	Cog-C	plan	Taking soup order - fetching ingredients
-123	Cog-D	serve	soup
-=== late ===
-161	Cog-D	serve	soup
-178	Cog-D	serve	fries
-254	Cog-A	serve	fries
-265	Cog-D	serve	soup
-301	Cog-D	serve	salad
-328	Cog-D	serve	salad
-351	Cog-D	serve	soup
-480	-	episode_end	
-```
+- **Transport strip, bottom**: rewind / step-back / play / `+5s` / play / loop / fast-forward
+  buttons, a `spoilers` toggle, the counter `900 / 900`, and speed chips `1× 2× 3× 4× 8× 16×` with
+  `1×` selected. Below it the full-width **scrubber with the momentum graph** — a dense band of
+  orange and green ticks along the whole episode with the playhead pinned at the right end, labelled
+  `LIVES LEAD`.
+- **Scorebug, top**: four seats in the two-per-side arrangement — `Cog-B / daveey / chop → 0`,
+  `Cog-C / daveey-1 / pot → 0`, `Cog-D / richard / carrying → 0`, `Cog-A / Baseline / carrying → 3`
+  — around the centred clock `TICK 900 OF 900` with `0 ORDERS LIVE` beneath it.
+- **Dish ticker**: `3 DISHES` at the left, then three chips in serve order —
+  `● salad · Cog-A · t167`, `● soup · Cog-A · t239`, `● soup · Cog-A · t690` — and the `HEAT`
+  toggle at the right.
+- **Say band**: four seat columns; `Cog-B` "Chopping meat for soup, will deliver to pot after" and
+  `Cog-C` "Moving to pot with meat. Cog-B bringing chopped meat. Will assemble soup immediately.",
+  with `Cog-D no word yet` and `Cog-A no word yet` greyed (the two scripted seats never speak, which
+  is correct).
+- **Board**: the `open-kitchen` grid is visible behind the endcard, dimmed — station tiles, counter
+  island, and cog markers `B`, `C`, `D`, `A` with carried-item glyphs down the right side.
+- **Endcard**: `3 DISHES SERVED`, the caption `THE WHOLE BRIGADE SHARES ONE SCORE`,
+  `47 tickets expired · 3 pots burned · 0 fryers burned`, then the ranked list
+  `1. Cog-A Baseline 3 / 2. Cog-B daveey 0 / 3. Cog-C daveey-1 0 / 4. Cog-D richard 0`.
+- **Feed overlay**, bottom right, dimmed under the endcard: the two champion say lines followed by
+  `a salad ticket expires · nobody served it`, `a soup ticket expires · nobody served it`,
+  `a fries ticket expires · nobody served it`, `a salad ticket expires · nobody served it`.
 
-`results` (repeated from 4b for the reconciliation): `dishes: 12`, `served_by_recipe
-{salad 4, soup 5, fries 3}`, `orders_arrived 27`, `orders_expired 15`, `burned {pot 1, fryer 1}`,
-`delivered [0,1,1,10]`.
+### Reconciliation against the replay record
 
-**Spectator judgment.** The viewer itself is alive and legible — this is *not* a
-cogame-lantern-class dead page. `loaded: true` after 2725 ms via both signals
-(`data-replay-loaded="true"` and the `coworld-replay` bridge's `ready`), and the three clock
-readouts differ and advance monotonically (tick 1 → 258 → 480), so it is a replay and not a
-screenshot. In `viewer-smoke.png` (captured at the end of the scrub sweep, tick 480/480) I can
-see the starter's chrome, essentially the coworld-ctf layout: a four-seat scorebug across the top
-(Cog-B 0, Cog-A 1, Cog-C 1, Cog-D 10, each with its policy name and a `working ▶` state), the
-big centred `TICK 480 OF 480 / 0 ORDERS LIVE` transport clock, and beneath it the **dish ticker**
-— `12 DISHES` followed by the last six served-dish chips reading `…og-D · t178`,
-`fries · Cog-A · t254`, `soup · Cog-D · t265`, `salad · Cog-D · t301`, `salad · Cog-D · t328`,
-`soup · Cog-D · t351` and a `HEAT` badge. Those chips match the replay's `serve` events
-tick-for-tick against the `tail -8` above (t178 Cog-D, t254 fries Cog-A, t265 soup Cog-D, t301
-and t328 salad Cog-D, t351 soup Cog-D — the t178 chip's recipe word is cut off at the panel's
-left edge, where the record says `fries`), so the picture and the record agree and the ticker
-demonstrably advances. Below that sits the four-column say-band, three columns reading
-`Cog-B/Cog-A/Cog-D no word yet` and one reading `Cog-C Taking soup order - fetching ingredients`
-— the replay's single `plan` event (t114, `src: "llm"`), wrapped over two lines and not clipped (`ellipsized: 0`), which is the phase-30 R2-O1 fix holding under a real render. The
-kitchen grid is drawn but dimmed behind the endcard overlay: `12 DISHES SERVED`, the tagline
-`THE WHOLE BRIGADE SHARES ONE SCORE`, `15 tickets expired · 1 pot burned · 1 fryer burned`, and a
-1–4 placement list (Cog-D 10, Cog-A 1, Cog-C 1, Cog-B 0) — matching `results.delivered
-[0,1,1,10]` and `orders_expired 15`, `burned {pot 1, fryer 1}` exactly. The bottom strip is the
-familiar transport row (restart, step-back, play, +5s, step, loop, fast-forward, `spoilers`,
-`480 / 480`, speed 1×–16×) over the scrubber with the per-ticket momentum graph and a `LIVES LEAD`
-label. Legible, on-brand, and the game is recognisable: you can read who cooked what, when, and
-why the team scored 12.
+Every readout matches `/tmp/ep9.replay` exactly. Dish-ticker chips `salad t167`, `soup t239`,
+`soup t690` ↔ `jq '[…select(.ev=="serve")]'` →
+`[{"t":167,"slot":3,"alias":"Cog-A","recipe":"salad"},{"t":239,…,"soup"},{"t":690,…,"soup"}]`.
+Endcard totals ↔ `results.dishes: 3`, `orders_expired: 47`, `burned: {"pot":3,"fryer":0}`,
+`delivered: [0,0,0,3]` under `aliases: ["Cog-B","Cog-C","Cog-D","Cog-A"]`. Scorebug names ↔
+`results.names: ["daveey","daveey-1","richard","Baseline"]` — the filler is rendered `Baseline`,
+never its policy name. Say band ↔ the **last two** plan events in the file, t862 Cog-B "Chopping
+meat for soup, will deliver to pot after" and t865 Cog-C "Moving to pot with meat. Cog-B bringing
+chopped meat. Will assemble soup immediately." — verbatim. Mid-scrub `50% TICK 468 … 3 ORDERS LIVE`
+sits between the t446 `order_expire soup` and the t452/453 fallbacks in the event stream; the early
+readout `TICK 2` sits right after t1 `episode_start` + `order_arrive soup`.
 
-Two honest caveats. First, `feed_lines: 0` — the event feed panel is visibly populated in the
-screenshot (bottom-right, "Cog-D leaves veg on a counter", "a salad ticket expired · nobody served
-it", …) but the smoke probe counted zero rows, so its selector does not match this shell's feed;
-that is a probe/legibility note for phase 30, not a render failure. Second and decisively: **this
-is not this coworld's spectator experience.** It is the certification smoke episode — four
-identical `coworld-smoke/...` seats, `cross_play: false`, one LLM plan against three fallbacks,
-480 ticks. A spectator visiting `softmax.com/collab-cooking` right now sees "No featured match
-yet", because the champions have never played a single tick. The viewer is ready; the game is
-not.
+### Spectator judgment
 
----
+**It is legible, it is the starter's chrome, and it does show the game.** The picture is neither
+empty nor frozen: the viewer reports `loaded: true` in 2.4 s via both `data-replay-loaded="true"`
+and the `coworld-replay` bridge's `ready`, and three scrubs read three different ticks with three
+different live-order counts, so a spectator can move through the episode and see it change. The
+chrome is the coworld-ctf/paintbot/raid/hive family the design declared — the same bottom transport
+strip with speed chips and a `spoilers` toggle, the same full-width scrubber with a momentum graph,
+the same four-seat scorebug wrapped around a centred clock, the same endcard — with this game's two
+declared additions layered on it: the dish ticker in serve order and the `HEAT` collision-heat-map
+toggle. This is not the cogame-gridlock failure of a rewrite that merely shares ids.
 
-## Diagnosis (not a definition-of-done item — offered so the coordinator can act)
+What a spectator learns is exact and slightly damning: at the pass, `3 DISHES SERVED`, all three by
+`Cog-A / Baseline`, the scripted filler; both LLM champions finish on 0; `47 tickets expired · 3
+pots burned`. The say band explains why in the champions' own words — for the entire episode Cog-B
+and Cog-C narrate a soup they never finish assembling ("Cog-B bring chopped_meat", "waiting for
+Cog-C's chopped meat"), which is precisely the coordination failure `open-kitchen` exists to
+expose, and the feed's repeated "nobody served it" lines make the cost visible. So the viewer is
+telling the truth about a game whose champions currently play it badly, which is a **balance /
+prompt-quality** finding for the coordinator, not a viewer or a platform defect.
 
-Fetched fact: the certification episodes (08:29:47) **completed** on the same image, and the
-three league episodes (08:40, 08:55, 09:10) all died. The only difference between them is the
-`game_config`:
-
-```bash
-curl -sS "$BASE/episode-requests/ereq_c0e0e4dc-dd6d-4d89-9d99-3d4cdcbf7367" "${AUTH[@]}" | jq -c '{variant_name,status,game_config}'   # certification
-curl -sS "$BASE/episode-requests/ereq_7a3dbe01-1662-410f-8ab7-95ea7a2f8058" "${AUTH[@]}" | jq -c '{variant_name,status,game_config}'   # league round 4
-```
-
-```json
-{"variant_name":null,"status":"completed","game_config":{"seed":20260826,"layout":"cramped","players":[{"name":"Cog One"},{"name":"Cog Two"},{"name":"Cog Three"},{"name":"Cog Four"}],"max_steps":480,"num_agents":4,"step_seconds":0.02,"plan_interval_steps":240,"policy_action_timeout_seconds":0.3,"player_connect_timeout_seconds":90}}
-{"variant_name":"Open Kitchen","status":"failed","game_config":{"seed":20260825,"layout":"open-kitchen","players":[{"name":"Cog One"},{"name":"Cog Two"},{"name":"Cog Three"},{"name":"Cog Four"}],"max_steps":900,"num_agents":4,"step_seconds":0.2,"plan_interval_steps":50,"player_connect_timeout_seconds":120}}
-```
-
-Deltas: `layout` cramped → open-kitchen, `max_steps` **480 → 900**, `step_seconds` 0.02 → 0.2,
-`plan_interval_steps` 240 → 50, `policy_action_timeout_seconds` 0.3 → absent,
-`player_connect_timeout_seconds` 90 → 120.
-
-Reproduced locally from a **read-only** clone of `Metta-AI/cogame-collab-cooking@8f6bca0` (no
-edits, no pushes), calling the game's own `create_app()` with the two configs plus four dummy
-tokens:
-
-```
-CONSTRUCT OK   layout=cramped      max_steps=480
-CONSTRUCT OK   layout=open-kitchen max_steps=480
-CONSTRUCT OK   layout=cramped      max_steps=620
-CONSTRUCT FAIL layout=cramped      max_steps=640  -> TypeError: mettagrid GameConfig(): incompatible constructor arguments
-CONSTRUCT FAIL layout=cramped      max_steps=900  -> TypeError: …
-CONSTRUCT FAIL layout=open-kitchen max_steps=900  -> TypeError: …
-```
-
-It is **`max_steps`, not the layout**. The kitchen mission mints one resource plus two events per
-prospective ticket, and the ticket count is `max_steps / ticket_interarrival`:
-
-```
-max_steps 480 -> 52 resources -> feature ids fit        (certification)
-max_steps 620 -> 60 resources -> feature ids fit
-max_steps 640 -> 61 resources -> 257 feature ids, max id 256  -> mettagrid GameConfig rejects
-max_steps 900 -> 75 resources -> 313 feature ids, max id 312  -> mettagrid GameConfig rejects   (all 8 variants)
-```
-
-mettagrid packs feature ids into one byte (`token_value_base: 256`), so 256 is the hard ceiling.
-`server.py` builds the mission at import/`create_app` time, before uvicorn binds, so the
-exception exits the process with code 1 and the platform reports exactly what we see —
-`game_unhealthy: Game container exited with code 1`, no `/healthz`, no log lines.
-
-All eight variants in the published manifest declare `max_steps: 900` (the design's headline
-"900 ticks"); the certification fixture declares 480:
-
-```bash
-curl -sS "$BASE/coworlds/$COW" "${AUTH[@]}" | jq -r '.manifest.variants[]|[.id,.game_config.max_steps]|@tsv'
-curl -sS "$BASE/coworlds/$COW" "${AUTH[@]}" | jq -c '.manifest.certification.game_config|{layout,max_steps,step_seconds,plan_interval_steps}'
-```
-
-```
-open-kitchen	900
-cramped	900
-forced	900
-crowded	900
-asymmetric	900
-circuit	900
-ring	900
-figure-eight	900
-{"layout":"cramped","max_steps":480,"step_seconds":0.02,"plan_interval_steps":240}
-```
-
-That is why `certify` was green and why every league round is dead. Caveat on this repro, stated
-plainly: my sandbox resolved `mettagrid 0.26.22` on CPython 3.11, whereas the image is `python:3.12-slim` with whatever `mettagrid>=0.26.15`
-(unpinned in `pyproject.toml`) resolved at build time — so the *exception text* may differ from
-the container's. The scaling and the 256-id ceiling are properties of the game's own mission
-builder, and they line up exactly with the fetched pass/fail split.
-
-Two things for the coordinator to weigh (I did not change anything): the ticket encoding needs to
-stop scaling with `max_steps` (bounded ticket slots — `order_queue_max` already exists), or the
-variants need `max_steps ≤ 620`; and separately, certification exercising only a 480-step
-`cramped` fixture while every shipped variant is 900 steps is the hole that let this through.
-
----
-
-## Waiting record
-
-Bound: 75 minutes from 2026-08-25T08:43Z (expires 09:58Z). Polls at 08:43, 08:50, 08:55, 09:00,
-09:02, 09:11, 09:14 — logged in `log.md`, `heartbeat_at` refreshed in STATE and on the Asana run
-task each time. Stopped at 09:15Z, inside the bound, because the bound's purpose was met and
-further waiting cannot change the outcome: item 1 is satisfied (3 completed rounds) and the
-episode failure is deterministic and identical across rounds 2, 3 and 4 on an image that cannot
-be changed without a re-release.
+Two legibility observations to carry forward, neither a check failure:
+1. **`feed_lines: 0` reproduces from attempt 1** while the feed overlay is plainly populated in the
+   PNG (six lines, bottom right) and the say band carries both champion lines. The round-8 run of
+   the same probe returned `feed_lines: 1`. This is a **probe selector mismatch** against this
+   shell's feed nodes, not an empty feed — confirmed by the screenshot, which is rendered evidence,
+   and by the say-band text matching the replay's last two plans verbatim.
+2. The endcard is a full-width overlay that dims the board it sits on. At 100 % scrub that is the
+   correct final state, but a spectator scrubbing back has to move off the last frame before the
+   kitchen is fully readable again.
