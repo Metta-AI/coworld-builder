@@ -57,3 +57,4 @@
 2026-08-25T00:16:52Z 30 r1 fixer dispatched (sthr_01QaTuucMRqQPznDLTyuomap)
 2026-08-25T01:16:30Z 30 r1 fixer returned: r1-fixes.md, 12 commits, final sha 9c7fbbd51bf030982ef1b4e2ad7cb6008e0695bc, CI green run 32796206226
 2026-08-25T01:16:30Z progress phase=30 marker=r1-fixes.md
+2026-08-25T01:17:24Z 30 r1 judge dispatched (sthr_01HbGdMCpHuMfn5AuJuKdhkA) sha=9c7fbbd
