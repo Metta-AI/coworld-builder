@@ -6,3 +6,4 @@
 2026-08-25T18:58:00Z 00 run task 1217841000738062 created in Running, heartbeat_at set, 9 phase subtasks created
 2026-08-25T18:58:30Z 00 -> 10 phase transition: entering design (session=6f21c4a9)
 2026-08-25T19:00:30Z 10 starter chosen: Metta-AI/coworld-ctf — real-time grid loop with new rules (MP re-implementation, not an external-engine port); precedent: chemistry run
+2026-08-25T19:02:00Z 10 designer dispatched (thread sthr_01JHcnhjxkZk7FsEiimAAuje, round 1/3) -> runs/2026-08-25-fruit-market/design.md
