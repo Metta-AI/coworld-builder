@@ -136,3 +136,4 @@
 2026-08-25T09:17:30Z heartbeat: cap reached (live=3/3)
 2026-08-25T09:46:11Z 00 paintball heartbeat_at stale (2026-08-25T06:24:12Z, ~196m) but session b1314909 pushed 9464fa2 at 09:34:33Z — treated as live, not adopted
 2026-08-25T09:46:11Z heartbeat: cap reached (live=3/3)
+2026-08-25T09:59:00Z heartbeat: cap reached (live=3/3)
