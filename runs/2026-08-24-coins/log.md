@@ -85,3 +85,4 @@
 2026-08-25T01:56:08Z progress phase=50 marker=round1-pending
 2026-08-25T01:56:08Z 50 done -> phase 60
 2026-08-25T01:56:08Z heartbeat phase=60
+2026-08-25T01:57:04Z 60 verifier dispatched (sthr_014YU9c2VoTfE8bAFhybwsby)
