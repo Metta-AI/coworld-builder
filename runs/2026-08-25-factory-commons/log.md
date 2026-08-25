@@ -22,3 +22,6 @@
 2026-08-25T16:56:00Z 20 pushed e9ccce0 -> run 32873913589 SUCCESS (shift/end events now land inside the recorded frames)
 2026-08-25T17:05:00Z 20 pushed 62681ee -> run 32874694256 SUCCESS (two legibility fixes read off the smoke screenshot) — CLAIMED GREEN
 2026-08-25T17:37:40Z 00 resume at phase 20 attempt=1 session=d409ba88
+2026-08-25T17:39:13Z 20 exit checks pass on 62681ee: placeholders clean, 3 workflows parse+active, release/submit inputs present, release-result+submit-result artifacts present, champion#2 player field present
+2026-08-25T17:39:13Z 20 -> 30 phase transition, STATE phase=30 review_round=1
+2026-08-25T17:39:13Z heartbeat phase=30
