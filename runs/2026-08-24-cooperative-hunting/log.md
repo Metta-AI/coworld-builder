@@ -67,3 +67,10 @@
 2026-08-25T04:46:43Z 50 seed 200 lseed_6db53ac2 league=league_500b6882-6374-43f4-a82b-5e2d0522d9fd (coworld_name=cooperative_hunting — slug hyphens 404d "Canonical Coworld not found", retried underscored)
 2026-08-25T04:46:43Z 50 division 200 div_60ac03d6-a66a-4ebc-9b84-a0092627e7dc; settings 200 (elo, round_robin, filler_policy, 15min)
 2026-08-25T04:46:43Z heartbeat phase=50
+2026-08-25T04:49:31Z 50 champion1 submit ok run=32810252834 sub_f51b688c pack-caller:v2 (daveey)
+2026-08-25T04:49:31Z 50 champion2 submit ok run=32810287825 sub_a19f5db0 quartermaster:v2 (daveey-1, pv ff8b8f0a)
+2026-08-25T04:49:31Z 50 fillers 200 biggame:v2=1ccdd2e4 sidekick:v2=b0ebdd65 (neither champion in list)
+2026-08-25T04:49:31Z 50 unpause 200; trigger 200; round1 failed pre-filler auto-round ("Temporal RoundWorkflow failed before settling"), round2 round_6386b11d pending with BOTH champions in entrant_attributions
+2026-08-25T04:49:31Z progress phase=50 marker=round_6386b11d-0946-47d1-90a6-9921879c0888
+2026-08-25T04:49:31Z 50 done -> phase 60
+2026-08-25T04:49:31Z heartbeat phase=60
