@@ -91,3 +91,5 @@
 2026-08-25T17:16:48Z 60 verifier returned (VERIFY.md rewritten @0e055de): checks 1,2,3,6,7,8 TRUE — check 8 now passes (run 32875824479, three differing clocks: 1:30 T1/20, 1:15 T4/20, 0:55 T8/20; mid-seek fix works); 4,5 FALSE on r18 only — llmTurns [9,11] fallbackTurns [29,27], 112 falling-back lines, 111 of them Bedrock 429 daily-token (cross-check collab_cooking ereq_91f90ab1 17:02Z: 106 same lines — platform-wide, worsening 16:47Z->17:02Z). r17 champ-vs-champ passes check 4 outright (66/76 llm). 0.1.3 fixes all hold: no sonnet cascade, no scripted champion seat, result record in bytes, viewer motion.
 2026-08-25T17:16:48Z 60 decision: platform-cause clause (60-verify check 5) says poll within the 75-min bound, not Blocked — polling new rounds until 2026-08-25T18:31:48Z for a champ-vs-champ episode with llm-majority + clean log, then re-pin 4/5 and send to judge. This is check-retry attempt 3 (different approach: wait out the quota window; attempts 1=0.1.2 verify, 2=fix+re-release+re-verify).
 2026-08-25T17:16:48Z heartbeat phase=60
+2026-08-25T17:25:53Z 60 poll 1: round 19 pending
+2026-08-25T17:25:53Z heartbeat phase=60
