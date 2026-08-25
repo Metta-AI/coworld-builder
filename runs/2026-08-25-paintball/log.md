@@ -14,3 +14,4 @@
 2026-08-25T07:20:36Z 20 pushed cogame-paintball main 6cfafa3 (fork of coworld-ctf: paint grid + hill + regimes, 8 cogs / 2 seats, 14 tests, scaffold); ci.yml run 32821071329 started
 2026-08-25T07:39:27Z 20 round 2: monotonic episode clock (replay codec stops at a non-increasing tick hash, so game 2 was being truncated), player connect retry, 6 fixture fixes; sha 73aa441, ci.yml run 32822606309
 2026-08-25T07:51:04Z 20 round 3: paint standoff + full-reach trigger probe (a cog could not paint the tile it stood on; hill plateaued at 14/21), zero-sum score mean, lobby zero-masks recorded, build_replay_viewer mkdir -p; sha ed19058, ci.yml run 32823566426
+2026-08-25T08:08:46Z 20 round 4: needsReregister out of gameHash (server lowers it, replay cannot), paint stand-off reverted (measured 0/21 vs 14/21), painting cogs now AIM at the nearest unpainted hill tile; sha 1293368, ci.yml run 32825059034
