@@ -9,15 +9,18 @@
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_4ac3644c-c0f0-4b39-93ae-adb2dd39518d",
+    "manifest_sha": "sha256:484a082c1f95ece0c295209173ab9a5064c376c35c0fe12946a5db07557a3374",
+    "release_run_id": "32847347580"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "paintball-holdcentre:v1",
+    "champion2": "paintball-splitpaint:v1",
+    "fillers": [
+      "paintball-holdline:v1",
+      "paintball-sprayer:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {

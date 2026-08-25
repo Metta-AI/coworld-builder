@@ -33,3 +33,6 @@
 2026-08-25T12:14:12Z progress phase=30 marker=r1-verdict.md
 2026-08-25T12:14:12Z 30 -> 40 phase transition: STATE.phase=40
 2026-08-25T12:15:01Z 40 builder dispatched thread=sthr_01F6UwaQpNX142hUnYu1cTkn (release chain, version starts 0.1.0)
+2026-08-25T12:15:39Z 40 dispatch version=0.1.0 run=32846623139 step_failed="Build the Coworld manifest" decision=manifest fix: coworld 0.1.42 requires game.owner and forbids game.display_name -> add owner daveey@gmail.com, drop display_name (908b81b), re-dispatch bumped
+2026-08-25T12:18:16Z 40 dispatch version=0.1.1 run=32846861993 step_failed="Certify locally" decision=manifest fix: matriculate "game_config must not include runner-managed tokens" -> drop tokens from all 4 variants + cert fixture, config_schema still requires/bounds them (79dcdd0); validated offline with the CLI's own load_coworld_package before re-dispatching
+2026-08-25T12:23:40Z 40 dispatch version=0.1.2 run=32847347580 step_failed=none decision=SUCCESS ok/canonical/certify.ok true, liveness "skipped (static replay bundle declared", 4 policies v1, champion2 player_id ply_bac48eb1-662e-44f8-973d-f3e016dccf5d, secret_put true; cow_id cow_4ac3644c-c0f0-4b39-93ae-adb2dd39518d -> phase 50
