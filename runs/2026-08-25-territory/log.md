@@ -50,3 +50,5 @@
 2026-08-25T14:00:00Z heartbeat phase=60
 2026-08-25T14:03:00Z 60 verifier dispatched thread=sthr_018hpDYvZivPH5r4QLEod76Q output=VERIFY.md (75-min poll bound, round2 pending at dispatch)
 2026-08-25T14:03:00Z heartbeat phase=60
+2026-08-25T12:56:04Z 60 verify poll#1: round2=pending (created 12:52:46Z); leaderboard=null; check7 TRUE from committed release-result.json; NOTE log stamps ran ~67min ahead of real UTC — this and later lines use real UTC (softmax Date header + sandbox agree)
+2026-08-25T12:56:04Z heartbeat phase=60
