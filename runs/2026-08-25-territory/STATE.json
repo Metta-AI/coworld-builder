@@ -5,7 +5,7 @@
   "slug": "territory",
   "repo": "Metta-AI/cogame-territory",
   "starter": "Metta-AI/coworld-cogherence",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,7 +21,10 @@
       "territory-homesteader:v1",
       "territory-raider:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "95091fc5-2f1b-4c6a-8995-066f3905922f",
+      "d8d5829a-e2f7-4439-8d3d-1ff5605062b3"
+    ]
   },
   "league": {
     "id": "league_dcc3daee-8099-4fd1-b321-da10e1be9a64",
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T13:57:00Z",
+  "heartbeat_at": "2026-08-25T14:00:00Z",
   "session_ended_at": null,
   "session_id": "337847e6",
   "log": "runs/2026-08-25-territory/log.md"

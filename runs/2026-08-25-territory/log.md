@@ -42,3 +42,9 @@
 2026-08-25T13:52:00Z heartbeat phase=50
 2026-08-25T13:57:00Z 50 seed 200 league_id=league_dcc3daee-8099-4fd1-b321-da10e1be9a64 (lseed_72e86706); division PUT 200 div_350c663f-0e3d-42e5-9346-2be631892c17; settings POST 200 (elo k32 round_robin filler_policy, 15min rounds)
 2026-08-25T13:57:00Z heartbeat phase=50
+2026-08-25T13:58:30Z 50 champion1 submit run=32849906900 ok=true sub_bfad2d90 (territory-steward:v1, daveey); champion2 submit run=32849981842 ok=true (territory-condottiere:v1, daveey-1, pv=22818fff)
+2026-08-25T13:59:00Z 50 policy-versions resolved: steward=327e221b daveey, condottiere=22818fff daveey-1, homesteader=95091fc5, raider=d8d5829a; filler-policies POST 200 = exactly the two baselines
+2026-08-25T13:59:30Z 50 unpause 200; trigger-round 200; round1=failed (auto-placement pre-filler, known), round2=pending; entrant_attributions round2 = both champions (ply_44ae9048+327e221b, ply_bac48eb1+22818fff)
+2026-08-25T14:00:00Z progress phase=50 marker=sub_bfad2d90
+2026-08-25T14:00:00Z 50 -> 60 phase transition, STATE.phase=60
+2026-08-25T14:00:00Z heartbeat phase=60
