@@ -52,3 +52,5 @@
 2026-08-25T14:03:00Z heartbeat phase=60
 2026-08-25T12:56:04Z 60 verify poll#1: round2=pending (created 12:52:46Z); leaderboard=null; check7 TRUE from committed release-result.json; NOTE log stamps ran ~67min ahead of real UTC — this and later lines use real UTC (softmax Date header + sandbox agree)
 2026-08-25T12:56:04Z heartbeat phase=60
+2026-08-25T13:01:08Z 60 verify poll#2: round2=completed (round_e6aa04b8), ereq_c77c7f2f completed with replay_url; round1=failed 'Temporal RoundWorkflow failed before settling the round.' (pre-filler, expected, not counted); awaiting round3 for check1 >=2
+2026-08-25T13:01:08Z heartbeat phase=60
