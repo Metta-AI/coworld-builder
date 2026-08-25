@@ -69,3 +69,4 @@
 2026-08-25T23:45:48Z 60 verifier returned: VERIFY.md 8/8 TRUE; rounds 2+3 completed post-filler; leaderboard broker 1030.53 (2 wins) / ricardo 969.47; replay r3 clean, champions 24/24 llm orders 0 fallback, reason=complete/round_limit; log CLEAN; static route verified via SSR playlist + session (manifest_sha match); viewer-check run 32911662736 loaded=true 3 distinct clocks. 3 non-blocking notes: feed_lines 0, endcard LIVES LEFT/K-D-CLSTR-CAP starter labels, ricardo starves to 0 in both rounds
 2026-08-25T23:45:48Z progress phase=60 marker=round_92b46dc0-bde6-43d4-8a1e-c981885a1b79
 2026-08-25T23:45:48Z heartbeat phase=60
+2026-08-25T23:46:15Z 60 judge dispatched (thread sthr_01ARiqMmFFHZTySTnEK5tW4E) on VERIFY.md -> verify-verdict.md
