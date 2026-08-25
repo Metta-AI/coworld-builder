@@ -65,3 +65,5 @@
 2026-08-25T13:16:50Z heartbeat phase=60
 2026-08-25T13:21:50Z 60 poll 8: round 3 pending; 2 completed
 2026-08-25T13:21:50Z heartbeat phase=60
+2026-08-25T13:27:35Z 60 poll 9: round 3 completed 13:25:10Z ereq_09cc1d41 reason=complete endRule=mercy llmTurns [4,0] fallbackTurns [35,0]; seat 1 (daveey-1) NEVER REGISTERED this episode ("player connected: daveey-1" then "Dropped message to disconnected client") so 39 of 78 directives were SCRIPTED holdline on a champion seat; log has 106 "falling back" lines, 2 haiku throttle lines. Seat 1 has 0 llm turns in all three rounds.
+2026-08-25T13:27:35Z heartbeat phase=60
