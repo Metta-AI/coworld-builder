@@ -34,3 +34,7 @@
 2026-08-25T00:50:31Z heartbeat phase=40
 2026-08-25T00:51:17Z 40 release builder dispatched (sthr_0179jMqndthn3kngWEHPBHCz) version=0.1.0 first
 2026-08-25T00:51:17Z heartbeat phase=40
+2026-08-25T01:06:41Z 40 release run=32795286182 version=0.1.0 ok=true canonical=true certified (hosted_certification=certified) secret_put=true; cow_2aedf124-df70-45ce-b307-fa693c6d1943
+2026-08-25T01:06:41Z progress phase=40 marker=release-run-32795286182
+2026-08-25T01:06:41Z 40 phase -> 50
+2026-08-25T01:06:41Z heartbeat phase=50
