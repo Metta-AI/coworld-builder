@@ -93,3 +93,5 @@
 2026-08-25T05:43:13Z 70 done -> phase 75
 2026-08-25T05:43:13Z heartbeat phase=75
 2026-08-25T05:43:51Z 75 atlas slug live in /api/coworlds (cooperative-hunting, episodes_7d=4); continent=commons (rails: mixed-motive assurance game — solo-safe rabbits vs joint big-game payoff; not zero-sum, not a village); spot 416,574 clearance=22.9 label="Coop Hunting"
+2026-08-25T05:44:19Z 75 atlas dispatch=32813991808 region=commons at=416,574 clearance=22.9
+2026-08-25T05:44:19Z heartbeat phase=75
