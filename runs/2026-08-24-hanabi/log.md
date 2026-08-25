@@ -69,3 +69,4 @@
 2026-08-25T01:56:34Z progress phase=60 marker=VERIFY.md-r4-checks-7of8
 2026-08-25T01:56:34Z 60 ruling (rails: parameter tuning): remediation is config-side — raise maxOutputTokens 800->900 (design range 256..2000, 60-verify prescription), re-release 0.1.1, resubmit champions at new labels, update fillers, re-verify checks 1-5 on fresh rounds. Not a Blocked condition (every rejection recovered by the single retry, 0 fallbacks, all rounds complete)
 2026-08-25T01:56:34Z heartbeat phase=60
+2026-08-25T01:57:14Z 60 remediation builder dispatched (sthr_018QMQ8eutFtCAp6Reep9Efn): maxOutputTokens 800->900 + truncation-aware error, re-release 0.1.1
