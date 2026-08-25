@@ -23,3 +23,6 @@
 2026-08-25T00:05:53Z 30 r1 fixer dispatched (sthr_01Ya6tw46ge9zkGE4JFEt9Ni)
 2026-08-25T00:30:15Z 30 r1 fixer returned: r1-fixes.md written; F1 f17e3a3, F2 70fc1d5, F3 78e25f3, F8 724826f; F9 refuted; CI green run=32793042266 sha=724826f5
 2026-08-25T00:30:15Z heartbeat phase=30
+2026-08-25T00:30:45Z 30 r1 fixer returned: r1-fixes.md written; F1 f17e3a3, F2 70fc1d5, F3 78e25f3, F8 724826f; F9 refuted; CI green run=32793042266 sha=724826f5
+2026-08-25T00:30:45Z 30 note: fixer's gh auth setup-git broke the sandbox git-https auth; removed the global credential-helper entries to restore it
+2026-08-25T00:30:45Z heartbeat phase=30
