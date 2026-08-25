@@ -61,3 +61,5 @@
 2026-08-25T13:10:19Z heartbeat phase=60
 2026-08-25T13:13:18Z 60 poll 6: check6 TRUE (SSR playlist[0]=paintball.r2.e1 + POST /coworlds/replays/session ready=true, static path); check7 TRUE (release-result.json). check8 attempt 1 run 32851786955: loaded=true, but scrub 0%==50% ("1:30 ... GAME 1/2 TURN 1/20"), 100%="FINAL GAME OVER" -> two of three readouts identical; re-dispatching.
 2026-08-25T13:13:18Z heartbeat phase=60
+2026-08-25T13:16:50Z 60 poll 7: check8 attempt 2 run 32852051931 (same r2 replay, timeout=120) and attempt 3 run 32852194317 (r1 replay) BOTH reproduce loaded=true with 0%==50% clock and 100% different -> deterministic, mid-replay seek does not land inside the smoke 700ms window; item 8 FALSE on criterion 2.
+2026-08-25T13:16:50Z heartbeat phase=60
