@@ -63,3 +63,5 @@
 2026-08-25T13:13:18Z heartbeat phase=60
 2026-08-25T13:16:50Z 60 poll 7: check8 attempt 2 run 32852051931 (same r2 replay, timeout=120) and attempt 3 run 32852194317 (r1 replay) BOTH reproduce loaded=true with 0%==50% clock and 100% different -> deterministic, mid-replay seek does not land inside the smoke 700ms window; item 8 FALSE on criterion 2.
 2026-08-25T13:16:50Z heartbeat phase=60
+2026-08-25T13:21:50Z 60 poll 8: round 3 pending; 2 completed
+2026-08-25T13:21:50Z heartbeat phase=60
