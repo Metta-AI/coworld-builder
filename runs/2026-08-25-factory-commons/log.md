@@ -6,3 +6,8 @@
 2026-08-25T14:02:43Z 00 -> 10 phase transition, STATE phase=10 session=a4f7c2d1
 2026-08-25T14:07:00Z 10 starter=coworld-ctf — per-tick grid loop (move/grasp/drop/press) with rules written for this coworld; Melting Pot Lua is reference material, not a bit-exact port target (moba row rejected); parley row rejected (not turn-based/talk)
 2026-08-25T14:07:00Z 10 designer dispatched: design note -> runs/2026-08-25-factory-commons/design.md
+2026-08-25T14:22:57Z 10 designer returned round 1: design.md 1266 lines, all 8 H2 sections present
+2026-08-25T14:22:57Z 10 checklist: starter[x] num_agents=3[x] tick-order[x] scoring[x] end-conditions[x] observation[x] reply-schema+caps+rune[x] both-policies[x] parallel-batch-631s<720s[x] degrade-never-hang[x] two-namespaces[x] viewer-static-wasm[x] viewer-4-files-coworld-ctf[x] chrome-provenance+zoom-dropped[x] transport-rules[x] replay-self-sufficient[x] packaging-docs-protocols[x] tests-incl-executed-viewer-smoke[x] out-of-scope[x] — ACCEPTED round 1
+2026-08-25T14:22:57Z progress phase=10 marker=design.md
+2026-08-25T14:22:57Z 10 -> 20 phase transition, STATE phase=20
+2026-08-25T14:22:57Z heartbeat phase=20
