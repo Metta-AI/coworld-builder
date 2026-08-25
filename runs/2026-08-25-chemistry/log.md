@@ -72,3 +72,4 @@
 2026-08-25T08:32:37Z 60 judge verdict BLOCKING: 0 (verify-verdict.md; independently re-fetched rounds/leaderboard/replay/log/session-route)
 2026-08-25T08:32:37Z 60 done (8/8 TRUE, judge blocking 0) -> phase 70
 2026-08-25T08:32:37Z heartbeat phase=70
+2026-08-25T08:34:07Z 70 announce.attempted_at written pre-POST
