@@ -38,3 +38,5 @@
 2026-08-25T01:06:41Z progress phase=40 marker=release-run-32795286182
 2026-08-25T01:06:41Z 40 phase -> 50
 2026-08-25T01:06:41Z heartbeat phase=50
+2026-08-25T01:07:52Z 50 seed 200 lseed_393ba9b8-196c-409e-9456-b5586095e414; league=league_332c17c5-b6bf-4341-98c7-3161dd58e6d8 division=div_0a3fd174-6ac2-4167-971e-e86f9eb9ed1e settings 200 (elo 1000/32, round_scoring_rule=mean per design note L191)
+2026-08-25T01:07:52Z heartbeat phase=50
