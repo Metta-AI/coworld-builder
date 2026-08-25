@@ -42,3 +42,9 @@
 2026-08-25T12:43:57Z 40 -> 50 phase transition: STATE.phase=50
 2026-08-25T12:45:29Z 50 seed 200 league_bd940066-00c4-4ade-87ae-06dac0818bc4 (lseed_805004c8); division 200 div_97b4e1b9-6f9b-44ab-8583-73789a4ee057; settings 200 (elo k32, round_robin, filler_policy, 15min)
 2026-08-25T12:45:29Z heartbeat phase=50
+2026-08-25T12:48:11Z 50 champion1 submitted: run 32849391108 ok=true sub_7fb4053b (paintball-holdcentre:v1, daveey)
+2026-08-25T12:48:11Z 50 champion2 submitted: run 32849447913 ok=true sub_d2b0a99d (paintball-splitpaint:v1, daveey-1 verified)
+2026-08-25T12:48:11Z 50 fillers registered 200: holdline=b39fb2e0-2feb-4c33-b764-4d7b82a0788b sprayer=f24ea073-f96e-4022-940b-1d7a8a52f7f9 (neither champion)
+2026-08-25T12:48:11Z 50 unpause 200; trigger-round 200; round 1 pending; entrant_attributions = both champions (a2365258 daveey, 58d1e6d3 daveey-1)
+2026-08-25T12:48:11Z progress phase=50 marker=round-1-pending
+2026-08-25T12:48:11Z 50 -> 60 phase transition: STATE.phase=60

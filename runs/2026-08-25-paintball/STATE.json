@@ -5,7 +5,7 @@
   "slug": "paintball",
   "repo": "https://github.com/Metta-AI/cogame-paintball",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,7 +21,10 @@
       "paintball-holdline:v1",
       "paintball-sprayer:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "b39fb2e0-2feb-4c33-b764-4d7b82a0788b",
+      "f24ea073-f96e-4022-940b-1d7a8a52f7f9"
+    ]
   },
   "league": {
     "id": "league_bd940066-00c4-4ade-87ae-06dac0818bc4",
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T12:45:29Z",
+  "heartbeat_at": "2026-08-25T12:48:11Z",
   "session_ended_at": null,
   "session_id": "b1314909",
   "log": "runs/2026-08-25-paintball/log.md"
