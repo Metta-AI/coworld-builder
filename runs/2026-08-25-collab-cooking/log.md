@@ -91,3 +91,5 @@
 2026-08-25T10:24:26Z heartbeat phase=60
 2026-08-25T10:27:26Z 60 verify attempt 2: r1 failed (filler race), r2-r7 completed with failed episodes (attempt-1 game_unhealthy), r8 completed with ereq_35289237 COMPLETED + replay; checks 2/3/4/5/6/7 fetched TRUE; viewer-check dispatched run=32837285266; waiting for a 2nd post-fix round
 2026-08-25T10:27:26Z heartbeat phase=60
+2026-08-25T10:33:33Z 60 poll: round 9 round_8f0dfbaa pending, ereq_876d0e7c running (post-fix episode #2); viewer-check run 32837285266 success loaded=true clocks tick4/tick467/tick900
+2026-08-25T10:33:33Z heartbeat phase=60
