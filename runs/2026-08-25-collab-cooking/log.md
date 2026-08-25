@@ -43,3 +43,5 @@
 2026-08-25T08:16:43Z 30 r2 judge returned: blocking=0 (all r2 blockers fixed at f82126bf, R2-O12 refuted, full checklist pass incl. parallel-batch addendum, run 32823608970)
 2026-08-25T08:16:43Z progress phase=30 marker=r2-verdict.md
 2026-08-25T08:16:43Z 30 -> 40 phase transition, STATE.phase=40
+2026-08-25T08:17:46Z 40 builder dispatched thread=sthr_01PRtxowgTnWwc1Av4noWU5S for coworld-release.yml (start v0.1.0, put_secret=true, policies from repo file)
+2026-08-25T08:17:46Z heartbeat phase=40
