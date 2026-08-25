@@ -90,3 +90,7 @@
 2026-08-25T13:41:54Z 75 atlas dispatch#1=32854536610 failed: unplaced leagues (17 shipped coworlds not yet in places.mjs — their PRs queued unmerged); fix per step 8 = extra_cities
 2026-08-25T13:41:54Z 75 atlas dispatch#2=32854854072 region=commons at=416,574 clearance=22.9 + extra_cities placing 17 leagues for other runs: chemistry/cogchemists/coins/commons-family/cooperative-hunting/firm/garble/matrix-games -> commons; chorus/cogolf -> parlour; cogiavelli/cogplomacy/hanabi -> tabletop; cogmud -> simulations; collab-cooking -> shire; grid-wars/paintball -> paintlands (all spots via atlas_spot.py with sequential neighbour injection, clearance >=22.9)
 2026-08-25T13:41:54Z heartbeat phase=75
+2026-08-25T13:43:48Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20373 status=pr_open (approved automatically, waits on Graphite merge queue — human merges)
+2026-08-25T13:43:48Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20373
+2026-08-25T13:43:48Z 75 -> 80 phase transition, STATE.phase=80
+2026-08-25T13:43:48Z heartbeat phase=80
