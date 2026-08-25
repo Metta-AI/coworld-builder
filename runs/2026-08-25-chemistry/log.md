@@ -85,3 +85,6 @@
 2026-08-25T08:43:54Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20370
 2026-08-25T08:43:54Z heartbeat phase=80
 2026-08-25T08:46:33Z 80 LEARNINGS entry appended; docker_smoke player-exit assertion folded into templates/tools/ci/docker_smoke.sh; summaries posted (run task story 1217816705889950, idea task story 1217816861076617)
+2026-08-25T08:47:21Z 80 close: all 9 subtasks complete; idea 1217748465122695 completed; run task 1217810077682293 moved to Done
+2026-08-25T08:47:21Z progress phase=80 marker=run-task-Done
+2026-08-25T08:47:21Z 80 run complete — coworld shipped, league live, announced, atlas PR open; no next action (session ends)

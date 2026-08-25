@@ -60,8 +60,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T08:43:54Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-25T08:47:21Z",
+  "session_ended_at": "2026-08-25T08:47:21Z",
   "session_id": "f159a6da",
   "log": "runs/2026-08-25-chemistry/log.md"
 }
