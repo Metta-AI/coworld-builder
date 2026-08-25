@@ -90,3 +90,6 @@
 2026-08-25T23:10:46Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20439
 2026-08-25T23:10:46Z 75 -> 80 phase transition, STATE phase=80
 2026-08-25T23:10:46Z heartbeat phase=80
+2026-08-25T23:12:51Z 80 close: summary on run task (1217846576292162) + idea task (1217846573022253); LEARNINGS section appended; templates/coworld-release.yml secret step now reads game.name; all 9 phase subtasks complete; idea 1217762644722022 completed; run task moved to Done
+2026-08-25T23:12:51Z progress phase=80 marker=run-task-Done
+2026-08-25T23:12:51Z session end: run complete at phase 80. Next action: none — run is Done.
