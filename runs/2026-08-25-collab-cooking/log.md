@@ -27,3 +27,6 @@
 2026-08-25T06:25:36Z progress phase=30 marker=r1-fixes.md
 2026-08-25T06:26:32Z 30 r1 judge dispatched thread=sthr_012435NyXqFD91E2gGUjReGW sha=a5ec2c86 output=reviews/r1-verdict.md
 2026-08-25T06:26:32Z heartbeat phase=30
+2026-08-25T06:41:29Z 30 r1 judge returned: blocking=1 ([legibility] client/parts/game.css:99 say-band chips cap at ~2 lines / ~80 chars vs SAY_RUNES=120 — DOM band not sized from the cap; all reviewer blockers verified fixed at a5ec2c86, none refuted)
+2026-08-25T06:41:29Z progress phase=30 marker=r1-verdict.md
+2026-08-25T06:41:29Z 30 round 1 -> 2 (blocking>0) review_round=2
