@@ -115,3 +115,7 @@
 2026-08-25T18:27:49Z 60 -> 70 phase transition (STATE.phase=70); filler labels corrected to v1 per judge advisory 4
 2026-08-25T18:27:49Z heartbeat phase=70
 2026-08-25T18:29:05Z 70 announce attempted_at written and pushed before POST
+2026-08-25T18:29:21Z 70 announce msg=1541877101056106506 (flags=4, embeds=0, 1787 chars)
+2026-08-25T18:29:21Z progress phase=70 marker=discord_message_id=1541877101056106506
+2026-08-25T18:29:21Z 70 -> 75 phase transition (STATE.phase=75)
+2026-08-25T18:29:21Z heartbeat phase=75
