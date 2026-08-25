@@ -78,3 +78,5 @@
 2026-08-25T23:50:50Z progress phase=70 marker=announce.discord_message_id
 2026-08-25T23:50:50Z 70 -> 75 phase transition: entering atlas
 2026-08-25T23:50:50Z heartbeat phase=75
+2026-08-25T23:52:19Z 75 atlas: slug live in /api/coworlds (episodes_7d=3); continent=commons (mixed-motive structured-offer trade — rails call); spot 440,571 clearance 23.4 (chose over tool's raw 416,574 which collides with chemistry+territory pending PRs — pending dots injected into working copy before sweep)
+2026-08-25T23:52:19Z 75 atlas dispatch=32912637690 region=commons at=440,571 clearance=23.4
