@@ -30,3 +30,7 @@
 2026-08-25T12:40:00Z progress phase=30 marker=r1-fixes.md
 2026-08-25T12:43:00Z 30 r1 judge dispatched thread=sthr_01KFRud6Gn6QYUgKT6UR8xc3 sha=62a31b0a output=reviews/r1-verdict.md
 2026-08-25T12:43:00Z heartbeat phase=30
+2026-08-25T13:03:00Z 30 r1 judge returned: blocking=0 (all six A-findings true at 07f0ebca, all fixed at 62a31b0a, none a test-weakening; O7/O8 byte-identical to certified base manifest; O9 structural equivalents hold, packages/ui byte-identical; raider retune SATISFIES item 7; 15/15 checklist items pass at head)
+2026-08-25T13:03:00Z progress phase=30 marker=r1-verdict.md
+2026-08-25T13:05:00Z 30 -> 40 phase transition, STATE.phase=40 (judge blocking=0 round 1)
+2026-08-25T13:05:00Z heartbeat phase=40
