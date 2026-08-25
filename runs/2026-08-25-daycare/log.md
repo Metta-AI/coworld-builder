@@ -34,3 +34,5 @@
 2026-08-25T14:50:01Z progress phase=30 marker=r1-verdict.md
 2026-08-25T14:50:01Z 30 -> 40 phase transition (review loop closed in 1 round)
 2026-08-25T14:50:01Z heartbeat phase=40
+2026-08-25T14:50:50Z 40 builder dispatched for release (sthr_01DfaUq2U1vNW65yrU6yBe3b) v0.1.0
+2026-08-25T14:50:50Z heartbeat phase=40
