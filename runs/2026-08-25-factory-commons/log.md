@@ -14,3 +14,4 @@
 2026-08-25T14:24:06Z 20 repo created: https://github.com/Metta-AI/cogame-factory-commons (public)
 2026-08-25T14:24:06Z 20 propagate-secrets run 32859209291 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-25T14:24:06Z 20 builder dispatched round 1
+2026-08-25T16:19:00Z 20 pushed 6d6ba8b (initial build) -> ci.yml run 32871176243 dispatched
