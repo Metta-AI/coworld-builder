@@ -36,3 +36,7 @@
 2026-08-25T14:50:01Z heartbeat phase=40
 2026-08-25T14:50:50Z 40 builder dispatched for release (sthr_01DfaUq2U1vNW65yrU6yBe3b) v0.1.0
 2026-08-25T14:50:50Z heartbeat phase=40
+2026-08-25T15:00:22Z 40 release v0.1.0 SUCCESS first dispatch: run=32862166190 cow_id=cow_5b944b41-3f2f-4f84-a96b-c484811d7d55 canonical=true certified secret_put=true; 4 policies v1 (attentive/provider/caretaker/stubborn), champion2 owned by ply_bac48eb1
+2026-08-25T15:00:22Z progress phase=40 marker=release-run-32862166190
+2026-08-25T15:00:22Z 40 -> 50 phase transition
+2026-08-25T15:00:22Z heartbeat phase=50
