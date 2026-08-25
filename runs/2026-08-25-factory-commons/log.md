@@ -11,3 +11,6 @@
 2026-08-25T14:22:57Z progress phase=10 marker=design.md
 2026-08-25T14:22:57Z 10 -> 20 phase transition, STATE phase=20
 2026-08-25T14:22:57Z heartbeat phase=20
+2026-08-25T14:24:06Z 20 repo created: https://github.com/Metta-AI/cogame-factory-commons (public)
+2026-08-25T14:24:06Z 20 propagate-secrets run 32859209291 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-25T14:24:06Z 20 builder dispatched round 1
