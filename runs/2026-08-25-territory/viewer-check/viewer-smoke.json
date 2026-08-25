@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 1294,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e7cac219-31d0-45c5-93f8-649434351365/sha256%3Ac437064a5c0b5fbdfd91ab56b8b5c990e42f6cccc1815cc9e5eb25280eb9695f/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F1c2d12a8-0303-4ab0-a399-f2fa983a0da9.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "Turn 1 / 18 · Commit",
+  "scorebug": "PAINT BANKED pool 146 → 146 1 Sable daveey 0 +0/turn (0.00/tick) ▮×1 · 2 Ochre daveey-1 0 +0/turn (0.00/tick) ▮×1 · 3 Verdant Baseline 0 +0/turn (0.00/tick) ▮×1 · 4 Cobalt Baseline (2) 0 +0/turn (0.00/tick) ▮×1 · 5 Amber Baseline (3) 0 +0/turn (0.00/tick) ▮×1 · 6 Violet Baseline (4) 0 +0/turn (0.00/tick) ▮×1 · 7 Teal Baseline (5) 0 +0/turn (0.00/tick) ▮×1 · 8 Rose Baseline (6) 0 +0/turn (0.00/tick) ▮×1 · 9 Ash Baseline (7) 0 +0/turn (0.00/tick) ▮×1 ·",
+  "status": "Sable 0",
+  "loading_text": null,
+  "feed_lines": 1,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "Turn 1 / 18 · Commit"
+    },
+    {
+      "at": "50%",
+      "clock": "Turn 11 / 18 · Commit"
+    },
+    {
+      "at": "100%",
+      "clock": "Turn 14 / 18 · Commit"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

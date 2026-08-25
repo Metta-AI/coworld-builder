@@ -1,0 +1,4 @@
+{"loaded":true,"ms":1294,"clock":"Turn 1 / 18 · Commit","scorebug":"PAINT BANKED pool 146 → 146 1 Sable daveey 0 +0/turn (0.00/tick) ▮×1 · 2 Ochre daveey-1 0 +0/turn (0.00/tick) ▮×1 · 3 Verdant Baseline 0 +0/turn (0.00/tick) ▮×1 · 4 Cobalt Baseline (2) 0 +0/turn (0.00/tick) ▮×1 · 5 Amber Baseline (3) 0 +0/turn (0.00/tick) ▮×1 · 6 Violet Baseline (4) 0 +0/turn (0.00/tick) ▮×1 · 7 Teal Baseline (5) 0 +0/turn (0.00/tick) ▮×1 · 8 Rose Baseline (6) 0 +0/turn (0.00/tick) ▮×1 · 9 Ash Baseline (7) 0 +0/turn (0.00/tick) ▮×1 ·","feed_lines":1}
+scrub readouts: 0%="Turn 1 / 18 · Commit"  50%="Turn 11 / 18 · Commit"  100%="Turn 14 / 18 · Commit"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
