@@ -32,3 +32,5 @@
 2026-08-24T23:19:19Z 30 r1 fixer re-dispatched (prior thread pushed B1-B4 fixes 591f8f1a, CI green 32774674232, but died before writing r1-fixes.md; new fixer verifies B1-B4 and dispositions N1-N20+N13b)
 2026-08-24T23:19:51Z 30 r1 fixer dispatched thread=sthr_01EDsYbRReVWfbAefSJ7iooU output=reviews/r1-fixes.md
 2026-08-25T00:29:09Z 30 r1 fixes complete sha=80e2acf36048e0ffd9deb73592580f7d3d005f5c ci=32792004269
+2026-08-25T00:30:21Z 30 r1 fixer returned thread=sthr_01EDsYbRReVWfbAefSJ7iooU file=reviews/r1-fixes.md (19 fixed, 3 already-fixed, 1 refuted, 5 unfixed-with-reason; sha=80e2acf3 ci=32792004269 green; fixer notes git-push-over-https to cogame repo failed, used Git Data API)
+2026-08-25T00:30:21Z heartbeat phase=30
