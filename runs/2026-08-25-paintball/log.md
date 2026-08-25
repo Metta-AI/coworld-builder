@@ -103,3 +103,5 @@
 2026-08-25T17:45:45Z heartbeat phase=60
 2026-08-25T17:55:08Z 60 poll 5: round 21 FAILED as a round but its champ-vs-champ ereq_92a49a93 completed with llmTurns [33,34] fallbackTurns [6,5] — quota RECOVERED; a failed round cannot be the pinned latest-completed round, waiting for round 22
 2026-08-25T17:55:08Z heartbeat phase=60
+2026-08-25T18:05:17Z 60 poll 6: round 22 pending (round_5494143d)
+2026-08-25T18:05:17Z heartbeat phase=60
