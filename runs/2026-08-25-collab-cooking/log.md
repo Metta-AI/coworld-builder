@@ -40,3 +40,6 @@
 2026-08-25T08:00:14Z progress phase=30 marker=r2-fixes.md
 2026-08-25T08:01:10Z 30 r2 judge dispatched thread=sthr_01FvPRhNeg3WL6g4EwXhSrVx sha=f82126bf output=reviews/r2-verdict.md
 2026-08-25T08:01:10Z heartbeat phase=30
+2026-08-25T08:16:43Z 30 r2 judge returned: blocking=0 (all r2 blockers fixed at f82126bf, R2-O12 refuted, full checklist pass incl. parallel-batch addendum, run 32823608970)
+2026-08-25T08:16:43Z progress phase=30 marker=r2-verdict.md
+2026-08-25T08:16:43Z 30 -> 40 phase transition, STATE.phase=40
