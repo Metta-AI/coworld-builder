@@ -5,7 +5,7 @@
   "slug": "factory-commons",
   "repo": "https://github.com/Metta-AI/cogame-factory-commons",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "30": 1
@@ -24,11 +24,14 @@
       "factory-commons-steward:v2",
       "factory-commons-stripper:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "a2b2de4d-7127-4b05-b309-121ce2e5b381",
+      "f1071ff6-212d-4146-949b-ed297dd69b0b"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_96744093-0ddc-42dc-b5bf-79f195f062f0",
+    "division": "div_8b8d506b-926f-4633-bc3d-ce6dc08a2568"
   },
   "verify": {
     "rounds": [],
@@ -51,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T21:56:41Z",
+  "heartbeat_at": "2026-08-25T22:08:38Z",
   "session_ended_at": null,
   "session_id": "ee652d74",
   "log": "runs/2026-08-25-factory-commons/log.md"

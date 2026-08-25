@@ -42,3 +42,13 @@
 2026-08-25T21:56:41Z progress phase=40 marker=32902713785
 2026-08-25T21:56:41Z 40 -> 50 phase transition, STATE phase=50
 2026-08-25T21:56:41Z heartbeat phase=50
+2026-08-25T22:08:38Z 50 note: git push over HTTPS unauthenticated in this sandbox — coworld-builder writes go via GitHub Git Data API (gh api), tree byte-identical
+2026-08-25T22:08:38Z 50 seed POST /coworld-league-seeds 200 (coworld_name=factory_commons — game.name, not slug; slug 404d) league=league_96744093-0ddc-42dc-b5bf-79f195f062f0
+2026-08-25T22:08:38Z 50 division PUT 200 div_8b8d506b-926f-4633-bc3d-ce6dc08a2568; settings POST 200 (elo, round_robin, filler_policy, 15min)
+2026-08-25T22:08:38Z 50 champion1 submit run 32904302824 success ok:true sub_6600a2c4-00d2-48bb-961e-848d01376ef0 (daveey, factory-commons-foreman:v2)
+2026-08-25T22:08:38Z 50 champion2 submit run 32904352497 success ok:true sub_d0d20eb5-dcb0-459c-a27f-0ff91035f2f2 (daveey-1, factory-commons-custodian:v2)
+2026-08-25T22:08:38Z 50 fillers POST 200: steward:v2 a2b2de4d-7127-4b05-b309-121ce2e5b381, stripper:v2 f1071ff6-212d-4146-949b-ed297dd69b0b (champions excluded)
+2026-08-25T22:08:38Z 50 unpause 200; trigger-round 200; rounds: r1 failed (Temporal RoundWorkflow — scheduled pre-fillers), r2 pending with both champions in entrant_attributions
+2026-08-25T22:08:38Z progress phase=50 marker=league_96744093-0ddc-42dc-b5bf-79f195f062f0
+2026-08-25T22:08:38Z 50 -> 60 phase transition, STATE phase=60
+2026-08-25T22:08:38Z heartbeat phase=60
