@@ -63,3 +63,9 @@
 2026-08-25T01:28:36Z 30 done round=1 -> phase 40
 2026-08-25T01:28:36Z heartbeat phase=40
 2026-08-25T01:29:22Z 40 builder dispatched for release (sthr_01BBYeQriP1E2PwCSSktNN1A)
+2026-08-25T01:41:42Z 40 dispatch 1: v0.1.0 run 32797768104 step_failed="Build the Coworld manifest" (pydantic: variants need name, no default key) -> manifest fix 196d12a via Git Data API, CI green 32797921849
+2026-08-25T01:41:42Z 40 dispatch 2: v0.1.1 run 32797931407 success — ok=true canonical=true certify.ok=true liveness=skipped(static) secret_put=true; cow_8ca854a5-db34-430f-929a-00917049b9b5
+2026-08-25T01:41:42Z 40 policies: coins-truce:v1 (champ1) coins-ledger:v1 (champ2, ply_bac48eb1) coins-reciprocator:v1 coins-titfortat:v1 (fillers)
+2026-08-25T01:41:42Z progress phase=40 marker=32797931407
+2026-08-25T01:41:42Z 40 done -> phase 50
+2026-08-25T01:41:42Z heartbeat phase=50
