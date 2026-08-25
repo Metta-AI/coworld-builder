@@ -117,3 +117,5 @@
 2026-08-25T03:22:29Z 60 verifier returned: VERIFY.md — checks 1,2,3,6,7,8 TRUE; 4,5 FALSE (Bedrock haiku daily-token quota 429 platform-wide, cross-checked vs hanabi ereq_003e88da; 41/48 orders fallback in r6; thefts [0,0] all six rounds); 75-min bound expired 01:57->03:12
 2026-08-25T03:22:29Z 60 non-check findings recorded for resume: (a) replay policyNames=["coins-player","coins-player"] — plates/endcard show manifest player id not policy label (replay-writer legibility item); (b) retry doubles sidecar rate: 4 req/5s=48/min > 30/min cap under throttling (6 of 86 429s were sidecar episode_total)
 2026-08-25T03:22:29Z progress phase=60 marker=viewer-check-32804445583
+2026-08-25T03:23:23Z 90 blocked phase=60 ask="restore Bedrock haiku daily-token quota (platform-wide 429), then complete this subtask" subtask=1217809924523748
+2026-08-25T03:23:23Z session end: phase 60, blocked; next action = on subtask completion, resume phase 60, fresh round, re-verify checks 4+5
