@@ -25,3 +25,4 @@
 2026-08-25T17:39:13Z 20 exit checks pass on 62681ee: placeholders clean, 3 workflows parse+active, release/submit inputs present, release-result+submit-result artifacts present, champion#2 player field present
 2026-08-25T17:39:13Z 20 -> 30 phase transition, STATE phase=30 review_round=1
 2026-08-25T17:39:13Z heartbeat phase=30
+2026-08-25T17:39:39Z 30 reviewer dispatched round 1 (repo checkout /tmp/cogame-factory-commons @ 62681ee)
