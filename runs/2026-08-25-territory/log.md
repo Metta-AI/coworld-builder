@@ -85,3 +85,5 @@
 2026-08-25T13:37:28Z progress phase=70 marker=1541803642930200647
 2026-08-25T13:37:28Z 70 -> 75 phase transition, STATE.phase=75
 2026-08-25T13:37:28Z heartbeat phase=75
+2026-08-25T13:38:41Z 75 atlas dispatch=32854536610 region=commons at=416,574 clearance=22.9 (mixed-motive territorial/negotiation game -> The Commons)
+2026-08-25T13:38:41Z heartbeat phase=75
