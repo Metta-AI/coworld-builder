@@ -110,3 +110,4 @@
 2026-08-25T03:06:34Z 60 verifier attempt 2 returned: 8/8 TRUE on v2 rounds 7-9 (check 5 clean on scoped round 9, throttle lines = platform exception cross-checked garble+ledger; caveat recorded: r7/r8 each had 1 seat-0 max_tokens truncation, retry-recovered, 0 fallbacks; attempt-1 'unbalanced JSON' symptom eliminated); VERIFY.md rewritten + viewer-check run 32803415305 committed
 2026-08-25T03:06:34Z progress phase=60 marker=VERIFY.md-8of8-v2
 2026-08-25T03:06:34Z heartbeat phase=60
+2026-08-25T03:07:06Z 60 judge dispatched (sthr_01WWEow3RqSza2FXRGdZUq3k)
