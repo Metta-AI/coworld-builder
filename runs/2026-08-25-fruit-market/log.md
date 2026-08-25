@@ -61,3 +61,4 @@
 2026-08-25T23:16:34Z progress phase=50 marker=league_758061e3-46cb-49db-aef0-a28fb10ba80e
 2026-08-25T23:16:34Z 50 -> 60 phase transition: entering verify
 2026-08-25T23:16:34Z heartbeat phase=60
+2026-08-25T23:17:27Z 60 verifier dispatched (thread sthr_01FPQHa2DD1p6DBQdVRWj2Zi) -> VERIFY.md, 75-min bound, polls every 5 min
