@@ -53,3 +53,5 @@
 2026-08-25T15:05:20Z 60 verifier dispatched (sthr_015TNvDZHz3ZSZpkFsGRydzm)
 2026-08-25T15:05:20Z heartbeat phase=60
 2026-08-25T19:21:46Z 00 resume at phase 60 attempt=1 session=47960303
+2026-08-25T19:22:48Z 60 verifier dispatch 2 (session 47960303; first verifier leg died with no VERIFY.md)
+2026-08-25T19:22:48Z heartbeat phase=60
