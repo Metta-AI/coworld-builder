@@ -30,3 +30,7 @@
 2026-08-25T14:38:29Z progress phase=30 marker=r1-fixes.md
 2026-08-25T14:39:01Z 30 r1 judge dispatched (sthr_01VpB5NEp8GBVtho8JjYoaAt)
 2026-08-25T14:39:01Z heartbeat phase=30
+2026-08-25T14:50:01Z 30 r1 judge returned: r1-verdict.md blocking=0 (markers agree); advisory residue N4/N6 (design-call reverts, no checklist item), 360px feed font note
+2026-08-25T14:50:01Z progress phase=30 marker=r1-verdict.md
+2026-08-25T14:50:01Z 30 -> 40 phase transition (review loop closed in 1 round)
+2026-08-25T14:50:01Z heartbeat phase=40

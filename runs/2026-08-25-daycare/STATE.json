@@ -5,7 +5,7 @@
   "slug": "daycare",
   "repo": "https://github.com/Metta-AI/cogame-daycare",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T13:42:25Z",
+  "heartbeat_at": "2026-08-25T14:50:01Z",
   "session_ended_at": null,
   "session_id": "d79addf3",
   "log": "runs/2026-08-25-daycare/log.md"
