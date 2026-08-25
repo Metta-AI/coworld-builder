@@ -5,7 +5,7 @@
   "slug": "territory",
   "repo": "Metta-AI/cogame-territory",
   "starter": "Metta-AI/coworld-cogherence",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -41,7 +41,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-25T13:37:11Z",
-    "discord_message_id": ""
+    "discord_message_id": "1541803642930200647"
   },
   "atlas": {
     "status": "",
@@ -55,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T13:37:11Z",
+  "heartbeat_at": "2026-08-25T13:37:28Z",
   "session_ended_at": null,
   "session_id": "337847e6",
   "log": "runs/2026-08-25-territory/log.md"

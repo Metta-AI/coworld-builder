@@ -81,3 +81,7 @@
 2026-08-25T13:35:48Z 60 -> 70 phase transition, STATE.phase=70
 2026-08-25T13:35:48Z heartbeat phase=70
 2026-08-25T13:37:11Z 70 announce attempted_at written+pushed before POST
+2026-08-25T13:37:28Z 70 announce msg=1541803642930200647 (200, flags=4, embeds=[])
+2026-08-25T13:37:28Z progress phase=70 marker=1541803642930200647
+2026-08-25T13:37:28Z 70 -> 75 phase transition, STATE.phase=75
+2026-08-25T13:37:28Z heartbeat phase=75
