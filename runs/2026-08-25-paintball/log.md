@@ -114,3 +114,4 @@
 2026-08-25T18:27:49Z 60 judge returned: BLOCKING 0 (verify-verdict.md @fb74d28) — all 8 items PASS independently; judge re-dispatched viewer-check himself (run 32883445468, loaded 3525ms, 3 differing clocks on r22.e5); own cross-check vs daycare ereq_4c1af555 confirmed platform throttle; refuted nothing. 5 advisories (LIVES LEAD caption, 100%-scrub convergence, feed selector, stale filler labels, finalTick counter).
 2026-08-25T18:27:49Z 60 -> 70 phase transition (STATE.phase=70); filler labels corrected to v1 per judge advisory 4
 2026-08-25T18:27:49Z heartbeat phase=70
+2026-08-25T18:29:05Z 70 announce attempted_at written and pushed before POST

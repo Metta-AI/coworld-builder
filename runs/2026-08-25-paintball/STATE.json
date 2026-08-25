@@ -80,7 +80,7 @@
     }
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-25T18:29:05Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -95,7 +95,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T18:27:49Z",
+  "heartbeat_at": "2026-08-25T18:29:05Z",
   "session_ended_at": null,
   "session_id": "295f3159",
   "log": "runs/2026-08-25-paintball/log.md"
