@@ -34,3 +34,4 @@
 2026-08-25T00:29:09Z 30 r1 fixes complete sha=80e2acf36048e0ffd9deb73592580f7d3d005f5c ci=32792004269
 2026-08-25T00:30:21Z 30 r1 fixer returned thread=sthr_01EDsYbRReVWfbAefSJ7iooU file=reviews/r1-fixes.md (19 fixed, 3 already-fixed, 1 refuted, 5 unfixed-with-reason; sha=80e2acf3 ci=32792004269 green; fixer notes git-push-over-https to cogame repo failed, used Git Data API)
 2026-08-25T00:30:21Z heartbeat phase=30
+2026-08-25T00:31:27Z 30 r1 judge dispatched thread=sthr_011Nm2R4G9zcjU4E9zcrfXTH sha=80e2acf3 output=reviews/r1-verdict.md
