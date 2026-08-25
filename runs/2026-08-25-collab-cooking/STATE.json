@@ -21,7 +21,10 @@
       "collab-cooking-brigade:v3",
       "collab-cooking-passer:v3"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "c56ed34b-abb8-4118-a42b-3963b77690a0",
+      "71a84f9c-a4c5-4ace-912d-c327f3b6d26e"
+    ]
   },
   "league": {
     "id": "league_592e6ed0-3f01-4084-bb90-75ace0db0063",
@@ -53,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T09:23:23Z",
+  "heartbeat_at": "2026-08-25T10:14:26Z",
   "session_ended_at": null,
   "session_id": "67d9a57c",
   "log": "runs/2026-08-25-collab-cooking/log.md"
