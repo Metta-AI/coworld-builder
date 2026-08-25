@@ -87,3 +87,6 @@
 2026-08-25T13:37:28Z heartbeat phase=75
 2026-08-25T13:38:41Z 75 atlas dispatch=32854536610 region=commons at=416,574 clearance=22.9 (mixed-motive territorial/negotiation game -> The Commons)
 2026-08-25T13:38:41Z heartbeat phase=75
+2026-08-25T13:41:54Z 75 atlas dispatch#1=32854536610 failed: unplaced leagues (17 shipped coworlds not yet in places.mjs — their PRs queued unmerged); fix per step 8 = extra_cities
+2026-08-25T13:41:54Z 75 atlas dispatch#2=32854854072 region=commons at=416,574 clearance=22.9 + extra_cities placing 17 leagues for other runs: chemistry/cogchemists/coins/commons-family/cooperative-hunting/firm/garble/matrix-games -> commons; chorus/cogolf -> parlour; cogiavelli/cogplomacy/hanabi -> tabletop; cogmud -> simulations; collab-cooking -> shire; grid-wars/paintball -> paintlands (all spots via atlas_spot.py with sequential neighbour injection, clearance >=22.9)
+2026-08-25T13:41:54Z heartbeat phase=75
