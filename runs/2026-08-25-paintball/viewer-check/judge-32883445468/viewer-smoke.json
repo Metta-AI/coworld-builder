@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 3525,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_09dcacad-01fb-488b-9d93-5eddf6a1a37a/sha256%3A669e79cde247aa82428d6a26c7cfeb652b3cf89f492df9ee697ca3225a123f71/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F85c3c3a2-15a7-415d-bfcc-a31dad221e90.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20",
+  "scorebug": "0% RED HILL 0:00 0 TAGS · 4 UP 1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20 0% BLUE HILL 0:00 0 TAGS · 4 UP",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20"
+    },
+    {
+      "at": "50%",
+      "clock": "0:59 TIME LEFT GAME 1/2 · RESIDENT · TURN 7/20"
+    },
+    {
+      "at": "100%",
+      "clock": "0:49 TIME LEFT GAME 1/2 · RESIDENT · TURN 10/20"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
