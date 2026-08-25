@@ -114,3 +114,5 @@
 2026-08-25T03:11:12Z 60 judge returned: 60-verdict.md blocking=0 (all 8 SPEC items re-fetched and upheld)
 2026-08-25T03:11:12Z 60 verified (judge blocking=0) -> phase 70
 2026-08-25T03:11:12Z heartbeat phase=70
+2026-08-25T03:12:33Z 70 attempt marker pre-POST (attempted_at=2026-08-25T03:12:33Z)
+2026-08-25T03:12:33Z heartbeat phase=70

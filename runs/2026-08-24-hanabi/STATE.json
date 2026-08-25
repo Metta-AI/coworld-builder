@@ -44,7 +44,7 @@
     "viewer_check_run": "32803415305"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-25T03:12:33Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -59,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T03:11:12Z",
+  "heartbeat_at": "2026-08-25T03:12:33Z",
   "session_ended_at": null,
   "session_id": "c2a0a349",
   "log": "runs/2026-08-24-hanabi/log.md"
