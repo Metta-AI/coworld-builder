@@ -17,3 +17,7 @@
 2026-08-25T16:19:00Z 20 pushed 6d6ba8b (initial build) -> ci.yml run 32871176243 dispatched
 2026-08-25T16:30:13Z 20 pushed fb3e4ac -> run 32871512297 failure (doc comments in expressions, GC-safe stubs); fixed
 2026-08-25T16:30:13Z 20 pushed 87ea426 -> run pending (shadowed module names, std/json, cert fixture capMin for the soak)
+2026-08-25T16:39:00Z 20 pushed 87ea426 -> run 32872320408 failure (module-name shadowing, missing std/json); docker-smoke GREEN
+2026-08-25T16:47:00Z 20 pushed 6d3887c -> run 32873190436 failure (missing std/tables; renderer fixture fought its own design); docker-smoke + wasm-viewer GREEN
+2026-08-25T16:56:00Z 20 pushed e9ccce0 -> run 32873913589 SUCCESS (shift/end events now land inside the recorded frames)
+2026-08-25T17:05:00Z 20 pushed 62681ee -> run 32874694256 SUCCESS (two legibility fixes read off the smoke screenshot) — CLAIMED GREEN
