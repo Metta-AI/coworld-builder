@@ -121,3 +121,4 @@
 2026-08-25T18:29:21Z heartbeat phase=75
 2026-08-25T18:29:58Z 75 atlas: slug live in /api/coworlds (paintball, 113 episodes_7d); continent=paintlands (zero-sum team shooter — two squads, spray-tag elimination, KotH control; the paintlands row is literally shooters) ; spot 202,270 clearance 34.1
 2026-08-25T18:29:58Z heartbeat phase=75
+2026-08-25T18:30:19Z 75 atlas dispatch=32884108109 region=paintlands at=202,270 clearance=34.1
