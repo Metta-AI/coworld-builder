@@ -30,3 +30,5 @@
 2026-08-25T17:59:10Z 30 fixer dispatched round 1
 2026-08-25T17:59:10Z heartbeat phase=30
 2026-08-25T21:19:09Z 00 resume at phase 30 attempt=1 session=ee652d74
+2026-08-25T21:20:13Z 30 fixer returned round 1 (found by resume): r1-fixes.md written, 9 commits, CI green run 32883915882 at 0079af8
+2026-08-25T21:20:13Z 30 judge dispatched round 1 (fresh checkout /tmp/cogame-factory-commons-judge @ 0079af8)
