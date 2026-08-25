@@ -44,3 +44,9 @@
 2026-08-25T07:06:30Z 50 division PUT 200 div_ab928df3-f28c-4249-9f7d-cb62cf97ded2 (Competition L1); settings POST 200 (round_robin, filler_policy, elo k32, 15min)
 2026-08-25T07:06:30Z 50 policy-versions ownership verified: foreman/courier/freeloader=daveey, metabolist=daveey-1 (no coins-style leak); filler UUIDs courier=51066378-6b79-4dc1-b693-b71e45c3722c freeloader=33c53b59-b153-4b31-9b07-1d4e59a4a34c
 2026-08-25T07:06:30Z heartbeat phase=50
+2026-08-25T07:09:09Z 50 champ1 submit run=32820026820 ok=true sub_3c06ab3a (chemistry-foreman:v1, daveey)
+2026-08-25T07:09:09Z 50 champ2 submit run=32820078957 ok=true sub_61a30718 (chemistry-metabolist:v1, daveey-1)
+2026-08-25T07:09:09Z 50 fillers POST 200: courier:v1=51066378 freeloader:v1=33c53b59 (both daveey, neither champion); unpause 200 paused=false; trigger-round 200 workflow ladder-league_9b734c36
+2026-08-25T07:09:09Z 50 round 1 failed (pre-filler auto-trigger race, commons-family precedent); round 2 pending round_604ee98e with entrant_attributions = both champions (153ef0ed daveey, dba74c0b daveey-1) -> exit criterion met
+2026-08-25T07:09:09Z progress phase=50 marker=league_9b734c36-c6a2-4cc4-a12e-e8bc3977e86c
+2026-08-25T07:09:09Z heartbeat phase=60
