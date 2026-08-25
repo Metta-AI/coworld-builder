@@ -73,3 +73,4 @@
 2026-08-25T23:49:38Z 60 judge verdict BLOCKING: 0 (verify-verdict.md; independently re-fetched rounds/leaderboard/ereq/replay/viewer-check run)
 2026-08-25T23:49:38Z 60 done (8/8 TRUE, judge blocking 0) -> phase 70
 2026-08-25T23:49:38Z heartbeat phase=70
+2026-08-25T23:50:35Z 70 announce.attempted_at written pre-POST
