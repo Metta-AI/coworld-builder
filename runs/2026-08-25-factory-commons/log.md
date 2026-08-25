@@ -73,3 +73,7 @@
 2026-08-25T22:58:16Z 60 VERIFY.md written — verdict all-true 8/8
 2026-08-25T22:58:16Z heartbeat phase=60
 2026-08-25T22:59:21Z 60 verifier returned: VERIFY.md all-true 8/8, viewer-check artifacts in run dir; judge dispatched for phase-60 adjudication
+2026-08-25T23:03:33Z 60 judge returned: verify-verdict.md blocking: 0 / BLOCKING: 0 — definition of done confirmed (notes: DRAW win-chip bug non-blocking, font.ttf 404 non-blocking)
+2026-08-25T23:03:33Z progress phase=60 marker=verify-verdict.md
+2026-08-25T23:03:33Z 60 -> 70 phase transition, STATE phase=70
+2026-08-25T23:03:33Z heartbeat phase=70
