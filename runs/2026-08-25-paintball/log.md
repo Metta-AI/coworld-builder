@@ -99,3 +99,5 @@
 2026-08-25T17:31:25Z heartbeat phase=60
 2026-08-25T17:40:47Z 60 poll 3: round 20 pending
 2026-08-25T17:40:47Z heartbeat phase=60
+2026-08-25T17:45:45Z 60 poll 4: round 20 completed 17:39:41Z — champ-vs-champ ereq_f126502b llmTurns [15,16] fallbackTurns [23,22]: quota recovering (10->31 of 76 llm) but fallback still majority; waiting for round 21
+2026-08-25T17:45:45Z heartbeat phase=60
