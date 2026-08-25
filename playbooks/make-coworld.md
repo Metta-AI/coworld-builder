@@ -315,6 +315,8 @@ that was already posted without the flag: `PATCH .../messages/<id>` with `{"flag
 
 ## Common mistakes
 
+- **TypeScript/pnpm-lineage coworlds (cogherence forks): the release workflow must build the JS bundles** (`pnpm install --frozen-lockfile && pnpm build`) before `coworld build`/manifest — the Dockerfile COPYs `dist`/`dist-server` and the stock template has no node step (territory 0.1.0, 2026-08-25). Playwright installs go in `$RUNNER_TEMP` (`npm install --no-save` breaks on `workspace:*`).
+
 | Symptom | Cause / fix |
 |---|---|
 | "replay viewer bundle must be uploaded first" | the pinned `coworld` CLI is < 0.1.42: it does not wait for the server to finish expanding the replay-viewer bundle before POSTing the manifest (`_wait_for_replay_viewer_bundle` added in 0.1.42). Bump `COWORLD_PKG` in the workflow (seen: cogame-lighthouse run 32603113899, 2026-08-22) |
