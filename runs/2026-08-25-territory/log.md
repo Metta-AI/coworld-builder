@@ -12,3 +12,4 @@
 2026-08-25T09:22:00Z progress phase=10 marker=design-r1.md
 2026-08-25T09:22:00Z 10 -> 20 phase transition, STATE.phase=20
 2026-08-25T09:22:00Z heartbeat phase=20
+2026-08-25T09:29:00Z 20 repo created Metta-AI/cogame-territory (public); propagate-secrets run=32832054574 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
