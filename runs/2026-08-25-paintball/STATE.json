@@ -59,9 +59,9 @@
         "completed_at": "2026-08-25T13:38:20.581820Z"
       }
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/9b5c5885-2453-473c-aac6-9e1e10d99886.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/b1b22848-79d4-4118-a5e8-341cd0ec42f8.replay",
     "iframe_static": true,
-    "viewer_check_run": "32854934931",
+    "viewer_check_run": "32875824479",
     "checks": {
       "1": true,
       "2": true,
@@ -70,7 +70,7 @@
       "5": false,
       "6": true,
       "7": true,
-      "8": false
+      "8": true
     }
   },
   "announce": {
@@ -89,7 +89,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T17:00:54Z",
+  "heartbeat_at": "2026-08-25T17:16:48Z",
   "session_ended_at": null,
   "session_id": "295f3159",
   "log": "runs/2026-08-25-paintball/log.md"
