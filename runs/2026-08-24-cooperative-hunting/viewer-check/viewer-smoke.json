@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2014,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d/sha256%3A0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F53ffeacd-2f98-4dc9-b973-d0dd8130a445.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1 OF 3 STAG HUNT · 1 / 2880",
+  "scorebug": "Cog-D cooperative-hunting-prompt 0 Cog-F cooperative-hunting-prompt 0 Cog-A sidekick 0 ROUND 1 OF 3 STAG HUNT · 1 / 2880 Cog-C sidekick 0 Cog-B big_game_hunter 0 Cog-E sidekick 0",
+  "status": "",
+  "loading_text": null,
+  "feed_lines": 1,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1 OF 3 STAG HUNT · 1 / 2880"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 2 OF 3 STAG HUNT · 1478 / 2880"
+    },
+    {
+      "at": "100%",
+      "clock": "ROUND 3 OF 3 ROUND CARD · 2880 / 2880"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
