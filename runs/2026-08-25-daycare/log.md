@@ -77,3 +77,5 @@
 2026-08-25T19:47:40Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20406
 2026-08-25T19:47:40Z 75 -> 80 phase transition
 2026-08-25T19:47:40Z heartbeat phase=80
+2026-08-25T19:49:38Z 80 close done: exec summary on run task (1217842424943993) + condensed on idea (1217842424944066); LEARNINGS section appended; all 9 subtasks complete; idea 1217762644766180 completed; run task moved to Done
+2026-08-25T19:49:38Z session end in phase 80 — run CLOSED; next action: none (atlas PR #20406 lands via metta merge queue)

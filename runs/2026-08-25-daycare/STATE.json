@@ -56,8 +56,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T19:47:40Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-25T19:49:38Z",
+  "session_ended_at": "2026-08-25T19:49:38Z",
   "session_id": "47960303",
   "log": "runs/2026-08-25-daycare/log.md"
 }
