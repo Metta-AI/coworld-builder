@@ -14,3 +14,25 @@
 2026-08-25T19:16:39Z 20 repo created: https://github.com/Metta-AI/cogame-fruit-market (public)
 2026-08-25T19:16:39Z 20 propagate-secrets.yml run 32888614645 success — SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-fruit-market
 2026-08-25T19:17:31Z 20 builder dispatched (thread sthr_01JH85JHMkQzwUeKdHkGFBRM, round 1/3) — implement design.md, drive ci.yml green on main
+
+## builder (phase 20)
+
+- `2026-08-25T21:06Z` push `43db808` → CI run 32899157800: **failure**. Only the
+  `test` job: the new `check_manifest_loads` step installed coworld with pipx,
+  which puts the package in its own environment, so `import coworld` from the
+  runner's python failed. `docker-smoke` and `wasm-viewer` green first time.
+- `2026-08-25T21:14Z` push `5a039e8` → CI run 32899894104: **success**.
+  Approach change: install coworld into a venv and call the CLI's real API
+  (`coworld.bundle._load_template_manifest` + `manifest.validate_upload_manifest`)
+  instead of the guessed `coworld.build` module path.
+- `2026-08-25T21:22Z` push `43e34e1` → CI run 32900609480: **success** (the sha
+  claimed green). Approach change: fixes read off the first green run's OWN
+  evidence artifact — the endcard said "DRAW" and "winner Bram" in one breath,
+  the scrubber cap was placed from the gameover beat before `over` existed, and
+  the bundle 404'd on `font.ttf`.
+  https://github.com/Metta-AI/cogame-fruit-market/actions/runs/32900609480
+2026-08-25T21:29:00Z 20 builder returned: CI green on main — run 32900609480 sha 43e34e150f8871b40f6a3e86034b4bf2ce487bfd (3 pushes, 1 red on check_manifest_loads/pipx, fixed via venv). docker-smoke: 8 seats exit 0, reason=complete; wasm-viewer loaded+soak+strict-text-bounds green; dom_text 360px green. Workflows parse; placeholder grep clean.
+2026-08-25T21:29:00Z 20 deviations accepted as rails calls (coordinator): (1) water count 72+48 not 72+32 — design arithmetic error, perimeter 88-8d; (2) banana trees moved to island rows y=7,y=10 — note's list walled the island, connectivity assert could not pass; (3) economy retune eatCooldown 6->24, harvestCooldownOther 24->96, deep-rivers moveStaminaWater 18->32 — note's numbers made autarky = trading, gates now pass 12/12 seeds x 4 variants; (4) gate (c) measured as ratio (1.76 deep vs 1.68 open) matching gate (b)'s form; (5) hauler walks round-rendezvous stall N->E->S->W + keeps offer while restocking — 10 trades -> 29-42, canonical 3-for-2 unchanged. Also: one added onFrame hook line for the appended block (only path to frame/send/chrome), wire_constants kept, map bands dripped 2/frame under 1MiB ws limit, 4-name lockerroom kept.
+2026-08-25T21:29:00Z progress phase=20 marker=ci-run-32900609480-green
+2026-08-25T21:29:00Z 20 -> 30 phase transition: entering review loop, review_round=1
+2026-08-25T21:29:00Z heartbeat phase=30
