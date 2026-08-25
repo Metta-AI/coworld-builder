@@ -83,3 +83,5 @@
 2026-08-25T14:35:37Z 40 dispatch version=0.1.3 put_secret=true run 32860469755 (dispatched_at 14:35:35Z, head 2a58c99) -> SUCCESS: ok true, canonical true, certify.ok true with "Replay liveness: skipped (static replay bundle declared", hosted_smoke passed, secret_put true, step_failed null. cow_id cow_09dcacad-01fb-488b-9d93-5eddf6a1a37a (new — cow ids are per-version), manifest sha256:669e79cde247aa82428d6a26c7cfeb652b3cf89f492df9ee697ca3225a123f71. Policies all minted v2 (image changed): paintball-holdcentre:v2, paintball-splitpaint:v2 (player_id ply_bac48eb1-662e-44f8-973d-f3e016dccf5d), paintball-holdline:v2, paintball-sprayer:v2. release-result.json overwritten; STATE version/cow_id/manifest_sha/release_run_id + the four labels updated (filler_version_ids left for the coordinator to re-resolve).
 2026-08-25T14:48:32Z progress phase=60 marker=release-0.1.3-run-32860469755
 2026-08-25T14:48:32Z 60 re-seat: submitting v2 champions, updating fillers to v2, re-trigger round
+2026-08-25T16:57:28Z 00 attempts_reset phase=60 reason=progress marker=release-0.1.3-run-32860469755
+2026-08-25T16:57:28Z 00 resume at phase 60 attempt=1 session=295f3159
