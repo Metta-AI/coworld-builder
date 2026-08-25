@@ -71,3 +71,5 @@
 2026-08-25T19:40:10Z heartbeat phase=75
 2026-08-25T19:42:11Z 75 atlas spot picked: region=shire x=217 y=583 anchor=c label=Daycare — rails call: cozy cooperative caregiving yard (Cozy Shire); matches pending placement of daycare in metta PR #20388 (transform 651,1749 = 3x overview units), keeps pending PRs consistent; clears pending collab-cooking shire dot (193,586) by ~24 units
 2026-08-25T19:42:32Z 75 atlas dispatch=32891067193 region=shire at=217,583 clearance=~24-vs-pending (spot adopted from metta PR #20388)
+2026-08-25T19:45:43Z 75 atlas dispatch 1 (32891067193) FAILED: 18 unplaced leagues named by build.mjs (chemistry chorus cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting firm garble grid-wars hanabi matrix-games paintball territory); placing all 18 via extra_cities per step 8, coordinates and continents reused verbatim from metta PR #20388 (paintball run's placements, transforms/3) so pending atlas PRs agree
+2026-08-25T19:45:43Z 75 atlas dispatch=32891370552 region=shire at=217,583 extra_cities=18
