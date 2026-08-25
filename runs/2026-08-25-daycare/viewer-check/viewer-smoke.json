@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2690,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5b944b41-3f2f-4f84-a96b-c484811d7d55/sha256%3Ae4ba7e35568a601dafc86e9acb5261d20e2779b0bedcad465d026cad1b997f33/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F84f3b7af-b641-4c59-a823-a7700fc5d5b2.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TURN 1 / 15 TICK 0 OF 899",
+  "scorebug": "CHILD SCORE 0 BRAMBLE · richard TURN 1 / 15 TICK 0 OF 899 PARENT SCORE 0 ALDER · daveey-1",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TURN 1 / 15 TICK 0 OF 899"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 8 / 15 TICK 468 OF 899"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL TICK 899 OF 899"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

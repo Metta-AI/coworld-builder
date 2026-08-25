@@ -33,9 +33,12 @@
     "division": "div_6fc85068-9784-4bdc-905b-c78b33c106d3"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_fb6e0387-fffd-4ab6-81ca-28012d182468"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/832718ed-bc17-4b7f-824f-49c937ad6bd3.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32889498154"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T19:21:46Z",
+  "heartbeat_at": "2026-08-25T19:31:46Z",
   "session_ended_at": null,
   "session_id": "47960303",
   "log": "runs/2026-08-25-daycare/log.md"
