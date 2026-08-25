@@ -73,3 +73,7 @@
 2026-08-25T19:42:32Z 75 atlas dispatch=32891067193 region=shire at=217,583 clearance=~24-vs-pending (spot adopted from metta PR #20388)
 2026-08-25T19:45:43Z 75 atlas dispatch 1 (32891067193) FAILED: 18 unplaced leagues named by build.mjs (chemistry chorus cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting firm garble grid-wars hanabi matrix-games paintball territory); placing all 18 via extra_cities per step 8, coordinates and continents reused verbatim from metta PR #20388 (paintball run's placements, transforms/3) so pending atlas PRs agree
 2026-08-25T19:45:43Z 75 atlas dispatch=32891370552 region=shire at=217,583 extra_cities=18
+2026-08-25T19:47:40Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20406 status=pr_open (automerge armed; lands via Graphite merge queue, human merges)
+2026-08-25T19:47:40Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20406
+2026-08-25T19:47:40Z 75 -> 80 phase transition
+2026-08-25T19:47:40Z heartbeat phase=80
