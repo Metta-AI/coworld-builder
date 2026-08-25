@@ -25,3 +25,4 @@
 2026-08-25T09:44:39Z progress phase=20 marker=ci-run-32832626260
 2026-08-25T09:44:39Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-25T09:45:24Z 30 r1 reviewer dispatched thread=sthr_01AttJJowZL97y9pFDwd9ev7 output=runs/2026-08-25-paintball/reviews/r1-review.md
+2026-08-25T10:07:22Z 30 r1 review returned (27 findings: F1-F5 checklist-level [data-replay-error missing, deleted test assertions, say-bubble legibility+no fixture, /client/replay route residue, no reason==complete gate/grid harness], F6-F27 advisory) sha=27f30578
