@@ -46,3 +46,7 @@
 2026-08-25T23:01:32Z 30 -> 40 phase transition: entering release (review loop closed in 1 round)
 2026-08-25T23:01:32Z heartbeat phase=40
 2026-08-25T23:02:15Z 40 builder dispatched for release (thread sthr_01LmiVHXgfhUcJZKrzeQbBGB) — coworld-release.yml, version 0.1.0 first, 3-dispatch budget
+2026-08-25T23:12:56Z 40 release dispatch 1/3: version=0.1.0 run=32908969155 success — ok:true canonical:true certify.ok:true replay_liveness skipped(static) secret_put:true, 4 policies v1 (ricardo owned by ply_bac48eb1), cow_4a33390e-40e5-4bfc-826a-d2987347d8a8
+2026-08-25T23:12:56Z progress phase=40 marker=release-run-32908969155
+2026-08-25T23:12:56Z 40 -> 50 phase transition: entering league
+2026-08-25T23:12:56Z heartbeat phase=50
