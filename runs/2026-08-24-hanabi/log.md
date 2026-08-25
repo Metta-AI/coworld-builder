@@ -74,3 +74,6 @@
 2026-08-25T02:17:33Z progress phase=60 marker=release-run-32799997719
 2026-08-25T02:17:33Z 60 note (for learnings): ANTHROPIC_GIT credential not scoped to freshly created cogame-* repos (401 on cogame-hanabi git-receive-pack, 200 on coworld-builder); builder pushed via Git Data API fast-forward
 2026-08-25T02:17:33Z heartbeat phase=60
+2026-08-25T02:19:25Z 50/60 champions resubmitted as v2: signaler run 32800861260 ok, reader run 32800893319 ok (daveey-1); filler-policies updated to v2 UUIDs (conventions 6e696c59, cautious 7a65d5b7); trigger-round issued, round 7 pending (first v2 round; rounds 5-6 completed on v1 in the interim)
+2026-08-25T02:19:25Z progress phase=60 marker=submit-run-32800893319
+2026-08-25T02:19:25Z heartbeat phase=60

@@ -25,8 +25,8 @@
       "hanabi-cautious:v2"
     ],
     "filler_version_ids": [
-      "bbafc232-9fdd-4ac6-9ff5-353feeb79ca7",
-      "e6ed90d3-3e1e-4285-ad9c-ff8698921ed5"
+      "6e696c59-64a1-4c6d-b161-02a6c0093d47",
+      "7a65d5b7-9b46-4d81-a813-fb9e53d80440"
     ]
   },
   "league": {
@@ -54,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T02:17:33Z",
+  "heartbeat_at": "2026-08-25T02:19:25Z",
   "session_ended_at": null,
   "session_id": "c2a0a349",
   "log": "runs/2026-08-24-hanabi/log.md"
