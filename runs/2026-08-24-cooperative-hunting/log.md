@@ -64,3 +64,6 @@
 2026-08-25T04:45:26Z 40 note for LEARNINGS (phase 80): templates/coworld-release.yml single SLUG conflates image slug and secret ns; multi-word slugs with underscored game.name fail upload HTTP 400, invisible to certify — split IMAGE_SLUG/SECRET_NS
 2026-08-25T04:45:26Z 40 done (release 0.1.4 green) -> phase 50
 2026-08-25T04:45:26Z heartbeat phase=50
+2026-08-25T04:46:43Z 50 seed 200 lseed_6db53ac2 league=league_500b6882-6374-43f4-a82b-5e2d0522d9fd (coworld_name=cooperative_hunting — slug hyphens 404d "Canonical Coworld not found", retried underscored)
+2026-08-25T04:46:43Z 50 division 200 div_60ac03d6-a66a-4ebc-9b84-a0092627e7dc; settings 200 (elo, round_robin, filler_policy, 15min)
+2026-08-25T04:46:43Z heartbeat phase=50
