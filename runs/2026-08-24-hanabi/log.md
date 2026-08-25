@@ -40,3 +40,9 @@
 2026-08-25T01:06:41Z heartbeat phase=50
 2026-08-25T01:07:52Z 50 seed 200 lseed_393ba9b8-196c-409e-9456-b5586095e414; league=league_332c17c5-b6bf-4341-98c7-3161dd58e6d8 division=div_0a3fd174-6ac2-4167-971e-e86f9eb9ed1e settings 200 (elo 1000/32, round_scoring_rule=mean per design note L191)
 2026-08-25T01:07:52Z heartbeat phase=50
+2026-08-25T01:10:33Z 50 champion1 submit run=32796362112 ok=true (hanabi-signaler:v1, daveey)
+2026-08-25T01:10:33Z 50 champion2 submit run=32796400870 ok=true (hanabi-reader:v1, daveey-1)
+2026-08-25T01:10:33Z 50 fillers 200: conventions=bbafc232 cautious=e6ed90d3; unpause 200; trigger 200 (round 1 auto-created pre-fillers failed; round 2 pending with both champions in entrant_attributions)
+2026-08-25T01:10:33Z progress phase=50 marker=league_332c17c5-b6bf-4341-98c7-3161dd58e6d8
+2026-08-25T01:10:33Z 50 phase -> 60
+2026-08-25T01:10:33Z heartbeat phase=60
