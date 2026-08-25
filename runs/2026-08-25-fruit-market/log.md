@@ -5,3 +5,4 @@
 2026-08-25T18:58:00Z 00 claim 2026-08-25-fruit-market idea=1217747861534937 slug=fruit-market
 2026-08-25T18:58:00Z 00 run task 1217841000738062 created in Running, heartbeat_at set, 9 phase subtasks created
 2026-08-25T18:58:30Z 00 -> 10 phase transition: entering design (session=6f21c4a9)
+2026-08-25T19:00:30Z 10 starter chosen: Metta-AI/coworld-ctf — real-time grid loop with new rules (MP re-implementation, not an external-engine port); precedent: chemistry run
