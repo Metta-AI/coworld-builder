@@ -76,3 +76,5 @@
 2026-08-25T09:22:28Z 60 verifier returned VERIFY.md: checks 1,2,7 TRUE; 3,4,5,6,8 FALSE — every league episode failed game_unhealthy exit 1; root cause diagnosed: ticket minting scales with max_steps (900 -> 313 feature ids > mettagrid's 256/byte cap); cert fixture at 480 steps masked it; viewer itself proven healthy via substitute bundle check (run 32830082226 loaded:true, 3 differing clocks, ctf chrome intact)
 2026-08-25T09:22:28Z 60 ruling (rails: parameter tuning / fixable code defect, not Blocked-class): remediate inside 60 — fix feature-id overflow so every published variant constructs at max_steps=900, add per-variant construction regression test, re-release v0.1.2, resubmit champions at new version, fresh rounds, re-verify (checks 3-6,8 attempt 2). cogolf/escrow/chorus precedent
 2026-08-25T09:22:28Z 60 remediation builder dispatched (next log line has thread id)
+2026-08-25T09:23:23Z 60 remediation builder thread=sthr_01P2CXh3euAzv4uQ89nj9DyW (fix feature-id overflow, per-variant construction test, 900-step e2e case, release v0.1.2)
+2026-08-25T09:23:23Z heartbeat phase=60
