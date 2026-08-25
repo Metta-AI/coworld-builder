@@ -45,3 +45,5 @@
 2026-08-25T08:16:43Z 30 -> 40 phase transition, STATE.phase=40
 2026-08-25T08:17:46Z 40 builder dispatched thread=sthr_01PRtxowgTnWwc1Av4noWU5S for coworld-release.yml (start v0.1.0, put_secret=true, policies from repo file)
 2026-08-25T08:17:46Z heartbeat phase=40
+2026-08-25T08:24:00Z 40 dispatch v0.1.0 run=32825924335 step_failed="Certify locally" (manifest_invalid: game_config must not include runner-managed tokens) decision=manifest fix
+2026-08-25T08:34:00Z 40 dispatch v0.1.1 run=32826526376 step_failed=null ok=true canonical=true cow_id=cow_127a462a-6f7f-457f-aa7b-95652aae11d4 secret_put=true (fix: cert fixture drops runner-managed tokens, coworld repo 8f6bca0)
