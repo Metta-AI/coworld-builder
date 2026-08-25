@@ -53,3 +53,11 @@
 2026-08-25T23:14:02Z 50 seed POST 200 lseed_c9ea258e league_758061e3-46cb-49db-aef0-a28fb10ba80e (default_variant_id=concentric-rivers accepted at seed time)
 2026-08-25T23:14:02Z 50 division PUT 200 div_794ae52e-812a-4ad9-be2f-b4da9ae25a7f (Competition L1); settings POST 200 (round_robin, filler_policy, elo k32, 15min)
 2026-08-25T23:14:02Z heartbeat phase=50
+2026-08-25T23:16:34Z 50 policy-versions ownership verified: broker/hauler/homesteader=daveey, ricardo=daveey-1; filler UUIDs hauler=65e8754a-90c1-4984-8440-bb0ca29420d3 homesteader=0e4a0b4f-2325-49ba-be18-5cbbd7de9680
+2026-08-25T23:16:34Z 50 champ1 submit run=32909848045 ok=true sub_a24c2f4e (fruit-market-broker:v1, daveey)
+2026-08-25T23:16:34Z 50 champ2 submit run=32909890601 ok=true sub_dadbfeb5 (fruit-market-ricardo:v1, daveey-1)
+2026-08-25T23:16:34Z 50 fillers POST 200 (hauler+homesteader, neither champion); unpause 200 paused=false; trigger-round 200 workflow ladder-league_758061e3
+2026-08-25T23:16:34Z 50 round 1 failed (pre-filler auto-trigger race, known precedent); round 2 pending round_fbba2cf3 with entrant_attributions = both champions -> exit criterion met
+2026-08-25T23:16:34Z progress phase=50 marker=league_758061e3-46cb-49db-aef0-a28fb10ba80e
+2026-08-25T23:16:34Z 50 -> 60 phase transition: entering verify
+2026-08-25T23:16:34Z heartbeat phase=60

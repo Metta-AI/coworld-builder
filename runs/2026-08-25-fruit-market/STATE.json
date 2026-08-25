@@ -5,7 +5,7 @@
   "slug": "fruit-market",
   "repo": "https://github.com/Metta-AI/cogame-fruit-market",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "fruit-market-hauler:v1",
       "fruit-market-homesteader:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "65e8754a-90c1-4984-8440-bb0ca29420d3",
+      "0e4a0b4f-2325-49ba-be18-5cbbd7de9680"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_758061e3-46cb-49db-aef0-a28fb10ba80e",
+    "division": "div_794ae52e-812a-4ad9-be2f-b4da9ae25a7f"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T23:12:56Z",
+  "heartbeat_at": "2026-08-25T23:16:34Z",
   "session_ended_at": null,
   "session_id": "6f21c4a9",
   "log": "runs/2026-08-25-fruit-market/log.md"
