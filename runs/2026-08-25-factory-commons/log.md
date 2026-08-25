@@ -52,3 +52,4 @@
 2026-08-25T22:08:38Z progress phase=50 marker=league_96744093-0ddc-42dc-b5bf-79f195f062f0
 2026-08-25T22:08:38Z 50 -> 60 phase transition, STATE phase=60
 2026-08-25T22:08:38Z heartbeat phase=60
+2026-08-25T22:09:11Z 60 verifier dispatched (league league_96744093-0ddc-42dc-b5bf-79f195f062f0, division div_8b8d506b-926f-4633-bc3d-ce6dc08a2568, cow cow_2e5dc1a2-c660-4c7b-83a1-3881b4071786)
