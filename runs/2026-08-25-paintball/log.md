@@ -28,3 +28,4 @@
 2026-08-25T10:07:22Z 30 r1 review returned (27 findings: F1-F5 checklist-level [data-replay-error missing, deleted test assertions, say-bubble legibility+no fixture, /client/replay route residue, no reason==complete gate/grid harness], F6-F27 advisory) sha=27f30578
 2026-08-25T10:08:08Z 30 r1 fixer dispatched thread=sthr_01YCcp8WpWNYarBs1PKNXtND output=runs/2026-08-25-paintball/reviews/r1-fixes.md
 2026-08-25T11:58:28Z 30 r1 fixer returned: 20 fixed, 1 partial (F21), 1 disputed (F14 stale note numbers), 1 needs-design (F11 turnSpacingMs), 4 noted; all 5 checklist-level fixed; sha=44af4da CI run 32843017748 green
+2026-08-25T11:59:33Z 30 r1 judge dispatched thread=sthr_01JAySKwcZbrgBSoQVFGqmdF output=runs/2026-08-25-paintball/reviews/r1-verdict.md sha=44af4da
