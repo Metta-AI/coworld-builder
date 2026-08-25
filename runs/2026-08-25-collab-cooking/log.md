@@ -11,3 +11,5 @@
 2026-08-25T03:48:28Z 10 design accepted round=1 -> phase 20
 2026-08-25T03:48:28Z progress phase=10 marker=design-r1.md
 2026-08-25T03:49:39Z 20 repo created Metta-AI/cogame-collab-cooking (public); propagate-secrets run=32806585680 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-25T03:50:46Z 20 builder dispatched round=1 thread=sthr_01BtKT8eUSJ4dJLFzkhJTvbY repo=Metta-AI/cogame-collab-cooking
+2026-08-25T03:50:46Z heartbeat phase=20
