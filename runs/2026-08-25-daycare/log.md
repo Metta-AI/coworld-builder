@@ -59,3 +59,4 @@
 2026-08-25T19:31:46Z 60 verifier returned (sthr_01LXeeQ3FJi4dyvXaP9QszQo): VERIFY.md 8/8 TRUE — 17 rounds (2-18), champions ranked (daveey-1 #2, daveey #4), replay 832718ed 0 fallbacks, logs clean, static iframe via SSR playlist+session route, liveness skipped-static, viewer-check 32889498154 loaded:true clocks 0/468/899
 2026-08-25T19:31:46Z progress phase=60 marker=viewer-check-32889498154
 2026-08-25T19:31:46Z heartbeat phase=60
+2026-08-25T19:32:03Z 60 judge dispatched output=reviews/verify-verdict.md
