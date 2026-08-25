@@ -9,17 +9,17 @@
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "0.1.2",
-    "cow_id": "cow_4ac3644c-c0f0-4b39-93ae-adb2dd39518d",
-    "manifest_sha": "sha256:484a082c1f95ece0c295209173ab9a5064c376c35c0fe12946a5db07557a3374",
-    "release_run_id": "32847347580"
+    "version": "0.1.3",
+    "cow_id": "cow_09dcacad-01fb-488b-9d93-5eddf6a1a37a",
+    "manifest_sha": "sha256:669e79cde247aa82428d6a26c7cfeb652b3cf89f492df9ee697ca3225a123f71",
+    "release_run_id": "32860469755"
   },
   "policies": {
-    "champion1": "paintball-holdcentre:v1",
-    "champion2": "paintball-splitpaint:v1",
+    "champion1": "paintball-holdcentre:v2",
+    "champion2": "paintball-splitpaint:v2",
     "fillers": [
-      "paintball-holdline:v1",
-      "paintball-sprayer:v1"
+      "paintball-holdline:v2",
+      "paintball-sprayer:v2"
     ],
     "filler_version_ids": [
       "b39fb2e0-2feb-4c33-b764-4d7b82a0788b",
