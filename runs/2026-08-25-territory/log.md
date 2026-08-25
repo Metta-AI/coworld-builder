@@ -69,3 +69,8 @@
 2026-08-25T13:25:52Z 60 VERIFY.md written: verdict all-true 8/8. Observations (non-blocking): log.md stamps ~67min ahead of real UTC (softmax Date header + API created_at both confirm); 100% scrub lands Turn 14 not FINAL so endcard never rendered; featured match is zero-raze so headline destruction mechanic not showcased; scripted baselines out-earned both LLM champions (149/75 vs up to 336)
 2026-08-25T13:26:01Z 60 verify COMPLETE: VERIFY.md all-true 8/8 pushed (a5cacfd) with viewer-check artifact committed; STATE.verify populated (rounds/replay/iframe_static/viewer_check_run); phase left at 60 for coordinator
 2026-08-25T13:26:01Z heartbeat phase=60
+2026-08-25T13:27:06Z 60 verifier returned: 8/8 TRUE (rounds 2+3 completed post-filler; champions ranked daveey 1030.53 / daveey-1 969.47, no filler rows; ereq_d1b638fb completed replay 3.9MB strict JSON reason=complete fallbacks 3/36 all affordability-not-LLM; logs CLEAN; static iframe via SSR playlist; cert static-bundle line; viewer-check run=32852582973 loaded=true clocks 1/11/14 differ) — VERIFY.md + viewer-check/ committed at 2e530a0c
+2026-08-25T13:27:06Z 60 NOTE: earlier log.md stamps (09:00-14:03 range) ran ~67min ahead of real UTC (sandbox drift, verifier finding #1); stamps from here on use date -u; no check depended on it
+2026-08-25T13:27:06Z 60 verifier non-blocking findings: scrub 100% lands Turn 14 not FINAL (endcard unreachable from rail right edge — curation/phase-30-class note); featured match fully peaceful (razes work in round-2 replay); homesteader baseline out-earns champions (Elo unaffected, champions-only ranking)
+2026-08-25T13:27:06Z progress phase=60 marker=r3-verify-all-true
+2026-08-25T13:27:06Z heartbeat phase=60
