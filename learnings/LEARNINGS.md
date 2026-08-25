@@ -986,3 +986,13 @@ the starter after the fact.
   `extra_cities`, run `atlas_spot.py` iteratively against a working copy of `places.mjs` that
   you append each chosen dot to — otherwise several new dots in one region all get the same
   "roomiest" spot.
+
+## 2026-08-25 chemistry
+
+- **`os.getAppDir` has no emscripten implementation** — under a paintbot-lineage wasm build it dies with `value out of range: -1 notin 0 .. 2147483647` (from `getAppFilename`) *before* any fallback path runs, with no stack. Guard every `gameDir()`-style lookup with `when not defined(emscripten)` and try the working directory first. Diagnosable locally: install emsdk + run the bundle under node with `--stackTrace:on`.
+- **Diff `/api/coworlds` against `places.mjs` CITIES BEFORE the first atlas dispatch.** With parallel runs shipping coworlds hourly, the "unplaced leagues" build error is now the common case (this run: 14 backfills on dispatch 2, then collab-cooking went live mid-phase and cost dispatch 3). Compute the full missing set up front and pass it in `extra_cities` on dispatch 1; re-fetch `/api/coworlds` immediately before each dispatch.
+- **`coworld-league-seeds` accepts `default_variant_id` at the top level of the seed body** (echoed back in the 200). That is the cheap moment to pin the league variant — gridlock's 409 shows it cannot be re-seeded later.
+- **Verify policy ownership from `GET /policy-versions` (player_name column) between phase 40 and the champion submits.** Coins' account-level `softmax player use` leak (all four v1s minted as daveey-1) did not recur here, but the 30-second check is what proves it before a 409 does.
+- **docker_smoke player-exit assertion folded back into the template** (`templates/tools/ci/docker_smoke.sh` now asserts every player container exits 0 — raid 0.1.3→0.1.4 trap; was a per-repo delta in cogame-chemistry).
+- **Bedrock haiku daily-token 429 is a *daily* quota** — it throttled 03:23Z–08:08Z platform-wide and then cleared on its own. A run hitting it in phase 60 should document the cross-coworld evidence and keep polling the full 75-minute bound before blocking: rounds triggered after the quota clears verify clean (this run: r2–r5 mass fallback, r6 champions 14/14 LLM).
+- **Chemistry's LLM player has no model-level fallback** (haiku-only by design, raid learning) — hanabi survives a haiku throttle by switching models; chemistry drops to scripted orders for the shift. If the haiku quota becomes chronic, a bounded sonnet fallback for *standing-order* games (1 call/seat/shift, not per-tick) may be worth revisiting.

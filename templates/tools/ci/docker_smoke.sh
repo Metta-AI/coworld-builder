@@ -242,6 +242,34 @@ if [ "${exit_code}" != "0" ]; then
 fi
 
 # --------------------------------------------------------------------------
+# Every PLAYER container must exit 0 too. Hosted certification checks this and
+# the original starter smoke did not, so a player that raises on a closed
+# socket passed here and failed certification intermittently (raid
+# 0.1.3 -> 0.1.4, 2026-08-23; folded back from cogame-chemistry, 2026-08-25).
+# The players exit on the `final` frame, which the game sends BEFORE it writes
+# its artifacts, so they are normally already gone by now; give them a bounded
+# grace anyway.
+# --------------------------------------------------------------------------
+player_deadline=$((SECONDS + 60))
+for ((slot = 0; slot < seats; slot++)); do
+  while docker ps -q --filter "name=${prefix}-p${slot}" | grep -q .; do
+    if (( SECONDS > player_deadline )); then
+      echo "FAIL: player ${slot} did not exit within 60s of the game" >&2
+      dump_logs
+      exit 1
+    fi
+    sleep 2
+  done
+  player_exit="$(docker inspect -f '{{.State.ExitCode}}' "${prefix}-p${slot}")"
+  if [ "${player_exit}" != "0" ]; then
+    echo "FAIL: player ${slot} container exited ${player_exit}" >&2
+    dump_logs
+    exit 1
+  fi
+done
+echo "all ${seats} player containers exited 0"
+
+# --------------------------------------------------------------------------
 # Assert the artifacts.
 # --------------------------------------------------------------------------
 if ! python3 - "${work_dir}" "${seats}" "${require_replay_json}" <<'PY'

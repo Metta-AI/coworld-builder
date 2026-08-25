@@ -84,3 +84,4 @@
 2026-08-25T08:43:54Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20370 status=pr_open (automerge armed; lands via Graphite merge queue) — placed 14+1 leagues for other runs: coins commons-family cooperative-hunting firm matrix-games cogiavelli cogplomacy hanabi chorus cogchemists garble cogolf grid-wars cogmud collab-cooking
 2026-08-25T08:43:54Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20370
 2026-08-25T08:43:54Z heartbeat phase=80
+2026-08-25T08:46:33Z 80 LEARNINGS entry appended; docker_smoke player-exit assertion folded into templates/tools/ci/docker_smoke.sh; summaries posted (run task story 1217816705889950, idea task story 1217816861076617)
