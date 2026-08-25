@@ -56,3 +56,5 @@
 2026-08-25T13:01:08Z heartbeat phase=60
 2026-08-25T13:06:57Z 60 verify poll#3: still 1 completed round (round2); no round3 yet (expected ~13:07-13:08Z, 15-min interval); provisional round2 evidence good: reason=complete turnsPlayed=18, champion fallbacks 1/18 + 2/18, hosted log CLEAN
 2026-08-25T13:06:57Z heartbeat phase=60
+2026-08-25T13:17:13Z 60 verify poll#4: round3 completed 13:15:06Z — 2 completed rounds (2,3) => check1 TRUE; starting fresh full evidence pass
+2026-08-25T13:17:13Z heartbeat phase=60
