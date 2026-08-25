@@ -5,7 +5,7 @@
   "slug": "paintball",
   "repo": "https://github.com/Metta-AI/cogame-paintball",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -48,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T12:14:12Z",
+  "heartbeat_at": "2026-08-25T12:43:57Z",
   "session_ended_at": null,
   "session_id": "b1314909",
   "log": "runs/2026-08-25-paintball/log.md"
