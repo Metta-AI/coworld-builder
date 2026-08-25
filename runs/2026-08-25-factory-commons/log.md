@@ -36,3 +36,4 @@
 2026-08-25T21:34:46Z progress phase=30 marker=r1-verdict.md
 2026-08-25T21:34:46Z 30 -> 40 phase transition, STATE phase=40
 2026-08-25T21:34:46Z heartbeat phase=40
+2026-08-25T21:35:17Z 40 builder dispatched: coworld-release.yml version 0.1.0, canonical policy set from tools/ci/policies.json
