@@ -87,3 +87,4 @@
 2026-08-25T05:41:47Z 60 judge returned thread=sthr_01B6Z8QFVvDxxKFpYieig8LP file=verify-verdict.md BLOCKING: 0 (8/8 confirmed by independent re-fetch; 3 advisories, no verdict impact)
 2026-08-25T05:41:47Z 60 done -> phase 70
 2026-08-25T05:41:47Z heartbeat phase=70
+2026-08-25T05:42:58Z 70 announce attempted_at written (pre-POST marker), body 1684 chars
