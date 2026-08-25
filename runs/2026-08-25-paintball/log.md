@@ -95,3 +95,5 @@
 2026-08-25T17:25:53Z heartbeat phase=60
 2026-08-25T17:31:12Z 60 poll 2: round 19 completed 17:23:48Z but throttled — champ-vs-champ ereq_d6741d64 llmTurns [7,3] fallbackTurns [31,35]; waiting for round 20
 2026-08-25T17:31:12Z heartbeat phase=60
+2026-08-25T17:31:25Z 60 poll 2: round 19 completed 17:23:48Z but throttled — champ-vs-champ ereq_d6741d64 llmTurns [7,3] fallbackTurns [31,35]; waiting for round 20
+2026-08-25T17:31:25Z heartbeat phase=60
