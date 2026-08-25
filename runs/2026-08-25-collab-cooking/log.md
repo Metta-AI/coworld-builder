@@ -19,3 +19,5 @@
 2026-08-25T05:30:00Z 20 -> 30 phase transition, STATE.phase=30 review_round=1
 2026-08-25T05:31:21Z 30 r1 reviewer dispatched thread=sthr_01SFNTWYTWFcfyyTVEZdBCnT clone=/tmp/cogame-collab-cooking@6b081b17 output=reviews/r1-review.md
 2026-08-25T05:31:21Z heartbeat phase=30
+2026-08-25T05:52:29Z 30 r1 reviewer returned: 18 observations (O1 coworld build rejects manifest template — replay_viewer/version/display_name placement + missing game.owner, verified against coworld==0.1.42 loader; O2 no re-derivation test — viewer draws recorded arrays, note chose recorded-not-derived, middle path = python replay-events-vs-state test; O3 pause branch skips deadline guard — unbounded episode on one pause frame; 15 non-blocking incl. heat keyed to target vs actor tile, tickets lack expires so EXPIRING never fires, docker smoke had 2/4 seats never connect (no /healthz gate, no connect retry), release secret under slug vs manifest game.name namespace, relayout re-authored vs ctf page script dropped)
+2026-08-25T05:52:29Z progress phase=30 marker=r1-review.md
