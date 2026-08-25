@@ -35,9 +35,14 @@
     "division": "div_60ac03d6-a66a-4ebc-9b84-a0092627e7dc"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_2",
+      "round_3",
+      "round_4"
+    ],
+    "replay": "https://softmax.com replay 2b6b4061-b1d7-43c4-97ac-daae1fef7409.replay (round 4, ereq_22b05732)",
+    "iframe_static": true,
+    "viewer_check_run": "32812865316"
   },
   "announce": {
     "attempted_at": null,
@@ -55,7 +60,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T04:50:37Z",
+  "heartbeat_at": "2026-08-25T05:34:29Z",
   "session_ended_at": null,
   "session_id": "ea323071",
   "log": "runs/2026-08-24-cooperative-hunting/log.md"
