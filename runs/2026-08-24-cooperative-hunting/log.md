@@ -58,3 +58,9 @@
 2026-08-25T04:24:24Z 40 release result version=0.1.3 run=32808207318 certify_ok=TRUE (fix#3 confirmed; 10/10 checks) step_failed="Upload the Coworld" — secret ns cooperative-hunting != game.name cooperative_hunting (HTTP 400 manifest invalid)
 2026-08-25T04:24:24Z 40 rails decision: go — fix#4 class=manifest-validation (40-release.md step 5 row 7, not a certify failure): move secret ns to cooperative_hunting in build_manifest.py:641, coworld_manifest_template.json:27, coworld-release.yml SLUG; keep design-pinned game.name; re-dispatch 0.1.4
 2026-08-25T04:24:24Z heartbeat phase=40
+2026-08-25T04:45:26Z 40 builder returned thread=sthr_01YSmjVrrVLCePkfj4ZugJYv file=release-r2-report.md (fix#3 sha 5ac03d90 certify timeout, fix#4 sha 7e2f9979 secret ns)
+2026-08-25T04:45:26Z 40 release result version=0.1.4 run=32809315564 ok=true canonical=true certify_ok=true secret_put=true cow_id=cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d; policies v2 x4, champion2 player ply_bac48eb1
+2026-08-25T04:45:26Z progress phase=40 marker=32809315564
+2026-08-25T04:45:26Z 40 note for LEARNINGS (phase 80): templates/coworld-release.yml single SLUG conflates image slug and secret ns; multi-word slugs with underscored game.name fail upload HTTP 400, invisible to certify — split IMAGE_SLUG/SECRET_NS
+2026-08-25T04:45:26Z 40 done (release 0.1.4 green) -> phase 50
+2026-08-25T04:45:26Z heartbeat phase=50

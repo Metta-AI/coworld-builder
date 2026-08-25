@@ -5,7 +5,7 @@
   "slug": "cooperative-hunting",
   "repo": "Metta-AI/cogame-cooperative-hunting",
   "starter": "coworld-staghunt",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "20": 1,
     "30": 1,
@@ -13,15 +13,18 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": "32797631189"
+    "version": "0.1.4",
+    "cow_id": "cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d",
+    "manifest_sha": "sha256:0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122",
+    "release_run_id": "32809315564"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "cooperative-hunting-pack-caller:v2",
+    "champion2": "cooperative-hunting-quartermaster:v2",
+    "fillers": [
+      "cooperative-hunting-biggame:v2",
+      "cooperative-hunting-sidekick:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -49,7 +52,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T04:24:24Z",
+  "heartbeat_at": "2026-08-25T04:45:26Z",
   "session_ended_at": null,
   "session_id": "ea323071",
   "log": "runs/2026-08-24-cooperative-hunting/log.md"
