@@ -24,3 +24,5 @@
 2026-08-25T11:03:00Z heartbeat phase=30
 2026-08-25T11:32:00Z 30 r1 reviewer returned: 6 falsifying observations (O1 re-derivation: engine rule modules absent from replay bundle, viewer draws recorded snapshots, no re-derivation test; O2 robust-decide rethrows non-credentials transport failure — no retry/fallback on throttle; O3 actPrompt transcript untruncated into replay ~15KB/frame, capped note never recorded; O4 viewer fetches fonts.googleapis.com — not S3-only; O5 no grid harness for baselines; O6 renderer fixture never asserts own strings full-length), 3 pre-declared literal mismatches for judge (O7 bundle path, O8 readme uri type, O9 --band/#endcard.on lineage equivalents + base-regex edit), 17 advisory, 5 could-not-determine
 2026-08-25T11:32:00Z progress phase=30 marker=r1-review.md
+2026-08-25T11:34:00Z 30 r1 fixer dispatched thread=sthr_01YBRfpntS9myme1SpFJmT15 output=reviews/r1-fixes.md
+2026-08-25T11:34:00Z heartbeat phase=30
