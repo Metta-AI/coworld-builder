@@ -22,3 +22,5 @@
 2026-08-25T13:42:25Z heartbeat phase=30
 2026-08-25T13:43:53Z 30 r1 reviewer dispatched (sthr_01FmCX6L4CjKnDgwcV3bHmhf)
 2026-08-25T13:43:53Z heartbeat phase=30
+2026-08-25T14:04:19Z 30 r1 reviewer returned: r1-review.md (576 lines) — 1 blocking (B1 manifest maxItems=1 on tokens/players in 2-seat game), 23 non-blocking, 5 could-not-determine
+2026-08-25T14:04:19Z progress phase=30 marker=r1-review.md
