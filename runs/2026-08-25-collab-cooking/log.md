@@ -100,3 +100,6 @@
 2026-08-25T10:48:05Z 60 judge dispatched for verify-verdict
 2026-08-25T10:48:53Z 60 verify judge thread=sthr_01BKjutQFzNZrXXvrVFoV8oU output=reviews/verify-verdict.md
 2026-08-25T10:48:53Z heartbeat phase=60
+2026-08-25T10:54:35Z 60 judge returned verify-verdict.md: blocking=0 (all 8 re-fetched clean; r10 completed, richard rank 1 Elo 1032, champions ranked 984 rp=9; featured match rotated r9->r10 still static canonical)
+2026-08-25T10:54:35Z progress phase=60 marker=verify-verdict.md
+2026-08-25T10:54:35Z 60 -> 70 phase transition, STATE.phase=70
