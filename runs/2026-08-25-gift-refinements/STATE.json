@@ -4,7 +4,7 @@
   "run_task": "1217842716990801",
   "slug": "gift-refinements",
   "repo": "https://github.com/Metta-AI/cogame-gift-refinements",
-  "starter": "",
+  "starter": "Metta-AI/coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
