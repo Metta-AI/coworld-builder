@@ -113,3 +113,6 @@
 2026-08-25T11:03:40Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20372 status=pr_open (automerge armed; lands via Graphite merge queue, human merge-when-ready)
 2026-08-25T11:03:40Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20372
 2026-08-25T11:03:40Z 75 -> 80 phase transition, STATE.phase=80
+2026-08-25T11:06:12Z 80 exec summary posted (run task story 1217821130983130, idea task story 1217821130954757); LEARNINGS section appended + 2 playbook Common-mistakes rows; all 9 phase subtasks complete; idea 1217748465122303 completed; run task 1217809626314240 -> Done
+2026-08-25T11:06:12Z progress phase=80 marker=run-Done
+2026-08-25T11:06:12Z 80 close — run Done. Session ends; no next action, the run is complete.
