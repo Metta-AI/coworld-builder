@@ -86,3 +86,7 @@
 2026-08-25T23:09:09Z 75 atlas dispatch 1 run=32909209751 FAILED: unplaced leagues (18 other shipped coworlds not in CITIES)
 2026-08-25T23:09:09Z 75 atlas placed for others: chemistry/cogchemists/coins/commons-family/cooperative-hunting/firm/matrix-games/territory->commons, chorus/cogmud/daycare/garble->parlour, cogiavelli/cogplomacy/hanabi->tabletop, cogolf/grid-wars->paintlands, collab-cooking->simulations (continents from /api/coworlds descriptions; spots via atlas_spot.py iterative, all clearance>=22)
 2026-08-25T23:09:09Z 75 atlas dispatch=32909440408 region=commons at=416,574 clearance=22.9 extra_cities=18
+2026-08-25T23:10:46Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20439 status=pr_open (automerge armed; lands via Graphite merge queue, human merges)
+2026-08-25T23:10:46Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20439
+2026-08-25T23:10:46Z 75 -> 80 phase transition, STATE phase=80
+2026-08-25T23:10:46Z heartbeat phase=80
