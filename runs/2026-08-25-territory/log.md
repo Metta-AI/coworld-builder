@@ -28,3 +28,5 @@
 2026-08-25T11:34:00Z heartbeat phase=30
 2026-08-25T12:40:00Z 30 r1 fixer returned: 9 commits, head=62a31b0a, ci.yml green run=32846969302 (O1 re-derivation: rederive.ts replays events through pure engine, viewer adopts re-derived timeline, tamper test + module-graph CI gate; O2 transport failures retry-once-then-scripted; O3 caps at SubmissionSchema + capped transcript + 16k/4k/500-rune choke; O4 fonts self-hosted data-URI, no-absolute-URL test; O5 grid harness — raider retuned maxClaims 3->4 minYield 2->3 per sweep, flagged vs note; O6 fixture self-asserts full-length; A1 MAX_ATTEMPTS 2; A10 zero-snapshot load error); O7/O8/O9 deferred to judge with reasons; caveat: styles.css no longer verbatim (O4 font block)
 2026-08-25T12:40:00Z progress phase=30 marker=r1-fixes.md
+2026-08-25T12:43:00Z 30 r1 judge dispatched thread=sthr_01KFRud6Gn6QYUgKT6UR8xc3 sha=62a31b0a output=reviews/r1-verdict.md
+2026-08-25T12:43:00Z heartbeat phase=30
