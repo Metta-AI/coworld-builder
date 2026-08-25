@@ -24,3 +24,4 @@
 2026-08-25T09:44:39Z 20 builder returned round=1 (9 CI rounds): ci.yml GREEN run 32832626260 sha 27f30578 on main; all exit checks pass (placeholders clean, 3 workflows registered+inputs, release-result/submit-result artifacts, player field wiring, num_agents=2 everywhere)
 2026-08-25T09:44:39Z progress phase=20 marker=ci-run-32832626260
 2026-08-25T09:44:39Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-25T09:45:24Z 30 r1 reviewer dispatched thread=sthr_01AttJJowZL97y9pFDwd9ev7 output=runs/2026-08-25-paintball/reviews/r1-review.md
