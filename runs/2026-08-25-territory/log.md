@@ -48,3 +48,5 @@
 2026-08-25T14:00:00Z progress phase=50 marker=sub_bfad2d90
 2026-08-25T14:00:00Z 50 -> 60 phase transition, STATE.phase=60
 2026-08-25T14:00:00Z heartbeat phase=60
+2026-08-25T14:03:00Z 60 verifier dispatched thread=sthr_018hpDYvZivPH5r4QLEod76Q output=VERIFY.md (75-min poll bound, round2 pending at dispatch)
+2026-08-25T14:03:00Z heartbeat phase=60
