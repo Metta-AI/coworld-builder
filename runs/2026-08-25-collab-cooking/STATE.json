@@ -9,22 +9,19 @@
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_127a462a-6f7f-457f-aa7b-95652aae11d4",
-    "manifest_sha": "sha256:e577c452bdb928afc16b6872016540e14c0b9c65eed4a00ca564871c8bd32c7f",
-    "release_run_id": "32826526376"
+    "version": "0.1.3",
+    "cow_id": "cow_19938c0f-195a-45f8-95da-761f0ffe04cb",
+    "manifest_sha": "sha256:ae8627b0c7abde4a8807b3fff2e641a9f289512221ecd494de9c9753afeb3cf1",
+    "release_run_id": "32834816635"
   },
   "policies": {
-    "champion1": "collab-cooking-expo:v1",
-    "champion2": "collab-cooking-linecook:v1",
+    "champion1": "collab-cooking-expo:v3",
+    "champion2": "collab-cooking-linecook:v3",
     "fillers": [
-      "collab-cooking-brigade:v1",
-      "collab-cooking-passer:v1"
+      "collab-cooking-brigade:v3",
+      "collab-cooking-passer:v3"
     ],
-    "filler_version_ids": [
-      "6f226863-ecbf-4823-9f57-829a436e7c6e",
-      "fb542fe5-7dfa-4e8e-ab9c-1ca19751d633"
-    ]
+    "filler_version_ids": []
   },
   "league": {
     "id": "league_592e6ed0-3f01-4084-bb90-75ace0db0063",
