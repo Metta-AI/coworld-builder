@@ -77,3 +77,4 @@
 2026-08-25T02:19:25Z 50/60 champions resubmitted as v2: signaler run 32800861260 ok, reader run 32800893319 ok (daveey-1); filler-policies updated to v2 UUIDs (conventions 6e696c59, cautious 7a65d5b7); trigger-round issued, round 7 pending (first v2 round; rounds 5-6 completed on v1 in the interim)
 2026-08-25T02:19:25Z progress phase=60 marker=submit-run-32800893319
 2026-08-25T02:19:25Z heartbeat phase=60
+2026-08-25T02:20:12Z 60 verifier re-dispatched (sthr_012G2ntBbWK7mATHMa5VWmrD) for post-remediation verification against v2 rounds (round 7+)
