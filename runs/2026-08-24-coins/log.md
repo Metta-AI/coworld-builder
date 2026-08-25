@@ -54,3 +54,4 @@
 2026-08-24T23:57:15Z heartbeat phase=30
 2026-08-24T23:58:16Z 30 r1 reviewer dispatched (sthr_01WrrdyJSnJqqZXhoao9kAtS) sha=3bc93c3
 2026-08-25T00:16:24Z 30 r1 reviewer returned: r1-review.md (20 findings, 1 blocking-claimed B1 legibility)
+2026-08-25T00:16:52Z 30 r1 fixer dispatched (sthr_01QaTuucMRqQPznDLTyuomap)
