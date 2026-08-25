@@ -58,3 +58,7 @@
 2026-08-25T01:16:30Z 30 r1 fixer returned: r1-fixes.md, 12 commits, final sha 9c7fbbd51bf030982ef1b4e2ad7cb6008e0695bc, CI green run 32796206226
 2026-08-25T01:16:30Z progress phase=30 marker=r1-fixes.md
 2026-08-25T01:17:24Z 30 r1 judge dispatched (sthr_01HbGdMCpHuMfn5AuJuKdhkA) sha=9c7fbbd
+2026-08-25T01:28:36Z 30 r1 judge returned: r1-verdict.md blocking=0 (B1 refuted at head; all 15 items + batch addendum pass)
+2026-08-25T01:28:36Z progress phase=30 marker=r1-verdict.md
+2026-08-25T01:28:36Z 30 done round=1 -> phase 40
+2026-08-25T01:28:36Z heartbeat phase=40
