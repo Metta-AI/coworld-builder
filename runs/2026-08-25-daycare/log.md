@@ -60,3 +60,6 @@
 2026-08-25T19:31:46Z progress phase=60 marker=viewer-check-32889498154
 2026-08-25T19:31:46Z heartbeat phase=60
 2026-08-25T19:32:03Z 60 judge dispatched output=reviews/verify-verdict.md
+2026-08-25T19:38:30Z 60 judge returned (sthr_01Aquy1MvedpX2dmmWeaDakq): BLOCKING 0 — all 8 items PASS on independent re-fetch; 4 advisories (feed_lines selector, bridge_ready DOM-only, manifest lacks replay-protocol string, third-party entrants richard/relh at #1/#3)
+2026-08-25T19:38:30Z 60 -> 70 phase transition (verify all-true, judge BLOCKING 0)
+2026-08-25T19:38:30Z heartbeat phase=70
