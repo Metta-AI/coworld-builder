@@ -40,3 +40,5 @@
 2026-08-25T13:50:00Z progress phase=40 marker=32849157326
 2026-08-25T13:52:00Z 40 -> 50 phase transition, STATE.phase=50
 2026-08-25T13:52:00Z heartbeat phase=50
+2026-08-25T13:57:00Z 50 seed 200 league_id=league_dcc3daee-8099-4fd1-b321-da10e1be9a64 (lseed_72e86706); division PUT 200 div_350c663f-0e3d-42e5-9346-2be631892c17; settings POST 200 (elo k32 round_robin filler_policy, 15min rounds)
+2026-08-25T13:57:00Z heartbeat phase=50
