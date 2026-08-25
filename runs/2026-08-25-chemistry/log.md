@@ -80,3 +80,7 @@
 2026-08-25T08:36:20Z 75 atlas dispatch=32827445629 region=commons at=416,574 clearance=22.9
 2026-08-25T08:39:59Z 75 atlas dispatch 1 (32827445629) failed: 14 unplaced leagues (chorus cogchemists cogiavelli cogmud cogolf cogplomacy coins commons-family cooperative-hunting firm garble grid-wars hanabi matrix-games)
 2026-08-25T08:39:59Z 75 atlas dispatch=32827754555 region=commons at=416,574 clearance=22.9 + extra_cities for the 14: commons=coins(440,571) commons-family(446,544) cooperative-hunting(404,544) firm(425,529) matrix-games(395,565); tabletop=cogiavelli(766,277) cogplomacy(790,280) hanabi(751,295); parlour=chorus(438,817) cogchemists(441,793) garble(456,832); paintlands=cogolf(202,270) grid-wars(193,249); simulations=cogmud(536,271) — continent calls from each game's /api/coworlds description (rails)
+2026-08-25T08:43:54Z 75 atlas dispatch 2 (32827754555) failed: collab-cooking went live mid-phase; dispatch 3 (32827951706) added it to extra_cities (simulations 557,280 — Overcooked port = borrowed world)
+2026-08-25T08:43:54Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20370 status=pr_open (automerge armed; lands via Graphite merge queue) — placed 14+1 leagues for other runs: coins commons-family cooperative-hunting firm matrix-games cogiavelli cogplomacy hanabi chorus cogchemists garble cogolf grid-wars cogmud collab-cooking
+2026-08-25T08:43:54Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20370
+2026-08-25T08:43:54Z heartbeat phase=80
