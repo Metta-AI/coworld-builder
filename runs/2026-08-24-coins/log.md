@@ -69,3 +69,6 @@
 2026-08-25T01:41:42Z progress phase=40 marker=32797931407
 2026-08-25T01:41:42Z 40 done -> phase 50
 2026-08-25T01:41:42Z heartbeat phase=50
+2026-08-25T01:42:55Z 50 seed 200 lseed_4b116e30 league_e9506fcc-08c3-4372-90ac-0ced465c7d9c
+2026-08-25T01:42:55Z 50 division 200 div_d7a79bf3-f8b7-40f7-b838-45aa275d7913 (Competition L1)
+2026-08-25T01:42:55Z 50 settings 200 (round_robin, filler_policy, elo k32, round_interval=15m); note: GET /leagues returns bare array not {entries}
