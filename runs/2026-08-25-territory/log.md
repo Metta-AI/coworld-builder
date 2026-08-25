@@ -20,3 +20,5 @@
 2026-08-25T10:57:00Z progress phase=20 marker=32838206882
 2026-08-25T10:59:00Z 20 -> 30 phase transition, STATE.phase=30 review_round=1
 2026-08-25T10:59:00Z heartbeat phase=30
+2026-08-25T11:03:00Z 30 r1 reviewer dispatched thread=sthr_01CitoCfnxzFeSEKvwd2YBfx clone=/tmp/cogame-territory@07f0ebca output=reviews/r1-review.md
+2026-08-25T11:03:00Z heartbeat phase=30
