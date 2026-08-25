@@ -122,3 +122,4 @@
 2026-08-25T03:12:54Z heartbeat phase=75
 2026-08-25T03:13:43Z 75 atlas continent=tabletop reason=card-game port (Tabletop Coast per step-2 table)
 2026-08-25T03:13:43Z 75 atlas dispatch=32804354391 region=tabletop at=766,277 clearance=22.9
+2026-08-25T03:16:46Z 75 atlas dispatch=32804550513 attempt 2 with 12 extra_cities (unplaced leagues from dispatch 1: cogiavelli+cogplomacy->tabletop, cogchemists+coins+commons-family+firm+matrix-games->commons, chorus+cogolf+garble->parlour, cogmud->simulations, grid-wars->paintlands; all clearances >=22.9)
