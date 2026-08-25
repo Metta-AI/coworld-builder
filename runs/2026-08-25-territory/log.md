@@ -54,3 +54,5 @@
 2026-08-25T12:56:04Z heartbeat phase=60
 2026-08-25T13:01:08Z 60 verify poll#2: round2=completed (round_e6aa04b8), ereq_c77c7f2f completed with replay_url; round1=failed 'Temporal RoundWorkflow failed before settling the round.' (pre-filler, expected, not counted); awaiting round3 for check1 >=2
 2026-08-25T13:01:08Z heartbeat phase=60
+2026-08-25T13:06:57Z 60 verify poll#3: still 1 completed round (round2); no round3 yet (expected ~13:07-13:08Z, 15-min interval); provisional round2 evidence good: reason=complete turnsPlayed=18, champion fallbacks 1/18 + 2/18, hosted log CLEAN
+2026-08-25T13:06:57Z heartbeat phase=60
