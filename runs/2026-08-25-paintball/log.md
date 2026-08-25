@@ -69,3 +69,5 @@
 2026-08-25T13:27:35Z heartbeat phase=60
 2026-08-25T13:32:31Z 60 poll 10: 3 completed rounds; round 4 not yet created
 2026-08-25T13:32:31Z heartbeat phase=60
+2026-08-25T13:37:42Z 60 poll 11: round 4 pending (created ~13:32)
+2026-08-25T13:37:42Z heartbeat phase=60
