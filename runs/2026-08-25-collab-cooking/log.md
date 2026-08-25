@@ -32,3 +32,5 @@
 2026-08-25T06:41:29Z 30 round 1 -> 2 (blocking>0) review_round=2
 2026-08-25T06:42:03Z 30 r2 reviewer dispatched thread=sthr_01Uw1tTmpBjgcc4nhbquJxcS output=reviews/r2-review.md
 2026-08-25T06:42:03Z heartbeat phase=30
+2026-08-25T06:59:40Z 30 r2 reviewer returned: 12 observations, 3 blocking (R2-O1 say chip clips 54-81% of 120-rune remark, measured in chromium; R2-O2 feed .feed-row nowrap from ctf clips say lines 59.5% off #stage; R2-O3 viewer_smoke has no DOM overflow probe + CI replay has 0 says — checklist-15 worst-case fixture unmet); 9 non-blocking; all r1 fixes re-verified holding at a5ec2c86
+2026-08-25T06:59:40Z progress phase=30 marker=r2-review.md
