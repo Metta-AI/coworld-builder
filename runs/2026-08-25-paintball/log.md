@@ -105,3 +105,6 @@
 2026-08-25T17:55:08Z heartbeat phase=60
 2026-08-25T18:05:17Z 60 poll 6: round 22 pending (round_5494143d)
 2026-08-25T18:05:17Z heartbeat phase=60
+2026-08-25T18:10:30Z 60 poll 7: round 22 completed 18:07:38Z — champ-vs-champ ereq_d0bfc14c llmTurns [30,31] fallbackTurns [10,9] (61/80 llm, reason=complete/full_time); log grep 39 falling-back lines, ALL throttle-caused (429 daily-token + one 503), zero paintball-side causes. SPEC def-of-done item 5 allows zero lines OR a documented platform-wide cause cross-checked against another LLM coworld — instructing verifier to re-pin checks 3/4/5 to round 22 and apply that branch, then judge.
+2026-08-25T18:10:30Z 60 verifier follow-up dispatched: re-pin 3/4/5 to round 22, SPEC item-5 exception branch
+2026-08-25T18:10:30Z heartbeat phase=60
