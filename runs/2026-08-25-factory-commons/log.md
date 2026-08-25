@@ -83,3 +83,6 @@
 2026-08-25T23:05:11Z 70 -> 75 phase transition, STATE phase=75
 2026-08-25T23:05:11Z heartbeat phase=75
 2026-08-25T23:06:00Z 75 atlas dispatch=32909209751 region=commons at=416,574 clearance=22.9
+2026-08-25T23:09:09Z 75 atlas dispatch 1 run=32909209751 FAILED: unplaced leagues (18 other shipped coworlds not in CITIES)
+2026-08-25T23:09:09Z 75 atlas placed for others: chemistry/cogchemists/coins/commons-family/cooperative-hunting/firm/matrix-games/territory->commons, chorus/cogmud/daycare/garble->parlour, cogiavelli/cogplomacy/hanabi->tabletop, cogolf/grid-wars->paintlands, collab-cooking->simulations (continents from /api/coworlds descriptions; spots via atlas_spot.py iterative, all clearance>=22)
+2026-08-25T23:09:09Z 75 atlas dispatch=32909440408 region=commons at=416,574 clearance=22.9 extra_cities=18
