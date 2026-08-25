@@ -65,3 +65,7 @@
 2026-08-25T19:38:30Z heartbeat phase=70
 2026-08-25T19:39:51Z 70 announce attempt marker written (attempted_at pushed before POST)
 2026-08-25T19:39:51Z progress phase=70 marker=announce.attempted_at
+2026-08-25T19:40:10Z 70 announce msg=1541894933970165914 (200, flags=4, embeds=0)
+2026-08-25T19:40:10Z progress phase=70 marker=discord_message_id=1541894933970165914
+2026-08-25T19:40:10Z 70 -> 75 phase transition
+2026-08-25T19:40:10Z heartbeat phase=75
