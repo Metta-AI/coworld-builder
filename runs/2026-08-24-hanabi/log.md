@@ -28,3 +28,7 @@
 2026-08-25T00:30:45Z heartbeat phase=30
 2026-08-25T00:41:00Z 30 r1 judge dispatched (sthr_013KzihPwVWc8WWRNtmfGXo5) sha=724826f5
 2026-08-25T00:41:00Z heartbeat phase=30
+2026-08-25T00:50:31Z 30 r1 judge returned: r1-verdict.md blocking=0 (all 15 checklist items pass; F1-F3 verified fixed at 724826f5)
+2026-08-25T00:50:31Z progress phase=30 marker=r1-verdict.md
+2026-08-25T00:50:31Z 30 phase -> 40
+2026-08-25T00:50:31Z heartbeat phase=40
