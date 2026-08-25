@@ -5,7 +5,7 @@
   "slug": "coins",
   "repo": "https://github.com/Metta-AI/cogame-coins",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,7 +21,10 @@
       "coins-reciprocator:v2",
       "coins-titfortat:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "a652fffc-1816-448b-aeac-cdb6a9ba6840",
+      "9356e1ac-3ed0-443b-a7da-b8685941ffcf"
+    ]
   },
   "league": {
     "id": "league_e9506fcc-08c3-4372-90ac-0ced465c7d9c",
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T01:53:51Z",
+  "heartbeat_at": "2026-08-25T01:56:08Z",
   "session_ended_at": null,
   "session_id": "933b3aa3",
   "log": "runs/2026-08-24-coins/log.md"

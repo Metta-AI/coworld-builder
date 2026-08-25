@@ -77,3 +77,11 @@
 2026-08-25T01:53:51Z 50 re-release v0.1.2 run 32798747762 success: cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e canonical certify.ok secret_put; policies v2 minted with correct owners (truce/reciprocator/titfortat=daveey, ledger=daveey-1) — verified via GET /policy-versions
 2026-08-25T01:53:51Z progress phase=50 marker=32798747762
 2026-08-25T01:53:51Z heartbeat phase=50
+2026-08-25T01:56:08Z 50 champ1 submit run 32799311041 ok=true coins-truce:v2 as daveey
+2026-08-25T01:56:08Z 50 champ2 submit run 32799345167 ok=true coins-ledger:v2 as daveey-1
+2026-08-25T01:56:08Z 50 fillers 200: a652fffc (reciprocator:v2) + 9356e1ac (titfortat:v2) registered; neither champion in list
+2026-08-25T01:56:08Z 50 unpause 200 paused=false; trigger-round 200 workflow ladder-league_e9506fcc
+2026-08-25T01:56:08Z 50 round 1 pending; entrant_attributions = both champions (2da8b581 daveey, 794abef0 daveey-1)
+2026-08-25T01:56:08Z progress phase=50 marker=round1-pending
+2026-08-25T01:56:08Z 50 done -> phase 60
+2026-08-25T01:56:08Z heartbeat phase=60
