@@ -48,3 +48,24 @@
 2026-08-25T01:10:33Z heartbeat phase=60
 2026-08-25T01:11:26Z 60 verifier dispatched (sthr_01CDLPSxSBRBwXQnxtHdgdMG)
 2026-08-25T01:11:26Z heartbeat phase=60
+2026-08-25T01:12:01Z heartbeat phase=60
+2026-08-25T01:17:00Z heartbeat phase=60
+2026-08-25T01:22:03Z heartbeat phase=60
+2026-08-25T01:27:49Z heartbeat phase=60
+2026-08-25T01:33:20Z heartbeat phase=60
+2026-08-25T01:37:35Z heartbeat phase=60
+2026-08-25T01:42:35Z heartbeat phase=60
+2026-08-25T01:47:44Z heartbeat phase=60
+2026-08-25T01:54:02Z 60 check1 TRUE rounds 2,3,4 completed (round 1 failed pre-fillers: "Temporal RoundWorkflow failed before settling the round.")
+2026-08-25T01:54:02Z 60 check2 TRUE leaderboard daveey/hanabi-signaler:v1 and daveey-1/hanabi-reader:v1 rounds_played=3; Elo 1000.0 both = documented co-op expectation (design.md L191-199); fillers absent
+2026-08-25T01:54:02Z 60 check3 TRUE ereq_02fb8088-05ca-4d93-94e3-9f2091e9654c completed replay_url=.../cb416080-e376-425c-a37f-0f3185cf1f73.replay champions in seats 0/1
+2026-08-25T01:54:02Z 60 check4 TRUE strict-UTF8 JSON 29152B protocol=hanabi.replay.v1 reason=complete endReason=deckout champion decisions llm=30 retry=3 fallback=0 (results.fallbacks=[0,0,0,0])
+2026-08-25T01:54:02Z 60 check5 FALSE 4 hits in latest log: 2 = platform-wide bedrock haiku 429 throttle (cross-checked garble ereq_7c93877c + ledger ereq_6e06268e, same minute), 2 = hanabi-specific "rejected: unbalanced JSON object in response" (recurrent rounds 2/3/4; each recovered by retry, 0 fallbacks); round 2 also had 1x "cut off at max_tokens"
+2026-08-25T01:54:02Z 60 check6 TRUE static iframe src /v2/coworlds/replays/static/cow_2aedf124.../sha256%3A937abbbc.../index.html?replay=<s3> ready=true; source: SSR playlist[0] + POST /coworlds/replays/session (raw-HTML grep empty, client-rendered)
+2026-08-25T01:54:02Z 60 check7 TRUE committed release-result.json certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-25T01:54:02Z 60 check8 TRUE viewer-check run=32798964915 loaded=true ms=962 clocks 0/33/65 differ; artifact committed at runs/2026-08-24-hanabi/viewer-check/
+2026-08-25T01:54:02Z 60 VERIFY.md written: 7 TRUE, 1 FALSE (check5)
+2026-08-25T01:56:34Z 60 verifier returned: 7 TRUE / 1 FALSE (check 5: 4 rejected/falling-back lines — 2x Bedrock throttle = documented platform exception cross-checked vs garble+ledger; 2x 'unbalanced JSON object' hanabi-specific, root cause maxOutputTokens=800 cutting replies mid-JSON, r2 also 1x 'cut off at max_tokens'); VERIFY.md + viewer-check/ written
+2026-08-25T01:56:34Z progress phase=60 marker=VERIFY.md-r4-checks-7of8
+2026-08-25T01:56:34Z 60 ruling (rails: parameter tuning): remediation is config-side — raise maxOutputTokens 800->900 (design range 256..2000, 60-verify prescription), re-release 0.1.1, resubmit champions at new labels, update fillers, re-verify checks 1-5 on fresh rounds. Not a Blocked condition (every rejection recovered by the single retry, 0 fallbacks, all rounds complete)
+2026-08-25T01:56:34Z heartbeat phase=60

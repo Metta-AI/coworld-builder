@@ -1,0 +1,4 @@
+{"loaded":true,"ms":962,"clock":"TURN 0 / 80 · 0 / 25","scorebug":"daveey ▶ 0 BANKED 0 BURNT 0 HINTS daveey-1 0 BANKED 0 BURNT 0 HINTS Sprocket 0 BANKED 0 BURNT 0 HINTS Gasket 0 BANKED 0 BURNT 0 HINTS","feed_lines":119}
+scrub readouts: 0%="TURN 0 / 80 · 0 / 25"  50%="TURN 33 / 80 · 7 / 25"  100%="TURN 65 / 80 · 15 / 25 · FINAL"
+canvas text: 10502 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

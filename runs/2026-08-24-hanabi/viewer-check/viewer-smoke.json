@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 962,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2aedf124-df70-45ce-b307-fa693c6d1943/sha256%3A937abbbc18b84262d82e5adb2b5e538641b4499542edfabdf8784f718f4e70b1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fcb416080-e376-425c-a37f-0f3185cf1f73.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TURN 0 / 80 · 0 / 25",
+  "scorebug": "daveey ▶ 0 BANKED 0 BURNT 0 HINTS daveey-1 0 BANKED 0 BURNT 0 HINTS Sprocket 0 BANKED 0 BURNT 0 HINTS Gasket 0 BANKED 0 BURNT 0 HINTS",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 119,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TURN 0 / 80 · 0 / 25"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 33 / 80 · 7 / 25"
+    },
+    {
+      "at": "100%",
+      "clock": "TURN 65 / 80 · 15 / 25 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 10502,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
