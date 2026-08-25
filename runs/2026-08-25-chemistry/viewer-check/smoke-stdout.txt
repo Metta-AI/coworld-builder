@@ -1,0 +1,4 @@
+{"loaded":true,"ms":9684,"clock":"SHIFT 0 / 12 TICK 1 OF 420","scorebug":"AMBER CHARGE 3 STARVING resin 0 · spark 0 COBALT CHARGE 3 STARVING resin 0 · brine 0 SHIFT 0 / 12 TICK 1 OF 420 BERYL CHARGE 3 STARVING spark 0 · brine 0","feed_lines":0}
+scrub readouts: 0%="SHIFT 0 / 12 TICK 1 OF 420"  50%="SHIFT 3 / 12 TICK 227 OF 420"  100%="FINAL SHIFT OVER"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

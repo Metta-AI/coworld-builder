@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 9684,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_292543de-c887-4398-8d4e-70fdb298b290/sha256%3A1002ad49f6a1d222ab8c3f22d2b348c93ec6e930ab1a5cb21ebf6683b5ca3699/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F46fc7f16-62e3-4e48-b3d1-fbf973522107.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "SHIFT 0 / 12 TICK 1 OF 420",
+  "scorebug": "AMBER CHARGE 3 STARVING resin 0 · spark 0 COBALT CHARGE 3 STARVING resin 0 · brine 0 SHIFT 0 / 12 TICK 1 OF 420 BERYL CHARGE 3 STARVING spark 0 · brine 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SHIFT 0 / 12 TICK 1 OF 420"
+    },
+    {
+      "at": "50%",
+      "clock": "SHIFT 3 / 12 TICK 227 OF 420"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL SHIFT OVER"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

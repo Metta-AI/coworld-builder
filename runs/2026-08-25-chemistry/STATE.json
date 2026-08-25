@@ -33,9 +33,16 @@
     "division": "div_ab928df3-f28c-4249-9f7d-cb62cf97ded2"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_604ee98e-2d2a-4bb3-8b2e-67130a263283",
+      "round_4342b6bb-ec62-46dc-9d0a-0ef0d7ea24c3",
+      "round_1045037f-0e47-4cf8-993b-b67852a63a84",
+      "round_114bb767-8b27-4138-966c-b7ebf8fd145e",
+      "round_e0bdbc2f-6242-4d2c-83e9-31626e71d210"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/46fc7f16-62e3-4e48-b3d1-fbf973522107.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32825902427"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +60,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T07:09:09Z",
+  "heartbeat_at": "2026-08-25T08:25:38Z",
   "session_ended_at": null,
   "session_id": "f159a6da",
   "log": "runs/2026-08-25-chemistry/log.md"
