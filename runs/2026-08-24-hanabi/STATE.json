@@ -12,17 +12,17 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_2aedf124-df70-45ce-b307-fa693c6d1943",
-    "manifest_sha": "sha256:937abbbc18b84262d82e5adb2b5e538641b4499542edfabdf8784f718f4e70b1",
-    "release_run_id": "32795286182"
+    "version": "0.1.1",
+    "cow_id": "cow_4c005d78-ebb2-4095-83da-cde90519f53b",
+    "manifest_sha": "sha256:973eb76b7e4f91c6e246ca20d1063c284ab008112f27189c3566b8c3b3be8c1c",
+    "release_run_id": "32799997719"
   },
   "policies": {
-    "champion1": "hanabi-signaler:v1",
-    "champion2": "hanabi-reader:v1",
+    "champion1": "hanabi-signaler:v2",
+    "champion2": "hanabi-reader:v2",
     "fillers": [
-      "hanabi-conventions:v1",
-      "hanabi-cautious:v1"
+      "hanabi-conventions:v2",
+      "hanabi-cautious:v2"
     ],
     "filler_version_ids": [
       "bbafc232-9fdd-4ac6-9ff5-353feeb79ca7",
@@ -54,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T01:10:33Z",
+  "heartbeat_at": "2026-08-25T02:17:33Z",
   "session_ended_at": null,
   "session_id": "c2a0a349",
   "log": "runs/2026-08-24-hanabi/log.md"

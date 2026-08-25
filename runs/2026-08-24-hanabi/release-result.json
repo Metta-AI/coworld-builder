@@ -1,38 +1,38 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "ok": true,
-  "cow_id": "cow_2aedf124-df70-45ce-b307-fa693c6d1943",
-  "manifest_sha": "sha256:937abbbc18b84262d82e5adb2b5e538641b4499542edfabdf8784f718f4e70b1",
+  "cow_id": "cow_4c005d78-ebb2-4095-83da-cde90519f53b",
+  "manifest_sha": "sha256:973eb76b7e4f91c6e246ca20d1063c284ab008112f27189c3566b8c3b3be8c1c",
   "canonical": true,
   "hosted_smoke": "passed",
   "hosted_certification": "certified",
   "certify": {
     "ok": true,
     "replay_liveness": "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)",
-    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/certification_report.html\nArtifacts: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_\nResults: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/results.json\nReplay: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/logs\nInspect replay: open /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-j3knk3u_/logs\n"
+    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/certification_report.html\nArtifacts: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5\nResults: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/results.json\nReplay: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/logs\nInspect replay: open /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-hanabi/cogame-hanabi/tmp/coworld-cert-cpbi3jv5/logs\n"
   },
   "policies": [
     {
       "name": "hanabi-signaler",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "hanabi-reader",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "hanabi-conventions",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "hanabi-cautious",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     }

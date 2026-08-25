@@ -70,3 +70,7 @@
 2026-08-25T01:56:34Z 60 ruling (rails: parameter tuning): remediation is config-side — raise maxOutputTokens 800->900 (design range 256..2000, 60-verify prescription), re-release 0.1.1, resubmit champions at new labels, update fillers, re-verify checks 1-5 on fresh rounds. Not a Blocked condition (every rejection recovered by the single retry, 0 fallbacks, all rounds complete)
 2026-08-25T01:56:34Z heartbeat phase=60
 2026-08-25T01:57:14Z 60 remediation builder dispatched (sthr_018QMQ8eutFtCAp6Reep9Efn): maxOutputTokens 800->900 + truncation-aware error, re-release 0.1.1
+2026-08-25T02:17:33Z 60 remediation builder returned: maxOutputTokens 900 (624208d) + truncation-named error (282dc8c), CI green 32799778097; release 0.1.1 run 32799997719 canonical certified secret_put; cow_4c005d78-ebb2-4095-83da-cde90519f53b; labels :v2
+2026-08-25T02:17:33Z progress phase=60 marker=release-run-32799997719
+2026-08-25T02:17:33Z 60 note (for learnings): ANTHROPIC_GIT credential not scoped to freshly created cogame-* repos (401 on cogame-hanabi git-receive-pack, 200 on coworld-builder); builder pushed via Git Data API fast-forward
+2026-08-25T02:17:33Z heartbeat phase=60
