@@ -14,3 +14,9 @@
 2026-08-25T11:38:41Z 20 repo created https://github.com/Metta-AI/cogame-daycare (public)
 2026-08-25T11:38:41Z 20 propagate-secrets run 32843338002 success; secrets SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-daycare
 2026-08-25T11:39:28Z 20 builder dispatched (sthr_01DfaUq2U1vNW65yrU6yBe3b) round=1
+2026-08-25T13:42:25Z 20 builder returned round=1: CI green run=32853852532 sha=12d58b593a005e8b6498c7833b4efc0815302c3f (commits e32cd28, 12d58b5); workflows all parse; placeholder gate clean
+2026-08-25T13:42:25Z 20 note: sandbox git push to cogame-daycare lacks write scope — builder used GitHub Git Data API; phase 40 pushes need the same route
+2026-08-25T13:42:25Z 20 note: 4 constants repaired along design ladder (ticksPerTurn 60, tallRegrowTicks 24, fruitLifetime 96, shrubRegrowTicks 480); mirror-bit fairness fix; caretaker tie-break fix; gate(c) pooled reading — for reviewer to trace
+2026-08-25T13:42:25Z progress phase=20 marker=ci-run-32853852532
+2026-08-25T13:42:25Z 20 -> 30 phase transition
+2026-08-25T13:42:25Z heartbeat phase=30
