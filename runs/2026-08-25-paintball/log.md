@@ -85,3 +85,6 @@
 2026-08-25T14:48:32Z 60 re-seat: submitting v2 champions, updating fillers to v2, re-trigger round
 2026-08-25T16:57:28Z 00 attempts_reset phase=60 reason=progress marker=release-0.1.3-run-32860469755
 2026-08-25T16:57:28Z 00 resume at phase 60 attempt=1 session=295f3159
+2026-08-25T17:00:54Z 60 pre-dispatch spot-check: quota recovered + 0.1.3 fixes hold — round 17 champ-vs-champ ereq_2bae9f12 llmTurns [33,33] fallbackTurns [5,5]; 17 rounds total (round 11 failed: 4/6 slots; rest completed); leaderboard has externals richard(1) relh(4) with champs v2 at 2,3; fillers still v1 (registered, distinct, absent from leaderboard — leaving as-is)
+2026-08-25T17:00:54Z 60 verifier dispatched (full re-verify vs 0.1.3)
+2026-08-25T17:00:54Z heartbeat phase=60
