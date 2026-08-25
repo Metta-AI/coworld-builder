@@ -88,3 +88,7 @@
 2026-08-25T05:41:47Z 60 done -> phase 70
 2026-08-25T05:41:47Z heartbeat phase=70
 2026-08-25T05:42:58Z 70 announce attempted_at written (pre-POST marker), body 1684 chars
+2026-08-25T05:43:13Z 70 announce msg=1541684300238561360 (200, flags=4, embeds=[])
+2026-08-25T05:43:13Z progress phase=70 marker=1541684300238561360
+2026-08-25T05:43:13Z 70 done -> phase 75
+2026-08-25T05:43:13Z heartbeat phase=75
