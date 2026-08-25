@@ -5,3 +5,4 @@
 2026-08-25T11:19:15Z 00 run task 1217821555995959 created in Running, 9 phase subtasks, heartbeat_at stamped
 2026-08-25T11:19:15Z heartbeat phase=10
 2026-08-25T11:22:00Z 10 starter=Metta-AI/coworld-ctf reason=per-tick grid actions on a real-time loop, rules written fresh for this coworld (chemistry/paintball precedent) — Melting Pot substrate is a design source, not a bit-exact C-env port
+2026-08-25T11:24:30Z 10 designer dispatched (sthr_01AXzbv3iWqBLhAtAjj5LiTE) round=1
