@@ -77,3 +77,4 @@
 2026-08-25T08:34:38Z progress phase=70 marker=announce.discord_message_id
 2026-08-25T08:34:38Z heartbeat phase=75
 2026-08-25T08:35:50Z 75 atlas: slug live in /api/coworlds (episodes_7d=6); continent=commons (public-goods/role-allocation, mixed-motive shared production — rails call); spot 416,574 clearance 22.9
+2026-08-25T08:36:20Z 75 atlas dispatch=32827445629 region=commons at=416,574 clearance=22.9
