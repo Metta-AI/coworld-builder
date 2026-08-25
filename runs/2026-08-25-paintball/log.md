@@ -108,3 +108,6 @@
 2026-08-25T18:10:30Z 60 poll 7: round 22 completed 18:07:38Z — champ-vs-champ ereq_d0bfc14c llmTurns [30,31] fallbackTurns [10,9] (61/80 llm, reason=complete/full_time); log grep 39 falling-back lines, ALL throttle-caused (429 daily-token + one 503), zero paintball-side causes. SPEC def-of-done item 5 allows zero lines OR a documented platform-wide cause cross-checked against another LLM coworld — instructing verifier to re-pin checks 3/4/5 to round 22 and apply that branch, then judge.
 2026-08-25T18:10:30Z 60 verifier follow-up dispatched: re-pin 3/4/5 to round 22, SPEC item-5 exception branch
 2026-08-25T18:10:30Z heartbeat phase=60
+2026-08-25T18:18:16Z 60 verifier follow-up returned (VERIFY.md @fca0692): ALL 8 TRUE — 3/4/5 pinned to round 22 ereq_d0bfc14c (daveey vs daveey-1, 61/80 llm, 0 scripted, reason=complete/full_time); check 5 TRUE via SPEC item-5 exception branch (39 lines all throttle-caused; cross-check collab_cooking ereq_47c45455 18:02Z same 429s); check 6 featured moved to paintball.r22.e5 on 0.1.3 static path; check 8 stands (run 32875824479, sha unchanged). Non-blocking legibility notes: LIVES LEAD caption, gradual scrub convergence.
+2026-08-25T18:18:16Z 60 judge dispatched output=reviews/verify-verdict.md
+2026-08-25T18:18:16Z heartbeat phase=60
