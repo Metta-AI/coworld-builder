@@ -74,3 +74,5 @@
 2026-08-25T04:49:31Z progress phase=50 marker=round_6386b11d-0946-47d1-90a6-9921879c0888
 2026-08-25T04:49:31Z 50 done -> phase 60
 2026-08-25T04:49:31Z heartbeat phase=60
+2026-08-25T04:50:37Z 60 verifier dispatched thread=sthr_01WFDinQP6MtXoMvtVU9dVqW output=runs/2026-08-24-cooperative-hunting/VERIFY.md (75-min bound; Bedrock-429 context from coins run included in brief)
+2026-08-25T04:50:37Z heartbeat phase=60
