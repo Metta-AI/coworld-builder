@@ -123,3 +123,7 @@
 2026-08-25T03:13:43Z 75 atlas continent=tabletop reason=card-game port (Tabletop Coast per step-2 table)
 2026-08-25T03:13:43Z 75 atlas dispatch=32804354391 region=tabletop at=766,277 clearance=22.9
 2026-08-25T03:16:46Z 75 atlas dispatch=32804550513 attempt 2 with 12 extra_cities (unplaced leagues from dispatch 1: cogiavelli+cogplomacy->tabletop, cogchemists+coins+commons-family+firm+matrix-games->commons, chorus+cogolf+garble->parlour, cogmud->simulations, grid-wars->paintlands; all clearances >=22.9)
+2026-08-25T03:18:18Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20354 status=pr_open
+2026-08-25T03:18:18Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20354
+2026-08-25T03:18:18Z 75 phase -> 80
+2026-08-25T03:18:18Z heartbeat phase=80
