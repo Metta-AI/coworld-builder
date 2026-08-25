@@ -1,0 +1,4 @@
+{"loaded":true,"ms":5101,"clock":"ROUND 1 / 12 TICK 0 OF 719","scorebug":"APPLE FARMERS SCORE 0 0 trades · 1.50 🍎/🍌 ROUND 1 / 12 TICK 0 OF 719 BANANA FARMERS SCORE 2 0 trades · 1.50 🍎/🍌","feed_lines":0}
+scrub readouts: 0%="ROUND 1 / 12 TICK 0 OF 719"  50%="ROUND 7 / 12 TICK 375 OF 719"  100%="FINAL MARKET CLOSED"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

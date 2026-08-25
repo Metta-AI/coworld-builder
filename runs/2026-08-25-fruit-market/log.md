@@ -64,3 +64,5 @@
 2026-08-25T23:17:27Z 60 verifier dispatched (thread sthr_01FPQHa2DD1p6DBQdVRWj2Zi) -> VERIFY.md, 75-min bound, polls every 5 min
 2026-08-25T23:17:51Z heartbeat phase=60 (verifier: round 2 pending, polling)
 2026-08-25T23:32:14Z heartbeat phase=60 (round 2 completed, round 3 pending)
+2026-08-25T23:44:41Z heartbeat phase=60
+2026-08-25T23:44:41Z 60 VERIFY.md written: 8/8 TRUE. rounds 2 (round_fbba2cf3) + 3 (round_92b46dc0) completed post-filler; leaderboard daveey rank1 / daveey-1 rank2 (2 rounds each, fillers absent); ereq_acad5282 completed; replay 8bc52824 protocol fruit-market.replay.v1 reason=complete ending=round_limit champion orders 24/24 llm 0 fallback; hosted log CLEAN; iframe src = static /replays/static/cow_4a33.../sha256%3A041ac8.../index.html?replay=... ready:true (source: SSR playlist[0] + POST replays/session; raw-HTML grep found nothing = client-rendered); release-result.json certify.replay_liveness = static bundle declared; viewer-check run 32911662736 success loaded:true 5101ms clocks TICK 0 -> TICK 375 -> FINAL MARKET CLOSED.

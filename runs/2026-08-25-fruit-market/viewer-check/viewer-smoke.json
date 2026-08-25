@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 5101,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4a33390e-40e5-4bfc-826a-d2987347d8a8/sha256%3A041ac84194867475b2adf8e02ac063e464e18fffc06935dda742a7676e1d3626/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8bc52824-0664-410c-8caf-3abc9469e4e4.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1 / 12 TICK 0 OF 719",
+  "scorebug": "APPLE FARMERS SCORE 0 0 trades · 1.50 🍎/🍌 ROUND 1 / 12 TICK 0 OF 719 BANANA FARMERS SCORE 2 0 trades · 1.50 🍎/🍌",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1 / 12 TICK 0 OF 719"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 7 / 12 TICK 375 OF 719"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MARKET CLOSED"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
