@@ -37,3 +37,8 @@
 2026-08-25T21:34:46Z 30 -> 40 phase transition, STATE phase=40
 2026-08-25T21:34:46Z heartbeat phase=40
 2026-08-25T21:35:17Z 40 builder dispatched: coworld-release.yml version 0.1.0, canonical policy set from tools/ci/policies.json
+2026-08-25T21:56:41Z 40 dispatch 1: version 0.1.0 run 32901879174 step_failed='Put the Coworld secret' (404: coworld registered as game.name factory_commons, step used $SLUG) — workflow fix 4b6a074 derives coworld_name from manifest game.name
+2026-08-25T21:56:41Z 40 dispatch 2: version 0.1.1 run 32902713785 SUCCESS — ok/canonical/secret_put true, certify ok, replay_liveness skipped-static, 4 policies v2, champion2 player ply_bac48eb1; release-result.json copied into run dir
+2026-08-25T21:56:41Z progress phase=40 marker=32902713785
+2026-08-25T21:56:41Z 40 -> 50 phase transition, STATE phase=50
+2026-08-25T21:56:41Z heartbeat phase=50
