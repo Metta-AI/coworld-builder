@@ -50,3 +50,4 @@
 2026-08-25T07:09:09Z 50 round 1 failed (pre-filler auto-trigger race, commons-family precedent); round 2 pending round_604ee98e with entrant_attributions = both champions (153ef0ed daveey, dba74c0b daveey-1) -> exit criterion met
 2026-08-25T07:09:09Z progress phase=50 marker=league_9b734c36-c6a2-4cc4-a12e-e8bc3977e86c
 2026-08-25T07:09:09Z heartbeat phase=60
+2026-08-25T07:10:08Z 60 verifier dispatched (sthr_01TipKnUwrdcvEVCTx42hLaU)
