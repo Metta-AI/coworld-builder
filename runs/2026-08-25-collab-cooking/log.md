@@ -23,3 +23,5 @@
 2026-08-25T05:52:29Z progress phase=30 marker=r1-review.md
 2026-08-25T05:53:05Z 30 r1 fixer dispatched thread=sthr_01F9DHQK1GdXXZmNYYpjH9jH output=reviews/r1-fixes.md
 2026-08-25T05:53:05Z heartbeat phase=30
+2026-08-25T06:25:36Z 30 r1 fixer returned: 10 commits, head=a5ec2c86, ci.yml green run=32816344271 (O1 manifest loads via coworld 0.1.42 + new CI loader check; O2 frame-by-frame re-derivation test; O3 pause honors deadline guard; O4 heat tile consistency; O5 tickets expires; O6 smoke healthz gate + connect retry, 4/4 seats cross_play=true dishes 11; O8 secret namespace game.name; O7/O14/O18 minor); left O9/O10-O13/O15-O17 with reasons
+2026-08-25T06:25:36Z progress phase=30 marker=r1-fixes.md
