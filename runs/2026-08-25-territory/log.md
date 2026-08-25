@@ -76,3 +76,7 @@
 2026-08-25T13:27:06Z heartbeat phase=60
 2026-08-25T13:27:39Z 60 judge dispatched thread=sthr_014fD5Mbv2C3dt84gasLGMXy output=reviews/verify-verdict.md
 2026-08-25T13:27:39Z heartbeat phase=60
+2026-08-25T13:35:48Z 60 judge returned: blocking=0 (all 8 checks independently re-fetched and proven; 4 self-reported findings adjudicated advisory; endcard-unreachable-from-rail noted as phase-30-class follow-up, non-blocking)
+2026-08-25T13:35:48Z progress phase=60 marker=verify-verdict.md
+2026-08-25T13:35:48Z 60 -> 70 phase transition, STATE.phase=70
+2026-08-25T13:35:48Z heartbeat phase=70
