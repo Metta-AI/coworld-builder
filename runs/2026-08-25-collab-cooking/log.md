@@ -98,3 +98,5 @@
 2026-08-25T10:48:05Z 60 verifier attempt 2 returned: 8/8 TRUE (r8+r9 post-fix completed episodes; leaderboard both champions v3 rounds_played=8; r9 replay strict-parse complete 900/900 cross_play=true; static iframe cow_19938c0f ready:true; viewer-check 32838395169 loaded:true 3 differing clocks, chrome reconciles with replay). Non-blocking noted: LLM champions 0 dishes vs brigade 3 (balance), feed_lines probe mismatch, platform 429 daily-token cap inflating fallbacks
 2026-08-25T10:48:05Z progress phase=60 marker=VERIFY.md-all-true
 2026-08-25T10:48:05Z 60 judge dispatched for verify-verdict
+2026-08-25T10:48:53Z 60 verify judge thread=sthr_01BKjutQFzNZrXXvrVFoV8oU output=reviews/verify-verdict.md
+2026-08-25T10:48:53Z heartbeat phase=60
