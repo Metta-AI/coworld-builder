@@ -5,7 +5,7 @@
   "slug": "chemistry",
   "repo": "https://github.com/Metta-AI/cogame-chemistry",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T06:36:56Z",
+  "heartbeat_at": "2026-08-25T06:52:33Z",
   "session_ended_at": null,
   "session_id": "f159a6da",
   "log": "runs/2026-08-25-chemistry/log.md"
