@@ -108,3 +108,5 @@
 2026-08-25T10:56:36Z progress phase=70 marker=announce.discord_message_id=1541763162234167437
 2026-08-25T10:56:36Z 70 -> 75 phase transition, STATE.phase=75
 2026-08-25T10:58:04Z 75 atlas dispatch=32839861787 region=commons at=416,574 clearance=22.9 label="Collab Cooking"
+2026-08-25T11:01:38Z 75 atlas dispatch 1 run=32839861787 failed: 15 unplaced leagues (backlog PRs queued unmerged behind Graphite)
+2026-08-25T11:01:38Z 75 atlas dispatch=32840163763 region=commons at=446,520 clearance=22.9 extra_cities=15 (placed for: cogolf@202,270 grid-wars@193,249 cogchemists@766,277 cogplomacy@790,280 cogiavelli@751,295 hanabi@760,316 garble@438,817 firm@425,553 commons-family@404,544 cogmud@440,571 chorus@416,574 cooperative-hunting@446,544 matrix-games@425,529 coins@395,565 chemistry@461,562 — regions from each run's own STATE, chemistry+coins ruled commons from /api/coworlds descriptions, collisions resolved via atlas_spot)
