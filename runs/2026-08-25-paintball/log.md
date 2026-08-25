@@ -59,3 +59,5 @@
 2026-08-25T13:03:51Z heartbeat phase=60
 2026-08-25T13:10:19Z 60 poll 5: rounds 1+2 completed -> check1 TRUE. r2 ereq_c2565de0 results reason=complete endRule=mercy llmTurns [9,0] fallbackTurns [29,38]; hosted log 202 "falling back" lines -> check5 FALSE. Cause chain: haiku 429 "Too many tokens per day" on the FIRST call (13:02:20Z) -> client switched to sonnet-4-5 -> 133/133 sonnet calls timed out at the 4s attempt1 deadline. Cross-check: collab_cooking ereq_c88e512c (12:57Z) shows 42 haiku ThrottlingException/"Too many tokens per day" -> the daily-token throttle IS platform-wide right now; the sonnet cascade + 4s deadline are paintball-side amplifiers.
 2026-08-25T13:10:19Z heartbeat phase=60
+2026-08-25T13:13:18Z 60 poll 6: check6 TRUE (SSR playlist[0]=paintball.r2.e1 + POST /coworlds/replays/session ready=true, static path); check7 TRUE (release-result.json). check8 attempt 1 run 32851786955: loaded=true, but scrub 0%==50% ("1:30 ... GAME 1/2 TURN 1/20"), 100%="FINAL GAME OVER" -> two of three readouts identical; re-dispatching.
+2026-08-25T13:13:18Z heartbeat phase=60
