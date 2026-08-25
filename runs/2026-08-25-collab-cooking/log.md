@@ -50,3 +50,5 @@
 2026-08-25T08:36:44Z 40 builder returned: v0.1.1 canonical certified, release run=32826526376, cow_id=cow_127a462a-6f7f-457f-aa7b-95652aae11d4, secret_put=true namespace=collab_cooking, 4 policies v1 (linecook owned by daveey-1); 2 dispatches (v0.1.0 failed manifest_invalid: cert fixture carried runner-managed tokens -> dropped in build_manifest.py, commit 8f6bca00); release-result.json committed
 2026-08-25T08:36:44Z progress phase=40 marker=32826526376
 2026-08-25T08:36:44Z 40 -> 50 phase transition, STATE.phase=50
+2026-08-25T08:39:00Z 50 seed POST 200 (coworld_name=collab_cooking — slug 404s, platform keys on game.name; commons-family precedent) league=league_592e6ed0-3f01-4084-bb90-75ace0db0063 seed=lseed_cab7b08e
+2026-08-25T08:39:00Z 50 division PUT 200 div_027403b9-3208-43b8-b2e6-499bd18681e5; settings POST 200 (round_robin, filler_policy, elo k=32, round_interval=15m)

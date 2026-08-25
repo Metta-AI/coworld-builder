@@ -24,8 +24,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_592e6ed0-3f01-4084-bb90-75ace0db0063",
+    "division": "div_027403b9-3208-43b8-b2e6-499bd18681e5"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T08:36:44Z",
+  "heartbeat_at": "2026-08-25T08:39:00Z",
   "session_ended_at": null,
   "session_id": "67d9a57c",
   "log": "runs/2026-08-25-collab-cooking/log.md"
