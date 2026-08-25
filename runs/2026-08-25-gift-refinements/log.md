@@ -23,3 +23,6 @@
 2026-08-25T22:32:38Z heartbeat phase=30
 2026-08-25T22:33:17Z 30 r1 reviewer dispatched thread=sthr_01RyVMEFjRfs4fbYedRSqcJw sha=45ef01a6d94fda1843af65137d9cfd2b71969988
 2026-08-25T22:48:26Z 30 r1 reviewer returned reviews/r1-review.md findings=13 advisories=9
+2026-08-25T22:49:12Z 30 r1 fixer dispatched thread=sthr_01YTd76KikKuecu9HdRD5r8P
+2026-08-25T22:49:12Z progress phase=30 marker=r1-review.md
+2026-08-25T22:49:12Z heartbeat phase=30
