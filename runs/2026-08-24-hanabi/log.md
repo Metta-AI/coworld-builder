@@ -120,3 +120,5 @@
 2026-08-25T03:12:54Z progress phase=70 marker=discord_message_id=1541646470510415943
 2026-08-25T03:12:54Z 70 phase -> 75
 2026-08-25T03:12:54Z heartbeat phase=75
+2026-08-25T03:13:43Z 75 atlas continent=tabletop reason=card-game port (Tabletop Coast per step-2 table)
+2026-08-25T03:13:43Z 75 atlas dispatch=32804354391 region=tabletop at=766,277 clearance=22.9
