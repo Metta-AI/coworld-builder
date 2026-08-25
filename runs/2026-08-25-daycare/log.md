@@ -28,3 +28,5 @@
 2026-08-25T14:04:54Z heartbeat phase=30
 2026-08-25T14:38:29Z 30 r1 fixer returned: r1-fixes.md — B1 fixed (b9bab64), N13/C3 fixture rewired (fd1eda8), N4/N6 fixed-then-reverted with feasibility evidence (NEEDS-DESIGN), N5 refuted; CI green run=32859893259 sha=948d5de5ca5d9a09b612b5eca0fea922cb8cc853
 2026-08-25T14:38:29Z progress phase=30 marker=r1-fixes.md
+2026-08-25T14:39:01Z 30 r1 judge dispatched (sthr_01VpB5NEp8GBVtho8JjYoaAt)
+2026-08-25T14:39:01Z heartbeat phase=30
