@@ -36,3 +36,7 @@
 2026-08-25T13:05:00Z heartbeat phase=40
 2026-08-25T13:09:00Z 40 builder dispatched thread=sthr_01B1dt1WtSH97fwWxhHuDaiA (release chain, v0.1.0 first, policies from repo tools/ci/policies.json)
 2026-08-25T13:09:00Z heartbeat phase=40
+2026-08-25T13:50:00Z 40 builder returned: v0.1.0 run=32848848576 step_failed="Build the Coworld manifest" (Dockerfile COPY dist/dist-server — release wf had no pnpm build step); fix=workflow commit ad1e8df1 adding bundle-build step; v0.1.1 run=32849157326 SUCCESS ok/canonical/certify.ok/secret_put all true, cow_id=cow_e7cac219-31d0-45c5-93f8-649434351365, replay_liveness skipped(static bundle), 4 policies v1, champion2 player_id=ply_bac48eb1; release-result.json persisted; template delta (release wf bundle-build for TS lineage) noted for phase 80 LEARNINGS
+2026-08-25T13:50:00Z progress phase=40 marker=32849157326
+2026-08-25T13:52:00Z 40 -> 50 phase transition, STATE.phase=50
+2026-08-25T13:52:00Z heartbeat phase=50

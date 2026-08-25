@@ -5,19 +5,22 @@
   "slug": "territory",
   "repo": "Metta-AI/cogame-territory",
   "starter": "Metta-AI/coworld-cogherence",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_e7cac219-31d0-45c5-93f8-649434351365",
+    "manifest_sha": "sha256:c437064a5c0b5fbdfd91ab56b8b5c990e42f6cccc1815cc9e5eb25280eb9695f",
+    "release_run_id": "32849157326"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "territory-steward:v1",
+    "champion2": "territory-condottiere:v1",
+    "fillers": [
+      "territory-homesteader:v1",
+      "territory-raider:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T13:09:00Z",
+  "heartbeat_at": "2026-08-25T13:52:00Z",
   "session_ended_at": null,
   "session_id": "337847e6",
   "log": "runs/2026-08-25-territory/log.md"
