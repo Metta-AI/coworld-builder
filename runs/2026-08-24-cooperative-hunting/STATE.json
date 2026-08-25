@@ -5,7 +5,7 @@
   "slug": "cooperative-hunting",
   "repo": "Metta-AI/cogame-cooperative-hunting",
   "starter": "coworld-staghunt",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 1,
     "30": 1,
@@ -49,18 +49,18 @@
     "discord_message_id": "1541684300238561360"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20362",
+    "branch": "atlas/cooperative-hunting-32814186891",
+    "region": "commons",
+    "x": 416,
+    "y": 574,
+    "dispatch_run_id": "32814186891",
+    "attempted_at": "2026-08-25T05:48:35Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T05:43:13Z",
+  "heartbeat_at": "2026-08-25T05:48:35Z",
   "session_ended_at": null,
   "session_id": "ea323071",
   "log": "runs/2026-08-24-cooperative-hunting/log.md"

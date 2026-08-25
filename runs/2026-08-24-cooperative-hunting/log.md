@@ -98,3 +98,7 @@
 2026-08-25T05:46:45Z 75 atlas dispatch#1 32813991808 failed step=build: 13 unplaced leagues; placing them via extra_cities (rails continent calls: tabletop=cogiavelli,cogplomacy,hanabi board/card ports; paintlands=cogolf,grid-wars zero-sum; commons=coins,commons-family,firm,matrix-games mixed-motive; parlour=chorus,cogchemists,garble talk/deduction/language; simulations=cogmud MUD borrowed-world). Spots via atlas_spot.py with iterative working-copy so new dots avoid each other, all clearance>=22.9
 2026-08-25T05:47:08Z 75 atlas dispatch=32814186891 region=commons at=416,574 clearance=22.9 extra_cities=13
 2026-08-25T05:47:08Z heartbeat phase=75
+2026-08-25T05:48:35Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20362 status=pr_open (dispatch#2; 13 extra cities placed for other runs: coins, commons-family, firm, matrix-games, cogiavelli, cogplomacy, hanabi, cogolf, grid-wars, chorus, cogchemists, garble, cogmud)
+2026-08-25T05:48:35Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20362
+2026-08-25T05:48:35Z 75 done -> phase 80
+2026-08-25T05:48:35Z heartbeat phase=80
