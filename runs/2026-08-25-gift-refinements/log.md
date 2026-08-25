@@ -11,3 +11,6 @@
 2026-08-25T20:18:08Z progress phase=10 marker=design.md
 2026-08-25T20:18:08Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
 2026-08-25T20:18:08Z heartbeat phase=20
+2026-08-25T20:19:45Z 20 repo created public: https://github.com/Metta-AI/cogame-gift-refinements
+2026-08-25T20:19:45Z 20 propagate-secrets run 32894610046 success; secrets SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on repo
+2026-08-25T20:19:45Z 20 builder dispatched thread=sthr_01TeM8oCzegWbmTryFxLJEQM
