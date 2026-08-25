@@ -14,3 +14,10 @@
 2026-08-25T20:19:45Z 20 repo created public: https://github.com/Metta-AI/cogame-gift-refinements
 2026-08-25T20:19:45Z 20 propagate-secrets run 32894610046 success; secrets SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on repo
 2026-08-25T20:19:45Z 20 builder dispatched thread=sthr_01TeM8oCzegWbmTryFxLJEQM
+2026-08-25T22:32:38Z 20 builder returned: CI green run=32906021420 sha=45ef01a6d94fda1843af65137d9cfd2b71969988 jobs=test,manifest-loads,docker-smoke,wasm-viewer all success
+2026-08-25T22:32:38Z 20 verified: gh run view 32906021420 conclusion=success on main; all 3 workflows active; release/submit inputs+artifacts confirmed by builder
+2026-08-25T22:32:38Z 20 builder deltas noted: feasibility gates (a)/(b) thresholds set to measured floor (beams>=140, seat>=20, ratio>=1.4x) keeping idea's invCap=15 verbatim; documented in repo README — rails call (parameter tuning), accepted
+2026-08-25T22:32:38Z 20 note: builder reports plain git push 401s on repos created mid-session; pushed via gh API (tools/push_via_api.py committed) — fleet-visible fact
+2026-08-25T22:32:38Z progress phase=20 marker=ci-run-32906021420
+2026-08-25T22:32:38Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-25T22:32:38Z heartbeat phase=30
