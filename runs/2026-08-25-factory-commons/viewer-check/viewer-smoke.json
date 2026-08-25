@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 1923,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2e5dc1a2-c660-4c7b-83a1-3881b4071786/sha256%3Aa63d2c7fc64fd8fb0d30a5337c23bc14d0de5133d68ba01c4b562b6ee9011810/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F83ef5ad4-38b7-47a2-83e2-1694de64d1e7.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "SHIFT 1 / 15 TICK 2 OF 899",
+  "scorebug": "FACTORY INTEGRITY 100 PRIME CAP 100 SHIFT 1 / 15 TICK 2 OF 899 BANANAS INTEGRITY 0 0 ON THE CHUTE PRESSES 0 · OVERRIDES 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SHIFT 1 / 15 TICK 2 OF 899"
+    },
+    {
+      "at": "50%",
+      "clock": "SHIFT 8 / 15 TICK 466 OF 899"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL SHIFT LIMIT"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2e5dc1a2-c660-4c7b-83a1-3881b4071786/sha256%3Aa63d2c7fc64fd8fb0d30a5337c23bc14d0de5133d68ba01c4b562b6ee9011810/font.ttf",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[requestfailed] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2e5dc1a2-c660-4c7b-83a1-3881b4071786/sha256%3Aa63d2c7fc64fd8fb0d30a5337c23bc14d0de5133d68ba01c4b562b6ee9011810/font.ttf net::ERR_ABORTED"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

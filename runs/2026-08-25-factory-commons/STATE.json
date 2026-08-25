@@ -34,9 +34,14 @@
     "division": "div_8b8d506b-926f-4633-bc3d-ce6dc08a2568"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_c691a963-83bc-40c6-9ea8-267c08aaaa05",
+      "round_3c3032b4-7162-4e84-afef-89deac4c3e46",
+      "round_bdcaab17-d5ea-4dba-bb65-7c8f0b963e61"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/83ef5ad4-38b7-47a2-83e2-1694de64d1e7.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32908246409"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T22:08:38Z",
+  "heartbeat_at": "2026-08-25T22:59:21Z",
   "session_ended_at": null,
   "session_id": "ee652d74",
   "log": "runs/2026-08-25-factory-commons/log.md"

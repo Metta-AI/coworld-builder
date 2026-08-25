@@ -53,3 +53,23 @@
 2026-08-25T22:08:38Z 50 -> 60 phase transition, STATE phase=60
 2026-08-25T22:08:38Z heartbeat phase=60
 2026-08-25T22:09:11Z 60 verifier dispatched (league league_96744093-0ddc-42dc-b5bf-79f195f062f0, division div_8b8d506b-926f-4633-bc3d-ce6dc08a2568, cow cow_2e5dc1a2-c660-4c7b-83a1-3881b4071786)
+2026-08-25T22:10:49Z 60 poll: rounds r1 failed (pre-fillers, does not count), r2 pending; leaderboard/playlist empty; check 7 TRUE from committed release-result.json; public page = softmax.com/factory-commons (hyphen) 200 with SSR payload, softmax.com/factory_commons is the generic Watch shell
+2026-08-25T22:10:49Z heartbeat phase=60
+2026-08-25T22:22:40Z 60 poll: r2 completed 22:12:11 (ereq_22d6a471 completed, replay ok, results.reason=complete/shift_limit, fallbacks [9,13,0] from platform-wide Bedrock 429 "Too many tokens per day" — cross-checked coins+ecos same message); r3 pending; viewer-check run 32905429599 loaded:true, 3 differing clocks
+2026-08-25T22:22:40Z heartbeat phase=60
+2026-08-25T22:28:56Z 60 poll: r3 completed 22:23:29 (ereq_c415d0f9, replay 3facae4f, reason=complete/factory_ruined, fallbacks [0,0,0] — throttle cleared, hosted log CLEAN on all four grep patterns); leaderboard daveey 1001.47 rp=2 / daveey-1 998.53 rp=2, no fillers; waiting on r4 for the final snapshot
+2026-08-25T22:28:56Z heartbeat phase=60
+2026-08-25T22:43:29Z 60 poll: r4 pending (created ~22:35); r2+r3 completed; waiting to snapshot the latest completed round for checks 3-6/8
+2026-08-25T22:43:29Z heartbeat phase=60
+2026-08-25T22:58:16Z 60 poll: r4 completed 22:49:14 (ereq_558ec460, replay 83ef5ad4, 900 frames, reason=complete/shift_limit, fallbacks [0,0,0], hosted log CLEAN); 3 completed rounds (2,3,4)
+2026-08-25T22:58:16Z 60 check 1 TRUE (rounds 2,3,4 completed; r1 failed pre-fillers, error quoted)
+2026-08-25T22:58:16Z 60 check 2 TRUE (daveey-1 1014.67 rp=3 / daveey 985.33 rp=3; fillers absent)
+2026-08-25T22:58:16Z 60 check 3 TRUE (ereq_558ec460 completed, replay_url non-null, daveey+daveey-1 named, steward is_filler)
+2026-08-25T22:58:16Z 60 check 4 TRUE (strict jq parse ok, protocol factory_commons.replay.v1, reason complete, 30/30 champion orders source=llm, 0 fallbacks)
+2026-08-25T22:58:16Z 60 check 5 TRUE (0 matches on the four patterns; round-2 Bedrock 429 "Too many tokens per day" cross-checked platform-wide against coins+ecos and cleared by r3/r4)
+2026-08-25T22:58:16Z 60 check 6 TRUE (source: SSR state.playlist[0] of softmax.com/factory-commons + POST /coworlds/replays/session -> static index.html, ready true, sha = manifest_sha)
+2026-08-25T22:58:16Z 60 check 7 TRUE (committed release-result.json: "Replay liveness: skipped (static replay bundle declared...")
+2026-08-25T22:58:16Z 60 check 8 TRUE (viewer-check run 32908246409 green, loaded true @1923ms, clocks SHIFT 1/SHIFT 8/FINAL differ, no failure; artifact committed to runs/.../viewer-check/)
+2026-08-25T22:58:16Z 60 VERIFY.md written — verdict all-true 8/8
+2026-08-25T22:58:16Z heartbeat phase=60
+2026-08-25T22:59:21Z 60 verifier returned: VERIFY.md all-true 8/8, viewer-check artifacts in run dir; judge dispatched for phase-60 adjudication
