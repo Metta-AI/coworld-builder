@@ -5,7 +5,7 @@
   "slug": "collab-cooking",
   "repo": "https://github.com/Metta-AI/cogame-collab-cooking",
   "starter": "Metta-AI/coworld-overcogged",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T03:30:00Z",
+  "heartbeat_at": "2026-08-25T03:48:28Z",
   "session_ended_at": null,
   "session_id": "67d9a57c",
   "log": "runs/2026-08-25-collab-cooking/log.md"
