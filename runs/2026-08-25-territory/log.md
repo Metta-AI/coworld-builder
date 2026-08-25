@@ -74,3 +74,5 @@
 2026-08-25T13:27:06Z 60 verifier non-blocking findings: scrub 100% lands Turn 14 not FINAL (endcard unreachable from rail right edge — curation/phase-30-class note); featured match fully peaceful (razes work in round-2 replay); homesteader baseline out-earns champions (Elo unaffected, champions-only ranking)
 2026-08-25T13:27:06Z progress phase=60 marker=r3-verify-all-true
 2026-08-25T13:27:06Z heartbeat phase=60
+2026-08-25T13:27:39Z 60 judge dispatched thread=sthr_014fD5Mbv2C3dt84gasLGMXy output=reviews/verify-verdict.md
+2026-08-25T13:27:39Z heartbeat phase=60
