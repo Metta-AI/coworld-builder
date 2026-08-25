@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_9b734c36-c6a2-4cc4-a12e-e8bc3977e86c",
+    "division": "div_ab928df3-f28c-4249-9f7d-cb62cf97ded2"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T07:04:26Z",
+  "heartbeat_at": "2026-08-25T07:06:30Z",
   "session_ended_at": null,
   "session_id": "f159a6da",
   "log": "runs/2026-08-25-chemistry/log.md"

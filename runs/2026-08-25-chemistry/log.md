@@ -40,3 +40,7 @@
 2026-08-25T07:04:26Z 40 release v0.1.0 run=32818992277 step_failed=null: ok/canonical/certified/secret_put all true; cow_292543de-c887-4398-8d4e-70fdb298b290; replay-liveness skipped (static bundle); 4 policies v1, champion2 owned by ply_bac48eb1
 2026-08-25T07:04:26Z progress phase=40 marker=release-run-32818992277
 2026-08-25T07:04:26Z heartbeat phase=50
+2026-08-25T07:06:30Z 50 seed POST 200 lseed_175524c0 league_9b734c36-c6a2-4cc4-a12e-e8bc3977e86c (default_variant_id=three-cycles-plentiful-distractors accepted at seed time)
+2026-08-25T07:06:30Z 50 division PUT 200 div_ab928df3-f28c-4249-9f7d-cb62cf97ded2 (Competition L1); settings POST 200 (round_robin, filler_policy, elo k32, 15min)
+2026-08-25T07:06:30Z 50 policy-versions ownership verified: foreman/courier/freeloader=daveey, metabolist=daveey-1 (no coins-style leak); filler UUIDs courier=51066378-6b79-4dc1-b693-b71e45c3722c freeloader=33c53b59-b153-4b31-9b07-1d4e59a4a34c
+2026-08-25T07:06:30Z heartbeat phase=50
