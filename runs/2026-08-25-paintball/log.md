@@ -51,3 +51,5 @@
 2026-08-25T12:49:10Z 60 verifier dispatched thread=sthr_01V93u1PwCsGa7DVLcgzkrhm output=runs/2026-08-25-paintball/VERIFY.md (75-min bound)
 2026-08-25T12:50:04Z 60 poll 1: round 1 pending (0 completed); waiting
 2026-08-25T12:50:04Z heartbeat phase=60
+2026-08-25T12:55:39Z 60 poll 2: round 1 completed 12:53:15Z (1 of 2); waiting
+2026-08-25T12:55:39Z heartbeat phase=60
