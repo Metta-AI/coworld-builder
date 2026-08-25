@@ -29,3 +29,6 @@
 2026-08-25T10:08:08Z 30 r1 fixer dispatched thread=sthr_01YCcp8WpWNYarBs1PKNXtND output=runs/2026-08-25-paintball/reviews/r1-fixes.md
 2026-08-25T11:58:28Z 30 r1 fixer returned: 20 fixed, 1 partial (F21), 1 disputed (F14 stale note numbers), 1 needs-design (F11 turnSpacingMs), 4 noted; all 5 checklist-level fixed; sha=44af4da CI run 32843017748 green
 2026-08-25T11:59:33Z 30 r1 judge dispatched thread=sthr_01JAySKwcZbrgBSoQVFGqmdF output=runs/2026-08-25-paintball/reviews/r1-verdict.md sha=44af4da
+2026-08-25T12:14:12Z 30 r1 judge returned: blocking 0 (both markers agree); all 5 reviewer blockers verified fixed at 44af4da; 15/15 checklist PASS + parallel-batch PASS
+2026-08-25T12:14:12Z progress phase=30 marker=r1-verdict.md
+2026-08-25T12:14:12Z 30 -> 40 phase transition: STATE.phase=40
