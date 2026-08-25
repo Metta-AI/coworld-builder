@@ -1,82 +1,79 @@
-# Release r2 — cooperative-hunting (version 0.1.3)
+# Release r2 — cooperative-hunting
 
-## Fix applied this round
+**Outcome: GREEN at version `0.1.4`** (release run `32809315564`). Two distinct fixes were needed
+this round: the certify timeout, then a Coworld-secret namespace mismatch that only the upload
+step could surface.
 
-- **sha `5ac03d9081cf8584bbf8f987c07d15efcc775edd`** — `ci(release): give certify
-  --timeout-seconds 300 so the fixture can finish`
-  (`.github/workflows/coworld-release.yml`, "Certify locally" step: added
-  `--timeout-seconds 300`; `--no-open-report` and the `tee "$RR/certify.log"` untouched).
-  Pushed to `main` via the Git Data API (plain https push is unauthenticated for this token).
-  Verified against the CLI: `coworld certify --timeout-seconds` exists, `[default: 60.0]`.
-- **CI run `32807756637`** on that sha — `completed / success` (test, docker-smoke, wasm-viewer).
-  <https://github.com/Metta-AI/cogame-cooperative-hunting/actions/runs/32807756637>
-- Repo secrets verified present before dispatch: `SOFTMAX_TOKEN`, `ANTHROPIC_API_KEY`
-  (`gh secret list -R Metta-AI/cogame-cooperative-hunting`, both 2026-08-24T15:42:19Z) —
-  no re-propagation needed.
+- `cow_id`: `cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d`
+- `manifest_sha`: `sha256:0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122`
+- version: `0.1.4` · `hosted_smoke: passed` · `hosted_certification: certified`
+- release run id: **`32809315564`** —
+  <https://github.com/Metta-AI/cogame-cooperative-hunting/actions/runs/32809315564>
+- artifact persisted at `runs/2026-08-24-cooperative-hunting/release-result.json`
 
-## Release dispatch
+## Fixes pushed this round
 
-- version `0.1.3`, `put_secret=true`, no `skip_certify`, policies from `tools/ci/policies.json`
-  (not overridden). Run id **`32808207318`** —
-  <https://github.com/Metta-AI/cogame-cooperative-hunting/actions/runs/32808207318> —
-  conclusion **failure**, `step_failed: "Upload the Coworld"`.
+| sha | change | why |
+|---|---|---|
+| `5ac03d9081cf8584bbf8f987c07d15efcc775edd` | `.github/workflows/coworld-release.yml` — "Certify locally" gains `--timeout-seconds 300` | `coworld certify` defaults to `--timeout-seconds 60` (confirmed against the 0.1.42 CLI), but the certification fixture is rounds=2 × ticksPerRound=480 = 1040 ticks @ tickHz=8 ≈ 130 s of play + `ShutdownGraceSeconds=20` ≈ 150 s to exit. 0.1.2 (run 32797631189) died `episode_timeout` after 62 s. Raised the timeout rather than shrinking the fixture, because `ci.yml`'s wasm-viewer `--soak` consumes the docker-smoke replay derived from the same fixture and needs >240 ticks. |
+| `7e2f99792741eb9ebf7c3de76012b6d880611194` | `tools/build_manifest.py:641`, `coworld_manifest_template.json:27` → `secret://coworld/cooperative_hunting/anthropic_api_key`; `coworld-release.yml` `SLUG: cooperative_hunting` | 0.1.3 (run 32808207318) failed `upload-coworld` HTTP 400 `Coworld secret cooperative-hunting/anthropic_api_key cannot be used by Coworld 'cooperative_hunting'`. The server requires a `secret://coworld/<ns>/<key>` reference to name the Coworld's own namespace; `game.name` is the design-pinned underscored `cooperative_hunting` while the reference used the hyphenated repo slug. `SLUG`'s only uses in that workflow are `coworld secret put/list`, so it moves with the namespace. `ci.yml`'s `SLUG` is the image/repo slug and is unchanged; the Coworld was **not** renamed. Template re-verified byte-identical to `python3 tools/build_manifest.py` output. |
 
-The certify fix worked: `Certify locally` passed for the first time (10/10 checks, ~2 min),
-and `Upload the policies` passed (all four versions created). The run then failed one step
-later, at `upload-coworld`, on a **new and unrelated** failure class.
+Both pushes went to `main` via the Git Data API (plain https push is unauthenticated for this
+token) with `force=false`. No force pushes, no history rewrites.
 
-### Exit-criterion checklist (release-result.json of run 32808207318)
+CI on each fix sha, green before the dispatch that followed it:
+
+| sha | ci.yml run | conclusion |
+|---|---|---|
+| `5ac03d9` | `32807756637` | success (test, docker-smoke, wasm-viewer) |
+| `7e2f997` | `32808910707` | success (test, docker-smoke, wasm-viewer) |
+
+Repo secrets were verified present before the first dispatch and never re-propagated:
+`gh secret list -R Metta-AI/cogame-cooperative-hunting` → `SOFTMAX_TOKEN` and
+`ANTHROPIC_API_KEY`, both `2026-08-24T15:42:19Z`.
+
+## Exit criterion — `prompts/40-release.md` §Exit criterion
+
+Checked against `runs/2026-08-24-cooperative-hunting/release-result.json`, the `release-result`
+artifact of run **`32809315564`** (not a cached or neighbouring run).
 
 | item | result | evidence |
 |---|---|---|
-| `ok: true` | **false** | `ok: false`, `step_failed: "Upload the Coworld"` |
-| `canonical: true` | **false** | `canonical: null` (upload never completed) |
-| `certify.ok: true` | **true** | `certify.ok: true`, exit 0, 10 steps passed |
+| `ok: true` | **true** | `"ok": true`, `step_failed: null`, `errors: []` |
+| `canonical: true` | **true** | `"canonical": true`; the workflow's "Enforce canonical" step passed |
+| `certify` non-null and `certify.ok: true` | **true** | `certify.ok: true`; transcript `coworld-executable`, 10/10 steps passed |
 | `certify.replay_liveness` contains `skipped (static replay bundle declared` | **true** | `"Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"` |
-| 4 `policies[]` with distinct `<name>:vN` | **true** | `cooperative-hunting-pack-caller:v1`, `cooperative-hunting-quartermaster:v1`, `cooperative-hunting-biggame:v1`, `cooperative-hunting-sidekick:v1` |
-| champion #2 `player_id == ply_bac48eb1-662e-44f8-973d-f3e016dccf5d` | **true** | `cooperative-hunting-quartermaster` → `player_id: "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`; the other three `null` (`policy_version_id` null throughout, expected) |
-| `secret_put: true` | **false** | `secret_put: false` — the step is skipped when upload fails |
-| `cow_id` | — | `null` |
-| `manifest_sha` | — | `null` |
+| one `policies[]` entry per requested policy, distinct `<name>:vN` labels | **true** (4/4) | `cooperative-hunting-pack-caller:v2`, `cooperative-hunting-quartermaster:v2`, `cooperative-hunting-biggame:v2`, `cooperative-hunting-sidekick:v2` — four distinct labels, matching `tools/ci/policies.json` (2 LLM-prompt champions + 2 scripted baselines, unoverridden). `v2` because 0.1.3 had already created `v1` of each before it failed at upload; the new image digest makes the content differ, so these are fresh versions rather than dedupes. |
+| champion #2 `player_id == ply_bac48eb1-662e-44f8-973d-f3e016dccf5d` | **true** | `cooperative-hunting-quartermaster` → `player_id: "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`; the other three `null` (owned by the CI token's own player, daveey) |
+| `policy_version_id` null | expected, **not a failure** | `null` on all four — `upload-policy` prints no uuid; phase 50 resolves them from `GET /policy-versions` |
+| `secret_put: true` | **true** | `"secret_put": true`; "Put the Coworld secret" ran **after** `upload-coworld`, per the load-bearing order |
 
-### The blocking error (release-logs/upload.log tail)
+Step order in the green run was build → certify → upload-policies → upload-coworld → secret put,
+unchanged from the template.
+
+## Dispatch history for this run
+
+| version | run id | outcome |
+|---|---|---|
+| `0.1.0` | `32795666325` | `manifest_invalid` (tokens in `certification.game_config`) — fixed `b4b57b4f` (before r2) |
+| `0.1.1` | `32796588037` | ping/pong `game_contract_violation` — fixed `c5eec79a` (before r2) |
+| `0.1.2` | `32797631189` | certify `episode_timeout` after 62 s — fixed `5ac03d9` (this round) |
+| `0.1.3` | `32808207318` | certify **passed** (first time), policies uploaded, then `upload-coworld` HTTP 400 on the secret namespace — fixed `7e2f997` (this round, on the coordinator's explicit go) |
+| `0.1.4` | `32809315564` | **success** — every exit-criterion item true |
+
+`release-result-0.1.3-failed.json` is kept alongside as the evidence for the 0.1.3 failure; the
+authoritative artifact for `coworld.version = 0.1.4` is `release-result.json`.
+
+## For the coordinator's STATE write
 
 ```
-RuntimeError: Request to POST /api/observatory/v2/coworlds/upload failed with HTTP 400:
-{"detail":"Coworld manifest is invalid: Coworld secret cooperative-hunting/anthropic_api_key
-cannot be used by Coworld 'cooperative_hunting'"}
+coworld.version         = "0.1.4"
+coworld.cow_id          = "cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d"
+coworld.manifest_sha    = "sha256:0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122"
+coworld.release_run_id  = "32809315564"
+policies.champion1      = "cooperative-hunting-pack-caller:v2"     (daveey)
+policies.champion2      = "cooperative-hunting-quartermaster:v2"   (daveey-1, ply_bac48eb1-…)
+policies.fillers        = ["cooperative-hunting-biggame:v2", "cooperative-hunting-sidekick:v2"]
 ```
 
-Root cause — a **naming inconsistency inherited from the design note**, not a race and not a
-certify problem. The server requires the Coworld-secret namespace in a `secret://coworld/<ns>/…`
-reference to equal the Coworld's own name:
-
-- `game.name` is `cooperative_hunting` (underscore) — design.md line 3 pins it, and
-  `tools/build_manifest.py:625` / `coworld_manifest_template.json:15` emit it; the replay writer
-  also stamps `"coworld": "cooperative_hunting"`.
-- the runnable env references `secret://coworld/cooperative-hunting/anthropic_api_key` (hyphen) —
-  design.md line 712, `tools/build_manifest.py:641`, `coworld_manifest_template.json:27`.
-- `.github/workflows/coworld-release.yml:62` sets `SLUG: cooperative-hunting`, and `SLUG` is used
-  for nothing except `coworld secret put "$SLUG" …` / `coworld secret list "$SLUG"` (lines
-  359–362), i.e. the same hyphenated namespace.
-
-This is the `manifest validation error` row of `prompts/40-release.md` §5 (fix, push,
-re-dispatch), but it is a **fourth distinct fix** and the r2 brief's stop-rule applies to the
-certify step only, so the decision was escalated rather than taken unilaterally.
-
-### Proposed fix (not applied — awaiting the coordinator's go/no-go)
-
-Keep the Coworld name the design pins (`cooperative_hunting`) and move the secret namespace onto
-it — three occurrences, no game-code change:
-
-1. `tools/build_manifest.py:641` → `secret://coworld/cooperative_hunting/anthropic_api_key`
-2. `coworld_manifest_template.json:27` → same value
-3. `.github/workflows/coworld-release.yml:62` → `SLUG: cooperative_hunting` (only consumer is the
-   `coworld secret put` / `secret list` namespace, so the put lands in the namespace the manifest
-   now references; `ci.yml`'s `SLUG` is a separate image/repo slug and stays hyphenated)
-
-The alternative — renaming the Coworld to `cooperative-hunting` — contradicts design.md line 3
-and would also touch the replay header and the docs, so it is not recommended.
-
-Then re-dispatch as version `0.1.4` (versions are cheap; `0.1.3` already created the four policy
-versions, which are content-addressed and will dedupe rather than duplicate).
+I did not edit `STATE.json` or `log.md`.
