@@ -82,3 +82,7 @@
 2026-08-25T23:52:19Z 75 atlas dispatch=32912637690 region=commons at=440,571 clearance=23.4
 2026-08-25T23:56:18Z 75 atlas dispatch 1 (32912637690) failed: 19 unplaced leagues (backlog PRs queued unmerged behind Graphite)
 2026-08-25T23:56:18Z 75 atlas dispatch=32912924500 region=commons at=416,574 clearance=22.9 + extra_cities=19 placing for other runs: commons=chemistry(440,571) chorus(446,544) cogmud(404,544) coins(425,529) collab-cooking(395,565) commons-family(461,562) cooperative-hunting(446,520) factory-commons(404,520) firm(467,535) matrix-games(428,505) territory(383,535); tabletop=cogchemists(766,277) cogiavelli(790,280) cogplomacy(751,295) hanabi(760,316); paintlands=cogolf(202,270) grid-wars(181,279); parlour=garble(432,823) daycare(453,832). Regions: each run's own STATE.atlas call where present; fresh rails calls: coins=commons (mixed-motive coin taking), factory-commons=commons (shared machine), daycare=parlour (wordless signalling). All spots via atlas_spot.py sequential injection, clearance >=22.9
+2026-08-25T23:58:25Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20453 status=pr_open (approved automatically, automerge armed; lands via Graphite merge queue — human merge-when-ready) — placed 19 leagues for other runs
+2026-08-25T23:58:25Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20453
+2026-08-25T23:58:25Z 75 -> 80 phase transition: entering close
+2026-08-25T23:58:25Z heartbeat phase=80
