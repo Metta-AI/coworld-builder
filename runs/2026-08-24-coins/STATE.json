@@ -9,23 +9,23 @@
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_8ca854a5-db34-430f-929a-00917049b9b5",
-    "manifest_sha": "sha256:668b469944c7124be422e325fd990f0d9693df813b3565970346afd1b18bdb93",
-    "release_run_id": "32797931407"
+    "version": "0.1.2",
+    "cow_id": "cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e",
+    "manifest_sha": "sha256:a0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72",
+    "release_run_id": "32798747762"
   },
   "policies": {
-    "champion1": "coins-truce:v1",
-    "champion2": "coins-ledger:v1",
+    "champion1": "coins-truce:v2",
+    "champion2": "coins-ledger:v2",
     "fillers": [
-      "coins-reciprocator:v1",
-      "coins-titfortat:v1"
+      "coins-reciprocator:v2",
+      "coins-titfortat:v2"
     ],
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_e9506fcc-08c3-4372-90ac-0ced465c7d9c",
+    "division": "div_d7a79bf3-f8b7-40f7-b838-45aa275d7913"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T01:41:42Z",
+  "heartbeat_at": "2026-08-25T01:53:51Z",
   "session_ended_at": null,
   "session_id": "933b3aa3",
   "log": "runs/2026-08-24-coins/log.md"

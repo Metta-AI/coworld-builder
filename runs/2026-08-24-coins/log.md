@@ -74,3 +74,6 @@
 2026-08-25T01:42:55Z 50 settings 200 (round_robin, filler_policy, elo k32, round_interval=15m); note: GET /leagues returns bare array not {entries}
 2026-08-25T01:45:11Z 50 champ1 submit run 32798614490 ok=false: "Policy 'coins-truce:v1' not found" — /policy-versions shows ALL FOUR coins-* v1 owned by daveey-1 (account-level 'softmax player use' state leaked from an earlier release; workflow unset only warns on failure)
 2026-08-25T01:45:11Z 50 fix: re-dispatch coworld-release.yml v0.1.2 with policies override — explicit player on EVERY entry (daveey for champ1+fillers, daveey-1 for champ2) + env POLICY_REV=2 to mint v2 instead of deduping to the mis-owned v1s
+2026-08-25T01:53:51Z 50 re-release v0.1.2 run 32798747762 success: cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e canonical certify.ok secret_put; policies v2 minted with correct owners (truce/reciprocator/titfortat=daveey, ledger=daveey-1) — verified via GET /policy-versions
+2026-08-25T01:53:51Z progress phase=50 marker=32798747762
+2026-08-25T01:53:51Z heartbeat phase=50
