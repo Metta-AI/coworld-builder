@@ -18,3 +18,5 @@
 2026-08-24T23:50:07Z 20 phase -> 30
 2026-08-24T23:50:07Z heartbeat phase=30
 2026-08-24T23:51:01Z 30 r1 reviewer dispatched (sthr_014tZzXtU1vfMfXk3d5dTZKU)
+2026-08-25T00:05:25Z 30 r1 reviewer returned: r1-review.md written (10 findings: 3 blocking F1 banner band sizing/ellipsized sentence, F2 fixture self-assertion missing, F3 inherited /client/replay route; 7 advisory)
+2026-08-25T00:05:25Z heartbeat phase=30
