@@ -47,3 +47,6 @@
 2026-08-25T08:17:46Z heartbeat phase=40
 2026-08-25T08:24:00Z 40 dispatch v0.1.0 run=32825924335 step_failed="Certify locally" (manifest_invalid: game_config must not include runner-managed tokens) decision=manifest fix
 2026-08-25T08:34:00Z 40 dispatch v0.1.1 run=32826526376 step_failed=null ok=true canonical=true cow_id=cow_127a462a-6f7f-457f-aa7b-95652aae11d4 secret_put=true (fix: cert fixture drops runner-managed tokens, coworld repo 8f6bca0)
+2026-08-25T08:36:44Z 40 builder returned: v0.1.1 canonical certified, release run=32826526376, cow_id=cow_127a462a-6f7f-457f-aa7b-95652aae11d4, secret_put=true namespace=collab_cooking, 4 policies v1 (linecook owned by daveey-1); 2 dispatches (v0.1.0 failed manifest_invalid: cert fixture carried runner-managed tokens -> dropped in build_manifest.py, commit 8f6bca00); release-result.json committed
+2026-08-25T08:36:44Z progress phase=40 marker=32826526376
+2026-08-25T08:36:44Z 40 -> 50 phase transition, STATE.phase=50
