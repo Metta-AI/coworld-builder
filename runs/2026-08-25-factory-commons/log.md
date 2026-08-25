@@ -32,3 +32,7 @@
 2026-08-25T21:19:09Z 00 resume at phase 30 attempt=1 session=ee652d74
 2026-08-25T21:20:13Z 30 fixer returned round 1 (found by resume): r1-fixes.md written, 9 commits, CI green run 32883915882 at 0079af8
 2026-08-25T21:20:13Z 30 judge dispatched round 1 (fresh checkout /tmp/cogame-factory-commons-judge @ 0079af8)
+2026-08-25T21:34:46Z 30 judge returned round 1: r1-verdict.md blocking: 0 / BLOCKING: 0 — loop exits after 1 round
+2026-08-25T21:34:46Z progress phase=30 marker=r1-verdict.md
+2026-08-25T21:34:46Z 30 -> 40 phase transition, STATE phase=40
+2026-08-25T21:34:46Z heartbeat phase=40
