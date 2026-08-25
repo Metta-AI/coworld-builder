@@ -69,3 +69,6 @@
 2026-08-25T08:25:38Z progress phase=60 marker=round_e0bdbc2f-6242-4d2c-83e9-31626e71d210
 2026-08-25T08:25:38Z heartbeat phase=60
 2026-08-25T08:26:26Z 60 judge dispatched (sthr_01D6ajb3W5TyA5C852LHTxc9) on VERIFY.md
+2026-08-25T08:32:37Z 60 judge verdict BLOCKING: 0 (verify-verdict.md; independently re-fetched rounds/leaderboard/replay/log/session-route)
+2026-08-25T08:32:37Z 60 done (8/8 TRUE, judge blocking 0) -> phase 70
+2026-08-25T08:32:37Z heartbeat phase=70
