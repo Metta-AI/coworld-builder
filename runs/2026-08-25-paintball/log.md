@@ -55,3 +55,5 @@
 2026-08-25T12:55:39Z heartbeat phase=60
 2026-08-25T12:58:29Z 60 poll 3: still 1 completed round; r1 ereq_49f4feb1 completed, replay 146KB, results reason=complete endRule=full_time, llmTurns [15,0] fallbackTurns [21,36] (113 sidecar timeouts @4s attempt1 deadline + 1 daily-token 429); cross-check coins 12:44Z + collab_cooking 12:42Z logs show NO throttle/timeout -> not platform-wide
 2026-08-25T12:58:29Z heartbeat phase=60
+2026-08-25T13:03:51Z 60 poll 4: round 2 pending (created 13:02:01Z); 1 completed
+2026-08-25T13:03:51Z heartbeat phase=60
