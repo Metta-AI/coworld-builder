@@ -76,3 +76,4 @@
 2026-08-25T04:49:31Z heartbeat phase=60
 2026-08-25T04:50:37Z 60 verifier dispatched thread=sthr_01WFDinQP6MtXoMvtVU9dVqW output=runs/2026-08-24-cooperative-hunting/VERIFY.md (75-min bound; Bedrock-429 context from coins run included in brief)
 2026-08-25T04:50:37Z heartbeat phase=60
+2026-08-25T05:00:00Z 60 poll#2 round2 completed (round_6386b11d); ereq_f06f0670 completed replay 9fac8ec6; checks 2,4,6,7 evidence fetched; waiting on round 3 for check 1
