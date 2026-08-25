@@ -78,3 +78,4 @@
 2026-08-25T04:50:37Z heartbeat phase=60
 2026-08-25T05:00:00Z 60 poll#2 round2 completed (round_6386b11d); ereq_f06f0670 completed replay 9fac8ec6; checks 2,4,6,7 evidence fetched; waiting on round 3 for check 1
 2026-08-25T05:16:00Z 60 check1 TRUE rounds 2,3 completed (post-filler); check2 TRUE daveey/daveey-1 rounds_played=2; check3 TRUE ereq_37570532; check4 TRUE reason=complete 40 llm plans 0 fallbacks; check6 TRUE static iframe via SSR playlist+session POST; check7 TRUE; check8 viewer-check run 32812041116 loaded=true 3 differing clocks
+2026-08-25T05:30:00Z 60 VERIFY.md written: 8/8 TRUE (rounds 2,3,4 completed; leaderboard daveey 1002.8/daveey-1 997.2 rounds_played=3; ereq_22b05732 replay 2b6b4061 reason=complete 48/48 llm plans 0 fallbacks; r4 hosted log CLEAN, r2/r3 haiku-429 cross-checked vs hanabi ereq_3c48da04; static iframe sha256:0dfeeb8e ready=true; certify replay-liveness skipped; viewer-check 32812865316 loaded=true clocks 3/1478/2880)

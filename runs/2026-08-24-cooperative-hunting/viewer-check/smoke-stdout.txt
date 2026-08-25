@@ -1,4 +1,4 @@
-{"loaded":true,"ms":2014,"clock":"ROUND 1 OF 3 STAG HUNT · 1 / 2880","scorebug":"Cog-D cooperative-hunting-prompt 0 Cog-F cooperative-hunting-prompt 0 Cog-A sidekick 0 ROUND 1 OF 3 STAG HUNT · 1 / 2880 Cog-C sidekick 0 Cog-B big_game_hunter 0 Cog-E sidekick 0","feed_lines":1}
-scrub readouts: 0%="ROUND 1 OF 3 STAG HUNT · 1 / 2880"  50%="ROUND 2 OF 3 STAG HUNT · 1478 / 2880"  100%="ROUND 3 OF 3 ROUND CARD · 2880 / 2880"
+{"loaded":true,"ms":1722,"clock":"ROUND 1 OF 3 STAG HUNT · 3 / 2880","scorebug":"Cog-F cooperative-hunting-prompt 0 Cog-D cooperative-hunting-prompt 0 Cog-E sidekick 0 ROUND 1 OF 3 STAG HUNT · 3 / 2880 Cog-A sidekick 0 Cog-C big_game_hunter 0 Cog-B big_game_hunter 0","feed_lines":1}
+scrub readouts: 0%="ROUND 1 OF 3 STAG HUNT · 3 / 2880"  50%="ROUND 2 OF 3 STAG HUNT · 1478 / 2880"  100%="ROUND 3 OF 3 ROUND CARD · 2880 / 2880"
 canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

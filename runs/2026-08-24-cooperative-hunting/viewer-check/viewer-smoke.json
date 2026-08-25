@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 2014,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d/sha256%3A0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F53ffeacd-2f98-4dc9-b973-d0dd8130a445.replay&v=2",
+  "ms": 1722,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_d5e3a72d-bae0-4418-bb3e-e39f2c5cc81d/sha256%3A0dfeeb8e92befffa524161af55b34e914cbf7620bca58d4a0d4a2d0e98cad122/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F2b6b4061-b1d7-43c4-97ac-daae1fef7409.replay&v=2",
   "bundle": null,
   "replay": null,
-  "clock": "ROUND 1 OF 3 STAG HUNT · 1 / 2880",
-  "scorebug": "Cog-D cooperative-hunting-prompt 0 Cog-F cooperative-hunting-prompt 0 Cog-A sidekick 0 ROUND 1 OF 3 STAG HUNT · 1 / 2880 Cog-C sidekick 0 Cog-B big_game_hunter 0 Cog-E sidekick 0",
+  "clock": "ROUND 1 OF 3 STAG HUNT · 3 / 2880",
+  "scorebug": "Cog-F cooperative-hunting-prompt 0 Cog-D cooperative-hunting-prompt 0 Cog-E sidekick 0 ROUND 1 OF 3 STAG HUNT · 3 / 2880 Cog-A sidekick 0 Cog-C big_game_hunter 0 Cog-B big_game_hunter 0",
   "status": "",
   "loading_text": null,
   "feed_lines": 1,
@@ -22,7 +22,7 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "ROUND 1 OF 3 STAG HUNT · 1 / 2880"
+      "clock": "ROUND 1 OF 3 STAG HUNT · 3 / 2880"
     },
     {
       "at": "50%",
