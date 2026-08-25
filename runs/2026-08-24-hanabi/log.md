@@ -21,3 +21,5 @@
 2026-08-25T00:05:25Z 30 r1 reviewer returned: r1-review.md written (10 findings: 3 blocking F1 banner band sizing/ellipsized sentence, F2 fixture self-assertion missing, F3 inherited /client/replay route; 7 advisory)
 2026-08-25T00:05:25Z heartbeat phase=30
 2026-08-25T00:05:53Z 30 r1 fixer dispatched (sthr_01Ya6tw46ge9zkGE4JFEt9Ni)
+2026-08-25T00:30:15Z 30 r1 fixer returned: r1-fixes.md written; F1 f17e3a3, F2 70fc1d5, F3 78e25f3, F8 724826f; F9 refuted; CI green run=32793042266 sha=724826f5
+2026-08-25T00:30:15Z heartbeat phase=30
