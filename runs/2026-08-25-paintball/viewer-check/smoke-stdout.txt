@@ -1,4 +1,4 @@
-{"loaded":true,"ms":4172,"clock":"1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20","scorebug":"0% RED HILL 0:00 0 TAGS · 4 UP 1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20 0% BLUE HILL 0:00 0 TAGS · 4 UP","feed_lines":0}
+{"loaded":true,"ms":4146,"clock":"1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20","scorebug":"0% RED HILL 0:00 0 TAGS · 4 UP 1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20 0% BLUE HILL 0:00 0 TAGS · 4 UP","feed_lines":0}
 scrub readouts: 0%="1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20"  50%="1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20"  100%="FINAL GAME OVER GAME 2/2 · VISITOR · TURN 20/20"
 canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

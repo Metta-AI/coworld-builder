@@ -1,7 +1,7 @@
 {
   "loaded": true,
-  "ms": 4146,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4ac3644c-c0f0-4b39-93ae-adb2dd39518d/sha256%3A484a082c1f95ece0c295209173ab9a5064c376c35c0fe12946a5db07557a3374/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F9b5c5885-2453-473c-aac6-9e1e10d99886.replay&v=2",
+  "ms": 3809,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4ac3644c-c0f0-4b39-93ae-adb2dd39518d/sha256%3A484a082c1f95ece0c295209173ab9a5064c376c35c0fe12946a5db07557a3374/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fa6bad02d-e3f1-499a-8685-b1c639c24b6b.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "1:30 TIME LEFT GAME 1/2 · RESIDENT · TURN 1/20",
@@ -27,7 +27,7 @@
     },
     {
       "at": "100%",
-      "clock": "FINAL GAME OVER GAME 2/2 · VISITOR · TURN 20/20"
+      "clock": "0:00 TIME LEFT GAME 2/2 · VISITOR · TURN 20/20"
     }
   ],
   "soak": null,

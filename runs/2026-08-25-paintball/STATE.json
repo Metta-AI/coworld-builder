@@ -31,9 +31,45 @@
     "division": "div_97b4e1b9-6f9b-44ab-8583-73789a4ee057"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "round_number": 1,
+        "id": "round_f869a120-6fdf-4fdf-bb35-f1aa5cb9f3ae",
+        "status": "completed",
+        "completed_at": "2026-08-25T12:53:15.488017Z"
+      },
+      {
+        "round_number": 2,
+        "id": "round_e362afc6-1048-426e-956c-7d37cf07cb3d",
+        "status": "completed",
+        "completed_at": "2026-08-25T13:07:11.075093Z"
+      },
+      {
+        "round_number": 3,
+        "id": "round_b589408b-350d-47ce-96f3-4a5335844166",
+        "status": "completed",
+        "completed_at": "2026-08-25T13:25:10.853455Z"
+      },
+      {
+        "round_number": 4,
+        "id": "round_b10985a5-c9b2-4c75-a6d0-214cadf67bf6",
+        "status": "completed",
+        "completed_at": "2026-08-25T13:38:20.581820Z"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/9b5c5885-2453-473c-aac6-9e1e10d99886.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32854934931",
+    "checks": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": false,
+      "5": false,
+      "6": true,
+      "7": true,
+      "8": false
+    }
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +87,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T13:37:42Z",
+  "heartbeat_at": "2026-08-25T13:46:49Z",
   "session_ended_at": null,
   "session_id": "b1314909",
   "log": "runs/2026-08-25-paintball/log.md"

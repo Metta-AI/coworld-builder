@@ -71,3 +71,7 @@
 2026-08-25T13:32:31Z heartbeat phase=60
 2026-08-25T13:37:42Z 60 poll 11: round 4 pending (created ~13:32)
 2026-08-25T13:37:42Z heartbeat phase=60
+2026-08-25T13:43:44Z 60 poll 12: round 4 completed 13:38:20Z ereq_b98ed068 reason=complete endRule=mercy llmTurns [2,0] fallbackTurns [33,35] (68 of 70 directives fallback); log 205 "falling back" lines. Fresh cross-check: collab_cooking ereq_394e25ff (13:27Z) 49 haiku ThrottlingException/"Too many tokens per day" -> throttle still platform-wide. check8 FINAL run 32854934931 on the r4 featured replay: loaded=true ms=4146, scrub 0%==50%, 100%=FINAL -> item 8 FALSE (motion criterion) after 4 dispatches.
+2026-08-25T13:43:44Z heartbeat phase=60
+2026-08-25T13:46:49Z 60 VERIFY.md written: checks 1,2,3,6,7 TRUE; 4 FALSE (68/70 directives fallback, llmTurns [2,0]); 5 FALSE (205 "falling back" lines; haiku daily-token 429 platform-wide per collab_cooking 13:27Z + sonnet-4-5 fallback times out + 4s attempt1 deadline vs 4.6s median sidecar); 8 FALSE (loaded=true but 0%==50% clock, 4 dispatches, run 32854934931 committed). Latest replay 9b5c5885. NOT going Blocked myself - coordinator decides.
+2026-08-25T13:46:49Z heartbeat phase=60
