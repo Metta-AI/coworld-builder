@@ -55,3 +55,6 @@
 2026-08-25T04:05:38Z 40 rails decision: fix#3 = --timeout-seconds 300 on certify step (coworld certify default 60s < fixture ~150s wall clock; builder recommended flag over fixture-shrink which the wasm-viewer soak constrains). Dispatching builder for 0.1.3
 2026-08-25T04:06:23Z 40 builder dispatched thread=sthr_01YSmjVrrVLCePkfj4ZugJYv (fix#3 certify --timeout-seconds 300; version 0.1.3; report=release-r2-report.md)
 2026-08-25T04:06:23Z heartbeat phase=40
+2026-08-25T04:24:24Z 40 release result version=0.1.3 run=32808207318 certify_ok=TRUE (fix#3 confirmed; 10/10 checks) step_failed="Upload the Coworld" — secret ns cooperative-hunting != game.name cooperative_hunting (HTTP 400 manifest invalid)
+2026-08-25T04:24:24Z 40 rails decision: go — fix#4 class=manifest-validation (40-release.md step 5 row 7, not a certify failure): move secret ns to cooperative_hunting in build_manifest.py:641, coworld_manifest_template.json:27, coworld-release.yml SLUG; keep design-pinned game.name; re-dispatch 0.1.4
+2026-08-25T04:24:24Z heartbeat phase=40
