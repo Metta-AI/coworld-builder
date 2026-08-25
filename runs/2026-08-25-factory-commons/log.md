@@ -26,3 +26,6 @@
 2026-08-25T17:39:13Z 20 -> 30 phase transition, STATE phase=30 review_round=1
 2026-08-25T17:39:13Z heartbeat phase=30
 2026-08-25T17:39:39Z 30 reviewer dispatched round 1 (repo checkout /tmp/cogame-factory-commons @ 62681ee)
+2026-08-25T17:59:10Z 30 reviewer returned round 1: r1-review.md 513 lines, 1 blocking (B1 replay re-derivation test) + 18 non-blocking + 4 undetermined
+2026-08-25T17:59:10Z 30 fixer dispatched round 1
+2026-08-25T17:59:10Z heartbeat phase=30
