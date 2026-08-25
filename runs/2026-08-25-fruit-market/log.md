@@ -37,3 +37,4 @@
 2026-08-25T21:29:00Z 20 -> 30 phase transition: entering review loop, review_round=1
 2026-08-25T21:29:00Z heartbeat phase=30
 2026-08-25T21:30:22Z 30 r1 reviewer dispatched (thread sthr_01WhEZNmcwruopeaQhoPTXKx) -> reviews/r1-review.md @ sha 43e34e1
+2026-08-25T21:47:11Z 30 r1 reviewer returned: reviews/r1-review.md — 23 findings (F1-F23), 4 could-not-determine; CI/chrome/manifest/deviations verified clean
