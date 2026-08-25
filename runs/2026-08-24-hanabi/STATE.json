@@ -34,9 +34,14 @@
     "division": "div_0a3fd174-6ac2-4167-971e-e86f9eb9ed1e"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_3835c0c9-9f71-4b42-9c49-cda360fa8ae8",
+      "round_81ad9f15-2ac7-44e0-9de2-54883bcf2d86",
+      "round_3983ca28-c1f7-4f29-85a8-492c834a9747"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/dac699c0-31b4-4ad7-95de-9e3a5ed34b50.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32803415305"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T02:19:25Z",
+  "heartbeat_at": "2026-08-25T03:06:34Z",
   "session_ended_at": null,
   "session_id": "c2a0a349",
   "log": "runs/2026-08-24-hanabi/log.md"

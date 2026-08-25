@@ -1,14 +1,14 @@
 {
   "loaded": true,
-  "ms": 962,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_2aedf124-df70-45ce-b307-fa693c6d1943/sha256%3A937abbbc18b84262d82e5adb2b5e538641b4499542edfabdf8784f718f4e70b1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fcb416080-e376-425c-a37f-0f3185cf1f73.replay&v=2",
+  "ms": 2732,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4c005d78-ebb2-4095-83da-cde90519f53b/sha256%3A973eb76b7e4f91c6e246ca20d1063c284ab008112f27189c3566b8c3b3be8c1c/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fdac699c0-31b4-4ad7-95de-9e3a5ed34b50.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "TURN 0 / 80 · 0 / 25",
-  "scorebug": "daveey ▶ 0 BANKED 0 BURNT 0 HINTS daveey-1 0 BANKED 0 BURNT 0 HINTS Sprocket 0 BANKED 0 BURNT 0 HINTS Gasket 0 BANKED 0 BURNT 0 HINTS",
+  "scorebug": "daveey ▶ 0 BANKED 0 BURNT 0 HINTS daveey-1 0 BANKED 0 BURNT 0 HINTS Tinker 0 BANKED 0 BURNT 0 HINTS Widget 0 BANKED 0 BURNT 0 HINTS",
   "status": "REPLAY",
   "loading_text": "LOADING REPLAY…",
-  "feed_lines": 119,
+  "feed_lines": 114,
   "signals": {
     "data_replay_loaded": "true",
     "data_replay_error": null,
@@ -26,16 +26,16 @@
     },
     {
       "at": "50%",
-      "clock": "TURN 33 / 80 · 7 / 25"
+      "clock": "TURN 32 / 80 · 7 / 25"
     },
     {
       "at": "100%",
-      "clock": "TURN 65 / 80 · 15 / 25 · FINAL"
+      "clock": "TURN 64 / 80 · 18 / 25 · FINAL"
     }
   ],
   "soak": null,
   "canvas_text": {
-    "total": 10502,
+    "total": 9752,
     "outside": 0,
     "ellipsized": 0,
     "never_inside": 0,

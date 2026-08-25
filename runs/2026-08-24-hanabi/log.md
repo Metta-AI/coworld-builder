@@ -78,3 +78,35 @@
 2026-08-25T02:19:25Z progress phase=60 marker=submit-run-32800893319
 2026-08-25T02:19:25Z heartbeat phase=60
 2026-08-25T02:20:12Z 60 verifier re-dispatched (sthr_012G2ntBbWK7mATHMa5VWmrD) for post-remediation verification against v2 rounds (round 7+)
+2026-08-25T02:20:43Z heartbeat phase=60
+2026-08-25T02:20:43Z 60 poll rounds: r7 pending (v2 entrants 86c491d0/88bbcc80 confirmed); completed v2 rounds=0 of 2 needed
+2026-08-25T02:25:55Z heartbeat phase=60
+2026-08-25T02:25:55Z 60 poll rounds: r7=pending 
+2026-08-25T02:30:50Z heartbeat phase=60
+2026-08-25T02:30:50Z 60 poll rounds: r7=completed 
+2026-08-25T02:36:01Z heartbeat phase=60
+2026-08-25T02:36:01Z 60 poll rounds: r7=completed r8=pending 
+2026-08-25T02:40:53Z heartbeat phase=60
+2026-08-25T02:40:53Z 60 poll rounds: r7=completed r8=pending 
+2026-08-25T02:45:47Z heartbeat phase=60
+2026-08-25T02:45:47Z 60 poll rounds: r7=completed r8=completed 
+2026-08-25T02:53:01Z heartbeat phase=60
+2026-08-25T02:53:01Z 60 poll rounds: r7=completed r8=completed r9=pending 
+2026-08-25T02:53:01Z heartbeat phase=60
+2026-08-25T02:53:01Z 60 poll rounds: r7=completed r8=completed r9=pending 
+2026-08-25T02:57:48Z heartbeat phase=60
+2026-08-25T02:57:48Z 60 poll rounds: r7=completed r8=completed r9=completed 
+2026-08-25T03:05:07Z 60 re-verify attempt 2 (post-remediation, v2 rounds only)
+2026-08-25T03:05:07Z 60 check1 TRUE 3 completed v2 rounds: 7 (02:26:32Z), 8 (02:40:55Z), 9 (02:55:35Z); entrants 86c491d0 signaler:v2 / 88bbcc80 reader:v2; fillers at v2 ids 6e696c59+7a65d5b7 confirmed via GET /leagues/$L/filler-policies
+2026-08-25T03:05:07Z 60 check2 TRUE leaderboard daveey/hanabi-signaler:v2 + daveey-1/hanabi-reader:v2 rounds_played=8; Elo 1000.0 both = documented co-op expectation (design.md L191-199); fillers absent; mean team score r7=10 r8=17 r9=18
+2026-08-25T03:05:07Z 60 check3 TRUE round 9 ereq_2c1119ae-e7a7-441f-bd68-2fd8971eda45 completed replay_url=.../dac699c0-31b4-4ad7-95de-9e3a5ed34b50.replay champions seats 0/1 at :v2, fillers is_filler=true
+2026-08-25T03:05:07Z 60 check4 TRUE strict-UTF8 JSON 29012B protocol=hanabi.replay.v1 reason=complete endReason=deckout score 18/25; champion seats 32/32 non-scripted (llm 31 + retry 1), fallbacks [0,0,0,0]
+2026-08-25T03:05:07Z 60 check5 TRUE on scoped round (r9: 2 hits, both the platform bedrock haiku 429 throttle, cross-checked same-window vs garble ereq_7d8daeef @02:47:53Z and ledger ereq_4a4cd7ef @02:48:16Z); CAVEAT r7 and r8 each carried 1x "reply cut off at max_tokens before any JSON" (seat 0 signaler, recovered by retry, 0 fallbacks); "unbalanced JSON object" gone from all v2 rounds; r8 also 1x "anthropic error 500" (provider transient, not cross-checked)
+2026-08-25T03:05:07Z 60 check6 TRUE static iframe src /v2/coworlds/replays/static/cow_4c005d78-ebb2-4095-83da-cde90519f53b/sha256%3A973eb76b.../index.html?replay=<s3 dac699c0> ready=true; featured match = hanabi.r9.e1 at coworldVersion 0.1.1; source: SSR playlist[0] + POST /coworlds/replays/session (raw-HTML grep empty, client-rendered)
+2026-08-25T03:05:07Z 60 check7 TRUE committed release-result.json (0.1.1, run 32799997719) certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-25T03:05:07Z 60 check8 TRUE viewer-check run=32803415305 (dispatched 02:58:40Z, artifact url matches check-6 src) loaded=true ms=2732 clocks 0/32/64 differ, 9752 canvas draws 0 ellipsized 0 outside; artifact at runs/2026-08-24-hanabi/viewer-check/ (attempt-1 files overwritten)
+2026-08-25T03:05:07Z 60 VERIFY.md rewritten: 8 TRUE (check 5 with recorded caveat SS5.3)
+2026-08-25T03:05:07Z heartbeat phase=60
+2026-08-25T03:06:34Z 60 verifier attempt 2 returned: 8/8 TRUE on v2 rounds 7-9 (check 5 clean on scoped round 9, throttle lines = platform exception cross-checked garble+ledger; caveat recorded: r7/r8 each had 1 seat-0 max_tokens truncation, retry-recovered, 0 fallbacks; attempt-1 'unbalanced JSON' symptom eliminated); VERIFY.md rewritten + viewer-check run 32803415305 committed
+2026-08-25T03:06:34Z progress phase=60 marker=VERIFY.md-8of8-v2
+2026-08-25T03:06:34Z heartbeat phase=60
