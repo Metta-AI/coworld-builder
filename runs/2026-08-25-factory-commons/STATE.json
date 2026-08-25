@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-factory-commons",
   "starter": "coworld-ctf",
   "phase": "20",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "20": 1
+  },
   "review_round": 0,
   "coworld": {
     "version": "",
@@ -45,8 +47,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T14:22:57Z",
+  "heartbeat_at": "2026-08-25T17:37:40Z",
   "session_ended_at": null,
-  "session_id": "a4f7c2d1",
+  "session_id": "d409ba88",
   "log": "runs/2026-08-25-factory-commons/log.md"
 }

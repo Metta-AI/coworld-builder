@@ -21,3 +21,4 @@
 2026-08-25T16:47:00Z 20 pushed 6d3887c -> run 32873190436 failure (missing std/tables; renderer fixture fought its own design); docker-smoke + wasm-viewer GREEN
 2026-08-25T16:56:00Z 20 pushed e9ccce0 -> run 32873913589 SUCCESS (shift/end events now land inside the recorded frames)
 2026-08-25T17:05:00Z 20 pushed 62681ee -> run 32874694256 SUCCESS (two legibility fixes read off the smoke screenshot) — CLAIMED GREEN
+2026-08-25T17:37:40Z 00 resume at phase 20 attempt=1 session=d409ba88
