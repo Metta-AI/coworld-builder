@@ -119,3 +119,5 @@
 2026-08-25T18:29:21Z progress phase=70 marker=discord_message_id=1541877101056106506
 2026-08-25T18:29:21Z 70 -> 75 phase transition (STATE.phase=75)
 2026-08-25T18:29:21Z heartbeat phase=75
+2026-08-25T18:29:58Z 75 atlas: slug live in /api/coworlds (paintball, 113 episodes_7d); continent=paintlands (zero-sum team shooter — two squads, spray-tag elimination, KotH control; the paintlands row is literally shooters) ; spot 202,270 clearance 34.1
+2026-08-25T18:29:58Z heartbeat phase=75
