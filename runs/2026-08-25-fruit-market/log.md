@@ -50,3 +50,6 @@
 2026-08-25T23:12:56Z progress phase=40 marker=release-run-32908969155
 2026-08-25T23:12:56Z 40 -> 50 phase transition: entering league
 2026-08-25T23:12:56Z heartbeat phase=50
+2026-08-25T23:14:02Z 50 seed POST 200 lseed_c9ea258e league_758061e3-46cb-49db-aef0-a28fb10ba80e (default_variant_id=concentric-rivers accepted at seed time)
+2026-08-25T23:14:02Z 50 division PUT 200 div_794ae52e-812a-4ad9-be2f-b4da9ae25a7f (Competition L1); settings POST 200 (round_robin, filler_policy, elo k32, 15min)
+2026-08-25T23:14:02Z heartbeat phase=50
