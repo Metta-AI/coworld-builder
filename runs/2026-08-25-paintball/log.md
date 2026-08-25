@@ -32,3 +32,4 @@
 2026-08-25T12:14:12Z 30 r1 judge returned: blocking 0 (both markers agree); all 5 reviewer blockers verified fixed at 44af4da; 15/15 checklist PASS + parallel-batch PASS
 2026-08-25T12:14:12Z progress phase=30 marker=r1-verdict.md
 2026-08-25T12:14:12Z 30 -> 40 phase transition: STATE.phase=40
+2026-08-25T12:15:01Z 40 builder dispatched thread=sthr_01F6UwaQpNX142hUnYu1cTkn (release chain, version starts 0.1.0)
