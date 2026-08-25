@@ -38,3 +38,5 @@
 2026-08-25T07:00:22Z heartbeat phase=30
 2026-08-25T08:00:14Z 30 r2 fixer returned: 10 commits, head=f82126bf, ci.yml green run=32823608970 (R2-O1 say band gauged from 120-rune cap, no clip no jump measured; R2-O2 feed-row wrap override in appended block; R2-O3 new tools/ci/dom_text_smoke.mjs gate, 13 viewports, bites at 108 failures on old head; O4/O6/O7/O8/O11 fixed, O12 disputed with evidence, O10 needs-design, O5/O9 reasoned no-change)
 2026-08-25T08:00:14Z progress phase=30 marker=r2-fixes.md
+2026-08-25T08:01:10Z 30 r2 judge dispatched thread=sthr_01FvPRhNeg3WL6g4EwXhSrVx sha=f82126bf output=reviews/r2-verdict.md
+2026-08-25T08:01:10Z heartbeat phase=30
