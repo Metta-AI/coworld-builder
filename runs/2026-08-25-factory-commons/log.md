@@ -29,3 +29,4 @@
 2026-08-25T17:59:10Z 30 reviewer returned round 1: r1-review.md 513 lines, 1 blocking (B1 replay re-derivation test) + 18 non-blocking + 4 undetermined
 2026-08-25T17:59:10Z 30 fixer dispatched round 1
 2026-08-25T17:59:10Z heartbeat phase=30
+2026-08-25T21:19:09Z 00 resume at phase 30 attempt=1 session=ee652d74
