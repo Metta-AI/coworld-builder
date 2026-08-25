@@ -5,19 +5,24 @@
   "slug": "chemistry",
   "repo": "https://github.com/Metta-AI/cogame-chemistry",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_292543de-c887-4398-8d4e-70fdb298b290",
+    "manifest_sha": "sha256:1002ad49f6a1d222ab8c3f22d2b348c93ec6e930ab1a5cb21ebf6683b5ca3699",
+    "release_run_id": "32818992277"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "chemistry-foreman:v1",
+    "champion2": "chemistry-metabolist:v1",
+    "fillers": [
+      "chemistry-courier:v1",
+      "chemistry-freeloader:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T06:52:33Z",
+  "heartbeat_at": "2026-08-25T07:04:26Z",
   "session_ended_at": null,
   "session_id": "f159a6da",
   "log": "runs/2026-08-25-chemistry/log.md"

@@ -37,3 +37,6 @@
 2026-08-25T06:52:33Z progress phase=30 marker=r1-verdict.md
 2026-08-25T06:52:33Z heartbeat phase=40
 2026-08-25T06:53:24Z 40 builder dispatched (sthr_01QYYAyt26okv9czduJLzjMK) release v0.1.0
+2026-08-25T07:04:26Z 40 release v0.1.0 run=32818992277 step_failed=null: ok/canonical/certified/secret_put all true; cow_292543de-c887-4398-8d4e-70fdb298b290; replay-liveness skipped (static bundle); 4 policies v1, champion2 owned by ply_bac48eb1
+2026-08-25T07:04:26Z progress phase=40 marker=release-run-32818992277
+2026-08-25T07:04:26Z heartbeat phase=50
