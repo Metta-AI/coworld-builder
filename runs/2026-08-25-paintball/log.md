@@ -125,3 +125,7 @@
 2026-08-25T18:33:22Z 75 atlas dispatch 1 (32884108109) FAILED: 18 unplaced leagues named by build.mjs; placing them all via extra_cities per step 8. Continents chosen from /api/coworlds descriptions: commons=chemistry(shared vats/shirking),coins(mutual-harm trap),commons-family,cooperative-hunting(stag hunt),firm(principal-agent),matrix-games(mixed-motive matrix),territory(commons razing); parlour=chorus(creative party),cogchemists(deduction/bluff),garble(noisy language trading); tabletop=cogiavelli+cogplomacy(Diplomacy),hanabi(card port); shire=collab-cooking(cozy kitchen),daycare(caregiving yard); paintlands=cogolf(zero-sum code duel),grid-wars(Core Wars battle); simulations=cogmud(MUD town). Spots via atlas_spot.py with iterative local-CITIES append to avoid self-collision; all clearances >=22.9
 2026-08-25T18:33:22Z heartbeat phase=75
 2026-08-25T18:33:47Z 75 atlas dispatch=32884445460 region=paintlands at=202,270 clearance=34.1 extra_cities=18
+2026-08-25T18:36:44Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20388 status=pr_open (dispatch 2; 18 leagues placed for other runs: chemistry chorus cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting daycare firm garble grid-wars hanabi matrix-games territory)
+2026-08-25T18:36:44Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20388
+2026-08-25T18:36:44Z 75 -> 80 phase transition (STATE.phase=80)
+2026-08-25T18:36:44Z heartbeat phase=80
