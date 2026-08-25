@@ -49,3 +49,5 @@
 2026-08-25T12:48:11Z progress phase=50 marker=round-1-pending
 2026-08-25T12:48:11Z 50 -> 60 phase transition: STATE.phase=60
 2026-08-25T12:49:10Z 60 verifier dispatched thread=sthr_01V93u1PwCsGa7DVLcgzkrhm output=runs/2026-08-25-paintball/VERIFY.md (75-min bound)
+2026-08-25T12:50:04Z 60 poll 1: round 1 pending (0 completed); waiting
+2026-08-25T12:50:04Z heartbeat phase=60
