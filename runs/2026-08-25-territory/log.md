@@ -34,3 +34,5 @@
 2026-08-25T13:03:00Z progress phase=30 marker=r1-verdict.md
 2026-08-25T13:05:00Z 30 -> 40 phase transition, STATE.phase=40 (judge blocking=0 round 1)
 2026-08-25T13:05:00Z heartbeat phase=40
+2026-08-25T13:09:00Z 40 builder dispatched thread=sthr_01B1dt1WtSH97fwWxhHuDaiA (release chain, v0.1.0 first, policies from repo tools/ci/policies.json)
+2026-08-25T13:09:00Z heartbeat phase=40
