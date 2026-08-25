@@ -52,3 +52,9 @@
 2026-08-25T08:36:44Z 40 -> 50 phase transition, STATE.phase=50
 2026-08-25T08:39:00Z 50 seed POST 200 (coworld_name=collab_cooking — slug 404s, platform keys on game.name; commons-family precedent) league=league_592e6ed0-3f01-4084-bb90-75ace0db0063 seed=lseed_cab7b08e
 2026-08-25T08:39:00Z 50 division PUT 200 div_027403b9-3208-43b8-b2e6-499bd18681e5; settings POST 200 (round_robin, filler_policy, elo k=32, round_interval=15m)
+2026-08-25T08:42:05Z 50 champion1 submit run=32827717440 ok=true sub_f9b4031a expo:v1 uuid=b26fe220 (daveey)
+2026-08-25T08:42:05Z 50 champion2 submit run=32827785290 ok=true sub_3125cc66 linecook:v1 uuid=9ef2fbd1 (daveey-1 verified)
+2026-08-25T08:42:05Z 50 fillers POST 200 brigade=6f226863 passer=fb542fe5 (neither champion); rounds-paused=false 200; trigger-round 200
+2026-08-25T08:42:05Z 50 rounds: r1 failed (Temporal RoundWorkflow — auto-round raced the filler registration on unpause), r2 pending with both champions in entrant_attributions; exit criterion met
+2026-08-25T08:42:05Z progress phase=50 marker=league_592e6ed0
+2026-08-25T08:42:05Z 50 -> 60 phase transition, STATE.phase=60
