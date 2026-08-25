@@ -73,3 +73,6 @@
 2026-08-25T08:32:37Z 60 done (8/8 TRUE, judge blocking 0) -> phase 70
 2026-08-25T08:32:37Z heartbeat phase=70
 2026-08-25T08:34:07Z 70 announce.attempted_at written pre-POST
+2026-08-25T08:34:38Z 70 announce msg=1541727416056029285 (flags=4, embeds=[])
+2026-08-25T08:34:38Z progress phase=70 marker=announce.discord_message_id
+2026-08-25T08:34:38Z heartbeat phase=75
