@@ -36,3 +36,4 @@
 2026-08-25T06:52:33Z 30 judge verdict round=1: blocking=0 (markers agree); fixer disputes F6/F21/F60a upheld
 2026-08-25T06:52:33Z progress phase=30 marker=r1-verdict.md
 2026-08-25T06:52:33Z heartbeat phase=40
+2026-08-25T06:53:24Z 40 builder dispatched (sthr_01QYYAyt26okv9czduJLzjMK) release v0.1.0
