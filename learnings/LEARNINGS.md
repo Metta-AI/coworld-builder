@@ -928,3 +928,35 @@ the starter after the fact.
 - **An adaptive registration grace beats a fixed one**: returning as soon as every connected
   socket has registered (bounding only a connected-but-silent socket) cut 5 s from every episode
   and was what brought the cert fixture under the 60 s cap without touching the game.
+
+## 2026-08-24 hanabi
+
+1. **`maxOutputTokens` truncation has a misleading log signature.** A reply cut at `max_tokens`
+   mid-JSON reaches the hosted log as `rejected: unbalanced JSON object in response` — it looks
+   like a malformed-reply bug, but the fix is budget, not parsing. Hanabi shipped 800 (design
+   default), failed phase-60 check 5 on it, and re-released at 900: the unbalanced-JSON signature
+   vanished but a reasoning-heavy champion (the "signaler" prompt) still overran ~once per episode
+   in 2 of 3 verified rounds (always retry-recovered, zero fallbacks). Two carries: (a) make the
+   truncation name itself — on `stop_reason=="max_tokens"`, re-run the JSON extractor and raise
+   "reply cut off at max_tokens mid-JSON" instead of the balancer's generic error (0.1.1 does
+   this); (b) for games whose prompts invite long reasoning, budget ≥1000 output tokens or pin a
+   JSON-first reply contract in the fixed instruction scaffold at design time.
+2. **`gh --jq` is not jq: it takes no `--arg`.** `gh run list --jq --arg d "$D" '…'` fails with
+   "unknown command" AFTER the dispatch went out, and a careless fallback `gh run download` then
+   grabs the PREVIOUS run's artifact as this dispatch's evidence (a submit-result naming the wrong
+   policy made it visible here). Interpolate the timestamp into the jq string
+   (`--jq ".[] | select(.createdAt >= \"$D\") …"`) and always cross-check the downloaded
+   artifact's identifying field (policy label, url) against what you dispatched.
+3. **The atlas backlog compounds under parallel runs.** Dispatch 1 failed with **12** unplaced
+   leagues — every coworld shipped since the last atlas PR actually merged (metta's Graphite queue
+   waits on a human, so open atlas PRs do not update `main`'s `places.mjs`). Expect the first
+   dispatch to fail, and batch-place the whole list via `extra_cities` in dispatch 2. To pick
+   several non-colliding spots in one region, append each pick as a fake CITIES line to a local
+   copy of `places.mjs` and re-run `atlas_spot.py` against that copy — clearances stayed ≥22.9
+   for 13 dots across 5 regions.
+4. **`git config --global --remove-section credential.https://github.com` removes the sandbox's
+   own helper too.** Cleaning up after a sub-agent's `gh auth setup-git` this way silently
+   deleted the `git-credential-anthropic` registration that lives in the same section, and pushes
+   then hung/401'd. The restore is one line:
+   `git config --global credential.https://github.com.helper /usr/local/bin/git-credential-anthropic`.
+   Prefer `--unset-all` of the two gh-added values over removing the whole section.
