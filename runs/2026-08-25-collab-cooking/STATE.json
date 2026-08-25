@@ -31,9 +31,14 @@
     "division": "div_027403b9-3208-43b8-b2e6-499bd18681e5"
   },
   "verify": {
-    "rounds": [],
+    "rounds": [
+      "round_201d9765-4ea3-4391-9393-b486cc36eb54",
+      "round_31a882c6-ee31-42b1-a1e2-8870cc0ab6b7",
+      "round_f48e29f0-a9f2-4002-9739-1469bb48182d"
+    ],
     "replay": "",
-    "iframe_static": false
+    "iframe_static": false,
+    "viewer_check_run": "32830082226"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T09:14:28Z",
+  "heartbeat_at": "2026-08-25T09:20:02Z",
   "session_ended_at": null,
   "session_id": "67d9a57c",
   "log": "runs/2026-08-25-collab-cooking/log.md"
