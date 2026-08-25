@@ -4,7 +4,7 @@
   "run_task": "1217846726828160",
   "slug": "hidden-agenda",
   "repo": "Metta-AI/cogame-hidden-agenda",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T23:25:30Z",
+  "heartbeat_at": "2026-08-25T23:26:02Z",
   "session_ended_at": null,
   "session_id": "7ba01598",
   "log": "runs/2026-08-25-hidden-agenda/log.md"
