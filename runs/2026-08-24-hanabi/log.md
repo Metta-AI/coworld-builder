@@ -116,3 +116,7 @@
 2026-08-25T03:11:12Z heartbeat phase=70
 2026-08-25T03:12:33Z 70 attempt marker pre-POST (attempted_at=2026-08-25T03:12:33Z)
 2026-08-25T03:12:33Z heartbeat phase=70
+2026-08-25T03:12:54Z 70 announce msg=1541646470510415943 (flags=4, embeds=[])
+2026-08-25T03:12:54Z progress phase=70 marker=discord_message_id=1541646470510415943
+2026-08-25T03:12:54Z 70 phase -> 75
+2026-08-25T03:12:54Z heartbeat phase=75

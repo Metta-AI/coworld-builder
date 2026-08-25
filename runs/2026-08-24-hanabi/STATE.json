@@ -5,7 +5,7 @@
   "slug": "hanabi",
   "repo": "https://github.com/Metta-AI/cogame-hanabi",
   "starter": "Metta-AI/cogame-bullwhip",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -45,7 +45,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-25T03:12:33Z",
-    "discord_message_id": ""
+    "discord_message_id": "1541646470510415943"
   },
   "atlas": {
     "status": "",
@@ -59,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-25T03:12:33Z",
+  "heartbeat_at": "2026-08-25T03:12:54Z",
   "session_ended_at": null,
   "session_id": "c2a0a349",
   "log": "runs/2026-08-24-hanabi/log.md"
