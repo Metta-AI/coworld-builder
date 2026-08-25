@@ -95,3 +95,4 @@
 2026-08-25T05:43:51Z 75 atlas slug live in /api/coworlds (cooperative-hunting, episodes_7d=4); continent=commons (rails: mixed-motive assurance game — solo-safe rabbits vs joint big-game payoff; not zero-sum, not a village); spot 416,574 clearance=22.9 label="Coop Hunting"
 2026-08-25T05:44:19Z 75 atlas dispatch=32813991808 region=commons at=416,574 clearance=22.9
 2026-08-25T05:44:19Z heartbeat phase=75
+2026-08-25T05:46:45Z 75 atlas dispatch#1 32813991808 failed step=build: 13 unplaced leagues; placing them via extra_cities (rails continent calls: tabletop=cogiavelli,cogplomacy,hanabi board/card ports; paintlands=cogolf,grid-wars zero-sum; commons=coins,commons-family,firm,matrix-games mixed-motive; parlour=chorus,cogchemists,garble talk/deduction/language; simulations=cogmud MUD borrowed-world). Spots via atlas_spot.py with iterative working-copy so new dots avoid each other, all clearance>=22.9
