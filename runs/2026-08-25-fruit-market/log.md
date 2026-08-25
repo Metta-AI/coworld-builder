@@ -45,3 +45,4 @@
 2026-08-25T23:01:32Z progress phase=30 marker=r1-verdict.md blocking:0
 2026-08-25T23:01:32Z 30 -> 40 phase transition: entering release (review loop closed in 1 round)
 2026-08-25T23:01:32Z heartbeat phase=40
+2026-08-25T23:02:15Z 40 builder dispatched for release (thread sthr_01LmiVHXgfhUcJZKrzeQbBGB) — coworld-release.yml, version 0.1.0 first, 3-dispatch budget
