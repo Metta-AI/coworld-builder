@@ -84,3 +84,6 @@
 2026-08-25T05:34:29Z heartbeat phase=60
 2026-08-25T05:35:04Z 60 judge dispatched thread=sthr_01B6Z8QFVvDxxKFpYieig8LP output=runs/2026-08-24-cooperative-hunting/verify-verdict.md
 2026-08-25T05:35:04Z heartbeat phase=60
+2026-08-25T05:41:47Z 60 judge returned thread=sthr_01B6Z8QFVvDxxKFpYieig8LP file=verify-verdict.md BLOCKING: 0 (8/8 confirmed by independent re-fetch; 3 advisories, no verdict impact)
+2026-08-25T05:41:47Z 60 done -> phase 70
+2026-08-25T05:41:47Z heartbeat phase=70
