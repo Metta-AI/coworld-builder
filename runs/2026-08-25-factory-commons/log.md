@@ -77,3 +77,4 @@
 2026-08-25T23:03:33Z progress phase=60 marker=verify-verdict.md
 2026-08-25T23:03:33Z 60 -> 70 phase transition, STATE phase=70
 2026-08-25T23:03:33Z heartbeat phase=70
+2026-08-25T23:04:49Z 70 announce attempted_at written before POST
