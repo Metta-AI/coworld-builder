@@ -11,3 +11,4 @@
 2026-08-25T23:49:32Z progress phase=10 marker=design-r1.md
 2026-08-25T23:49:32Z heartbeat phase=20
 2026-08-25T23:50:17Z 20 repo created https://github.com/Metta-AI/cogame-hidden-agenda (public); propagate-secrets run 32912493482 completed; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-25T23:51:13Z 20 builder dispatched round=1 thread=sthr_01PTMkReBrxWb5NwmN1czavb target=ci.yml green on main of Metta-AI/cogame-hidden-agenda
