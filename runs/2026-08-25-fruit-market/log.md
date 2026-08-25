@@ -63,3 +63,4 @@
 2026-08-25T23:16:34Z heartbeat phase=60
 2026-08-25T23:17:27Z 60 verifier dispatched (thread sthr_01FPQHa2DD1p6DBQdVRWj2Zi) -> VERIFY.md, 75-min bound, polls every 5 min
 2026-08-25T23:17:51Z heartbeat phase=60 (verifier: round 2 pending, polling)
+2026-08-25T23:32:14Z heartbeat phase=60 (round 2 completed, round 3 pending)
