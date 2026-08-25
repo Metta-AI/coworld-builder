@@ -36,3 +36,6 @@
 2026-08-25T00:30:21Z heartbeat phase=30
 2026-08-25T00:31:27Z 30 r1 judge dispatched thread=sthr_011Nm2R4G9zcjU4E9zcrfXTH sha=80e2acf3 output=reviews/r1-verdict.md
 2026-08-25T00:44:46Z 30 r1 verdict blocking=0 file=reviews/r1-verdict.md
+2026-08-25T00:45:34Z 30 r1 judge returned thread=sthr_011Nm2R4G9zcjU4E9zcrfXTH blocking=0 -> phase 40
+2026-08-25T00:45:34Z progress phase=30 marker=r1-verdict.md
+2026-08-25T00:45:34Z heartbeat phase=40
