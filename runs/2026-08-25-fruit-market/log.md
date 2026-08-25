@@ -36,3 +36,4 @@
 2026-08-25T21:29:00Z progress phase=20 marker=ci-run-32900609480-green
 2026-08-25T21:29:00Z 20 -> 30 phase transition: entering review loop, review_round=1
 2026-08-25T21:29:00Z heartbeat phase=30
+2026-08-25T21:30:22Z 30 r1 reviewer dispatched (thread sthr_01WhEZNmcwruopeaQhoPTXKx) -> reviews/r1-review.md @ sha 43e34e1
