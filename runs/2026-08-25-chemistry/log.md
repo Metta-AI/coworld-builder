@@ -68,3 +68,4 @@
 2026-08-25T08:25:38Z 60 verifier returned: VERIFY.md 8/8 TRUE; 5 completed rounds (2-6); leaderboard daveey-1 1049.71 / daveey 982.29 (+2 outside entrants relh/richard); round-6 replay 46fc7f16 clean, champions 14/14 llm, famine ending complete; viewer-check run 32825902427 loaded=true clocks differ; Bedrock 429 outage r2-r5 documented, cleared 08:08Z inside bound
 2026-08-25T08:25:38Z progress phase=60 marker=round_e0bdbc2f-6242-4d2c-83e9-31626e71d210
 2026-08-25T08:25:38Z heartbeat phase=60
+2026-08-25T08:26:26Z 60 judge dispatched (sthr_01D6ajb3W5TyA5C852LHTxc9) on VERIFY.md
