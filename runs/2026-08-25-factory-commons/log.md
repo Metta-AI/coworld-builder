@@ -15,3 +15,5 @@
 2026-08-25T14:24:06Z 20 propagate-secrets run 32859209291 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-25T14:24:06Z 20 builder dispatched round 1
 2026-08-25T16:19:00Z 20 pushed 6d6ba8b (initial build) -> ci.yml run 32871176243 dispatched
+2026-08-25T16:30:13Z 20 pushed fb3e4ac -> run 32871512297 failure (doc comments in expressions, GC-safe stubs); fixed
+2026-08-25T16:30:13Z 20 pushed 87ea426 -> run pending (shadowed module names, std/json, cert fixture capMin for the soak)
