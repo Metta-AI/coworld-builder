@@ -69,3 +69,4 @@
 2026-08-25T19:40:10Z progress phase=70 marker=discord_message_id=1541894933970165914
 2026-08-25T19:40:10Z 70 -> 75 phase transition
 2026-08-25T19:40:10Z heartbeat phase=75
+2026-08-25T19:42:11Z 75 atlas spot picked: region=shire x=217 y=583 anchor=c label=Daycare — rails call: cozy cooperative caregiving yard (Cozy Shire); matches pending placement of daycare in metta PR #20388 (transform 651,1749 = 3x overview units), keeps pending PRs consistent; clears pending collab-cooking shire dot (193,586) by ~24 units
