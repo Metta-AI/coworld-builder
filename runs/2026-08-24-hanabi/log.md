@@ -111,3 +111,6 @@
 2026-08-25T03:06:34Z progress phase=60 marker=VERIFY.md-8of8-v2
 2026-08-25T03:06:34Z heartbeat phase=60
 2026-08-25T03:07:06Z 60 judge dispatched (sthr_01WWEow3RqSza2FXRGdZUq3k)
+2026-08-25T03:11:12Z 60 judge returned: 60-verdict.md blocking=0 (all 8 SPEC items re-fetched and upheld)
+2026-08-25T03:11:12Z 60 verified (judge blocking=0) -> phase 70
+2026-08-25T03:11:12Z heartbeat phase=70
