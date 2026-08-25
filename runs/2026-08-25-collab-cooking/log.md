@@ -60,3 +60,5 @@
 2026-08-25T08:42:05Z 50 -> 60 phase transition, STATE.phase=60
 2026-08-25T08:43:23Z 60 verifier dispatched thread=sthr_01Ke9zYsmjqhRwgcRn1t8q5W output=VERIFY.md (75-min bound, polls r>=2 completed)
 2026-08-25T08:43:23Z heartbeat phase=60
+2026-08-25T08:44:33Z heartbeat phase=60
+2026-08-25T08:44:33Z 60 poll#1 rounds: r1 failed (Temporal, known), r2 COMPLETED but its only episode ereq_b5042a23 status=failed error_type=game_unhealthy error='Game container exited with code 1' — no replay, artifacts/results+replay 404. checks 3/4/5 not satisfiable on r2; waiting for r3
