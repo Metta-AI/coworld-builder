@@ -107,3 +107,4 @@
 2026-08-25T10:56:36Z 70 announce msg=1541763162234167437 (flags=4, embeds=0, 1746 chars)
 2026-08-25T10:56:36Z progress phase=70 marker=announce.discord_message_id=1541763162234167437
 2026-08-25T10:56:36Z 70 -> 75 phase transition, STATE.phase=75
+2026-08-25T10:58:04Z 75 atlas dispatch=32839861787 region=commons at=416,574 clearance=22.9 label="Collab Cooking"
