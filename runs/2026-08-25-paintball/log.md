@@ -129,3 +129,6 @@
 2026-08-25T18:36:44Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20388
 2026-08-25T18:36:44Z 75 -> 80 phase transition (STATE.phase=80)
 2026-08-25T18:36:44Z heartbeat phase=80
+2026-08-25T18:39:01Z 80 close: summary on run task (1217840493582056) + condensed on idea (1217840518663635); LEARNINGS.md dated section appended; all 9 phase subtasks complete; idea 1217748137180941 completed; run task moved to Done
+2026-08-25T18:39:01Z progress phase=80 marker=run-task-moved-to-Done
+2026-08-25T18:39:01Z session end in phase 80 (run COMPLETE: repo + 0.1.3 certified + league with 20 rounds + verified static viewer + announced + atlas PR 20388 open-approved). Next action: none — run is Done; atlas merge is the merge queue's.
