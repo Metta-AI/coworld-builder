@@ -43,3 +43,11 @@
 2026-08-26T05:57:00Z 50 seed 200; league league_6789db33-ab0a-4b15-b572-b3ea39c614fd (leagues GET returns bare array here, matched client-side)
 2026-08-26T05:57:30Z 50 division 200 div_de04ec28-cd1a-4349-9667-d34a687735c7; settings 200 elo round_robin filler_policy interval=15m (round_scoring_rule=mean per design note)
 2026-08-26T05:58:00Z 50 champion1 submit dispatching: pistonball-swell:v2 as ply_44ae9048-3242-4654-881f-6d9d43347fa3
+2026-08-26T04:42:13Z 00 clock note: previous stamps 05:52-05:58 were ahead of real UTC (sandbox drift on my part); stamps from here are real date -u
+2026-08-26T04:42:13Z 50 champion1 submit ok run=32931064104 sub_67c13f0a-62a4-4137-9add-c43523f3adb5 (pistonball-swell:v2, daveey)
+2026-08-26T04:42:13Z 50 champion2 submit ok run=32931105762 sub_92d8fa78-f25d-4927-91d3-39efdc9c79ae (pistonball-cascade:v2, daveey-1)
+2026-08-26T04:42:13Z 50 filler-policies 200: wavebot:v2 e0e9ce4a-7232-4309-8558-752adb78b10e, metronome:v2 bf0ca47e-73a9-4283-bf0a-57f08f0de363 (set BEFORE my trigger)
+2026-08-26T04:42:13Z 50 unpause 200; trigger-round 200; round 1 failed (auto-fired pre-fillers: Temporal RoundWorkflow failed before settling), round 2 pending with BOTH champions in entrant_attributions
+2026-08-26T04:42:13Z progress phase=50 marker=league_6789db33-ab0a-4b15-b572-b3ea39c614fd
+2026-08-26T04:42:13Z 00 phase transition 50 -> 60
+2026-08-26T04:42:13Z heartbeat phase=60
