@@ -24,3 +24,5 @@
 2026-08-26T15:59:56Z heartbeat phase=20
 2026-08-26T16:14:33Z heartbeat phase=20
 2026-08-26T16:29:11Z heartbeat phase=20
+2026-08-26T16:49:33Z 20 CI green on main: run 32989622335 sha=94e5e00050211f8fb0f5b3171b72f3eb0591949b (jobs test/docker-smoke/wasm-viewer success); coordinator exit checks pass: placeholders CLEAN, exec bits 100755 both hooks, viewer_smoke.mjs byte-identical, 3 workflows active w/ pinned inputs + release/submit-result artifacts + per-policy player field, num_agents 2/2/2/6 + cert 2, game_config.players 2/2/2/6, policies.json 2 PROMPT + 2 scripted champion#2 player=ply_bac48eb1; stale-sha run 32990171724 failed on transient nimby download reset (GitHub outage) — not HEAD, ignored
+2026-08-26T16:49:33Z heartbeat phase=20
