@@ -11,3 +11,5 @@
 2026-08-26T00:24:00Z progress phase=10 marker=design.md written and accepted
 2026-08-26T00:24:30Z 00 phase transition 10 -> 20
 2026-08-26T00:24:30Z heartbeat phase=20
+2026-08-26T00:27:30Z 20 repo created https://github.com/Metta-AI/cogame-pistonball (public)
+2026-08-26T00:28:30Z 20 propagate-secrets run 32915048989 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-pistonball
