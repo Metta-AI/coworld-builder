@@ -58,3 +58,5 @@
 2026-08-26T23:20:36Z heartbeat phase=60
 2026-08-26T23:20:36Z 60 check7 TRUE (release-result.json committed): 'Replay liveness: skipped (static replay bundle declared; ...)'
 2026-08-26T23:20:36Z 60 poll#1 rounds: r1=failed r2=pending; completed=0
+2026-08-26T23:30:38Z heartbeat phase=60
+2026-08-26T23:30:38Z 60 poll#2/3 rounds: r2=completed (ereq_ff798329 completed, replay 3ce57c8c), r3 not yet created; completed=1
