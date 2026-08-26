@@ -66,3 +66,5 @@
 2026-08-26T13:41:39Z 50 round1 failed (Temporal pre-settle race, fillers WERE set first) round2=round_f889f1ab pending with both champions in entrant_attributions — exit criterion met
 2026-08-26T13:41:39Z progress phase=50 marker=league_2ae87c04-15f1-4116-ad6d-54e0d656ea49
 2026-08-26T13:41:39Z 00 phase transition 50 -> 60
+2026-08-26T13:42:36Z 60 verifier dispatched thread=sthr_01RG3PfBApAtdfLLk9YcFkzF output=runs/2026-08-26-particle-worlds/VERIFY.md (75-min bound, rounds tick 15m)
+2026-08-26T13:42:36Z heartbeat phase=60
