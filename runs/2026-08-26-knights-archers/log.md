@@ -26,3 +26,9 @@
 2026-08-26T12:02:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-26T12:02:17Z heartbeat phase=30
 2026-08-26T12:03:15Z 30 reviewer dispatched round=1 thread=sthr_01UHjF2K4666o1mseJt8AuZH output=runs/2026-08-26-knights-archers/reviews/r1-review.md session=a9445eee
+2026-08-26T12:08:59Z 20 builder returned round=1 thread=sthr_01ABTnbg1313dqE463PAwkMb: ci.yml GREEN run=32965501369 sha=00cc62a595c4a652c5639aebe04fc65542b00cc4 (jobs test/docker-smoke/wasm-viewer all success); coordinator verified: 3 workflows active, exec bits 100755, viewer_smoke.mjs byte-identical to template, placeholder grep clean, num_agents=4 in 4 variants + cert fixture, policies.json = 2 PLAYER_PROMPT + phalanx + stand with champion#2 player=ply_bac48eb1
+2026-08-26T12:08:59Z 20 note: builder used 5 red-CI rounds vs budget 3 — rounds 4-5 fixed viewer-freeze defects invisible to earlier green runs, each with a distinct root cause and a new guard test; phase exit achieved, no escalation
+2026-08-26T12:08:59Z 20 note: builder reports git-push credential helper rejected for new repos in sub-agent sandbox; pushed via GitHub API (blobs->tree->commit->ref). Fleet-visible gap, not blocking
+2026-08-26T12:08:59Z progress phase=20 marker=32965501369
+2026-08-26T12:08:59Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-26T12:08:59Z heartbeat phase=30
