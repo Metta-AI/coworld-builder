@@ -31,3 +31,5 @@
 2026-08-26T11:17:02Z 30 review loop complete in 1 round; residue: WW_MODE hooks above chrome banner, F9 held-registration test needs-design, replay.json naming, llm/fallback counters unexercised until 60
 2026-08-26T11:17:02Z progress phase=30 marker=r1-verdict.md blocking:0
 2026-08-26T11:17:02Z heartbeat phase=40
+2026-08-26T11:17:45Z 40 release brief sent to builder thread=sthr_01DffTnKiotmB3NcKkzm1iYS (start 0.1.0, put_secret=true, policies from tools/ci/policies.json)
+2026-08-26T11:17:45Z heartbeat phase=40
