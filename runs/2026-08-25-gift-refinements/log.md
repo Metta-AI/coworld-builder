@@ -37,3 +37,4 @@
 2026-08-26T02:16:30Z progress phase=30 marker=r1-verdict.md
 2026-08-26T02:16:30Z 30 -> 40 phase transition: STATE.phase=40 written before builder dispatch
 2026-08-26T02:16:30Z heartbeat phase=40
+2026-08-26T02:17:16Z 40 builder dispatched thread=sthr_01ECXheCHMm2iPdPKqe7QcpZ for release session=dd5e2e1a
