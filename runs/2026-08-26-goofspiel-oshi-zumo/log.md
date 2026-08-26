@@ -64,3 +64,6 @@
 2026-08-26T23:41:05Z 60 poll#4 rounds: r2+r3 completed (r3 completed_at 23:35:46); waiting for r4 so both counted rounds are unambiguously post-filler
 2026-08-26T23:51:14Z heartbeat phase=60
 2026-08-26T23:51:14Z 60 poll#5/6 rounds: r4 pending (created 23:47:13); r2+r3 completed; r3 hosted log CLEAN (0 matches)
+2026-08-26T23:56:36Z heartbeat phase=60
+2026-08-26T23:56:36Z 60 checks 1-7 fetched: r2,r3,r4 completed; leaderboard daveey+daveey-1 rounds_played=3; ereq_1e52db7f completed replay da00ff5a; protocol gozu.replay.v1 reason=complete; log CLEAN; iframe static ready=true; cert liveness skipped
+2026-08-26T23:56:36Z 60 check8 dispatched viewer-check.yml run=33025003314
