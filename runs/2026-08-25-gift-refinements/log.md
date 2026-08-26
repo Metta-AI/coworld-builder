@@ -95,3 +95,8 @@
 2026-08-26T03:44:07Z 60 builder returned: 0.1.2 canonical+certified run=32927080527 cow=cow_e19d6eae-78b4-447d-878d-b856c435db87 policies all :v3
 2026-08-26T03:44:07Z progress phase=60 marker=release-run-32927080527
 2026-08-26T03:44:07Z heartbeat phase=60
+2026-08-26T03:46:48Z 60 re-wire: paused 200; fillers set to reciprocator:v3=e9f53270 hoarder:v3=2c45167f (response lists exactly these two)
+2026-08-26T03:46:48Z 60 re-wire: champion1 mirror:v3 submit ok run=32927589008 sub_1f47eb88; champion2 patron:v3 submit ok run=32927626723 sub_2c24bbbc
+2026-08-26T03:46:48Z 60 re-wire: unpaused, trigger-round ok; round 7 pending but attribution carries patron v2 (b88073d9) — placement async; later rounds expected to carry patron:v3=d848d844
+2026-08-26T03:46:48Z progress phase=60 marker=sub_2c24bbbc-8512-4633-bed1-9b9aba9f5184
+2026-08-26T03:46:48Z heartbeat phase=60

@@ -23,7 +23,10 @@
       "gift-refinements-reciprocator:v3",
       "gift-refinements-hoarder:v3"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "e9f53270-27b1-4905-9728-107b1d10fad8",
+      "2c45167f-8f09-4535-878d-234490db9b8a"
+    ]
   },
   "league": {
     "id": "league_aa42c0da-031b-49b1-9524-e4acc85fd2f6",
@@ -88,7 +91,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T03:44:07Z",
+  "heartbeat_at": "2026-08-26T03:46:48Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
