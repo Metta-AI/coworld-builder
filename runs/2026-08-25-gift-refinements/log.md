@@ -40,3 +40,7 @@
 2026-08-26T02:17:16Z 40 builder dispatched thread=sthr_01ECXheCHMm2iPdPKqe7QcpZ for release session=dd5e2e1a
 2026-08-26T02:17:36Z 40 dispatch version=0.1.0 run=32922182197 step_failed=none decision=bump — local release green (ok/canonical/secret_put true, certify 10/10 static-skip, 4 policies :v1) but live GET /coworlds/<cow>/certification = failed at smoke-episode (platform 404 on POST /v2/episode-requests, retryable=false); documented cold-image class → bump version, no code change
 2026-08-26T02:25:43Z 40 dispatch version=0.1.1 run=32922682398 step_failed=none decision=accepted — ok=true canonical=true certify.ok=true liveness=skipped(static) secret_put=true hosted_certification=certified (live endpoint: state=certified, 10/10 pass); cow_686eadd9-7594-425c-98b2-854deb9acdd1; policies mirror:v2, patron:v2 (ply_bac48eb1), reciprocator:v2, hoarder:v2
+2026-08-26T02:33:36Z 40 builder returned: release 0.1.1 canonical+certified run=32922682398 cow=cow_686eadd9-7594-425c-98b2-854deb9acdd1 (0.1.0 hosted-cert failed, cold-image class, bumped)
+2026-08-26T02:33:36Z progress phase=40 marker=release-run-32922682398
+2026-08-26T02:33:36Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-26T02:33:36Z heartbeat phase=50
