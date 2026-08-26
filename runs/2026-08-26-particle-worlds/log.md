@@ -25,3 +25,4 @@
 2026-08-26T09:42:18Z progress phase=20 marker=ci-run-32953267780-green
 2026-08-26T09:42:18Z 00 phase transition 20 -> 30
 2026-08-26T09:42:53Z 30 r1 reviewer dispatched thread=sthr_01Mrk8UBqCZyJ87A3Hn1XmU8 output=runs/2026-08-26-particle-worlds/reviews/r1-review.md sha=99dcaab7
+2026-08-26T09:43:16Z 30 r1 reviewer dispatched thread=sthr_01VxB4n9qwfQrUFT6cAWrSGX sha=99dcaab7 checkout=/workspace/cogame-particle-worlds output=reviews/r1-review.md
