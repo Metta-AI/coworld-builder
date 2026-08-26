@@ -19,3 +19,4 @@
 2026-08-26T22:40:30Z 20 -> 30 phase transition: STATE phase=30 review_round=1
 2026-08-26T22:40:30Z heartbeat phase=30
 2026-08-26T22:40:30Z progress phase=20 marker=ci-run-33022161451
+2026-08-26T22:44:00Z 30 reviewer dispatched r1 thread=sthr_018rVu46JeKKnJBpajwsDcXY sha=5f23877d0066763e52d695be02ffe88d5133e2b4 output=reviews/r1-review.md session=ng26a441
