@@ -15,3 +15,8 @@
 2026-08-26T16:37:46Z 20 builder dispatched round=1 thread=sthr_01BfzuzKig6dA1CBGgBDpQks repo=Metta-AI/cogame-liars-dice session=90a1c681
 2026-08-26T16:37:46Z heartbeat phase=20
 2026-08-26T20:01:07Z 00 resume at phase 20 attempt=1 session=dc527a34
+2026-08-26T20:02:41Z 20 resumed after dead session: builder thread from prior session had completed — ci.yml green on main run=32994991825 sha=23da0888e90cc3c57ef7c901811fca488749d62e
+2026-08-26T20:02:41Z 20 exit checks pass: placeholders clean, exec bits on docker_smoke.sh+build_replay_viewer.sh, 3 workflows parse+active, release inputs version/policies/put_secret/skip_certify, submit inputs player_id/policy/league_id, release-result+submit-result artifacts, policies.json 2 prompt (needler carries ply_bac48eb1) + 2 scripted (bayes/pressure), manifest num_agents=4 all variants + cert fixture
+2026-08-26T20:02:41Z progress phase=20 marker=ci-run-32994991825
+2026-08-26T20:02:41Z 20 -> 30 phase transition: STATE phase=30 review_round=1 session=dc527a34
+2026-08-26T20:02:41Z heartbeat phase=30
