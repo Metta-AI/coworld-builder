@@ -28,3 +28,6 @@
 2026-08-26T15:52:41Z heartbeat phase=30
 2026-08-26T18:42:13Z 00 resume at phase 30 attempt=1 session=3ad680cb
 2026-08-26T18:43:03Z 30 r1 re-dispatch fixer (previous session died mid-leg, no r1-fixes.md found) session=3ad680cb
+2026-08-26T19:00:42Z 30 r1 fixer returned: reviews/r1-fixes.md — found prior fixer session's 11 commits already on main (17:09Z, one per finding, no report); verified each, made no new commits. Final sha 405fa22, ci run 33001674720 success. 2 blocking fixed, 9 advisory fixed, 13 recorded-no-change, 0 disputed
+2026-08-26T19:00:42Z 30 r1 dispatch judge (fresh context)
+2026-08-26T19:00:42Z heartbeat phase=30
