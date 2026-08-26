@@ -5,7 +5,7 @@
   "slug": "liars-dice",
   "repo": "https://github.com/Metta-AI/cogame-liars-dice",
   "starter": "cogame-babel",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -47,18 +47,17 @@
     "discord_message_id": "1542306548578263156"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20567",
+    "branch": "atlas/liars-dice-33021741811",
+    "region": "tabletop",
+    "x": 799,
+    "y": 301,
+    "dispatch_run_id": "33021741811",
+    "attempted_at": "2026-08-26T23:03:29Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T22:55:44Z",
+  "heartbeat_at": "2026-08-26T23:03:29Z",
   "session_ended_at": null,
   "session_id": "dc527a34",
   "log": "runs/2026-08-26-liars-dice/log.md"

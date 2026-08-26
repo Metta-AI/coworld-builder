@@ -90,3 +90,7 @@
 2026-08-26T22:56:41Z 75 atlas continent=tabletop (classic tabletop dice-bluffing port; talk channel is garnish, not the game — not parlour)
 2026-08-26T22:56:41Z 75 atlas dispatch=33021412202 region=tabletop at=766,277 clearance=22.9
 2026-08-26T23:01:19Z 75 atlas dispatch=33021741811 region=tabletop at=799,301 clearance=22.9 extra_cities=27 (26 backlog lines verbatim from queued PR 20533 to stay merge-compatible + atari-cabinet fresh simulations 557,280; poker excluded — absent from stats snapshot; liars-dice respotted off 766,277 which PR20533 gives cogchemists)
+2026-08-26T23:03:29Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20567 status=pr_open
+2026-08-26T23:03:29Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20567
+2026-08-26T23:03:29Z 75 -> 80 phase transition: STATE phase=80 session=dc527a34
+2026-08-26T23:03:29Z heartbeat phase=80
