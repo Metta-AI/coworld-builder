@@ -28,3 +28,5 @@
 2026-08-26T09:43:16Z 30 r1 reviewer dispatched thread=sthr_01VxB4n9qwfQrUFT6cAWrSGX sha=99dcaab7 checkout=/workspace/cogame-particle-worlds output=reviews/r1-review.md
 2026-08-26T10:04:01Z 30 r1 reviewer returned r1-review.md (668 lines): 3 blocking candidates (F1 fixture not loading real renderer, F2 chrome_common 1-line diff vs note, F3 turnSpacingMs sleep eats retry budget), F4 fallback over-count, 14 advisory
 2026-08-26T10:04:01Z heartbeat phase=30
+2026-08-26T10:04:24Z 30 r1 reviewer returned reviews/r1-review.md: 19 findings (F1 hold-steers-to-spawn, F2 deadline-path hash divergence, F3 renderer fixture doesn't load real renderer, F4 no grid harness, F5 narrowed grep flagged for judge; F6-F19 advisory/verified-deviations)
+2026-08-26T10:04:24Z heartbeat phase=30
