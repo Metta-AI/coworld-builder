@@ -36,3 +36,6 @@
 2026-08-26T02:00:08Z progress phase=30 marker=r1-review.md
 2026-08-26T02:00:08Z heartbeat phase=30
 2026-08-26T02:00:48Z 30 r1 fixer dispatched thread=sthr_01XxeV3sPF2cGQsUPoskJELi output=reviews/r1-fixes.md (one commit per finding via tools/publish.py, CI green required)
+2026-08-26T03:14:47Z 30 r1 fixer returned: 14 commits, CI GREEN run=32925353796 sha=dd84d91871ecb6f0eb94d8b6bd54b43a15fddf89; B1 route removed, B2 page now CSS+markup+script sliced from starter (3171/4660 lines, was 2180), B3 per-tick re-derivation tests; N1+N22 disputed with measurements; N24/N28/N25/N30 + 4 baseline deltas deferred; file=reviews/r1-fixes.md
+2026-08-26T03:14:47Z progress phase=30 marker=r1-fixes.md
+2026-08-26T03:14:47Z heartbeat phase=30
