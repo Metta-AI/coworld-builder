@@ -37,3 +37,4 @@
 2026-08-26T11:09:49Z 30 r1 fixer returned r1-fixes.md: 12 commits, main=b6b4401, CI GREEN run=32961166140 (1 red intermediate 32960167875, fixed forward). F1 fixture loads real viewer page + found+fixed real 360px feed-row overflow; F2 recorded; F3 budget after rate-floor sleep + nonzero-spacing test; F4 one fallback record per seat-turn; F7/F8/F10/F12/F14(real reachable hang: landmark sampler bounded)/F9/F16 fixed; F5/F6/F13/F15/F17/F18 refuted; F11 needs-design (dead code, refactor+GameVersion question)
 2026-08-26T11:09:49Z progress phase=30 marker=r1-fixes.md
 2026-08-26T11:09:49Z heartbeat phase=30
+2026-08-26T11:13:19Z 30 r1 judge dispatched thread=sthr_01Br75FR9ykCeV7kqFuhXoAU sha=b6b4401 output=runs/2026-08-26-particle-worlds/reviews/r1-verdict.md (given both r1 reviews; git-push https auth outage noted, using gh api createCommitOnBranch for coworld-builder writes)
