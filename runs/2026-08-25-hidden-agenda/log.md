@@ -35,3 +35,4 @@
 2026-08-26T02:00:08Z 30 r1 reviewer returned: 35 findings (3 blocking: B1 /client/replay route, B2 page-generator inherits CSS-only, B3 no per-tick re-derivation test; 32 non-blocking) file=reviews/r1-review.md
 2026-08-26T02:00:08Z progress phase=30 marker=r1-review.md
 2026-08-26T02:00:08Z heartbeat phase=30
+2026-08-26T02:00:48Z 30 r1 fixer dispatched thread=sthr_01XxeV3sPF2cGQsUPoskJELi output=reviews/r1-fixes.md (one commit per finding via tools/publish.py, CI green required)
