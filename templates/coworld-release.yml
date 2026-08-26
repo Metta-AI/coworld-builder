@@ -61,7 +61,7 @@ concurrency:
 env:
   SLUG: <slug>
   IMAGE: <IMAGE>
-  # 0.1.42 is a FLOOR, not a preference. Two independent reasons:
+  # 0.1.43 is a FLOOR, not a preference. Three independent reasons:
   # - LIVENESS_MARKER below is only emitted from 0.1.38 on
   #   (cli.py `_uses_static_replay_viewer_bundle`).
   # - upload-coworld only waits for the server to finish expanding the
@@ -69,9 +69,15 @@ env:
   #   older clients race the expansion and the manifest POST fails HTTP 400
   #   "Coworld replay viewer bundle must be uploaded first"
   #   (seen: cogame-lighthouse release run 32603113899, 2026-08-22).
+  # - 0.1.42's --wait-hosted-smoke GETs the flat /v2/episode-requests route,
+  #   which the deployed backend now 405s (allow: POST only); the release dies
+  #   at "Upload the Coworld" with HTTP 405 and canonical stays null. 0.1.43
+  #   lists the nested /v2/coworlds/<cow_id>/episode-requests route instead;
+  #   cli.py is byte-identical between the two, so every grepped marker holds
+  #   (seen: cogame-walker-waterworld release run 32962660196, 2026-08-26).
   # 0.1.34 unconditionally prints "Replay liveness: verified ...", so the
   # certify gate can never pass on it. Do not pin lower.
-  COWORLD_PKG: "coworld[auth]==0.1.42"
+  COWORLD_PKG: "coworld[auth]==0.1.43"
   LIVENESS_MARKER: "Replay liveness: skipped (static replay bundle declared"
 
 jobs:

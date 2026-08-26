@@ -33,3 +33,10 @@
 2026-08-26T11:17:02Z heartbeat phase=40
 2026-08-26T11:17:45Z 40 release brief sent to builder thread=sthr_01DffTnKiotmB3NcKkzm1iYS (start 0.1.0, put_secret=true, policies from tools/ci/policies.json)
 2026-08-26T11:17:45Z heartbeat phase=40
+2026-08-26T11:39:27Z 40 dispatch 1 v0.1.0 run 32962660196 FAILED step=Upload the Coworld: GET /v2/episode-requests 405 (0.1.42 CLI flat-route bug, not a race class); builder probed live API, diffed 0.1.42 vs 0.1.43
+2026-08-26T11:39:27Z 40 dispatch 2 v0.1.1 run 32963420881 SUCCESS after pin bump to coworld[auth]==0.1.43 (repo commit 4ca356c); canonical=true certify.ok=true liveness-skip marker present secret_put=true hosted_smoke=passed
+2026-08-26T11:39:27Z 40 release-result.json persisted to runs/2026-08-26-walker-waterworld/ (v0.1.1 cow_36a12905-cdf6-4c9e-8bc4-2c0e541b9fb1); policies tandemhunt:v2(daveey) relay:v2(daveey-1 verified) shoal:v2 drifter:v2
+2026-08-26T11:39:27Z 40 note: stray canonical 0.1.0 cow_6f92bb4c-33b7-4119-876b-82c2f6ae5e93 exists server-side (dispatch-1 smoke settled after CLI crash); NOT deleted (hard rule 3); phase 50+ must target cow_36a12905 v0.1.1 only
+2026-08-26T11:39:27Z 40 templates fixed: coworld-release.yml + coworld-submit.yml pin floor raised 0.1.42 -> 0.1.43 with the 405 evidence (release run 32962660196)
+2026-08-26T11:39:27Z progress phase=40 marker=release run 32963420881 canonical v0.1.1
+2026-08-26T11:39:27Z heartbeat phase=50

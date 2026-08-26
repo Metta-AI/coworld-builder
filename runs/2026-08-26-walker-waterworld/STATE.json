@@ -5,19 +5,24 @@
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
   "starter": "coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_36a12905-cdf6-4c9e-8bc4-2c0e541b9fb1",
+    "manifest_sha": "sha256:68bb2bd31430aa5ca2bef05502d31368d51e88014fd53a75255e1b7b3d9e7442",
+    "release_run_id": "32963420881"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "walker-waterworld-tandemhunt:v2",
+    "champion2": "walker-waterworld-relay:v2",
+    "fillers": [
+      "walker-waterworld-shoal:v2",
+      "walker-waterworld-drifter:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T11:17:02Z",
+  "heartbeat_at": "2026-08-26T11:39:27Z",
   "session_ended_at": null,
   "session_id": "91d04e42",
   "log": "runs/2026-08-26-walker-waterworld/log.md"
