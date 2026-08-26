@@ -35,3 +35,10 @@
 2026-08-26T22:51:05Z 30 -> 40 phase transition: STATE.phase=40 (judged sha af5e9bbc, CI 33020196047)
 2026-08-26T22:51:05Z heartbeat phase=40
 2026-08-26T22:51:47Z 40 builder dispatched thread=sthr_01FoT2PEKcD64doqmuE2k6Tk target=coworld-release.yml canonical+certified session=85d7073b
+2026-08-26T23:13:31Z 40 builder returned: 3 dispatches — v0.1.0 run=33021109520 step_failed=manifest-build (variant-level num_agents rejected by live schema; fix commit 63355d8a drops duplicates, game_config.num_agents kept 4/2/4 + test 20 updated), v0.1.1 run=33021243852 canonical=false completion race, v0.1.2 run=33021857686 SUCCESS canonical=true certified secret_put=true cow=cow_649ab26c-c3a7-4755-8997-a909c953ef01
+2026-08-26T23:13:31Z 40 policies uploaded: tempo:v2 (champ1), reader:v2 (champ2 ply_bac48eb1), match:v2 + hoard:v2 (fillers)
+2026-08-26T23:13:31Z 40 coordinator verified ci.yml green on new head 63355d8a (run 33021238680) — builder's not-rerun caveat moot
+2026-08-26T23:13:31Z 40 design-note delta recorded: variant top-level num_agents is rejected by CoworldVariant schema; belongs only in game_config (template/playbook wording follow-up for humans noted)
+2026-08-26T23:13:31Z progress phase=40 marker=release-run-33021857686
+2026-08-26T23:13:31Z 40 -> 50 phase transition: STATE.phase=50
+2026-08-26T23:13:31Z heartbeat phase=50

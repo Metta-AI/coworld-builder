@@ -5,19 +5,24 @@
   "slug": "goofspiel-oshi-zumo",
   "repo": "https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo",
   "starter": "cogame-babel",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 0
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_649ab26c-c3a7-4755-8997-a909c953ef01",
+    "manifest_sha": "sha256:128417c70c353c7e9d2925dd6bcad55872477ae5c83fd99567cab07075b99cb4",
+    "release_run_id": "33021857686"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "goofspiel-oshi-zumo-tempo:v2",
+    "champion2": "goofspiel-oshi-zumo-reader:v2",
+    "fillers": [
+      "goofspiel-oshi-zumo-match:v2",
+      "goofspiel-oshi-zumo-hoard:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T22:51:05Z",
+  "heartbeat_at": "2026-08-26T23:13:31Z",
   "session_ended_at": null,
   "session_id": "85d7073b",
   "log": "runs/2026-08-26-goofspiel-oshi-zumo/log.md"
