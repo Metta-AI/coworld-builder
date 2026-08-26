@@ -90,3 +90,4 @@
 2026-08-26T03:35:41Z 60 fixer returned reviews/verify-r1-fixes.md: D1 fixed b4a29fa (lobbyShouldClose predicate + test), D2 fixed d874ebd (both prompts rewritten + schema sentence + test), CI green run=32926345524 sha=d874ebd55a7244a57baa711c92651eaf55c4b08a
 2026-08-26T03:35:41Z progress phase=60 marker=verify-r1-fixes.md
 2026-08-26T03:35:41Z heartbeat phase=60
+2026-08-26T03:36:09Z 60 re-release builder dispatched thread=sthr_011F6FVLsJ9TEudrfx3y9hJg version=0.1.2 session=dd5e2e1a
