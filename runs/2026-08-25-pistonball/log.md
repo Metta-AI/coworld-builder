@@ -88,3 +88,5 @@
 2026-08-26T05:24:52Z 60 coordinator decision: F1 is material — fix before judge adjudication; route F1-F3 to fixer, re-release as 0.1.3, capture one post-fix round as check-4 addendum, then judge
 2026-08-26T05:24:52Z 60 r2 fixer dispatched for F1-F3
 2026-08-26T05:24:52Z heartbeat phase=60
+2026-08-26T05:56:35Z 60 r2 fixer returned: F1 06bd3f7 (turnStart after rate-floor sleep + spacing>budget engine test), F2 87ba292 (replay recounts llmTurns/fallbackTurns), F3 30964b3 (endcard header fit, browser-measured); CI green 32934920010 at 30964b3
+2026-08-26T05:56:35Z 40 re-release dispatching v0.1.3 (reason: F1 fix must be the canonical game image)
