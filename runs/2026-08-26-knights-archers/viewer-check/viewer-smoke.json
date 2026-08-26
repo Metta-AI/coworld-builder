@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 3615,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_23e4f026-6724-4b80-bb34-dcd02c214ee2/sha256%3Ad0773202419ec87be0fe873839c0f6be817b03ee21ca2dd95bf108b5512e91c6/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ffb25d37a-4e12-4b48-9c13-f9c332961e6f.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24",
+  "scorebug": "⚔ player-0 KILLS 0 0 SWINGS ⚔ player-1 KILLS 0 0 SWINGS 1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24 ➹ player-2 KILLS 0 0 SHOTS · 0 HITS ➹ player-3 KILLS 0 0 SHOTS · 0 HITS 0 DEAD WALKING · LEADER 1152PX",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24"
+    },
+    {
+      "at": "50%",
+      "clock": "1:00 TIME LEFT WAVE 1/2 · 4 ALIVE · TURN 9/24"
+    },
+    {
+      "at": "100%",
+      "clock": "0:40 TIME LEFT WAVE 1/2 · 5 ALIVE · TURN 14/24"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3615,"clock":"1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24","scorebug":"⚔ player-0 KILLS 0 0 SWINGS ⚔ player-1 KILLS 0 0 SWINGS 1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24 ➹ player-2 KILLS 0 0 SHOTS · 0 HITS ➹ player-3 KILLS 0 0 SHOTS · 0 HITS 0 DEAD WALKING · LEADER 1152PX","feed_lines":0}
+scrub readouts: 0%="1:36 TIME LEFT WAVE 1/2 · 0 ALIVE · TURN 0/24"  50%="1:00 TIME LEFT WAVE 1/2 · 4 ALIVE · TURN 9/24"  100%="0:40 TIME LEFT WAVE 1/2 · 5 ALIVE · TURN 14/24"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
