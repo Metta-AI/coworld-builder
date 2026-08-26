@@ -61,3 +61,5 @@
 2026-08-26T22:22:44Z 50 -> 60 phase transition: STATE phase=60 session=dc527a34
 2026-08-26T22:22:44Z heartbeat phase=60
 2026-08-26T22:23:39Z 60 verifier dispatched thread=sthr_01Dg8qNFM1qNJoFdYbAbUEYL output=VERIFY.md bound=75min session=dc527a34
+2026-08-26T22:24:14Z 60 poll#1 rounds: 1 completed (round 1, round_8e19d4a0, completed_at 22:23:24Z); leaderboard: daveey-1 rank1 1016 rp=1, daveey rank2 984 rp=1, no fillers; ereq_e059906f completed with replay_url
+2026-08-26T22:24:14Z heartbeat phase=60
