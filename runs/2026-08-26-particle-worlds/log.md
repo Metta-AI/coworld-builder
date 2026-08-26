@@ -99,3 +99,6 @@
 2026-08-26T14:34:22Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20501 status=pr_open (placed 25 leagues for other runs in the same PR)
 2026-08-26T14:34:22Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20501
 2026-08-26T14:34:22Z 00 phase transition 75 -> 80
+2026-08-26T14:37:37Z 80 close: summary on run task + condensed on idea task; LEARNINGS section + 2 playbook rows; all 9 subtasks complete; idea 1217748423661480 completed; run task moved to Done
+2026-08-26T14:37:37Z progress phase=80 marker=run-closed
+2026-08-26T14:37:37Z session end: run complete at phase 80 (Done); no next action — run finished
