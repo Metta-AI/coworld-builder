@@ -80,3 +80,6 @@
 2026-08-26T12:27:03Z heartbeat phase=75
 2026-08-26T12:29:10Z 75 atlas continent=commons reason=fully cooperative shared-reward coordination (pistonball/chorus/co-op-hunting precedent); spot 458,586 clearance 23.4 (computed against places.mjs augmented with PR 20489's 23 pending cities) label=Waterworld anchor=c
 2026-08-26T12:29:10Z 75 atlas dispatch=32968781382 region=commons at=458,586 clearance=23.4 extra_cities=23 (PR 20489's exact lines, pre-empting the unplaced-leagues failure)
+2026-08-26T12:31:39Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20500 status=pr_open (automerge armed; lands via Graphite queue, human merge-when-ready)
+2026-08-26T12:31:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20500
+2026-08-26T12:31:39Z heartbeat phase=80

@@ -5,7 +5,7 @@
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1
   },
@@ -47,18 +47,18 @@
     "discord_message_id": "1542148305071382538"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20500",
+    "branch": "atlas/walker-waterworld-32968781382",
+    "region": "commons",
+    "x": 458,
+    "y": 586,
+    "dispatch_run_id": "32968781382",
+    "attempted_at": "2026-08-26T12:31:39Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T12:27:03Z",
+  "heartbeat_at": "2026-08-26T12:31:39Z",
   "session_ended_at": null,
   "session_id": "91d04e42",
   "log": "runs/2026-08-26-walker-waterworld/log.md"
