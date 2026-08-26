@@ -206,9 +206,12 @@ Notes that survive the move to CI:
 ## Phase 2 — Policies
 
 Policies are minted by `tools/ci/policies.json` in the repo (or the `policies` input of the same
-release dispatch, which overrides it for one run). Identical content dedupes to the same version —
-**vary the prompt or the baseline name to mint a distinct version**. You need distinct versions
-for: champion #1, champion #2, and every filler.
+release dispatch, which overrides it for one run). **Every `upload-policy` call mints a fresh
+`vN`, even for byte-identical content** (observed across three dispatches, cogame-knights-archers
+2026-08-26 — the earlier "identical content dedupes" note is wrong): after any re-dispatch, take
+the labels from the LAST successful `release-result.json` and resolve UUIDs by exact `<name>:vN`
+match, never "the only version of that name". You need distinct policies for: champion #1,
+champion #2, and every filler.
 
 The canonical set: **two LLM prompt champions** (champion #1 owned by daveey, champion #2 by
 daveey-1) plus **≥1 scripted filler, normally 2**. Bullwhip's real set was `bullwhip-steady`
@@ -326,6 +329,8 @@ that was already posted without the flag: `PATCH .../messages/<id>` with `{"flag
 | Manifest upload: "2 validation errors for Coworld Manifest" on `game.protocols` | `game.protocols.player`/`.global` (like `game.docs.readme`) must be `{"type":"text","value":…}` objects, not bare strings — repo CI does not catch it, the platform validator does (cogame-garble v0.1.0, 2026-08-24) |
 | Manifest build: `game.description` Field required / `game.tags` Extra inputs are not permitted | the validator requires `game.description` and forbids `game.tags` (tags live top-level only); pin both in the repo's manifest test (cogame-pistonball 0.1.0, 2026-08-26) |
 | Upload 400 `player cpu limit '500m' is below the minimum of '1'` | bundled `player[].resources.limits.cpu` minimum is `"1"` — use the starter's `{requests: 100m/64Mi, limits: {cpu: "1"}}` even for 20 lightweight seats (cogame-pistonball 0.1.1, 2026-08-26) |
+| Certify locally: matriculate rejects "game_config must not include runner-managed tokens" | a variant or the cert fixture carries a literal `tokens: […]`; remove it from every `game_config` — `config_schema` keeps *requiring* `tokens` because the runner injects them (cogame-knights-archers 0.1.0, 2026-08-26) |
+| Hosted certification `failed`, `failed_step: smoke-episode`, detail = the certifier's own internal `…/v2/episode-requests` call 404ing, `retryable: false` — while local certify passed 10/10 and hosted smoke passed | platform route churn, not a game defect. Bump the version and re-dispatch with no code change once the backend settles; cross-check another run/coworld to confirm it is churn (cogame-knights-archers 0.1.2→0.1.3, 2026-08-26) |
 | Champion renamed "Baseline (N)" | champion version listed as filler — mint distinct filler versions |
 | "No featured match yet" | only one ranked player — submit the daveey-1 champion |
 | Episode discarded ~20 min | game unaware of timeout — settle early inside 60 % of `episodeTimeoutSeconds` |
