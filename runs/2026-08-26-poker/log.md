@@ -35,3 +35,5 @@
 2026-08-26T17:14:16Z progress phase=20 marker=32992433560
 2026-08-26T17:14:16Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-26T17:14:16Z heartbeat phase=30
+2026-08-26T17:15:16Z 30 reviewer dispatched round=1 thread=sthr_01NCM3enCbyLTHU3d9MmMQag output=runs/2026-08-26-poker/reviews/r1-review.md sha=7c7e77b session=8bd3f494
+2026-08-26T17:15:16Z heartbeat phase=30
