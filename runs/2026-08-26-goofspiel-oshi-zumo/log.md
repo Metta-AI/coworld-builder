@@ -45,3 +45,12 @@
 2026-08-26T23:13:47Z 50 seed POST 200: lseed_6454b51c league_id=league_af4bfc41-a775-4d89-94eb-194bb5c74f97
 2026-08-26T23:14:40Z 50 division PUT 200: div_8ec54c0e-5cce-483f-928c-c779a2d05336 (Competition, level 1)
 2026-08-26T23:15:10Z 50 settings POST 200: elo ladder, round_robin, filler_policy, round_interval=15m
+2026-08-26T23:15:05Z 50 champion1 submit: run 33022538841 ok=true sub_5cb11750 tempo:v2 as ply_44ae9048 (daveey)
+2026-08-26T23:16:30Z 50 champion2 submit: run 33022605052 ok=true reader:v2 as ply_bac48eb1 (daveey-1)
+2026-08-26T23:18:00Z 50 policy-versions resolved: tempo:v2=1c7139dc daveey, reader:v2=d1b4dfbf daveey-1 (verified), match:v2=56252dee, hoard:v2=13df4c2e
+2026-08-26T23:18:30Z 50 filler-policies POST 200: match:v2 + hoard:v2 registered (neither champion)
+2026-08-26T23:19:00Z 50 unpause 200 (rounds_paused_at null); trigger-round 200
+2026-08-26T23:21:00Z 50 rounds: round 1 failed (auto-fired at settings time before fillers — known shape); round 2 pending w/ both champions in entrant_attributions
+2026-08-26T23:18:48Z progress phase=50 marker=league_af4bfc41+round2-pending
+2026-08-26T23:18:48Z 50 -> 60 phase transition: STATE.phase=60
+2026-08-26T23:18:48Z heartbeat phase=60
