@@ -29,3 +29,4 @@
 2026-08-26T22:42:33Z 30 fixer returned r1: 9 fixed (F1 say-band relayout+fixture gate, F3 bare-token AJQK parse+test_llm, F4 reason==complete assertion, F5 retitle, F6 tune_baselines grid harness, F7 runGame guard, F8 checkReveal length raise, F10 --hudscale read, F11 player recv timeout), 2 refuted w/ evidence (F2 pool-awarded is note's own deadline rule, F9 fixture names are note-prescribed); CI green run=33020196047 sha=af5e9bbc file=reviews/r1-fixes.md
 2026-08-26T22:42:33Z 30 judge dispatch r1
 2026-08-26T22:42:33Z heartbeat phase=30
+2026-08-26T22:43:01Z 30 judge dispatched r1 thread=sthr_01Ms4w9TqdzPTdFcw1dcfvBP sha=af5e9bbc session=85d7073b
