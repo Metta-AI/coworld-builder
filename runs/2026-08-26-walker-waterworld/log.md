@@ -49,3 +49,5 @@
 2026-08-26T11:46:30Z 50 round 1 failed (Temporal RoundWorkflow failed before settling — auto-fire race at unpause, before explicit trigger); round 2 pending with both champions in entrant_attributions (6c1d8fe1 + ddef617d) — exit criterion met
 2026-08-26T11:46:30Z progress phase=50 marker=league_69fe3c37-8208-4e14-b575-331e1d018d9b round 2 pending
 2026-08-26T11:46:28Z heartbeat phase=60
+2026-08-26T11:47:22Z 60 verifier dispatched thread=sthr_01BEsygVWLXphsTh3Cuv8A5u (8 checks, 75-min poll bound, viewer-check via CI)
+2026-08-26T11:47:22Z heartbeat phase=60
