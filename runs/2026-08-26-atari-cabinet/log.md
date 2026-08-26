@@ -44,3 +44,6 @@
 2026-08-26T20:18:33Z progress phase=40 marker=release-run-33008308526
 2026-08-26T20:18:33Z 40 -> 50 phase transition
 2026-08-26T20:18:33Z heartbeat phase=50
+2026-08-26T20:19:32Z 50 seed HTTP:200 league=league_20b10705-24f2-4d27-b7a0-31993f6110f7 (lseed_68ce9f6c)
+2026-08-26T20:19:32Z 50 division HTTP:200 div=div_df572e19-916a-43ca-9161-8ee11b7356e8; settings HTTP:200 (elo, round_robin, filler_policy, 15min)
+2026-08-26T20:19:32Z heartbeat phase=50
