@@ -102,3 +102,4 @@
 2026-08-26T06:23:11Z progress phase=60 marker=verify-verdict.md-blocking-0
 2026-08-26T06:23:11Z 00 phase transition 60 -> 70
 2026-08-26T06:23:11Z heartbeat phase=70
+2026-08-26T06:25:16Z 60 verify-verdict.md restored by judge (blocking 0; earlier rewrite lost to my reset --hard before push — process note: never hard-reset while a sub-agent holds unpushed writes) and committed

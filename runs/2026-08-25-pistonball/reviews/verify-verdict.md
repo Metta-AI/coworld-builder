@@ -1,29 +1,29 @@
-blocking: 1
+blocking: 0
 
-# verify verdict — pistonball (phase 60)
+# verify verdict — pistonball (phase 60, re-adjudicated after Addendum 2)
 Head: cogame-pistonball `30964b3d16bffe6a4df164e7c13b1c581f1a48e4` (main = 0.1.3 release headSha; release run 32936048068 conclusion `success`), coworld `cow_768730a3-282a-4d75-9cff-01eea560e260` v0.1.3 canonical.
 Checklist: `docs/SPEC.md` §Definition of done (items 1–8) via `prompts/60-verify.md`.
-Independent read written before reading fixes: yes — I re-fetched rounds, leaderboard, the round-8 episode request, the round-8 replay bytes (ran `tools/replay_summary.py` myself), the round-8 hosted log, the SSR playlist, the replay-session route, the committed `release-result.json`, and the committed `viewer-check/` artifacts, and read the screenshot, before opening VERIFY.md's Findings or `verify-fixes.md`.
+Independent read written before reading fixes: yes — in round 1 of this adjudication I re-fetched rounds, leaderboard, the round-8 episode request, the round-8 replay bytes (ran `tools/replay_summary.py` myself), the round-8 hosted log, the SSR playlist, the replay-session route, the committed `release-result.json`, and the committed viewer-check artifacts, and read both screenshots, before opening VERIFY.md's Findings or `verify-fixes.md`. This revision re-verifies the new `viewer-check-013/` evidence from the committed files and the run id, not from the addendum's prose.
 
 ## Standing blocking findings
 
-### B1 — [viewer-evidence] SPEC item 8: the executed-viewer evidence is stale at head — the shipped 0.1.3 viewer bundle has never been executed (source: judge)
-- Where: `runs/2026-08-25-pistonball/viewer-check/viewer-smoke.json` (`.url`) vs the check-6 iframe src at head.
-- Verified at head:
-  - The committed viewer-check (run 32933394784) executed
-    `…/replays/static/cow_58917aec-…/sha256%3Ab041d203…/index.html?replay=…eab95e2d….replay` — the **0.1.2** bundle drawing the **round-4 (pre-fix)** replay (`viewer-smoke.json` `.url`, quoted verbatim from the committed file).
-  - The check-6 iframe src at head is different: `POST /coworlds/replays/session` for the featured replay (SSR `playlist[0]` = `pistonball.r8.e1`, coworldVersion 0.1.3) returns
-    `…/replays/static/cow_768730a3-…/sha256%3A91c1207c…/index.html?replay=…20418470….replay&v=2`, `ready:true` — the **0.1.3** bundle drawing the **round-8** replay.
-  - The two bundles are not the same viewer: commit `30964b3` (F3) modified `client/replay_broadcast.html` — the exact HTML shell the static route serves and viewer-check loads — and commit `87ba292` (F2) modified `src/pistonball/replays.nim`, whose replay-event recount is compiled into the wasm re-simulator the static viewer runs. The framing "the game's viewer files did not change in the fix" is therefore false for F3 (and effectively for F2).
-  - The committed `viewer-smoke.png` **visibly displays the F2 and F3 defects** (every endcard row reads `LLM/FB 0/0` including daveey/daveey-1; the `TOUCHES`/`LLM/FB` headers overprint as `TOUCHESLM/FB` — I read the image myself). As evidence of the *shipped* spectator experience it is contradicted, not merely old: 0.1.3 claims to have changed exactly what this picture shows.
-  - SPEC item 8 binds the execution to "the check-6 iframe `src`" and the phase's doctrine is "fetched, never assumed" — inferring that a recompiled bundle with a changed shell still renders is precisely the inference item 8 exists to forbid (cogame-lantern, 2026-08-23). The only thing I could verify at head is that the 0.1.3 `index.html` fetches `200` (231 547 bytes) — asset-200 is expressly not rendering evidence.
-- Checklist item: SPEC §Definition of done **8** ("The viewer actually renders, proven by executing it… evidence committed under `runs/<run>/viewer-check/`").
-- What settles it: one re-dispatch of `viewer-check.yml` against the current check-6 iframe src (the session-route URL for `cow_768730a3…/sha256:91c1207c…` with the round-8 replay), the new `viewer-smoke.json` + `viewer-smoke.png` committed, showing `loaded:true`, three differing clock readouts, and an endcard whose champion rows show non-zero `LLM/FB` and non-colliding headers (which would simultaneously be the first rendered proof that the F2/F3 fixes work).
+None. The single blocker from the previous verdict (B1) is resolved at head — see below.
+
+### B1 (previous verdict) — [viewer-evidence] SPEC item 8: executed-viewer evidence was stale (0.1.2 bundle) → RESOLVED at head
+- Where: `runs/2026-08-25-pistonball/viewer-check-013/viewer-smoke.json` + `viewer-smoke.png`; viewer-check run **32937649794**.
+- Verified at head, from the committed artifacts (not the addendum's summary):
+  - `viewer-smoke.json` `.url` is byte-for-byte the current check-6 iframe src:
+    `https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_768730a3-282a-4d75-9cff-01eea560e260/sha256%3A91c1207c7f679847f054a230f0d44e58aad9f52d927f8cc5678e3f619aa33915/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F20418470-73ca-48e7-9a22-fabfec4f8f7d.replay&v=2` — the **0.1.3** bundle (cow_id and manifest sha both match STATE) drawing the **round-8** replay, i.e. exactly the URL my own session POST returned in round 1.
+  - Gate (a): `{"loaded":true,"ms":3109}`, signals `{"data_replay_loaded":"true","data_replay_error":null}`, `failure: no failure`.
+  - Gate (b): the three scrub clocks differ — `0% → 1:15 TIME LEFT`, `50% → 0:59 TIME LEFT`, `100% → FINAL GAME OVER`.
+  - Gate (c): I read `viewer-smoke.png` myself. It is the starter's chrome, item for item — scorebug strip (phase chip `59%`, `91.2 SCORE` in green, `THE BANK - 20 cogs`, momentum micro-graph, `FINAL / GAME OVER`, journey bar `GOAL WALL — 50% — START` with the puck on the goal end), transport strip with `spoilers`, `BANK WINS 781 / 782`, `1×…16×` speed buttons, and the scrubber with beat markers and journey trace. The endcard reads `BALL ON THE GOAL WALL`, `91.2 SHARED SCORE`, and a 20-row `POLICY · PISTON · IN PHASE · TOUCHES · LLM/FB` table in which **the headers no longer collide (F3 fixed in the shipped bundle)** and **`daveey` (piston 12) and `daveey-1` (piston 4) both read `4/0` under LLM/FB (F2 fixed in the shipped bundle)** — which reconciles exactly with my own round-8 replay read (champion seats `source:"llm"` on turns 0–3 = 4 llm turns each, `fallbacks: 0`); the Baseline and third-party wavebot-fork rows read `0/0`, correct for scripted seats.
+  - CI fact checked, not accepted: run 32937649794 in Metta-AI/coworld-builder, workflow `viewer-check`, created 2026-08-26T06:19:23Z, `status completed`, `conclusion success`.
+- Checklist item: SPEC §Definition of done **8** — all three sub-gates now hold against the shipped bundle, with the evidence committed under `runs/2026-08-25-pistonball/viewer-check-013/`.
 
 ## Refuted
 
 ### F1 — "champion seats fall back on every turn after turn 0" → REFUTED at head (fixed, proven in production)
-- Evidence: `src/pistonball/decide.nim` at `30964b3` — `let turnStart = getMonoTime()` is now sampled **after** the rate-floor sleep block (`if open.len > 0 and engine.batchStarted …: sleep(…)`), with the comment "`turnBudgetMs` bounds THIS TURN'S OWN WORK … sampled AFTER the rate-floor sleep". Production proof I fetched myself: round-8 replay `20418470-73ca-48e7-9a22-fabfec4f8f7d.replay` → `replay_summary.py` → champion seats' scripts `llm` on turns 0,1,2,3 with varied modes (`wave`/`drop`/`catch`/`hold`) and non-trivial `say` text, `fallbacks: 0`, `reason complete`/`endRule delivered`, `sharedScore 91.212`. F1 was true when found (round-2 replay: 14 fallback / 2 llm) and is fixed at the current head — refuted as a standing finding.
+- Evidence: `src/pistonball/decide.nim` at `30964b3` — `let turnStart = getMonoTime()` is now sampled **after** the rate-floor sleep block (`if open.len > 0 and engine.batchStarted …: sleep(…)`), with the comment "`turnBudgetMs` bounds THIS TURN'S OWN WORK … sampled AFTER the rate-floor sleep". Production proof I fetched myself: round-8 replay `20418470-73ca-48e7-9a22-fabfec4f8f7d.replay` → `replay_summary.py` → champion seats' scripts `llm` on turns 0,1,2,3 with varied modes (`wave`/`drop`/`catch`/`hold`) and non-trivial `say` text, `fallbacks: 0`, `reason complete`/`endRule delivered`, `sharedScore 91.212`. And now also rendered: the shipped viewer's endcard shows `4/0` for both champions. F1 was true when found (round-2 replay: 14 fallback / 2 llm) and is fixed at the current head.
 
 ### "VERIFY.md's main body is 0.1.2-era, so items 1–6 are stale" → REFUTED by re-fetch: every one is true at head
 - Item 1: `GET /rounds?league_id=league_6789db33…` → rounds **2–8 all `completed`** (7 ≥ 2), round 1 `failed` with error verbatim "Temporal RoundWorkflow failed before settling the round." (auto-fired pre-fillers; excluded). SPEC item 1 requires only *completed rounds after the fillers were set* — it says nothing about post-fix behaviour, so the pre-fix rounds 2–7 count; the item is true regardless because round 8 alone plus any one of 2–7 satisfies it.
@@ -45,23 +45,24 @@ Independent read written before reading fixes: yes — I re-fetched rounds, lead
 | 5. Hosted log clean | TRUE | round-8 logs grep → CLEAN |
 | 6. Static replay path + featured match | TRUE | SSR `playlist[0]`=r8.e1@0.1.3; session → `…/replays/static/cow_768730a3…/sha256%3A91c1207c…/index.html?replay=…`, `ready:true` |
 | 7. Cert declared static bundle | TRUE | committed `release-result.json` → `Replay liveness: skipped (static replay bundle declared…`; run 32936048068 success |
-| 8. Viewer executed at head and judged | **BLOCKING (B1)** | committed evidence executes the 0.1.2 bundle/round-4 replay; 0.1.3 changed `client/replay_broadcast.html` + `replays.nim`; no rendered evidence of the shipped bundle exists |
+| 8. Viewer executed at head and judged | TRUE | `viewer-check-013/`: executed URL = current check-6 src (0.1.3 sha + round-8 replay); `loaded:true` 3109 ms; clocks 1:15 / 0:59 / FINAL differ; run 32937649794 success; screenshot = starter chrome, endcard reconciles with replay (champions 4/0 LLM/FB, headers fit) |
 
 ## Fixer report audit (`reviews/verify-fixes.md`)
 
 | finding | fixer said | I verified | agrees |
 |---|---|---|---|
-| F1 | fixed in `06bd3f7` (decide.nim, turnStart after sleep) + engine test | tree at head: `turnStart` sampled after the rate-floor block, comment matches; commit touches `src/pistonball/decide.nim`+`tests/test_engine.nim`; **production**: round-8 champions llm×4, 0 fallbacks | yes |
-| F2 | fixed in `87ba292` (replays.nim recount from `script` records) + replay test | tree at head: `applyReplayEvents` increments `llmTurns`/`fallbackTurns` from `node{"source"}`; commit touches `src/pistonball/replays.nim`+`tests/test_replay.nim` | yes in tree; **rendered effect unproven** (B1) |
-| F3 | fixed in `30964b3` (endcard header sizing) + viewer test | commit touches `client/replay_broadcast.html`+`tests/test_viewer.nim`; CI run 32934920010 `success` at `30964b3` (checked, not accepted) | yes in tree; **rendered effect unproven** (B1) |
+| F1 | fixed in `06bd3f7` (decide.nim, turnStart after sleep) + engine test | tree at head: `turnStart` sampled after the rate-floor block, comment matches; **production**: round-8 champions llm×4, 0 fallbacks; **rendered**: endcard 4/0 | yes |
+| F2 | fixed in `87ba292` (replays.nim recount from `script` records) + replay test | tree at head: `applyReplayEvents` increments `llmTurns`/`fallbackTurns` from `node{"source"}`; **rendered in the shipped bundle**: champions read `4/0`, scripted seats `0/0` (viewer-check-013 png) | yes |
+| F3 | fixed in `30964b3` (endcard header sizing) + viewer test | commit touches `client/replay_broadcast.html`; CI 32934920010 `success`; **rendered in the shipped bundle**: `TOUCHES` and `LLM/FB` headers sit cleanly in their own columns in both table halves (viewer-check-013 png) | yes |
 
 ## Non-blocking observations
 - SPEC item 4 says "valid UTF-8 JSON" but the replay is the starter's binary `COWLDPST` format; the accepted design note pins that format and prescribes the `replay_summary.py` substitute the verifier (and I) used. The item's intent — "replay bytes are valid and show the game" — is met; noting the textual divergence for the record.
-- The leaderboard now carries two third-party entrants (`relh` rank 3, `richard` rank 4, both `co-gas-pistonball-wavebot-*:v1`, rounds_played 4, `is_filler:false` in episodes). They are not this run's fillers and don't violate item 2 as written; VERIFY.md's "exactly two rows" claim is simply outdated.
-- VERIFY.md's Addendum did not re-record items 2, 5 and 6 at 0.1.3; all three re-fetch TRUE at head (above), so this cost nothing this time, but a re-release addendum should re-fetch every version-sensitive item, not only check 4.
-- The coordinator's Addendum quotes `llmTurns":[0,4,4,0,...]` for round 8 — champion seats sat at indices 1 and 2 there (seat order differs per episode); consistent with my read (daveey position 1, daveey-1 position 2), not a discrepancy.
+- The leaderboard now carries two third-party entrants (`relh` rank 3, `richard` rank 4, both `co-gas-pistonball-wavebot-*:v1`, rounds_played 4, `is_filler:false` in episodes). They are not this run's fillers and don't violate item 2 as written. Their endcard rows correctly read `0/0` LLM/FB (scripted).
+- VERIFY.md's Addendum 1 did not re-record items 2, 5 and 6 at 0.1.3; all three re-fetch TRUE at head, so this cost nothing this time, but a re-release addendum should re-fetch every version-sensitive item, not only check 4. Addendum 2 now covers item 8 properly.
+- The superseded 0.1.2 evidence remains at `runs/2026-08-25-pistonball/viewer-check/`; it is historical F2/F3 proof, no longer item-8 evidence. Keeping both directories is fine; VERIFY.md's item-8 body still cites the old one, with Addendum 2 as the operative record.
+- The coordinator's Addendum 1 quotes `llmTurns":[0,4,4,0,...]` for round 8 — champion seats sat at indices 1 and 2 there (seat order differs per episode); consistent with my read (daveey position 1, daveey-1 position 2), not a discrepancy.
 
 ## Contamination declaration
-I read the coordinator's briefing note (which summarised F1 and the addendum) before my fetches — unavoidable, it was the brief itself. I did not read VERIFY.md's Findings section, the Addendum text, or `verify-fixes.md` until my own fetches above were complete; every number in the checklist pass is from my own fetches at head.
+I read the coordinator's briefing notes (which summarised F1, Addendum 1 and Addendum 2) before my fetches — unavoidable, they were the briefs. In round 1 I did not read VERIFY.md's Findings, the Addendum text, or `verify-fixes.md` until my own fetches were complete; in this revision I verified Addendum 2's claims from the committed `viewer-check-013/` files and the GitHub run id before accepting any of them. Every number in the checklist pass is from my own fetches at head.
 
-BLOCKING: 1
+BLOCKING: 0
