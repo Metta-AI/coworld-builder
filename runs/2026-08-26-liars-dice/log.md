@@ -65,3 +65,5 @@
 2026-08-26T22:24:14Z heartbeat phase=60
 2026-08-26T22:31:19Z 60 poll#2 rounds: still 1 completed (round 2 not yet scheduled; interval=15m, next expected ~22:37Z). check2 TRUE (daveey/daveey-1 both rp=1, no fillers on board); check4 replay ffaa01a0 protocol=liarsdice.replay.v1 reason=complete, 31 decisions, champion seats 15 decisions 0 scripted 0 fallback; check5 CLEAN (decoded 4 containers); check6 static viewer_url ready=true; check7 release-result.json says "Replay liveness: skipped (static replay bundle declared"
 2026-08-26T22:31:19Z heartbeat phase=60
+2026-08-26T22:36:30Z 60 poll#3 rounds: still 1 completed; awaiting round 2 (~22:37Z)
+2026-08-26T22:36:30Z heartbeat phase=60
