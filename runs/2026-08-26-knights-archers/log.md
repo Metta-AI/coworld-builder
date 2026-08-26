@@ -13,3 +13,5 @@
 2026-08-26T05:24:45Z progress phase=10 marker=design.md
 2026-08-26T05:24:45Z heartbeat phase=20
 2026-08-26T05:25:41Z 20 repo created: https://github.com/Metta-AI/cogame-knights-archers (public); propagate-secrets run 32933974490 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-26T05:26:28Z 20 builder dispatched round=1 thread=sthr_01UZ5uWvdt4PTe4drVViMxuw repo=Metta-AI/cogame-knights-archers
+2026-08-26T05:26:28Z heartbeat phase=20
