@@ -5,21 +5,25 @@
   "slug": "atari-cabinet",
   "repo": "https://github.com/Metta-AI/cogame-atari-cabinet",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "30": 1
+    "30": 1,
+    "40": 0
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.3",
+    "cow_id": "cow_5bc1ce13-b06b-46de-872c-4fe3bb952f95",
+    "manifest_sha": "sha256:3749debc4ffe6a196646a5545bd3396a30f170a78f3d284d83ac693cdf572e15",
+    "release_run_id": "33008308526"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "atari-cabinet-castellan:v4",
+    "champion2": "atari-cabinet-gunner:v4",
+    "fillers": [
+      "atari-cabinet-bulwark:v4",
+      "atari-cabinet-spinner:v4"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -47,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T20:01:49Z",
+  "heartbeat_at": "2026-08-26T20:18:33Z",
   "session_ended_at": null,
   "session_id": "3ad680cb",
   "log": "runs/2026-08-26-atari-cabinet/log.md"

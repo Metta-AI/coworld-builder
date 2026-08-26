@@ -40,3 +40,7 @@
 2026-08-26T20:01:49Z 40 retry authorized: dispatch 4 v0.1.3 — distinct change: poll canonical via coworld status --json (authenticated CLI path) commit 390cd2a; not a cert failure, 90 not warranted (coordinator rails call)
 2026-08-26T20:01:49Z progress phase=40 marker=release-dispatch-33006099334+fix-390cd2a
 2026-08-26T20:01:49Z heartbeat phase=40
+2026-08-26T20:18:33Z 40 builder returned: v0.1.3 run 33008308526 success — canonical:true certify.ok:true liveness-skip(static) secret_put:true; cow_5bc1ce13-b06b-46de-872c-4fe3bb952f95; 4 policies v4 (castellan/gunner champions, gunner=daveey-1; bulwark/spinner fillers); fix that landed it: Confirm-canonical poll via coworld status --json (390cd2a)
+2026-08-26T20:18:33Z progress phase=40 marker=release-run-33008308526
+2026-08-26T20:18:33Z 40 -> 50 phase transition
+2026-08-26T20:18:33Z heartbeat phase=50
