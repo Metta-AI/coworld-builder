@@ -34,9 +34,13 @@
     "division": "div_4e1ddbbe-b6d4-409d-82b9-23e1142268d0"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_f889f1ab-62a9-4276-bc72-c7fa3e4ddd37",
+      "round_bdc26d0f-7ca6-4ef1-be3e-c7b4c6a2f5f6"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/1ae313cc-0f99-450d-aaf4-21bdc8688cc8.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32978130047"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T13:41:39Z",
+  "heartbeat_at": "2026-08-26T14:18:27Z",
   "session_ended_at": null,
   "session_id": "36126db3",
   "log": "runs/2026-08-26-particle-worlds/log.md"

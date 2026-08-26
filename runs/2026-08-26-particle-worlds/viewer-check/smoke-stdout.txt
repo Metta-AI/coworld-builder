@@ -1,0 +1,4 @@
+{"loaded":true,"ms":10110,"clock":"0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10","scorebug":"○ DAVEEY COOPERATOR 0.000 0.75 THIS ROUND A ○ BASELINE COOPERATOR 0.000 0.75 THIS ROUND — 0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10 ○ DAVEEY-1 COOPERATOR 0.000 0.75 THIS ROUND F ○ BASELINE COOPERATOR 0.000 0.75 THIS ROUND —","feed_lines":0}
+scrub readouts: 0%="0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10"  50%=":04 STARTING IN ROUND 3/4 · DECEIVE · TURN 1/10"  100%="0:00 TIME LEFT ROUND 4/4 · TAG · TURN 10/10"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

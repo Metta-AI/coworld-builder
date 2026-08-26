@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 10110,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_039ad60d-ae1f-4098-ab1d-4f0144e32198/sha256%3Ac9ae68f37da1146762cfefc9e1fd0a96315d9276cbabd3ebbfa49fb962269903/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F1ae313cc-0f99-450d-aaf4-21bdc8688cc8.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10",
+  "scorebug": "○ DAVEEY COOPERATOR 0.000 0.75 THIS ROUND A ○ BASELINE COOPERATOR 0.000 0.75 THIS ROUND — 0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10 ○ DAVEEY-1 COOPERATOR 0.000 0.75 THIS ROUND F ○ BASELINE COOPERATOR 0.000 0.75 THIS ROUND —",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "0:45 TIME LEFT ROUND 1/4 · SPREAD · TURN 1/10"
+    },
+    {
+      "at": "50%",
+      "clock": ":04 STARTING IN ROUND 3/4 · DECEIVE · TURN 1/10"
+    },
+    {
+      "at": "100%",
+      "clock": "0:00 TIME LEFT ROUND 4/4 · TAG · TURN 10/10"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

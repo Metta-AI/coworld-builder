@@ -68,3 +68,20 @@
 2026-08-26T13:41:39Z 00 phase transition 50 -> 60
 2026-08-26T13:42:36Z 60 verifier dispatched thread=sthr_01RG3PfBApAtdfLLk9YcFkzF output=runs/2026-08-26-particle-worlds/VERIFY.md (75-min bound, rounds tick 15m)
 2026-08-26T13:42:36Z heartbeat phase=60
+2026-08-26T13:49:09Z 60 poll: round2 round_f889f1ab completed, ereq_8090183a completed replay_url present; round1 failed (Temporal pre-settle) does not count
+2026-08-26T13:54:46Z 60 poll: round3 not yet created (round2 created 13:40:21Z, interval 15m); waiting
+2026-08-26T13:57:00Z heartbeat phase=60
+2026-08-26T13:59:46Z 60 poll: round3 round_bdc26d0f created pending
+2026-08-26T14:05:02Z 60 poll: round3 completed, ereq_be89daa4 completed replay 1ae313cc — check 1 TRUE (2 completed rounds after fillers)
+2026-08-26T14:05:37Z 60 check8 dispatched viewer-check.yml run=32978130047 url=static/cow_039ad60d/sha256:c9ae68f3.../index.html?replay=1ae313cc
+2026-08-26T14:06:12Z 60 check2 TRUE leaderboard daveey-1 rank1 cipher:v2 rounds=2, daveey rank2 swarm:v2 rounds=2, fillers absent
+2026-08-26T14:06:29Z 60 check3 TRUE ereq_be89daa4 completed (flat episode-requests 405 -> nested route); participants daveey/daveey-1 is_filler=false, beeline fillers
+2026-08-26T14:06:37Z 60 check4 TRUE protocol particle-worlds/v1 complete/full_time via design-declared replay_summary.py; 74/80 champion directives llm, 6 fallback, 0 scripted, 46 non-silent symbols
+2026-08-26T14:07:17Z 60 check5 TRUE-on-exception 14 lines (Bedrock 429 ThrottlingException "Too many tokens per day" + sidecar timeouts); cross-check walker-waterworld ereq_62be0e80 (14:01:56Z) = 120 lines "LLM provider is unavailable"
+2026-08-26T14:07:40Z 60 check8 run 32978130047 success; artifact -> runs/2026-08-26-particle-worlds/viewer-check/ loaded=true ms=10110 clocks R1/4 SPREAD -> R3/4 -> R4/4 TAG all differ
+2026-08-26T14:10:52Z 60 check6 TRUE static src ready=true sha256:c9ae68f3 (SSR playlist[0] + replays/session; raw-HTML iframe grep empty, 0 client/replay); check7 TRUE committed release-result.json "Replay liveness: skipped (static replay bundle declared"
+2026-08-26T14:12:00Z heartbeat phase=60
+2026-08-26T14:16:22Z 60 confirming re-poll: 4 pending / 3 completed / 2 completed / 1 failed; checks 3-8 pin round3 (latest completed at verification time)
+2026-08-26T14:17:00Z 60 VERIFY.md written: 8/8 TRUE (check5 on SPEC item-5 exception branch); 3 legibility observations (LIVES LEAD momentum label, no scrub beats in frame, no landmark discs on board in tag)
+2026-08-26T14:18:27Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed, both champions ranked 2 rounds each, replay valid 74/80 llm directives, log 429s=platform (walker-waterworld cross-check), iframe static sha-pinned, cert static bundle, viewer-check 32978130047 loaded:true 3 clocks differ); 3 legibility observations non-blocking
+2026-08-26T14:18:27Z progress phase=60 marker=VERIFY.md
