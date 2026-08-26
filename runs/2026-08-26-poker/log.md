@@ -96,3 +96,6 @@
 2026-08-26T19:46:44Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20533
 2026-08-26T19:46:44Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-26T19:46:44Z heartbeat phase=80
+2026-08-26T19:48:34Z 80 executive summary posted on run task (201) and condensed on idea task (201); LEARNINGS entry appended; all 9 phase subtasks complete; idea 1217747803484730 completed; run task 1217871010134558 moved to Done
+2026-08-26T19:48:34Z progress phase=80 marker=run-done
+2026-08-26T19:48:34Z 80 poker: closed — run Done. Session 8bd3f494 ends; no next action (run complete: repo cogame-poker, coworld 0.1.0 certified, league 4 rounds, announced 1542257476135690332, atlas PR 20533 open-approved)
