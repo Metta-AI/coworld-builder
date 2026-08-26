@@ -35,3 +35,4 @@
 2026-08-26T21:23:21Z 30 reviewer dispatched round=2 thread=sthr_01EEGj1kZZR3hi28BVvk9zog output=reviews/r2-review.md focus=item-7 baseline tuning provenance session=dc527a34
 2026-08-26T21:30:52Z 30 reviewer returned round=2 file=reviews/r2-review.md: 1 blocking (F1 = standing item-7 tuning provenance, unchanged), 3 non-blocking (F2 stale note spec, F3 candidate-cap untested, F4 hand-mirrored caps), no regressions in r1 fix areas
 2026-08-26T21:30:52Z heartbeat phase=30
+2026-08-26T21:31:31Z 30 fixer dispatched round=2 thread=sthr_01LXTYn1jJGJ4ioPYLup1JhX output=reviews/r2-fixes.md focus=F1 grid-sweep harness + committed table + CI slice session=dc527a34
