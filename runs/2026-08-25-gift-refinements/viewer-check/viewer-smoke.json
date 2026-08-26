@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 3894,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_686eadd9-7594-425c-98b2-854deb9acdd1/sha256%3A6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8dc5efef-29a1-48d8-b3c3-61ae001dda10.replay&v=2",
+  "ms": 7687,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_686eadd9-7594-425c-98b2-854deb9acdd1/sha256%3A6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fbdce0778-56a2-44e5-87c1-f8ffb68f92a5.replay&v=2",
   "bundle": null,
   "replay": null,
-  "clock": "ROUND 1 / 12 TICK 0 OF 720",
-  "scorebug": "TOKENS BANKED TOKENS 0 0 MINTED · 0 DEFECTIONS ROUND 1 / 12 TICK 0 OF 720 GIFTS GIVEN TOKENS 0 0 MINTED · 0 DEFECTIONS",
+  "clock": "ROUND 1 / 12 TICK 3 OF 720",
+  "scorebug": "TOKENS BANKED TOKENS 0 0 MINTED · 0 DEFECTIONS ROUND 1 / 12 TICK 3 OF 720 GIFTS GIVEN TOKENS 0 0 MINTED · 0 DEFECTIONS",
   "status": "OPEN",
   "loading_text": null,
   "feed_lines": 0,
@@ -19,11 +19,11 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "ROUND 1 / 12 TICK 0 OF 720"
+      "clock": "ROUND 1 / 12 TICK 3 OF 720"
     },
     {
       "at": "50%",
-      "clock": "ROUND 7 / 12 TICK 376 OF 720"
+      "clock": "ROUND 7 / 12 TICK 375 OF 720"
     },
     {
       "at": "100%",
