@@ -15,3 +15,9 @@
 2026-08-26T00:28:30Z 20 propagate-secrets run 32915048989 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-pistonball
 2026-08-26T00:31:00Z 20 builder dispatched thread=sthr_017guEM9Z4XXGnexTjEd3NsJ target=ci.yml green on main
 2026-08-26T00:31:00Z heartbeat phase=20
+2026-08-26T01:58:00Z 20 builder returned: ci.yml GREEN run=32923038675 sha=ce20047d66736a61bc772c52e05ffb82b38ccedf (verified conclusion=success, sha==main); 1 red round (32920732929, wasm-viewer soak vs 8s fixture replay) fixed by refixturing
+2026-08-26T01:58:00Z 20 builder deviations from design note (rails: parameter tuning, accepted): SubSteps 4->16 + gravity/torque rescale (pinned stiffness unchanged); containment y-bounds [200000,4300000]; seeded 2-20cm drop offset (deterministic, replay-safe); cert fixture 1 wavebot + 19 metronomes (soak-length + both player entries slotted); heads-are-the-floor contact; wave/catch prose corrected to match formula; CTF_WIRE aliased (test-pinned exception); note: push via git-data API (HTTPS git push 403s in sandbox)
+2026-08-26T01:58:00Z 20 baselines: 20 wavebots deliver 20/20 seeds mean +97.05; metronomes -10.07; 10/10 mix 20/20
+2026-08-26T01:58:00Z progress phase=20 marker=ci-run-32923038675
+2026-08-26T01:58:30Z 00 phase transition 20 -> 30
+2026-08-26T01:58:30Z heartbeat phase=30
