@@ -55,3 +55,6 @@
 2026-08-26T13:03:02Z progress phase=30 marker=r2-verdict.md
 2026-08-26T13:03:02Z 00 phase transition 30 -> 40
 2026-08-26T13:03:50Z 40 release builder dispatched thread=sthr_01Bv6DWNr5XRLnpjWvXAHXXU version=0.1.0 target=release-result.json ok/canonical/certified
+2026-08-26T13:37:37Z 40 release GREEN: v0.1.2 run=32973681353 cow_id=cow_039ad60d-ae1f-4098-ab1d-4f0144e32198 canonical certified secret_put; 3 dispatches (0.1.0 manifest tokens fix eff8bb9+78c3de1, 0.1.1 platform 405 on flat episode-requests -> CLI pin 0.1.43 543c5a8, 0.1.2 green); policies all v2
+2026-08-26T13:37:37Z progress phase=40 marker=release-run-32973681353
+2026-08-26T13:37:37Z 00 phase transition 40 -> 50

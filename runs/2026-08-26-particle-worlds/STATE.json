@@ -5,22 +5,25 @@
   "slug": "particle-worlds",
   "repo": "https://github.com/Metta-AI/cogame-particle-worlds",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "20": 1
+    "20": 1,
+    "40": 0
   },
   "review_round": 2,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_039ad60d-ae1f-4098-ab1d-4f0144e32198",
+    "manifest_sha": "sha256:c9ae68f37da1146762cfefc9e1fd0a96315d9276cbabd3ebbfa49fb962269903",
+    "release_run_id": "32973681353"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
-    "filler_version_ids": []
+    "champion1": "particle-worlds-swarm:v2",
+    "champion2": "particle-worlds-cipher:v2",
+    "fillers": [
+      "particle-worlds-drifter:v2",
+      "particle-worlds-beeline:v2"
+    ]
   },
   "league": {
     "id": "",
@@ -47,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T13:03:02Z",
+  "heartbeat_at": "2026-08-26T13:37:37Z",
   "session_ended_at": null,
   "session_id": "36126db3",
   "log": "runs/2026-08-26-particle-worlds/log.md"
