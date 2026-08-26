@@ -62,3 +62,10 @@
 2026-08-26T04:50:32Z heartbeat phase=60
 2026-08-26T04:53:00Z 60 check6 (attempt 1, round-2 featured): raw-HTML grep found no iframe (client-rendered); SSR playlist[0] = pistonball.r2.e1; POST /coworlds/replays/session -> ready:true, static index.html path -> TRUE
 2026-08-26T04:53:00Z 60 check8 (attempt 1) viewer-check run 32931770282 dispatched 04:51:07Z, success: loaded=true ms=4612, clocks 1:15/0:39/FINAL GAME OVER (3 differing)
+2026-08-26T04:57:15Z heartbeat phase=60
+2026-08-26T05:02:05Z heartbeat phase=60
+2026-08-26T05:05:00Z 60 poll: round 3 completed -> 2 completed rounds (2,3) after fillers; check1 TRUE
+2026-08-26T05:05:00Z 60 check3 round3 ereq_d172e3fa completed replay_url present, daveey+daveey-1 non-filler -> TRUE
+2026-08-26T05:05:00Z 60 check4 round3: protocol pistonball/v1, complete/delivered, progress 98.69 score 96.59 BUT champion seats llm=0 fallback=2 (429 "Too many tokens per day") -> FALSE so far
+2026-08-26T05:05:00Z 60 check5 round3: 4 'falling back' lines; cross-check fruit-market ereq_9a9f143f 04:48Z same 429 on global.anthropic.claude-haiku-4-5-20251001-v1:0 -> platform-wide; continuing to poll inside 75-min bound
+2026-08-26T05:05:00Z 60 DEFECT found (round 2, LLM available): turnStart sampled BEFORE the minBatchSpacingMs sleep in src/pistonball/decide.nim:326 vs :383 -> turns>=1 always 'per-turn budget exhausted before attempt 1'
