@@ -92,3 +92,6 @@
 2026-08-26T03:35:41Z heartbeat phase=60
 2026-08-26T03:36:09Z 60 re-release builder dispatched thread=sthr_011F6FVLsJ9TEudrfx3y9hJg version=0.1.2 session=dd5e2e1a
 2026-08-26T03:36:27Z 60 re-release dispatch version=0.1.2 run=32927080527 step_failed=none decision=accepted: ok=true canonical=true certify.ok=true replay_liveness=skipped(static) policies mirror:v3 patron:v3 reciprocator:v3 hoarder:v3 (all four minted new versions; patron player_id=ply_bac48eb1) secret_put=true; hosted_certification snapshot="certifying" -> GET /v2/coworlds/cow_e19d6eae/certification returned state=certified certified=true failed_step=null, no version bump needed; cow_id=cow_e19d6eae-78b4-447d-878d-b856c435db87 canonical confirmed via GET /v2/coworlds (0.1.0/0.1.1 now canonical=false); STATE.policies.filler_version_ids cleared (v2 UUIDs superseded, phase 50 to re-resolve)
+2026-08-26T03:44:07Z 60 builder returned: 0.1.2 canonical+certified run=32927080527 cow=cow_e19d6eae-78b4-447d-878d-b856c435db87 policies all :v3
+2026-08-26T03:44:07Z progress phase=60 marker=release-run-32927080527
+2026-08-26T03:44:07Z heartbeat phase=60
