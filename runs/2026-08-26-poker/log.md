@@ -28,3 +28,4 @@
 2026-08-26T16:49:33Z heartbeat phase=20
 2026-08-26T16:55:28Z 20 builder returned round=1 thread=sthr_01UJkZrAVddKNTDibtykKJvv: GREEN run=32989622335 sha=94e5e00 zero red rounds; 8 findings self-reported; coordinator rails decision on finding 1 (audit FP): drop outer clamp (signed showdown attribution), keep bb thresholds, restore strict zero-FP test both baselines — design.md Addendum 1 appended; follow-up dispatched to builder
 2026-08-26T16:55:28Z progress phase=20 marker=32989622335
+2026-08-26T16:55:51Z heartbeat phase=20
