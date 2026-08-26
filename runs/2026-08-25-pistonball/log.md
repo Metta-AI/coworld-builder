@@ -40,3 +40,6 @@
 2026-08-26T05:52:00Z progress phase=40 marker=release-run-32930394604
 2026-08-26T05:52:30Z 00 phase transition 40 -> 50
 2026-08-26T05:52:30Z heartbeat phase=50
+2026-08-26T05:57:00Z 50 seed 200; league league_6789db33-ab0a-4b15-b572-b3ea39c614fd (leagues GET returns bare array here, matched client-side)
+2026-08-26T05:57:30Z 50 division 200 div_de04ec28-cd1a-4349-9667-d34a687735c7; settings 200 elo round_robin filler_policy interval=15m (round_scoring_rule=mean per design note)
+2026-08-26T05:58:00Z 50 champion1 submit dispatching: pistonball-swell:v2 as ply_44ae9048-3242-4654-881f-6d9d43347fa3
