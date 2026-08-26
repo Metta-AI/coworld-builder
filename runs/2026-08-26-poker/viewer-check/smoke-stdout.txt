@@ -1,4 +1,4 @@
-{"loaded":true,"ms":1818,"clock":"HAND 1 / 60 · ROUND 1 · POT 0 · ANTE 1","scorebug":"daveey 0 NET 0 daveey-1 D 0 NET 0","feed_lines":698}
-scrub readouts: 0%="HAND 1 / 60 · ROUND 1 · POT 0 · ANTE 1"  50%="HAND 30 / 60 · MIRROR · SHOWDOWN · POT 0 · ANTE 1"  100%="HAND 60 / 60 · MIRROR · SHOWDOWN · POT 0 · ANTE 1"
-canvas text: 1005 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+{"loaded":true,"ms":7964,"clock":"HAND 1 / 60 · ROUND 1 · POT 0 · ANTE 1","scorebug":"daveey 0 NET 0 daveey-1 D 0 NET 0","feed_lines":735}
+scrub readouts: 0%="HAND 1 / 60 · ROUND 1 · POT 0 · ANTE 1"  50%="HAND 30 / 60 · MIRROR · SHOWDOWN · POT 4 · ANTE 1"  100%="HAND 60 / 60 · MIRROR · ROUND 1 · POT 0 · ANTE 1"
+canvas text: 816 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -1,14 +1,14 @@
 {
   "loaded": true,
-  "ms": 1818,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_08add75e-311a-46ba-9b5d-05888954986e/sha256%3A3f77538f7a2da1352ea60c620dcdcb626bd8de9a1b4e352d829db4e15eb9350e/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F04d88ad9-2757-42a1-8374-498fec27b3b4.replay&v=2",
+  "ms": 7964,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_08add75e-311a-46ba-9b5d-05888954986e/sha256%3A3f77538f7a2da1352ea60c620dcdcb626bd8de9a1b4e352d829db4e15eb9350e/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fbb8f4285-d608-47ea-9ec2-717f52e89911.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "HAND 1 / 60 · ROUND 1 · POT 0 · ANTE 1",
   "scorebug": "daveey 0 NET 0 daveey-1 D 0 NET 0",
   "status": "REPLAY",
   "loading_text": "LOADING REPLAY…",
-  "feed_lines": 698,
+  "feed_lines": 735,
   "signals": {
     "data_replay_loaded": "true",
     "data_replay_error": null,
@@ -26,16 +26,16 @@
     },
     {
       "at": "50%",
-      "clock": "HAND 30 / 60 · MIRROR · SHOWDOWN · POT 0 · ANTE 1"
+      "clock": "HAND 30 / 60 · MIRROR · SHOWDOWN · POT 4 · ANTE 1"
     },
     {
       "at": "100%",
-      "clock": "HAND 60 / 60 · MIRROR · SHOWDOWN · POT 0 · ANTE 1"
+      "clock": "HAND 60 / 60 · MIRROR · ROUND 1 · POT 0 · ANTE 1"
     }
   ],
   "soak": null,
   "canvas_text": {
-    "total": 1005,
+    "total": 816,
     "outside": 0,
     "ellipsized": 0,
     "never_inside": 0,
