@@ -84,3 +84,6 @@
 2026-08-26T12:31:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20500
 2026-08-26T12:31:39Z heartbeat phase=80
 2026-08-26T12:33:29Z 80 close: exec summary posted (run task story 1217864636397420, idea task story 1217864568242378); LEARNINGS 2026-08-26 walker-waterworld appended; observatory-api §9 updated (flat episode-requests 405)
+2026-08-26T12:34:03Z 80 close complete: 9/9 subtasks done, idea 1217748137847525 completed, run task 1217854099809002 moved to Done
+2026-08-26T12:34:03Z progress phase=80 marker=run task Done, idea completed
+2026-08-26T12:34:03Z 80 run closed — session end (phase 80 reached; full chain 00->80 in one session)
