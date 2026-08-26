@@ -5,12 +5,13 @@
   "slug": "atari-cabinet",
   "repo": "https://github.com/Metta-AI/cogame-atari-cabinet",
   "starter": "coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "30": 1,
     "40": 0,
     "50": 0,
-    "60": 0
+    "60": 0,
+    "70": 0
   },
   "review_round": 1,
   "coworld": {
@@ -47,7 +48,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-26T21:15:39Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542281426228219954"
   },
   "atlas": {
     "status": "",
@@ -61,7 +62,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T21:15:39Z",
+  "heartbeat_at": "2026-08-26T21:16:04Z",
   "session_ended_at": null,
   "session_id": "3ad680cb",
   "log": "runs/2026-08-26-atari-cabinet/log.md"
