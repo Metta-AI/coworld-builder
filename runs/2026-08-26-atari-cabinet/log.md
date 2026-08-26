@@ -27,3 +27,4 @@
 2026-08-26T15:52:41Z 30 r1 dispatch fixer
 2026-08-26T15:52:41Z heartbeat phase=30
 2026-08-26T18:42:13Z 00 resume at phase 30 attempt=1 session=3ad680cb
+2026-08-26T18:43:03Z 30 r1 re-dispatch fixer (previous session died mid-leg, no r1-fixes.md found) session=3ad680cb
