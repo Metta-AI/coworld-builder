@@ -4,7 +4,7 @@
   "run_task": "1217854099809002",
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
