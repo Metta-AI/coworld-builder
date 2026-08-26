@@ -86,3 +86,4 @@
 2026-08-26T03:16:19Z progress phase=60 marker=VERIFY.md
 2026-08-26T03:16:19Z 60 retry approach 1: fix D1 (lobby close waits for all seats or playerConnectTimeoutSeconds) + D2 (mirror prompt clarifies consume is a field not a job), then re-release 0.1.2 and re-wire league per LEARNINGS pause->fillers->resubmit->unpause
 2026-08-26T03:16:19Z heartbeat phase=60
+2026-08-26T03:16:51Z 60 fixer dispatched thread=sthr_015yJU2vTw4T86CCQtxhpgKF for D1+D2 session=dd5e2e1a
