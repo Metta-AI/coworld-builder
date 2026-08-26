@@ -82,3 +82,7 @@
 2026-08-26T03:11:30Z 60 check8 TRUE: viewer-check run=32925387074 (dispatched 03:09:23Z, found by createdAt sort) conclusion=success; loaded=true ms=1428 data_replay_loaded="true"; scrub 0%="ROUND 1 / 12 TICK 0 OF 720" 50%="ROUND 7 / 12 TICK 376 OF 720" 100%="FINAL TICK 719 OF 720"; screenshot shows starter chrome (transport strip, TOKENS IN PLAY momentum scrubber, scorebug, ROUND LIMIT endcard, trust graph); feed_lines=0 noted as phase-30 legibility observation
 2026-08-26T03:12:00Z 60 VERIFY.md written: verdict = 2 items false (4 and 5). D1 lobby closes before champion pods connect -> champions play scripted baseline; D2 mirror prompt emits out-of-enum job "consume" -> retry exhausted -> fallback
 2026-08-26T03:12:00Z heartbeat phase=60
+2026-08-26T03:16:19Z 60 verifier returned VERIFY.md: checks 1,2,3,6,7,8 TRUE; 4,5 FALSE — D1 lobby closes before champion pods connect (rounds 2,4 champions played scripted; round 3 proves capability), D2 mirror prompt parse_error (consume conflated as job) -> fallback in r4 log. Coworld defects, not platform.
+2026-08-26T03:16:19Z progress phase=60 marker=VERIFY.md
+2026-08-26T03:16:19Z 60 retry approach 1: fix D1 (lobby close waits for all seats or playerConnectTimeoutSeconds) + D2 (mirror prompt clarifies consume is a field not a job), then re-release 0.1.2 and re-wire league per LEARNINGS pause->fillers->resubmit->unpause
+2026-08-26T03:16:19Z heartbeat phase=60
