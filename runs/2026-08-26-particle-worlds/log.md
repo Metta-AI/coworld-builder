@@ -26,3 +26,5 @@
 2026-08-26T09:42:18Z 00 phase transition 20 -> 30
 2026-08-26T09:42:53Z 30 r1 reviewer dispatched thread=sthr_01Mrk8UBqCZyJ87A3Hn1XmU8 output=runs/2026-08-26-particle-worlds/reviews/r1-review.md sha=99dcaab7
 2026-08-26T09:43:16Z 30 r1 reviewer dispatched thread=sthr_01VxB4n9qwfQrUFT6cAWrSGX sha=99dcaab7 checkout=/workspace/cogame-particle-worlds output=reviews/r1-review.md
+2026-08-26T10:04:01Z 30 r1 reviewer returned r1-review.md (668 lines): 3 blocking candidates (F1 fixture not loading real renderer, F2 chrome_common 1-line diff vs note, F3 turnSpacingMs sleep eats retry budget), F4 fallback over-count, 14 advisory
+2026-08-26T10:04:01Z heartbeat phase=30
