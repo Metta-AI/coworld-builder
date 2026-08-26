@@ -83,3 +83,4 @@
 2026-08-26T12:31:39Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20500 status=pr_open (automerge armed; lands via Graphite queue, human merge-when-ready)
 2026-08-26T12:31:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20500
 2026-08-26T12:31:39Z heartbeat phase=80
+2026-08-26T12:33:29Z 80 close: exec summary posted (run task story 1217864636397420, idea task story 1217864568242378); LEARNINGS 2026-08-26 walker-waterworld appended; observatory-api §9 updated (flat episode-requests 405)

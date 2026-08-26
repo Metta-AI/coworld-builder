@@ -150,13 +150,17 @@ policy versions were actually seated.
 
 ```bash
 # WORKS
-curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}"
-curl -sS "$BASE/episode-requests?coworld_id=$COW&limit=20" "${AUTH[@]}"
+curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}"          # nested route — use this
+curl -sS "$BASE/coworlds/$COW/episode-requests" "${AUTH[@]}"      # nested by coworld
 
-# DOES NOT WORK
-# ?division_id=…    -> HTTP 500
-# ?league_id=…      -> filter SILENTLY IGNORED (returns unrelated rows)
-# ?coworld_name=…   -> filter SILENTLY IGNORED
+# DOES NOT WORK (2026-08-26, walker-waterworld run)
+# GET $BASE/episode-requests?round_id=…   -> HTTP 405 Method Not Allowed (allow: POST) —
+#     the flat list route no longer accepts GET at all; the same 405 kills
+#     coworld[auth]==0.1.42's --wait-hosted-smoke (pin 0.1.43+, see templates/coworld-release.yml)
+# GET $BASE/episode-requests?coworld_id=… -> same 405 (flat route)
+# ?division_id=…    -> HTTP 500 (historical)
+# ?league_id=…      -> filter SILENTLY IGNORED (returns unrelated rows) (historical)
+# ?coworld_name=…   -> filter SILENTLY IGNORED (historical)
 ```
 
 List key: `entries`. Detail:
