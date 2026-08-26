@@ -78,3 +78,5 @@
 2026-08-26T12:27:03Z 70 announce msg=1542148305071382538 (200, flags=4, embeds=[])
 2026-08-26T12:27:03Z progress phase=70 marker=announce.discord_message_id=1542148305071382538
 2026-08-26T12:27:03Z heartbeat phase=75
+2026-08-26T12:29:10Z 75 atlas continent=commons reason=fully cooperative shared-reward coordination (pistonball/chorus/co-op-hunting precedent); spot 458,586 clearance 23.4 (computed against places.mjs augmented with PR 20489's 23 pending cities) label=Waterworld anchor=c
+2026-08-26T12:29:10Z 75 atlas dispatch=32968781382 region=commons at=458,586 clearance=23.4 extra_cities=23 (PR 20489's exact lines, pre-empting the unplaced-leagues failure)
