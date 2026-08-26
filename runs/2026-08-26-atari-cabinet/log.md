@@ -9,3 +9,8 @@
 2026-08-26T12:39:40Z 00 STATE written phase=10 session=404e211b; entering prompts/10-design.md
 2026-08-26T12:41:00Z 10 starter=coworld-ctf (paintbot) — first row of starter table: real-time loop, rules written fresh; retro-arcade shapes reimplemented, not a bit-exact ALE/ROM port (no emulator hostable; precedent pistonball/particle-worlds/walker-waterworld; Cogball operator ruling 2026-08-22)
 2026-08-26T12:41:10Z 10 dispatch designer — design note for cogame-atari-cabinet
+2026-08-26T13:01:27Z 10 designer returned design-draft.md (1874 lines); coordinator checklist review round 1
+2026-08-26T13:01:27Z 10 checklist: starter[x] num_agents=4[x] resolution-order[x] scoring+sign+rank[x] end-conditions+reason-enum[x] observation-visible/hidden[x] reply-schema+rune-caps[x] both-policies-env-switched[x] one-parallel-batch+60%-budget[x] degrade-never-hang[x] two-name-spaces[x] viewer-static-bundle+360px[x] four-viewer-files-one-starter+markers[x] chrome-provenance+zoom-dropped[x] transport-rules[x] replay-self-sufficient[x] packaging[x] tests-incl-executed-viewer-smoke[x] out-of-scope-nonempty[x]
+2026-08-26T13:01:27Z 10 design ACCEPTED round 1 — copied to runs/2026-08-26-atari-cabinet/design.md
+2026-08-26T13:01:27Z progress phase=10 marker=design.md accepted r1
+2026-08-26T13:01:27Z heartbeat phase=20
