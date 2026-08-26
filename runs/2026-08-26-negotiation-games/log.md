@@ -12,3 +12,10 @@
 2026-08-26T21:54:40Z 20 repo created public: https://github.com/Metta-AI/cogame-negotiation-games
 2026-08-26T21:55:30Z 20 propagate-secrets run=33017497421 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-negotiation-games
 2026-08-26T21:58:00Z 20 builder dispatched round=1 thread=sthr_01GgSoejp1gjtJGjb4z5GADd repo=Metta-AI/cogame-negotiation-games session=ng26a441
+2026-08-26T22:40:00Z 20 builder returned round=1: ci.yml green on main run=33022161451 sha=5f23877d0066763e52d695be02ffe88d5133e2b4 (3 red rounds internal to builder, no test weakened); exit checks all pass (placeholders clean, 3 workflows parse, release/submit inputs+artifacts present, per-policy player field handled)
+2026-08-26T22:40:00Z 20 rails ruling: design-note test 16 clause 'hardliner-vs-hardliner >=10 no-deals' unreachable with the note's own pinned algorithms (smallest-bundle offers + last-turn reservation drop; 0 no-deals in 300 modelled matches) — ACCEPTED builder's substitution: algorithms kept exactly as pinned, assertion replaced by non-interchangeability property (96/102 matches differ, hardliner mean 8.08 > haggler 6.70, deals 102/102 >= 90%, joint 14.89 >= 12); documented in tests/test_bot.nim suite 16
+2026-08-26T22:40:00Z 20 deviations accepted: match event field kind->matchKind (event-kind key collision); docker_smoke.sh gained SMOKE_CONFIG_JSON overlay (cert fixture stays small, seat invariants untouched — template fold-back noted for close); renderer fixture drives real wasm on a rewritten real replay (no shim; schedule re-derivation forbids synthetic payloads); endscreen bottom:0 inside #board-wrap satisfies the no-overlay-in-band rule
+2026-08-26T22:40:00Z 20 note for later phases: git push to cogame-negotiation-games refused (anonymous write) — builder used Contents-API/blobs-tree-commit fallback per ecos 2026-08-23 playbook recipe; fixer briefs must carry this
+2026-08-26T22:40:30Z 20 -> 30 phase transition: STATE phase=30 review_round=1
+2026-08-26T22:40:30Z heartbeat phase=30
+2026-08-26T22:40:30Z progress phase=20 marker=ci-run-33022161451
