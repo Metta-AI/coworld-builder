@@ -5,7 +5,7 @@
   "slug": "gift-refinements",
   "repo": "https://github.com/Metta-AI/cogame-gift-refinements",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "30": 1
   },
@@ -89,7 +89,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-26T04:37:56Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542030345656860715"
   },
   "atlas": {
     "status": "",
@@ -103,7 +103,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T04:37:56Z",
+  "heartbeat_at": "2026-08-26T04:38:15Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
