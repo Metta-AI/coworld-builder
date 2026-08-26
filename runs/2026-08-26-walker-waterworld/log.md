@@ -20,3 +20,6 @@
 2026-08-26T09:51:28Z heartbeat phase=30
 2026-08-26T09:52:43Z 30 r1 reviewer dispatched thread=sthr_01Ej8ZW44WWpnyNoXGy88QMz target sha 41bae66305db6da58dc0256d54bb5c3ac913cce9, clone at /workspace/cogame-walker-waterworld
 2026-08-26T09:52:43Z heartbeat phase=30
+2026-08-26T10:15:44Z 30 r1 reviewer returned r1-review.md (733 lines, 24 findings: F1-F4 blocking test-loosening class, F5-F23 advisory, 9 F-P provenance items consistent)
+2026-08-26T10:15:44Z 30 r1 fixer dispatched thread=sthr_01YRBkMPKxNJGeXm2982o6me
+2026-08-26T10:15:44Z heartbeat phase=30
