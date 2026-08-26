@@ -657,3 +657,23 @@ and reads correctly; neither falsifies check 8's gate.
 | 6 | Public page uses the **static** replay path | **TRUE** — `…/replays/static/<cow_id>/<manifest sha>/index.html?replay=…`, `ready:true`, featured match present |
 | 7 | Certification declared the static bundle | **TRUE** — `Replay liveness: skipped (static replay bundle declared…` from the committed `release-result.json` |
 | 8 | Viewer executed and judged | **TRUE** — `loaded: true` in 3 166 ms, three differing clock readouts, screenshot shows the game (see F2, F3) |
+
+---
+
+## Addendum (coordinator, 2026-08-26T06:11Z): F1 fixed, re-released, proven in production
+
+The §Findings F1 defect (turn budget consumed by the rate-floor sleep; champions fell back on every turn > 0) was fixed before adjudication:
+
+- Fix commits on `Metta-AI/cogame-pistonball` main: `06bd3f7` (F1, decide.nim turnStart re-sampled after the inter-batch sleep + engine test with spacing 400 > budget 200), `87ba292` (F2, replay recounts llmTurns/fallbackTurns for the endcard), `30964b3` (F3, endcard header fit, browser-measured). CI green: run 32934920010 at 30964b3.
+- Re-released as **0.1.3**: release run 32936048068, `ok:true, canonical:true, certify.ok:true, secret_put:true`, `Replay liveness: skipped (static replay bundle declared...)`, new `cow_id cow_768730a3-282a-4d75-9cff-01eea560e260`, `manifest_sha sha256:91c1207c7f679847f054a230f0d44e58aad9f52d927f8cc5678e3f619aa33915`. `runs/2026-08-25-pistonball/release-result.json` overwritten to match. League seats stay on the v2 policy versions (player protocol unchanged; the fix is in the game image).
+- Post-fix round **8** (`round_638df556-805a-4ffd-ab72-074e3e2a4a57`, triggered 06:05Z after 0.1.3 went canonical, completed 06:09Z), episode `ereq_f2d4d58a-ef89-47e5-a83f-4c855ac3329d`, replay `https://softmax-public.s3.amazonaws.com/replays/20418470-73ca-48e7-9a22-fabfec4f8f7d.replay`:
+
+```
+$ python3 tools/replay_summary.py /tmp/ep8.replay > /tmp/ep8.json   # strict UTF-8 JSON: ok
+{"reason":"complete","endRule":"delivered","delivered":true,"sharedScore":91.212,
+ "llmTurns":[0,4,4,0,...],"fallbacks":0}
+llm scripts by turn: turn 0: 2 llm, turn 1: 2 llm, turn 2: 2 llm, turn 3: 2 llm
+fallback script records: 0
+```
+
+Both champion seats received LLM scripts on **every turn the episode lasted (0–3; delivered during turn 3)** with **zero fallbacks** — the F1 failure mode (`per-turn budget exhausted before attempt 1`) is absent. Check 4's "champion decisions non-scripted, not all fallbacks" now holds beyond the turn-0-only case; rounds 2–7 predate the fix and their fallback-heavy episodes are the F1 evidence, not the shipped behaviour.

@@ -93,3 +93,6 @@
 2026-08-26T06:05:36Z 40 re-release v0.1.3 SUCCESS run=32936048068: canonical, certified, secret_put, new cow_id cow_768730a3-282a-4d75-9cff-01eea560e260 manifest sha256:91c1207c...; policies v3 minted (league stays on v2 seats — player protocol unchanged, F1 fix is in the game image); release-result.json overwritten
 2026-08-26T06:05:36Z progress phase=60 marker=release-run-32936048068
 2026-08-26T06:05:36Z 60 triggering post-fix round for check-4 addendum
+2026-08-26T06:10:30Z 60 post-fix round 8 completed: ereq_f2d4d58a, complete/delivered, sharedScore 91.212, champions llm on turns 0-3, 0 fallbacks; VERIFY.md addendum appended
+2026-08-26T06:10:30Z progress phase=60 marker=round_638df556-805a-4ffd-ab72-074e3e2a4a57
+2026-08-26T06:10:30Z 60 judge dispatched to adjudicate VERIFY.md vs SPEC definition of done
