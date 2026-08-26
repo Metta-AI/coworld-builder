@@ -5,7 +5,7 @@
   "slug": "pistonball",
   "repo": "Metta-AI/cogame-pistonball",
   "starter": "coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -31,9 +31,12 @@
     "division": "div_de04ec28-cd1a-4349-9667-d34a687735c7"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_638df556-805a-4ffd-ab72-074e3e2a4a57"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/20418470-73ca-48e7-9a22-fabfec4f8f7d.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32937649794"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T06:05:36Z",
+  "heartbeat_at": "2026-08-26T06:23:11Z",
   "session_ended_at": null,
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"

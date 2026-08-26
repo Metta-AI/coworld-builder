@@ -98,3 +98,7 @@
 2026-08-26T06:10:30Z 60 judge dispatched to adjudicate VERIFY.md vs SPEC definition of done
 2026-08-26T06:20:39Z 60 verify-verdict r1: blocking 1 (viewer-check was 0.1.2-sha); viewer-check re-run 32937649794 vs 0.1.3 sha + round-8 replay: loaded=true, clocks differ, endcard LLM/FB 4/0 both champions, headers clean; artifacts committed viewer-check-013/
 2026-08-26T06:20:39Z progress phase=60 marker=viewer-check-run-32937649794
+2026-08-26T06:23:11Z 60 judge re-adjudicated: blocking 0 / BLOCKING 0 (verified from committed artifacts); all 8 definition-of-done items TRUE at head
+2026-08-26T06:23:11Z progress phase=60 marker=verify-verdict.md-blocking-0
+2026-08-26T06:23:11Z 00 phase transition 60 -> 70
+2026-08-26T06:23:11Z heartbeat phase=70
