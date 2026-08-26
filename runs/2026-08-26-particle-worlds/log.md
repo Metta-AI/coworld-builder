@@ -44,3 +44,5 @@
 2026-08-26T11:28:31Z heartbeat phase=30
 2026-08-26T11:29:18Z 30 r2 reviewer dispatched thread=sthr_01KBdZAZfCLH2s26bLFPXNri sha=b6b4401 output=runs/2026-08-26-particle-worlds/reviews/r2-review.md (must cover B1 deadline-hash and intHold obs)
 2026-08-26T11:48:06Z 30 r2 reviewer returned r2-review.md (443 lines): F1 blocking (deadline-path hash divergence confirmed at b6b4401, no deadline-replay test), F2 hold-treks-to-spawn, F3 roundcard cross-check claim false, F4 turn cost margin ~2s, F5 validator necessary-only, F6 spacing default residue; items 1,3-15 verified clean
+2026-08-26T11:48:58Z 30 r2 fixer dispatched thread=sthr_01UyUBhTUHrMcoV9K5DFpV13 output=runs/2026-08-26-particle-worlds/reviews/r2-fixes.md (F1 deadline-hash blocking + F2 hold anchor + F3 roundcard claim + F4-F6)
+2026-08-26T11:48:58Z heartbeat phase=30
