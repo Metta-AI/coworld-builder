@@ -4,7 +4,7 @@
   "run_task": "1217871010134558",
   "slug": "poker",
   "repo": "https://github.com/Metta-AI/cogame-poker",
-  "starter": "",
+  "starter": "cogame-cosino",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
