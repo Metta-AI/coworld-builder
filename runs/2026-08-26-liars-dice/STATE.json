@@ -57,8 +57,8 @@
     "attempted_at": "2026-08-26T23:03:29Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T23:03:29Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-26T23:05:51Z",
+  "session_ended_at": "2026-08-26T23:05:51Z",
   "session_id": "dc527a34",
   "log": "runs/2026-08-26-liars-dice/log.md"
 }

@@ -94,3 +94,7 @@
 2026-08-26T23:03:29Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20567
 2026-08-26T23:03:29Z 75 -> 80 phase transition: STATE phase=80 session=dc527a34
 2026-08-26T23:03:29Z heartbeat phase=80
+2026-08-26T23:05:51Z 80 exec summary posted (story 1217886269357764); idea 1217747862134210 completed; run task moved to Done; LEARNINGS entry appended
+2026-08-26T23:05:51Z 80 close: run 2026-08-26-liars-dice DONE — claimed at phase 20 (dead session), shipped through 30/40/50/60/70/75/80 in one session
+2026-08-26T23:05:51Z progress phase=80 marker=run-done
+2026-08-26T23:05:51Z session dc527a34 ended in phase 80; next action: none — run complete
