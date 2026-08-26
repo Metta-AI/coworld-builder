@@ -25,3 +25,5 @@
 2026-08-26T20:19:59Z 30 reviewer returned round=1 file=reviews/r1-review.md (492 lines): 2 blocking (both item-15 legibility: no worst-case renderer fixture for LLM text; say/notes bands sized by eye not from caps 140/400), 9 non-blocking, 2 could-not-determine
 2026-08-26T20:19:59Z heartbeat phase=30
 2026-08-26T20:20:37Z 30 fixer dispatched round=1 thread=sthr_01P4xrBA4xjvgq9t8mwtRprp output=reviews/r1-fixes.md session=dc527a34
+2026-08-26T21:11:11Z 30 fixer returned round=1 file=reviews/r1-fixes.md: 8 commits (B1 fixture job renderer-fixture, B2 cap-derived bands, N2/N3/N5/N6/N7/N8), 3 disputed with evidence (N1/N9/N4-canvas); head=8e74a8507cc36545686aea23a6ccdb8095a49eea ci=33013575662 success; process note: git push to cogame-liars-dice 401s in sandbox, fixer replayed commits via Git Data API
+2026-08-26T21:11:11Z heartbeat phase=30
