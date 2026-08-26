@@ -54,3 +54,17 @@
 2026-08-26T11:48:33Z heartbeat phase=60
 2026-08-26T11:53:34Z heartbeat phase=60
 2026-08-26T11:58:34Z heartbeat phase=60
+2026-08-26T12:03:34Z heartbeat phase=60
+2026-08-26T12:08:34Z heartbeat phase=60
+2026-08-26T12:14:30Z 60 check 1 TRUE: rounds 2 (completed 11:47:50Z) + 3 (completed 12:04:54Z); round 1 failed pre-filler "Temporal RoundWorkflow failed before settling the round."
+2026-08-26T12:14:30Z 60 check 2 TRUE: leaderboard daveey r1 tandemhunt:v2 1000.0 rounds=2 / daveey-1 r2 relay:v2 1000.0 rounds=2; no filler rows (co-op shared score => Elo unmoved, win=false)
+2026-08-26T12:14:30Z 60 check 3 TRUE: ereq_0910faa4-4573-4486-b6e6-22ccaded84a0 completed, replay d28f4f1b-941e-478d-a418-4898fb1c19d6.replay, daveey+daveey-1 non-filler, 2x shoal:v2 is_filler, coworld_version 0.1.1 cow_36a12905
+2026-08-26T12:14:30Z 60 API deviation: flat GET /episode-requests?round_id= now 405 Method Not Allowed; nested GET /rounds/<id>/episode-requests works. GET /rounds?league_id= returned {"entries":...} object, not a bare array
+2026-08-26T12:14:30Z 60 check 4 TRUE: binary COWLDWWD decoded with repo tools/replay_summary.py (design-note-declared substitute); strict jq ok; protocol walker-waterworld/v1; complete/full_time; captures 12; 48 llm intents 48 distinct says; fallbacks 0
+2026-08-26T12:14:30Z 60 check 5 TRUE: hosted logs 101527 bytes, 4 containers decoded (235 lines, full byte coverage) => CLEAN; 48 bedrock_sidecar_call/complete, 0 errors (claude-haiku-4-5)
+2026-08-26T12:14:30Z 60 check 6 TRUE: raw-HTML iframe grep empty (client-rendered) and /coworlds featured_match null platform-wide; used SSR state.playlist[0] (walker-waterworld.r3.e1, cow_36a12905, both ranked players) + POST /coworlds/replays/session => static /v2/coworlds/replays/static/cow_36a12905/sha256%3A68bb2bd3.../index.html?replay=... ready:true; stray 0.1.0 cow_6f92bb4c is canonical:false
+2026-08-26T12:14:30Z 60 check 7 TRUE: committed release-result.json (no re-download needed) certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-26T12:14:30Z 60 check 8 TRUE: viewer-check run 32967129036 success, loaded=true ms=4431, scrub clocks 1:12 TIME LEFT / 0:35 TIME LEFT / FINAL GAME OVER, no failure; screenshot shows scorebug + endcard + POD table (daveey SKIM-1 24/0, daveey-1 SKIM-3 24/0, Baselines 0/0) + transport strip + LIVES LEAD momentum scrubber; turn-23 feed captions match replay intents
+2026-08-26T12:14:30Z 60 check 8 legibility note (phase-30 class, non-blocking): harness feed_lines=0 while the screenshot shows 4 intent captions -> viewer-check feed selector does not match this shell's feed node
+2026-08-26T12:14:30Z 60 VERIFY.md written: 8/8 TRUE (all-true)
+2026-08-26T12:14:30Z heartbeat phase=60

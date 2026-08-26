@@ -1,0 +1,4 @@
+{"loaded":true,"ms":4431,"clock":"1:12 TIME LEFT","scorebug":"THE POD 0.000 4 SKIMMERS 0 NIBBLES 1:12 TIME LEFT CAUGHT 0 / 20 POISON 0 THRUST −0.00","feed_lines":0}
+scrub readouts: 0%="1:12 TIME LEFT"  50%="0:35 TIME LEFT"  100%="FINAL GAME OVER"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
