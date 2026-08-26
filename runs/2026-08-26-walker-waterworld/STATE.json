@@ -5,7 +5,7 @@
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "walker-waterworld-shoal:v2",
       "walker-waterworld-drifter:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "027d401f-c968-47ef-bbee-ff7f62a7613c",
+      "3264fa0c-76f2-42f1-a6a8-010f540dde4d"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_69fe3c37-8208-4e14-b575-331e1d018d9b",
+    "division": "div_ef3424b8-a20d-4029-8918-e12b6fb65156"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T11:39:27Z",
+  "heartbeat_at": "2026-08-26T11:46:28Z",
   "session_ended_at": null,
   "session_id": "91d04e42",
   "log": "runs/2026-08-26-walker-waterworld/log.md"

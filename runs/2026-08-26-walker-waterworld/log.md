@@ -40,3 +40,12 @@
 2026-08-26T11:39:27Z 40 templates fixed: coworld-release.yml + coworld-submit.yml pin floor raised 0.1.42 -> 0.1.43 with the 405 evidence (release run 32962660196)
 2026-08-26T11:39:27Z progress phase=40 marker=release run 32963420881 canonical v0.1.1
 2026-08-26T11:39:27Z heartbeat phase=50
+2026-08-26T11:39:54Z 50 seed 200 lseed_82b659cd-c55e-4a34-b598-54929bbd1fcb league_69fe3c37-8208-4e14-b575-331e1d018d9b
+2026-08-26T11:40:40Z 50 division 200 div_ef3424b8-a20d-4029-8918-e12b6fb65156; settings 200 elo round_robin filler_policy interval=15m (round_scoring_rule=mean per design note; results_schema echoed waterworld fields)
+2026-08-26T11:41:30Z 50 champion1 submit run 32964550994 ok=true sub_5a9eebd5-9e02-4f71-95a7-d4b0bbb907b5 (tandemhunt:v2, daveey)
+2026-08-26T11:42:10Z 50 champion2 submit run 32964599180 ok=true sub_f2e3d267-902d-4878-95ac-6aece08c1d6d (relay:v2, daveey-1)
+2026-08-26T11:42:40Z 50 policy-versions resolved: shoal:v2=027d401f-c968-47ef-bbee-ff7f62a7613c drifter:v2=3264fa0c-76f2-42f1-a6a8-010f540dde4d relay:v2=ddef617d(player_name=daveey-1 confirmed) tandemhunt:v2=6c1d8fe1
+2026-08-26T11:42:50Z 50 filler-policies 200 (exactly shoal:v2+drifter:v2, neither champion); rounds-paused false; trigger-round 200 workflow ladder-league_69fe3c37
+2026-08-26T11:46:30Z 50 round 1 failed (Temporal RoundWorkflow failed before settling — auto-fire race at unpause, before explicit trigger); round 2 pending with both champions in entrant_attributions (6c1d8fe1 + ddef617d) — exit criterion met
+2026-08-26T11:46:30Z progress phase=50 marker=league_69fe3c37-8208-4e14-b575-331e1d018d9b round 2 pending
+2026-08-26T11:46:28Z heartbeat phase=60
