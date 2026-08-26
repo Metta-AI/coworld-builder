@@ -75,3 +75,5 @@
 2026-08-26T22:46:59Z 60 check8 TRUE viewer-check run=33020556574 conclusion=success loaded=true ms=2428 bridge_ready=true; scrub 0%="DEAL 0" 50%="DEAL 0 / 8" 100%="DEAL 8 / 8 . FINAL" (three differ); canvas_text 2338 drawn 0 never_inside 84 ellipsized; artifact committed runs/2026-08-26-liars-dice/viewer-check/
 2026-08-26T22:46:59Z 60 VERIFY.md written: verdict all-true 8/8; nothing NOT FETCHED
 2026-08-26T22:46:59Z heartbeat phase=60
+2026-08-26T22:48:08Z 60 verifier returned: VERIFY.md 8/8 TRUE (2 rounds completed r1+r2, both champions ranked rounds_played=2, replay complete 0 fallbacks, logs CLEAN, static iframe w/ manifest_sha, cert skipped-static, viewer-check 33020556574 loaded=true clocks DEAL0/DEAL0-8/DEAL8-8-FINAL); 2 non-blocking legibility notes (notes-panel ellipsis 84 draws; filler alias vs Baseline labels)
+2026-08-26T22:48:08Z heartbeat phase=60
