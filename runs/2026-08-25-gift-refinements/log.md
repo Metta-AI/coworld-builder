@@ -49,3 +49,12 @@
 2026-08-26T02:34:46Z 50 division 200 div_3c0d2b61-0e4a-4d9c-b27f-524158fede53
 2026-08-26T02:34:46Z 50 settings 200 ladder elo round_robin filler_policy interval=15m
 2026-08-26T02:34:46Z heartbeat phase=50
+2026-08-26T02:37:38Z 50 champion1 submit ok run=32923259936 sub_83a8ab8f policy=gift-refinements-mirror:v2 player=daveey
+2026-08-26T02:37:38Z 50 champion2 submit ok run=32923300633 sub_53b7c951 policy=gift-refinements-patron:v2 player=daveey-1
+2026-08-26T02:37:38Z 50 policy-versions resolved: mirror:v2=81167874 patron:v2=b88073d9(daveey-1) reciprocator:v2=1b6eefde hoarder:v2=b03346fa
+2026-08-26T02:37:38Z 50 filler-policies 200: reciprocator:v2 + hoarder:v2 registered, neither champion
+2026-08-26T02:37:38Z 50 unpause 200; trigger-round 200 workflow=ladder-league_aa42c0da
+2026-08-26T02:37:38Z 50 rounds: r1 failed (Temporal RoundWorkflow failed before settling — auto-round before fillers landed; r2 is the triggered one), r2 pending with both champions in entrant_attributions
+2026-08-26T02:37:38Z progress phase=50 marker=league_aa42c0da-031b-49b1-9524-e4acc85fd2f6
+2026-08-26T02:37:38Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-26T02:37:38Z heartbeat phase=60
