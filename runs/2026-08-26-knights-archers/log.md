@@ -34,3 +34,5 @@
 2026-08-26T12:08:59Z heartbeat phase=30
 2026-08-26T12:09:57Z 30 r1 reviewer dispatched thread=sthr_01FdmsMwtgTdoDHpG3a2QKpn sha=00cc62a595c4a652c5639aebe04fc65542b00cc4 clone=/tmp/cogame-knights-archers
 2026-08-26T12:09:57Z heartbeat phase=30
+2026-08-26T12:23:56Z 30 reviewer returned round=1 r1-review.md (2 blocking B1=item7 reason==complete assertion missing, B2=item15 model-text fixture missing; 25 non-blocking; 5 undetermined)
+2026-08-26T12:23:56Z heartbeat phase=30
