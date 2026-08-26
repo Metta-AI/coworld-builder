@@ -31,3 +31,5 @@
 2026-08-26T10:04:24Z 30 r1 reviewer returned reviews/r1-review.md: 19 findings (F1 hold-steers-to-spawn, F2 deadline-path hash divergence, F3 renderer fixture doesn't load real renderer, F4 no grid harness, F5 narrowed grep flagged for judge; F6-F19 advisory/verified-deviations)
 2026-08-26T10:04:24Z heartbeat phase=30
 2026-08-26T10:05:01Z 30 r1 fixer dispatched thread=sthr_01JPgN4GqmReoQKfwVzoFuBN output=reviews/r1-fixes.md
+2026-08-26T10:05:02Z 30 r1 review final copy committed (668 lines; reviewer had pushed a 661-line draft as e879f9b)
+2026-08-26T10:05:02Z 30 r1 fixer dispatched thread=sthr_01KCHLp3bLZVKzRotekXNBai output=runs/2026-08-26-particle-worlds/reviews/r1-fixes.md
