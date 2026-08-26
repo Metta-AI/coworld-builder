@@ -30,3 +30,4 @@
 2026-08-26T16:55:28Z progress phase=20 marker=32989622335
 2026-08-26T16:55:51Z heartbeat phase=20
 2026-08-26T17:02:13Z 20 builder measured Addendum 1 insufficient (3/30 & 8/30 honest-house flags, new negative-surrender soft-play FP); coordinator rails decision: option A — final-board showdown equity, MC fold-case only, signed attribution kept, limitation (call-off dumping unflagged, netFlow shows it) documented — design.md Addendum 2 appended; builder directed to implement
+2026-08-26T17:02:31Z heartbeat phase=20
