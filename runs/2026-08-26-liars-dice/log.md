@@ -83,3 +83,7 @@
 2026-08-26T22:54:14Z 60 -> 70 phase transition: STATE phase=70 session=dc527a34
 2026-08-26T22:54:14Z heartbeat phase=70
 2026-08-26T22:55:23Z 70 announce attempted_at written before POST
+2026-08-26T22:55:44Z 70 announce msg=1542306548578263156 (flags=4, embeds=[])
+2026-08-26T22:55:44Z progress phase=70 marker=discord_message_id=1542306548578263156
+2026-08-26T22:55:44Z 70 -> 75 phase transition: STATE phase=75 session=dc527a34
+2026-08-26T22:55:44Z heartbeat phase=75
