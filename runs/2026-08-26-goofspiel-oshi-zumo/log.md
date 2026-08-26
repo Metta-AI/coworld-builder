@@ -30,3 +30,7 @@
 2026-08-26T22:42:33Z 30 judge dispatch r1
 2026-08-26T22:42:33Z heartbeat phase=30
 2026-08-26T22:43:01Z 30 judge dispatched r1 thread=sthr_01Ms4w9TqdzPTdFcw1dcfvBP sha=af5e9bbc session=85d7073b
+2026-08-26T22:51:05Z 30 judge returned r1: blocking=0 (markers agree; 9 fixed verified, F2/F9 refuted; 15-item checklist all PASS; batch rule PASS) file=reviews/r1-verdict.md
+2026-08-26T22:51:05Z progress phase=30 marker=r1-verdict.md
+2026-08-26T22:51:05Z 30 -> 40 phase transition: STATE.phase=40 (judged sha af5e9bbc, CI 33020196047)
+2026-08-26T22:51:05Z heartbeat phase=40
