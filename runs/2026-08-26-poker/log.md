@@ -57,3 +57,14 @@
 2026-08-26T18:35:58Z progress phase=40 marker=32999717629
 2026-08-26T18:35:58Z 40 -> 50 phase transition: STATE.phase=50
 2026-08-26T18:35:58Z heartbeat phase=50
+2026-08-26T18:36:18Z 50 league seeded: league_14d979bc-860c-4c64-a706-e867a2ac1ca5 (seed lseed_19f02673); paused immediately (fresh-ladder learning)
+2026-08-26T18:36:55Z 50 division div_2c39ffc7-6856-4d5f-ad55-c19072cd23b6 created; settings POST 200 (elo round_robin filler_policy, 15min interval)
+2026-08-26T18:37:30Z 50 champion1 submit run=33000674661 ok=true poker-scholar:v1 daveey
+2026-08-26T18:38:10Z 50 champion2 submit run=33000729503 ok=true poker-exploiter:v1 daveey-1
+2026-08-26T18:39:00Z 50 policy-version UUIDs resolved: scholar 188b5f98 (daveey), exploiter f3c265fe (daveey-1), house 9416f376, rock d00d5160
+2026-08-26T18:39:20Z 50 fillers registered while paused: house+rock only, 200
+2026-08-26T18:39:50Z 50 unpaused; trigger-round 200 workflow ladder-league_14d979bc
+2026-08-26T18:40:30Z 50 round 1 pending, error=-, entrant_attributions = both champions (188b5f98 daveey, f3c265fe daveey-1)
+2026-08-26T18:39:59Z progress phase=50 marker=league_14d979bc-860c-4c64-a706-e867a2ac1ca5
+2026-08-26T18:39:59Z 50 -> 60 phase transition: STATE.phase=60
+2026-08-26T18:39:59Z heartbeat phase=60
