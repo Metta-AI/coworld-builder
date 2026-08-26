@@ -32,3 +32,4 @@
 2026-08-26T21:22:48Z 30 r1 verdict blocking=1 -> round 2; STATE review_round=2
 2026-08-26T21:22:48Z progress phase=30 marker=r1-verdict.md
 2026-08-26T21:22:48Z heartbeat phase=30
+2026-08-26T21:23:21Z 30 reviewer dispatched round=2 thread=sthr_01EEGj1kZZR3hi28BVvk9zog output=reviews/r2-review.md focus=item-7 baseline tuning provenance session=dc527a34
