@@ -90,3 +90,4 @@
 2026-08-26T14:24:59Z 60 judge returned verify-verdict.md BLOCKING: 0 — all 8 checks re-fetched and reproduced; 3 advisories adjudicated non-blocking
 2026-08-26T14:24:59Z progress phase=60 marker=verify-verdict.md
 2026-08-26T14:24:59Z 00 phase transition 60 -> 70
+2026-08-26T14:26:15Z 70 announce attempted_at written before POST

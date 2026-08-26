@@ -43,7 +43,7 @@
     "viewer_check_run": "32978130047"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-26T14:26:15Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -58,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T14:24:59Z",
+  "heartbeat_at": "2026-08-26T14:26:15Z",
   "session_ended_at": null,
   "session_id": "36126db3",
   "log": "runs/2026-08-26-particle-worlds/log.md"
