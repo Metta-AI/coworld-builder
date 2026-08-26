@@ -4,3 +4,4 @@
 2026-08-26T21:35:54Z 00 run task created gid=1217884764853653 section=Running subtasks=9 heartbeat_at=2026-08-26T21:35:54Z
 2026-08-26T21:36:30Z 00 -> 10 phase transition: STATE written phase=10
 2026-08-26T21:38:30Z 10 starter=cogame-babel (turn-based structured-offer negotiation with talk and LLM-prompt policies -> playbook Phase 0 row 1, best current parley-stack template; cogame-bullwhip is a supply-chain descendant, not closer to alternating-offer bargaining)
+2026-08-26T21:41:30Z 10 designer dispatched round=1 thread=sthr_01UPwuhZovseD1ZXAgQshf4B output=runs/2026-08-26-negotiation-games/design-draft.md session=ng26a441
