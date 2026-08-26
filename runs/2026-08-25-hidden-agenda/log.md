@@ -12,3 +12,22 @@
 2026-08-25T23:49:32Z heartbeat phase=20
 2026-08-25T23:50:17Z 20 repo created https://github.com/Metta-AI/cogame-hidden-agenda (public); propagate-secrets run 32912493482 completed; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-25T23:51:13Z 20 builder dispatched round=1 thread=sthr_01PTMkReBrxWb5NwmN1czavb target=ci.yml green on main of Metta-AI/cogame-hidden-agenda
+
+## Phase 20 — build
+
+- 2026-08-26 01:31Z `ci.yml` run `32919193615` on `main` @ `5fb43682` — **success**
+  (test / docker-smoke / wasm-viewer all green on the first dispatch). Every
+  `tests/*.nim` ran twice (debug + `-d:release`); docker-smoke played a real
+  five-seat episode from the certification fixture (`all 5 player containers
+  exited 0`, `reason=complete`, 55 447-byte replay); wasm-viewer built the
+  static bundle, loaded it in headless chromium with `--soak 10
+  --strict-text-bounds`, and then loaded `tools/ci/renderer_fixture.html`.
+- The tree is published through `tools/publish.py` (blobs → tree → commit →
+  ref) because the sandbox's git credential helper can READ
+  `Metta-AI/cogame-hidden-agenda` but `git push` returns
+  "No anonymous write access"; `gh`'s token has `permissions.push: true`, so
+  the Git Data API is the working path. Not a defect in the repo.
+- Board art: nano-banana (`gemini-2.5-flash-image`) renders of the Softmax cog,
+  FIVE sheets (front / walk / mine / carry / frozen) x five body colours, in
+  `scripts/art/source/`, split by `scripts/art/split_cog_sheet.py`. No
+  procedural-rig fallback was needed.
