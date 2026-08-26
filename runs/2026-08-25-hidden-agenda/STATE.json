@@ -5,7 +5,7 @@
   "slug": "hidden-agenda",
   "repo": "Metta-AI/cogame-hidden-agenda",
   "starter": "coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "40": 1
   },
@@ -44,7 +44,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-26T05:42:21Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542046556486635520"
   },
   "atlas": {
     "status": "",
@@ -58,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T05:42:21Z",
+  "heartbeat_at": "2026-08-26T05:42:41Z",
   "session_ended_at": null,
   "session_id": "7ba01598",
   "log": "runs/2026-08-25-hidden-agenda/log.md"
