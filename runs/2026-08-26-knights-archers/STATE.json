@@ -7,7 +7,7 @@
   "starter": "coworld-ctf",
   "phase": "20",
   "phase_attempts": {
-    "20": 1
+    "20": 2
   },
   "review_round": 0,
   "coworld": {
@@ -47,8 +47,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T08:39:13Z",
+  "heartbeat_at": "2026-08-26T12:00:33Z",
   "session_ended_at": null,
-  "session_id": "cb9ee14b",
+  "session_id": "a9445eee",
   "log": "runs/2026-08-26-knights-archers/log.md"
 }
