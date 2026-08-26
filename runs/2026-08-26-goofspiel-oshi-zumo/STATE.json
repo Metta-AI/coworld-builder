@@ -4,7 +4,7 @@
   "run_task": "1217882798312522",
   "slug": "goofspiel-oshi-zumo",
   "repo": "https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo",
-  "starter": "",
+  "starter": "cogame-babel",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
