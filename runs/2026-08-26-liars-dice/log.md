@@ -52,3 +52,11 @@
 2026-08-26T22:20:48Z 50 division HTTP200 div_5428acaf-7a4d-4385-a181-c525f0314c29 (Competition L1)
 2026-08-26T22:20:48Z 50 settings HTTP200 (elo k=32 round_robin filler_policy interval=15m)
 2026-08-26T22:20:48Z heartbeat phase=50
+2026-08-26T22:22:44Z 50 champion1 submit HTTP-ok run=33019348682 ok=true sub_2c0d1384 policy=liars-dice-calibrator:v1 player=daveey
+2026-08-26T22:22:44Z 50 champion2 submit HTTP-ok run=33019380441 ok=true sub_638d3a83 policy=liars-dice-needler:v1 player=daveey-1
+2026-08-26T22:22:44Z 50 policy-versions resolved: calibrator=f2db41b0 needler=57886c95(player_name=daveey-1) bayes=f623cad5 pressure=0d7f9cef
+2026-08-26T22:22:44Z 50 filler-policies HTTP200: bayes+pressure registered, neither champion
+2026-08-26T22:22:44Z 50 unpause HTTP200 paused=false; trigger-round HTTP200 workflow=ladder-league_3aa78ed0; round 1 pending, entrant_attributions=both champions
+2026-08-26T22:22:44Z progress phase=50 marker=league_3aa78ed0-6a0e-466f-8666-521631b1124e
+2026-08-26T22:22:44Z 50 -> 60 phase transition: STATE phase=60 session=dc527a34
+2026-08-26T22:22:44Z heartbeat phase=60

@@ -5,7 +5,7 @@
   "slug": "liars-dice",
   "repo": "https://github.com/Metta-AI/cogame-liars-dice",
   "starter": "cogame-babel",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -23,11 +23,15 @@
     "fillers": [
       "liars-dice-bayes:v1",
       "liars-dice-pressure:v1"
+    ],
+    "filler_version_ids": [
+      "f623cad5-e611-4205-9174-8633e9480497",
+      "0d7f9cef-2fed-4f82-bc22-48452e94c844"
     ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_3aa78ed0-6a0e-466f-8666-521631b1124e",
+    "division": "div_5428acaf-7a4d-4385-a181-c525f0314c29"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T22:19:48Z",
+  "heartbeat_at": "2026-08-26T22:22:44Z",
   "session_ended_at": null,
   "session_id": "dc527a34",
   "log": "runs/2026-08-26-liars-dice/log.md"
