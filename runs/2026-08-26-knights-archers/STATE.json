@@ -5,7 +5,7 @@
   "slug": "knights-archers",
   "repo": "https://github.com/Metta-AI/cogame-knights-archers",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 2,
     "40": 1
@@ -47,18 +47,17 @@
     "discord_message_id": "1542200102884606054"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20502",
+    "branch": "atlas/knights-archers-32986364036",
+    "region": "commons",
+    "x": 413,
+    "y": 607,
+    "dispatch_run_id": "32986364036",
+    "attempted_at": "2026-08-26T15:58:09Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T15:52:46Z",
+  "heartbeat_at": "2026-08-26T15:58:09Z",
   "session_ended_at": null,
   "session_id": "a9445eee",
   "log": "runs/2026-08-26-knights-archers/log.md"

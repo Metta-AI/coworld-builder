@@ -84,3 +84,7 @@
 2026-08-26T15:56:02Z 75 atlas continent=commons reason=fully cooperative shared-reward squad defence (precedent: pistonball, cooperative-hunting); spot 413,607 clearance=22.5 label=Knights-Archers anchor=c
 2026-08-26T15:56:02Z 75 atlas placing for others (25 extra_cities): pistonball PR-20489's 23 lines reused verbatim (PR still unmerged on main) + walker-waterworld 458,586 commons (label Multiwalker) + particle-worlds 380,523 commons — both live in /api/coworlds and unplaced
 2026-08-26T15:56:02Z 75 atlas dispatch=32986364036 region=commons at=413,607 clearance=22.5
+2026-08-26T15:58:09Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20502 status=pr_open
+2026-08-26T15:58:09Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20502
+2026-08-26T15:58:09Z 75 -> 80 phase transition: STATE.phase=80
+2026-08-26T15:58:09Z heartbeat phase=80
