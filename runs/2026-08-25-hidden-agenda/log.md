@@ -79,3 +79,4 @@
 2026-08-26T05:34:19Z 60 verifier attempt-2 returned: 8/8 TRUE. Rounds 7/8/9 post-reseat (v3 entrants); leaderboard daveey-1 #1 1022.23 / daveey #2 1017.75; r9 champions 14/14 llm CLEAN, parse rejects 0/0/0 across r7-r9 (cause B eliminated by 731ab43e); r8 429s platform-wide (coins ereq_1e00588b same minute), cleared organically by r9; featured match hidden_agenda.r9.e1 on cow_962d0488 static path; viewer-check 32934089374 loaded=true 3 distinct clocks; 2 external players joined (relh, richard — richard's seat was the r9 ejected impostor). file=VERIFY.md
 2026-08-26T05:34:19Z progress phase=60 marker=VERIFY.md-8of8
 2026-08-26T05:34:19Z heartbeat phase=60
+2026-08-26T05:34:58Z 60 judge dispatched thread=sthr_011R3xpMwu5JnDhLCsh63Nqh output=reviews/verify-verdict.md (VERIFY.md vs SPEC definition of done)
