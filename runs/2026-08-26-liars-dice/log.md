@@ -14,3 +14,4 @@
 2026-08-26T16:36:47Z 20 repo created: https://github.com/Metta-AI/cogame-liars-dice (public); propagate-secrets run 32989319020 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-26T16:37:46Z 20 builder dispatched round=1 thread=sthr_01BfzuzKig6dA1CBGgBDpQks repo=Metta-AI/cogame-liars-dice session=90a1c681
 2026-08-26T16:37:46Z heartbeat phase=20
+2026-08-26T20:01:07Z 00 resume at phase 20 attempt=1 session=dc527a34

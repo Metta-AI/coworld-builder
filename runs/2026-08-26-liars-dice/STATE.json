@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-liars-dice",
   "starter": "cogame-babel",
   "phase": "20",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "20": 1
+  },
   "review_round": 0,
   "coworld": {
     "version": "",
@@ -45,8 +47,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T16:37:46Z",
+  "heartbeat_at": "2026-08-26T20:01:07Z",
   "session_ended_at": null,
-  "session_id": "90a1c681",
+  "session_id": "dc527a34",
   "log": "runs/2026-08-26-liars-dice/log.md"
 }
