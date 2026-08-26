@@ -1,21 +1,29 @@
 # r1 fixes — poker
 
 Repo: `Metta-AI/cogame-poker`, branch `main`.
-Head: `73f2cb59bc53de73207e77074e5ef669da4f9dc2`
-CI: <https://github.com/Metta-AI/cogame-poker/actions/runs/32996855409> — **success**
-(`push`, branch `main`, headSha `73f2cb59…`; jobs `test` ✅, `docker-smoke` ✅, `wasm-viewer` ✅).
-Base reviewed by r1: `7c7e77b977a0256df4d0b78ce79fb35f3d6b1489`. Two commits, one per finding,
-fast-forward only (pushed through the GitHub Git Data API with the local→remote sha map seeded at
-`7c7e77b`, so no history was replayed: `git log --oneline` at head is
-`73f2cb5, b6a8e9d, 7c7e77b, 94e5e00, …`).
+Head: `bba6bffe83313b103f921346fe0d964cbb92725d`
+CI: <https://github.com/Metta-AI/cogame-poker/actions/runs/32997839855> — **success**
+(`push`, branch `main`, headSha `bba6bffe…`; jobs `test` ✅, `docker-smoke` ✅, `wasm-viewer` ✅).
+Base reviewed by r1: `7c7e77b977a0256df4d0b78ce79fb35f3d6b1489`. Three commits — one per finding
+plus one follow-up on B2 the coordinator asked for after reading this file — fast-forward only
+(pushed through the GitHub Git Data API with the local→remote sha map seeded at `7c7e77b`, so no
+history was replayed: `git log --oneline` at head is
+`bba6bff, 73f2cb5, b6a8e9d, 7c7e77b, 94e5e00, …`).
 
-Authority for both changes: `runs/2026-08-26-poker/design.md` **Addendum 3** (coordinator,
-phase 30 round 1), which rules B1 and B2 valid and pins the new numbers. Where a pinned constant
-moved (`160 → 120`, `16 → 14`), that is the ruling, not a loosened test.
+Authority: `runs/2026-08-26-poker/design.md` **Addendum 3** (coordinator, phase 30 round 1), which
+rules B1 and B2 valid and pins the new numbers, and **Addendum 4** (same phase), which nets one
+worst-case decision off the hard guard. Where a pinned constant moved (`160 → 120`, `16 → 14`,
+`0.60 → 0.56`), that is the ruling, not a loosened test.
+
+The earlier green run on the two-commit head `73f2cb5` was
+<https://github.com/Metta-AI/cogame-poker/actions/runs/32996855409> (also `success`, all three
+jobs); every figure quoted below for B1 was re-confirmed on the final head — see "Evidence on the
+final head" at the end.
 
 | finding | disposition | commit | files |
 |---|---|---|---|
-| B2 [timeout] | fixed | `b6a8e9d1a65b7509c814ccd3d951e37f92b94f24` | `src/poker/sim.nim:21-32`, `coworld_manifest_template.json:589,617` (+ ladder.md/audit.md doc values), `README.md:24`, `tests/test_sim.nim:834`, `tests/test_audit.nim:84,94,111` |
+| B2 [timeout] | fixed | `b6a8e9d1a65b7509c814ccd3d951e37f92b94f24` | `src/poker/sim.nim:21-32` (at that commit), `coworld_manifest_template.json:589,617` (+ ladder.md/audit.md doc values), `README.md:24`, `tests/test_sim.nim:834`, `tests/test_audit.nim:84,94,111` |
+| B2 (Addendum 4 follow-up) | fixed | `bba6bffe83313b103f921346fe0d964cbb92725d` | `src/poker/sim.nim:27-36`, `coworld_manifest_template.json:451` (ladder.md) |
 | B1 [legibility] | fixed | `73f2cb59bc53de73207e77074e5ef669da4f9dc2` | `src/poker/types.nim:11-15`, `client/renderer.js:130-138,662-720`, `tools/ci/fixtures/sixmax_audit.replay`, `tests/test_sim.nim:614-620`, `tests/test_bot.nim:137`, `coworld_manifest_template.json` (rules.md), `README.md:38,155`, `.github/workflows/ci.yml:419` |
 
 ---
@@ -30,8 +38,9 @@ stops a live hand is the hard one at `0.70·T` = **840 s** of 1200 — settle-an
 
 **What it does now.** Per Addendum 3: `PlayBudgetFraction = 0.55` (soft guard at **660 s**, still
 checked only at pair boundaries, so no duplicate pair is left half-played) and
-`HardDeadlineFraction = 0.60` (hard guard at **720 s**, still `voidLiveHand()` +
-`endMatchEarly(erDeadline)` so the abandoned hand is refunded in full and the nets still sum to
+`HardDeadlineFraction = 0.60` (hard guard at **720 s** — subsequently **0.56 / 672 s** under
+Addendum 4, see the follow-up section below; still `voidLiveHand()` +
+`endMatchEarly(erDeadline)`, so the abandoned hand is refunded in full and the nets still sum to
 zero). `EpisodeDecisionBudget` stays 220 — 220 × 3.0 s = 660 s, now *exactly* the soft guard, and
 the code comment says so. `holdem-6max` drops 16 → 14 hands (7 pairs, expected ≈ 546 s, ~114 s of
 margin under the soft guard) in the manifest variant and its description, `README.md`'s rung
@@ -39,9 +48,10 @@ table, `ladder.md`'s budget paragraph, `audit.md`'s "a 14-hand episode's flags",
 that pin the shipped six-max size (`test_sim.nim`'s declared-hand-counts case,
 `test_audit.nim`'s zero-false-positive and no-showdown-surrender cases).
 
-**Why that resolves the finding.** The stop that fires on a live hand is now the 720 s guard, and
-720 s is exactly 60 % of the platform's 1200 s. `handCap(holdem-6max)` is unchanged at 16, so 14
-still fits the budget with room, and `sampleEpisode` leaves it alone (even, ≥ `MinHands`).
+**Why that resolves the finding.** The stop that fires on a live hand moved from 840 s to 720 s,
+and then to 672 s with Addendum 4's netting, so the true worst-case settle is inside 60 % of the
+platform's 1200 s. `handCap(holdem-6max)` is unchanged at 16, so 14 still fits the budget with
+room, and `sampleEpisode` leaves it alone (even, ≥ `MinHands`).
 
 **Evidence.** All six suites pass locally in debug *and* `-d:release`, including
 `tests/test_sim.nim` "the declared variant hand counts all fit the budget" (now `(vHoldem, 6, 14)`)
@@ -50,9 +60,33 @@ and `tests/test_audit.nim` "honest scripted six-max episodes raise no flags at a
 `test` on run 32996855409 runs every `tests/*.nim` twice and is green.
 
 **Satisfies:** acceptance-checklist **item 5** ("the episode settles and scores inside 60 % of
-`episodeTimeoutSeconds` (720 s of 1200)"). See the first NOTED entry below for the one residual
-term in that arithmetic, which Addendum 3's numbers do not cover and which I did not change on my
-own authority.
+`episodeTimeoutSeconds` (720 s of 1200)"), completed by the follow-up below.
+
+### B2 follow-up — the hard guard nets off one worst-case decision
+
+Commit `bba6bffe83313b103f921346fe0d964cbb92725d`, authority
+`design.md` **Addendum 4** (coordinator ruling on the residual I recorded in the first version of
+this file, reproduced under NOTED below).
+
+**The residual.** The hard guard is checked *before* a decision (`server.nim:275`), so a decision
+admitted at 719.9 s still runs to completion: `waitForSpacing` ≤ 2.1 s (`llm.nim:731-737`) + up to
+two `curl.post` attempts at `llmTimeoutSeconds = 20` (`llm.nim:638`, retry loop `:755`) +
+`turnDelayMs` + the ~0.5 s settle write (`server.nim:205`). With the guard at 0.60·T the *true*
+worst-case settle was therefore ≈ 763 s (63.6 %), not 720 s.
+
+**What it does now.** `HardDeadlineFraction 0.60 → 0.56` — the guard fires at **672 s**, and
+672 s + one worst-case decision (≈ 45 s) = **717 s ≤ 720 s = 60 %** of 1200. `PlayBudgetFraction`
+stays 0.55 (660 s, pair boundaries) and the guard's behaviour is unchanged: `voidLiveHand()` +
+`endMatchEarly(erDeadline)`, so the abandoned hand is refunded in full and the nets still sum to
+zero. The constant's comment (`src/poker/sim.nim:27-36`) spells the netting out, and `ladder.md`'s
+budget paragraph now reads "the hard guard at 672 s (56 % of 1200 s) … nets off one worst-case
+decision … which is what keeps the true worst-case settle inside 720 s, 60 % of the platform's
+timeout". Nothing else moved: no test pins either fraction, and 14 hands at ≈ 546 s expected still
+clears the unchanged 660 s soft guard.
+
+**Evidence.** All six suites green locally in debug and `-d:release`; CI run 32997839855 (`test`,
+`docker-smoke`, `wasm-viewer` all `success`) on head `bba6bff`, with `docker-smoke` logging
+`smoke OK: seats=2 results=680B replay=16351B reason=complete`.
 
 ---
 
@@ -143,17 +177,16 @@ coordinator's design ruling, not the fixer choosing to shorten the text to dodge
 
 ## NOTED (not fixed)
 
-- **The hard guard is checked *before* a decision, and a decision is not instantaneous.** With
-  `HardDeadlineFraction = 0.60` the guard fires at 720 s, but a decision that started at 719.9 s
-  runs to completion first: `waitForSpacing` ≤ 2.1 s plus up to two `curl.post` attempts at
-  `llmTimeoutSeconds = 20` (`llm.nim:638,755`) plus `turnDelayMs`, so the true worst case is
-  ≈ 720 + 43 ≈ **763 s (63.6 %)** for settle-and-score, and ≈ 783 s to `quit(0)` after
-  `ShutdownGraceSeconds = 20`. Both the review's arithmetic and Addendum 3's ("worst-case
-  settlement is now 720 s = 60 %") use the convention "the guard fires = the episode settles", and
-  it is a 120 s improvement on the reviewed 840 s either way. Closing the residual means subtracting
-  one worst-case decision from the hard deadline (e.g. `0.60·T − (2 × llmTimeoutSeconds + spacing)`,
-  ≈ 677 s) — that contradicts Addendum 3's pinned 720 s, so I did **not** make it on my own
-  authority. Flagged to the coordinator.
+- **~~The hard guard is checked *before* a decision, and a decision is not instantaneous.~~
+  RESOLVED** — I recorded this as a residual rather than changing Addendum 3's pinned 720 s on my
+  own authority; the coordinator issued **Addendum 4** and it is now fixed in commit `bba6bff`
+  (see the B2 follow-up section). For the record, the residual as reported: with the guard at
+  0.60·T it fires at 720 s, but a decision started at 719.9 s runs to completion —
+  `waitForSpacing` ≤ 2.1 s plus up to two `curl.post` attempts at `llmTimeoutSeconds = 20`
+  (`llm.nim:638,755`) plus `turnDelayMs` — so the true worst case was ≈ **763 s (63.6 %)** for
+  settle-and-score, and ≈ 783 s to `quit(0)` after `ShutdownGraceSeconds = 20`. With the guard at
+  0.56·T those become ≈ 717 s (59.8 %) and ≈ 737 s (61.4 % — the 20 s grace after the artifacts
+  are written and scored, which item 5 does not bound).
 - `tests/test_cards.nim:106-112` uses the literal `160` as an arbitrary `truncateRunes` cap in the
   generic truncation tests (alongside 2, 7, 16, 200). It does not pin `MaxSayLen`, so it was left
   alone.
@@ -162,3 +195,19 @@ coordinator's design ruling, not the fixer choosing to shorten the text to dodge
   size, so it was not rewritten; the shipped-size reference in the same page ("a 14-hand episode's
   flags") was.
 - N1–N10 from the review were left untouched, as instructed.
+
+---
+
+## Evidence on the final head (`bba6bff`, CI run 32997839855)
+
+Re-confirmed after the Addendum 4 follow-up, so nothing above rests on the intermediate head:
+
+- `test`: every `tests/*.nim` twice (debug + `-d:release`) — `success`.
+- `docker-smoke`: `smoke OK: seats=2 results=680B replay=16351B reason=complete`; no
+  `SEAT-COUNT FAIL` in the log.
+- `wasm-viewer`, cert replay: `canvas text: 8298 drawn, 0 never inside the canvas (0 draws crossed
+  an edge), 0 ellipsized (--strict-text-bounds)`.
+- `wasm-viewer`, six-max fixture: `canvas text: 27029 drawn, 0 never inside the canvas (0 draws
+  crossed an edge), 0 ellipsized (--strict-text-bounds)` — artifact `viewer-smoke-sixmax.json`
+  `"canvas_text": {"total": 27029, "outside": 0, "ellipsized": 0, "never_inside": 0,
+  "never_inside_samples": [], "distinct_capped": false, "samples": []}`.
