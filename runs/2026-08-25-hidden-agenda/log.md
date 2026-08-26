@@ -31,3 +31,4 @@
   FIVE sheets (front / walk / mine / carry / frozen) x five body colours, in
   `scripts/art/source/`, split by `scripts/art/split_cog_sheet.py`. No
   procedural-rig fallback was needed.
+2026-08-26T01:38:23Z 30 r1 reviewer dispatched thread=sthr_0159BcTLHovT2diAghJrBpAn output=reviews/r1-review.md repo@5fb43682
