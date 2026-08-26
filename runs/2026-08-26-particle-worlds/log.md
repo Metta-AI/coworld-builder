@@ -21,3 +21,6 @@
 2026-08-26T09:42:06Z 20 ci.yml GREEN on main run=32953267780 sha=99dcaab7 after builder rounds (4 red: 32946433296, 32949432235, 32950790774, 32952053871); exit checks pass (placeholders clean, exec bits, workflows parse, inputs+artifacts present, champion#2 player field)
 2026-08-26T09:42:06Z progress phase=20 marker=ci-run-32953267780-success
 2026-08-26T09:42:06Z 00 phase transition 20 -> 30 review_round=1
+2026-08-26T09:42:18Z 20 builder returned: ci.yml GREEN run 32953267780 on main sha 99dcaab7f21dad18f24e6f4fa160135bd01c7102 (jobs test/docker-smoke/wasm-viewer all success); verified via gh; all 3 workflows parse+active; 6 commits; deviations logged by builder (partial mechanic purge unreachable-not-deleted, drifter tag-shadow refinement, chrome byte-for-byte modulo MPE_WIRE, carry-not-velocity wall invariant, bumps per-seat-per-tick, roundIndex in sim, cruise 997/745 fixed point, +build_manifest.py +int32_rehearsal.nim)
+2026-08-26T09:42:18Z progress phase=20 marker=ci-run-32953267780-green
+2026-08-26T09:42:18Z 00 phase transition 20 -> 30
