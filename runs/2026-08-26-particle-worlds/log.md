@@ -18,3 +18,6 @@
 2026-08-26T06:34:36Z 20 builder dispatched thread=sthr_016k1Gzy2mdHRd6GvsVyEnkQ target=ci.yml green on main
 2026-08-26T06:34:36Z heartbeat phase=20
 2026-08-26T09:40:35Z 00 resume at phase 20 attempt=1 session=36126db3
+2026-08-26T09:42:06Z 20 ci.yml GREEN on main run=32953267780 sha=99dcaab7 after builder rounds (4 red: 32946433296, 32949432235, 32950790774, 32952053871); exit checks pass (placeholders clean, exec bits, workflows parse, inputs+artifacts present, champion#2 player field)
+2026-08-26T09:42:06Z progress phase=20 marker=ci-run-32953267780-success
+2026-08-26T09:42:06Z 00 phase transition 20 -> 30 review_round=1
