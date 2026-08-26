@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 2549,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_87de5e19-e661-42cd-81dc-db93b5d25a81/sha256%3A2d0b0c793c33dc44fde47eec77b62d5a2bd6773b10370fc97036d7088fa16104/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F93af8bbc-50a0-44aa-839d-d8b039f17a84.replay&v=2",
+  "ms": 4210,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_962d0488-144c-48f6-b0c7-08a19ac5ed89/sha256%3A9b4d97318ad246f405db95efa82637091e7099250dd8d735715b579989f1741c/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F2e2bca77-137b-4c3d-b5b7-a7a15dbe07c1.replay&v=2",
   "bundle": null,
   "replay": null,
-  "clock": "TICK 4 / 3000 DEPOSITS 0 / 32",
-  "scorebug": "CREW DEPOSITS 0 0 / 32 TICK 4 / 3000 DEPOSITS 0 / 32 IMPOSTOR CREW LEFT 4 GREEN · BASELINE",
+  "clock": "TICK 3 / 3000 DEPOSITS 0 / 32",
+  "scorebug": "CREW DEPOSITS 0 0 / 32 TICK 3 / 3000 DEPOSITS 0 / 32 IMPOSTOR CREW LEFT 4 YELLOW · RICHARD",
   "status": "OPEN",
   "loading_text": null,
   "feed_lines": 0,
@@ -19,15 +19,15 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "TICK 4 / 3000 DEPOSITS 0 / 32"
+      "clock": "TICK 3 / 3000 DEPOSITS 0 / 32"
     },
     {
       "at": "50%",
-      "clock": "TICK 370 / 3000 DEPOSITS 4 / 32"
+      "clock": "TICK 795 / 3000 DEPOSITS 8 / 32"
     },
     {
       "at": "100%",
-      "clock": "TICK 708 / 3000 FINAL"
+      "clock": "TICK 1557 / 3000 FINAL"
     }
   ],
   "soak": null,
