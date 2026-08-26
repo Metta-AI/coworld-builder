@@ -34,3 +34,4 @@
 2026-08-26T04:58:00Z progress phase=30 marker=r1-verdict.md
 2026-08-26T04:58:30Z 00 phase transition 30 -> 40
 2026-08-26T04:58:30Z heartbeat phase=40
+2026-08-26T05:02:00Z 40 builder dispatched thread=sthr_0126iUpxe7i3gYmPGmo6jMrP target=coworld-release.yml canonical+certified, v0.1.0 first
