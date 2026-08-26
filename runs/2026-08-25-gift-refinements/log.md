@@ -100,3 +100,4 @@
 2026-08-26T03:46:48Z 60 re-wire: unpaused, trigger-round ok; round 7 pending but attribution carries patron v2 (b88073d9) — placement async; later rounds expected to carry patron:v3=d848d844
 2026-08-26T03:46:48Z progress phase=60 marker=sub_2c24bbbc-8512-4633-bed1-9b9aba9f5184
 2026-08-26T03:46:48Z heartbeat phase=60
+2026-08-26T03:47:44Z 60 verifier (round 2) dispatched thread=sthr_01KMf2cacwBBaWieKnSP2aEm session=dd5e2e1a
