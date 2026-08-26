@@ -67,3 +67,4 @@
 2026-08-26T04:32:54Z 60 fixer returned: 731ab43e schema-hint sibling keys + compact-form split + one-sided-switch degrade + tests; CI GREEN run=32930232996; file=reviews/verify-r1-fixes.md
 2026-08-26T04:32:54Z progress phase=60 marker=verify-r1-fixes.md
 2026-08-26T04:32:54Z heartbeat phase=60
+2026-08-26T04:33:16Z 60 release-0.1.1 builder dispatched thread=sthr_01KCQdsL7DpbmXfTk4kh6s5Y (carry 731ab43e parse fix into hosted image)
