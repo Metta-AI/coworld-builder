@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_af4bfc41-a775-4d89-94eb-194bb5c74f97",
+    "division": "div_8ec54c0e-5cce-483f-928c-c779a2d05336"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T23:13:31Z",
+  "heartbeat_at": "2026-08-26T23:14:37Z",
   "session_ended_at": null,
   "session_id": "85d7073b",
   "log": "runs/2026-08-26-goofspiel-oshi-zumo/log.md"
