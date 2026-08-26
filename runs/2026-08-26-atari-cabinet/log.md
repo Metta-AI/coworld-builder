@@ -78,3 +78,5 @@
 2026-08-26T21:16:04Z progress phase=70 marker=discord_message_id=1542281426228219954
 2026-08-26T21:16:04Z 70 -> 75 phase transition
 2026-08-26T21:16:04Z heartbeat phase=75
+2026-08-26T21:16:56Z 75 atlas continent=paintlands (zero-sum last-cabinet-standing arcade combat; paddle-as-gun) — rails call
+2026-08-26T21:16:56Z 75 atlas dispatch=33014591553 region=paintlands at=202,270 clearance=39.5
