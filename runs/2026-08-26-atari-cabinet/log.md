@@ -47,3 +47,10 @@
 2026-08-26T20:19:32Z 50 seed HTTP:200 league=league_20b10705-24f2-4d27-b7a0-31993f6110f7 (lseed_68ce9f6c)
 2026-08-26T20:19:32Z 50 division HTTP:200 div=div_df572e19-916a-43ca-9161-8ee11b7356e8; settings HTTP:200 (elo, round_robin, filler_policy, 15min)
 2026-08-26T20:19:32Z heartbeat phase=50
+2026-08-26T20:21:59Z 50 champion1 castellan:v4 submit ok run=33009836104 sub_9ccb213f-1750-40af-abf7-09ea592c5f52 (daveey)
+2026-08-26T20:21:59Z 50 champion2 gunner:v4 submit ok run=33009887778 sub_20cbb569-dde8-4222-a455-45128e4deb31 (daveey-1)
+2026-08-26T20:21:59Z 50 fillers HTTP:200 bulwark:v4=40b14bfe spinner:v4=ac7ff405 (neither champion)
+2026-08-26T20:21:59Z 50 unpause HTTP:200; trigger-round HTTP:200; round 1 pending, error=-; both champions in entrant_attributions
+2026-08-26T20:21:59Z progress phase=50 marker=league_20b10705+round1-pending
+2026-08-26T20:21:59Z 50 -> 60 phase transition
+2026-08-26T20:21:59Z heartbeat phase=60

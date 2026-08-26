@@ -5,10 +5,11 @@
   "slug": "atari-cabinet",
   "repo": "https://github.com/Metta-AI/cogame-atari-cabinet",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "30": 1,
-    "40": 0
+    "40": 0,
+    "50": 0
   },
   "review_round": 1,
   "coworld": {
@@ -24,7 +25,10 @@
       "atari-cabinet-bulwark:v4",
       "atari-cabinet-spinner:v4"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "40b14bfe-1e07-4bc0-a896-616d97fde018",
+      "ac7ff405-66cd-423b-b1e8-215eaf509a8b"
+    ]
   },
   "league": {
     "id": "league_20b10705-24f2-4d27-b7a0-31993f6110f7",
@@ -51,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T20:19:32Z",
+  "heartbeat_at": "2026-08-26T20:21:59Z",
   "session_ended_at": null,
   "session_id": "3ad680cb",
   "log": "runs/2026-08-26-atari-cabinet/log.md"
