@@ -54,3 +54,4 @@
 2026-08-26T13:03:02Z 30 r2 judge returned r2-verdict.md BLOCKING: 0 — F1 refuted at head (13c66d75 stop record + test), all 15 checklist items pass at 238f88cc; loop exits after 2 rounds
 2026-08-26T13:03:02Z progress phase=30 marker=r2-verdict.md
 2026-08-26T13:03:02Z 00 phase transition 30 -> 40
+2026-08-26T13:03:50Z 40 release builder dispatched thread=sthr_01Bv6DWNr5XRLnpjWvXAHXXU version=0.1.0 target=release-result.json ok/canonical/certified
