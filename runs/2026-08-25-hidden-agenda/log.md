@@ -98,3 +98,6 @@
 2026-08-26T05:49:05Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-26T05:49:05Z heartbeat phase=80
 2026-08-26T05:50:37Z 80 LEARNINGS entry appended; summary posted run task (1217851936077679) + idea task (1217851854009454); atlas PR OPEN (approved, merge queue)
+2026-08-26T05:51:10Z 80 close complete: all 9 subtasks done, idea 1217748423031678 completed, run task 1217846726828160 -> Done section. Run finished at phase 80.
+2026-08-26T05:51:10Z progress phase=80 marker=run-closed
+2026-08-26T05:51:10Z session 7ba01598 ending: run complete (claim -> design -> build -> review r1 -> release 0.1.0/0.1.2 -> league -> verify 8/8 -> announce -> atlas PR 20485 -> close), session_ended_at set. Next action: none — run is Done.
