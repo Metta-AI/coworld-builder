@@ -20,3 +20,8 @@
 2026-08-26T08:39:13Z 20 builder dispatched round=1 thread=sthr_01ABTnbg1313dqE463PAwkMb repo=Metta-AI/cogame-knights-archers session=cb9ee14b
 2026-08-26T08:39:13Z heartbeat phase=20
 2026-08-26T12:00:33Z 00 resume at phase 20 attempt=2 session=a9445eee
+2026-08-26T12:02:17Z 20 builder round=1 (thread sthr_01ABTnbg1313dqE463PAwkMb) delivered: 7 CI runs, green run 32965501369 sha=00cc62a on main
+2026-08-26T12:02:17Z 20 exit checks pass: placeholders CLEAN; exec bits 100755 on build_replay_viewer.sh+docker_smoke.sh; 3 workflows parse+active with pinned inputs; release-result/submit-result artifacts present; num_agents=4 in 4 variants+cert fixture; replay_viewer static bundle; docs+both protocols; policies.json 2 PROMPT + 2 scripted, champion#2 player=ply_bac48eb1; viewer_smoke.mjs verbatim; chrome_common byte-for-byte
+2026-08-26T12:02:17Z progress phase=20 marker=32965501369
+2026-08-26T12:02:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-26T12:02:17Z heartbeat phase=30
