@@ -1,38 +1,38 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.2",
   "ok": true,
-  "cow_id": "cow_87de5e19-e661-42cd-81dc-db93b5d25a81",
-  "manifest_sha": "sha256:2d0b0c793c33dc44fde47eec77b62d5a2bd6773b10370fc97036d7088fa16104",
+  "cow_id": "cow_962d0488-144c-48f6-b0c7-08a19ac5ed89",
+  "manifest_sha": "sha256:9b4d97318ad246f405db95efa82637091e7099250dd8d735715b579989f1741c",
   "canonical": true,
   "hosted_smoke": "passed",
-  "hosted_certification": "certified",
+  "hosted_certification": "certifying",
   "certify": {
     "ok": true,
     "replay_liveness": "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)",
-    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/certification_report.html\nArtifacts: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk\nResults: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/results.json\nReplay: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/logs\nInspect replay: open /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-50vm4mfk/logs\n"
+    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/certification_report.html\nArtifacts: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4\nResults: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/results.json\nReplay: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/logs\nInspect replay: open /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-hidden-agenda/cogame-hidden-agenda/tmp/coworld-cert-de__ymw4/logs\n"
   },
   "policies": [
     {
       "name": "hidden-agenda-sleuth",
-      "version": "v1",
+      "version": "v3",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "hidden-agenda-shadow",
-      "version": "v1",
+      "version": "v3",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "hidden-agenda-miner",
-      "version": "v1",
+      "version": "v3",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "hidden-agenda-lurker",
-      "version": "v1",
+      "version": "v3",
       "policy_version_id": null,
       "player_id": null
     }

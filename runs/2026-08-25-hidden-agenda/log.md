@@ -68,3 +68,7 @@
 2026-08-26T04:32:54Z progress phase=60 marker=verify-r1-fixes.md
 2026-08-26T04:32:54Z heartbeat phase=60
 2026-08-26T04:33:16Z 60 release-0.1.1 builder dispatched thread=sthr_01KCQdsL7DpbmXfTk4kh6s5Y (carry 731ab43e parse fix into hosted image)
+2026-08-26T04:48:44Z 60 release 0.1.1 run=32930672179 FAILED canonical-race (hosted_smoke passed, flag not flipped); 0.1.2 run=32931097733 SUCCESS: canonical=true certified, cow_962d0488-144c-48f6-b0c7-08a19ac5ed89, policies minted v3 (image digest changed); release-result.json overwritten+committed
+2026-08-26T04:48:44Z progress phase=60 marker=release-0.1.2-run-32931097733
+2026-08-26T04:48:44Z 60 re-seat per paintball precedent: submit v3 champions, add v3 fillers, re-trigger round
+2026-08-26T04:48:44Z heartbeat phase=60
