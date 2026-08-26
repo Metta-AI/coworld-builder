@@ -22,3 +22,6 @@
 2026-08-26T21:47:43Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-26T21:47:43Z heartbeat phase=30
 2026-08-26T21:48:33Z 30 reviewer dispatched r1 thread=sthr_0137CtanADXoFRZXJcBtSxTT sha=1a29c60e session=85d7073b
+2026-08-26T22:07:53Z 30 reviewer returned r1: 11 findings (F1 say-band ellipsis geometry at 360px, F2 pool deviation doc, F3 A/J/Q/K prefix parse, F4 missing reason==complete assertion, F5 test7 synthetic bidders, F6 no grid harness, F7-F11 minor) file=reviews/r1-review.md
+2026-08-26T22:07:53Z 30 fixer dispatch r1
+2026-08-26T22:07:53Z heartbeat phase=30
