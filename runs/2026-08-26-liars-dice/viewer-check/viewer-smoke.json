@@ -1,0 +1,101 @@
+{
+  "loaded": true,
+  "ms": 2428,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_0fa24212-cf13-4b7c-a6de-671e85cf1e97/sha256%3Af370529105d16354384c63080032b4c4aa9d4b5d62abfbf4e3b3ebed8256f85a/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F880929b7-ee6f-4a0f-8c51-b750aa428dcc.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "DEAL 0",
+  "scorebug": "",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": null,
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "DEAL 0"
+    },
+    {
+      "at": "50%",
+      "clock": "DEAL 0 / 8"
+    },
+    {
+      "at": "100%",
+      "clock": "DEAL 8 / 8 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 2338,
+    "outside": 0,
+    "ellipsized": 84,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": [
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "hold) per operator g…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "likely tr…"
+      }
+    ]
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

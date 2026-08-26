@@ -72,3 +72,6 @@
 2026-08-26T22:43:27Z 60 check1 TRUE (2 completed rounds, both after fillers 22:21Z) | check2 TRUE (daveey 1001.47 rp=2, daveey-1 998.53 rp=2, no filler rows) | check3 TRUE (ereq_e1729468 completed, replay 880929b7, participants daveey/daveey-1 + 2 is_filler) | check4 TRUE (liarsdice.replay.v1, reason=complete, 29 decisions, champion seats 14 decisions 0 scripted 0 fallback) | check5 TRUE CLEAN (4 containers decoded, 14 bedrock InvokeModel all ok:true 200) | check6 TRUE static viewer_url ready=true (SSR playlist[0] + replays/session) | check7 TRUE (committed release-result.json)
 2026-08-26T22:43:27Z 60 check8a dispatched viewer-check.yml run=33020556574 at 22:43:04Z
 2026-08-26T22:43:27Z heartbeat phase=60
+2026-08-26T22:46:59Z 60 check8 TRUE viewer-check run=33020556574 conclusion=success loaded=true ms=2428 bridge_ready=true; scrub 0%="DEAL 0" 50%="DEAL 0 / 8" 100%="DEAL 8 / 8 . FINAL" (three differ); canvas_text 2338 drawn 0 never_inside 84 ellipsized; artifact committed runs/2026-08-26-liars-dice/viewer-check/
+2026-08-26T22:46:59Z 60 VERIFY.md written: verdict all-true 8/8; nothing NOT FETCHED
+2026-08-26T22:46:59Z heartbeat phase=60

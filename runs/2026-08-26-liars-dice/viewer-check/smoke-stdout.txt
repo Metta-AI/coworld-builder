@@ -1,0 +1,16 @@
+{"loaded":true,"ms":2428,"clock":"DEAL 0","scorebug":"","feed_lines":0}
+scrub readouts: 0%="DEAL 0"  50%="DEAL 0 / 8"  100%="DEAL 8 / 8 · FINAL"
+canvas text: 2338 drawn, 0 never inside the canvas (0 draws crossed an edge), 84 ellipsized
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+  ellipsized: "hold) per operator g…"
+  ellipsized: "likely tr…"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
