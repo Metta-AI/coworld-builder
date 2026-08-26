@@ -24,3 +24,4 @@
 2026-08-26T09:42:18Z 20 builder returned: ci.yml GREEN run 32953267780 on main sha 99dcaab7f21dad18f24e6f4fa160135bd01c7102 (jobs test/docker-smoke/wasm-viewer all success); verified via gh; all 3 workflows parse+active; 6 commits; deviations logged by builder (partial mechanic purge unreachable-not-deleted, drifter tag-shadow refinement, chrome byte-for-byte modulo MPE_WIRE, carry-not-velocity wall invariant, bumps per-seat-per-tick, roundIndex in sim, cruise 997/745 fixed point, +build_manifest.py +int32_rehearsal.nim)
 2026-08-26T09:42:18Z progress phase=20 marker=ci-run-32953267780-green
 2026-08-26T09:42:18Z 00 phase transition 20 -> 30
+2026-08-26T09:42:53Z 30 r1 reviewer dispatched thread=sthr_01Mrk8UBqCZyJ87A3Hn1XmU8 output=runs/2026-08-26-particle-worlds/reviews/r1-review.md sha=99dcaab7
