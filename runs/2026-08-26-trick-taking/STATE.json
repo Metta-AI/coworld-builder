@@ -4,7 +4,7 @@
   "run_task": "1217886608506728",
   "slug": "trick-taking",
   "repo": "Metta-AI/cogame-trick-taking",
-  "starter": "",
+  "starter": "cogame-babel",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T23:18:37Z",
+  "heartbeat_at": "2026-08-26T23:19:48Z",
   "session_ended_at": null,
   "session_id": "d199e038",
   "log": "runs/2026-08-26-trick-taking/log.md"

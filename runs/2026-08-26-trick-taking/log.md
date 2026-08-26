@@ -8,3 +8,4 @@
 2026-08-26T23:19:30Z 00 startability: trick-taking = LLM-prompt turn-based card family -> parley/babel starter row; EXTENSION idea ships as new cogame-trick-taking per poker/paintball precedent; not confidential
 2026-08-26T23:19:30Z 00 phase transition 00 -> 10
 2026-08-26T23:19:30Z heartbeat phase=10
+2026-08-26T23:19:48Z 10 starter=cogame-babel (turn-based hidden-hand trick-taking cards with LLM-prompt policies -> playbook Phase 0 row 1, best current parley-stack template; bullwhip not closer). Idea names Metta-AI/coworld-euchre as base but it is an incomplete scaffold (template manifest, no Dockerfile, per idea text) and not a mounted starter -> RULES REFERENCE only; per poker/liars-dice precedent EXTENSION ideas ship as a new public Metta-AI/cogame-trick-taking on babel conventions
