@@ -52,3 +52,13 @@
 2026-08-26T04:42:13Z 00 phase transition 50 -> 60
 2026-08-26T04:42:13Z heartbeat phase=60
 2026-08-26T04:43:14Z 60 verifier dispatched thread=sthr_01Qn59mbPiCbu7DV7wT5KFyp output=VERIFY.md, viewer-check/; 75-min poll bound
+2026-08-26T04:43:50Z heartbeat phase=60
+2026-08-26T04:48:38Z heartbeat phase=60
+2026-08-26T04:50:32Z 60 poll: round 2 completed (round_14591664), round 1 failed pre-fillers; waiting for a 2nd completed round
+2026-08-26T04:50:32Z 60 check2 leaderboard: daveey pistonball-swell:v2 rank1 rp=1, daveey-1 pistonball-cascade:v2 rank2 rp=1, no fillers -> TRUE (pending re-fetch at end)
+2026-08-26T04:50:32Z 60 check3 round2 ereq_82c67bc1 completed, replay_url present, both champions in participants -> TRUE
+2026-08-26T04:50:32Z 60 check4 CONCERN round2 replay: protocol pistonball/v1, reason complete/out_of_time, champion seats llm=2 fallback=14 (turns 1-7 "per-turn budget exhausted before attempt 1"); progress 0.0, delivered false
+2026-08-26T04:50:32Z 60 check5 round2 logs artifact: "Pod logs were not captured: no container logs were readable from pod job-699e7412-88cpr"
+2026-08-26T04:50:32Z heartbeat phase=60
+2026-08-26T04:53:00Z 60 check6 (attempt 1, round-2 featured): raw-HTML grep found no iframe (client-rendered); SSR playlist[0] = pistonball.r2.e1; POST /coworlds/replays/session -> ready:true, static index.html path -> TRUE
+2026-08-26T04:53:00Z 60 check8 (attempt 1) viewer-check run 32931770282 dispatched 04:51:07Z, success: loaded=true ms=4612, clocks 1:15/0:39/FINAL GAME OVER (3 differing)
