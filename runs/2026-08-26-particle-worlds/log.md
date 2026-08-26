@@ -17,3 +17,4 @@
 2026-08-26T06:33:43Z 20 art rail: design.md §Art governs — starter's shipped soldier sprite families + baked landmark discs + symbol bubbles (real art, no downloads); nano-banana not needed for this fork
 2026-08-26T06:34:36Z 20 builder dispatched thread=sthr_016k1Gzy2mdHRd6GvsVyEnkQ target=ci.yml green on main
 2026-08-26T06:34:36Z heartbeat phase=20
+2026-08-26T09:40:35Z 00 resume at phase 20 attempt=1 session=36126db3

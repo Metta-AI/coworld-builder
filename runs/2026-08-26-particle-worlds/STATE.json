@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-particle-worlds",
   "starter": "coworld-ctf",
   "phase": "20",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "20": 1
+  },
   "review_round": 0,
   "coworld": {
     "version": "",
@@ -45,8 +47,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T06:34:36Z",
+  "heartbeat_at": "2026-08-26T09:40:35Z",
   "session_ended_at": null,
-  "session_id": "d3b957ae",
+  "session_id": "36126db3",
   "log": "runs/2026-08-26-particle-worlds/log.md"
 }
