@@ -18,3 +18,5 @@
 2026-08-26T09:51:28Z 20 builder deviations recorded for reviewer relay: league_replayer not forked; expand_replay/extract_events not ported (replay_summary.py instead); wall art in data/art; decimillimetre ray math; swept-superset contact test; note's level-7 speed arithmetic wrong (test asserts 1.8-2.1 at 24 ticks + 3.24 terminal); radial poison repulsion; rock keep-out steers out not tangent; .tiny handled DOM-side; chrome_common CTF_ grep exemption (sha1-pinned byte-identical); test_server no real websocket; action log indexed by skimmer index; golden hash joint pin; baseline params from actual sweep (180.9 vs note's 154.6), recorded tools/ci/baseline_tuning.json
 2026-08-26T09:51:28Z progress phase=20 marker=ci run 32954530460 green on main
 2026-08-26T09:51:28Z heartbeat phase=30
+2026-08-26T09:52:43Z 30 r1 reviewer dispatched thread=sthr_01Ej8ZW44WWpnyNoXGy88QMz target sha 41bae66305db6da58dc0256d54bb5c3ac913cce9, clone at /workspace/cogame-walker-waterworld
+2026-08-26T09:52:43Z heartbeat phase=30
