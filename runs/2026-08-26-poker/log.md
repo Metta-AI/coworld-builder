@@ -90,3 +90,4 @@
 2026-08-26T19:40:50Z progress phase=70 marker=1542257476135690332
 2026-08-26T19:40:50Z 70 -> 75 phase transition: STATE.phase=75
 2026-08-26T19:40:50Z heartbeat phase=75
+2026-08-26T19:41:52Z 75 atlas dispatch=33006502743 region=tabletop at=766,277 clearance=22.9
