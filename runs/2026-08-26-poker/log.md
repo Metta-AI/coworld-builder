@@ -79,3 +79,5 @@
 2026-08-26T19:35:42Z 60 verifier returned: VERIFY.md 8/8 TRUE; 3 completed rounds (2 strictly post-filler), both champions ranked rounds_played=3, replay round-3 complete fallbacks 0/0, hosted log CLEAN (142 bedrock 200), static iframe sha-matched, viewer-check 33004894052 loaded+advancing; anomaly on record: rounds 1-2 ran 100% scripted (sidecar 402 openrouter, NOT bedrock capacity; self-cleared by round 3; degrade path worked as designed); viewer-check dir re-committed with round-3 artifacts (earlier snapshot 06e56b6 was superseded round-2 render)
 2026-08-26T19:35:42Z progress phase=60 marker=round_d02f4885-e289-4a51-bb73-21a12fc789c9
 2026-08-26T19:35:42Z heartbeat phase=60
+2026-08-26T19:36:08Z 60 judge dispatched for definition-of-done adjudication thread=sthr_01BG9mWtiZhrPYbNKcRzA1g1 output=runs/2026-08-26-poker/reviews/verify-verdict.md session=8bd3f494
+2026-08-26T19:36:08Z heartbeat phase=60
