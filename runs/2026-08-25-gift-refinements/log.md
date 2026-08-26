@@ -121,3 +121,7 @@
 2026-08-26T04:24:19Z 60 r2 check8 TRUE: viewer-check.yml run=32930044755 (dispatched 04:23:32Z, matched by createdAt sort — 32928573158@04:00:29Z belongs to another run) conclusion=success; loaded=true ms=3442 data_replay_loaded=true bridge_ready=false failure=none; scrub 0%='ROUND 1 / 12 TICK 0 OF 720' 50%='ROUND 7 / 12 TICK 376 OF 720' 100%='FINAL TICK 719 OF 720' (three differ); screenshot = starter chrome (scorebug 155 TOKENS/344 MINTED/152 GIFTS, roster strip, transport strip, TOKENS IN PLAY momentum scrubber, ROUND LIMIT endcard 'CYR WINS — Baseline', trust graph); feed_lines=0 carried as phase-30 legibility note; artifact committed (r1 artifact replaced)
 2026-08-26T04:28:40Z 60 r2 VERIFY.md rewritten (supersedes r1): verdict = all-true 8/8. D1 fixed (6/6 lobby, 24/24 llm champion orders), D2 fixed (0 parse_error on pinned round). Non-blocking: r8 retry-recovered parse_error; scripted baselines out-score both LLM champions (balance note)
 2026-08-26T04:28:40Z heartbeat phase=60
+2026-08-26T04:30:51Z 60 verifier round 2 returned VERIFY.md: 8/8 TRUE, pinned round 9, replay c3935602, lobby 6/6, champions llm=12/12 each, viewer-check run 32930044755
+2026-08-26T04:30:51Z progress phase=60 marker=round_7e355346-completed
+2026-08-26T04:30:51Z 60 judge dispatched for VERIFY adjudication
+2026-08-26T04:30:51Z heartbeat phase=60
