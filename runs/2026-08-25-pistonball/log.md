@@ -104,3 +104,7 @@
 2026-08-26T06:23:11Z heartbeat phase=70
 2026-08-26T06:25:16Z 60 verify-verdict.md restored by judge (blocking 0; earlier rewrite lost to my reset --hard before push — process note: never hard-reset while a sub-agent holds unpushed writes) and committed
 2026-08-26T06:26:17Z 70 announce attempted_at written and pushed BEFORE the POST (1633 chars, flags 4)
+2026-08-26T06:26:42Z 70 announce msg=1542057628056944670 (200, flags=4, embeds=[])
+2026-08-26T06:26:42Z progress phase=70 marker=discord_message_id=1542057628056944670
+2026-08-26T06:26:42Z 00 phase transition 70 -> 75
+2026-08-26T06:26:42Z heartbeat phase=75
