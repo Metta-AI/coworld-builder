@@ -74,3 +74,4 @@
 2026-08-26T12:25:53Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 (all 8 upheld by independent re-fetch; rounds 2/3/4 completed; rulings: round-2 counts + moot, episode_wins not a criterion, binary-replay substitute admissible per design.md, feed_lines harness gap non-blocking, stray 0.1.0 canonical:false benign)
 2026-08-26T12:25:53Z progress phase=60 marker=verify-verdict.md blocking:0
 2026-08-26T12:25:53Z heartbeat phase=70
+2026-08-26T12:26:40Z 70 announce attempted_at written+pushed before POST
