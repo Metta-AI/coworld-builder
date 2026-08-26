@@ -21,3 +21,5 @@
 2026-08-26T01:58:00Z progress phase=20 marker=ci-run-32923038675
 2026-08-26T01:58:30Z 00 phase transition 20 -> 30
 2026-08-26T01:58:30Z heartbeat phase=30
+2026-08-26T02:05:00Z 00 INCIDENT: git push over HTTPS lost auth sandbox-wide; first git-data-API push (f6faa0e) raced a concurrent gift-refinements commit (2a7d583) and clobbered 4 of its files (3 emptied, log.md reverted). REPAIRED in b0137a1: all 4 restored byte-identical to 2a7d583 (verified via recursive tree diff). Future pushes via /tmp/apipush.sh which refuses paths outside this run.
+2026-08-26T02:05:00Z heartbeat phase=30
