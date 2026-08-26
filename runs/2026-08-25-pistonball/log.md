@@ -84,3 +84,7 @@
 2026-08-26T05:22:37Z 60 findings F1 per-turn budget clock sampled before the 45s rate-floor sleep -> turns>=1 always fall back (round-2 proof); F2 endcard LLM/FB reads 0/0; F3 TOUCHES/LLM-FB headers collide
 2026-08-26T05:22:37Z 60 VERIFY.md written, verdict all-true 8/8
 2026-08-26T05:22:37Z heartbeat phase=60
+2026-08-26T05:24:52Z 60 verifier returned: 8/8 TRUE, VERIFY.md + viewer-check/ committed (f7561c8); findings F1 (decide.nim turnStart sampled before 45s rate-floor sleep -> every turn>0 budget-exhausted fallback; round 2 proof: 14 fallback/2 llm, sharedScore -16.78), F2 (endcard LLM/FB column 0/0 vs results llmTurns[1,1]), F3 (endcard header overprint)
+2026-08-26T05:24:52Z 60 coordinator decision: F1 is material — fix before judge adjudication; route F1-F3 to fixer, re-release as 0.1.3, capture one post-fix round as check-4 addendum, then judge
+2026-08-26T05:24:52Z 60 r2 fixer dispatched for F1-F3
+2026-08-26T05:24:52Z heartbeat phase=60
