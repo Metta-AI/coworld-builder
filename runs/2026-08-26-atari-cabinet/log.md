@@ -54,3 +54,4 @@
 2026-08-26T20:21:59Z progress phase=50 marker=league_20b10705+round1-pending
 2026-08-26T20:21:59Z 50 -> 60 phase transition
 2026-08-26T20:21:59Z heartbeat phase=60
+2026-08-26T20:22:16Z 60 dispatch verifier — execute prompts/60-verify.md, write VERIFY.md
