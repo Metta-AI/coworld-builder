@@ -69,3 +69,18 @@
 2026-08-26T05:05:00Z 60 check4 round3: protocol pistonball/v1, complete/delivered, progress 98.69 score 96.59 BUT champion seats llm=0 fallback=2 (429 "Too many tokens per day") -> FALSE so far
 2026-08-26T05:05:00Z 60 check5 round3: 4 'falling back' lines; cross-check fruit-market ereq_9a9f143f 04:48Z same 429 on global.anthropic.claude-haiku-4-5-20251001-v1:0 -> platform-wide; continuing to poll inside 75-min bound
 2026-08-26T05:05:00Z 60 DEFECT found (round 2, LLM available): turnStart sampled BEFORE the minBatchSpacingMs sleep in src/pistonball/decide.nim:326 vs :383 -> turns>=1 always 'per-turn budget exhausted before attempt 1'
+2026-08-26T05:10:05Z heartbeat phase=60
+2026-08-26T05:14:54Z heartbeat phase=60
+2026-08-26T05:14:56Z heartbeat phase=60
+2026-08-26T05:22:37Z 60 poll: round 4 completed (round_a2b91a96) — rounds 2,3,4 completed after fillers
+2026-08-26T05:22:37Z 60 check1 TRUE 3 completed rounds >=2; round1 failed verbatim "Temporal RoundWorkflow failed before settling the round."
+2026-08-26T05:22:37Z 60 check2 TRUE daveey+daveey-1 rounds_played=3, fillers absent (bare-array jq)
+2026-08-26T05:22:37Z 60 check3 TRUE ereq_a459bce3 completed, replay eab95e2d, both champions seated, 18 filler seats
+2026-08-26T05:22:37Z 60 check4 TRUE pistonball/v1 complete/delivered, champion seats llm=2 fallback=0, progress 97.879 score 96.599 (via tools/replay_summary.py, binary COWLDPST per design note)
+2026-08-26T05:22:37Z 60 check5 TRUE log CLEAN (0 hits) after decoding b'' reprs; round-3 429 documented platform-wide (fruit-market ereq_9a9f143f same 429/model) and waited out inside the bound
+2026-08-26T05:22:37Z 60 check6 TRUE static path /v2/coworlds/replays/static/<cow>/<manifest sha>/index.html?replay=..., ready:true, SSR playlist[0]=pistonball.r4.e1
+2026-08-26T05:22:37Z 60 check7 TRUE "Replay liveness: skipped (static replay bundle declared..." from committed release-result.json
+2026-08-26T05:22:37Z 60 check8 TRUE viewer-check run 32933394784 (dispatched 05:16:10Z): loaded=true ms=3166, clocks 1:15/1:11/FINAL GAME OVER
+2026-08-26T05:22:37Z 60 findings F1 per-turn budget clock sampled before the 45s rate-floor sleep -> turns>=1 always fall back (round-2 proof); F2 endcard LLM/FB reads 0/0; F3 TOUCHES/LLM-FB headers collide
+2026-08-26T05:22:37Z 60 VERIFY.md written, verdict all-true 8/8
+2026-08-26T05:22:37Z heartbeat phase=60

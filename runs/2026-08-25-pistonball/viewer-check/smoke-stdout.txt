@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3166,"clock":"1:15 TIME LEFT","scorebug":"0% THE BANK - 20 cogs SCORE 0.0 2.0% OF THE WAY · 0 BOUNCE-BACKS 1:15 TIME LEFT GOAL WALL 50% START","feed_lines":0}
+scrub readouts: 0%="1:15 TIME LEFT"  50%="1:11 TIME LEFT"  100%="FINAL GAME OVER"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
