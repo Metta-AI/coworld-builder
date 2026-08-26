@@ -4,7 +4,7 @@
   "run_task": "1217852126791280",
   "slug": "particle-worlds",
   "repo": "https://github.com/Metta-AI/cogame-particle-worlds",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
