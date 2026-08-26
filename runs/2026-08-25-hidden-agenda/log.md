@@ -49,3 +49,12 @@
 2026-08-26T03:36:01Z progress phase=40 marker=32926425556
 2026-08-26T03:36:01Z 40 -> 50 phase transition: STATE.phase=50
 2026-08-26T03:36:01Z heartbeat phase=50
+2026-08-26T03:39:41Z 50 seed POST: coworld_name=hidden-agenda 404d "Canonical Coworld not found"; retried underscored hidden_agenda -> 200 lseed_cdaab095 league_9c44cf05-76f9-4ca5-8299-0c16a5e41ed9 (default_variant_id=hidden-agenda accepted at seed time)
+2026-08-26T03:39:41Z 50 division PUT 200 div_cb85265c-94ee-4f36-885f-f72c1e71f7e8; settings POST 200 (elo k=32, round_robin, filler_policy, 15min rounds)
+2026-08-26T03:39:41Z 50 champion1 submit run=32927131471 ok=true sub_32f13a76 (hidden-agenda-sleuth:v1, daveey)
+2026-08-26T03:39:41Z 50 champion2 submit run=32927168940 ok=true sub_013e85d3 (hidden-agenda-shadow:v1, daveey-1; player_name=daveey-1 verified on policy-versions)
+2026-08-26T03:39:41Z 50 fillers POST 200: miner=1de04b07 lurker=f7b63b0f (neither champion's uuid); unpause 200; trigger-round 200
+2026-08-26T03:39:41Z 50 rounds: r1 failed "Temporal RoundWorkflow failed before settling the round" (auto-round pre-fillers), r2 pending with BOTH champions in entrant_attributions (sleuth 7fcd857a + shadow d5e5ead8) — exit criterion met
+2026-08-26T03:39:41Z progress phase=50 marker=league_9c44cf05-76f9-4ca5-8299-0c16a5e41ed9
+2026-08-26T03:39:41Z 50 -> 60 phase transition: STATE.phase=60
+2026-08-26T03:39:41Z heartbeat phase=60

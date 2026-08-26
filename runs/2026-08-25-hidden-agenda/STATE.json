@@ -5,7 +5,7 @@
   "slug": "hidden-agenda",
   "repo": "Metta-AI/cogame-hidden-agenda",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "hidden-agenda-miner:v1",
       "hidden-agenda-lurker:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "1de04b07-1e82-4300-a491-9bbae465310a",
+      "f7b63b0f-9f61-4732-9bad-3c32b1fb522a"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_9c44cf05-76f9-4ca5-8299-0c16a5e41ed9",
+    "division": "div_cb85265c-94ee-4f36-885f-f72c1e71f7e8"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T03:36:01Z",
+  "heartbeat_at": "2026-08-26T03:39:41Z",
   "session_ended_at": null,
   "session_id": "7ba01598",
   "log": "runs/2026-08-25-hidden-agenda/log.md"
