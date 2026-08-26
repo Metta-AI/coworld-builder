@@ -38,3 +38,7 @@
 2026-08-26T11:09:49Z progress phase=30 marker=r1-fixes.md
 2026-08-26T11:09:49Z heartbeat phase=30
 2026-08-26T11:13:19Z 30 r1 judge dispatched thread=sthr_01Br75FR9ykCeV7kqFuhXoAU sha=b6b4401 output=runs/2026-08-26-particle-worlds/reviews/r1-verdict.md (given both r1 reviews; git-push https auth outage noted, using gh api createCommitOnBranch for coworld-builder writes)
+2026-08-26T11:28:31Z 30 r1 judge returned r1-verdict.md BLOCKING: 1 — B1 (item 2, correctness, from parallel review F2): deadline stop path banks round + finishes game outside sim.step then writes gameHash after mutation (server.nim:1409-1423 vs :2070), so deadline-ended replays hash-mismatch at the stop tick. All 4 of r1-review's blocking candidates verified fixed. Judge obs for r2: parallel-F1 intHold treks to spawn
+2026-08-26T11:28:31Z progress phase=30 marker=r1-verdict.md
+2026-08-26T11:28:31Z 30 round 2 begins review_round=2
+2026-08-26T11:28:31Z heartbeat phase=30

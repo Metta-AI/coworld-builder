@@ -9,7 +9,7 @@
   "phase_attempts": {
     "20": 1
   },
-  "review_round": 1,
+  "review_round": 2,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -47,7 +47,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T09:42:18Z",
+  "heartbeat_at": "2026-08-26T11:28:31Z",
   "session_ended_at": null,
   "session_id": "36126db3",
   "log": "runs/2026-08-26-particle-worlds/log.md"
