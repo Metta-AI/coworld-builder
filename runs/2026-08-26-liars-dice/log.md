@@ -87,3 +87,5 @@
 2026-08-26T22:55:44Z progress phase=70 marker=discord_message_id=1542306548578263156
 2026-08-26T22:55:44Z 70 -> 75 phase transition: STATE phase=75 session=dc527a34
 2026-08-26T22:55:44Z heartbeat phase=75
+2026-08-26T22:56:41Z 75 atlas continent=tabletop (classic tabletop dice-bluffing port; talk channel is garnish, not the game — not parlour)
+2026-08-26T22:56:41Z 75 atlas dispatch=33021412202 region=tabletop at=766,277 clearance=22.9
