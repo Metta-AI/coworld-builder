@@ -1,0 +1,52 @@
+{
+  "run": "2026-08-26-walker-waterworld",
+  "idea_task": "1217748137847525",
+  "run_task": "1217854099809002",
+  "slug": "walker-waterworld",
+  "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-26T07:04:22Z",
+  "session_ended_at": null,
+  "session_id": "91d04e42",
+  "log": "runs/2026-08-26-walker-waterworld/log.md"
+}
