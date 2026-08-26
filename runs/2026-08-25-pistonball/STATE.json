@@ -5,7 +5,7 @@
   "slug": "pistonball",
   "repo": "Metta-AI/cogame-pistonball",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -43,18 +43,18 @@
     "discord_message_id": "1542057628056944670"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20489",
+    "branch": "atlas/pistonball-32938543267",
+    "region": "commons",
+    "x": 416,
+    "y": 574,
+    "dispatch_run_id": "32938543267",
+    "attempted_at": "2026-08-26T06:34:14Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T06:26:42Z",
+  "heartbeat_at": "2026-08-26T06:34:14Z",
   "session_ended_at": null,
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"

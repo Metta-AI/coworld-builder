@@ -112,3 +112,8 @@
 2026-08-26T06:27:59Z 75 atlas dispatch=32938248863 region=commons at=416,574 clearance=22.9
 2026-08-26T06:31:38Z 75 atlas dispatch 1 (32938248863) failed: 22 unplaced leagues (their PRs queued unmerged); fix per step 8 = extra_cities
 2026-08-26T06:31:38Z 75 atlas placing for others: chemistry 446,544; chorus 425,529; cogchemists 766,277; cogiavelli 751,295; cogmud 440,571; cogolf 202,270; cogplomacy 790,280; coins 395,565 (new, commons); collab-cooking 446,520; commons-family 404,544; cooperative-hunting 461,562; daycare 217,583; factory-commons 404,520; firm 425,553; fruit-market 380,547; garble 438,817; gift-refinements 398,589; grid-wars 181,279; hanabi 760,316; hidden-agenda 453,832; matrix-games 467,535; territory 425,505 (duplicated recorded spots re-spotted via atlas_spot; first claimant kept)
+2026-08-26T06:34:14Z 75 atlas dispatch=32938543267 region=commons at=416,574 clearance=22.9 (with extra_cities x22)
+2026-08-26T06:34:14Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20489 status=pr_open
+2026-08-26T06:34:14Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20489
+2026-08-26T06:34:14Z 00 phase transition 75 -> 80
+2026-08-26T06:34:14Z heartbeat phase=80
