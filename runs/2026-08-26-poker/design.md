@@ -1045,3 +1045,23 @@ read, and league-level aggregation stays out of scope for v1.
 
 The strict test is restored verbatim: zero flags of any kind over ≥10 honest scripted episodes
 for both baselines; each synthetic episode produces exactly one flag of its kind.
+
+## Addendum 3 (coordinator, 2026-08-26, phase 30 round 1) — deadline guards inside 60%; say cap sized to the bubble
+
+**B2 — guards.** The checklist bound is authoritative: the episode must settle and score inside
+60% of `episodeTimeoutSeconds`. §The game 9 is amended: the **soft guard moves to 0.55·T
+(660 s)**, still checked at duplicate-pair boundaries, and the **hard guard moves to 0.60·T
+(720 s)**, still voiding+refunding the live hand (`handVoid`). Worst-case settlement is now
+720 s = 60%. To keep expected play clear of the new soft guard, **`holdem-6max` drops from 16 to
+14 hands** (7 pairs, expected ≈ 546 s; margin 114 s); kuhn 60, leduc 36, holdem-hu 30 are
+unchanged (468/583/540 s, all ≥ 77 s margin). `EpisodeDecisionBudget = 220` unchanged
+(220 × 3.0 s = 660 s = the soft guard). Manifest, docs, and tests update to match.
+
+**B1 — say cap.** The bubble geometry and the server cap must agree; the ruling is to size the
+cap to a bubble that stays legible at 6 seats and 360 px: **`say` drops from 160 to 120 runes**,
+and the bubble geometry + per-seat reserved band are sized from that cap **measured in the
+drawing font** so a full-cap 120-rune say renders with zero ellipsis at every seat
+simultaneously (grow `BUBBLE_MAX_W`/line count as needed). The sixmax fixture regenerates with
+full-cap 120-rune says on every seat; the viewer smoke on that fixture must report **zero
+ellipsized remarks** (ellipsis stays admissible only for label-class strings, e.g. nameplates).
+`types.nim`'s cap comment, the protocol docs, and audit.md/rules.md update to 120.

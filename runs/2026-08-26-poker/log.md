@@ -37,3 +37,4 @@
 2026-08-26T17:14:16Z heartbeat phase=30
 2026-08-26T17:15:16Z 30 reviewer dispatched round=1 thread=sthr_01NCM3enCbyLTHU3d9MmMQag output=runs/2026-08-26-poker/reviews/r1-review.md sha=7c7e77b session=8bd3f494
 2026-08-26T17:15:16Z heartbeat phase=30
+2026-08-26T17:32:38Z 30 reviewer returned round=1 file=r1-review.md (684 lines): 2 blocking candidates (B1 legibility bubble<cap, B2 timeout 70%>60%), 10 notes; coordinator rulings appended as design.md Addendum 3 (guards 660/720, 6max 16->14 hands, say cap 160->120 sized to bubble); dispatching fixer
