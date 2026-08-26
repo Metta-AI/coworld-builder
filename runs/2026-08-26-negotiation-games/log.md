@@ -23,3 +23,5 @@
 2026-08-26T23:12:00Z 30 reviewer returned r1: r1-review.md (502 lines) — 2 blocking-candidates (F1 byte-slice prompt cap server.nim:492, F2 remark drawn as single ellipsized line vs reserved band), 8 advisories (F3-F10)
 2026-08-26T23:12:30Z 30 fixer dispatched r1 thread=sthr_013AFgT2NrAK4MXyiYepej6W output=reviews/r1-fixes.md session=ng26a441
 2026-08-26T23:30:03Z heartbeat phase=30
+2026-08-26T23:58:00Z 30 fixer returned r1: r1-fixes.md — F1 fixed 3fd0517 (rune-safe prompt cap + test), F2 fixed 362f623+04f7a60 (reserved remark band, fixture inverted to forbid sentence ellipsis), F3-F6 fixed, F7-F9 refuted w/ evidence, F10 part fixed part refuted; CI green run=33024746218 sha=04f7a60c32db9e361249218080ef2ef2c992a406
+2026-08-26T23:58:30Z 30 judge dispatched r1 thread=pending sha=04f7a60c32db9e361249218080ef2ef2c992a406 output=reviews/r1-verdict.md session=ng26a441
