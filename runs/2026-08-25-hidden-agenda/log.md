@@ -59,3 +59,7 @@
 2026-08-26T03:39:41Z 50 -> 60 phase transition: STATE.phase=60
 2026-08-26T03:39:41Z heartbeat phase=60
 2026-08-26T03:40:46Z 60 verifier dispatched thread=sthr_01KT5zh8vk9cNyK6N9GBMp95 output=VERIFY.md + viewer-check/ (75-min poll bound, heartbeats delegated to verifier via Asana field)
+2026-08-26T04:17:39Z 60 verifier returned: checks 1,2,3,6,7,8 TRUE; 4+5 FALSE — champion fallback 80-87.5% across rounds 2/3/4. Cause A: platform-wide Bedrock daily-quota 429 (cross-checked coins ereq_30f2789e same minute, 52x429 same model). Cause B (ours): llm.nim schema hint omits at/who/room sibling keys while system prompt teaches compact "mine at:S2" form the validator rejects — round 3: 10/14 attempt-failures are parse rejects, not 429s. file=VERIFY.md + viewer-check/
+2026-08-26T04:17:39Z progress phase=60 marker=VERIFY.md
+2026-08-26T04:17:39Z 60 decision: stay in phase 60 (paintball 2026-08-25 precedent) — fix cause B in llm.nim (schema hint + tolerant compact-form split + test), re-release 0.1.1, trigger fresh round, re-verify 4+5. Cause A alone -> 90 platform outage if it persists after B is fixed
+2026-08-26T04:17:39Z heartbeat phase=60

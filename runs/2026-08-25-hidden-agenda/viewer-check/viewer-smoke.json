@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2549,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_87de5e19-e661-42cd-81dc-db93b5d25a81/sha256%3A2d0b0c793c33dc44fde47eec77b62d5a2bd6773b10370fc97036d7088fa16104/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F93af8bbc-50a0-44aa-839d-d8b039f17a84.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "TICK 4 / 3000 DEPOSITS 0 / 32",
+  "scorebug": "CREW DEPOSITS 0 0 / 32 TICK 4 / 3000 DEPOSITS 0 / 32 IMPOSTOR CREW LEFT 4 GREEN · BASELINE",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TICK 4 / 3000 DEPOSITS 0 / 32"
+    },
+    {
+      "at": "50%",
+      "clock": "TICK 370 / 3000 DEPOSITS 4 / 32"
+    },
+    {
+      "at": "100%",
+      "clock": "TICK 708 / 3000 FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
