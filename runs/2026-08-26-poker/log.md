@@ -91,3 +91,4 @@
 2026-08-26T19:40:50Z 70 -> 75 phase transition: STATE.phase=75
 2026-08-26T19:40:50Z heartbeat phase=75
 2026-08-26T19:41:52Z 75 atlas dispatch=33006502743 region=tabletop at=766,277 clearance=22.9
+2026-08-26T19:44:59Z 75 atlas dispatch=33006775239 region=tabletop at=784,319 clearance=22.9 extra_cities=26 (backlog repair: kept 10 recorded spots, respotted 15 collisions, placed coins fresh commons 404,544)
