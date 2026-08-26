@@ -15,3 +15,9 @@
 2026-08-26T20:35:09Z 20 repo created: https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo (public)
 2026-08-26T20:35:09Z 20 propagate-secrets run 33011110924 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-26T20:36:07Z 20 builder dispatched round=1 thread=sthr_01SzHDi63QzX5merHsHo2UsN target=ci.yml green on main session=85d7073b
+2026-08-26T21:47:43Z 20 builder returned round=1: CI green run=33016530966 sha=1a29c60e (1 red round 33016179404, fixture-server fix); placeholder grep clean; 3 workflows registered w/ required inputs+artifacts; hooks 100755 verified by coordinator
+2026-08-26T21:47:43Z 20 builder note: pushes to cogame repo go via gh api Git Data API (sandbox git helper lacks write on new repo) — later phases use same route
+2026-08-26T21:47:43Z 20 builder deviations logged: (b) goofspiel pool=awarded-so-far so deadline stops still sum to 0; (c) test 8 +1 case asserted via 6-wins+deadline equivalent (all-91 unreachable at 4 identical hands); (d) 3 extra dependency regions copied from babel renderer.js, all markered; (e) fixture_server.py added for /hang path
+2026-08-26T21:47:43Z progress phase=20 marker=ci-run-33016530966
+2026-08-26T21:47:43Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-26T21:47:43Z heartbeat phase=30
