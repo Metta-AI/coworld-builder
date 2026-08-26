@@ -90,3 +90,6 @@
 2026-08-26T05:24:52Z heartbeat phase=60
 2026-08-26T05:56:35Z 60 r2 fixer returned: F1 06bd3f7 (turnStart after rate-floor sleep + spacing>budget engine test), F2 87ba292 (replay recounts llmTurns/fallbackTurns), F3 30964b3 (endcard header fit, browser-measured); CI green 32934920010 at 30964b3
 2026-08-26T05:56:35Z 40 re-release dispatching v0.1.3 (reason: F1 fix must be the canonical game image)
+2026-08-26T06:05:36Z 40 re-release v0.1.3 SUCCESS run=32936048068: canonical, certified, secret_put, new cow_id cow_768730a3-282a-4d75-9cff-01eea560e260 manifest sha256:91c1207c...; policies v3 minted (league stays on v2 seats — player protocol unchanged, F1 fix is in the game image); release-result.json overwritten
+2026-08-26T06:05:36Z progress phase=60 marker=release-run-32936048068
+2026-08-26T06:05:36Z 60 triggering post-fix round for check-4 addendum

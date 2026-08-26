@@ -9,10 +9,10 @@
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "0.1.2",
-    "cow_id": "cow_58917aec-d633-4f40-89b1-dbf496ddcfe0",
-    "manifest_sha": "sha256:b041d20354aeb86ea9b0d8d8a523652c0e6f3c5813bff72c68cca97b487f77f3",
-    "release_run_id": "32930394604"
+    "version": "0.1.3",
+    "cow_id": "cow_768730a3-282a-4d75-9cff-01eea560e260",
+    "manifest_sha": "sha256:91c1207c7f679847f054a230f0d44e58aad9f52d927f8cc5678e3f619aa33915",
+    "release_run_id": "32936048068"
   },
   "policies": {
     "champion1": "pistonball-swell:v2",
@@ -51,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T05:22:37Z",
+  "heartbeat_at": "2026-08-26T06:05:36Z",
   "session_ended_at": null,
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"
