@@ -12,3 +12,5 @@
 2026-08-26T16:35:45Z 10 -> 20 phase transition: STATE phase=20; design.md copied
 2026-08-26T16:35:45Z progress phase=10 marker=design.md
 2026-08-26T16:36:47Z 20 repo created: https://github.com/Metta-AI/cogame-liars-dice (public); propagate-secrets run 32989319020 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-26T16:37:46Z 20 builder dispatched round=1 thread=sthr_01BfzuzKig6dA1CBGgBDpQks repo=Metta-AI/cogame-liars-dice session=90a1c681
+2026-08-26T16:37:46Z heartbeat phase=20
