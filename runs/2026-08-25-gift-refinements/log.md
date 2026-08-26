@@ -26,3 +26,5 @@
 2026-08-25T22:49:12Z 30 r1 fixer dispatched thread=sthr_01YTd76KikKuecu9HdRD5r8P
 2026-08-25T22:49:12Z progress phase=30 marker=r1-review.md
 2026-08-25T22:49:12Z heartbeat phase=30
+2026-08-26T01:55:01Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
+2026-08-26T01:55:01Z 00 resume at phase 30 attempt=1 session=dd5e2e1a
