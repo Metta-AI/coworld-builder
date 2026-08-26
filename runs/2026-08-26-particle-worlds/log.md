@@ -85,3 +85,5 @@
 2026-08-26T14:17:00Z 60 VERIFY.md written: 8/8 TRUE (check5 on SPEC item-5 exception branch); 3 legibility observations (LIVES LEAD momentum label, no scrub beats in frame, no landmark discs on board in tag)
 2026-08-26T14:18:27Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed, both champions ranked 2 rounds each, replay valid 74/80 llm directives, log 429s=platform (walker-waterworld cross-check), iframe static sha-pinned, cert static bundle, viewer-check 32978130047 loaded:true 3 clocks differ); 3 legibility observations non-blocking
 2026-08-26T14:18:27Z progress phase=60 marker=VERIFY.md
+2026-08-26T14:19:10Z 60 judge dispatched thread=sthr_018kLyo8m2qBqpusMb9PeC3z output=runs/2026-08-26-particle-worlds/reviews/verify-verdict.md
+2026-08-26T14:19:10Z heartbeat phase=60
