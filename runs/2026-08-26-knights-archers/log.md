@@ -7,3 +7,4 @@
 2026-08-26T05:03:34Z heartbeat phase=00
 2026-08-26T05:03:40Z 00 -> 10 phase transition: STATE.phase=10, dispatching designer next
 2026-08-26T05:07:30Z 10 starter=coworld-ctf (real-time tick loop with new rules -> ctf row of the starter table; idea is a PZ knights_archers_zombies horde game: zombies march per tick, melee/ranged combat, 4 coop seats. Idea names coworld-big-adventure as candidate extension base, but per paintball 2026-08-25 + hidden-agenda 2026-08-25 precedent EXTENSION ideas ship as new cogame-<slug> on the pinned starter; big-adventure is incomplete (uncertified) and is at most a rules reference) repo=Metta-AI/cogame-knights-archers per SPEC pin
+2026-08-26T05:09:10Z 10 designer dispatched round=1 thread=sthr_01MPZe2wGxsEMPERNhm25zkv output=runs/2026-08-26-knights-archers/design-draft.md
