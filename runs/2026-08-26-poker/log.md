@@ -81,3 +81,7 @@
 2026-08-26T19:35:42Z heartbeat phase=60
 2026-08-26T19:36:08Z 60 judge dispatched for definition-of-done adjudication thread=sthr_01BG9mWtiZhrPYbNKcRzA1g1 output=runs/2026-08-26-poker/reviews/verify-verdict.md session=8bd3f494
 2026-08-26T19:36:08Z heartbeat phase=60
+2026-08-26T19:39:43Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 — 5 claims independently reproduced (leaderboard, replay, screenshot, hosted log, session API); 402 anomaly ruled documented residue; definition of done MET
+2026-08-26T19:39:43Z progress phase=60 marker=verify-verdict.md
+2026-08-26T19:39:43Z 60 -> 70 phase transition: STATE.phase=70
+2026-08-26T19:39:43Z heartbeat phase=70
