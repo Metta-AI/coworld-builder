@@ -14,3 +14,7 @@
 2026-08-26T13:01:27Z 10 design ACCEPTED round 1 — copied to runs/2026-08-26-atari-cabinet/design.md
 2026-08-26T13:01:27Z progress phase=10 marker=design.md accepted r1
 2026-08-26T13:01:27Z heartbeat phase=20
+2026-08-26T13:02:16Z 20 repo created: https://github.com/Metta-AI/cogame-atari-cabinet (public)
+2026-08-26T13:02:16Z 20 propagate-secrets run 32971822527 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-26T13:02:16Z 20 dispatch builder — implement design.md, drive ci.yml green on main
+2026-08-26T13:02:16Z heartbeat phase=20
