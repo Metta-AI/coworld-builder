@@ -58,3 +58,11 @@
 2026-08-26T13:37:37Z 40 release GREEN: v0.1.2 run=32973681353 cow_id=cow_039ad60d-ae1f-4098-ab1d-4f0144e32198 canonical certified secret_put; 3 dispatches (0.1.0 manifest tokens fix eff8bb9+78c3de1, 0.1.1 platform 405 on flat episode-requests -> CLI pin 0.1.43 543c5a8, 0.1.2 green); policies all v2
 2026-08-26T13:37:37Z progress phase=40 marker=release-run-32973681353
 2026-08-26T13:37:37Z 00 phase transition 40 -> 50
+2026-08-26T13:38:43Z 50 seed 200 lseed_e63bb3f0 league=league_2ae87c04-15f1-4116-ad6d-54e0d656ea49
+2026-08-26T13:38:43Z 50 division 200 div_4e1ddbbe-b6d4-409d-82b9-23e1142268d0; settings 200 (elo k=32 round_robin filler_policy interval=15m)
+2026-08-26T13:38:43Z heartbeat phase=50
+2026-08-26T13:41:39Z 50 champion1 submit ok run=32975425458 (swarm:v2, daveey); champion2 submit ok run=32975498564 (cipher:v2, daveey-1)
+2026-08-26T13:41:39Z 50 fillers registered drifter:v2=2239256d beeline:v2=5ad38c6d (200); unpause 200; trigger 200
+2026-08-26T13:41:39Z 50 round1 failed (Temporal pre-settle race, fillers WERE set first) round2=round_f889f1ab pending with both champions in entrant_attributions — exit criterion met
+2026-08-26T13:41:39Z progress phase=50 marker=league_2ae87c04-15f1-4116-ad6d-54e0d656ea49
+2026-08-26T13:41:39Z 00 phase transition 50 -> 60
