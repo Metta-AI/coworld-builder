@@ -28,3 +28,7 @@
 2026-08-26T21:11:11Z 30 fixer returned round=1 file=reviews/r1-fixes.md: 8 commits (B1 fixture job renderer-fixture, B2 cap-derived bands, N2/N3/N5/N6/N7/N8), 3 disputed with evidence (N1/N9/N4-canvas); head=8e74a8507cc36545686aea23a6ccdb8095a49eea ci=33013575662 success; process note: git push to cogame-liars-dice 401s in sandbox, fixer replayed commits via Git Data API
 2026-08-26T21:11:11Z heartbeat phase=30
 2026-08-26T21:12:14Z 30 judge dispatched round=1 thread=sthr_01T7u5RyaGopg4xPFG2NFPC1 output=reviews/r1-verdict.md sha=8e74a850 session=dc527a34
+2026-08-26T21:22:48Z 30 judge returned round=1 file=reviews/r1-verdict.md blocking=1 ([other] item-7 second sentence: baseline params not verifiably grid-tuned — no sweep harness or output in tree; B1/B2 resolved, N1 refuted, checklist items 1-6,8-15 pass)
+2026-08-26T21:22:48Z 30 r1 verdict blocking=1 -> round 2; STATE review_round=2
+2026-08-26T21:22:48Z progress phase=30 marker=r1-verdict.md
+2026-08-26T21:22:48Z heartbeat phase=30
