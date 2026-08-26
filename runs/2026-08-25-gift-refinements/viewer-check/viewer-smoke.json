@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 3894,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_686eadd9-7594-425c-98b2-854deb9acdd1/sha256%3A6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8dc5efef-29a1-48d8-b3c3-61ae001dda10.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ROUND 1 / 12 TICK 0 OF 720",
+  "scorebug": "TOKENS BANKED TOKENS 0 0 MINTED · 0 DEFECTIONS ROUND 1 / 12 TICK 0 OF 720 GIFTS GIVEN TOKENS 0 0 MINTED · 0 DEFECTIONS",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ROUND 1 / 12 TICK 0 OF 720"
+    },
+    {
+      "at": "50%",
+      "clock": "ROUND 7 / 12 TICK 376 OF 720"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL TICK 719 OF 720"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

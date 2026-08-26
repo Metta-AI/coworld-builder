@@ -67,3 +67,5 @@
 2026-08-26T02:40:53Z 60 check6 TRUE: raw-HTML grep found no iframe (client-rendered); SSR state.playlist[0] has featured match r2.e1; POST /coworlds/replays/session ready=true viewer_url=.../v2/coworlds/replays/static/cow_686eadd9.../sha256%3A6cfd8cc3.../index.html?replay=<s3>
 2026-08-26T02:40:53Z 60 check7 TRUE: runs/2026-08-25-gift-refinements/release-result.json (committed copy) certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
 2026-08-26T02:40:53Z heartbeat phase=60
+2026-08-26T02:42:30Z 60 check8 dispatched viewer-check.yml -R Metta-AI/coworld-builder run=32923659915 (created 02:41:21Z, matched by createdAt sort) conclusion=success
+2026-08-26T02:42:30Z 60 check8 TRUE: loaded=true ms=3894 data_replay_loaded="true"; scrub 0%="ROUND 1 / 12 TICK 0 OF 720" 50%="ROUND 7 / 12 TICK 376 OF 720" 100%="FINAL TICK 719 OF 720" (three differ); feed_lines=0 (endcard overlay at final tick); artifact committed to runs/2026-08-25-gift-refinements/viewer-check/
