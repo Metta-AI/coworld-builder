@@ -45,3 +45,7 @@
 2026-08-26T03:25:07Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
 2026-08-26T03:25:07Z heartbeat phase=40
 2026-08-26T03:25:48Z 40 builder dispatched thread=sthr_01BsFZigT9YS4dHj37GWXYpA target=coworld-release.yml version=0.1.0 put_secret=true
+2026-08-26T03:36:01Z 40 release v0.1.0 run=32926425556 step_failed=null: canonical=true, hosted_certification=certified, replay_liveness skipped-static, 4 policies v1 (shadow player_id=ply_bac48eb1), secret_put=true — first dispatch
+2026-08-26T03:36:01Z progress phase=40 marker=32926425556
+2026-08-26T03:36:01Z 40 -> 50 phase transition: STATE.phase=50
+2026-08-26T03:36:01Z heartbeat phase=50
