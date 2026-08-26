@@ -2,3 +2,4 @@
 2026-08-26T05:56:48Z 00 run task 1217852126791280 created in Running, 9 phase subtasks, heartbeat field set
 2026-08-26T05:56:48Z 00 -> 10 phase transition, STATE phase=10
 2026-08-26T06:00:30Z 10 starter=coworld-ctf reason=real-time continuous-physics tick loop; MPE rules simple enough to reimplement natively, not a bit-exact C-engine port (Cogball operator ruling 2026-08-22: physics game takes the ctf row, not moba)
+2026-08-26T06:02:00Z 10 designer dispatched thread=sthr_01X2myjzSn9hzxFUvHBpTZNy output=runs/2026-08-26-particle-worlds/design-draft.md
