@@ -134,3 +134,4 @@
 2026-08-26T04:38:15Z progress phase=70 marker=announce.discord_message_id
 2026-08-26T04:38:15Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-26T04:38:15Z heartbeat phase=75
+2026-08-26T04:39:08Z 75 atlas dispatch=32931008290 region=commons at=416,574 clearance=22.9 (continent: mixed-motive gifting/trust economy -> commons)
