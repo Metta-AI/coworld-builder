@@ -4,7 +4,7 @@
   "run_task": "1217850791915992",
   "slug": "knights-archers",
   "repo": "https://github.com/Metta-AI/cogame-knights-archers",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
