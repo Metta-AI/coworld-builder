@@ -50,3 +50,6 @@
 2026-08-26T18:25:13Z progress phase=30 marker=r1-verdict.md
 2026-08-26T18:25:13Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
 2026-08-26T18:25:13Z heartbeat phase=40
+2026-08-26T18:26:07Z 40 secrets verified on cogame-poker (SOFTMAX_TOKEN + ANTHROPIC_API_KEY, set 16:31Z)
+2026-08-26T18:26:07Z 40 builder dispatched for release thread=sthr_01UJkZrAVddKNTDibtykKJvv version=0.1.0 session=8bd3f494
+2026-08-26T18:26:07Z heartbeat phase=40
