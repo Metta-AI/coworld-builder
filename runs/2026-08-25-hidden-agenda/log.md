@@ -72,3 +72,6 @@
 2026-08-26T04:48:44Z progress phase=60 marker=release-0.1.2-run-32931097733
 2026-08-26T04:48:44Z 60 re-seat per paintball precedent: submit v3 champions, add v3 fillers, re-trigger round
 2026-08-26T04:48:44Z heartbeat phase=60
+2026-08-26T04:50:44Z 60 re-seat done: sleuth:v3 run=32931653233 ok sub_8103fea8; shadow:v3 run=32931683443 ok sub_8d5fe7f9 (daveey-1 verified); fillers v3 miner=59a3061c lurker=cd5bf260 (POST replaced list); trigger-round 200
+2026-08-26T04:50:44Z progress phase=60 marker=sub_8103fea8-v3-reseat
+2026-08-26T04:50:44Z heartbeat phase=60
