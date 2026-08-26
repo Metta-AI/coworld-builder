@@ -48,3 +48,7 @@
 2026-08-26T22:19:48Z progress phase=40 marker=release-run-33018791088
 2026-08-26T22:19:48Z 40 -> 50 phase transition: STATE phase=50 session=dc527a34
 2026-08-26T22:19:48Z heartbeat phase=50
+2026-08-26T22:20:48Z 50 seed HTTP200 lseed_f01dc47f league=league_3aa78ed0-6a0e-466f-8666-521631b1124e
+2026-08-26T22:20:48Z 50 division HTTP200 div_5428acaf-7a4d-4385-a181-c525f0314c29 (Competition L1)
+2026-08-26T22:20:48Z 50 settings HTTP200 (elo k=32 round_robin filler_policy interval=15m)
+2026-08-26T22:20:48Z heartbeat phase=50
