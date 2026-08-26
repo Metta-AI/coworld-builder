@@ -46,3 +46,7 @@
 2026-08-26T18:14:32Z progress phase=30 marker=r1-fixes.md
 2026-08-26T18:14:32Z 30 judge dispatched round=1 thread=sthr_01BG9mWtiZhrPYbNKcRzA1g1 sha=bba6bff output=runs/2026-08-26-poker/reviews/r1-verdict.md session=8bd3f494
 2026-08-26T18:14:32Z heartbeat phase=30
+2026-08-26T18:25:13Z 30 judge returned round=1 verdict=r1-verdict.md blocking:0/BLOCKING:0 agree — B1/B2 confirmed-then-refuted at head bba6bff, all 15 checklist items PASS, 3 non-blocking observations (notable: uncapped 429 spacing bump, ceiling 825s < 1200s)
+2026-08-26T18:25:13Z progress phase=30 marker=r1-verdict.md
+2026-08-26T18:25:13Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
+2026-08-26T18:25:13Z heartbeat phase=40
