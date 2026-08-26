@@ -14,3 +14,4 @@
 2026-08-26T20:34:04Z progress phase=10 marker=design-draft.md
 2026-08-26T20:35:09Z 20 repo created: https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo (public)
 2026-08-26T20:35:09Z 20 propagate-secrets run 33011110924 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-26T20:36:07Z 20 builder dispatched round=1 thread=sthr_01SzHDi63QzX5merHsHo2UsN target=ci.yml green on main session=85d7073b
