@@ -5,19 +5,22 @@
   "slug": "poker",
   "repo": "https://github.com/Metta-AI/cogame-poker",
   "starter": "cogame-cosino",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_08add75e-311a-46ba-9b5d-05888954986e",
+    "manifest_sha": "sha256:3f77538f7a2da1352ea60c620dcdcb626bd8de9a1b4e352d829db4e15eb9350e",
+    "release_run_id": "32999717629"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "poker-scholar:v1",
+    "champion2": "poker-exploiter:v1",
+    "fillers": [
+      "poker-house:v1",
+      "poker-rock:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T18:25:13Z",
+  "heartbeat_at": "2026-08-26T18:35:58Z",
   "session_ended_at": null,
   "session_id": "8bd3f494",
   "log": "runs/2026-08-26-poker/log.md"

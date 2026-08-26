@@ -53,3 +53,7 @@
 2026-08-26T18:26:07Z 40 secrets verified on cogame-poker (SOFTMAX_TOKEN + ANTHROPIC_API_KEY, set 16:31Z)
 2026-08-26T18:26:07Z 40 builder dispatched for release thread=sthr_01UJkZrAVddKNTDibtykKJvv version=0.1.0 session=8bd3f494
 2026-08-26T18:26:07Z heartbeat phase=40
+2026-08-26T18:35:58Z 40 release dispatch 1 version=0.1.0 run=32999717629 step_failed=null: ok/canonical/certified, replay_liveness skipped(static), 4 policies distinct, champion#2 player=ply_bac48eb1, secret_put true — exit criterion met first dispatch
+2026-08-26T18:35:58Z progress phase=40 marker=32999717629
+2026-08-26T18:35:58Z 40 -> 50 phase transition: STATE.phase=50
+2026-08-26T18:35:58Z heartbeat phase=50
