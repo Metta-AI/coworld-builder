@@ -60,3 +60,5 @@
 2026-08-26T23:20:36Z 60 poll#1 rounds: r1=failed r2=pending; completed=0
 2026-08-26T23:30:38Z heartbeat phase=60
 2026-08-26T23:30:38Z 60 poll#2/3 rounds: r2=completed (ereq_ff798329 completed, replay 3ce57c8c), r3 not yet created; completed=1
+2026-08-26T23:41:05Z heartbeat phase=60
+2026-08-26T23:41:05Z 60 poll#4 rounds: r2+r3 completed (r3 completed_at 23:35:46); waiting for r4 so both counted rounds are unambiguously post-filler
