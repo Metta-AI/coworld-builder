@@ -70,3 +70,4 @@
 2026-08-26T12:14:30Z heartbeat phase=60
 2026-08-26T12:20:35Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; replay d28f4f1b binary COWLDWWD parsed via replay_summary.py; viewer-check run 32967129036 loaded:true, 3 clocks differ; stray 0.1.0 cow now canonical:false — benign)
 2026-08-26T12:20:35Z heartbeat phase=60
+2026-08-26T12:21:08Z 60 judge dispatched thread=sthr_01C7PzgLkM9qGromLQ1zqosY (fresh context, verify-verdict.md)
