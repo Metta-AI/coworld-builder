@@ -5,7 +5,7 @@
   "slug": "poker",
   "repo": "https://github.com/Metta-AI/cogame-poker",
   "starter": "cogame-cosino",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -42,7 +42,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-26T19:40:27Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542257476135690332"
   },
   "atlas": {
     "status": "",
@@ -56,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T19:40:27Z",
+  "heartbeat_at": "2026-08-26T19:40:50Z",
   "session_ended_at": null,
   "session_id": "8bd3f494",
   "log": "runs/2026-08-26-poker/log.md"
