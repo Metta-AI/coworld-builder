@@ -125,3 +125,7 @@
 2026-08-26T04:30:51Z progress phase=60 marker=round_7e355346-completed
 2026-08-26T04:30:51Z 60 judge dispatched for VERIFY adjudication
 2026-08-26T04:30:51Z heartbeat phase=60
+2026-08-26T04:36:44Z 60 judge returned reviews/verify-verdict.md BLOCKING=0, all 8 checks sustained with live probes
+2026-08-26T04:36:44Z progress phase=60 marker=verify-verdict.md
+2026-08-26T04:36:44Z 60 -> 70 phase transition: STATE.phase=70 written
+2026-08-26T04:36:44Z heartbeat phase=70
