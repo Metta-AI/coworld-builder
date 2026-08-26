@@ -69,3 +69,7 @@
 2026-08-26T02:40:53Z heartbeat phase=60
 2026-08-26T02:42:30Z 60 check8 dispatched viewer-check.yml -R Metta-AI/coworld-builder run=32923659915 (created 02:41:21Z, matched by createdAt sort) conclusion=success
 2026-08-26T02:42:30Z 60 check8 TRUE: loaded=true ms=3894 data_replay_loaded="true"; scrub 0%="ROUND 1 / 12 TICK 0 OF 720" 50%="ROUND 7 / 12 TICK 376 OF 720" 100%="FINAL TICK 719 OF 720" (three differ); feed_lines=0 (endcard overlay at final tick); artifact committed to runs/2026-08-25-gift-refinements/viewer-check/
+2026-08-26T02:47:17Z 60 poll#2 rounds: r2 completed, no r3 yet — check1 NOT-YET (1 completed round >=2)
+2026-08-26T02:52:06Z 60 poll#3 rounds: r3 round_6e60126d created 02:51:25Z status=pending — check1 NOT-YET
+2026-08-26T02:54:42Z 60 poll#4 r3 still pending — check1 NOT-YET
+2026-08-26T02:54:42Z heartbeat phase=60
