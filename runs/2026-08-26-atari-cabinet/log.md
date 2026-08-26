@@ -80,3 +80,5 @@
 2026-08-26T21:16:04Z heartbeat phase=75
 2026-08-26T21:16:56Z 75 atlas continent=paintlands (zero-sum last-cabinet-standing arcade combat; paddle-as-gun) — rails call
 2026-08-26T21:16:56Z 75 atlas dispatch=33014591553 region=paintlands at=202,270 clearance=39.5
+2026-08-26T21:20:44Z 75 atlas dispatch 1 (33014591553) failed: 27-league backlog unplaced (all have open PRs stuck in merge queue, newest poker PR-20533)
+2026-08-26T21:20:44Z 75 atlas dispatch=33014887057 region=paintlands at=184,255 clearance=23.4 extra_cities=27 (PR-20533's lines reused verbatim: chemistry,chorus,cogmud,coins,collab-cooking,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,gift-refinements,knights-archers,matrix-games,pistonball,territory,walker-waterworld->commons; cogchemists,cogiavelli,cogplomacy,hanabi,poker->tabletop; cogolf,grid-wars->paintlands; daycare->shire; garble,hidden-agenda->parlour; particle-worlds->simulations; respotted own dot 202,270->184,255 to avoid cogolf collision)
