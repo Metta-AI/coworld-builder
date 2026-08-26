@@ -25,3 +25,5 @@
 2026-08-26T10:15:44Z heartbeat phase=30
 2026-08-26T11:03:00Z 30 r1 fixer returned r1-fixes.md: 22 commits (18 fixed, 4 doc/errata, F9 needs-design no-change with evidence), main=f078434aab36e880d189cedcd74ec64883d71cbc ci run 32960525769 success (verified)
 2026-08-26T11:03:00Z heartbeat phase=30
+2026-08-26T11:03:51Z 30 r1 judge dispatched thread=sthr_01N4Wf46UfYhjzHKXXsd7X7o (fresh context, verdict target r1-verdict.md)
+2026-08-26T11:03:51Z heartbeat phase=30
