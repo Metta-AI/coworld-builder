@@ -1666,3 +1666,29 @@ Beyond the Nim suite, `ci.yml` runs:
   curated pool, `mapkit`, the map editor and the pool-review page), **achievements** (the starter's
   win-gated catalog and its `results.achievements` key are dropped), **audio, 3D, camera cuts**, and
   **any downloaded art asset**.
+
+---
+
+## Amendment — r1 review (2026-08-26)
+
+Recorded by the phase-30 fixer against `reviews/r1-review.md`. The note above is the
+design as authored; this section is the one amendment the review made necessary.
+
+**F2 / checklist item 14 — the `client/chrome_common.js` patch.** §Viewer §Chrome
+provenance says the file is "copied byte-for-byte from coworld-ctf. Not edited, not
+reformatted". It is copied byte-for-byte apart from **ONE named, minimal patch**:
+
+```
+client/chrome_common.js:72
+- var WIRE = window.CTF_WIRE || {};
++ var WIRE = window.MPE_WIRE || {};
+```
+
+That is the same single wire identifier the note already allows `broadcast_core.js`
+(§Chrome provenance, `window.CTF_WIRE` → `window.MPE_WIRE`), it is what
+`tools/gen_wire_constants.nim` emits, and it is mechanically forced by this note's own
+`ctf_`/`CTF_` rename-sweep rule (§Sim module): the starter's identifier has nowhere to
+live in this repo. Nothing else in the file is edited or reformatted, and
+`tests/test_viewer.nim` pins both its sha256 and the absence of `CTF_WIRE`. The repo's
+copy of this note (`docs/plans/2026-08-26-particle-worlds-design.md`) carries the same
+correction inline, in commit `eee8254`.
