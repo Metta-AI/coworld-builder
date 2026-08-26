@@ -72,3 +72,7 @@
 2026-08-26T15:45:21Z progress phase=60 marker=VERIFY.md
 2026-08-26T15:45:21Z heartbeat phase=60
 2026-08-26T15:46:16Z 60 judge dispatched thread=sthr_01MbU3c68QwYQ9ydePoUW9Zs output=runs/2026-08-26-knights-archers/reviews/verify-verdict.md session=a9445eee
+2026-08-26T15:51:05Z 60 judge returned verify-verdict.md blocking=0 (all 8 checks re-verified; substitutions upheld; O1/O2 noted non-blocking)
+2026-08-26T15:51:05Z progress phase=60 marker=verify-verdict.md
+2026-08-26T15:51:05Z 60 -> 70 phase transition: STATE.phase=70
+2026-08-26T15:51:05Z heartbeat phase=70
