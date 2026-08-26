@@ -12,3 +12,5 @@
 2026-08-26T20:34:04Z 10 -> 20 phase transition: STATE.phase=20; design.md copied
 2026-08-26T20:34:04Z heartbeat phase=20
 2026-08-26T20:34:04Z progress phase=10 marker=design-draft.md
+2026-08-26T20:35:09Z 20 repo created: https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo (public)
+2026-08-26T20:35:09Z 20 propagate-secrets run 33011110924 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
