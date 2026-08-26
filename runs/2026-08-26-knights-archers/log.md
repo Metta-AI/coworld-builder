@@ -16,3 +16,4 @@
 2026-08-26T05:26:28Z 20 builder dispatched round=1 thread=sthr_01UZ5uWvdt4PTe4drVViMxuw repo=Metta-AI/cogame-knights-archers
 2026-08-26T05:26:28Z heartbeat phase=20
 2026-08-26T08:37:15Z 00 resume at phase 20 attempt=1 session=cb9ee14b
+2026-08-26T08:39:30Z 20 previous builder (thread sthr_01UZ5uWvdt4PTe4drVViMxuw, session 3f4b2c1e) produced no commits and no CI run — repo has no branches; re-dispatching builder round=1 (same approach, dead session not a red CI)
