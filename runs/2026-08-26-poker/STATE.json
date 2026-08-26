@@ -31,9 +31,14 @@
     "division": "div_2c39ffc7-6856-4d5f-ad55-c19072cd23b6"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_7955fa79-32df-44e5-8ec9-4382fda1bffc",
+      "round_de5fd089-8ad3-4f70-b5c3-188e962553d7",
+      "round_d02f4885-e289-4a51-bb73-21a12fc789c9"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/bb8f4285-d608-47ea-9ec2-717f52e89911.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33004894052"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T19:30:17Z",
+  "heartbeat_at": "2026-08-26T19:35:42Z",
   "session_ended_at": null,
   "session_id": "8bd3f494",
   "log": "runs/2026-08-26-poker/log.md"
