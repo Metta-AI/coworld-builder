@@ -106,3 +106,7 @@
 2026-08-26T03:54:09Z 60 r2 poll#2: r7 completed 03:53Z but attribution = mirror:v3 + patron v2 (b88073d9) -> does NOT count. check1 NOT-YET (0 both-v3). r7 log diagnostic: 'lobby closed with 6/6 seats connected, 6 registered' (D1 fix holds), llmOrders=21 fallbacks=3, 3 fallbacks cause=throttled (429 'Too many tokens per day'), 1 parse_error retry on seat1 (patron v2, unfixed prompt) that recovered
 2026-08-26T04:01:10Z 60 r2 poll#3: r8 round_c00d850b created 04:00:44Z status=pending, attribution carries BOTH v3 (mirror 7377bf74 + patron d848d844) — first qualifying round. check1 NOT-YET (need 2 completed)
 2026-08-26T04:01:10Z heartbeat phase=60
+2026-08-26T04:07:30Z 60 r2 poll#4: r8 round_c00d850b completed 04:06:13Z with BOTH v3 (mirror 7377bf74 + patron d848d844) — qualifying round 1 of 2. check1 NOT-YET (need a 2nd)
+2026-08-26T04:07:30Z 60 r2 r8 pre-read: ereq_c1683c5d completed, replay c2108d36 strict-JSON ok protocol=gift-refinements.replay.v1 reason=complete; champion order sources llm=23 retry=1 (0 scripted, 0 fallback) — D1 fixed; log 'lobby closed with 6/6 seats connected, 6 registered', 'llmOrders=24 fallbacks=0'; BUT 1 grep match remains: seat 1 attempt-1 parse_error 'target is required when job is meet or gift > 0' (retry recovered)
+2026-08-26T04:16:50Z 60 r2 poll#5: r9 round_7e355346 created 04:15:44Z pending, attribution BOTH v3 — awaiting completion for check1
+2026-08-26T04:16:50Z heartbeat phase=60
