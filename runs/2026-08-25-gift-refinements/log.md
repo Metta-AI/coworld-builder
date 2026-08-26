@@ -33,3 +33,7 @@
 2026-08-26T02:06:42Z 30 r1 fixer returned reviews/r1-fixes.md: F1-F13 all fixed, A1 fixed, CI green run=32921048633 sha=30a0405ff5305270febc8552019635272b5092c2
 2026-08-26T02:06:42Z heartbeat phase=30
 2026-08-26T02:07:38Z 30 r1 judge dispatched thread=sthr_018yA2d1HEQ1wFD7NKeeMxAZ sha=30a0405ff5305270febc8552019635272b5092c2 session=dd5e2e1a
+2026-08-26T02:16:30Z 30 r1 judge returned reviews/r1-verdict.md blocking=0 (first/last lines agree)
+2026-08-26T02:16:30Z progress phase=30 marker=r1-verdict.md
+2026-08-26T02:16:30Z 30 -> 40 phase transition: STATE.phase=40 written before builder dispatch
+2026-08-26T02:16:30Z heartbeat phase=40
