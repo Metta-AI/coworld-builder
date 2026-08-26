@@ -42,3 +42,7 @@
 2026-08-26T17:33:22Z heartbeat phase=30
 2026-08-26T18:03:30Z 30 fixer returned round=1: B1 73f2cb5 (say 120, bubble 300x6, fixture 0 ellipsized), B2 b6a8e9d (guards 660/720, 6max 14 hands), GREEN run=32996855409; residual raised (guard-before-decision worst 763s=63.6%); coordinator ruling: design.md Addendum 4 (hard guard 672s nets off one worst-case decision) — follow-up commit directed before judge
 2026-08-26T18:03:54Z heartbeat phase=30
+2026-08-26T18:14:32Z 30 fixer follow-up returned: Addendum-4 commit bba6bff GREEN run=32997839855; sixmax viewer smoke 0 ellipsized re-confirmed on final sha
+2026-08-26T18:14:32Z progress phase=30 marker=r1-fixes.md
+2026-08-26T18:14:32Z 30 judge dispatched round=1 thread=sthr_01BG9mWtiZhrPYbNKcRzA1g1 sha=bba6bff output=runs/2026-08-26-poker/reviews/r1-verdict.md session=8bd3f494
+2026-08-26T18:14:32Z heartbeat phase=30
