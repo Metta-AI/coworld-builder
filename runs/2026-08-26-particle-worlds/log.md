@@ -42,3 +42,4 @@
 2026-08-26T11:28:31Z progress phase=30 marker=r1-verdict.md
 2026-08-26T11:28:31Z 30 round 2 begins review_round=2
 2026-08-26T11:28:31Z heartbeat phase=30
+2026-08-26T11:29:18Z 30 r2 reviewer dispatched thread=sthr_01KBdZAZfCLH2s26bLFPXNri sha=b6b4401 output=runs/2026-08-26-particle-worlds/reviews/r2-review.md (must cover B1 deadline-hash and intHold obs)
