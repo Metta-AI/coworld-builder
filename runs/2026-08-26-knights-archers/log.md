@@ -59,3 +59,11 @@
 2026-08-26T14:14:15Z progress phase=40 marker=32978063250
 2026-08-26T14:14:15Z 40 -> 50 phase transition: STATE.phase=50
 2026-08-26T14:14:15Z heartbeat phase=50
+2026-08-26T14:19:41Z 50 seed 200: lseed_20f91461, league_362e5211-3bdc-40f4-968e-c00c8f812bfe
+2026-08-26T14:19:41Z 50 division PUT 200: div_264f45de-06ac-4657-b454-85d27f9e63fc; settings POST 200 (elo, round_robin, filler_policy, 15min)
+2026-08-26T14:19:41Z 50 champion1 submit run=32979151313 ok=true sub_6d07a4ae warden:v3 (daveey); champion2 submit run=32979211331 ok=true volley:v3 (daveey-1)
+2026-08-26T14:19:41Z 50 filler-policies 200: phalanx:v3=eb972301-0632-406c-b3b8-548eb99d8013, stand:v3=83dfcd5d-36de-4369-9ff0-9dffdf70cc65 (neither champion's)
+2026-08-26T14:19:41Z 50 unpause 200 paused=false; trigger-round 200 workflow=ladder-league_362e5211; round 1 pending, entrant_attributions = both champions (c289e272 daveey, fbd70f34 daveey-1)
+2026-08-26T14:19:41Z progress phase=50 marker=league_362e5211-3bdc-40f4-968e-c00c8f812bfe
+2026-08-26T14:19:41Z 50 -> 60 phase transition: STATE.phase=60
+2026-08-26T14:19:41Z heartbeat phase=60

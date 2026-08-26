@@ -5,7 +5,7 @@
   "slug": "knights-archers",
   "repo": "https://github.com/Metta-AI/cogame-knights-archers",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 2,
     "40": 1
@@ -23,11 +23,15 @@
     "fillers": [
       "knights-archers-phalanx:v3",
       "knights-archers-stand:v3"
+    ],
+    "filler_version_ids": [
+      "eb972301-0632-406c-b3b8-548eb99d8013",
+      "83dfcd5d-36de-4369-9ff0-9dffdf70cc65"
     ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_362e5211-3bdc-40f4-968e-c00c8f812bfe",
+    "division": "div_264f45de-06ac-4657-b454-85d27f9e63fc"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T14:14:15Z",
+  "heartbeat_at": "2026-08-26T14:19:41Z",
   "session_ended_at": null,
   "session_id": "a9445eee",
   "log": "runs/2026-08-26-knights-archers/log.md"
