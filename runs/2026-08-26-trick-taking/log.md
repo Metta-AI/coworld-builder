@@ -15,3 +15,5 @@
 2026-08-26T23:38:29Z 10 design.md copied; phase transition 10 -> 20
 2026-08-26T23:38:29Z heartbeat phase=20
 2026-08-26T23:38:29Z progress phase=10 marker=design.md
+2026-08-26T23:39:28Z 20 repo created https://github.com/Metta-AI/cogame-trick-taking (public)
+2026-08-26T23:39:28Z 20 propagate-secrets run 33024124326 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
