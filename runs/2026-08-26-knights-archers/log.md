@@ -46,3 +46,4 @@
 2026-08-26T13:38:57Z progress phase=30 marker=r1-verdict.md
 2026-08-26T13:38:57Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
 2026-08-26T13:38:57Z heartbeat phase=40
+2026-08-26T13:40:07Z 40 builder dispatched thread=sthr_018ohXRu65Xvko4AK8AawTpe repo=Metta-AI/cogame-knights-archers version-start=0.1.0 session=a9445eee
