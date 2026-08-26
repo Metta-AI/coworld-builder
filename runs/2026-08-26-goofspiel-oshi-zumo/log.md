@@ -55,3 +55,6 @@
 2026-08-26T23:18:48Z 50 -> 60 phase transition: STATE.phase=60
 2026-08-26T23:18:48Z heartbeat phase=60
 2026-08-26T23:19:44Z 60 verifier dispatched thread=sthr_01Ci3qdacuzA4jmW9hbvZWp7 output=VERIFY.md bound=75min session=85d7073b
+2026-08-26T23:20:36Z heartbeat phase=60
+2026-08-26T23:20:36Z 60 check7 TRUE (release-result.json committed): 'Replay liveness: skipped (static replay bundle declared; ...)'
+2026-08-26T23:20:36Z 60 poll#1 rounds: r1=failed r2=pending; completed=0
