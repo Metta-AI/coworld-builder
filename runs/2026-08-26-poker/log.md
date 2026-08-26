@@ -14,3 +14,5 @@
 2026-08-26T15:05:19Z 10 design.md copied from design-draft.md; phase 10 -> 20
 2026-08-26T15:05:19Z progress phase=10 marker=design.md
 2026-08-26T15:05:19Z heartbeat phase=20
+2026-08-26T15:05:42Z 20 repo created: https://github.com/Metta-AI/cogame-poker (public); propagate-secrets dispatched run 32984047591 (queued behind runner backlog ~10min; secrets verified before phase-20 exit)
+2026-08-26T15:15:09Z heartbeat phase=20
