@@ -27,3 +27,6 @@
 2026-08-26T02:44:00Z 30 r1 reviewer returned: 13 findings, 0 claimed-blocking; reviews/r1-review.md
 2026-08-26T02:44:00Z 30 r1 fixer dispatched
 2026-08-26T02:44:00Z heartbeat phase=30
+2026-08-26T04:21:00Z 30 r1 fixer returned: 17 commits ce20047..49518a2, CI green run=32928137084; N8 disputed with evidence (note self-contradiction; manifest's inverted copy fixed under N1); N9h evidence-answered; N13 evidence-answered; reviews/r1-fixes.md
+2026-08-26T04:21:00Z 30 r1 judge dispatched sha=49518a22d734a3bcb952cc32952fe6e67eea39c6
+2026-08-26T04:21:00Z heartbeat phase=30
