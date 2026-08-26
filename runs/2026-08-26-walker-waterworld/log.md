@@ -13,3 +13,8 @@
 2026-08-26T07:27:32Z 20 repo created https://github.com/Metta-AI/cogame-walker-waterworld (public)
 2026-08-26T07:27:32Z 20 propagate-secrets run 32942822471 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-walker-waterworld
 2026-08-26T07:31:30Z 20 builder dispatched thread=sthr_01DffTnKiotmB3NcKkzm1iYS r1
+2026-08-26T09:51:28Z 20 builder returned: main=41bae66305db6da58dc0256d54bb5c3ac913cce9 ci run 32954530460 success (3 red rounds: 32952405610 viewer, 32952939621 browser-load, 32953655307 renderer-fixture — each a different failure class)
+2026-08-26T09:51:28Z 20 exit checks verified by coordinator: main sha matches, ci.yml success, 3 workflows active, release inputs version/policies/put_secret/skip_certify present, submit inputs player_id/policy/league_id present, release-result x12 / submit-result x9 refs, zero placeholder residue in 5 files, policies.json 2 LLM + 2 scripted with champion2 player field
+2026-08-26T09:51:28Z 20 builder deviations recorded for reviewer relay: league_replayer not forked; expand_replay/extract_events not ported (replay_summary.py instead); wall art in data/art; decimillimetre ray math; swept-superset contact test; note's level-7 speed arithmetic wrong (test asserts 1.8-2.1 at 24 ticks + 3.24 terminal); radial poison repulsion; rock keep-out steers out not tangent; .tiny handled DOM-side; chrome_common CTF_ grep exemption (sha1-pinned byte-identical); test_server no real websocket; action log indexed by skimmer index; golden hash joint pin; baseline params from actual sweep (180.9 vs note's 154.6), recorded tools/ci/baseline_tuning.json
+2026-08-26T09:51:28Z progress phase=20 marker=ci run 32954530460 green on main
+2026-08-26T09:51:28Z heartbeat phase=30
