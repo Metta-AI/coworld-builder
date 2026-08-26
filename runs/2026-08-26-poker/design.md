@@ -998,3 +998,24 @@ matching CSS rule in `chrome.css`.
 - Live `/client/replay` pod viewers, card-art image assets, and a `#viewpanel` zoom bar/minimap.
 - Mixed-rung episodes (one episode is one variant), and per-rung leaderboards (one Elo ladder over
   all four variants).
+
+---
+
+## Addendum 1 (coordinator, 2026-08-26, phase 20) — audit attribution unclamped
+
+Measured on the implementation: the pinned attribution
+`surrender[a][b] += max(loss_a, 0) · contrib_b / Σ contrib` flags honest `house` play in 3/30
+episodes (one-way `dump`): a lost pre-river all-in books ~half a 100-chip pot as one-sided
+"surrender" against a 4-chip (2 bb) bar — the clamp stops variance from cancelling while the
+thresholds are denominated in big blinds.
+
+**Amended rule:** the outer clamp is dropped — showdown-slice attribution uses **signed**
+`loss_a`, so symmetric variance cancels across hands and only a sustained directed leak
+accumulates. The fold-case definition keeps its own `max(0, eqFold_a·potAtFold − callCost_a)`
+exactly as pinned (folding correctly still scores ≈ 0). Thresholds stay 0.75 bb (soft-play,
+mutual) and 2.0 bb (dump, one-way) at `contested ≥ 4`. Consequently `surrender[a][b]` and
+`rate`/`bias` may be negative; the flag rules are unchanged and only positive bias can flag.
+
+**Test restored to the original intent:** zero flags of any kind over ≥10 honest scripted
+episodes for **both** baselines (`house` and `rock`); the synthetic dump and soft-play episodes
+must still each produce exactly their one flag. `audit.md` documents the signed semantics.
