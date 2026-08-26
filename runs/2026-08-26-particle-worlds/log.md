@@ -46,3 +46,5 @@
 2026-08-26T11:48:06Z 30 r2 reviewer returned r2-review.md (443 lines): F1 blocking (deadline-path hash divergence confirmed at b6b4401, no deadline-replay test), F2 hold-treks-to-spawn, F3 roundcard cross-check claim false, F4 turn cost margin ~2s, F5 validator necessary-only, F6 spacing default residue; items 1,3-15 verified clean
 2026-08-26T11:48:58Z 30 r2 fixer dispatched thread=sthr_01UyUBhTUHrMcoV9K5DFpV13 output=runs/2026-08-26-particle-worlds/reviews/r2-fixes.md (F1 deadline-hash blocking + F2 hold anchor + F3 roundcard claim + F4-F6)
 2026-08-26T11:48:58Z heartbeat phase=30
+2026-08-26T12:50:26Z 30 r2 fixer returned r2-fixes.md: all 6 fixed, head=238f88cc CI GREEN run=32968643250 (F1 stop chat record + applyWallClockStop both sides + deadline-replay test, GameVersion 1->2; F2 anchorHold; F3 docs; F4 guard reserve; F5 comment; F6 default). design.md synced to in-repo mirror (r2 amendment)
+2026-08-26T12:50:26Z progress phase=30 marker=r2-fixes.md

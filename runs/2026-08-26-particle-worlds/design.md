@@ -480,9 +480,13 @@ every mask), so the hazard does not exist here and the player harness sends `0x8
 received frame.
 
 **Budget guard (early settle without shortening the episode).** At the start of each turn, if
-`elapsed + 2 * turnBudgetSeconds > wallClockBudgetSeconds`, the LLM is switched off for every
-remaining turn and the episode finishes on the scripted layer (microseconds per turn), so it ends
-`complete/full_time` rather than `deadline`. A `budget_guard` record names the turn it fired.
+`elapsed + 2 * (turnSpacingSeconds + turnBudgetSeconds) > wallClockBudgetSeconds`, the LLM is
+switched off for every remaining turn and the episode finishes on the scripted layer (microseconds
+per turn), so it ends `complete/full_time` rather than `deadline`. A full turn is the rate floor PLUS
+the calls — the floor holds batch starts `turnSpacingMs` apart and the monotonic budget clocks the
+calls from the moment the wait ends — so the worst single turn costs 9 s + 10 s at the shipped
+settings, and reserving two of THOSE is what makes the guard's margin over the 690 s stop real
+rather than nominal. A `budget_guard` record names the turn it fired.
 
 **Degrade, never hang.** Every wait is bounded: the two batch deadlines, the outer per-turn monotonic
 deadline, `lobbyJoinTimeoutTicks` on the connect wait, mummy's socket timeouts on the serve thread
@@ -1075,20 +1079,22 @@ Everything the viewer needs is in the bytes; no server is contacted except S3 fo
 | config JSON | `seed`, `num_agents`, `mapSpec` (the full resolved field geometry), `maxTicks`, `maxGames`, `rounds` (the mode sequence), `turnTicks`, every physics/scoring constant, `players[].name` (real names), `slots[]`, `tokens[]`, `fastMode`, `fullyObservable` |
 | joins | per **seat**: `name` (real policy name), `slot`, `token` |
 | inputs | per **particle** (0..3), on change: the `uint8` actuator mask — the action log |
-| chats | `roundcard` / `register` / `directive` / `fallback` / `budget_guard` / `result` records |
+| chats | `roundcard` / `register` / `directive` / `fallback` / `budget_guard` / `stop` / `result` records |
 | hashes | one `gameHash` per tick — the integrity chain the viewer checks |
 
 The landmark layout, the colour permutation, the mode/role schedule, the goal and the key are all
 **re-derived** from the seeded RNG rather than being load-bearing records (the `roundcard` record is a
-convenience for `replay_summary.py` and the feed, and the viewer cross-checks it against its own
-re-derivation), which is why the file stays small — 4320 ticks of hashes plus ~25 k mask-change
+convenience for `replay_summary.py`, its only reader — playback drops it, so nothing cross-checks it;
+all of those values are in `gameHash`, so a divergence surfaces as a hash mismatch), which is why the
+file stays small — 4320 ticks of hashes plus ~25 k mask-change
 records plus 160 directive records ≈ **300 KB**, well under 1 MB — and why a hash mismatch is a real
 integrity signal rather than a rendering nit.
 
 ### Record and event vocabulary
 
 **A. Replay chat records** (written by the server, re-applied at playback into non-hashed sim fields;
-they drive the broadcast feed and `replay_summary.py`, and can never affect the sim):
+they drive the broadcast feed and `replay_summary.py`, and can never affect the sim — with the one
+exception the r2 amendment below records, `stop`):
 
 | `k` | Fields |
 |---|---|
@@ -1097,6 +1103,7 @@ they drive the broadcast feed and `replay_summary.py`, and can never affect the 
 | `directive` | `round`, `mode`, `turn`, `seat`, `alias`, `role`, `source` (`llm`\|`scripted`\|`fallback`), `latency_ms`, `note` (≤ 160 runes), `cogs`:[{`id`, `intent`, `target`, `face`, `symbol`}] |
 | `fallback` | `round`, `turn`, `seat`, `attempt` (1\|2), `cause`, `detail` (≤ 200 runes) |
 | `budget_guard` | `turn`, `remaining_s` |
+| `stop` | `reason` (`deadline`), `rule` (`wall_clock`), `tick` — the engine's wall-clock stop, at the tick it fired. The ONE record playback applies into HASHED state (see the r2 amendment) |
 | `result` | the full results document, written once at episode end (this is what makes the bytes self-sufficient: without it a spectator holding the file reads `results: {}`) |
 
 **B. Derived broadcast events** — `stepEvents` (`broadcast.nim`, retargeted) derives these from state
@@ -1188,8 +1195,12 @@ neither. The `coworld-replay` postMessage bridge's `ready` is posted from a call
 
 ### Chrome provenance
 
-- **`client/chrome_common.js` is copied byte-for-byte from coworld-ctf.** Not edited, not
-  reformatted; `tests/test_viewer.nim` pins its sha256. Everything particle-worlds adds lives in the
+- **`client/chrome_common.js` is copied byte-for-byte from coworld-ctf** apart from ONE named,
+  minimal patch: line 72, `var WIRE = window.CTF_WIRE || {}` → `var WIRE = window.MPE_WIRE || {}`,
+  the same single wire identifier `tools/gen_wire_constants.nim` emits and the same one
+  `broadcast_core.js` carries (the `ctf_`/`CTF_` rename sweep this note mandates leaves the starter's
+  identifier nowhere to live). Nothing else is edited or reformatted; `tests/test_viewer.nim` pins its
+  sha256 and asserts `CTF_WIRE` is absent. Everything particle-worlds adds lives in the
   appended game block. Its `markBeat`/`renderBeatMarkers`/`ingestBeats`/`setVerdict` remain;
   `ingestBeats` ignores kinds it does not know and still drives `setVerdict` off the final
   round-over beat, which is exactly the behaviour this game wants.
@@ -1669,26 +1680,27 @@ Beyond the Nim suite, `ci.yml` runs:
 
 ---
 
-## Amendment — r1 review (2026-08-26)
+## Amendment — r2 review (2026-08-26)
 
-Recorded by the phase-30 fixer against `reviews/r1-review.md`. The note above is the
-design as authored; this section is the one amendment the review made necessary.
+Recorded by the phase-30 fixer against `reviews/r2-review.md`.
 
-**F2 / checklist item 14 — the `client/chrome_common.js` patch.** §Viewer §Chrome
-provenance says the file is "copied byte-for-byte from coworld-ctf. Not edited, not
-reformatted". It is copied byte-for-byte apart from **ONE named, minimal patch**:
+**F1 / checklist item 2 — the wall-clock `deadline` stop is a RECORDED record.** §The replay
+says every chat record is "re-applied at playback into non-hashed sim fields … and can never
+affect the sim". That holds for every record but one. The engine's wall-clock stop
+(§End conditions row 4) banks the round in progress and finishes the game from the server
+loop — outside `sim.step` — and every field it writes (`phase`, `winner`, `isDraw`,
+`gameOverTimer`, `roundsPlayed`, `roundLog`) is in `gameHash`, while the same iteration
+records that state's hash. A wall-clock fact does not follow from sim state, so no
+re-simulation can derive it: without a record the last hash of every `deadline` episode was
+unreachable and playback sat at `Playing` forever.
 
-```
-client/chrome_common.js:72
-- var WIRE = window.CTF_WIRE || {};
-+ var WIRE = window.MPE_WIRE || {};
-```
-
-That is the same single wire identifier the note already allows `broadcast_core.js`
-(§Chrome provenance, `window.CTF_WIRE` → `window.MPE_WIRE`), it is what
-`tools/gen_wire_constants.nim` emits, and it is mechanically forced by this note's own
-`ctf_`/`CTF_` rename-sweep rule (§Sim module): the starter's identifier has nowhere to
-live in this repo. Nothing else in the file is edited or reformatted, and
-`tests/test_viewer.nim` pins both its sha256 and the absence of `CTF_WIRE`. The repo's
-copy of this note (`docs/plans/2026-08-26-particle-worlds-design.md`) carries the same
-correction inline, in commit `eee8254`.
+So the stop is now written as a `stop` chat record at the tick it fires, and applied on both
+sides by one proc — `sim.applyWallClockStop` — the live server as it writes the record,
+`applyReplayEvents` as it reads it back, before the same tick's step. `stop` is the ONE
+load-bearing chat record; every other record stays presentation-only, and the rule that
+"nothing a commander SAYS may move the hash chain" is untouched (the stop is not something a
+commander says). `GameVersion` goes 1 → 2: nothing in `gameHash`, the motion model or the
+seeded draw order moved, but a GV1 viewer would load a GV2 recording and re-simulate the stop
+tick wrong. `tests/test_replay.nim` records a deadline-ended episode and asserts the whole
+hash chain re-derives AND that the re-derived sim ends at the same `GameOver`, winner and
+banked round as the recorded results document.
