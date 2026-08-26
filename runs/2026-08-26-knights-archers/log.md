@@ -88,3 +88,7 @@
 2026-08-26T15:58:09Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20502
 2026-08-26T15:58:09Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-26T15:58:09Z heartbeat phase=80
+2026-08-26T16:00:59Z 80 executive summary posted on run task (1217874379741657) and condensed on idea task (1217874271715137); LEARNINGS section added; playbook corrections committed
+2026-08-26T16:00:59Z 80 all 9 phase subtasks complete; idea task 1217748137821986 completed; run task moved to Done
+2026-08-26T16:00:59Z progress phase=80 marker=run-task-Done
+2026-08-26T16:00:59Z 80 close complete — run 2026-08-26-knights-archers is DONE (session a9445eee ends here)
