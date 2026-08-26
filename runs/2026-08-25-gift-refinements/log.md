@@ -87,3 +87,6 @@
 2026-08-26T03:16:19Z 60 retry approach 1: fix D1 (lobby close waits for all seats or playerConnectTimeoutSeconds) + D2 (mirror prompt clarifies consume is a field not a job), then re-release 0.1.2 and re-wire league per LEARNINGS pause->fillers->resubmit->unpause
 2026-08-26T03:16:19Z heartbeat phase=60
 2026-08-26T03:16:51Z 60 fixer dispatched thread=sthr_015yJU2vTw4T86CCQtxhpgKF for D1+D2 session=dd5e2e1a
+2026-08-26T03:35:41Z 60 fixer returned reviews/verify-r1-fixes.md: D1 fixed b4a29fa (lobbyShouldClose predicate + test), D2 fixed d874ebd (both prompts rewritten + schema sentence + test), CI green run=32926345524 sha=d874ebd55a7244a57baa711c92651eaf55c4b08a
+2026-08-26T03:35:41Z progress phase=60 marker=verify-r1-fixes.md
+2026-08-26T03:35:41Z heartbeat phase=60
