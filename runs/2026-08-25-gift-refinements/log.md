@@ -59,3 +59,11 @@
 2026-08-26T02:37:38Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-26T02:37:38Z heartbeat phase=60
 2026-08-26T02:38:22Z 60 verifier dispatched thread=sthr_01HVteoi6UBkBouT4m64dMud session=dd5e2e1a
+2026-08-26T02:40:53Z 60 poll#1 rounds: r1 failed (pre-fillers, error recorded), r2 completed 02:36:24Z — 1 completed round with round_number>=2; need 2. check1 NOT-YET
+2026-08-26T02:40:53Z 60 check2 leaderboard TRUE: daveey rank1 mirror:v2 score1016 rounds_played=1 wins=1; daveey-1 rank2 patron:v2 score984 rounds_played=1 wins=0; no filler rows
+2026-08-26T02:40:53Z 60 check3 TRUE (r2): ereq_c0fd007b status=completed replay_url=.../8dc5efef-29a1-48d8-b3c3-61ae001dda10.replay participants incl daveey(pos0) daveey-1(pos1), 4 is_filler seats
+2026-08-26T02:40:53Z 60 check4 FALSE (r2): strict JSON ok, protocol=gift-refinements.replay.v1, results.reason=complete BUT champion seats played scripted — game log "llmOrders=1 fallbacks=0"; seat1 (daveey-1/patron) never registered (no register line); seat0 llm on 1 of 12 rounds only
+2026-08-26T02:40:53Z 60 check5 TRUE (r2): hosted log decoded (python b'' reprs), 0 matches for falling back|LLM provider is unavailable|cut off at max_tokens|rejected — CLEAN
+2026-08-26T02:40:53Z 60 check6 TRUE: raw-HTML grep found no iframe (client-rendered); SSR state.playlist[0] has featured match r2.e1; POST /coworlds/replays/session ready=true viewer_url=.../v2/coworlds/replays/static/cow_686eadd9.../sha256%3A6cfd8cc3.../index.html?replay=<s3>
+2026-08-26T02:40:53Z 60 check7 TRUE: runs/2026-08-25-gift-refinements/release-result.json (committed copy) certify.replay_liveness="Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-26T02:40:53Z heartbeat phase=60
