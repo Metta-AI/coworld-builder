@@ -109,3 +109,4 @@
 2026-08-26T06:26:42Z 00 phase transition 70 -> 75
 2026-08-26T06:26:42Z heartbeat phase=75
 2026-08-26T06:27:35Z 75 atlas continent=commons reason=fully cooperative shared-reward coordination (precedent: chorus, cooperative-hunting, collab-cooking); spot 416,574 clearance 22.9 label=Pistonball anchor=c
+2026-08-26T06:27:59Z 75 atlas dispatch=32938248863 region=commons at=416,574 clearance=22.9
