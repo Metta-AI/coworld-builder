@@ -36,3 +36,7 @@
 2026-08-26T19:15:28Z 30 -> 40 phase transition
 2026-08-26T19:15:28Z heartbeat phase=40
 2026-08-26T19:15:51Z 40 dispatch builder — coworld-release.yml version 0.1.0, policies from tools/ci/policies.json
+2026-08-26T20:01:49Z 40 attempts 1-3 failed: v0.1.0 run 33004290280, v0.1.1 run 33004995945 (both: upload returns before hosted certification finishes, Canonical read premature — cows flip true ~2min later, verified live), v0.1.2 run 33006099334 (confirm-canonical poll via raw urllib blocked from runner). Root cause structural in CLI reporting, NOT certification: certify.ok=true all three runs, all three cows now canonical=true on live API
+2026-08-26T20:01:49Z 40 retry authorized: dispatch 4 v0.1.3 — distinct change: poll canonical via coworld status --json (authenticated CLI path) commit 390cd2a; not a cert failure, 90 not warranted (coordinator rails call)
+2026-08-26T20:01:49Z progress phase=40 marker=release-dispatch-33006099334+fix-390cd2a
+2026-08-26T20:01:49Z heartbeat phase=40
