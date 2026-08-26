@@ -11,3 +11,4 @@
 2026-08-26T21:52:00Z heartbeat phase=20
 2026-08-26T21:54:40Z 20 repo created public: https://github.com/Metta-AI/cogame-negotiation-games
 2026-08-26T21:55:30Z 20 propagate-secrets run=33017497421 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-negotiation-games
+2026-08-26T21:58:00Z 20 builder dispatched round=1 thread=sthr_01GgSoejp1gjtJGjb4z5GADd repo=Metta-AI/cogame-negotiation-games session=ng26a441
