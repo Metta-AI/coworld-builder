@@ -60,3 +60,4 @@
 2026-08-26T22:22:44Z progress phase=50 marker=league_3aa78ed0-6a0e-466f-8666-521631b1124e
 2026-08-26T22:22:44Z 50 -> 60 phase transition: STATE phase=60 session=dc527a34
 2026-08-26T22:22:44Z heartbeat phase=60
+2026-08-26T22:23:39Z 60 verifier dispatched thread=sthr_01Dg8qNFM1qNJoFdYbAbUEYL output=VERIFY.md bound=75min session=dc527a34
