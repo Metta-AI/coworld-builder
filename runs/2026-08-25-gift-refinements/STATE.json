@@ -33,9 +33,47 @@
     "division": "div_3c0d2b61-0e4a-4d9c-b27f-524158fede53"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "round_number": 2,
+        "id": "round_46f1fb01-644f-485d-935e-832e20bfe201",
+        "status": "completed",
+        "champion_llm_orders": 1,
+        "champion_scripted": 23,
+        "lobby": "3/6"
+      },
+      {
+        "round_number": 3,
+        "id": "round_6e60126d-0a6d-4b32-97c2-9deb5530e5df",
+        "status": "completed",
+        "champion_llm_orders": 24,
+        "champion_scripted": 0,
+        "lobby": "6/6"
+      },
+      {
+        "round_number": 4,
+        "id": "round_08811b54-4f9e-425e-be2b-b25acb68cb18",
+        "status": "completed",
+        "champion_llm_orders": 2,
+        "champion_scripted": 21,
+        "lobby": "4/6"
+      },
+      {
+        "round_number": 1,
+        "id": "round_5c4fa064-0039-438c-8fa8-251ac256f07a",
+        "status": "failed",
+        "error": "Temporal RoundWorkflow failed before settling the round."
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/8e5df6a9-8ab6-4ace-abd8-ec29e912538e.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32925387074",
+    "verdict": "2 items false (4, 5)",
+    "false_items": [
+      4,
+      5
+    ],
+    "checked_at": "2026-08-26T03:12:00Z"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +91,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T03:03:00Z",
+  "heartbeat_at": "2026-08-26T03:12:00Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"

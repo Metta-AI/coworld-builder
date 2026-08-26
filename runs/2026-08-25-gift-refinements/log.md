@@ -73,3 +73,12 @@
 2026-08-26T02:52:06Z 60 poll#3 rounds: r3 round_6e60126d created 02:51:25Z status=pending — check1 NOT-YET
 2026-08-26T02:54:42Z 60 poll#4 r3 still pending — check1 NOT-YET
 2026-08-26T02:54:42Z heartbeat phase=60
+2026-08-26T03:08:00Z 60 poll#6 r4 round_08811b54 completed 03:06:25Z — latest completed round refrozen to r4
+2026-08-26T03:09:14Z 60 check5 attempt3 (different round r4) FALSE: 3 decoded matches incl real "gift-refinements llm: seat 0 falling back to scripted order (parse_error) on round 12"; raw grep undercounts to 1 (whole container is one b'' repr); cause=parse_error not capacity (0 "LLM provider is unavailable" in any log) — no documented exception applies
+2026-08-26T03:09:20Z 60 check4 FINAL FALSE (r4): champion seats 21 scripted / 1 fallback / 2 llm of 24; game log "lobby closed with 4/6 seats connected, 4 registered" then seats 0+1 connect AFTER; "llmOrders=2 fallbacks=1". Race reproduces r2 (3/6, llmOrders=1) and r4; r3 (6/6, llmOrders=24) healthy
+2026-08-26T03:09:23Z 60 check6 re-fetched TRUE (r4 featured): SSR playlist[0]=gift-refinements.r4.e1 replayUrl=8e5df6a9...; session ready=true static index.html path, manifest sha256:6cfd8cc3 matches STATE
+2026-08-26T03:10:27Z 60 check1 TRUE (final): 3 completed rounds (2,3,4) all round_number>=2, all after fillers 02:36Z; r1 failed error recorded
+2026-08-26T03:10:27Z 60 check2 TRUE (final): daveey 1011.75 rp=3 wins=2; daveey-1 988.25 rp=3 wins=1; fillers absent
+2026-08-26T03:11:30Z 60 check8 TRUE: viewer-check run=32925387074 (dispatched 03:09:23Z, found by createdAt sort) conclusion=success; loaded=true ms=1428 data_replay_loaded="true"; scrub 0%="ROUND 1 / 12 TICK 0 OF 720" 50%="ROUND 7 / 12 TICK 376 OF 720" 100%="FINAL TICK 719 OF 720"; screenshot shows starter chrome (transport strip, TOKENS IN PLAY momentum scrubber, scorebug, ROUND LIMIT endcard, trust graph); feed_lines=0 noted as phase-30 legibility observation
+2026-08-26T03:12:00Z 60 VERIFY.md written: verdict = 2 items false (4 and 5). D1 lobby closes before champion pods connect -> champions play scripted baseline; D2 mirror prompt emits out-of-enum job "consume" -> retry exhausted -> fallback
+2026-08-26T03:12:00Z heartbeat phase=60
