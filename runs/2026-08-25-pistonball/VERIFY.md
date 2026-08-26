@@ -677,3 +677,15 @@ fallback script records: 0
 ```
 
 Both champion seats received LLM scripts on **every turn the episode lasted (0–3; delivered during turn 3)** with **zero fallbacks** — the F1 failure mode (`per-turn budget exhausted before attempt 1`) is absent. Check 4's "champion decisions non-scripted, not all fallbacks" now holds beyond the turn-0-only case; rounds 2–7 predate the fix and their fallback-heavy episodes are the F1 evidence, not the shipped behaviour.
+
+## Addendum 2 (coordinator, 2026-08-26T06:22Z): check 8 re-executed against the shipped 0.1.3 bundle
+
+Per verify-verdict.md's one blocker: `viewer-check.yml` re-dispatched against the 0.1.3 iframe src (session POST for cow_768730a3 + the round-8 replay → `ready:true`, static path with sha256%3A91c1207c…). Run **32937649794**, conclusion success; artifact committed at `runs/2026-08-25-pistonball/viewer-check-013/`.
+
+```
+{"loaded":true,"ms":3109,"clock":"1:15 TIME LEFT","feed_lines":0}
+scrub: 0% "1:15 TIME LEFT" / 50% "0:59 TIME LEFT" / 100% "FINAL GAME OVER"   (three differing clocks)
+failure: none
+```
+
+Screenshot (viewer-check-013/viewer-smoke.png): starter chrome intact (scorebug + journey bar + transport + scrubber with beat markers + momentum trace), endcard "BALL ON THE GOAL WALL", 91.2 SHARED SCORE, 20-row table where **daveey (piston 12) and daveey-1 (piston 4) both read `4/0` in LLM/FB** (F2 fixed: non-zero champion LLM counts) and the TOUCHES / LLM/FB headers sit clearly in their own columns (F3 fixed). SPEC item 8's evidence now covers the shipped bundle.

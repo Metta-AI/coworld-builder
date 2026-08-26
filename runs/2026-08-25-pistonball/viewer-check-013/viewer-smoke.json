@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 3109,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_768730a3-282a-4d75-9cff-01eea560e260/sha256%3A91c1207c7f679847f054a230f0d44e58aad9f52d927f8cc5678e3f619aa33915/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F20418470-73ca-48e7-9a22-fabfec4f8f7d.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:15 TIME LEFT",
+  "scorebug": "75% THE BANK - 20 cogs SCORE -0.0 1.5% OF THE WAY · 0 BOUNCE-BACKS 1:15 TIME LEFT GOAL WALL 50% START",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:15 TIME LEFT"
+    },
+    {
+      "at": "50%",
+      "clock": "0:59 TIME LEFT"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

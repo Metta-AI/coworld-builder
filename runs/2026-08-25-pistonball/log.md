@@ -96,3 +96,5 @@
 2026-08-26T06:10:30Z 60 post-fix round 8 completed: ereq_f2d4d58a, complete/delivered, sharedScore 91.212, champions llm on turns 0-3, 0 fallbacks; VERIFY.md addendum appended
 2026-08-26T06:10:30Z progress phase=60 marker=round_638df556-805a-4ffd-ab72-074e3e2a4a57
 2026-08-26T06:10:30Z 60 judge dispatched to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-26T06:20:39Z 60 verify-verdict r1: blocking 1 (viewer-check was 0.1.2-sha); viewer-check re-run 32937649794 vs 0.1.3 sha + round-8 replay: loaded=true, clocks differ, endcard LLM/FB 4/0 both champions, headers clean; artifacts committed viewer-check-013/
+2026-08-26T06:20:39Z progress phase=60 marker=viewer-check-run-32937649794
