@@ -67,3 +67,4 @@
 2026-08-26T14:19:41Z progress phase=50 marker=league_362e5211-3bdc-40f4-968e-c00c8f812bfe
 2026-08-26T14:19:41Z 50 -> 60 phase transition: STATE.phase=60
 2026-08-26T14:19:41Z heartbeat phase=60
+2026-08-26T14:20:22Z 60 verifier dispatched thread=sthr_017RKW9LtxQ5CYw2wjvLKbbp output=runs/2026-08-26-knights-archers/VERIFY.md session=a9445eee
