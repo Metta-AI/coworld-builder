@@ -87,3 +87,6 @@
 2026-08-26T14:18:27Z progress phase=60 marker=VERIFY.md
 2026-08-26T14:19:10Z 60 judge dispatched thread=sthr_018kLyo8m2qBqpusMb9PeC3z output=runs/2026-08-26-particle-worlds/reviews/verify-verdict.md
 2026-08-26T14:19:10Z heartbeat phase=60
+2026-08-26T14:24:59Z 60 judge returned verify-verdict.md BLOCKING: 0 — all 8 checks re-fetched and reproduced; 3 advisories adjudicated non-blocking
+2026-08-26T14:24:59Z progress phase=60 marker=verify-verdict.md
+2026-08-26T14:24:59Z 00 phase transition 60 -> 70
