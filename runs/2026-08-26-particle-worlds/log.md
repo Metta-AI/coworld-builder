@@ -51,3 +51,6 @@
 2026-08-26T12:51:35Z 30 zombie session d3b957ae stood down cleanly: its r1 fixes parked on branch fixer-r1-work @ae77c87 (main untouched), artifacts renamed -parallel; its 3 attention items (hold anchor, deadline record) covered by r2 commits 13c66d7/8d7da32
 2026-08-26T12:51:35Z 30 r2 judge dispatched thread=sthr_018Ts8Ds7vZHd7XGy6SHe36E sha=238f88cc output=runs/2026-08-26-particle-worlds/reviews/r2-verdict.md
 2026-08-26T12:51:35Z heartbeat phase=30
+2026-08-26T13:03:02Z 30 r2 judge returned r2-verdict.md BLOCKING: 0 — F1 refuted at head (13c66d75 stop record + test), all 15 checklist items pass at 238f88cc; loop exits after 2 rounds
+2026-08-26T13:03:02Z progress phase=30 marker=r2-verdict.md
+2026-08-26T13:03:02Z 00 phase transition 30 -> 40
