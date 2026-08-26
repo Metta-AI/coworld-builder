@@ -117,3 +117,6 @@
 2026-08-26T06:34:14Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20489
 2026-08-26T06:34:14Z 00 phase transition 75 -> 80
 2026-08-26T06:34:14Z heartbeat phase=80
+2026-08-26T06:37:07Z 80 executive summary posted on run task (1217853159839039) and condensed on idea task (1217853080424416); LEARNINGS.md dated section appended; playbook Common-mistakes gained 2 rows (game.description/tags, player cpu min); all 9 phase subtasks complete; idea 1217747862156473 completed; run task moved to Done
+2026-08-26T06:37:07Z progress phase=80 marker=run-task-Done
+2026-08-26T06:37:07Z 80 run closed — Done. Session a1f3c9d2 ending; no next action.

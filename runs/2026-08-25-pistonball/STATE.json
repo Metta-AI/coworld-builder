@@ -54,8 +54,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T06:34:14Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-26T06:37:07Z",
+  "session_ended_at": "2026-08-26T06:37:07Z",
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"
 }
