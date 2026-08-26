@@ -27,3 +27,7 @@
 2026-08-26T11:03:00Z heartbeat phase=30
 2026-08-26T11:03:51Z 30 r1 judge dispatched thread=sthr_01N4Wf46UfYhjzHKXXsd7X7o (fresh context, verdict target r1-verdict.md)
 2026-08-26T11:03:51Z heartbeat phase=30
+2026-08-26T11:17:02Z 30 r1 judge returned r1-verdict.md blocking:0/BLOCKING:0 (F1-F4 refuted at head f078434, all 15 checklist items + batch rule pass; residue advisory only)
+2026-08-26T11:17:02Z 30 review loop complete in 1 round; residue: WW_MODE hooks above chrome banner, F9 held-registration test needs-design, replay.json naming, llm/fallback counters unexercised until 60
+2026-08-26T11:17:02Z progress phase=30 marker=r1-verdict.md blocking:0
+2026-08-26T11:17:02Z heartbeat phase=40

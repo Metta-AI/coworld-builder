@@ -5,7 +5,7 @@
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
   "starter": "coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T09:51:28Z",
+  "heartbeat_at": "2026-08-26T11:17:02Z",
   "session_ended_at": null,
   "session_id": "91d04e42",
   "log": "runs/2026-08-26-walker-waterworld/log.md"
