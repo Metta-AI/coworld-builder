@@ -4,7 +4,7 @@
   "run_task": "1217847385246447",
   "slug": "pistonball",
   "repo": "Metta-AI/cogame-pistonball",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T00:05:30Z",
+  "heartbeat_at": "2026-08-26T00:07:30Z",
   "session_ended_at": null,
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"
