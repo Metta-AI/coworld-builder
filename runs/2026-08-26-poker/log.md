@@ -8,3 +8,4 @@
 2026-08-26T14:45:02Z 00 STATE written phase=10 session=8bd3f494
 2026-08-26T14:45:02Z heartbeat phase=10
 2026-08-26T14:52:10Z 10 starter=cogame-cosino (turn-based cards + LLM-prompt policies -> parley-stack row; playbook row 1 allows "newest parley descendant (cogame-bullwhip, cogame-focus, cogame-cosino)" when closer, and cosino IS the Hold'em engine the idea extends — blinds, side pots, Chen baseline, all four static-viewer files, compose+manifest+build hook present; babel kept as current-template reference for conventions the note must confirm or upgrade) repo=Metta-AI/cogame-poker per SPEC pin
+2026-08-26T14:56:40Z 10 designer dispatched round=1 thread=sthr_01UZZ58TJCoT5kmGUDZ18DPr output=runs/2026-08-26-poker/design-draft.md session=8bd3f494
