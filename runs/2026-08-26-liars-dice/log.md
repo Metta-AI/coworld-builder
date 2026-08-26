@@ -78,3 +78,7 @@
 2026-08-26T22:48:08Z 60 verifier returned: VERIFY.md 8/8 TRUE (2 rounds completed r1+r2, both champions ranked rounds_played=2, replay complete 0 fallbacks, logs CLEAN, static iframe w/ manifest_sha, cert skipped-static, viewer-check 33020556574 loaded=true clocks DEAL0/DEAL0-8/DEAL8-8-FINAL); 2 non-blocking legibility notes (notes-panel ellipsis 84 draws; filler alias vs Baseline labels)
 2026-08-26T22:48:08Z heartbeat phase=60
 2026-08-26T22:49:45Z 60 judge dispatched thread=sthr_01UbTUQqSHzJ5xnc8NLNGA5Q output=reviews/verify-verdict.md session=dc527a34
+2026-08-26T22:54:14Z 60 judge returned file=reviews/verify-verdict.md blocking=0 (all 8 confirmed; re-fetched independently; check-1 timestamp narrative settled via ereq_e059906f is_filler evidence)
+2026-08-26T22:54:14Z progress phase=60 marker=verify-verdict.md
+2026-08-26T22:54:14Z 60 -> 70 phase transition: STATE phase=70 session=dc527a34
+2026-08-26T22:54:14Z heartbeat phase=70
