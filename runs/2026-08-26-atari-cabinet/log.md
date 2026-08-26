@@ -7,3 +7,5 @@
 2026-08-26T12:38:38Z heartbeat phase=00
 2026-08-26T12:39:30Z 00 note: repo mount found with detached HEAD and a stale local main (50 already-landed commits, different shas); preserved as branch stale-main-backup-20260826, main re-pointed at origin/main — no force-push
 2026-08-26T12:39:40Z 00 STATE written phase=10 session=404e211b; entering prompts/10-design.md
+2026-08-26T12:41:00Z 10 starter=coworld-ctf (paintbot) — first row of starter table: real-time loop, rules written fresh; retro-arcade shapes reimplemented, not a bit-exact ALE/ROM port (no emulator hostable; precedent pistonball/particle-worlds/walker-waterworld; Cogball operator ruling 2026-08-22)
+2026-08-26T12:41:10Z 10 dispatch designer — design note for cogame-atari-cabinet
