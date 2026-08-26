@@ -23,3 +23,4 @@
 2026-08-26T01:58:30Z heartbeat phase=30
 2026-08-26T02:05:00Z 00 INCIDENT: git push over HTTPS lost auth sandbox-wide; first git-data-API push (f6faa0e) raced a concurrent gift-refinements commit (2a7d583) and clobbered 4 of its files (3 emptied, log.md reverted). REPAIRED in b0137a1: all 4 restored byte-identical to 2a7d583 (verified via recursive tree diff). Future pushes via /tmp/apipush.sh which refuses paths outside this run.
 2026-08-26T02:05:00Z heartbeat phase=30
+2026-08-26T02:12:00Z 30 r1 reviewer dispatched thread=sthr_013G7UWRXvdShAmhEeXwKgey sha=ce20047 output=reviews/r1-review.md
