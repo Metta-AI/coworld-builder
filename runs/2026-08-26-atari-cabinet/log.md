@@ -31,3 +31,7 @@
 2026-08-26T19:00:42Z 30 r1 fixer returned: reviews/r1-fixes.md — found prior fixer session's 11 commits already on main (17:09Z, one per finding, no report); verified each, made no new commits. Final sha 405fa22, ci run 33001674720 success. 2 blocking fixed, 9 advisory fixed, 13 recorded-no-change, 0 disputed
 2026-08-26T19:00:42Z 30 r1 dispatch judge (fresh context)
 2026-08-26T19:00:42Z heartbeat phase=30
+2026-08-26T19:15:28Z 30 r1 judge returned: reviews/r1-verdict.md blocking:0/BLOCKING:0 — both blocking findings refuted-as-fixed at 405fa22; all 15 checklist items + parallel-batch addendum PASS; GameVersion ruling advisory; residue all advisory
+2026-08-26T19:15:28Z progress phase=30 marker=r1-verdict.md blocking:0
+2026-08-26T19:15:28Z 30 -> 40 phase transition
+2026-08-26T19:15:28Z heartbeat phase=40
