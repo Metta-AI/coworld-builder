@@ -64,3 +64,6 @@
 2026-08-26T04:17:39Z 60 decision: stay in phase 60 (paintball 2026-08-25 precedent) — fix cause B in llm.nim (schema hint + tolerant compact-form split + test), re-release 0.1.1, trigger fresh round, re-verify 4+5. Cause A alone -> 90 platform outage if it persists after B is fixed
 2026-08-26T04:17:39Z heartbeat phase=60
 2026-08-26T04:18:13Z 60 fixer dispatched thread=sthr_01JwmzB9gNebYnkT1RfiWhcR target=llm.nim schema-hint+compact-form tolerance+tests, output=reviews/verify-r1-fixes.md
+2026-08-26T04:32:54Z 60 fixer returned: 731ab43e schema-hint sibling keys + compact-form split + one-sided-switch degrade + tests; CI GREEN run=32930232996; file=reviews/verify-r1-fixes.md
+2026-08-26T04:32:54Z progress phase=60 marker=verify-r1-fixes.md
+2026-08-26T04:32:54Z heartbeat phase=60
