@@ -77,3 +77,7 @@
 2026-08-26T15:51:05Z 60 -> 70 phase transition: STATE.phase=70
 2026-08-26T15:51:05Z heartbeat phase=70
 2026-08-26T15:52:27Z 70 announce attempted_at written pre-POST
+2026-08-26T15:52:46Z 70 announce msg=1542200102884606054 (HTTP 200, flags=4, embeds=[])
+2026-08-26T15:52:46Z progress phase=70 marker=announce.discord_message_id
+2026-08-26T15:52:46Z 70 -> 75 phase transition: STATE.phase=75
+2026-08-26T15:52:46Z heartbeat phase=75
