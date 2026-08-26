@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-atari-cabinet",
   "starter": "coworld-ctf",
   "phase": "30",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "30": 1
+  },
   "review_round": 1,
   "coworld": {
     "version": "",
@@ -45,8 +47,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T15:31:59Z",
+  "heartbeat_at": "2026-08-26T18:42:13Z",
   "session_ended_at": null,
-  "session_id": "404e211b",
+  "session_id": "3ad680cb",
   "log": "runs/2026-08-26-atari-cabinet/log.md"
 }

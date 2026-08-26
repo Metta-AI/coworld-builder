@@ -26,3 +26,4 @@
 2026-08-26T15:52:41Z 30 r1 reviewer returned: reviews/r1-review.md — 24 findings (2 blocking, both legibility: renderer_fixture ellipsizes 160-rune note; fixture is a re-implementation not the shipped renderer, real bundle reports canvas_text total=0)
 2026-08-26T15:52:41Z 30 r1 dispatch fixer
 2026-08-26T15:52:41Z heartbeat phase=30
+2026-08-26T18:42:13Z 00 resume at phase 30 attempt=1 session=3ad680cb
