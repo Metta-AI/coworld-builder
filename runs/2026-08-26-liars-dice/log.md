@@ -63,3 +63,5 @@
 2026-08-26T22:23:39Z 60 verifier dispatched thread=sthr_01Dg8qNFM1qNJoFdYbAbUEYL output=VERIFY.md bound=75min session=dc527a34
 2026-08-26T22:24:14Z 60 poll#1 rounds: 1 completed (round 1, round_8e19d4a0, completed_at 22:23:24Z); leaderboard: daveey-1 rank1 1016 rp=1, daveey rank2 984 rp=1, no fillers; ereq_e059906f completed with replay_url
 2026-08-26T22:24:14Z heartbeat phase=60
+2026-08-26T22:31:19Z 60 poll#2 rounds: still 1 completed (round 2 not yet scheduled; interval=15m, next expected ~22:37Z). check2 TRUE (daveey/daveey-1 both rp=1, no fillers on board); check4 replay ffaa01a0 protocol=liarsdice.replay.v1 reason=complete, 31 decisions, champion seats 15 decisions 0 scripted 0 fallback; check5 CLEAN (decoded 4 containers); check6 static viewer_url ready=true; check7 release-result.json says "Replay liveness: skipped (static replay bundle declared"
+2026-08-26T22:31:19Z heartbeat phase=60
