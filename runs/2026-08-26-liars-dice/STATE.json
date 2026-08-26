@@ -5,22 +5,25 @@
   "slug": "liars-dice",
   "repo": "https://github.com/Metta-AI/cogame-liars-dice",
   "starter": "cogame-babel",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "20": 1
+    "20": 1,
+    "40": 1
   },
   "review_round": 2,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_0fa24212-cf13-4b7c-a6de-671e85cf1e97",
+    "manifest_sha": "sha256:f370529105d16354384c63080032b4c4aa9d4b5d62abfbf4e3b3ebed8256f85a",
+    "release_run_id": "33018791088"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
-    "filler_version_ids": []
+    "champion1": "liars-dice-calibrator:v1",
+    "champion2": "liars-dice-needler:v1",
+    "fillers": [
+      "liars-dice-bayes:v1",
+      "liars-dice-pressure:v1"
+    ]
   },
   "league": {
     "id": "",
@@ -47,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T22:11:49Z",
+  "heartbeat_at": "2026-08-26T22:19:48Z",
   "session_ended_at": null,
   "session_id": "dc527a34",
   "log": "runs/2026-08-26-liars-dice/log.md"

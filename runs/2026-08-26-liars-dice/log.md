@@ -44,3 +44,7 @@
 2026-08-26T22:11:49Z 30 -> 40 phase transition: STATE phase=40 session=dc527a34
 2026-08-26T22:11:49Z heartbeat phase=40
 2026-08-26T22:12:45Z 40 builder dispatched thread=sthr_018t2buU4yd9sd3uQ55ZeoYC task=coworld-release.yml v0.1.0 first session=dc527a34
+2026-08-26T22:19:48Z 40 builder returned: release v0.1.0 run=33018791088 success first dispatch; cow_id=cow_0fa24212-cf13-4b7c-a6de-671e85cf1e97 canonical=true certified secret_put=true; 4 policies v1 (needler carries ply_bac48eb1); release-result.json committed (83901cd)
+2026-08-26T22:19:48Z progress phase=40 marker=release-run-33018791088
+2026-08-26T22:19:48Z 40 -> 50 phase transition: STATE phase=50 session=dc527a34
+2026-08-26T22:19:48Z heartbeat phase=50
