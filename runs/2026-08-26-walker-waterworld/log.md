@@ -71,3 +71,6 @@
 2026-08-26T12:20:35Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; replay d28f4f1b binary COWLDWWD parsed via replay_summary.py; viewer-check run 32967129036 loaded:true, 3 clocks differ; stray 0.1.0 cow now canonical:false — benign)
 2026-08-26T12:20:35Z heartbeat phase=60
 2026-08-26T12:21:08Z 60 judge dispatched thread=sthr_01C7PzgLkM9qGromLQ1zqosY (fresh context, verify-verdict.md)
+2026-08-26T12:25:53Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 (all 8 upheld by independent re-fetch; rounds 2/3/4 completed; rulings: round-2 counts + moot, episode_wins not a criterion, binary-replay substitute admissible per design.md, feed_lines harness gap non-blocking, stray 0.1.0 canonical:false benign)
+2026-08-26T12:25:53Z progress phase=60 marker=verify-verdict.md blocking:0
+2026-08-26T12:25:53Z heartbeat phase=70

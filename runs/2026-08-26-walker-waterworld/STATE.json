@@ -5,7 +5,7 @@
   "slug": "walker-waterworld",
   "repo": "https://github.com/Metta-AI/cogame-walker-waterworld",
   "starter": "coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "40": 1
   },
@@ -33,9 +33,14 @@
     "division": "div_ef3424b8-a20d-4029-8918-e12b6fb65156"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round 2 completed 11:47:50Z",
+      "round 3 completed 12:04:54Z",
+      "round 4 completed 12:17:20Z"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/d28f4f1b-941e-478d-a418-4898fb1c19d6.replay",
+    "iframe_static": true,
+    "viewer_check_run": "32967129036"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T11:46:28Z",
+  "heartbeat_at": "2026-08-26T12:25:53Z",
   "session_ended_at": null,
   "session_id": "91d04e42",
   "log": "runs/2026-08-26-walker-waterworld/log.md"
