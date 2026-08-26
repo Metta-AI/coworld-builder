@@ -39,3 +39,4 @@
 2026-08-26T03:14:47Z 30 r1 fixer returned: 14 commits, CI GREEN run=32925353796 sha=dd84d91871ecb6f0eb94d8b6bd54b43a15fddf89; B1 route removed, B2 page now CSS+markup+script sliced from starter (3171/4660 lines, was 2180), B3 per-tick re-derivation tests; N1+N22 disputed with measurements; N24/N28/N25/N30 + 4 baseline deltas deferred; file=reviews/r1-fixes.md
 2026-08-26T03:14:47Z progress phase=30 marker=r1-fixes.md
 2026-08-26T03:14:47Z heartbeat phase=30
+2026-08-26T03:15:52Z 30 r1 judge dispatched thread=sthr_01V3vFJMi2nXXKqWvTzCaUZM output=reviews/r1-verdict.md repo@dd84d918 (fresh context, has r1-review.md, never r1-fixes.md)
