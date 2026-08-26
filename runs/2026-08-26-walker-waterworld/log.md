@@ -68,3 +68,5 @@
 2026-08-26T12:14:30Z 60 check 8 legibility note (phase-30 class, non-blocking): harness feed_lines=0 while the screenshot shows 4 intent captions -> viewer-check feed selector does not match this shell's feed node
 2026-08-26T12:14:30Z 60 VERIFY.md written: 8/8 TRUE (all-true)
 2026-08-26T12:14:30Z heartbeat phase=60
+2026-08-26T12:20:35Z 60 verifier returned VERIFY.md 8/8 TRUE (rounds 2+3 completed; replay d28f4f1b binary COWLDWWD parsed via replay_summary.py; viewer-check run 32967129036 loaded:true, 3 clocks differ; stray 0.1.0 cow now canonical:false — benign)
+2026-08-26T12:20:35Z heartbeat phase=60
