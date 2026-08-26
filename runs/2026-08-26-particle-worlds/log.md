@@ -15,3 +15,5 @@
 2026-08-26T06:32:21Z 00 phase transition 10 -> 20
 2026-08-26T06:33:43Z 20 repo created https://github.com/Metta-AI/cogame-particle-worlds (public); propagate-secrets run 32938649603 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-26T06:33:43Z 20 art rail: design.md §Art governs — starter's shipped soldier sprite families + baked landmark discs + symbol bubbles (real art, no downloads); nano-banana not needed for this fork
+2026-08-26T06:34:36Z 20 builder dispatched thread=sthr_016k1Gzy2mdHRd6GvsVyEnkQ target=ci.yml green on main
+2026-08-26T06:34:36Z heartbeat phase=20
