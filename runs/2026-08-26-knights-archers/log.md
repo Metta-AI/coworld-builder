@@ -71,3 +71,4 @@
 2026-08-26T15:45:21Z 60 verifier returned: all 8 checks TRUE (rounds 1-3 completed; both champions ranked; round-3 replay complete, 36/36 llm, 0 fallbacks; log CLEAN; static iframe; liveness skipped; viewer-check 32982870977 loaded=true clocks differ). Round 2 was platform openrouter-402 outage, documented as trend, not a defect. Observations O1-O6 recorded (O1: turnSpacingMs>turnBudgetMs silent-timeout latch — real defect, did not falsify checks)
 2026-08-26T15:45:21Z progress phase=60 marker=VERIFY.md
 2026-08-26T15:45:21Z heartbeat phase=60
+2026-08-26T15:46:16Z 60 judge dispatched thread=sthr_01MbU3c68QwYQ9ydePoUW9Zs output=runs/2026-08-26-knights-archers/reviews/verify-verdict.md session=a9445eee
