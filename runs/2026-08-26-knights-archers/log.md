@@ -47,3 +47,9 @@
 2026-08-26T13:38:57Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
 2026-08-26T13:38:57Z heartbeat phase=40
 2026-08-26T13:40:07Z 40 builder dispatched thread=sthr_018ohXRu65Xvko4AK8AawTpe repo=Metta-AI/cogame-knights-archers version-start=0.1.0 session=a9445eee
+2026-08-26T14:04:22Z 40 dispatch version=0.1.0 run=32975597840 step_failed="Certify locally" decision=manifest fix (matriculate: game_config must not include runner-managed tokens; dropped tokens array from 4 variants + cert fixture, commit 81350e3)
+2026-08-26T14:04:22Z 40 dispatch version=0.1.1 run=32976185916 step_failed="Upload the Coworld" decision=workflow fix (coworld[auth] 0.1.42 --wait-hosted-smoke GETs flat /v2/episode-requests -> HTTP 405; pinned 0.1.43 in coworld-release.yml + coworld-submit.yml, commit 4f7488f)
+2026-08-26T14:04:22Z 40 dispatch version=0.1.2 run=32976807976 step_failed=none decision=release-result ok=true canonical=true certify.ok=true liveness=skipped(static) secret_put=true policies=warden:v2,volley:v2(daveey-1),phalanx:v2,stand:v2 cow_id=cow_59c71968-6a84-4634-b9da-03e7e976b309
+2026-08-26T14:04:22Z 40 hosted certification FAILED platform-side: certifier internal GET observatory-backend/v2/episode-requests 404, failed_step=smoke-episode, retryable=false — hosted_smoke=passed, Canonical=yes; SPEC 128 requires hosted certification certified, retrying via version bump 0.1.3 (distinct failure mode, first hosted-cert attempt on the 0.1.43 pin path)
+2026-08-26T14:04:22Z progress phase=40 marker=32976807976
+2026-08-26T14:04:22Z heartbeat phase=40

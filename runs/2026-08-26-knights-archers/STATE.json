@@ -11,16 +11,18 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_59c71968-6a84-4634-b9da-03e7e976b309",
+    "manifest_sha": "sha256:8075b5e43c04c06676f2aa13640cbb3e45d837c187d58bd1fe8f87a6306f1059",
+    "release_run_id": "32976807976"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
-    "filler_version_ids": []
+    "champion1": "knights-archers-warden:v2",
+    "champion2": "knights-archers-volley:v2",
+    "fillers": [
+      "knights-archers-phalanx:v2",
+      "knights-archers-stand:v2"
+    ]
   },
   "league": {
     "id": "",
@@ -47,7 +49,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T13:38:57Z",
+  "heartbeat_at": "2026-08-26T14:04:22Z",
   "session_ended_at": null,
   "session_id": "a9445eee",
   "log": "runs/2026-08-26-knights-archers/log.md"
