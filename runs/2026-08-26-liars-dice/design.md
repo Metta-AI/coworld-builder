@@ -877,3 +877,27 @@ debug and `-d:release`.
   tallied; the full hands are revealed, which is the standard rule).
 - **Automatic soft-play enforcement.** v1 *measures* `expLoss` / `net` / `challenged` and records
   them; acting on them (flagging, disqualifying, re-seeding a pairing) is a later phase.
+
+---
+
+## Errata (appended after acceptance review; the note above is left as written)
+
+- **2026-08-26 (r2, F2) — the speech plate and notes parchment have no fixed line counts.**
+  The note says the speech plate holds "2 lines, ellipsized" (§ *Talk*), the notes parchment
+  "3 lines, ellipsized", and that notes parchments "drop to 1 line" below 480 px. Acceptance
+  checklist 15 overrides all three: a band carrying a model-authored string is **sized from the
+  cap the server enforces** (`MaxSayLen` 140 / `MaxNotesLen` 400), measured in the font it will be
+  drawn in, and an ellipsis on a sentence is a defect — widen the band, never shorten the text.
+  `client/renderer.js` does that (`capLines()` → `seatBlock()`); the compact-mode 1-line rule is
+  gone. Read the note's line counts as history, not as the spec.
+- **2026-08-26 (r2, F1) — the `bayes` thresholds are now `chal = 0.15`, `safe = 0.35`.**
+  The note states `chal = 0.40`, `safe = 0.55` (§ *The two scripted baselines*, and test-plan
+  item 16's parenthetical "the tighter thresholds must beat the looser ones"). Checklist item 7
+  requires the baseline's parameters to be tuned with a grid harness; the harness now exists
+  (`tools/tune_baseline.nim`, table at `data/tuning/threshold_sweep.tsv`) and its 110-point round
+  robin ranks the old pair **80 of 110** at 0.49236 — below break even against the lattice. The
+  shipped pair is the centre of the winning plateau, rank 8 of 110 and paired-tied with the
+  argmax; CI re-runs a slice of the sweep and fails if the constants drift off it. `pressure`
+  (`chal = 0.25`, `safe = 0.35`, pad) is unchanged, so it now *calls sooner* than `bayes` rather
+  than later; test-plan item 16 still holds and holds wider (bayes mean 0.525 vs pressure 0.475,
+  was 0.5167 vs 0.4833), but read its "tighter thresholds" rationale as superseded by the sweep.
