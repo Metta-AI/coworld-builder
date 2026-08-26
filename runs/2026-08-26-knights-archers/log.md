@@ -42,3 +42,7 @@
 2026-08-26T13:27:07Z heartbeat phase=30
 2026-08-26T13:29:13Z 30 note: git-over-HTTP push auth failing at egress (Invalid username or token); pushes now via GitHub Git Data API (gh api, header auth) — same content, API shas
 2026-08-26T13:29:13Z 30 judge dispatched round=1 thread=sthr_01TXsgrvrrmygKuNRa8tB6nH sha=d1ea75d output=runs/2026-08-26-knights-archers/reviews/r1-verdict.md session=a9445eee
+2026-08-26T13:38:57Z 30 judge returned round=1 r1-verdict.md blocking=0 (B1,B2 verified fixed at d1ea75d; N9,N25 dismissed; all 15 items + parallel-batch rider PASS)
+2026-08-26T13:38:57Z progress phase=30 marker=r1-verdict.md
+2026-08-26T13:38:57Z 30 -> 40 phase transition: STATE.phase=40 (review loop closed in 1 round)
+2026-08-26T13:38:57Z heartbeat phase=40
