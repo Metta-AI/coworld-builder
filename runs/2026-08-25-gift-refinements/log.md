@@ -44,3 +44,8 @@
 2026-08-26T02:33:36Z progress phase=40 marker=release-run-32922682398
 2026-08-26T02:33:36Z 40 -> 50 phase transition: STATE.phase=50 written
 2026-08-26T02:33:36Z heartbeat phase=50
+2026-08-26T02:34:46Z 50 seed 200 league_aa42c0da-031b-49b1-9524-e4acc85fd2f6 (lseed_99e35a28)
+2026-08-26T02:34:46Z 50 note: GET /leagues returns a bare array here, not {entries}; filtered client-side on .game.coworld_name
+2026-08-26T02:34:46Z 50 division 200 div_3c0d2b61-0e4a-4d9c-b27f-524158fede53
+2026-08-26T02:34:46Z 50 settings 200 ladder elo round_robin filler_policy interval=15m
+2026-08-26T02:34:46Z heartbeat phase=50

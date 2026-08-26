@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_aa42c0da-031b-49b1-9524-e4acc85fd2f6",
+    "division": "div_3c0d2b61-0e4a-4d9c-b27f-524158fede53"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T02:33:36Z",
+  "heartbeat_at": "2026-08-26T02:34:46Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
