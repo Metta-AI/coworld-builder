@@ -94,3 +94,8 @@
 2026-08-26T14:26:40Z 70 announce msg=1542178407134138368 (200, flags=4, embeds=[])
 2026-08-26T14:26:40Z progress phase=70 marker=announce.discord_message_id=1542178407134138368
 2026-08-26T14:26:40Z 00 phase transition 70 -> 75
+2026-08-26T14:27:30Z 75 atlas dispatch=32980381714 region=simulations at=536,271 clearance=69.0 (continent: MPE is a borrowed research benchmark world -> Great Simulations)
+2026-08-26T14:31:20Z 75 atlas dispatch=32980783120 (attempt 2: +extra_cities placing 25 unplaced leagues — chemistry,cogchemists,coins,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,gift-refinements,matrix-games,territory->commons; chorus,cogmud,cogolf,daycare,garble,hidden-agenda->parlour; cogiavelli,cogplomacy,hanabi->tabletop; collab-cooking,knights-archers,pistonball,walker-waterworld->simulations; grid-wars->paintlands)
+2026-08-26T14:34:22Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20501 status=pr_open (placed 25 leagues for other runs in the same PR)
+2026-08-26T14:34:22Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20501
+2026-08-26T14:34:22Z 00 phase transition 75 -> 80
