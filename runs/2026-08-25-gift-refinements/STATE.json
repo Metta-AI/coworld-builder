@@ -88,7 +88,7 @@
     "checked_at": "2026-08-26T04:28:40Z"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-26T04:37:56Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -103,7 +103,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T04:36:44Z",
+  "heartbeat_at": "2026-08-26T04:37:56Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
