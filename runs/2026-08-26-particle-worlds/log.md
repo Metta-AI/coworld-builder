@@ -13,3 +13,5 @@
 2026-08-26T06:32:21Z 10 design ACCEPTED round 1, zero rejections; copied to runs/2026-08-26-particle-worlds/design.md
 2026-08-26T06:32:21Z progress phase=10 marker=design.md written and accepted
 2026-08-26T06:32:21Z 00 phase transition 10 -> 20
+2026-08-26T06:33:43Z 20 repo created https://github.com/Metta-AI/cogame-particle-worlds (public); propagate-secrets run 32938649603 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-26T06:33:43Z 20 art rail: design.md §Art governs — starter's shipped soldier sprite families + baked landmark discs + symbol bubbles (real art, no downloads); nano-banana not needed for this fork
