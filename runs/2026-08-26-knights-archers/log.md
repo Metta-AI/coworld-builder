@@ -37,3 +37,6 @@
 2026-08-26T12:23:56Z 30 reviewer returned round=1 r1-review.md (2 blocking B1=item7 reason==complete assertion missing, B2=item15 model-text fixture missing; 25 non-blocking; 5 undetermined)
 2026-08-26T12:23:56Z heartbeat phase=30
 2026-08-26T12:24:26Z 30 fixer dispatched round=1 thread=sthr_01VQAgbTVaXG7R5HsSueqTpA output=runs/2026-08-26-knights-archers/reviews/r1-fixes.md session=a9445eee
+2026-08-26T13:27:07Z 30 fixer returned round=1 r1-fixes.md: 22 commits, final sha=d1ea75d CI run 32973353268 success (B1+B2 fixed, 20/25 non-blocking fixed, N9 disputed, N21 needs-design note, N25 left for judge)
+2026-08-26T13:27:07Z progress phase=30 marker=r1-fixes.md
+2026-08-26T13:27:07Z heartbeat phase=30
