@@ -69,3 +69,6 @@
 2026-08-26T22:36:30Z heartbeat phase=60
 2026-08-26T22:41:43Z 60 poll#4 rounds: 2 completed (round 1 @22:23:24Z, round 2 @22:38:25Z) -> check1 TRUE
 2026-08-26T22:41:43Z heartbeat phase=60
+2026-08-26T22:43:27Z 60 check1 TRUE (2 completed rounds, both after fillers 22:21Z) | check2 TRUE (daveey 1001.47 rp=2, daveey-1 998.53 rp=2, no filler rows) | check3 TRUE (ereq_e1729468 completed, replay 880929b7, participants daveey/daveey-1 + 2 is_filler) | check4 TRUE (liarsdice.replay.v1, reason=complete, 29 decisions, champion seats 14 decisions 0 scripted 0 fallback) | check5 TRUE CLEAN (4 containers decoded, 14 bedrock InvokeModel all ok:true 200) | check6 TRUE static viewer_url ready=true (SSR playlist[0] + replays/session) | check7 TRUE (committed release-result.json)
+2026-08-26T22:43:27Z 60 check8a dispatched viewer-check.yml run=33020556574 at 22:43:04Z
+2026-08-26T22:43:27Z heartbeat phase=60
