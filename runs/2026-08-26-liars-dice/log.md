@@ -89,3 +89,4 @@
 2026-08-26T22:55:44Z heartbeat phase=75
 2026-08-26T22:56:41Z 75 atlas continent=tabletop (classic tabletop dice-bluffing port; talk channel is garnish, not the game — not parlour)
 2026-08-26T22:56:41Z 75 atlas dispatch=33021412202 region=tabletop at=766,277 clearance=22.9
+2026-08-26T23:01:19Z 75 atlas dispatch=33021741811 region=tabletop at=799,301 clearance=22.9 extra_cities=27 (26 backlog lines verbatim from queued PR 20533 to stay merge-compatible + atari-cabinet fresh simulations 557,280; poker excluded — absent from stats snapshot; liars-dice respotted off 766,277 which PR20533 gives cogchemists)
