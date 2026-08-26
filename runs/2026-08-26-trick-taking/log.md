@@ -1,0 +1,10 @@
+# 2026-08-26-trick-taking — log
+
+2026-08-26T23:17:22Z 00 claim comment posted on idea 1217762703104078 (story 1217886500629138)
+2026-08-26T23:17:45Z 00 claim re-check after 20s: no competing claim comment — claim holds
+2026-08-26T23:18:10Z 00 run task created gid=1217886608506728 section=Running + 9 phase subtasks (10..80)
+2026-08-26T23:18:37Z 00 heartbeat_at custom field set on run task
+2026-08-26T23:19:30Z 00 claim 2026-08-26-trick-taking idea=1217762703104078 slug=trick-taking session=d199e038
+2026-08-26T23:19:30Z 00 startability: trick-taking = LLM-prompt turn-based card family -> parley/babel starter row; EXTENSION idea ships as new cogame-trick-taking per poker/paintball precedent; not confidential
+2026-08-26T23:19:30Z 00 phase transition 00 -> 10
+2026-08-26T23:19:30Z heartbeat phase=10
