@@ -11,15 +11,18 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_686eadd9-7594-425c-98b2-854deb9acdd1",
+    "manifest_sha": "sha256:6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305",
+    "release_run_id": "32922682398"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "gift-refinements-mirror:v2",
+    "champion2": "gift-refinements-patron:v2",
+    "fillers": [
+      "gift-refinements-reciprocator:v2",
+      "gift-refinements-hoarder:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
