@@ -1065,3 +1065,12 @@ simultaneously (grow `BUBBLE_MAX_W`/line count as needed). The sixmax fixture re
 full-cap 120-rune says on every seat; the viewer smoke on that fixture must report **zero
 ellipsized remarks** (ellipsis stays admissible only for label-class strings, e.g. nameplates).
 `types.nim`'s cap comment, the protocol docs, and audit.md/rules.md update to 120.
+
+## Addendum 4 (coordinator, 2026-08-26, phase 30 round 1) — hard guard nets off one worst-case decision
+
+The hard guard is checked before a decision, so a decision admitted at t just below the
+threshold still runs to completion. The 60% bound is on the **true worst-case settle**, so the
+threshold nets off one worst-case decision: **hard guard = 0.56·T (672 s)** — 672 s plus one
+worst-case decision (2.1 s spacing + two 20 s LLM attempts + turn delay + settle overhead
+≈ 45 s) ≤ 720 s = 60% of 1200. Soft guard stays 0.55·T (660 s) at pair boundaries; `handVoid`
+semantics unchanged. Comments and docs state the netting explicitly.
