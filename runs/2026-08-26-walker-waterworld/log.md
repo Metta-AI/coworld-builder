@@ -10,3 +10,5 @@
 2026-08-26T07:26:26Z 10 design accepted r1 (zero rejections); copied to runs/2026-08-26-walker-waterworld/design.md
 2026-08-26T07:26:26Z progress phase=10 marker=design.md written and accepted r1
 2026-08-26T07:26:26Z heartbeat phase=20
+2026-08-26T07:27:32Z 20 repo created https://github.com/Metta-AI/cogame-walker-waterworld (public)
+2026-08-26T07:27:32Z 20 propagate-secrets run 32942822471 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-walker-waterworld
