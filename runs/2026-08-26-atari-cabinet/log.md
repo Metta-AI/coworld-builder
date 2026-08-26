@@ -82,3 +82,7 @@
 2026-08-26T21:16:56Z 75 atlas dispatch=33014591553 region=paintlands at=202,270 clearance=39.5
 2026-08-26T21:20:44Z 75 atlas dispatch 1 (33014591553) failed: 27-league backlog unplaced (all have open PRs stuck in merge queue, newest poker PR-20533)
 2026-08-26T21:20:44Z 75 atlas dispatch=33014887057 region=paintlands at=184,255 clearance=23.4 extra_cities=27 (PR-20533's lines reused verbatim: chemistry,chorus,cogmud,coins,collab-cooking,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,gift-refinements,knights-archers,matrix-games,pistonball,territory,walker-waterworld->commons; cogchemists,cogiavelli,cogplomacy,hanabi,poker->tabletop; cogolf,grid-wars->paintlands; daycare->shire; garble,hidden-agenda->parlour; particle-worlds->simulations; respotted own dot 202,270->184,255 to avoid cogolf collision)
+2026-08-26T21:22:38Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20548 status=pr_open (placed 27 leagues for other runs in the same PR)
+2026-08-26T21:22:38Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20548
+2026-08-26T21:22:38Z 75 -> 80 phase transition
+2026-08-26T21:22:38Z heartbeat phase=80
