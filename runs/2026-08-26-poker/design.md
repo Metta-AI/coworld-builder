@@ -1019,3 +1019,29 @@ mutual) and 2.0 bb (dump, one-way) at `contested ≥ 4`. Consequently `surrender
 **Test restored to the original intent:** zero flags of any kind over ≥10 honest scripted
 episodes for **both** baselines (`house` and `rock`); the synthetic dump and soft-play episodes
 must still each produce exactly their one flag. `audit.md` documents the signed semantics.
+
+## Addendum 2 (coordinator, 2026-08-26, phase 20) — showdown equity sampled on the final board
+
+Addendum 1 alone measured insufficient (still 3/30 honest-`house` flags at 16 hands, 8/30 at 24,
+and a new mutual-negative-surrender soft-play false positive). Root cause: pricing showdown
+slices at "the instant the last betting action completed" books the realised runout of a single
+pre-river all-in as ~half a stack of one-way "surrender" against a 2 bb bar.
+
+**Amended rule:** §Collusion audit's showdown bullet now measures `eq_a` on the **final board**
+(exact evaluation; `eq ∈ {0,1}` up to splits, so `loss_a = 0` for every hand played to
+completion). The 2000-runout seeded Monte-Carlo serves the **fold case only**, which keeps its
+internal `max(0, eqFold_a·potAtFold − callCost_a)` and its at-the-fold equity unchanged.
+Addendum 1's signed attribution stays. Thresholds stay 0.75 bb / 2.0 bb at `contested ≥ 4`.
+
+Measured: 0/30 honest flags for both baselines at 16 and 24 hands; synthetic dump bias 24.28
+(one `dump` flag), synthetic soft-play 7.38/7.58 (one `soft-play` flag of that kind — the two
+accompanying directed `dump` flags are correct under "a pair may carry both flags").
+
+**Named limitation** (documented in `audit.md`, listed in Out of scope): the audit's surrender
+signal now comes entirely from the fold term — it flags folding-good-hands collusion (dumping
+and soft play) but does not flag "calling off with the worst of it to feed a partner"; that
+vector remains visible in the reported `netFlow[a][b]`, which spectators and the league can
+read, and league-level aggregation stays out of scope for v1.
+
+The strict test is restored verbatim: zero flags of any kind over ≥10 honest scripted episodes
+for both baselines; each synthetic episode produces exactly one flag of its kind.
