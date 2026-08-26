@@ -58,3 +58,4 @@
 2026-08-26T03:39:41Z progress phase=50 marker=league_9c44cf05-76f9-4ca5-8299-0c16a5e41ed9
 2026-08-26T03:39:41Z 50 -> 60 phase transition: STATE.phase=60
 2026-08-26T03:39:41Z heartbeat phase=60
+2026-08-26T03:40:46Z 60 verifier dispatched thread=sthr_01KT5zh8vk9cNyK6N9GBMp95 output=VERIFY.md + viewer-check/ (75-min poll bound, heartbeats delegated to verifier via Asana field)
