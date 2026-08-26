@@ -25,3 +25,4 @@
 2026-08-26T12:02:17Z progress phase=20 marker=32965501369
 2026-08-26T12:02:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-26T12:02:17Z heartbeat phase=30
+2026-08-26T12:03:15Z 30 reviewer dispatched round=1 thread=sthr_01UHjF2K4666o1mseJt8AuZH output=runs/2026-08-26-knights-archers/reviews/r1-review.md session=a9445eee
