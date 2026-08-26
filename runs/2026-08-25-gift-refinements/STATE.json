@@ -103,8 +103,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T04:44:36Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-26T04:46:33Z",
+  "session_ended_at": "2026-08-26T04:46:33Z",
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
 }
