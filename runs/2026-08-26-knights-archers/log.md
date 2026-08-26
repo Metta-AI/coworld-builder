@@ -53,3 +53,9 @@
 2026-08-26T14:04:22Z 40 hosted certification FAILED platform-side: certifier internal GET observatory-backend/v2/episode-requests 404, failed_step=smoke-episode, retryable=false — hosted_smoke=passed, Canonical=yes; SPEC 128 requires hosted certification certified, retrying via version bump 0.1.3 (distinct failure mode, first hosted-cert attempt on the 0.1.43 pin path)
 2026-08-26T14:04:22Z progress phase=40 marker=32976807976
 2026-08-26T14:04:22Z heartbeat phase=40
+2026-08-26T14:14:15Z 40 dispatch version=0.1.3 run=32978063250 step_failed=none decision=SUCCESS ok=true canonical=true certify.ok=true liveness=skipped(static bundle) secret_put=true cow_id=cow_23e4f026-6724-4b80-bb34-dcd02c214ee2
+2026-08-26T14:14:15Z 40 hosted certification CERTIFIED for cow_23e4f026 (job f0ab1299-381d-47a6-bb91-d28b2adf05d2, 10/10 transcript steps, completed 2026-08-26T14:12:53Z) — 0.1.2 smoke-episode internal 404 was transient platform churn
+2026-08-26T14:14:15Z 40 note: upload-policy does NOT dedupe identical content — labels now v3 (warden:v3, volley:v3 daveey-1, phalanx:v3, stand:v3); phase 50 must resolve v3 UUIDs; release-result.json holds the 0.1.3 artifact
+2026-08-26T14:14:15Z progress phase=40 marker=32978063250
+2026-08-26T14:14:15Z 40 -> 50 phase transition: STATE.phase=50
+2026-08-26T14:14:15Z heartbeat phase=50
