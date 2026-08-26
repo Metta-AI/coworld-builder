@@ -9,3 +9,4 @@
 2026-08-26T23:19:30Z 00 phase transition 00 -> 10
 2026-08-26T23:19:30Z heartbeat phase=10
 2026-08-26T23:19:48Z 10 starter=cogame-babel (turn-based hidden-hand trick-taking cards with LLM-prompt policies -> playbook Phase 0 row 1, best current parley-stack template; bullwhip not closer). Idea names Metta-AI/coworld-euchre as base but it is an incomplete scaffold (template manifest, no Dockerfile, per idea text) and not a mounted starter -> RULES REFERENCE only; per poker/liars-dice precedent EXTENSION ideas ship as a new public Metta-AI/cogame-trick-taking on babel conventions
+2026-08-26T23:20:28Z 10 designer dispatched round=1 thread=sthr_011eESAx8ADcFErcVnUbnw5j output=runs/2026-08-26-trick-taking/design-draft.md session=d199e038
