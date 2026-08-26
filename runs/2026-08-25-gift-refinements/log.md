@@ -101,3 +101,8 @@
 2026-08-26T03:46:48Z progress phase=60 marker=sub_2c24bbbc-8512-4633-bed1-9b9aba9f5184
 2026-08-26T03:46:48Z heartbeat phase=60
 2026-08-26T03:47:44Z 60 verifier (round 2) dispatched thread=sthr_01KMf2cacwBBaWieKnSP2aEm session=dd5e2e1a
+2026-08-26T03:49:30Z 60 r2 poll#1 rounds: 1 failed(pre-fillers), 2-6 completed but attributions carry mirror v2 81167874 + patron v2 b88073d9 (pre-rewire); r7 pending with mirror:v3 7377bf74 + patron v2 b88073d9 -> does NOT count. check1 NOT-YET (0 both-v3 completed)
+2026-08-26T03:49:30Z 60 r2 policy-versions: patron:v3=d848d844 owned by daveey-1 confirmed; mirror:v3=7377bf74 daveey; fillers v3 e9f53270/2c45167f
+2026-08-26T03:54:09Z 60 r2 poll#2: r7 completed 03:53Z but attribution = mirror:v3 + patron v2 (b88073d9) -> does NOT count. check1 NOT-YET (0 both-v3). r7 log diagnostic: 'lobby closed with 6/6 seats connected, 6 registered' (D1 fix holds), llmOrders=21 fallbacks=3, 3 fallbacks cause=throttled (429 'Too many tokens per day'), 1 parse_error retry on seat1 (patron v2, unfixed prompt) that recovered
+2026-08-26T04:01:10Z 60 r2 poll#3: r8 round_c00d850b created 04:00:44Z status=pending, attribution carries BOTH v3 (mirror 7377bf74 + patron d848d844) — first qualifying round. check1 NOT-YET (need 2 completed)
+2026-08-26T04:01:10Z heartbeat phase=60
