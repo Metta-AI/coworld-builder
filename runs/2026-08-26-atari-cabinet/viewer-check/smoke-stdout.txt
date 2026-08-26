@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2764,"clock":"2:00 TIME LEFT WARLORDS · TURN 1/24","scorebug":"RED DAVEEY-1 SCORE 60.00 GREEN BASELINE SCORE 60.00 2:00 TIME LEFT WARLORDS · TURN 1/24 BLUE DAVEEY SCORE 60.00 YELLOW BASELINE (2) SCORE 60.00","feed_lines":0}
+scrub readouts: 0%="2:00 TIME LEFT WARLORDS · TURN 1/24"  50%="0:59 TIME LEFT WARLORDS · TURN 13/24"  100%="0:23 TIME LEFT WARLORDS · TURN 20/24"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -35,9 +35,14 @@
     "division": "div_df572e19-916a-43ca-9161-8ee11b7356e8"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_fa521642-bbcc-402b-a373-55a887f3b47c",
+      "round_2ae091d2-e784-4986-bc25-4b91927a5e4b",
+      "round_f7537b9e-e761-449e-82b4-79d7fa28c836"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/3cc40a45-9e9f-4b8f-b919-ae46ba1a15a7.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33013149654"
   },
   "announce": {
     "attempted_at": null,
@@ -55,7 +60,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T20:21:59Z",
+  "heartbeat_at": "2026-08-26T21:08:54Z",
   "session_ended_at": null,
   "session_id": "3ad680cb",
   "log": "runs/2026-08-26-atari-cabinet/log.md"

@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2764,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5bc1ce13-b06b-46de-872c-4fe3bb952f95/sha256%3A3749debc4ffe6a196646a5545bd3396a30f170a78f3d284d83ac693cdf572e15/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F3cc40a45-9e9f-4b8f-b919-ae46ba1a15a7.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:00 TIME LEFT WARLORDS · TURN 1/24",
+  "scorebug": "RED DAVEEY-1 SCORE 60.00 GREEN BASELINE SCORE 60.00 2:00 TIME LEFT WARLORDS · TURN 1/24 BLUE DAVEEY SCORE 60.00 YELLOW BASELINE (2) SCORE 60.00",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:00 TIME LEFT WARLORDS · TURN 1/24"
+    },
+    {
+      "at": "50%",
+      "clock": "0:59 TIME LEFT WARLORDS · TURN 13/24"
+    },
+    {
+      "at": "100%",
+      "clock": "0:23 TIME LEFT WARLORDS · TURN 20/24"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
