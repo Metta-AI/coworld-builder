@@ -5,19 +5,22 @@
   "slug": "pistonball",
   "repo": "Metta-AI/cogame-pistonball",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_58917aec-d633-4f40-89b1-dbf496ddcfe0",
+    "manifest_sha": "sha256:b041d20354aeb86ea9b0d8d8a523652c0e6f3c5813bff72c68cca97b487f77f3",
+    "release_run_id": "32930394604"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "pistonball-swell:v2",
+    "champion2": "pistonball-cascade:v2",
+    "fillers": [
+      "pistonball-wavebot:v2",
+      "pistonball-metronome:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T04:58:30Z",
+  "heartbeat_at": "2026-08-26T05:52:00Z",
   "session_ended_at": null,
   "session_id": "a1f3c9d2",
   "log": "runs/2026-08-25-pistonball/log.md"
