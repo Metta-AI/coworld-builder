@@ -11,22 +11,19 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_686eadd9-7594-425c-98b2-854deb9acdd1",
-    "manifest_sha": "sha256:6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305",
-    "release_run_id": "32922682398"
+    "version": "0.1.2",
+    "cow_id": "cow_e19d6eae-78b4-447d-878d-b856c435db87",
+    "manifest_sha": "sha256:accb4520dec3f76613e560ad483b631b830cd66df49a98afd3768e08cb3dcd38",
+    "release_run_id": "32927080527"
   },
   "policies": {
-    "champion1": "gift-refinements-mirror:v2",
-    "champion2": "gift-refinements-patron:v2",
+    "champion1": "gift-refinements-mirror:v3",
+    "champion2": "gift-refinements-patron:v3",
     "fillers": [
-      "gift-refinements-reciprocator:v2",
-      "gift-refinements-hoarder:v2"
+      "gift-refinements-reciprocator:v3",
+      "gift-refinements-hoarder:v3"
     ],
-    "filler_version_ids": [
-      "1b6eefde-a00f-481e-977b-0ef118293347",
-      "b03346fa-765c-4aa7-aa9f-5aff61759ee8"
-    ]
+    "filler_version_ids": []
   },
   "league": {
     "id": "league_aa42c0da-031b-49b1-9524-e4acc85fd2f6",
