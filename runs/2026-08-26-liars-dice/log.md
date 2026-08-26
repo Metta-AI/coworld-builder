@@ -22,3 +22,5 @@
 2026-08-26T20:02:41Z heartbeat phase=30
 2026-08-26T20:03:21Z 30 reviewer dispatching round=1 repo-checkout=/tmp/cogame-liars-dice sha=23da0888 session=dc527a34
 2026-08-26T20:06:29Z 30 reviewer dispatched round=1 thread=sthr_012DYQZhJunDjyGSQUJ91QdV output=reviews/r1-review.md session=dc527a34 (note: gh auth setup-git broke the mount's git-credential-anthropic helper ~20:03Z; restored 20:09Z — 4 pushes failed in between, none lost)
+2026-08-26T20:19:59Z 30 reviewer returned round=1 file=reviews/r1-review.md (492 lines): 2 blocking (both item-15 legibility: no worst-case renderer fixture for LLM text; say/notes bands sized by eye not from caps 140/400), 9 non-blocking, 2 could-not-determine
+2026-08-26T20:19:59Z heartbeat phase=30
