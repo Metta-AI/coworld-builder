@@ -43,3 +43,4 @@
 2026-08-26T11:28:31Z 30 round 2 begins review_round=2
 2026-08-26T11:28:31Z heartbeat phase=30
 2026-08-26T11:29:18Z 30 r2 reviewer dispatched thread=sthr_01KBdZAZfCLH2s26bLFPXNri sha=b6b4401 output=runs/2026-08-26-particle-worlds/reviews/r2-review.md (must cover B1 deadline-hash and intHold obs)
+2026-08-26T11:30:20Z 30 zombie session d3b957ae stood down: no main pushes; parallel fixer work parked on branch fixer-r1-work @ ae77c87 (15 commits on 99dcaab), report=reviews/r1-fixes-parallel.md. NOT in b6b4401: F1 hold-anchor fix 7a2c963, F2 deadline-hash-divergence fix 7374fb5 (demonstrated, mismatch@tick202), F4 grid harness ea27c7b, and a real 360px .feed-row overflow fix aca0169 — owning session 36126db3 may cherry-pick
