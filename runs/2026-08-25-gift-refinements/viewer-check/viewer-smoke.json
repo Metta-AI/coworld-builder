@@ -1,7 +1,7 @@
 {
   "loaded": true,
-  "ms": 1428,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_686eadd9-7594-425c-98b2-854deb9acdd1/sha256%3A6cfd8cc359900a6ae22894237390108a78acd14ed66d0921b3f468b94780e305/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8e5df6a9-8ab6-4ace-abd8-ec29e912538e.replay&v=2",
+  "ms": 3442,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e19d6eae-78b4-447d-878d-b856c435db87/sha256%3Aaccb4520dec3f76613e560ad483b631b830cd66df49a98afd3768e08cb3dcd38/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc3935602-3bd8-41f3-aacc-7421ab7a18f5.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "ROUND 1 / 12 TICK 0 OF 720",

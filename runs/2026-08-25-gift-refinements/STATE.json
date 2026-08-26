@@ -35,28 +35,40 @@
   "verify": {
     "rounds": [
       {
-        "round_number": 2,
-        "id": "round_46f1fb01-644f-485d-935e-832e20bfe201",
+        "round_number": 8,
+        "id": "round_c00d850b-190a-412b-afd9-2bc0b25c4479",
         "status": "completed",
-        "champion_llm_orders": 1,
-        "champion_scripted": 23,
-        "lobby": "3/6"
-      },
-      {
-        "round_number": 3,
-        "id": "round_6e60126d-0a6d-4b32-97c2-9deb5530e5df",
-        "status": "completed",
-        "champion_llm_orders": 24,
+        "completed_at": "2026-08-26T04:06:13.014419Z",
+        "champions_v3": true,
+        "champion_llm_orders": 23,
+        "champion_retry": 1,
         "champion_scripted": 0,
-        "lobby": "6/6"
+        "champion_fallback": 0,
+        "lobby": "6/6",
+        "log_grep_matches": 1,
+        "note": "corroboration; 1 first-attempt parse_error whose retry succeeded"
       },
       {
-        "round_number": 4,
-        "id": "round_08811b54-4f9e-425e-be2b-b25acb68cb18",
+        "round_number": 9,
+        "id": "round_7e355346-62e5-4784-aef8-afd8274c0919",
         "status": "completed",
-        "champion_llm_orders": 2,
-        "champion_scripted": 21,
-        "lobby": "4/6"
+        "completed_at": "2026-08-26T04:21:11.749708Z",
+        "champions_v3": true,
+        "champion_llm_orders": 24,
+        "champion_retry": 0,
+        "champion_scripted": 0,
+        "champion_fallback": 0,
+        "lobby": "6/6",
+        "log_grep_matches": 0,
+        "pinned": true
+      },
+      {
+        "round_number": 7,
+        "id": "round_b7828a6d-8074-4056-acb2-8fa826ebbae6",
+        "status": "completed",
+        "completed_at": "2026-08-26T03:51:33.940215Z",
+        "champions_v3": false,
+        "note": "mirror:v3 + patron:v2 (b88073d9) — scheduled before patron:v3 placement landed; does not count"
       },
       {
         "round_number": 1,
@@ -65,15 +77,15 @@
         "error": "Temporal RoundWorkflow failed before settling the round."
       }
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/8e5df6a9-8ab6-4ace-abd8-ec29e912538e.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/c3935602-3bd8-41f3-aacc-7421ab7a18f5.replay",
+    "episode_request": "ereq_f3e3a82c-ec2f-4610-b941-86f48bd6361c",
     "iframe_static": true,
-    "viewer_check_run": "32925387074",
-    "verdict": "2 items false (4, 5)",
-    "false_items": [
-      4,
-      5
-    ],
-    "checked_at": "2026-08-26T03:12:00Z"
+    "iframe_src": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e19d6eae-78b4-447d-878d-b856c435db87/sha256%3Aaccb4520dec3f76613e560ad483b631b830cd66df49a98afd3768e08cb3dcd38/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc3935602-3bd8-41f3-aacc-7421ab7a18f5.replay&v=2",
+    "viewer_check_run": "32930044755",
+    "verdict": "all-true",
+    "false_items": [],
+    "verification_round": 2,
+    "checked_at": "2026-08-26T04:28:40Z"
   },
   "announce": {
     "attempted_at": null,
@@ -91,7 +103,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-26T04:16:50Z",
+  "heartbeat_at": "2026-08-26T04:28:40Z",
   "session_ended_at": null,
   "session_id": "dd5e2e1a",
   "log": "runs/2026-08-25-gift-refinements/log.md"
