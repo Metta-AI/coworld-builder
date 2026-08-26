@@ -5,3 +5,4 @@
 2026-08-26T06:02:00Z 10 designer dispatched thread=sthr_01X2myjzSn9hzxFUvHBpTZNy output=runs/2026-08-26-particle-worlds/design-draft.md
 2026-08-26T06:05:49Z 10 designer thread sthr_01X2myjzSn9hzxFUvHBpTZNy failed: API temporarily overloaded (no file written) — re-dispatching, retry 1/3
 2026-08-26T06:05:49Z heartbeat phase=10
+2026-08-26T06:07:00Z 10 designer re-dispatched thread=sthr_01EQbthxSuQ5wGkXCZRi3pG5 output=runs/2026-08-26-particle-worlds/design-draft.md
