@@ -48,3 +48,6 @@
 2026-08-26T11:48:58Z heartbeat phase=30
 2026-08-26T12:50:26Z 30 r2 fixer returned r2-fixes.md: all 6 fixed, head=238f88cc CI GREEN run=32968643250 (F1 stop chat record + applyWallClockStop both sides + deadline-replay test, GameVersion 1->2; F2 anchorHold; F3 docs; F4 guard reserve; F5 comment; F6 default). design.md synced to in-repo mirror (r2 amendment)
 2026-08-26T12:50:26Z progress phase=30 marker=r2-fixes.md
+2026-08-26T12:51:35Z 30 zombie session d3b957ae stood down cleanly: its r1 fixes parked on branch fixer-r1-work @ae77c87 (main untouched), artifacts renamed -parallel; its 3 attention items (hold anchor, deadline record) covered by r2 commits 13c66d7/8d7da32
+2026-08-26T12:51:35Z 30 r2 judge dispatched thread=sthr_018Ts8Ds7vZHd7XGy6SHe36E sha=238f88cc output=runs/2026-08-26-particle-worlds/reviews/r2-verdict.md
+2026-08-26T12:51:35Z heartbeat phase=30
