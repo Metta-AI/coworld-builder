@@ -89,3 +89,5 @@
 2026-08-26T05:42:41Z progress phase=70 marker=1542046556486635520
 2026-08-26T05:42:41Z 70 -> 75 phase transition: STATE.phase=75
 2026-08-26T05:42:41Z heartbeat phase=75
+2026-08-26T05:43:29Z 75 atlas continent=parlour (hidden-role social deduction — the parlour table names hidden-role explicitly)
+2026-08-26T05:43:29Z 75 atlas dispatch=32935141045 region=parlour at=432,823 clearance=30.9
