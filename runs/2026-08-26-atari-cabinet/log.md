@@ -23,3 +23,6 @@
 2026-08-26T15:31:59Z progress phase=20 marker=ci-run-32984942130-green
 2026-08-26T15:31:59Z 20 -> 30 phase transition; review_round=1
 2026-08-26T15:31:59Z heartbeat phase=30
+2026-08-26T15:52:41Z 30 r1 reviewer returned: reviews/r1-review.md — 24 findings (2 blocking, both legibility: renderer_fixture ellipsizes 160-rune note; fixture is a re-implementation not the shipped renderer, real bundle reports canvas_text total=0)
+2026-08-26T15:52:41Z 30 r1 dispatch fixer
+2026-08-26T15:52:41Z heartbeat phase=30
