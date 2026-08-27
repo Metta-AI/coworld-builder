@@ -5,7 +5,7 @@
   "slug": "pommerman",
   "repo": "https://github.com/Metta-AI/cogame-pommerman",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,7 +21,10 @@
       "pommerman-sapper:v1",
       "pommerman-camper:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "95cc7892-4e3c-405a-a467-c7480fa55cb9",
+      "2dec3894-c52a-458e-915d-fcbd88b1a9df"
+    ]
   },
   "league": {
     "id": "league_7b53400d-b780-4024-924a-59bc2818dc8d",
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T20:09:11Z",
+  "heartbeat_at": "2026-08-27T20:11:28Z",
   "session_ended_at": null,
   "session_id": "fdce440e",
   "log": "runs/2026-08-27-pommerman/log.md"
