@@ -63,3 +63,4 @@
 2026-08-27T18:43:11Z progress phase=50 marker=league_91cd77d4-0030-495d-81c4-37de0b298801
 2026-08-27T18:43:11Z 50 -> 60 phase transition: entering verify
 2026-08-27T18:43:11Z heartbeat phase=60
+2026-08-27T18:43:53Z 60 dispatch verifier: eight checks per prompts/60-verify.md -> runs/2026-08-27-lux-ai/VERIFY.md (75-min round bound)
