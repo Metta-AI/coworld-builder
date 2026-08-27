@@ -45,3 +45,4 @@
 2026-08-27T16:19:37Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-27T16:19:37Z heartbeat phase=40
 2026-08-27T16:20:21Z 40 dispatch builder for release (coworld-release.yml, start v0.1.0, put_secret=true)
+2026-08-27T19:22:23Z 00 resume at phase 40 attempt=1 session=4f2486ae
