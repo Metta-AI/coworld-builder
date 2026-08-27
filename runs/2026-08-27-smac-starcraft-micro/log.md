@@ -37,3 +37,8 @@
 2026-08-27T09:23:26Z heartbeat phase=40
 2026-08-27T09:23:26Z progress phase=30 marker=r1-verdict.md
 2026-08-27T09:24:14Z 40 builder dispatched thread=sthr_012ryiL2eaAfN5qGuA3su6xo (release chain, version 0.1.0 first, budget 3 dispatches) session=c7061c35
+2026-08-27T10:10:16Z 40 builder returned: release 0.1.2 dispatch 3/3 green run=33060960111 cow_id=cow_476a8db4-f5df-4d93-b0c2-1c302ba201bc canonical=true certified (liveness skipped-static) secret_put=true; 4 policies v3 (marshal/skirmish champions, focusfire/charge fillers), champion2 player_id=ply_bac48eb1; dispatch 1 (0.1.0) real lobby-pacing bug fixed 97b4c7bd (fastMode burned join grace), dispatch 2 (0.1.1) canonical completion race + bounded read-only confirm step bb0323da; release-result.json + release-summary.md committed
+2026-08-27T10:10:16Z 40 template delta suggestion recorded: fold 'Confirm the Coworld is canonical' step into templates/coworld-release.yml (read-only bounded poll after secret put) — for phase 80 LEARNINGS
+2026-08-27T10:10:16Z 40 phase transition 40 -> 50
+2026-08-27T10:10:16Z heartbeat phase=50
+2026-08-27T10:10:16Z progress phase=40 marker=33060960111

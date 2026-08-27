@@ -5,19 +5,24 @@
   "slug": "smac-starcraft-micro",
   "repo": "Metta-AI/cogame-smac-starcraft-micro",
   "starter": "coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 0
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_476a8db4-f5df-4d93-b0c2-1c302ba201bc",
+    "manifest_sha": "sha256:4575435fea3737665c72aa4ed75fc6621b6d5407b82234eb8359d66c75df8c38",
+    "release_run_id": "33060960111"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "smac-starcraft-micro-marshal:v3",
+    "champion2": "smac-starcraft-micro-skirmish:v3",
+    "fillers": [
+      "smac-starcraft-micro-focusfire:v3",
+      "smac-starcraft-micro-charge:v3"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T09:23:26Z",
+  "heartbeat_at": "2026-08-27T10:10:16Z",
   "session_ended_at": null,
   "session_id": "c7061c35",
   "log": "runs/2026-08-27-smac-starcraft-micro/log.md"
