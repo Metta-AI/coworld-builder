@@ -72,3 +72,8 @@
 2026-08-27T11:36:55Z 75 atlas continent=paintlands (team zero-sum physics sport; cogball precedent at 105,165)
 2026-08-27T11:36:55Z 75 atlas dispatch=33068121145 region=paintlands at=202,270 clearance=39.5
 2026-08-27T11:36:55Z heartbeat phase=75
+2026-08-27T11:39:22Z 75 atlas dispatch 33068121145 failed: 35 unplaced leagues (backlog); PR #20631 from run 2026-08-27-magent-battle already places grf-football ("GRF Football",223,261,paintlands) and is OPEN awaiting merge queue — adopted it instead of opening a duplicate
+2026-08-27T11:39:22Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20631 status=pr_open (adopted)
+2026-08-27T11:39:22Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20631
+2026-08-27T11:39:22Z 75 phase 75 -> 80
+2026-08-27T11:39:22Z heartbeat phase=80
