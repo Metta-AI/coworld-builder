@@ -26,3 +26,7 @@
 2026-08-27T03:39:44Z 30 reviewer returned r1-review.md (674 lines): 2 blocking (B1 say-band ellipsizes remarks checklist-15, B2 seventh chrome edit not in design-note table checklist-14), 20 advisory
 2026-08-27T03:39:44Z 30 fixer dispatched r1
 2026-08-27T03:39:44Z heartbeat phase=30
+2026-08-27T04:27:50Z 30 fixer returned r1-fixes.md: 21 commits (B1 say-band wrap fixed bde1d823, B2 note provenance 0ab2f09b, N1/N13/N15/N17/N18 code fixes, N19 refuted, rest note-stale) — ci green run 33038495877 sha 2390463b97d0bf07e93c95726a51873498404930; no test touched
+2026-08-27T04:27:50Z 30 design.md mirrored from in-repo copy at 2390463b (1377 -> 1450 lines, 16 note edits)
+2026-08-27T04:27:50Z 30 judge dispatched r1 (fresh context, sha 2390463b)
+2026-08-27T04:27:50Z heartbeat phase=30
