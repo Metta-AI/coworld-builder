@@ -5,9 +5,9 @@
   "slug": "flatland",
   "repo": "https://github.com/Metta-AI/cogame-flatland",
   "starter": "coworld-ctf",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {},
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T12:24:46Z",
+  "heartbeat_at": "2026-08-27T14:28:46Z",
   "session_ended_at": null,
   "session_id": "49cbd93f",
   "log": "runs/2026-08-27-flatland/log.md"

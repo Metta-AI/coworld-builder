@@ -12,3 +12,22 @@
 2026-08-27T12:24:46Z heartbeat phase=20
 2026-08-27T12:26:55Z 20 repo Metta-AI/cogame-flatland created public; propagate-secrets run 33071780857 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY listed
 2026-08-27T12:26:55Z 20 dispatch builder round=1 (implement design.md, drive ci.yml green on main)
+
+## builder notes (phase 20)
+
+- Cloned `coworld-ctf` @ `e356bdd` into the new tree; `client/chrome_common.js` is
+  byte-for-byte (sha256 `7ace7287…`, pinned in `tests/chrome_sha256.json`).
+- `client/replay_broadcast.html` is BUILT by `tools/build_broadcast_page.py` from the
+  starter's page: the classic chrome up to the splice banner, the listed elements
+  removed, the vocabulary re-mapped, then `client/flatland_block.html` appended.
+  `--check` re-derives it in CI when the starter mount is present.
+- Six authored networks in `data/rail/`, produced and validated by
+  `tools/author_rail_maps.py`, sha256-pinned in `tests/rail_sha256.json`.
+- Pushes go through `tools/push_via_api.py` (blobs -> tree -> commit -> ref):
+  `git push` from this sandbox arrives at github.com anonymous.
+- Remote commits: `b8bd2e7f` (the whole game), `7b831f85` (the endcard vocabulary
+  re-map + the headless wasm smoke). CI green on `7b831f85`, run 33081598358.
+2026-08-27T14:28:46Z 20 builder returned round=1: CI green run=33081598358 sha=7b831f85f2c5c10e9b690547cd563cfb406ec93d (jobs test/docker-smoke/wasm-viewer all success); placeholder grep clean; 3 workflows registered with required inputs+artifacts; smoke episode reason=complete arrivedTotal=19 fleetOnTime=15; 10 documented deltas incl fresh-write of server/global/sim in starter wire format, right-hand-running divergence 10, push via tools/push_via_api.py (sandbox git push anonymous — playbook candidate)
+2026-08-27T14:28:46Z progress phase=20 marker=ci run 33081598358 green on main
+2026-08-27T14:28:46Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-27T14:28:46Z heartbeat phase=30
