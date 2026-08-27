@@ -14,3 +14,7 @@
 2026-08-27T00:46:00Z 10 accepted round 1 — no bounce; spot-checked babel d55d999 line claims (791, 966-967, 1179, chrome.css 443L, MODULARIZE/EXPORT_NAME) all exact
 2026-08-27T00:46:00Z progress phase=10 marker=design.md written and accepted
 2026-08-27T00:46:00Z 10 -> 20 phase transition
+2026-08-27T00:45:00Z 20 repo created public: https://github.com/Metta-AI/cogame-fog-of-war-boards
+2026-08-27T00:45:10Z 20 propagate-secrets run 33027869773 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-27T00:47:00Z 20 builder dispatched: implement design.md, drive ci.yml to green on main
+2026-08-27T00:47:00Z heartbeat phase=20
