@@ -58,8 +58,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T04:40:27Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-27T04:42:12Z",
+  "session_ended_at": "2026-08-27T04:42:12Z",
   "session_id": "6ada72fc",
   "log": "runs/2026-08-26-trick-taking/log.md"
 }
