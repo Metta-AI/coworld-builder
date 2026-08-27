@@ -33,9 +33,23 @@
     "division": "div_5699e6c3-6cf1-4a38-9e69-e2b954332c91"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "round_number": 1,
+        "id": "round_cd269017-9b26-404e-a991-9e0c3a529595",
+        "status": "completed",
+        "completed_at": "2026-08-27T00:26:46.042596Z"
+      },
+      {
+        "round_number": 2,
+        "id": "round_0f649abe-e64c-4ca6-9cfa-e6671c1b9419",
+        "status": "completed",
+        "completed_at": "2026-08-27T00:41:44.080045Z"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/369d7c2e-4faf-4fbd-84f7-efd0fd860ae9.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33027843730"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +67,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:28:20Z",
+  "heartbeat_at": "2026-08-27T00:49:26Z",
   "session_ended_at": null,
   "session_id": "ng26a441",
   "log": "runs/2026-08-26-negotiation-games/log.md"

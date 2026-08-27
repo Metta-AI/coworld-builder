@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2909,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e3bccc46-a2fb-474b-9fc2-6e5ea91085c5/sha256%3A06acbd012316b207fcd998ba50bde7d7c32447b9e93587d7203ede334219cca1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F369d7c2e-4faf-4fbd-84f7-efd0fd860ae9.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "MATCH 0 / 6",
+  "scorebug": "daveey 0 PTS 0.00 daveey-1 0 PTS 0.00 Ratchet 0 PTS 0.00",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 71,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "MATCH 0 / 6"
+    },
+    {
+      "at": "50%",
+      "clock": "MATCH 4 / 6 · TURN 2 / 10 · DAVEEY TO MOVE"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL · 6 MATCHES"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 915,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

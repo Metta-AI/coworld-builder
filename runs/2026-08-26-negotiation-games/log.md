@@ -54,3 +54,13 @@
 2026-08-27T00:28:20Z check1 poll: round 1 completed (round_cd269017), awaiting round 2 (need >=2)
 2026-08-27T00:28:20Z check2 leaderboard: TRUE — daveey-1 rank1 1016 rounds_played=1, daveey rank2 984 rounds_played=1, no filler rows
 2026-08-27T00:28:20Z check7 release-result.json (committed copy): TRUE — "Replay liveness: skipped (static replay bundle declared; ..."
+2026-08-27T00:49:44Z heartbeat phase=60
+2026-08-27T00:49:44Z 60 check1 TRUE: 2 completed rounds — r1=round_cd269017 (00:26:46Z) r2=round_0f649abe (00:41:44Z), error=null both; fillers seated in both (r1 haggler:v2 is_filler=true, r2 hardliner:v2 is_filler=true)
+2026-08-27T00:49:44Z 60 check2 TRUE: leaderboard daveey-1 rank1 MMR 1030.53 rounds_played=2 (integrative:v2); daveey rank2 MMR 969.47 rounds_played=2 (anchor:v2); zero filler rows
+2026-08-27T00:49:44Z 60 check3 TRUE: ereq_7670e849-43da-4d31-86b2-77aa8b4c7a2a status=completed replay_url=.../369d7c2e-4faf-4fbd-84f7-efd0fd860ae9.replay participants seats0/1=daveey/daveey-1 is_filler=false
+2026-08-27T00:49:44Z 60 check4 TRUE: 11216 bytes, strict UTF-8 JSON ok (jq -e + python strict decode), protocol=negotiation.replay.v1, results.reason=complete, fallbacks=[0,0,0], champion decisions 14/14 scripted=false, 6/6 matchEnd outcome=deal
+2026-08-27T00:49:44Z 60 check5 TRUE: artifacts/logs 34608 bytes over 4 containers, decoded from b'' reprs, grep 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' -> CLEAN (0 matches); r1 log also CLEAN; no Bedrock symptom so no cross-coworld check needed
+2026-08-27T00:49:44Z 60 check6 TRUE: raw-HTML iframe grep empty (client-rendered) -> used SSR state.playlist[0] (featured match r2.e1) + POST /coworlds/replays/session -> viewer_url static path /v2/coworlds/replays/static/cow_e3bccc46.../sha256%3A06acbd01.../index.html?replay=... ready=true, no /client/replay
+2026-08-27T00:49:44Z 60 check7 TRUE: committed runs/.../release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-08-27T00:49:44Z 60 check8 TRUE: viewer-check.yml run 33027843730 (dispatched 00:44:33Z, conclusion=success) loaded=true ms=2909 feed_lines=71 signals.bridge=[loading,ready]; scrub 0%="MATCH 0 / 6" 50%="MATCH 4 / 6 · TURN 2 / 10 · DAVEEY TO MOVE" 100%="FINAL · 6 MATCHES" (all differ); canvas_text 915 drawn 0 outside 0 ellipsized; artifact committed at runs/2026-08-26-negotiation-games/viewer-check/
+2026-08-27T00:49:44Z 60 VERIFY.md written: verdict all-true 8/8

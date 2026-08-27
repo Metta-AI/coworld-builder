@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2909,"clock":"MATCH 0 / 6","scorebug":"daveey 0 PTS 0.00 daveey-1 0 PTS 0.00 Ratchet 0 PTS 0.00","feed_lines":71}
+scrub readouts: 0%="MATCH 0 / 6"  50%="MATCH 4 / 6 · TURN 2 / 10 · DAVEEY TO MOVE"  100%="FINAL · 6 MATCHES"
+canvas text: 915 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
