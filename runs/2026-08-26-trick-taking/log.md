@@ -35,3 +35,7 @@
 2026-08-27T03:11:36Z 30 fixer returned r1: r1-fixes.md written; head=179aa999 CI green run 33035205309 (test+docker-smoke+wasm-viewer); 6 prior commits verified, 9 new commits (N2,N4,N6,N8,N9,N11,N12 fixed; N7,N10 disputed with evidence); tests only tightened; 2 items flagged for judge (B3 tracker-vs-design constants, player.html attachLive)
 2026-08-27T03:11:36Z 30 judge dispatched r1 sha=179aa9993c4d1308b1a26945e1d758e63d16957f session=6ada72fc
 2026-08-27T03:11:36Z heartbeat phase=30
+2026-08-27T03:23:43Z 30 judge returned r1: verdict blocking=0/BLOCKING=0 (r1-verdict.md); all 3 blockers refuted at head 179aa999; N7,N10 disputes upheld; residue non-blocking (global.html fit() edit, design.md stale in 3 places)
+2026-08-27T03:23:43Z 30 phase transition 30 -> 40
+2026-08-27T03:23:43Z heartbeat phase=40
+2026-08-27T03:23:43Z progress phase=30 marker=r1-verdict.md
