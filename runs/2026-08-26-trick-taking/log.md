@@ -29,3 +29,4 @@
 2026-08-27T00:50:58Z 30 reviewer dispatched r1 thread=sthr_01BgxLK73s4oaDg2yYJ8XZXf sha=80aeb68c session=d199e038
 2026-08-27T01:09:13Z 30 reviewer returned r1: 3 blocking (B1 640px breakpoint missing, B2 notes band not sized from caps/mid-string ellipsis, B3 no baseline tuning harness) + 12 advisory; r1-review.md 601 lines
 2026-08-27T01:09:56Z 30 fixer dispatched r1 thread=sthr_01CvoiBTWvv6nLVKumWhpJEc session=d199e038
+2026-08-27T02:43:53Z 00 resume at phase 30 attempt=1 session=6ada72fc
