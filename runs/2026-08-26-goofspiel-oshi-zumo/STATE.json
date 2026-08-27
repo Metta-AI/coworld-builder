@@ -5,7 +5,7 @@
   "slug": "goofspiel-oshi-zumo",
   "repo": "https://github.com/Metta-AI/cogame-goofspiel-oshi-zumo",
   "starter": "cogame-babel",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 0
   },
@@ -46,18 +46,18 @@
     "discord_message_id": "1542325276154011669"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20600",
+    "branch": "atlas/goofspiel-oshi-zumo-33026257287",
+    "region": "tabletop",
+    "x": 811,
+    "y": 289,
+    "dispatch_run_id": "33026257287",
+    "attempted_at": "2026-08-27T00:18:27Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:10:14Z",
+  "heartbeat_at": "2026-08-27T00:18:27Z",
   "session_ended_at": null,
   "session_id": "85d7073b",
   "log": "runs/2026-08-26-goofspiel-oshi-zumo/log.md"
