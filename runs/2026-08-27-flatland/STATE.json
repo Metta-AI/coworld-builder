@@ -5,7 +5,7 @@
   "slug": "flatland",
   "repo": "https://github.com/Metta-AI/cogame-flatland",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1
   },
@@ -47,18 +47,18 @@
     "discord_message_id": "1542637897709125654"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20651",
+    "branch": "atlas/flatland-33115863657",
+    "region": "simulations",
+    "x": 575,
+    "y": 265,
+    "dispatch_run_id": "33115863657",
+    "attempted_at": "2026-08-27T21:00:21Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T20:52:24Z",
+  "heartbeat_at": "2026-08-27T21:00:21Z",
   "session_ended_at": null,
   "session_id": "4f2486ae",
   "log": "runs/2026-08-27-flatland/log.md"
