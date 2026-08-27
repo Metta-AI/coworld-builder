@@ -55,3 +55,4 @@
 2026-08-27T05:36:19Z 60 judge returned r60-verdict.md: blocking 0 — every load-bearing claim re-fetched independently, zero refuted, 5 non-blocking observations
 2026-08-27T05:36:19Z progress phase=60 marker=r60-verdict.md blocking=0
 2026-08-27T05:36:19Z 60 -> 70 phase transition
+2026-08-27T05:37:16Z 70 announce attempted_at written and pushed before POST (body 1751 chars)
