@@ -63,3 +63,5 @@
 2026-08-27T10:35:19Z 60 verifier returned VERIFY.md 8/8 TRUE: 2 completed rounds (r1 round_0834898f, r2 round_4060358e), both champions ranked (1030.53/969.47, rp=2), ereq_3cc278d1 completed with replay, COWLDMAG->JSON strict parse ok reason=complete 0 fallbacks 32/32 llm, hosted logs CLEAN, static iframe sha-matched, cert replay_liveness skipped-static, viewer-check 33063093381 loaded=true 3 differing clocks; 2 non-blocking legibility notes (endcard occludes last frame; status chip CONNECTING at tick 0)
 2026-08-27T10:35:19Z 60 dispatch judge for verify verdict
 2026-08-27T10:35:19Z progress phase=60 marker=VERIFY.md 8/8 TRUE
+2026-08-27T10:42:19Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 (markers agree, verified); 8 live spot-checks reproduced VERIFY.md; 2 non-blocking notes (filler-stamp batching semantics; endcard routed-banner names wrong side in game-2 context — legibility glance for a future round)
+2026-08-27T10:42:19Z 60 -> 70 phase transition: entering announce
