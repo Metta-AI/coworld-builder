@@ -20,3 +20,6 @@
 2026-08-27T15:11:45Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-27T15:11:45Z heartbeat phase=30
 2026-08-27T15:12:42Z 30 dispatch reviewer round=1 target sha=1c36d56 -> runs/2026-08-27-lux-ai/reviews/r1-review.md
+2026-08-27T15:32:18Z 30 reviewer returned r1: 20 findings (1 blocking B1 legibility DOM-text/fixture-inert, 19 non-blocking) -> reviews/r1-review.md
+2026-08-27T15:32:18Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
+2026-08-27T15:32:18Z heartbeat phase=30
