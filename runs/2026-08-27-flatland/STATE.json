@@ -5,7 +5,7 @@
   "slug": "flatland",
   "repo": "https://github.com/Metta-AI/cogame-flatland",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,7 +23,10 @@
       "flatland-timetable:v3",
       "flatland-yielder:v3"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "afcff3e9-cb63-4828-91a9-2ba95b8623e8",
+      "02c72099-bf18-4f14-8cb5-ef0a62bc1a97"
+    ]
   },
   "league": {
     "id": "league_b8ffbdda-2f8f-45af-b905-e600ba385cff",
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T19:48:31Z",
+  "heartbeat_at": "2026-08-27T19:50:51Z",
   "session_ended_at": null,
   "session_id": "4f2486ae",
   "log": "runs/2026-08-27-flatland/log.md"

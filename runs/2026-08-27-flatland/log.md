@@ -60,3 +60,10 @@
 2026-08-27T19:48:31Z 50 settings POST /leagues/$L/settings 200 (elo k=32, round_robin, filler_policy, 15min rounds)
 2026-08-27T19:48:31Z progress phase=50 marker=league league_b8ffbdda-2f8f-45af-b905-e600ba385cff division div_444f4a49-4ebc-4a04-aee6-f05dd6d88993
 2026-08-27T19:48:31Z heartbeat phase=50
+2026-08-27T19:50:51Z 50 champion1 submit ok run=33110240970 flatland-signalman:v2 daveey (submit-result ok=true)
+2026-08-27T19:50:51Z 50 champion2 submit ok run=33110282984 flatland-pathfinder:v3 daveey-1 (submit-result ok=true)
+2026-08-27T19:50:51Z 50 fillers POST /leagues/$L/filler-policies 200: flatland-timetable:v3=afcff3e9-cb63-4828-91a9-2ba95b8623e8, flatland-yielder:v3=02c72099-bf18-4f14-8cb5-ef0a62bc1a97 (neither champion)
+2026-08-27T19:50:51Z 50 unpause 200; trigger-round 200 workflow=ladder-league_b8ffbdda-2f8f-45af-b905-e600ba385cff; round 1 pending, entrant_attributions = both champions (9aef8143 daveey, e41a0e59 daveey-1)
+2026-08-27T19:50:51Z progress phase=50 marker=round 1 pending league=league_b8ffbdda-2f8f-45af-b905-e600ba385cff
+2026-08-27T19:50:51Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
+2026-08-27T19:50:51Z heartbeat phase=60
