@@ -19,3 +19,4 @@
 2026-08-26T23:39:28Z 20 propagate-secrets run 33024124326 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-26T23:40:20Z 20 builder dispatched round=1 thread=sthr_016zAMG77vLwPuKSk4wYWUKZ session=d199e038
 2026-08-27T00:44:10Z phase=20 push=80aeb68c ci-run=33027812959 conclusion=pending — first build push (repo tree via Git Data API; git push is not authorised for this repo from the sandbox)
+2026-08-27T00:48:20Z phase=20 push=80aeb68 ci-run=33027812959 conclusion=success — test + docker-smoke + wasm-viewer all green on main, first attempt (0 retry rounds used)
