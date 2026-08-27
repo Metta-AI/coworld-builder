@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2047,"clock":"PHANTOM TIC-TAC-TOE · PLY 0 / 18 · DAVEEY TO MOVE","scorebug":"daveey WIDGET ▶ 0 STONES 3 LINE IN daveey-1 RATCHET 0 STONES 3 LINE IN","feed_lines":22}
+scrub readouts: 0%="PHANTOM TIC-TAC-TOE · PLY 0 / 18 · DAVEEY TO MOVE"  50%="PHANTOM TIC-TAC-TOE · PLY 4 / 18 · DAVEEY-1 TO MOVE"  100%="PHANTOM TIC-TAC-TOE · PLY 6 / 18 · FINAL"
+canvas text: 1067 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

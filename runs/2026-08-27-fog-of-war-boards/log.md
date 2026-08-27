@@ -52,3 +52,13 @@
 2026-08-27T03:01:45Z 60 heartbeat phase=60
 2026-08-27T03:08:50Z 60 heartbeat phase=60 poll: rounds completed=1 (r2); awaiting r3
 2026-08-27T03:14:09Z 60 heartbeat phase=60 poll: rounds completed=1 (r2); awaiting r3 (interval 15m, r2 created 02:59Z)
+2026-08-27T03:22:35Z 60 heartbeat phase=60 round 3 completed; checks 1-8 fetched, viewer-check run 33036080393 loaded=true
+2026-08-27T03:26:00Z 60 check 1 TRUE: rounds 2 (completed 03:01:15Z) + 3 (completed 03:15:32Z); round 1 failed pre-fillers (1 entrant, no filler in entrant_attributions) — excluded
+2026-08-27T03:26:00Z 60 check 2 TRUE: daveey 1001.47 rp=2 ew=1 cartographer:v1 | daveey-1 998.53 rp=2 ew=1 prober:v1; fillers absent
+2026-08-27T03:26:00Z 60 check 3 TRUE: ereq_999e93c3-63af-4db3-becd-99b4f32e938e completed, replay_url set, participants daveey+daveey-1 is_filler=false (nested route /rounds/$R/episode-requests; flat GET 405s)
+2026-08-27T03:26:00Z 60 check 4 TRUE: 4212B strict UTF-8 JSON, protocol=fogboards.replay.v1, reason=complete, 6 attempts 0 scripted 0 fellBack, results.fallbacks=[0,0]
+2026-08-27T03:26:00Z 60 check 5 TRUE: round-3 hosted log CLEAN (decoded + raw). Round 2 had bedrock haiku-4-5 throttle 429 "Too many tokens per day" -> model fallback; cross-checked platform-wide against negotiation-games ereq_854455ae (same 429, same window)
+2026-08-27T03:26:00Z 60 check 6 TRUE: raw-HTML grep empty (client-rendered) + /coworlds featured_match null (platform-wide); used SSR state.playlist[0] (round 3 featured) + POST /coworlds/replays/session -> static /v2/coworlds/replays/static/$COW/sha256%3A3af044a2.../index.html?replay=... ready:true
+2026-08-27T03:26:00Z 60 check 7 TRUE: committed runs/.../release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-27T03:26:00Z 60 check 8 TRUE: viewer-check run 33036080393 green; loaded=true ms=2047; scrub PLY 0 -> PLY 4 -> PLY 6/FINAL (three differ); feed_lines=22; canvas_text 1067/0 outside/0 ellipsized; no failure
+2026-08-27T03:26:00Z 60 VERIFY.md written: 8/8 TRUE

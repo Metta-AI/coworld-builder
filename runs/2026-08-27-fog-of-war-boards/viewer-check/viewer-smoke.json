@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2047,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5f8e4d33-49d7-4b19-8092-cc69d201344c/sha256%3A3af044a284b6a9e2b4b5a1d7d73c03d0cc9fc701ebc4a3dff49af9fc8e569341/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc56682ec-f4c0-494d-b5c7-06948edbe6bb.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "PHANTOM TIC-TAC-TOE · PLY 0 / 18 · DAVEEY TO MOVE",
+  "scorebug": "daveey WIDGET ▶ 0 STONES 3 LINE IN daveey-1 RATCHET 0 STONES 3 LINE IN",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 22,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "PHANTOM TIC-TAC-TOE · PLY 0 / 18 · DAVEEY TO MOVE"
+    },
+    {
+      "at": "50%",
+      "clock": "PHANTOM TIC-TAC-TOE · PLY 4 / 18 · DAVEEY-1 TO MOVE"
+    },
+    {
+      "at": "100%",
+      "clock": "PHANTOM TIC-TAC-TOE · PLY 6 / 18 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 1067,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
