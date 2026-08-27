@@ -1,0 +1,52 @@
+{
+  "run": "2026-08-27-rware-warehouse",
+  "idea_task": "1217748613226645",
+  "run_task": "1217901469634527",
+  "slug": "rware-warehouse",
+  "repo": "https://github.com/Metta-AI/cogame-rware-warehouse",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-27T10:59:50Z",
+  "session_ended_at": null,
+  "session_id": "15c2617e",
+  "log": "runs/2026-08-27-rware-warehouse/log.md"
+}
