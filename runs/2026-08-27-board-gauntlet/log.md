@@ -12,3 +12,7 @@
 2026-08-27T01:35:21Z 10 accepted round 1 — no bounce; spot-checked babel d55d999 claims (babel_replay.nim, config.nims MODULARIZE, no #viewpanel in client, data-replay-loaded in renderer.js) all exact
 2026-08-27T01:35:21Z progress phase=10 marker=design.md written and accepted
 2026-08-27T01:35:21Z 10 -> 20 phase transition
+2026-08-27T01:36:23Z 20 repo created public: https://github.com/Metta-AI/cogame-board-gauntlet
+2026-08-27T01:36:23Z 20 propagate-secrets run 33030604467 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-27T01:36:23Z 20 builder dispatched: implement design.md, drive ci.yml to green on main (round 1 of 3)
+2026-08-27T01:36:23Z heartbeat phase=20
