@@ -39,3 +39,6 @@
 2026-08-27T10:03:08Z 40 builder returned: release 0.1.2 canonical+certified run=33060644278 cow_a5961275-14d8-4489-83c9-73bbe5f69767; 4 policies v3 (vanguard/marshal/line/pincer), champ2 owned by ply_bac48eb1; coordinator re-verified release-result.json exit criterion all-true. TEMPLATE DELTA candidate for templates/coworld-release.yml: add Settle-the-canonical-flag poll step between upload-coworld and secret-put (repo commit ae59b75b) — canonical read-at-upload races structurally on games with multi-minute episodes; record in LEARNINGS at close
 2026-08-27T10:03:08Z progress phase=40 marker=release run 33060644278 v0.1.2
 2026-08-27T10:03:08Z 40 -> 50 phase transition: entering league
+2026-08-27T10:04:35Z 50 seed 200 lseed_86560d16 league=league_b56ff3be-1f0f-4b2a-b2e7-c44d17839134 (note: GET /leagues returns bare array, not entries)
+2026-08-27T10:04:35Z 50 division 200 div_ea7bd527-bc20-4698-b780-14c643a6067b; settings 200 ladder round_robin/elo interval=15
+2026-08-27T10:04:35Z 50 dispatch coworld-submit champion1 vanguard:v3 as daveey

@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_b56ff3be-1f0f-4b2a-b2e7-c44d17839134",
+    "division": "div_ea7bd527-bc20-4698-b780-14c643a6067b"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T10:03:08Z",
+  "heartbeat_at": "2026-08-27T10:04:35Z",
   "session_ended_at": null,
   "session_id": "3064436a",
   "log": "runs/2026-08-27-magent-battle/log.md"
