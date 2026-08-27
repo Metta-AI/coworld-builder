@@ -41,3 +41,10 @@
 2026-08-27T10:49:58Z 50 division 200 div=div_8915b808-eb69-4df9-8b9a-cf62dedd8e6f
 2026-08-27T10:49:58Z 50 settings 200 (elo, round_robin, filler_policy, 15min)
 2026-08-27T10:49:58Z heartbeat phase=50
+2026-08-27T10:53:02Z 50 champion1 submitted run=33064736837 ok=true sub_bfba9e04 (tiki:v3, daveey)
+2026-08-27T10:53:02Z 50 champion2 submitted run=33064783559 ok=true sub_02895b00 (counter:v3, daveey-1)
+2026-08-27T10:53:02Z 50 fillers 200 zonal:v3=4650054e gegenpress:v3=6ec654cf (neither champion)
+2026-08-27T10:53:02Z 50 unpause 200; trigger-round 200; round1 failed (Temporal RoundWorkflow failed before settling — unpause/trigger race), round2 pending with both champions as entrants
+2026-08-27T10:53:02Z progress phase=50 marker=round2-pending-league_973d55af
+2026-08-27T10:53:02Z 50 phase 50 -> 60
+2026-08-27T10:53:02Z heartbeat phase=60
