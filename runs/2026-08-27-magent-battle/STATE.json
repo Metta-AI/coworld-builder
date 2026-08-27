@@ -5,7 +5,7 @@
   "slug": "magent-battle",
   "repo": "https://github.com/Metta-AI/cogame-magent-battle",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 3
   },
@@ -50,18 +50,18 @@
     "discord_message_id": "1542484706996781097"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20631",
+    "branch": "atlas/magent-battle-33064835997",
+    "region": "paintlands",
+    "x": 220,
+    "y": 285,
+    "dispatch_run_id": "33064835997",
+    "attempted_at": "2026-08-27T10:53:39Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T10:43:42Z",
+  "heartbeat_at": "2026-08-27T10:53:39Z",
   "session_ended_at": null,
   "session_id": "3064436a",
   "log": "runs/2026-08-27-magent-battle/log.md"

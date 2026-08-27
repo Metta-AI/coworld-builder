@@ -74,3 +74,6 @@
 2026-08-27T10:49:06Z 75 atlas dispatch 33064346097 failed: 34 unplaced leagues (merge-queue backlog). Fix per step 8 + knights-archers trick: extra_cities = board-gauntlet PR #20623 CITIES diff (33 rows) + smac-starcraft-micro placed by this run ("SMAC Micro",199,294,paintlands,clearance 23.4); own spot recomputed vs augmented map: 220,285 clearance 22.9
 2026-08-27T10:49:32Z 75 atlas dispatch=33064659974 region=paintlands at=220,285 clearance=22.9 extra_cities=34
 2026-08-27T10:51:35Z 75 atlas dispatch 33064659974 failed: grf-football newly unplaced (league appeared between dispatches). Placed it too: "GRF Football" 223,261 paintlands clearance 22.9 (cogball precedent for football). Dispatch 3 of 3 with extra_cities=35
+2026-08-27T10:53:39Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20631 status=pr_open (dispatch 3, run 33064835997; placed for others: 33 backlog rows from PR #20623 + smac-starcraft-micro + grf-football)
+2026-08-27T10:53:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20631
+2026-08-27T10:53:39Z 75 -> 80 phase transition: entering close
