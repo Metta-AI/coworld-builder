@@ -33,9 +33,12 @@
     "division": "div_efd2ab9a-88fd-4c97-952c-64f38e3fadaa"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round 2..6 completed (r1 failed Temporal race, excluded)"
+    ],
+    "replay": "https://softmax.com replay 4a7fecfb-6b68-4a3b-9046-e84f375ce846.replay (round 6)",
+    "iframe_static": true,
+    "viewer_check_run": "33067338841"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T11:13:15Z",
+  "heartbeat_at": "2026-08-27T11:33:23Z",
   "session_ended_at": null,
   "session_id": "c7061c35",
   "log": "runs/2026-08-27-smac-starcraft-micro/log.md"

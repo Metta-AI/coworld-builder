@@ -1,7 +1,7 @@
 {
   "loaded": true,
-  "ms": 4471,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_476a8db4-f5df-4d93-b0c2-1c302ba201bc/sha256%3A4575435fea3737665c72aa4ed75fc6621b6d5407b82234eb8359d66c75df8c38/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fa2def614-f588-47eb-a1d6-9db771806a65.replay&v=2",
+  "ms": 3310,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_345bfc54-561e-4606-8de1-e3086f37d58a/sha256%3A3c1e7703ca64b59f9774673290450d9ca1f3429e39c01738e0b213521a4ed078/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F4a7fecfb-6b68-4a3b-9046-e84f375ce846.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "1:00 BATTLE 1/3 · DEFAULT · 5 V 5 · TURN 1/12",
@@ -23,11 +23,11 @@
     },
     {
       "at": "50%",
-      "clock": "0:38 BATTLE 1/3 · DEFAULT · 2 V 1 · TURN 5/12"
+      "clock": "FINAL BATTLE 2/3 · DEFAULT · 3 V 0 · TURN 5/12"
     },
     {
       "at": "100%",
-      "clock": ":01 BATTLE 2/3 · DEFAULT · 1 V 0 · TURN 7/12"
+      "clock": "0:29 BATTLE 2/3 · DEFAULT · 5 V 5 · TURN 7/12"
     }
   ],
   "soak": null,

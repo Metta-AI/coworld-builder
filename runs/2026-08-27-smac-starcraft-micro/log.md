@@ -70,3 +70,8 @@
 2026-08-27T11:23:15Z 60 round 6 completed on 0.1.3 (round_e71db7a4, ereq_805f41dc): coordinator pre-grep of hosted log = 0 hits (CLEAN)
 2026-08-27T11:23:15Z 60 verifier re-dispatched (focused) thread=sthr_011XMQDdHmRkf8tMPhNEkhBA bound=40min session=c7061c35
 2026-08-27T11:23:15Z heartbeat phase=60
+2026-08-27T11:33:23Z 60 verifier re-verify returned: 8/8 TRUE (check 5 CLEAN on round 6 / 0.1.3: 0 grep hits raw+unescaped, 46/46 sidecar 200, repair lines benign; leaderboard daveey-1 1018.43 / daveey 981.57 rounds_played 5; featured match on 0.1.3 sha; viewer-check 33067338841 loaded=true clocks differ)
+2026-08-27T11:33:23Z 60 minor findings logged: repair line 'kept last turn's directive on turn 0' semantics (advisory, phase-30-class); endcard never exercised by probe; feed_lines harness gap confirmed (#killfeed vs #feed selectors) — all for LEARNINGS
+2026-08-27T11:33:23Z 60 judge dispatched for VERIFY.md adjudication
+2026-08-27T11:33:23Z heartbeat phase=60
+2026-08-27T11:33:23Z progress phase=60 marker=viewer-check-33067338841
