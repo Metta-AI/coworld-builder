@@ -54,3 +54,5 @@
 2026-08-27T10:15:53Z 50 phase transition 50 -> 60
 2026-08-27T10:15:53Z heartbeat phase=60
 2026-08-27T10:15:53Z progress phase=50 marker=league_f42b4821-882b-428e-b803-630671e86726
+2026-08-27T10:17:01Z 60 verifier dispatched thread=sthr_019Pk1pYSHYZfudFhjMJj7db (8 checks, 75-min bound, replay_summary.py substitute for binary COWLDSMC per design note) session=c7061c35
+2026-08-27T10:17:01Z heartbeat phase=60
