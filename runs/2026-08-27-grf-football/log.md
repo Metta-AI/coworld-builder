@@ -30,3 +30,6 @@
 2026-08-27T10:16:26Z progress phase=30 marker=r1-verdict.md
 2026-08-27T10:16:26Z 30 phase 30 -> 40
 2026-08-27T10:16:26Z heartbeat phase=40
+2026-08-27T10:27:35Z 40 dispatch version=0.1.0 run=33062411212 step_failed=none(errors=[NOT canonical]) decision=hosted_smoke passed + hosted_certification=certifying at print time; documented completion race -> bump to 0.1.1 and re-dispatch, no code change
+2026-08-27T10:34:17Z 40 dispatch version=0.1.1 run=33063142595 step_failed=none(errors=[NOT canonical]) decision=identical race again (GET /v2/coworlds/cow_88a5667f reported canonical=true, certification=certified minutes later) -> bump is not the fix; change coworld-release.yml to re-read canonical from the platform after upload
+2026-08-27T10:46:18Z 40 dispatch version=0.1.2 run=33063972791 step_failed=null decision=green: ok=true canonical=true certify.ok=true liveness=skipped(static) secret_put=true, 4 policy versions at v3, champion2 player_id=ply_bac48eb1-662e-44f8-973d-f3e016dccf5d; cow_id=cow_60738189-36bb-4365-9dd0-61fe4e23c742 manifest_sha=sha256:cc1320b5191400eff7b7963bac4ebf47effb87bf5c27bb42d7c7db396a36cd69
