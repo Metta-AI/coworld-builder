@@ -34,9 +34,13 @@
     "division": "div_042d04a9-e695-4c7b-a0b9-8f2bb2ae7765"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_e8ab3923-5ec5-4b8b-88e9-c8d3af9971bb",
+      "round_ce4a2085-a680-4c42-ad64-c28df3493ac5"
+    ],
+    "replay": "bc4a674a-44e7-424e-b23c-4ee9e491345d.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33087427495"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T14:56:04Z",
+  "heartbeat_at": "2026-08-27T15:30:07Z",
   "session_ended_at": null,
   "session_id": "15c2617e",
   "log": "runs/2026-08-27-rware-warehouse/log.md"

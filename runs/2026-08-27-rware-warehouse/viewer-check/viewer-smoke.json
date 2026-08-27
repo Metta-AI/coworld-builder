@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2373,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_66c038fc-7147-4993-bdf9-4a646358ef35/sha256%3Ae131069cba756f2ca0fb46e89714dafa479e9e51b268cff91659fbb9cd8aaf35/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fbc4a674a-44e7-424e-b23c-4ee9e491345d.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0",
+  "scorebug": "DAVEEY ALPHA 0 DAVEEY-1 BRAVO 0 DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0 BASELINE CHARLIE 0 BASELINE (2) DELTA 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0"
+    },
+    {
+      "at": "50%",
+      "clock": "DELIVERED 5 / 8 PAR · TICK 288/500 · TURN 15/25 · JAM 9 · BLOCKED 700"
+    },
+    {
+      "at": "100%",
+      "clock": "DELIVERED 5 / 8 PAR · TICK 500/500 · TURN 25/25 · JAM 12 · BLOCKED 1172"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

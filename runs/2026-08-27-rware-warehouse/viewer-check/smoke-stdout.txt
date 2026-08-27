@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2373,"clock":"DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0","scorebug":"DAVEEY ALPHA 0 DAVEEY-1 BRAVO 0 DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0 BASELINE CHARLIE 0 BASELINE (2) DELTA 0","feed_lines":0}
+scrub readouts: 0%="DELIVERED 0 / 8 PAR · TICK 0/500 · TURN 1/25 · JAM 0 · BLOCKED 0"  50%="DELIVERED 5 / 8 PAR · TICK 288/500 · TURN 15/25 · JAM 9 · BLOCKED 700"  100%="DELIVERED 5 / 8 PAR · TICK 500/500 · TURN 25/25 · JAM 12 · BLOCKED 1172"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

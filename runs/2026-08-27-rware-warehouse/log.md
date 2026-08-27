@@ -50,3 +50,7 @@
 2026-08-27T14:56:04Z heartbeat phase=60
 2026-08-27T14:56:04Z progress phase=50 marker=league_05193716 division div_042d04a9 round_e8ab3923 pending
 2026-08-27T14:56:54Z 60 dispatch verifier (eight checks, 75-min round bound; round 2 pending at dispatch)
+2026-08-27T15:30:07Z 60 verifier returned: VERIFY.md 8/8 TRUE — rounds 2+3 completed (r1 failed, excluded, error recorded); leaderboard daveey-1 1014.53 / daveey 985.47 both rounds_played=2; ereq_9cb0729b completed with replay; replay_summary 50 llm orders 0 fallbacks 50 radio lines reason=complete teamDelivered=5; logs CLEAN 0/4 patterns; iframe static route via replay session API (sha = manifest_sha); release-result committed copy replay_liveness skipped(static); viewer-check run 33087427495 loaded=true 3 differing clocks; spectator judgment: starter chrome, legible, endcard numbers match replay exactly
+2026-08-27T15:30:07Z 60 dispatch judge for VERIFY.md adjudication vs SPEC definition of done
+2026-08-27T15:30:07Z heartbeat phase=60
+2026-08-27T15:30:07Z progress phase=60 marker=VERIFY.md 8/8 TRUE viewer-check 33087427495
