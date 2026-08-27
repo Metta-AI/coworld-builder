@@ -62,3 +62,5 @@
 2026-08-27T15:40:18Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-27T15:40:18Z heartbeat phase=75
 2026-08-27T15:40:18Z progress phase=70 marker=discord_message_id 1542559335693947042
+2026-08-27T15:40:55Z 75 atlas continent=commons reason=fully-cooperative shared-throughput logistics; matches 4-deep coop-port precedent (pistonball, walker-waterworld, knights-archers, collab-cooking)
+2026-08-27T15:41:10Z 75 atlas dispatch=33089142064 region=commons at=416,574 clearance=22.9
