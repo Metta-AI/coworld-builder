@@ -78,3 +78,6 @@
 2026-08-27T10:53:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20631
 2026-08-27T10:53:39Z 75 -> 80 phase transition: entering close
 2026-08-27T10:55:41Z 80 summaries posted (run task 1217901290638590, idea 1217901325818284); LEARNINGS section appended
+2026-08-27T10:56:34Z 80 close: all 9 phase subtasks complete, idea 1217748466013115 completed, run task 1217892255232247 moved to Done
+2026-08-27T10:56:34Z progress phase=80 marker=run closed Done
+2026-08-27T10:56:34Z session end in phase 80 (run complete); next action: none — run is Done
