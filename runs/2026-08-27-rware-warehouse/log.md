@@ -11,3 +11,7 @@
 2026-08-27T11:10:30Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
 2026-08-27T11:10:30Z heartbeat phase=20
 2026-08-27T11:10:30Z progress phase=10 marker=design.md written and accepted round 1
+2026-08-27T11:20:55Z 20 repo created github.com/Metta-AI/cogame-rware-warehouse (public)
+2026-08-27T11:22:10Z 20 propagate-secrets run 33066998670 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-27T11:21:46Z 20 dispatch builder round=1
+2026-08-27T11:21:46Z heartbeat phase=20
