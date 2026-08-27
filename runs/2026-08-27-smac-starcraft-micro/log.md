@@ -26,3 +26,4 @@
 2026-08-27T06:44:14Z heartbeat phase=30
 2026-08-27T06:44:14Z progress phase=20 marker=33046300533
 2026-08-27T06:45:07Z 30 reviewer dispatched r1 thread=sthr_012ZrDSuHWtjSBofkTAcomMM sha=190ef840 session=c7061c35
+2026-08-27T07:10:35Z 30 reviewer returned r1: 8 blocking (B1 battleIndex hashed but not mirrored in playback -> deterministic mismatch at battle end; B2 no test replays anything; B3 wasm gate mis-wired reads display player not scan builder + under-sampled; B4 test loosened 6e21fe0 focusfire>=charge -> tautology; B5 lives-label not hidden under 640px; B6 armybars occlude scorebug plates; B7 no worst-case renderer fixture, canvas_text total 0; B8 no test asserts reason==complete) + 18 advisory; r1-review.md 224 lines
