@@ -6,18 +6,23 @@
   "repo": "https://github.com/Metta-AI/cogame-negotiation-games",
   "starter": "cogame-babel",
   "phase": "40",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "40": 2
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_e3bccc46-a2fb-474b-9fc2-6e5ea91085c5",
+    "manifest_sha": "sha256:06acbd012316b207fcd998ba50bde7d7c32447b9e93587d7203ede334219cca1",
+    "release_run_id": "33026182056"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "negotiation-games-anchor:v2",
+    "champion2": "negotiation-games-integrative:v2",
+    "fillers": [
+      "negotiation-games-haggler:v2",
+      "negotiation-games-hardliner:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:07:06Z",
+  "heartbeat_at": "2026-08-27T00:21:32Z",
   "session_ended_at": null,
   "session_id": "ng26a441",
   "log": "runs/2026-08-26-negotiation-games/log.md"

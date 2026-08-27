@@ -32,3 +32,5 @@
 2026-08-27T00:07:06Z heartbeat phase=40
 2026-08-27T00:07:06Z progress phase=30 marker=r1-verdict.md
 2026-08-27T00:07:52Z 40 builder dispatched (release) thread=sthr_01N3eADAhp8SuWYUsAbYMx7F session=ng26a441
+2026-08-27T00:14:12Z 40 release dispatch version=0.1.0 run=33025798540 step_failed=none decision=canonical=false (hosted smoke passed, "Canonical: no" + hosted_certification=queued at upload time = completion race per triage table); certify.ok=true, liveness skipped, 4 policies :v1, secret_put=true — bump version, re-dispatch
+2026-08-27T00:20:30Z 40 release dispatch version=0.1.1 run=33026182056 step_failed=none decision=SUCCESS ok=true canonical=true certified cow_id=cow_e3bccc46-a2fb-474b-9fc2-6e5ea91085c5 manifest_sha=sha256:06acbd01 policies=anchor:v2/integrative:v2(ply_bac48eb1-662e-44f8-973d-f3e016dccf5d)/haggler:v2/hardliner:v2 secret_put=true; release-result.json committed to run dir
