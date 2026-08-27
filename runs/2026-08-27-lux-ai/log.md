@@ -72,3 +72,4 @@
 2026-08-27T19:17:29Z 60 judge returned: BLOCKING=0 (markers agree); check-4 cityTiles threshold ruled non-blocking (design proxy, not SPEC/prompt); all 8 lines re-verified independently -> reviews/verify-verdict.md
 2026-08-27T19:17:29Z 60 -> 70 phase transition: entering announce
 2026-08-27T19:17:29Z heartbeat phase=70
+2026-08-27T19:18:24Z 70 announce attempted_at written and pushed before POST
