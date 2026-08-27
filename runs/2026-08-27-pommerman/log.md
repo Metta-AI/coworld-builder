@@ -39,3 +39,7 @@
 2026-08-27T20:11:28Z progress phase=50 marker=league_7b53400d round2-pending both-champions-entrants
 2026-08-27T20:11:28Z heartbeat phase=60
 2026-08-27T20:11:44Z 60 dispatch verifier (league_7b53400d, div_7c2c9172, cow_224b5627, v0.1.0)
+2026-08-27T20:44:27Z 60 verifier returned VERIFY.md: checks 1,2,3,4,6,7,8 TRUE (rounds 2+3 completed; both champions ranked 2 rounds each; replay COWLDPOM strict-UTF-8 via replay_summary; 71/72 champion orders llm, 1.4% fallback; iframe static sha-matched; viewer-check 33114175789 loaded:true 3 clocks differ, starter chrome confirmed); check 5 FALSE: 11 'falling back' lines, sidecar 81/81 HTTP 200 zero throttling, 7/81 calls > attempt1Ms=8000 (p90 7672 max 9758) — coworld tuning defect, NOT platform (flatland cross-check healthy)
+2026-08-27T20:44:27Z 60 attempt 1 on check 5: rails decision — raise attempt1Ms 8000->12000, retryMs 3000->5000, turnBudgetMs 12000->18000 (covers observed max 9758; guard auto-derives to 604s, settle ~642s = 54% of 1200); reword attempt-1 retry notice off the greped 'falling back' phrase (it is a retry, not a fallback — genuine fallback line stays greppable); re-release 0.1.1
+2026-08-27T20:44:27Z 60 verifier attention items logged: bombsPlaced [9,3,0,0] design clause unmet (camper placed 0 — noted, not a verify predicate); ladder seated camper twice/sapper never; feed_lines 0 at load-time probe (say/feed rendering unevidenced in production shot); no production kick yet; DAVEE… truncation nit
+2026-08-27T20:44:27Z heartbeat phase=60

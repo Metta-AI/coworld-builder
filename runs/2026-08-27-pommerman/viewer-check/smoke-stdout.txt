@@ -1,0 +1,4 @@
+{"loaded":true,"ms":1951,"clock":"turn 1/36 TICK 0/144 · WALLS CLOSE IN 96","scorebug":"RED DAVEEY · BASELINE RED-11/2 RED-21/2 ALIVE 2 0 ≋ 1·1 ↯ turn 1/36 TICK 0/144 · WALLS CLOSE IN 96 BLUE DAVEEY-1 · BASELINE (2) BLUE-11/2 BLUE-21/2 ALIVE 2 0 ≋ 1·1","feed_lines":0}
+scrub readouts: 0%="turn 1/36 TICK 0/144 · WALLS CLOSE IN 96"  50%="turn 31/36 TICK 123/144 · THE ARENA IS THE MIDDLE 5X5"  100%="turn 36/36 TICK 144/144 · THE ARENA IS THE MIDDLE 5X5"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
