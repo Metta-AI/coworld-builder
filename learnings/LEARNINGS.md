@@ -1243,3 +1243,34 @@ the starter after the fact.
   leftover coworld-ctf `soldier_*_front_gun.png` 404s in the static viewer bundle).
 - **`GET /divisions/<id>/leaderboard` returns literal `null` (HTTP 200) until the first round
   completes** — not an error, not an empty list. Poll rounds, not the leaderboard, for readiness.
+
+## 2026-08-27 pommerman
+
+- **Phase 60 check 5 greps `falling back` — the attempt-1 RETRY notice must not contain that
+  phrase.** coworld-ctf's `decide.nim` logs `attempt 1 failed, falling back if it fails again` on
+  a retryable failure; with `attempt1Ms = 8000` under a hosted batch p90 of 7.7 s (max 9.8 s, all
+  sidecar calls HTTP 200, zero throttling), every episode carried ~11 grep hits and zero real
+  fallbacks. Fix shipped as 0.1.1: `attempt1Ms 12000 / retryMs 5000 / turnBudgetMs 18000` plus the
+  notice reworded to `will retry` (the genuine `falling back to <baseline> (<cause>)` line stays
+  greppable — never hide real fallbacks). Confirms flatland's ≥2×-tail rule, with a sharpening:
+  the client deadline covers the whole 4-seat parallel batch plus sidecar queueing, so per-call
+  max understates the needed budget.
+- **A rune cap on a composite replay record silently deletes its most valuable field.**
+  `MaxDirectiveRunes = 900` vs a ~1005-rune observation `view` meant the trim emptied every LLM
+  `say` from every directive record — no feed line, no replay text, ever — while both tests
+  passed (they injected `view = newJNull()`). Caught only by a compiled probe. Size composite
+  caps from a measured worst case, shed the re-derivable field (`view`) first and the
+  human-facing one (`say`) never, and test with a real view at full cap.
+- **`viewer_smoke.mjs` counts feed lines only for `#feed`/`.feed`/`#log`** — a starter feed named
+  `#killfeed` reads `feed_lines: 0` forever, at any probe time. Add `class="feed"` to the feed
+  element in phase 20, or the screenshot is the only feed evidence phase 60 gets.
+- **A round created seconds before a release finishes runs the OLD image** (round created
+  21:10:35Z, release canonical 21:11:24Z). Verify a fix on a round whose `created_at` is after
+  the release run's completion, not on "the next completed round".
+- **Seed + settings starts the ladder clock immediately**: an auto-round fired before champions
+  and fillers existed and failed with `Temporal RoundWorkflow failed before settling the round`.
+  Harmless and expected — trigger your own round after fillers; the auto-round never counts.
+- **The atlas backlog kept growing** (38 unplaced at flatland, 40 here). The iterative respread
+  recipe (append each accepted pick to a local `places.mjs`, re-run `atlas_spot.py`) landed 41
+  dots at ≥ 22.4 clearance in one `extra_cities` dispatch. Until metta's merge queue drains,
+  every atlas PR must carry the whole backlog, content-consistent with the open PRs.
