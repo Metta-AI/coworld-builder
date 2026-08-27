@@ -85,3 +85,7 @@
 2026-08-27T19:25:40Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20645
 2026-08-27T19:25:40Z 75 -> 80 phase transition: entering close
 2026-08-27T19:25:40Z heartbeat phase=80
+2026-08-27T19:29:19Z 80 executive summary posted on run task (1217920815876137) and condensed on idea task (1217920815750053); LEARNINGS 2026-08-27 lux-ai appended; templates/coworld-release.yml gains canonical read-back + certify timeout; prompts/40 triage gains 2 rows
+2026-08-27T19:29:19Z 80 all 9 phase subtasks complete; idea task 1217748519704392 completed; run task 1217903600079381 moved to Done
+2026-08-27T19:29:19Z progress phase=80 marker=run-task-Done
+2026-08-27T19:29:19Z 80 run closed: claim -> design(1 round) -> build(green r1) -> review(2 rounds, BLOCKING 0) -> release(v0.1.4 canonical, 5 dispatches) -> league(2 champions, 2 fillers, rounds live) -> verify(8/8 TRUE, judge 0) -> announce(msg 1542614317583831070) -> atlas(PR 20645 open, queue) -> closed. Session cd77d683 ends; no further action needed.
