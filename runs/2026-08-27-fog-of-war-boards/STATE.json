@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_26ccabcd-af33-4f17-b9d7-f44626a7c625",
+    "division": "div_8c9c080c-31db-4672-8146-d73cd81ebc42"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T02:56:35Z",
+  "heartbeat_at": "2026-08-27T02:57:36Z",
   "session_ended_at": null,
   "session_id": "325aebfd",
   "log": "runs/2026-08-27-fog-of-war-boards/log.md"
