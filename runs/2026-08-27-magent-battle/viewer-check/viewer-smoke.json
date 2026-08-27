@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 4204,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_a5961275-14d8-4489-83c9-73bbe5f69767/sha256%3A9f7e22e4d2d07efbb5d0373e600a7c32b5c8cd13b29fe9253dc33e9f968ca9dc/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F473bdd5e-3691-4411-a3c7-ce4376276e04.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "game 1/2 · turn 1/15 TICK 0/300 · 81 V 81",
+  "scorebug": "RED DAVEEY ALPHA ALIVE 81 0 game 1/2 · turn 1/15 TICK 0/300 · 81 V 81 BLUE DAVEEY-1 BRAVO ALIVE 81 0",
+  "status": "CONNECTING",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "game 1/2 · turn 1/15 TICK 0/300 · 81 V 81"
+    },
+    {
+      "at": "50%",
+      "clock": "game 2/2 · turn 3/15 TICK 49/300 · 43 V 32"
+    },
+    {
+      "at": "100%",
+      "clock": "game 2/2 · turn 10/15 TICK 194/300 · 30 V 0"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

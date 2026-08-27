@@ -33,9 +33,17 @@
     "division": "div_ea7bd527-bc20-4698-b780-14c643a6067b"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      1,
+      2
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/473bdd5e-3691-4411-a3c7-ce4376276e04.replay",
+    "iframe_static": true,
+    "round_ids": [
+      "round_0834898f-2fa4-4824-aa0a-4bd8b751c789",
+      "round_4060358e-c282-4935-a3ed-5f3aef80a482"
+    ],
+    "viewer_check_run": "33063093381"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +61,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T10:27:02Z",
+  "heartbeat_at": "2026-08-27T10:33:32Z",
   "session_ended_at": null,
   "session_id": "3064436a",
   "log": "runs/2026-08-27-magent-battle/log.md"

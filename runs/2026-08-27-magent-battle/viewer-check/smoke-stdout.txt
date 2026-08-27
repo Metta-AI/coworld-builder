@@ -1,0 +1,4 @@
+{"loaded":true,"ms":4204,"clock":"game 1/2 · turn 1/15 TICK 0/300 · 81 V 81","scorebug":"RED DAVEEY ALPHA ALIVE 81 0 game 1/2 · turn 1/15 TICK 0/300 · 81 V 81 BLUE DAVEEY-1 BRAVO ALIVE 81 0","feed_lines":0}
+scrub readouts: 0%="game 1/2 · turn 1/15 TICK 0/300 · 81 V 81"  50%="game 2/2 · turn 3/15 TICK 49/300 · 43 V 32"  100%="game 2/2 · turn 10/15 TICK 194/300 · 30 V 0"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
