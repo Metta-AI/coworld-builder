@@ -15,3 +15,7 @@
 2026-08-27T08:21:42Z 00 resume at phase 20 attempt=1 session=dff7febc
 2026-08-27T08:27:56Z 20 resumed into phase 20: main red at e5440bce (ci 33052755850: replay-rehash + wasm-viewer hash mismatch tick 1220); prior session's builder thread still live — pushed 66093e57 GV3 fix at 08:23:37Z, ci 33053836802 in_progress; monitoring instead of dispatching duplicate builder
 2026-08-27T08:27:56Z heartbeat phase=20
+2026-08-27T08:33:38Z 20 ci green on main sha=66093e57 run=33053836802 (orphan builder GV3 fix); exit checks pass: placeholders clean, exec bits, 3 workflows parse+inputs, release/submit artifacts, 2 PROMPT + 2 scripted policies, champion2 player field, num_agents=8 everywhere
+2026-08-27T08:33:38Z progress phase=20 marker=ci-run-33053836802-green
+2026-08-27T08:33:38Z 20 phase 20 -> 30 round 1
+2026-08-27T08:33:38Z heartbeat phase=30
