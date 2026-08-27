@@ -38,3 +38,6 @@
 2026-08-27T00:22:27Z 40 -> 50 phase transition: STATE phase=50
 2026-08-27T00:22:27Z heartbeat phase=50
 2026-08-27T00:22:27Z progress phase=40 marker=release-run-33026182056
+2026-08-27T00:23:38Z 50 seed 200: lseed_45f01dae league_id=league_88e9052f-8e37-4f2e-aea1-ea4f5fdb20e7
+2026-08-27T00:23:38Z 50 division 200: div_5699e6c3-6cf1-4a38-9e69-e2b954332c91 (Competition L1) — note: GET /leagues returns a bare array here, not .entries (filtered client-side on .[])
+2026-08-27T00:23:38Z 50 settings 200: ladder round_robin/filler_policy, elo 1000/32 mean, interval 15m
