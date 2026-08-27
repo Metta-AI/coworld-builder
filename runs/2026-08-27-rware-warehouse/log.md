@@ -30,3 +30,4 @@
 2026-08-27T14:39:18Z 30 -> 40 phase transition: STATE.phase=40 written; review loop closed in 1 round
 2026-08-27T14:39:18Z heartbeat phase=40
 2026-08-27T14:39:18Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-27T14:40:01Z 40 dispatch builder for coworld-release.yml (version 0.1.0 first attempt, put_secret=true, policies from tools/ci/policies.json)
