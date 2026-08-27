@@ -43,3 +43,7 @@
 2026-08-27T17:24:51Z 30 -> 40 phase transition: entering release
 2026-08-27T17:24:51Z heartbeat phase=40
 2026-08-27T17:25:36Z 40 dispatch builder for release chain (coworld-release.yml, version 0.1.0 first attempt, policies from tools/ci/policies.json)
+2026-08-27T17:55:18Z 40 builder report: v0.1.0 run=33098369085 FAIL certify (no Ping->Pong; fixed 28be702, CI 33098806848 green); v0.1.1 run=33099182742 canonical:false read-too-early; v0.1.2 run=33100074041 same — both cow_ids read back canonical:true from API minutes later; workflow read-back defect, fix 3639a79 (poll canonical up to 20 min before secret put)
+2026-08-27T17:55:18Z 40 rails decision: authorise dispatch #4 v0.1.3 — not a cert failure (certify.ok true on both attempts); change #4 = workflow canonical read-back, distinct from bumps; template delta (templates/coworld-release.yml reads canonical too early) noted for phase 80 LEARNINGS
+2026-08-27T17:55:18Z progress phase=40 marker=33100074041
+2026-08-27T17:55:18Z heartbeat phase=40
