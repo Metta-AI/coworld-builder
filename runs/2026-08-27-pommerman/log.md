@@ -67,3 +67,4 @@
 2026-08-27T21:54:21Z heartbeat phase=75
 2026-08-27T21:57:08Z 75 atlas: slug live in /api/coworlds (episodes_7d=8); continent=paintlands (zero-sum team combat; precedent magent-battle/paintball/grid-wars); atlas_spot -> 202,270 clearance 39.5
 2026-08-27T21:57:08Z heartbeat phase=75
+2026-08-27T21:57:31Z 75 atlas dispatch=33120443625 region=paintlands at=202,270 clearance=39.5
