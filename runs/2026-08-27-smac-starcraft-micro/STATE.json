@@ -1,0 +1,52 @@
+{
+  "run": "2026-08-27-smac-starcraft-micro",
+  "idea_task": "1217748613153120",
+  "run_task": "1217890744511822",
+  "slug": "smac-starcraft-micro",
+  "repo": "Metta-AI/cogame-smac-starcraft-micro",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-27T04:02:01Z",
+  "session_ended_at": null,
+  "session_id": "c7061c35",
+  "log": "runs/2026-08-27-smac-starcraft-micro/log.md"
+}
