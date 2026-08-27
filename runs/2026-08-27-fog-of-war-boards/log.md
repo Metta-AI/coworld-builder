@@ -51,3 +51,4 @@
 2026-08-27T03:00:31Z heartbeat phase=60
 2026-08-27T03:01:45Z 60 heartbeat phase=60
 2026-08-27T03:08:50Z 60 heartbeat phase=60 poll: rounds completed=1 (r2); awaiting r3
+2026-08-27T03:14:09Z 60 heartbeat phase=60 poll: rounds completed=1 (r2); awaiting r3 (interval 15m, r2 created 02:59Z)
