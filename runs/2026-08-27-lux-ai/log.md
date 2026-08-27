@@ -81,3 +81,7 @@
 2026-08-27T19:19:50Z 75 atlas dispatch=33107889196 region=paintlands at=202,270 clearance=39.5
 2026-08-27T19:23:50Z 75 atlas dispatch 1 (33107889196) failed: 38 unplaced leagues — placing them all via extra_cities (continents: 4 paintlands, 7 simulations, 8 tabletop, 1 shire, 12 commons, 6 parlour; all clearances >=22.9)
 2026-08-27T19:23:50Z 75 atlas dispatch=33108209512 region=paintlands at=202,270 clearance=39.5 extra_cities=38
+2026-08-27T19:25:40Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20645 status=pr_open (placed 38 backlogged leagues alongside lux-ai: atari-cabinet grid-wars magent-battle smac-starcraft-micro citysim grf-football knights-archers particle-worlds pistonball rware-warehouse walker-waterworld board-gauntlet cogiavelli cogplomacy fog-of-war-boards goofspiel-oshi-zumo hanabi liars-dice trick-taking collab-cooking chemistry cogchemists coins commons-family cooperative-hunting factory-commons firm fruit-market garble gift-refinements matrix-games territory chorus cogmud cogolf daycare hidden-agenda negotiation-games)
+2026-08-27T19:25:40Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20645
+2026-08-27T19:25:40Z 75 -> 80 phase transition: entering close
+2026-08-27T19:25:40Z heartbeat phase=80
