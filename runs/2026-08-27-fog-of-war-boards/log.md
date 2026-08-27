@@ -85,3 +85,7 @@
 2026-08-27T03:45:55Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20617
 2026-08-27T03:45:55Z 75 -> 80 phase transition
 2026-08-27T03:45:55Z heartbeat phase=80
+2026-08-27T03:47:53Z 80 executive summary posted on run task (1217890476192407) and condensed on idea task (1217890699507169); LEARNINGS section appended
+2026-08-27T03:47:53Z 80 all 9 phase subtasks complete; idea 1217762703112930 completed; run task moved to Done
+2026-08-27T03:47:53Z progress phase=80 marker=run-task-Done
+2026-08-27T03:47:53Z 80 close complete — run Done. Next action: none (atlas PR 20617 awaits human merge-when-ready)
