@@ -176,8 +176,12 @@ jobs:
           set -euo pipefail
           echo "Certify locally" > "$RR/current_step"
           set +e
+          # --timeout-seconds 300: the default 60 s does not cover start +
+          # connect grace + a full episode + the post-game linger
+          # (cooperative-hunting 0.1.2 -> 0.1.3; lux-ai plays 360 turns).
           uvx --from "$COWORLD_PKG" coworld certify dist/coworld_manifest.json \
             --no-open-report \
+            --timeout-seconds 300 \
             2>&1 | tee "$RR/certify.log"
           rc="${PIPESTATUS[0]}"
           set -e
@@ -343,6 +347,64 @@ jobs:
           print(json.dumps({k: v for k, v in out.items() if k != "output_tail"}, indent=2))
           if rc != 0:
               raise SystemExit(f"upload-coworld exited {rc}")
+          PY
+
+      - name: Wait for the uploaded version to become canonical
+        # `--wait-hosted-smoke` returns when the SMOKE passes, but the canonical
+        # flag only flips when the hosted CERTIFICATION that follows it finishes.
+        # Observed on lux-ai 0.1.1 (run 33099182742) and 0.1.2 (run 33100074041):
+        # both printed "Hosted smoke certification: passed", "Canonical: no",
+        # "Hosted certification: certifying" -- and both read back canonical:true
+        # from GET /v2/coworlds/<cow_id> a couple of minutes later. A version bump
+        # cannot fix that; only reading the flag after certification settles can.
+        #
+        # The read goes through `coworld status --json`, NOT a hand-rolled HTTPS
+        # GET: a raw urllib GET of the same route with the same bearer token is
+        # 403 Forbidden from a GitHub runner (every poll of run 33100903880), so
+        # only the CLI's own authenticated client can be trusted here. It reads
+        # the login `softmax set-token` already stored in this job and needs no
+        # docker. Never fails the run: on a timeout the "no" from the upload log
+        # stands and "Enforce canonical" reports it exactly as before.
+        run: |
+          set -euo pipefail
+          echo "Wait for the uploaded version to become canonical" > "$RR/current_step"
+          python3 - "$RR" <<'PY'
+          import json, os, subprocess, sys, time
+
+          rr = sys.argv[1]
+          path = os.path.join(rr, "upload.json")
+          upload = json.load(open(path))
+          cow_id = upload.get("cow_id")
+          if upload.get("canonical") == "yes" or not cow_id:
+              print(f"nothing to wait for (canonical={upload.get('canonical')!r}, cow_id={cow_id!r})")
+              raise SystemExit(0)
+
+          command = ["uvx", "--from", os.environ["COWORLD_PKG"], "coworld",
+                     "status", cow_id, "--json"]
+          deadline = time.time() + 20 * 60
+          while time.time() < deadline:
+              time.sleep(30)
+              done = subprocess.run(command, capture_output=True, text=True, timeout=300)
+              if done.returncode != 0:
+                  print(f"status failed, retrying: {done.stderr.strip()[-500:]}")
+                  continue
+              # `coworld status` prints its docker-context banner before the JSON.
+              start = done.stdout.find("{")
+              try:
+                  payload, _ = json.JSONDecoder().raw_decode(done.stdout[start:])
+              except ValueError as exc:
+                  print(f"unparsable status, retrying: {exc}")
+                  continue
+              if payload.get("coworld", {}).get("canonical") is True:
+                  upload["canonical"] = "yes"
+                  json.dump(upload, open(path, "w"), indent=2)
+                  print(f"{cow_id} is canonical")
+                  raise SystemExit(0)
+              certification = payload.get("certification") or {}
+              print(f"{cow_id} not canonical yet "
+                    f"(certification: {certification.get('status')})")
+          print("::warning::timed out waiting for the hosted certification to make "
+                f"{cow_id} canonical; reporting the upload's own verdict")
           PY
 
       - name: Put the Coworld secret
