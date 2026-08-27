@@ -51,3 +51,8 @@
 2026-08-27T18:27:58Z 40 rails decision: authorise dispatch #5 v0.1.4 — bumps are free; adopting 0.1.3 would ship a release-result.json saying canonical:false which fails phase 60 check 7 as written; change #5 (CLI read-back) distinct from all four before
 2026-08-27T18:27:58Z progress phase=40 marker=33100903880
 2026-08-27T18:27:58Z heartbeat phase=40
+2026-08-27T18:39:33Z 40 dispatch #5 v0.1.4 run=33103630909 SUCCESS: canonical:true certify.ok:true replay_liveness=skipped-static secret_put:true; cow_85ac57ce-ce33-44dc-a00f-d74141fdd9fe; policies lux-ai-lumberjack:v4 (champ1), lux-ai-nightwatch:v4 (champ2, ply_bac48eb1), lux-ai-forester:v4 + lux-ai-prospector:v4 (fillers); release-result.json committed
+2026-08-27T18:39:33Z 40 template deltas for LEARNINGS/phase 80: (1) coworld-release.yml needs canonical read-back step post-upload (hosted cert settles after --wait-hosted-smoke returns); (2) read-back must use coworld CLI, raw HTTPS GET 403s from runners; (3) triage row: certify 'Ping with Pong' -> websocket handler missing Ping->Pong branch
+2026-08-27T18:39:33Z progress phase=40 marker=33103630909
+2026-08-27T18:39:33Z 40 -> 50 phase transition: entering league
+2026-08-27T18:39:33Z heartbeat phase=50
