@@ -49,3 +49,4 @@
 2026-08-27T10:09:24Z 60 poll 1: rounds=1 total, completed=0 (round 1 round_number=1 status=pending created 10:06:01Z); check 7 TRUE from committed release-result.json
 2026-08-27T10:14:48Z 60 poll 2: completed=1 (round_number=1 round_0834898f status=completed error=null); fillers were registered pre-round-1 so round 1 counts; need >=2 -> waiting for round 2 (interval 15min)
 2026-08-27T10:20:01Z 60 poll 3: completed=1, no round 2 yet (round 1 created 10:06:01Z, interval 15min -> round 2 expected ~10:21Z); round 1 episode ereq_cdd21f8a completed with replay_url
+2026-08-27T10:25:03Z 60 poll 4: completed=2 (rounds 1 and 2) -> check 1 TRUE; proceeding to checks 2-8
