@@ -4,7 +4,7 @@
   "run_task": "1217892255232247",
   "slug": "magent-battle",
   "repo": "https://github.com/Metta-AI/cogame-magent-battle",
-  "starter": "",
+  "starter": "Metta-AI/cogame-moba",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
