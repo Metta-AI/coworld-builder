@@ -28,3 +28,6 @@
 2026-08-27T09:21:07Z 30 fixer returned r1-fixes.md: 17 fixed (one commit each), 1 refuted (F15 nim.cfg untracked), 7 no-change-with-evidence; ci run=33057473716 success sha=3c85c8d428f71b64771a1768107bf5d55d964a28; 170 OK / 0 FAILED, no test weakened; F18 conformed to checklist (docs inline text), F19 tiny at 640, F14 real seek now exercised, F9 --soak 10, F10 fixture asserts full-length strings
 2026-08-27T09:21:07Z 30 dispatch judge round=1
 2026-08-27T09:21:07Z progress phase=30 marker=r1-fixes.md
+2026-08-27T09:35:12Z 30 judge returned r1-verdict.md blocking:0/BLOCKING:0 (markers agree, coordinator verified); all 15 checklist items + parallel-batch rule pass at 3c85c8d with cited evidence; review loop exits after 1 round
+2026-08-27T09:35:12Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-27T09:35:12Z 30 -> 40 phase transition: entering release
