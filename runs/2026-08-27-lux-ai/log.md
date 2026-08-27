@@ -34,3 +34,7 @@
 2026-08-27T16:46:31Z 30 reviewer returned r2: 1 blocking (lobby-start replay divergence, reproduced by execution; introduced in fork vs ctf), 5 advisory; no regressions from r1 fixes -> reviews/r2-review.md
 2026-08-27T16:46:31Z 30 dispatch fixer round=2 -> reviews/r2-fixes.md
 2026-08-27T16:46:31Z heartbeat phase=30
+2026-08-27T17:13:08Z 30 fixer returned r2: B1 fixed (c74b230 playback honours recorded lobby; late-join re-derivation test), N1/N2/N3 fixed, N4 disputed with evidence; CI green run=33096195543 sha=88cc3f75 -> reviews/r2-fixes.md
+2026-08-27T17:13:08Z progress phase=30 marker=r2-fixes.md
+2026-08-27T17:13:08Z 30 dispatch judge round=2 at sha=88cc3f75 -> reviews/r2-verdict.md
+2026-08-27T17:13:08Z heartbeat phase=30
