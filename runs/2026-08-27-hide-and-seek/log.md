@@ -19,3 +19,6 @@
 2026-08-27T23:24:10Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-27T23:24:10Z heartbeat phase=30
 2026-08-27T23:24:41Z 30 r1 dispatch reviewer: trace cogame-hide-and-seek@a6d3a86c against design.md
+2026-08-27T23:44:37Z 30 r1 reviewer returned r1-review.md (20 findings, 4 mapped blocking: F1 knownEnemy dead path, F2 unclamped shout bubble, F3 no renderer fixture for model text, F4 stopDetail untruncated)
+2026-08-27T23:44:37Z 30 r1 dispatch fixer: fix findings in r1-review.md, CI green, write r1-fixes.md
+2026-08-27T23:44:37Z heartbeat phase=30
