@@ -46,3 +46,11 @@
 2026-08-27T10:11:51Z 50 division PUT 200 div_efd2ab9a-88fd-4c97-952c-64f38e3fadaa (Competition level 1)
 2026-08-27T10:11:51Z 50 settings POST 200 (elo k=32 round_robin filler_policy, round_interval=15m)
 2026-08-27T10:11:51Z 50 champion1 submit dispatching coworld-submit.yml policy=smac-starcraft-micro-marshal:v3 player=ply_44ae9048
+2026-08-27T10:15:53Z 50 champion1 submit run 33061981148 success submit-result ok=true policy=smac-starcraft-micro-marshal:v3 player=ply_44ae9048
+2026-08-27T10:15:53Z 50 champion2 submit run 33062051533 success submit-result ok=true policy=smac-starcraft-micro-skirmish:v3 player=ply_bac48eb1 (version owned by daveey-1 confirmed via /policy-versions)
+2026-08-27T10:15:53Z 50 fillers POST 200: focusfire:v3=2964b7ba, charge:v3=a1ecf538 (neither champion)
+2026-08-27T10:15:53Z 50 unpause POST 200 paused=false; trigger-round POST 200 workflow=ladder-league_f42b4821
+2026-08-27T10:15:53Z 50 rounds: round 1 failed (fired at unpause instant 10:13:00Z, Temporal RoundWorkflow race; fillers WERE set prior) — round 2 (my trigger 10:13:38Z) pending with both champions in entrant_attributions (marshal:v3 ply_44ae9048, skirmish:v3 ply_bac48eb1) — exit criterion met
+2026-08-27T10:15:53Z 50 phase transition 50 -> 60
+2026-08-27T10:15:53Z heartbeat phase=60
+2026-08-27T10:15:53Z progress phase=50 marker=league_f42b4821-882b-428e-b803-630671e86726
