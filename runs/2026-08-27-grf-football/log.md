@@ -13,3 +13,5 @@
 2026-08-27T05:19:20Z 20 repo created https://github.com/Metta-AI/cogame-grf-football (public); propagate-secrets run 33042108731 green; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present
 2026-08-27T05:20:07Z 20 builder dispatched thread=sthr_015ahEAmMSWXiMZtDumaxKMP repo=Metta-AI/cogame-grf-football
 2026-08-27T08:21:42Z 00 resume at phase 20 attempt=1 session=dff7febc
+2026-08-27T08:27:56Z 20 resumed into phase 20: main red at e5440bce (ci 33052755850: replay-rehash + wasm-viewer hash mismatch tick 1220); prior session's builder thread still live — pushed 66093e57 GV3 fix at 08:23:37Z, ci 33053836802 in_progress; monitoring instead of dispatching duplicate builder
+2026-08-27T08:27:56Z heartbeat phase=20
