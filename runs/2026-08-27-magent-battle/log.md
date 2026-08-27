@@ -77,3 +77,4 @@
 2026-08-27T10:53:39Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20631 status=pr_open (dispatch 3, run 33064835997; placed for others: 33 backlog rows from PR #20623 + smac-starcraft-micro + grf-football)
 2026-08-27T10:53:39Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20631
 2026-08-27T10:53:39Z 75 -> 80 phase transition: entering close
+2026-08-27T10:55:41Z 80 summaries posted (run task 1217901290638590, idea 1217901325818284); LEARNINGS section appended
