@@ -76,3 +76,4 @@
 2026-08-27T03:35:37Z 70 -> 75 phase transition
 2026-08-27T03:35:37Z heartbeat phase=75
 2026-08-27T03:36:23Z 75 slug live in /api/coworlds (episodes_7d=3); continent=tabletop (board-game port — rails call); spot 766,277 clearance 22.9; label "Fog Boards" (display name 17 chars > 16 cap)
+2026-08-27T03:36:42Z 75 atlas dispatch=33036873287 region=tabletop at=766,277 clearance=22.9
