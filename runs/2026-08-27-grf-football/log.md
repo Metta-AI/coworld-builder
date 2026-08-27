@@ -48,3 +48,15 @@
 2026-08-27T10:53:02Z progress phase=50 marker=round2-pending-league_973d55af
 2026-08-27T10:53:02Z 50 phase 50 -> 60
 2026-08-27T10:53:02Z heartbeat phase=60
+2026-08-27T11:04:29Z heartbeat phase=60
+2026-08-27T11:04:29Z 60 poll rounds: r1 failed(temporal race), r2 completed; leaderboard daveey-1 1016.0/1, daveey 984.0/1; waiting on 2nd completed round
+2026-08-27T11:15:34Z heartbeat phase=60
+2026-08-27T11:15:34Z 60 poll: round3 completed; 2 completed rounds (2,3); leaderboard both champions rounds_played=2
+2026-08-27T11:19:16Z heartbeat phase=60
+2026-08-27T11:19:16Z 60 checks 1-8 evidence fetched; viewer-check run 33066666879 loaded=true, 3 distinct clock readouts; writing VERIFY.md
+2026-08-27T11:23:08Z 60 VERIFY.md written: 8/8 TRUE (rounds 2,3 completed; both champions ranked rp=2; ereq_afd7c2ec completed w/ replay; replay strict-JSON complete/full_time, 24/24 llm both champion seats, fallbacks=0; hosted log CLEAN 48 bedrock calls all 200; iframe static sha256:cc1320b5 ready=true; certify liveness=skipped(static); viewer-check 33066666879 loaded=true 3 distinct clocks)
+2026-08-27T11:23:08Z 60 FINDING (non-blocking to checks, for judge): register-packet race - a seat whose register chat is not recorded plays the default zonal script; round 2 demoted champion2 daveey-1 (counter:v3 LLM) to scripted zonal, llmTurns=[24,0,...], 24 bedrock calls vs 48 in round 3; silent, no log line. Round 3 seat 7 (gegenpress) likewise played zonal.
+2026-08-27T11:23:08Z heartbeat phase=60
+2026-08-27T11:24:12Z 60 verifier returned VERIFY.md 8/8 TRUE; rounds 2+3 completed, both champions ranked (daveey-1 1030.5 rp=2, daveey 969.5 rp=2), replay clean 0 fallbacks, static iframe, viewer-check 33066666879 loaded=true clocks differ; verifier finding: seat-registration race demoted counter:v3 to zonal in round 2 (0 llm turns, 24 not 48 bedrock calls) — routed to judge
+2026-08-27T11:24:12Z progress phase=60 marker=VERIFY.md-8of8
+2026-08-27T11:24:12Z heartbeat phase=60

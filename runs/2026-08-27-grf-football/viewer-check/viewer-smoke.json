@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 1839,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_60738189-36bb-4365-9dd0-61fe4e23c742/sha256%3Acc1320b5191400eff7b7963bac4ebf47effb87bf5c27bb42d7c7db396a36cd69/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F7ec2e9c2-4ef6-44e3-b20d-f9fe3b9473be.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "4:00 TIME LEFT KICKOFF · RED",
+  "scorebug": "0 (0) DAVEEY + BASELINE GOALS 0 0% · 0 PASSES · 0 TACKLES 4:00 TIME LEFT KICKOFF · RED 0 (0) DAVEEY-1 + BASELINE GOALS 0 0% · 0 PASSES · 0 TACKLES",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "4:00 TIME LEFT KICKOFF · RED"
+    },
+    {
+      "at": "50%",
+      "clock": "1:53 TIME LEFT 2ND HALF · TURN 13/24"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER FULL TIME"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
