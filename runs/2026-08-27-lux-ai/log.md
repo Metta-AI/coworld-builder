@@ -31,3 +31,6 @@
 2026-08-27T16:29:36Z progress phase=30 marker=r1-verdict.md
 2026-08-27T16:29:36Z 30 round 2 begins: dispatch reviewer round=2 -> reviews/r2-review.md
 2026-08-27T16:29:36Z heartbeat phase=30
+2026-08-27T16:46:31Z 30 reviewer returned r2: 1 blocking (lobby-start replay divergence, reproduced by execution; introduced in fork vs ctf), 5 advisory; no regressions from r1 fixes -> reviews/r2-review.md
+2026-08-27T16:46:31Z 30 dispatch fixer round=2 -> reviews/r2-fixes.md
+2026-08-27T16:46:31Z heartbeat phase=30
