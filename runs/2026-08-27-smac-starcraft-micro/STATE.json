@@ -5,7 +5,7 @@
   "slug": "smac-starcraft-micro",
   "repo": "Metta-AI/cogame-smac-starcraft-micro",
   "starter": "coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "40": 0
   },
@@ -42,7 +42,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-27T11:41:54Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542499437710934097"
   },
   "atlas": {
     "status": "",
@@ -56,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T11:41:54Z",
+  "heartbeat_at": "2026-08-27T11:42:19Z",
   "session_ended_at": null,
   "session_id": "c7061c35",
   "log": "runs/2026-08-27-smac-starcraft-micro/log.md"
