@@ -88,3 +88,7 @@
 2026-08-27T11:48:45Z 75 atlas dispatch 1 (33068619866) failed step=build: 35 unplaced leagues; fix per step 8 = extra_cities
 2026-08-27T11:48:45Z 75 atlas retry 2: own dot moved 202,270 -> 184,255 clearance 23.4 (PR 20621 branch geometry: atari-cabinet took 202,270); extra_cities=35 (32 reused from open PR 20621 branch atlas/trick-taking-33040001908; placed by me: board-gauntlet tabletop 814,283 c=23.4, grf-football simulations 515,262 c=22.9, magent-battle simulations 533,247 c=22.9 — borrowed-env precedent)
 2026-08-27T11:49:08Z 75 atlas dispatch=33069028786 region=paintlands at=184,255 clearance=23.4 extra_cities=35
+2026-08-27T11:51:52Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20632 status=pr_open (dispatch 2 33069028786; placed for others: 32 reused from PR 20621 branch + board-gauntlet 814,283 tabletop + grf-football 515,262 simulations + magent-battle 533,247 simulations)
+2026-08-27T11:51:52Z 75 phase transition 75 -> 80
+2026-08-27T11:51:52Z heartbeat phase=80
+2026-08-27T11:51:52Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20632
