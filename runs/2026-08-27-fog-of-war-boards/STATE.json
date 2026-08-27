@@ -5,7 +5,7 @@
   "slug": "fog-of-war-boards",
   "repo": "https://github.com/Metta-AI/cogame-fog-of-war-boards",
   "starter": "cogame-babel",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:30:00Z",
+  "heartbeat_at": "2026-08-27T00:46:00Z",
   "session_ended_at": null,
   "session_id": "325aebfd",
   "log": "runs/2026-08-27-fog-of-war-boards/log.md"
