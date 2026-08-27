@@ -4,7 +4,7 @@
   "run_task": "1217901469634527",
   "slug": "rware-warehouse",
   "repo": "https://github.com/Metta-AI/cogame-rware-warehouse",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
