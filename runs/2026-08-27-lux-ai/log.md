@@ -38,3 +38,7 @@
 2026-08-27T17:13:08Z progress phase=30 marker=r2-fixes.md
 2026-08-27T17:13:08Z 30 dispatch judge round=2 at sha=88cc3f75 -> reviews/r2-verdict.md
 2026-08-27T17:13:08Z heartbeat phase=30
+2026-08-27T17:24:51Z 30 judge returned r2: BLOCKING=0 (markers agree); B1 verified fixed, all 15 checklist items pass at sha=88cc3f75; advisory residue: check_gameversion.sh path retarget (non-blocking) -> reviews/r2-verdict.md
+2026-08-27T17:24:51Z progress phase=30 marker=r2-verdict.md
+2026-08-27T17:24:51Z 30 -> 40 phase transition: entering release
+2026-08-27T17:24:51Z heartbeat phase=40
