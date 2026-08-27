@@ -47,3 +47,5 @@
 2026-08-27T21:14:13Z 60 release-result.json overwritten with 0.1.1 artifact; league untouched by design — watching for post-0.1.1 rounds
 2026-08-27T21:14:13Z progress phase=60 marker=release-0.1.1-run-33116243915 check5-fix-shipped
 2026-08-27T21:14:13Z heartbeat phase=60
+2026-08-27T21:19:24Z 60 poll: round 6 completed but created 21:10:35Z < release finish 21:11:24Z — ran 0.1.0 image (old retry wording in log, 11 hits); round 7 (~21:25Z) is the first true 0.1.1 sample; waiting
+2026-08-27T21:19:24Z heartbeat phase=60
