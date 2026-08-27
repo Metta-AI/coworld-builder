@@ -83,3 +83,4 @@
 2026-08-27T11:42:19Z 70 phase transition 70 -> 75
 2026-08-27T11:42:19Z heartbeat phase=75
 2026-08-27T11:42:19Z progress phase=70 marker=1542499437710934097
+2026-08-27T11:43:12Z 75 atlas: slug live in /api/coworlds (episodes_7d=6); continent=paintlands (real-time combat micro, shooters/RTS row — cooperative motive but the game is a battle, not a commons); spot 202,270 clearance 39.5; label 'SMAC Micro'
