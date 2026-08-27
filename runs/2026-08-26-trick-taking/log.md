@@ -44,3 +44,7 @@
 2026-08-27T03:37:46Z 40 phase transition 40 -> 50
 2026-08-27T03:37:46Z heartbeat phase=50
 2026-08-27T03:37:46Z progress phase=40 marker=33036293815
+2026-08-27T03:38:50Z 50 seed POST /coworld-league-seeds 200 lseed_60ff9a35 league_id=league_4764b49e-5b40-40b6-bd3d-3ed1b7bd8aa0
+2026-08-27T03:38:50Z 50 division PUT 200 div_a46cc2cd-e301-4732-a116-975aee06a0dc (Competition level 1)
+2026-08-27T03:38:50Z 50 settings POST 200 (elo k=32 round_robin filler_policy, round_interval=15m)
+2026-08-27T03:38:50Z 50 champion1 submit dispatching coworld-submit.yml policy=trick-taking-signaller:v1 player=ply_44ae9048
