@@ -15,3 +15,6 @@
 2026-08-27T18:29:18Z progress phase=20 marker=ci-run-33103016744-green
 2026-08-27T18:29:18Z heartbeat phase=30
 2026-08-27T18:29:39Z 30 dispatch reviewer round=1 (repo sha 25efdbb7)
+2026-08-27T18:53:00Z 30 reviewer returned r1-review.md (19 findings; F1 say/view always dropped from directive records at 900-rune cap; F2 canvas_text total:0 both smoke steps — OffscreenCanvas; rest minor/tensions; verified-correct section extensive)
+2026-08-27T18:53:00Z 30 dispatch fixer round=1
+2026-08-27T18:53:00Z heartbeat phase=30
