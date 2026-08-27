@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3168,"clock":"GAUNTLET → CONNECT FOUR 7×6 · PLY 0 / 42 · DAVEEY TO MOVE","scorebug":"daveey FLYWHEEL ▶ THREATS 0 0 SCORE daveey-1 WIDGET THREATS 0 0 SCORE HEURISTIC","feed_lines":31}
+scrub readouts: 0%="GAUNTLET → CONNECT FOUR 7×6 · PLY 0 / 42 · DAVEEY TO MOVE"  50%="GAUNTLET → CONNECT FOUR 7×6 · PLY 5 / 42 · DAVEEY-1 TO MOVE"  100%="GAUNTLET → CONNECT FOUR 7×6 · PLY 9 / 42 · FINAL"
+canvas text: 776 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
