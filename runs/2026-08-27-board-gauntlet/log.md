@@ -52,3 +52,6 @@
 2026-08-27T05:31:02Z 60 verifier returned VERIFY.md: 8/8 TRUE — rounds 2/3/4 completed, both champions ranked (grandmaster 1017.33 r1, tempo 982.67 r2), replay cec5aa71 complete/line 0 fallbacks, round-4 log CLEAN (round-3 had platform-wide Bedrock throttle cross-checked vs trick-taking+fog-of-war-boards), static iframe via replays/session ready:true, viewer-check 33042374554 loaded:true 3 differing clocks, starter chrome confirmed
 2026-08-27T05:31:02Z 60 judge dispatched for VERIFY.md adjudication
 2026-08-27T05:31:02Z heartbeat phase=60
+2026-08-27T05:36:19Z 60 judge returned r60-verdict.md: blocking 0 — every load-bearing claim re-fetched independently, zero refuted, 5 non-blocking observations
+2026-08-27T05:36:19Z progress phase=60 marker=r60-verdict.md blocking=0
+2026-08-27T05:36:19Z 60 -> 70 phase transition
