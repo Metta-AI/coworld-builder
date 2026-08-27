@@ -81,3 +81,7 @@
 2026-08-27T03:40:36Z 75 atlas dispatch=33037066002 region=tabletop at=766,277 clearance=22.9 extra_cities=30 (29 reused from open PR 20600 branch atlas/goofspiel-oshi-zumo-33026257287; negotiation-games placed by me: parlour 429,838 clearance 22.9 — talk/haggling game)
 2026-08-27T03:43:29Z 75 atlas dispatch 2 (33037066002) failed step=build: trick-taking went live mid-phase (parallel run); fix = add it to extra_cities
 2026-08-27T03:43:29Z 75 atlas dispatch=33037204197 region=tabletop at=766,277 clearance=22.9 extra_cities=31 (+trick-taking tabletop 781,325 clearance 22.9)
+2026-08-27T03:45:55Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20617 status=pr_open (dispatch 3; placed for others: 29 reused from goofspiel PR branch + negotiation-games parlour 429,838 + trick-taking tabletop 781,325)
+2026-08-27T03:45:55Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20617
+2026-08-27T03:45:55Z 75 -> 80 phase transition
+2026-08-27T03:45:55Z heartbeat phase=80
