@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_b8ffbdda-2f8f-45af-b905-e600ba385cff",
+    "division": "div_444f4a49-4ebc-4a04-aee6-f05dd6d88993"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T19:47:19Z",
+  "heartbeat_at": "2026-08-27T19:48:31Z",
   "session_ended_at": null,
   "session_id": "4f2486ae",
   "log": "runs/2026-08-27-flatland/log.md"

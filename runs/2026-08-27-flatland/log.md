@@ -55,3 +55,8 @@
 2026-08-27T19:47:19Z progress phase=40 marker=release run 33109427929 v0.1.5 canonical
 2026-08-27T19:47:19Z 40 -> 50 phase transition: STATE.phase=50 written before league work
 2026-08-27T19:47:19Z heartbeat phase=50
+2026-08-27T19:48:31Z 50 seed POST /coworld-league-seeds 200 lseed_f7ea0f93 league=league_b8ffbdda-2f8f-45af-b905-e600ba385cff
+2026-08-27T19:48:31Z 50 division PUT /leagues/$L/divisions 200 division=div_444f4a49-4ebc-4a04-aee6-f05dd6d88993 (note: GET /leagues returns a bare array, not {entries})
+2026-08-27T19:48:31Z 50 settings POST /leagues/$L/settings 200 (elo k=32, round_robin, filler_policy, 15min rounds)
+2026-08-27T19:48:31Z progress phase=50 marker=league league_b8ffbdda-2f8f-45af-b905-e600ba385cff division div_444f4a49-4ebc-4a04-aee6-f05dd6d88993
+2026-08-27T19:48:31Z heartbeat phase=50
