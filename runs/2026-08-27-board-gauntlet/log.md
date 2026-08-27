@@ -56,3 +56,6 @@
 2026-08-27T05:36:19Z progress phase=60 marker=r60-verdict.md blocking=0
 2026-08-27T05:36:19Z 60 -> 70 phase transition
 2026-08-27T05:37:16Z 70 announce attempted_at written and pushed before POST (body 1751 chars)
+2026-08-27T05:37:25Z 70 announce msg=1542407672404377630 (200, flags 4, embeds [])
+2026-08-27T05:37:39Z progress phase=70 marker=discord_message_id=1542407672404377630
+2026-08-27T05:37:39Z 70 -> 75 phase transition
