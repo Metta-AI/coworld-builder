@@ -33,11 +33,12 @@
   "verify": {
     "rounds": [
       "round_5020c3b6-8969-4f18-b94b-4c1661ee3006",
-      "round_7868a38d-5b62-4fd2-8fa7-40433bc25f76"
+      "round_7868a38d-5b62-4fd2-8fa7-40433bc25f76",
+      "round_36e8e498-8d55-4628-91a9-b593df5c5d3e"
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/0ad28a03-2b00-46d3-bd99-1202c2251c00.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/1dc81bbf-936a-49f4-bb67-bdad75bf6792.replay",
     "iframe_static": true,
-    "viewer_check_run": "33114175789"
+    "viewer_check_run": "33119081304"
   },
   "announce": {
     "attempted_at": null,
@@ -55,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T21:14:13Z",
+  "heartbeat_at": "2026-08-27T21:48:11Z",
   "session_ended_at": null,
   "session_id": "fdce440e",
   "log": "runs/2026-08-27-pommerman/log.md"

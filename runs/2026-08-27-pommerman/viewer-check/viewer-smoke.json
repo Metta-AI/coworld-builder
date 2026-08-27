@@ -1,12 +1,12 @@
 {
   "loaded": true,
-  "ms": 1951,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_224b5627-9e46-46e5-ad55-1b2692cc503b/sha256%3Ac4073d59947d784d5b98cd1d213cba17519809f64cb100b1e64855ce58757343/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F0ad28a03-2b00-46d3-bd99-1202c2251c00.replay&v=2",
+  "ms": 2055,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_ab2d905c-54e0-42a9-b4e1-d4e0aaa3cf47/sha256%3Af143a6463712214a07f9613aa14b22feaf2fb80bf8bf57c9af04e410cab878b8/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F1dc81bbf-936a-49f4-bb67-bdad75bf6792.replay&v=2",
   "bundle": null,
   "replay": null,
   "clock": "turn 1/36 TICK 0/144 · WALLS CLOSE IN 96",
-  "scorebug": "RED DAVEEY · BASELINE RED-11/2 RED-21/2 ALIVE 2 0 ≋ 1·1 ↯ turn 1/36 TICK 0/144 · WALLS CLOSE IN 96 BLUE DAVEEY-1 · BASELINE (2) BLUE-11/2 BLUE-21/2 ALIVE 2 0 ≋ 1·1",
-  "status": "OPEN",
+  "scorebug": "RED DAVEEY · BASELINE RED-11/2 RED-21/2 ALIVE 2 0 ≋ 1·1 turn 1/36 TICK 0/144 · WALLS CLOSE IN 96 BLUE DAVEEY-1 · BASELINE (2) BLUE-11/2 BLUE-21/2 ALIVE 2 0 ≋ 1·1",
+  "status": "CONNECTING",
   "loading_text": null,
   "feed_lines": 0,
   "signals": {
@@ -23,11 +23,11 @@
     },
     {
       "at": "50%",
-      "clock": "turn 31/36 TICK 123/144 · THE ARENA IS THE MIDDLE 5X5"
+      "clock": "turn 31/36 TICK 122/144 · THE ARENA IS THE MIDDLE 5X5"
     },
     {
       "at": "100%",
-      "clock": "turn 36/36 TICK 144/144 · THE ARENA IS THE MIDDLE 5X5"
+      "clock": "turn 36/36 TICK 141/144 · THE ARENA IS THE MIDDLE 5X5"
     }
   ],
   "soak": null,

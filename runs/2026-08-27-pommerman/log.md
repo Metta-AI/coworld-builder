@@ -52,3 +52,7 @@
 2026-08-27T21:33:38Z 60 check 5 pre-check on round 7 (first 0.1.1 episode, ereq_1274172a): grep CLEAN, 2 will-retry notices, fallbackTurns [0,0,0,0], llmTurns [36,36,0,0], reason complete — fix confirmed; re-dispatching verifier for full VERIFY.md rewrite
 2026-08-27T21:33:38Z progress phase=60 marker=round7-check5-CLEAN
 2026-08-27T21:33:38Z heartbeat phase=60
+2026-08-27T21:48:11Z 60 verifier pass 2 returned: VERIFY.md 8/8 TRUE (round 7 = first 0.1.1 episode: log CLEAN, 72/72 llm orders, 0 fallbacks, config proves 12000/5000/18000 live; leaderboard daveey 1017.55 / daveey-1 982.45 both 6 rounds; iframe static on cow_ab2d905c sha f143a646; viewer-check 33119081304 loaded:true 3 clocks differ, killfeed rendering visible in PNG); attention items: feed_lines selector mismatch (#killfeed vs harness selectors), camper places 0 bombs, no production kick yet, name truncation nit
+2026-08-27T21:48:11Z 60 dispatch judge for VERIFY adjudication
+2026-08-27T21:48:11Z progress phase=60 marker=VERIFY.md-8of8-TRUE round7
+2026-08-27T21:48:11Z heartbeat phase=60
