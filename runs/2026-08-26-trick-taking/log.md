@@ -73,3 +73,5 @@
 2026-08-27T04:32:49Z 70 phase transition 70 -> 75
 2026-08-27T04:32:49Z heartbeat phase=75
 2026-08-27T04:32:49Z progress phase=70 marker=1542391365218861086
+2026-08-27T04:33:42Z 75 atlas continent=tabletop (card game port -> Tabletop Coast; rails call) spot from atlas_spot.py
+2026-08-27T04:33:42Z 75 atlas dispatch=33039772298 region=tabletop at=766,277 clearance=22.9
