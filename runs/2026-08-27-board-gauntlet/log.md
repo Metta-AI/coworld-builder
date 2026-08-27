@@ -33,3 +33,5 @@
 2026-08-27T04:37:22Z 30 judge returned r1-verdict.md: blocking 0 (B1/B2 fixed at head, N19 refuted, all 15 checklist items pass with cited evidence, sha 2390463b run 33038495877)
 2026-08-27T04:37:22Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-27T04:37:22Z 30 -> 40 phase transition
+2026-08-27T04:38:10Z 40 builder dispatched: coworld-release.yml v0.1.0, policies from tools/ci/policies.json (attempt 1 of 3)
+2026-08-27T04:38:10Z heartbeat phase=40
