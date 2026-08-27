@@ -38,3 +38,12 @@
 2026-08-27T04:46:22Z 40 builder returned: release v0.1.0 success first dispatch — run 33040017344, cow_dbadce13-6ad8-440d-a054-122e326af949, canonical true, hosted certification certified, replay_liveness skipped-static, secret_put true, 4 policies (grandmaster/tempo champions, tactician/hustler fillers), champion2 player ply_bac48eb1
 2026-08-27T04:46:22Z progress phase=40 marker=release-run-33040017344
 2026-08-27T04:46:22Z 40 -> 50 phase transition
+2026-08-27T04:46:43Z 50 seed 200: league_e96d74f3-745a-4308-86cf-0ed6489300e5 (Board Gauntlet, commissioner_driven)
+2026-08-27T04:47:10Z 50 division 200: div_b857da67-e8c4-424c-a378-5fb46b371c2f (Competition L1); settings 200 (round_robin, filler_policy, elo 1000/k32/mean, interval 15m)
+2026-08-27T04:48:30Z 50 champion1 submit ok: run 33040475658 board-gauntlet-grandmaster:v1 ply_44ae9048 (submit-result ok:true)
+2026-08-27T04:51:00Z 50 champion2 submit ok: run 33040503121 board-gauntlet-tempo:v1 ply_bac48eb1 (submit-result ok:true, player_name daveey-1 confirmed on policy-versions)
+2026-08-27T04:52:00Z 50 fillers registered 200 BEFORE trigger: tactician 396d5236-f6e1-4a65-a2d2-3e13666168e8, hustler f21847eb-9484-4034-91b2-8cc5e37dd2d5 (neither champion)
+2026-08-27T04:52:30Z 50 unpaused 200; trigger-round 200 (workflow ladder-league_e96d74f3)
+2026-08-27T04:54:00Z 50 rounds: r1 failed (Temporal RoundWorkflow failed before settling — raced the unpause; fillers WERE set before trigger), r2 pending with both champions in entrant_attributions (grandmaster 0bad04b4, tempo f9a218bb)
+2026-08-27T04:50:17Z progress phase=50 marker=league_e96d74f3-745a-4308-86cf-0ed6489300e5 round2 pending
+2026-08-27T04:50:17Z 50 -> 60 phase transition
