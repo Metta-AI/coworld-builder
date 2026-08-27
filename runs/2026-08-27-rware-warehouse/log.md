@@ -26,3 +26,7 @@
 2026-08-27T14:24:13Z 30 fixer returned round=1: 23 commits c7052f8..d5b5686 (one per finding), main=d5b5686, ci run 33081235780 GREEN (test/manifest/docker-smoke/wasm-viewer); F4,F6-F9,F11,F12,F19 documented in PATCHES.md 12-20 + PORTING-RWARE mirror; F13 partially refuted (was documented in PROTOCOL.md) but enum closed anyway; F3 was double-credit bug (fixture deliveries 12->6->23 after F3+F17); baseline re-swept yieldAfter 6->4; F14 added clampConfig repair; no test weakened per git log -p; fixer NOTED GameVersion still "1" despite rule changes F3/F5/F15/F17/F18 — flagged for judge
 2026-08-27T14:24:13Z 30 dispatch judge round=1 (fresh context, repo at d5b5686)
 2026-08-27T14:24:13Z heartbeat phase=30
+2026-08-27T14:39:18Z 30 judge returned round=1: r1-verdict.md blocking: 0 / BLOCKING: 0 (markers agree); none of F1-F23 refutable, all resolved at d5b5686 (15 code-fixed with tests, 8 documented divergences PATCHES #12-#20); independent checklist pass all 15 items + parallel-batch rule; GameVersion="1" ruled ADVISORY with condition: bump before first release if any pre-d5b5686 replay surfaces (none exists — never released)
+2026-08-27T14:39:18Z 30 -> 40 phase transition: STATE.phase=40 written; review loop closed in 1 round
+2026-08-27T14:39:18Z heartbeat phase=40
+2026-08-27T14:39:18Z progress phase=30 marker=r1-verdict.md blocking=0
