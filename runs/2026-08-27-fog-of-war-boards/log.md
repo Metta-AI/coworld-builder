@@ -62,3 +62,7 @@
 2026-08-27T03:26:00Z 60 check 7 TRUE: committed runs/.../release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
 2026-08-27T03:26:00Z 60 check 8 TRUE: viewer-check run 33036080393 green; loaded=true ms=2047; scrub PLY 0 -> PLY 4 -> PLY 6/FINAL (three differ); feed_lines=22; canvas_text 1067/0 outside/0 ellipsized; no failure
 2026-08-27T03:26:00Z 60 VERIFY.md written: 8/8 TRUE
+2026-08-27T03:29:30Z 60 verifier returned: 8/8 TRUE; rounds 2+3 completed, both champions ranked (daveey 1001.47, daveey-1 998.53), replay c56682ec strict-JSON complete 0-fallbacks, iframe static via SSR playlist, viewer-check 33036080393 loaded=true 3 differing clocks
+2026-08-27T03:29:30Z 60 noted: round-2 hosted log had platform-wide Bedrock haiku throttle (cross-checked vs negotiation-games ereq_854455ae, identical) — round 3 CLEAN; 3 non-blocking legibility notes (belief-board contrast, endcard covers mid-rank, sense>0 unrendered)
+2026-08-27T03:29:30Z 60 judge dispatched (fresh context) to adjudicate VERIFY.md vs SPEC definition of done
+2026-08-27T03:29:30Z heartbeat phase=60
