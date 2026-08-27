@@ -25,3 +25,4 @@
 2026-08-27T06:44:14Z 20 phase transition 20 -> 30 review_round=1
 2026-08-27T06:44:14Z heartbeat phase=30
 2026-08-27T06:44:14Z progress phase=20 marker=33046300533
+2026-08-27T06:45:07Z 30 reviewer dispatched r1 thread=sthr_012ZrDSuHWtjSBofkTAcomMM sha=190ef840 session=c7061c35
