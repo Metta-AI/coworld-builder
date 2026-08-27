@@ -73,3 +73,7 @@
 2026-08-27T19:17:29Z 60 -> 70 phase transition: entering announce
 2026-08-27T19:17:29Z heartbeat phase=70
 2026-08-27T19:18:24Z 70 announce attempted_at written and pushed before POST
+2026-08-27T19:18:49Z 70 announce msg=1542614317583831070 (200, flags=4, embeds=0, 1786 chars)
+2026-08-27T19:18:49Z progress phase=70 marker=1542614317583831070
+2026-08-27T19:18:49Z 70 -> 75 phase transition: entering atlas
+2026-08-27T19:18:49Z heartbeat phase=75
