@@ -1219,3 +1219,27 @@ the starter after the fact.
 - **DOM-text chrome is invisible to the canvas_text gate.** A game whose readouts and LLM notes are DOM (not canvas draws) reports `canvas_text total: 0` with `--strict-text-bounds` green while a 160-rune note runs off-stage inside the starter's `.feed-row { white-space: nowrap }` (its comment assumes a 10-char name). The worst-case fixture must measure DOM bounding boxes against `#stage` at 360/620/1280 px, read its strings back and compare rune lengths, and gate via its own ci.yml step. Also: a fixture shim spliced *before* `static_replay.js` gets clobbered by it — all three iframes dead while the top page stays green.
 - **The atlas can fall dozens of leagues behind** — this run's first dispatch failed with 38 unplaced leagues. `extra_cities` takes them all in one dispatch; pick spots by appending each accepted pick to a local `places.mjs` copy and re-running `atlas_spot.py`, so every next spot keeps clearance from the previous ones (38/38 landed ≥ 22.9 that way).
 - **`gh repo create` + sandbox `git push` to `main` is refused** (credential proxy only writes `claude/…` branches). Publishing via the GitHub API (blobs → tree → commit → non-forced ref update on `heads/main`) works and preserves one-commit-per-finding discipline; verify each remote tree equals the local tree.
+
+## 2026-08-27 flatland
+
+- **The FIRST `upload-policy` call can 400 `Container image img_… is not ready`** seconds after
+  `upload-coworld` registers the image; the remaining policies in the same run upload fine.
+  Cold-image reconciler race — bump the version and re-dispatch, never debug the game
+  (0.1.3 → 0.1.5). Now a Common-mistakes row in `playbooks/make-coworld.md`.
+- **Local certify's `smoke-episode` probes the player websocket with a WRONG token** and fails
+  `game_contract_violation: Bad player token was accepted` if the server seats it. A fresh-written
+  server (starter wire format, own code) must implement token-match rejection AND the Ping→Pong
+  branch up front — the two cost one cert dispatch each here. Both are Common-mistakes rows now.
+- **`atlas_spot.py` against metta main collides with the coordinates inside OPEN atlas PRs.**
+  With ~20 atlas PRs stacked unmerged, main's `places.mjs` lags: spot 1 offered 536,271 which PR
+  #20645 had already given citysim. Fix: fetch the newest open atlas PR's `places.mjs` patch,
+  splice its `+` CITIES lines into the local copy, re-run `atlas_spot.py`, and carry that PR's
+  entries verbatim in `extra_cities` so the stacked PRs stay content-consistent (this run placed
+  40: #20645's 39 + pommerman).
+- **Size the first-attempt LLM deadline ≥ 2× the provider tail.** flatland's `attempt1Ms = 9 s`
+  sat ~1 s above haiku's observed max (8.06 s, all calls 200): one round had 4/31 turns on one
+  seat fall back with zero provider errors. Also label the fallback cause from the actual failure
+  — a transport timeout was logged `parse_error` here (carried forward as a patch item, with 4
+  leftover coworld-ctf `soldier_*_front_gun.png` 404s in the static viewer bundle).
+- **`GET /divisions/<id>/leaderboard` returns literal `null` (HTTP 200) until the first round
+  completes** — not an error, not an empty list. Poll rounds, not the leaderboard, for readiness.
