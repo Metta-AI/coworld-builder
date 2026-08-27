@@ -62,3 +62,8 @@
 2026-08-27T10:45:21Z heartbeat phase=60
 2026-08-27T10:45:21Z progress phase=60 marker=VERIFY.md
 2026-08-27T10:46:06Z 60 builder dispatched thread=sthr_01Ms1YQPp1eVAjzd68pKUi6d (check-5 fix: design-pinned repair table + interim log wording; release 0.1.3) session=c7061c35
+2026-08-27T11:13:15Z 60 builder returned: check-5 fix shipped (8968e88f repair-table per design, 545afa9f terminal-only 'falling back' wording; tests extended, none weakened); ci green 33064860833; release 0.1.3 one dispatch run=33065622007 cow_id=cow_345bfc54-561e-4606-8de1-e3086f37d58a canonical=true certified secret_put=true; policies v4 uploaded (league keeps v3 submissions — fix is game-server-side); release-result.json overwritten
+2026-08-27T11:13:15Z 60 builder flags logged: (a) bare-order-object without cogs wrapper takes repair path not honoured — small gap, advisory; (b) residual grep risk if max_tokens truncation hits attempt 1 (interim line echoes error.msg) — accepted, maxOutputTokens=900 makes it unlikely
+2026-08-27T11:13:15Z 60 waiting for >=1 completed round on 0.1.3 image before re-verify (rounds every 15m)
+2026-08-27T11:13:15Z heartbeat phase=60
+2026-08-27T11:13:15Z progress phase=60 marker=33065622007
