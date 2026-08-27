@@ -64,3 +64,7 @@
 2026-08-27T04:25:38Z 60 verifier returned: VERIFY.md 8/8 TRUE (commit 9a21e33); 3 completed post-filler rounds r2-r4; both champions ranked (daveey-1 1013.2, daveey 986.8); replay r4 complete 8/8 hands, 1 fallback/100 champion decisions; check5 grep 2 throttle hits (Bedrock 429 platform-wide, cross-checked fog-of-war-boards ereq_d273ce15 same minute; r2 log CLEAN) — recorded TRUE under capacity exception, flagged for judge; viewer-check 33039031390 loaded=true clocks differ never_inside=0
 2026-08-27T04:25:38Z 60 judge dispatched (VERIFY.md adjudication vs SPEC definition-of-done) session=6ada72fc
 2026-08-27T04:25:38Z heartbeat phase=60
+2026-08-27T04:31:22Z 60 judge returned: verify-verdict.md blocking=0/BLOCKING=0 (commit f4b4de8); check5 exception UPHELD (429 quota = platform-wide capacity class; fog-of-war-boards cross-check re-fetched; r2 log clean); check8 re-verified from artifacts; check4 schema deviation ruled design-declared
+2026-08-27T04:31:22Z 60 phase transition 60 -> 70
+2026-08-27T04:31:22Z heartbeat phase=70
+2026-08-27T04:31:22Z progress phase=60 marker=verify-verdict.md

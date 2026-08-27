@@ -5,7 +5,7 @@
   "slug": "trick-taking",
   "repo": "Metta-AI/cogame-trick-taking",
   "starter": "cogame-babel",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "30": 1
   },
@@ -33,9 +33,14 @@
     "division": "div_a46cc2cd-e301-4732-a116-975aee06a0dc"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_0d426008-9d98-4aff-96cf-4853403f1605",
+      "round_f719f6e9-ac4e-4871-9f7e-bbfa2fa47b89",
+      "round_1e94fa5c-f65c-42a7-91d4-9b56f8854885"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/ec71e84c-f086-4198-907e-c24b27f3a317.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33039031390"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T04:25:38Z",
+  "heartbeat_at": "2026-08-27T04:31:22Z",
   "session_ended_at": null,
   "session_id": "6ada72fc",
   "log": "runs/2026-08-26-trick-taking/log.md"
