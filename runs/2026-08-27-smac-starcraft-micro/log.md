@@ -61,3 +61,4 @@
 2026-08-27T10:45:21Z 60 verifier template finding recorded for phase-80 LEARNINGS: viewer_smoke.mjs probes #feed/.feed/#log but ctf-lineage feed is #killfeed -> feed_lines always 0 on paintbot lineage
 2026-08-27T10:45:21Z heartbeat phase=60
 2026-08-27T10:45:21Z progress phase=60 marker=VERIFY.md
+2026-08-27T10:46:06Z 60 builder dispatched thread=sthr_01Ms1YQPp1eVAjzd68pKUi6d (check-5 fix: design-pinned repair table + interim log wording; release 0.1.3) session=c7061c35
