@@ -21,3 +21,7 @@
 2026-08-27T19:45:01Z 30 fixer returned r1-fixes.md: 9 fixed (F1 MaxDirectiveRunes 900->4000 view-shed-first say-never; F2 fixture measures real broadcast_core draws, non-vacuity proven; F4 F5 F10 F11 F12 F13 F15 F18), 4 refuted w/ evidence (F3 F14 F16 F17), 5 advisory (F6-F9 F19); main=9fa80f8 CI green run=33108749059
 2026-08-27T19:45:01Z 30 dispatch judge round=1 (fresh context, sha 9fa80f8)
 2026-08-27T19:45:01Z heartbeat phase=30
+2026-08-27T19:57:13Z 30 judge returned r1-verdict.md blocking: 0 / BLOCKING: 0 (agree); all 15 checklist items PASS + parallel-batch rule; 9 findings resolved at 9fa80f8, 4 refuted, 6 advisory->errata; provenance re-verified independently (page builder diff-clean, chrome_common byte-identical)
+2026-08-27T19:57:13Z 30 -> 40 phase transition: review loop closed in 1 round; entering release
+2026-08-27T19:57:13Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-27T19:57:13Z heartbeat phase=40
