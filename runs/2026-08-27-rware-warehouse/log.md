@@ -64,3 +64,5 @@
 2026-08-27T15:40:18Z progress phase=70 marker=discord_message_id 1542559335693947042
 2026-08-27T15:40:55Z 75 atlas continent=commons reason=fully-cooperative shared-throughput logistics; matches 4-deep coop-port precedent (pistonball, walker-waterworld, knights-archers, collab-cooking)
 2026-08-27T15:41:10Z 75 atlas dispatch=33089142064 region=commons at=416,574 clearance=22.9
+2026-08-27T15:42:50Z 75 atlas dispatch 33089142064 failed: 36 unplaced leagues (merge-queue backlog). Fix per step 8 + magent precedent: extra_cities = 36 CITIES rows harvested from PR #20631 branch (atlas/magent-battle-33064835997), all 36 missing slugs covered; own spot recomputed vs augmented map: 383,535 clearance 22.9
+2026-08-27T15:43:41Z 75 atlas dispatch=33089404888 region=commons at=383,535 clearance=22.9 extra_cities=36
