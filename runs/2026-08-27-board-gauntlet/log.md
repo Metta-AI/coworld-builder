@@ -61,3 +61,8 @@
 2026-08-27T05:37:39Z 70 -> 75 phase transition
 2026-08-27T05:38:28Z 75 atlas slug live in /api/coworlds (Board Gauntlet, episodes_7d 9); continent=tabletop (board/card game ports — a perfect-information board ladder)
 2026-08-27T05:38:28Z 75 atlas dispatch=33043121230 region=tabletop at=766,277 clearance=22.9
+2026-08-27T05:40:00Z 75 atlas dispatch 33043121230 FAILED: step=build, 32 unplaced leagues — fix per step 8: place them all via extra_cities
+2026-08-27T05:42:49Z 75 atlas continents decided (rails): paintlands=atari-cabinet,grid-wars,knights-archers (zero-sum combat); simulations=cogmud,particle-worlds,pistonball,walker-waterworld (borrowed RL worlds); tabletop=fog-of-war-boards,goofspiel-oshi-zumo,hanabi,liars-dice,trick-taking,cogiavelli,cogplomacy (board/card ports); shire=collab-cooking,daycare (cozy co-op); commons=chemistry,cogchemists,coins,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,gift-refinements,matrix-games,territory (mixed-motive); parlour=chorus,cogolf,garble,hidden-agenda,negotiation-games (talk games)
+2026-08-27T05:42:49Z 75 atlas placed 32 leagues for other runs via extra_cities (atlas_spot iterative, all clearance >=22.9); board-gauntlet re-picked at 814,283 clearance=23.4 (766,277 went to fog-of-war-boards)
+2026-08-27T05:42:49Z 75 atlas dispatch=33043347612 region=tabletop at=814,283 clearance=23.4 (attempt 2 of 3, extra_cities x32)
+2026-08-27T05:42:49Z heartbeat phase=75
