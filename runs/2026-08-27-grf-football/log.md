@@ -69,3 +69,6 @@
 2026-08-27T11:35:14Z progress phase=70 marker=discord_message_id=1542497665286152318
 2026-08-27T11:35:14Z 70 phase 70 -> 75
 2026-08-27T11:35:14Z heartbeat phase=75
+2026-08-27T11:36:55Z 75 atlas continent=paintlands (team zero-sum physics sport; cogball precedent at 105,165)
+2026-08-27T11:36:55Z 75 atlas dispatch=33068121145 region=paintlands at=202,270 clearance=39.5
+2026-08-27T11:36:55Z heartbeat phase=75
