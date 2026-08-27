@@ -74,3 +74,7 @@
 2026-08-27T00:02:22Z 60 judge dispatch (phase-60 adjudication)
 2026-08-27T00:02:22Z heartbeat phase=60
 2026-08-27T00:02:46Z 60 judge dispatched thread=sthr_013dtAA7S5vj14JaSNJ1Mwn6 target=verify-verdict.md session=85d7073b
+2026-08-27T00:08:54Z 60 judge returned: blocking=0 (markers agree; all 8 CONFIRMED, re-fetched independently; png inspected) file=verify-verdict.md
+2026-08-27T00:08:54Z progress phase=60 marker=verify-verdict.md
+2026-08-27T00:08:54Z 60 -> 70 phase transition: STATE.phase=70
+2026-08-27T00:08:54Z heartbeat phase=70
