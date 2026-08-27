@@ -106,3 +106,7 @@
 2026-08-27T20:50:57Z 60 -> 70 phase transition: STATE.phase=70 written before announce work
 2026-08-27T20:50:57Z heartbeat phase=70
 2026-08-27T20:52:08Z 70 announce attempt marker written (attempted_at pushed before POST)
+2026-08-27T20:52:24Z 70 announce msg=1542637897709125654 (200, flags=4, embeds=[], 1791 chars)
+2026-08-27T20:52:24Z progress phase=70 marker=discord_message_id 1542637897709125654
+2026-08-27T20:52:24Z 70 -> 75 phase transition: STATE.phase=75 written before atlas work
+2026-08-27T20:52:24Z heartbeat phase=75
