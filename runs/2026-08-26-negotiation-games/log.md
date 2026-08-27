@@ -50,3 +50,7 @@
 2026-08-27T00:26:03Z heartbeat phase=60
 2026-08-27T00:26:03Z progress phase=50 marker=league_88e9052f-8e37-4f2e-aea1-ea4f5fdb20e7
 2026-08-27T00:26:57Z 60 verifier dispatched thread=sthr_015yU7JvLKQANYLEjS745zgG output=VERIFY.md session=ng26a441
+2026-08-27T00:28:20Z heartbeat phase=60
+2026-08-27T00:28:20Z check1 poll: round 1 completed (round_cd269017), awaiting round 2 (need >=2)
+2026-08-27T00:28:20Z check2 leaderboard: TRUE — daveey-1 rank1 1016 rounds_played=1, daveey rank2 984 rounds_played=1, no filler rows
+2026-08-27T00:28:20Z check7 release-result.json (committed copy): TRUE — "Replay liveness: skipped (static replay bundle declared; ..."
