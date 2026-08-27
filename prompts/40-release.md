@@ -90,7 +90,8 @@ repo (SPEC §Phases, `AGENT.md` §Sub-agents, `agents/builder.md` §Release). No
    | `step_failed` / error | Action |
    |---|---|
    | certify: `completed without a replay URL` (artifacts exist in S3) | reconciler race on a cold image — **bump version, re-dispatch**. It passes the second time. Do not debug the game. |
-   | upload OK but `canonical == false` | completion race — bump version, re-dispatch. |
+   | upload OK but `canonical == false` | first check the workflow has the "Wait for the uploaded version to become canonical" step (in `templates/coworld-release.yml` since 2026-08-27 — hosted certification settles *after* `--wait-hosted-smoke` returns, and a bump can never outrun that): if missing, add it from the template and re-dispatch; if present and it timed out, read `coworld status <cow_id> --json` from the sandbox and bump only on a genuine completion race. The poll must go through the CLI — a raw HTTPS GET 403s from runners (lux-ai, 2026-08-27). |
+   | certify: `did not answer a WebSocket Ping with Pong` (`game_contract_violation` in smoke-episode) | the forked server's `websocketHandler` lost coworld-ctf's `Ping → Pong` branch — restore it, push, re-dispatch (lux-ai 0.1.0, 2026-08-27). |
    | `upload-policy`: "Docker image is not available locally" | workflow ran policies after `upload-coworld` — fix `coworld-release.yml` order, push, re-dispatch. |
    | `secret put` 404 | ran before `upload-coworld` — fix order, re-dispatch. |
    | certify: zero episodes / no schedule | `num_agents` missing from a variant or the cert fixture — fix the manifest, push, re-dispatch. |
