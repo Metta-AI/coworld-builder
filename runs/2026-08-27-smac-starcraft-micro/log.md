@@ -85,3 +85,5 @@
 2026-08-27T11:42:19Z progress phase=70 marker=1542499437710934097
 2026-08-27T11:43:12Z 75 atlas: slug live in /api/coworlds (episodes_7d=6); continent=paintlands (real-time combat micro, shooters/RTS row — cooperative motive but the game is a battle, not a commons); spot 202,270 clearance 39.5; label 'SMAC Micro'
 2026-08-27T11:43:36Z 75 atlas dispatch=33068619866 region=paintlands at=202,270 clearance=39.5
+2026-08-27T11:48:45Z 75 atlas dispatch 1 (33068619866) failed step=build: 35 unplaced leagues; fix per step 8 = extra_cities
+2026-08-27T11:48:45Z 75 atlas retry 2: own dot moved 202,270 -> 184,255 clearance 23.4 (PR 20621 branch geometry: atari-cabinet took 202,270); extra_cities=35 (32 reused from open PR 20621 branch atlas/trick-taking-33040001908; placed by me: board-gauntlet tabletop 814,283 c=23.4, grf-football simulations 515,262 c=22.9, magent-battle simulations 533,247 c=22.9 — borrowed-env precedent)
