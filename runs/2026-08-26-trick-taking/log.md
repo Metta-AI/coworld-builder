@@ -48,3 +48,4 @@
 2026-08-27T03:38:50Z 50 division PUT 200 div_a46cc2cd-e301-4732-a116-975aee06a0dc (Competition level 1)
 2026-08-27T03:38:50Z 50 settings POST 200 (elo k=32 round_robin filler_policy, round_interval=15m)
 2026-08-27T03:38:50Z 50 champion1 submit dispatching coworld-submit.yml policy=trick-taking-signaller:v1 player=ply_44ae9048
+2026-08-27T03:39:23Z 50 champion1 submitted ok run=33036988816 sub_3d886623 policy=trick-taking-signaller:v1
