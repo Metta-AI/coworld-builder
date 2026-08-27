@@ -5,7 +5,7 @@
   "slug": "negotiation-games",
   "repo": "https://github.com/Metta-AI/cogame-negotiation-games",
   "starter": "cogame-babel",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "40": 2
   },
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:21:32Z",
+  "heartbeat_at": "2026-08-27T00:22:27Z",
   "session_ended_at": null,
   "session_id": "ng26a441",
   "log": "runs/2026-08-26-negotiation-games/log.md"
