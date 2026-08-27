@@ -24,8 +24,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_7b53400d-b780-4024-924a-59bc2818dc8d",
+    "division": "div_7c2c9172-a9dd-449b-8911-e5d072c11d25"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T20:08:05Z",
+  "heartbeat_at": "2026-08-27T20:09:11Z",
   "session_ended_at": null,
   "session_id": "fdce440e",
   "log": "runs/2026-08-27-pommerman/log.md"
