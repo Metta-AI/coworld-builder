@@ -5,9 +5,10 @@
   "slug": "rware-warehouse",
   "repo": "https://github.com/Metta-AI/cogame-rware-warehouse",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
-    "40": 0
+    "40": 0,
+    "50": 0
   },
   "review_round": 1,
   "coworld": {
@@ -23,11 +24,14 @@
       "rware-warehouse-shuttle:v1",
       "rware-warehouse-courteous:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "b2b4ff06-d45a-4ef1-8d99-36dc810c44db",
+      "a7a6f802-c46a-4706-b126-3b81c45bf81f"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_05193716-123a-4941-a7c7-16a9643ebe37",
+    "division": "div_042d04a9-e695-4c7b-a0b9-8f2bb2ae7765"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T14:51:09Z",
+  "heartbeat_at": "2026-08-27T14:56:04Z",
   "session_ended_at": null,
   "session_id": "15c2617e",
   "log": "runs/2026-08-27-rware-warehouse/log.md"

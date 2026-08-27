@@ -40,3 +40,12 @@
 2026-08-27T14:54:10Z 50 division PUT 200 div_042d04a9-e695-4c7b-a0b9-8f2bb2ae7765
 2026-08-27T14:52:40Z 50 settings POST 200 (round_robin, filler_policy, elo 1000/32, mean, interval 15m)
 2026-08-27T14:52:40Z heartbeat phase=50
+2026-08-27T14:52:51Z 50 champion1 submit dispatch run 33084701427 -> ok:true picker:v1 as daveey
+2026-08-27T14:53:25Z 50 champion2 submit dispatch run 33084755098 -> ok:true router:v1 as daveey-1
+2026-08-27T14:55:20Z 50 policy-versions resolved: picker f7aae7bc(daveey) router 0bbe6faa(daveey-1) shuttle b2b4ff06 courteous a7a6f802
+2026-08-27T14:55:40Z 50 filler-policies POST 200: shuttle+courteous UUIDs registered, neither champion
+2026-08-27T14:56:00Z 50 rounds-paused false; trigger-round OK (workflow ladder-league_05193716)
+2026-08-27T14:56:04Z 50 rounds: round 1 FAILED (Temporal RoundWorkflow failed before settling — auto-created at unpause before scheduler saw fillers; fillers were set before my trigger), round 2 round_e8ab3923 PENDING with entrant_attributions = both champions (daveey/picker, daveey-1/router) — exit criterion met
+2026-08-27T14:56:04Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-27T14:56:04Z heartbeat phase=60
+2026-08-27T14:56:04Z progress phase=50 marker=league_05193716 division div_042d04a9 round_e8ab3923 pending
