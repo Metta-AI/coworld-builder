@@ -11,3 +11,4 @@
 2026-08-27T06:29:36Z progress phase=10 marker=design.md accepted round 2
 2026-08-27T06:30:31Z 20 repo Metta-AI/cogame-magent-battle created public; propagate-secrets run 33046084129 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present
 2026-08-27T06:30:31Z 20 dispatch builder round=1
+2026-08-27T07:46:19Z 20 push d9d78c0 ci run=33051097971 dispatched (test/manifest/docker-smoke/wasm-viewer)
