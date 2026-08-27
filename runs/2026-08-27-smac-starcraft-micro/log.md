@@ -9,3 +9,4 @@
 2026-08-27T04:02:20Z 00 phase transition 00 -> 10
 2026-08-27T04:02:20Z heartbeat phase=10
 2026-08-27T04:02:51Z 10 starter=coworld-ctf (real-time tick-loop micro combat with new rules -> starter table row 2; knights-archers/paintball precedent; coworld-bw not mounted, SMAX-style dependency-free clone sanctioned by idea text)
+2026-08-27T04:03:42Z 10 designer dispatched round=1 thread=sthr_017Jqbc4BQK9tbqahYk8o5DR output=runs/2026-08-27-smac-starcraft-micro/design-draft.md session=c7061c35
