@@ -18,3 +18,4 @@
 2026-08-27T23:24:10Z progress phase=20 marker=ci.yml run 33125685503 success sha=a6d3a86c
 2026-08-27T23:24:10Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-27T23:24:10Z heartbeat phase=30
+2026-08-27T23:24:41Z 30 r1 dispatch reviewer: trace cogame-hide-and-seek@a6d3a86c against design.md
