@@ -30,3 +30,5 @@
 2026-08-27T01:09:13Z 30 reviewer returned r1: 3 blocking (B1 640px breakpoint missing, B2 notes band not sized from caps/mid-string ellipsis, B3 no baseline tuning harness) + 12 advisory; r1-review.md 601 lines
 2026-08-27T01:09:56Z 30 fixer dispatched r1 thread=sthr_01CvoiBTWvv6nLVKumWhpJEc session=d199e038
 2026-08-27T02:43:53Z 00 resume at phase 30 attempt=1 session=6ada72fc
+2026-08-27T02:45:00Z 30 resume-context: prior session d199e038 fixer (sthr_01CvoiBTWvv6vLVKumWhpJEc) died without r1-fixes.md; repo shows 6 fix commits a2c8e214..c1f14b85 (B1,B2,B3,N1,N5,N3) all CI green (last run 33031272311 success at c1f14b85); N2,N4,N6-N12 unaddressed in commit log
+2026-08-27T02:45:00Z 30 fixer re-dispatched r1 (verify existing fix commits + address/refute remaining findings + write r1-fixes.md) session=6ada72fc
