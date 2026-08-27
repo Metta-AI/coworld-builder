@@ -60,3 +60,4 @@
 2026-08-27T21:53:20Z 60 -> 70 phase transition: entering announce
 2026-08-27T21:53:20Z progress phase=60 marker=60-verdict.md blocking=0
 2026-08-27T21:53:20Z heartbeat phase=70
+2026-08-27T21:54:01Z 70 announce attempted_at written (pre-POST marker)
