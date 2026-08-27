@@ -59,3 +59,5 @@
 2026-08-27T05:37:25Z 70 announce msg=1542407672404377630 (200, flags 4, embeds [])
 2026-08-27T05:37:39Z progress phase=70 marker=discord_message_id=1542407672404377630
 2026-08-27T05:37:39Z 70 -> 75 phase transition
+2026-08-27T05:38:28Z 75 atlas slug live in /api/coworlds (Board Gauntlet, episodes_7d 9); continent=tabletop (board/card game ports — a perfect-information board ladder)
+2026-08-27T05:38:28Z 75 atlas dispatch=33043121230 region=tabletop at=766,277 clearance=22.9
