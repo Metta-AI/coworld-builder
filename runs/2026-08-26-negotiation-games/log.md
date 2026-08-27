@@ -67,3 +67,7 @@
 2026-08-27T00:50:57Z 60 verifier returned: VERIFY.md 8/8 TRUE (2 rounds completed, both champions ranked, replay clean 0 fallbacks on champions, hosted log CLEAN, static iframe, cert liveness skipped-static, viewer-check 33027843730 loaded=true 3 distinct clocks); viewer-check/ committed
 2026-08-27T00:50:57Z 60 judge dispatched (verify adjudication) thread=sthr_019RGbrCGZ5pm9ioWfB5L5Nb output=reviews/r-verify-verdict.md session=ng26a441
 2026-08-27T00:51:29Z heartbeat phase=60
+2026-08-27T00:54:40Z 60 judge returned: r-verify-verdict.md blocking=0 (all 8 items re-fetched and confirmed)
+2026-08-27T00:54:40Z 60 -> 70 phase transition: STATE phase=70
+2026-08-27T00:54:40Z heartbeat phase=70
+2026-08-27T00:54:40Z progress phase=60 marker=r-verify-verdict.md
