@@ -68,3 +68,7 @@
 2026-08-27T19:50:51Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
 2026-08-27T19:50:51Z heartbeat phase=60
 2026-08-27T19:51:21Z 60 dispatch verifier -> runs/2026-08-27-flatland/VERIFY.md (8 checks; round 1 pending at dispatch; fillers were set before the first trigger)
+2026-08-27T19:52:59Z heartbeat phase=60
+2026-08-27T19:52:59Z 60 poll #1 rounds: 1:pending (completed=0)
+2026-08-27T19:58:00Z heartbeat phase=60
+2026-08-27T19:58:00Z 60 poll #2 rounds: 1:completed (completed=1)
