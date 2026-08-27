@@ -58,8 +58,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T21:00:21Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-27T21:03:00Z",
+  "session_ended_at": "2026-08-27T21:03:00Z",
   "session_id": "4f2486ae",
   "log": "runs/2026-08-27-flatland/log.md"
 }
