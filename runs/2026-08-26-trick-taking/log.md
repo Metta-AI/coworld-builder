@@ -75,3 +75,6 @@
 2026-08-27T04:32:49Z progress phase=70 marker=1542391365218861086
 2026-08-27T04:33:42Z 75 atlas continent=tabletop (card game port -> Tabletop Coast; rails call) spot from atlas_spot.py
 2026-08-27T04:33:42Z 75 atlas dispatch=33039772298 region=tabletop at=766,277 clearance=22.9
+2026-08-27T04:38:19Z 75 atlas dispatch 1 (33039772298) failed: build error 'unplaced leagues' — 31 shipped leagues missing from CITIES
+2026-08-27T04:38:19Z 75 atlas retry 2 (different fix per step 8): extra_cities placing all 31 — paintlands: atari-cabinet,grid-wars; simulations: cogmud,particle-worlds,pistonball,walker-waterworld,knights-archers; tabletop: cogiavelli,cogplomacy,fog-of-war-boards,goofspiel-oshi-zumo,hanabi,liars-dice; shire: collab-cooking,daycare; commons: chemistry,cogchemists,coins,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,gift-refinements,matrix-games,territory; parlour: chorus,cogolf,garble,hidden-agenda,negotiation-games (coords via atlas_spot.py iterative, all clearance>=22.9)
+2026-08-27T04:38:19Z 75 atlas dispatch=33040001908 region=tabletop at=766,277 clearance=22.9
