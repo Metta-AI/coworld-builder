@@ -72,3 +72,7 @@
 2026-08-27T00:54:40Z heartbeat phase=70
 2026-08-27T00:54:40Z progress phase=60 marker=r-verify-verdict.md
 2026-08-27T00:55:39Z 70 announce attempted_at written and pushed before POST (body 1789 chars)
+2026-08-27T00:55:58Z 70 announce msg=1542336790831300719 (200, flags=4, embeds=[])
+2026-08-27T00:55:58Z 70 -> 75 phase transition: STATE phase=75
+2026-08-27T00:55:58Z heartbeat phase=75
+2026-08-27T00:55:58Z progress phase=70 marker=discord_message_id=1542336790831300719
