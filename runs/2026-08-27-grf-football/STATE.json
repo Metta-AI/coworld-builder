@@ -1,0 +1,52 @@
+{
+  "run": "2026-08-27-grf-football",
+  "idea_task": "1217748465986424",
+  "run_task": "1217891354710067",
+  "slug": "grf-football",
+  "repo": "https://github.com/Metta-AI/cogame-grf-football",
+  "starter": "",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-08-27T05:00:30Z",
+  "session_ended_at": null,
+  "session_id": "a0f36af8",
+  "log": "runs/2026-08-27-grf-football/log.md"
+}
