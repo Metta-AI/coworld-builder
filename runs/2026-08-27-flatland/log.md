@@ -101,3 +101,7 @@
 2026-08-27T20:40:43Z progress phase=60 marker=VERIFY.md 8/8 TRUE + viewer-check 33113882071
 2026-08-27T20:40:43Z 60 dispatch judge -> runs/2026-08-27-flatland/reviews/verify-verdict.md (fresh context adjudication of VERIFY.md)
 2026-08-27T20:40:43Z heartbeat phase=60
+2026-08-27T20:50:57Z 60 judge returned: reviews/verify-verdict.md BLOCKING: 0 — all 8 checks independently reproduced (4 rounds completed by judge's fetch); 3 flagged items ruled NON-BLOCKING (attempt1Ms tuning + cause-enum mislabel carried forward, sprite 404s cosmetic, feed_lines gap noted)
+2026-08-27T20:50:57Z progress phase=60 marker=verify-verdict.md BLOCKING: 0
+2026-08-27T20:50:57Z 60 -> 70 phase transition: STATE.phase=70 written before announce work
+2026-08-27T20:50:57Z heartbeat phase=70
