@@ -4,7 +4,7 @@
   "run_task": "1217903600079381",
   "slug": "lux-ai",
   "repo": "https://github.com/Metta-AI/cogame-lux-ai",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
