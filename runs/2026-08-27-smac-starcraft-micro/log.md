@@ -87,3 +87,4 @@
 2026-08-27T11:43:36Z 75 atlas dispatch=33068619866 region=paintlands at=202,270 clearance=39.5
 2026-08-27T11:48:45Z 75 atlas dispatch 1 (33068619866) failed step=build: 35 unplaced leagues; fix per step 8 = extra_cities
 2026-08-27T11:48:45Z 75 atlas retry 2: own dot moved 202,270 -> 184,255 clearance 23.4 (PR 20621 branch geometry: atari-cabinet took 202,270); extra_cities=35 (32 reused from open PR 20621 branch atlas/trick-taking-33040001908; placed by me: board-gauntlet tabletop 814,283 c=23.4, grf-football simulations 515,262 c=22.9, magent-battle simulations 533,247 c=22.9 — borrowed-env precedent)
+2026-08-27T11:49:08Z 75 atlas dispatch=33069028786 region=paintlands at=184,255 clearance=23.4 extra_cities=35
