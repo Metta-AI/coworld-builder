@@ -13,3 +13,8 @@
 2026-08-27T20:04:04Z 20 propagate-secrets.yml run 33111469108 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
 2026-08-27T20:04:04Z 20 dispatch builder: implement design.md, drive ci.yml to green on main
 2026-08-27T23:17:50Z 00 resume at phase 20 attempt=1 session=5bd46913
+2026-08-27T23:24:10Z 20 builder from prior session kept iterating: ci.yml runs 33120866143/33121498470/33122252472/33122800466 failure, 33123725865/33124455432 success, 33124948568 failure (test job), 33125685503 success on main sha a6d3a86c
+2026-08-27T23:24:10Z 20 exit checks passed: no placeholders; exec bits on build_replay_viewer.sh + docker_smoke.sh; viewer_smoke.mjs + policies.json (2 prompt + 2 scripted, champ2 player set); 3 workflows parse with pinned inputs; release-result/submit-result artifacts present; manifest num_agents=6 everywhere, static-replay-viewer bundle, docs readme+3 pages
+2026-08-27T23:24:10Z progress phase=20 marker=ci.yml run 33125685503 success sha=a6d3a86c
+2026-08-27T23:24:10Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-27T23:24:10Z heartbeat phase=30
