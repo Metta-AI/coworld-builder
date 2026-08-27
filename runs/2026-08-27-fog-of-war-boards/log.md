@@ -18,3 +18,9 @@
 2026-08-27T00:45:10Z 20 propagate-secrets run 33027869773 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-27T00:47:00Z 20 builder dispatched: implement design.md, drive ci.yml to green on main
 2026-08-27T00:47:00Z heartbeat phase=20
+2026-08-27T01:59:32Z 20 builder returned: ci.yml green on main run=33031534557 sha=791cf71eb702cbf060812483a98d2bf6ea9b16d6 (commits 935a2a9, a15121b red-on-fixture, 791cf71 green); exit checks all pass
+2026-08-27T01:59:32Z 20 note: sandbox https git-push rejected for coworld repos — builder pushed via GitHub Git Data API (blobs->tree->commit->ref) after a Contents-API bootstrap; later phases should expect the same
+2026-08-27T01:59:32Z 20 builder deviations for review: (1) dwell constants raised for soak margin + test pins it (2) endcard keeps babel's ROUNDS/LEADS wording under six-edit letter (3) chrome prelude COLORS/seatColor byte-copied not exported (4) ci.yml +--soak 10 +fixture/scope steps (5) recon baselines sense-then-pick on copy (6) GameEvent.result spelled outcome in Nim, serialises as result (7) art real nano-banana
+2026-08-27T01:59:32Z progress phase=20 marker=ci-run-33031534557
+2026-08-27T01:59:32Z 20 -> 30 phase transition
+2026-08-27T01:59:32Z heartbeat phase=30
