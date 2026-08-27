@@ -105,3 +105,4 @@
 2026-08-27T20:50:57Z progress phase=60 marker=verify-verdict.md BLOCKING: 0
 2026-08-27T20:50:57Z 60 -> 70 phase transition: STATE.phase=70 written before announce work
 2026-08-27T20:50:57Z heartbeat phase=70
+2026-08-27T20:52:08Z 70 announce attempt marker written (attempted_at pushed before POST)
