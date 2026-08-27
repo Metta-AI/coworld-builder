@@ -42,3 +42,10 @@
 2026-08-27T02:57:36Z 50 seed 200: lseed_ae7059f7-848c-425d-ad74-0daecd940a80 league_26ccabcd-af33-4f17-b9d7-f44626a7c625 (note: GET /leagues returns a bare array, matched client-side)
 2026-08-27T02:57:36Z 50 division PUT 200: div_8c9c080c-31db-4672-8146-d73cd81ebc42; settings POST 200: round_robin/elo/mean, round_interval_minutes=15
 2026-08-27T02:57:36Z heartbeat phase=50
+2026-08-27T03:00:31Z 50 champion1 submit run 33034890250 ok sub_c3c77102-ff7c-45fe-824d-f5e530dcd990 (cartographer:v1, daveey)
+2026-08-27T03:00:31Z 50 champion2 submit run 33034921745 ok (prober:v1, daveey-1, uuid 208c6f1d-5280-407f-95b6-0c235da1d1af, player_name=daveey-1 confirmed)
+2026-08-27T03:00:31Z 50 fillers registered 200: probe=2a72f9fd-d46b-40dc-b48a-48f4f2362fba sweep=c403da22-b419-46d8-b613-52835baef133 (neither champion)
+2026-08-27T03:00:31Z 50 unpaused 200; trigger-round 200; round 1 failed (auto-trigger during placement, pre-fillers — expected), round 2 pending with both champions in entrant_attributions
+2026-08-27T03:00:31Z progress phase=50 marker=league_26ccabcd-af33-4f17-b9d7-f44626a7c625-round-2-pending
+2026-08-27T03:00:31Z 50 -> 60 phase transition
+2026-08-27T03:00:31Z heartbeat phase=60
