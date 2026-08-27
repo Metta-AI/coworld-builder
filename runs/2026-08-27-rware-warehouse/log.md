@@ -31,3 +31,7 @@
 2026-08-27T14:39:18Z heartbeat phase=40
 2026-08-27T14:39:18Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-27T14:40:01Z 40 dispatch builder for coworld-release.yml (version 0.1.0 first attempt, put_secret=true, policies from tools/ci/policies.json)
+2026-08-27T14:51:09Z 40 builder returned: release 0.1.0 SUCCESS first dispatch, run 33083560584; cow_66c038fc-7147-4993-bdf9-4a646358ef35 canonical=true certify.ok=true replay_liveness=skipped(static) secret_put=true step_failed=null; 4 policies picker:v1(daveey) router:v1(daveey-1) shuttle:v1 courteous:v1; release-result.json committed
+2026-08-27T14:51:09Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-27T14:51:09Z heartbeat phase=50
+2026-08-27T14:51:09Z progress phase=40 marker=release run 33083560584 canonical
