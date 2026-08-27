@@ -76,3 +76,5 @@
 2026-08-27T00:55:58Z 70 -> 75 phase transition: STATE phase=75
 2026-08-27T00:55:58Z heartbeat phase=75
 2026-08-27T00:55:58Z progress phase=70 marker=discord_message_id=1542336790831300719
+2026-08-27T00:56:52Z 75 atlas continent=commons (mixed-motive negotiation with private info; structured offers are the graded channel — commons per matrix-games precedent, not parlour)
+2026-08-27T00:56:52Z 75 atlas dispatch=33028487577 region=commons at=416,574 clearance=22.9
