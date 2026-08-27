@@ -71,3 +71,7 @@
 2026-08-27T22:01:43Z 75 atlas dispatch 1 failed: build refused — 40 unplaced leagues; fix per step 8: placed them all via extra_cities (regions from their runs' STATEs; rails calls: citysim->simulations, coins->commons; all respread iteratively, clearance >=22.4; full table in /tmp/placed.log this session)
 2026-08-27T22:01:43Z 75 atlas dispatch=33120749065 region=paintlands at=163,264 clearance=22.9 extra_cities=40
 2026-08-27T22:01:43Z heartbeat phase=75
+2026-08-27T22:04:01Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20655 status=pr_open (automerge armed; lands via Graphite merge queue, human merge-when-ready); placed for others: atari-cabinet board-gauntlet chemistry chorus citysim cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting daycare factory-commons firm flatland fog-of-war-boards fruit-market garble gift-refinements goofspiel-oshi-zumo grf-football grid-wars hanabi hidden-agenda knights-archers liars-dice lux-ai magent-battle matrix-games negotiation-games particle-worlds pistonball rware-warehouse smac-starcraft-micro territory trick-taking walker-waterworld (coords in runs/2026-08-27-pommerman/atlas-placed.tsv)
+2026-08-27T22:04:01Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20655
+2026-08-27T22:04:01Z 75 -> 80 phase transition: entering close
+2026-08-27T22:04:01Z heartbeat phase=80

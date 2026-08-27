@@ -5,7 +5,7 @@
   "slug": "pommerman",
   "repo": "https://github.com/Metta-AI/cogame-pommerman",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,18 +45,18 @@
     "discord_message_id": "1542653472145674322"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20655",
+    "branch": "atlas/pommerman-33120749065",
+    "region": "paintlands",
+    "x": 163,
+    "y": 264,
+    "dispatch_run_id": "33120749065",
+    "attempted_at": "2026-08-27T22:04:01Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T21:54:21Z",
+  "heartbeat_at": "2026-08-27T22:04:01Z",
   "session_ended_at": null,
   "session_id": "fdce440e",
   "log": "runs/2026-08-27-pommerman/log.md"
