@@ -10,3 +10,5 @@
 2026-08-27T12:24:46Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
 2026-08-27T12:24:46Z progress phase=10 marker=design.md written and accepted round 1
 2026-08-27T12:24:46Z heartbeat phase=20
+2026-08-27T12:26:55Z 20 repo Metta-AI/cogame-flatland created public; propagate-secrets run 33071780857 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY listed
+2026-08-27T12:26:55Z 20 dispatch builder round=1 (implement design.md, drive ci.yml green on main)
