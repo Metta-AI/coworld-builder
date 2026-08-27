@@ -92,3 +92,4 @@
 2026-08-27T11:51:52Z 75 phase transition 75 -> 80
 2026-08-27T11:51:52Z heartbeat phase=80
 2026-08-27T11:51:52Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20632
+2026-08-27T11:53:23Z 80 close: exec summary posted (run task 1217902971090111, idea task 1217902886519593); LEARNINGS appended
