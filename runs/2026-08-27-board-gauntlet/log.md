@@ -30,3 +30,6 @@
 2026-08-27T04:27:50Z 30 design.md mirrored from in-repo copy at 2390463b (1377 -> 1450 lines, 16 note edits)
 2026-08-27T04:27:50Z 30 judge dispatched r1 (fresh context, sha 2390463b)
 2026-08-27T04:27:50Z heartbeat phase=30
+2026-08-27T04:37:22Z 30 judge returned r1-verdict.md: blocking 0 (B1/B2 fixed at head, N19 refuted, all 15 checklist items pass with cited evidence, sha 2390463b run 33038495877)
+2026-08-27T04:37:22Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-27T04:37:22Z 30 -> 40 phase transition
