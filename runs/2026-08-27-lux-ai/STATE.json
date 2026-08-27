@@ -5,9 +5,10 @@
   "slug": "lux-ai",
   "repo": "https://github.com/Metta-AI/cogame-lux-ai",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
-    "40": 1
+    "40": 1,
+    "50": 1
   },
   "review_round": 2,
   "coworld": {
@@ -23,11 +24,14 @@
       "lux-ai-forester:v4",
       "lux-ai-prospector:v4"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "4269d16d-c14e-45e1-a432-1a7959b7ac5c",
+      "3613cd05-1100-47c4-a747-e7503050a980"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_91cd77d4-0030-495d-81c4-37de0b298801",
+    "division": "div_42529bfd-3620-42c3-93df-068da80201dc"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T18:39:33Z",
+  "heartbeat_at": "2026-08-27T18:43:11Z",
   "session_ended_at": null,
   "session_id": "cd77d683",
   "log": "runs/2026-08-27-lux-ai/log.md"

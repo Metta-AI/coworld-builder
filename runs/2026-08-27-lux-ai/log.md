@@ -58,3 +58,8 @@
 2026-08-27T18:39:33Z heartbeat phase=50
 2026-08-27T18:40:44Z 50 seed 200: lseed_62ee933e league=league_91cd77d4-0030-495d-81c4-37de0b298801; division PUT 200: div_42529bfd-3620-42c3-93df-068da80201dc; settings POST 200 (round_robin, filler_policy, elo 1000/32, mean, 15 min)
 2026-08-27T18:40:44Z 50 note: GET /leagues returns a plain array here (no .entries) — matched league by id from the seed response
+2026-08-27T18:43:11Z 50 champion1 submit run=33104666848 ok sub_eda7587f (lux-ai-lumberjack:v4, daveey); champion2 submit run=33104719376 ok sub_8a166ac3 (lux-ai-nightwatch:v4, daveey-1)
+2026-08-27T18:43:11Z 50 fillers registered 200 BEFORE trigger: forester:v4=4269d16d prospector:v4=3613cd05; unpause 200; trigger 200; round 1 pending; entrant_attributions = both champions
+2026-08-27T18:43:11Z progress phase=50 marker=league_91cd77d4-0030-495d-81c4-37de0b298801
+2026-08-27T18:43:11Z 50 -> 60 phase transition: entering verify
+2026-08-27T18:43:11Z heartbeat phase=60
