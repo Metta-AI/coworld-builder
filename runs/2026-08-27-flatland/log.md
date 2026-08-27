@@ -36,3 +36,7 @@
 2026-08-27T14:53:20Z progress phase=30 marker=r1-review.md
 2026-08-27T14:53:20Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
 2026-08-27T14:53:20Z heartbeat phase=30
+2026-08-27T16:07:13Z 30 fixer returned round=1: reviews/r1-fixes.md; 13 commits onto 7b831f85 -> main sha c54424fc7231d34e57e8efc3065f2ef891cdb742, CI green run=33090229618, SEAT-COUNT FAIL grep 0; F1 blocking fixed with runtime proof (branchline re-derive hashMismatchTick=-1); F7 disputed with proof+test; 1 NEEDS-DESIGN (interlock tint unshipped, noted); checks 78->88
+2026-08-27T16:07:13Z progress phase=30 marker=r1-fixes.md
+2026-08-27T16:07:13Z 30 dispatch judge round=1 -> reviews/r1-verdict.md (fresh context, sha c54424fc)
+2026-08-27T16:07:13Z heartbeat phase=30
