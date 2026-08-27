@@ -90,3 +90,8 @@
 2026-08-27T00:18:27Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20600
 2026-08-27T00:18:27Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-27T00:18:27Z heartbeat phase=80
+2026-08-27T00:21:43Z 80 close: summary posted (run task story 1217887661571931, idea story 1217887524255503); LEARNINGS §2026-08-26 goofspiel-oshi-zumo appended + playbook num_agents wording fixed + Common-mistakes row added; PR 20600 reconciliation comment posted for atari-cabinet/liars-dice divergence
+2026-08-27T00:21:43Z 80 close: idea 1217747862226481 completed; all 9 phase subtasks complete; run task 1217882798312522 moved to Done
+2026-08-27T00:21:43Z progress phase=80 marker=run-task-done
+2026-08-27T00:21:43Z 80 run complete. Session ends; no further action — run is Done.
+2026-08-27T00:21:43Z heartbeat phase=80

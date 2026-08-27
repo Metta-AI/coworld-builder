@@ -57,8 +57,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:18:27Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-27T00:21:43Z",
+  "session_ended_at": "2026-08-27T00:21:43Z",
   "session_id": "85d7073b",
   "log": "runs/2026-08-26-goofspiel-oshi-zumo/log.md"
 }

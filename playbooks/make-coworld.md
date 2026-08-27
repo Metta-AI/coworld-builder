@@ -157,7 +157,10 @@ Pins that are never optional:
   early rather than overrun. An overrun episode is silently discarded. Play inside **60 %** of the
   budget (≈720 s).
 - `num_agents` in every manifest variant AND the certification fixture — the ladder schedules zero
-  episodes without it.
+  episodes without it. It lives **inside each variant's `game_config`** (and
+  `certification.game_config`), never at the variant's top level: `CoworldVariant` is
+  `additionalProperties: false` and rejects a variant-level `num_agents`
+  (cogame-goofspiel-oshi-zumo 0.1.0, 2026-08-26).
 
 Build the game, then prove it in CI: sim tests, scripted-bot test, an end-to-end episode that
 writes a replay, and a viewer smoke. The sandbox cannot run any of these locally — `ci.yml` is the
@@ -172,8 +175,9 @@ Repo must contain, before the first dispatch:
 - `compose.yaml` — service name = coworld name, `platform: linux/amd64`,
   `build: {context: ., network: host}`.
 - `coworld_manifest_template.json` with image `{{<SERVICE>_IMAGE}}`, `num_agents` in every
-  variant, `"replay_viewer": {"bundle": "static-replay-viewer"}`, and a cert fixture that also
-  carries `num_agents`.
+  variant's **`game_config`** (variant top level rejects it — see §Phase 0),
+  `"replay_viewer": {"bundle": "static-replay-viewer"}`, and a cert fixture whose `game_config`
+  also carries `num_agents`.
 - `.github/workflows/ci.yml` and `.github/workflows/coworld-release.yml` from `templates/`.
 
 ```bash
@@ -328,6 +332,7 @@ that was already posted without the flag: `PATCH .../messages/<id>` with `{"flag
 | Local `Certify locally` times out at ~61 s on a fixture that plays fine | `coworld certify` defaults to `--timeout-seconds 60` covering start + connect grace + every round + post-game linger. Size the cert fixture to `grace + rounds×pacing_floor + linger < 50 s` and pin it with a test (cogame-commons-family 0.1.0, 2026-08-24) |
 | Manifest upload: "2 validation errors for Coworld Manifest" on `game.protocols` | `game.protocols.player`/`.global` (like `game.docs.readme`) must be `{"type":"text","value":…}` objects, not bare strings — repo CI does not catch it, the platform validator does (cogame-garble v0.1.0, 2026-08-24) |
 | Manifest build: `game.description` Field required / `game.tags` Extra inputs are not permitted | the validator requires `game.description` and forbids `game.tags` (tags live top-level only); pin both in the repo's manifest test (cogame-pistonball 0.1.0, 2026-08-26) |
+| Manifest build: `variants.N.num_agents — Extra inputs are not permitted` | `num_agents` belongs inside `variants[].game_config`, never at the variant's top level (`CoworldVariant` is `additionalProperties: false`; the platform reads only `game_config.num_agents`). Pin its absence at variant level in the manifest test (cogame-goofspiel-oshi-zumo 0.1.0, 2026-08-26) |
 | Upload 400 `player cpu limit '500m' is below the minimum of '1'` | bundled `player[].resources.limits.cpu` minimum is `"1"` — use the starter's `{requests: 100m/64Mi, limits: {cpu: "1"}}` even for 20 lightweight seats (cogame-pistonball 0.1.1, 2026-08-26) |
 | Certify locally: matriculate rejects "game_config must not include runner-managed tokens" | a variant or the cert fixture carries a literal `tokens: […]`; remove it from every `game_config` — `config_schema` keeps *requiring* `tokens` because the runner injects them (cogame-knights-archers 0.1.0, 2026-08-26) |
 | Hosted certification `failed`, `failed_step: smoke-episode`, detail = the certifier's own internal `…/v2/episode-requests` call 404ing, `retryable: false` — while local certify passed 10/10 and hosted smoke passed | platform route churn, not a game defect. Bump the version and re-dispatch with no code change once the backend settles; cross-check another run/coworld to confirm it is churn (cogame-knights-archers 0.1.2→0.1.3, 2026-08-26) |
