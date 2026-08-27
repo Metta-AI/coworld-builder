@@ -40,3 +40,7 @@
 2026-08-27T03:23:43Z heartbeat phase=40
 2026-08-27T03:23:43Z progress phase=30 marker=r1-verdict.md
 2026-08-27T03:24:47Z 40 builder dispatched thread=sthr_01WHxqU8sUt2PzXJWYj8qMD4 (release chain, version 0.1.0 first, budget 3 dispatches) session=6ada72fc
+2026-08-27T03:37:46Z 40 builder returned: release 0.1.0 first dispatch green run=33036293815 cow_id=cow_0de16cf6-8d0f-4601-8ca7-1c60fc3544d0 canonical=true certified (10/10, liveness skipped-static) secret_put=true; 4 policies v1 (signaller/counter champions, follow/tracker fillers), champion2 player_id=ply_bac48eb1; release-result.json + release-summary.md committed
+2026-08-27T03:37:46Z 40 phase transition 40 -> 50
+2026-08-27T03:37:46Z heartbeat phase=50
+2026-08-27T03:37:46Z progress phase=40 marker=33036293815
