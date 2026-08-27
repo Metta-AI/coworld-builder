@@ -66,3 +66,7 @@
 2026-08-27T15:41:10Z 75 atlas dispatch=33089142064 region=commons at=416,574 clearance=22.9
 2026-08-27T15:42:50Z 75 atlas dispatch 33089142064 failed: 36 unplaced leagues (merge-queue backlog). Fix per step 8 + magent precedent: extra_cities = 36 CITIES rows harvested from PR #20631 branch (atlas/magent-battle-33064835997), all 36 missing slugs covered; own spot recomputed vs augmented map: 383,535 clearance 22.9
 2026-08-27T15:43:41Z 75 atlas dispatch=33089404888 region=commons at=383,535 clearance=22.9 extra_cities=36
+2026-08-27T15:46:08Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20636 status=pr_open (dispatch 2, run 33089404888; placed for others: 36 backlog rows from PR #20631)
+2026-08-27T15:46:08Z 75 -> 80 phase transition: STATE.phase=80 written
+2026-08-27T15:46:08Z heartbeat phase=80
+2026-08-27T15:46:08Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20636
