@@ -111,3 +111,4 @@
 2026-08-27T20:52:24Z 70 -> 75 phase transition: STATE.phase=75 written before atlas work
 2026-08-27T20:52:24Z heartbeat phase=75
 2026-08-27T20:53:11Z 75 atlas continent=simulations (rails call: borrowed world — flatland-rl rail-scheduling benchmark port; fully cooperative, not commons mixed-motive); atlas_spot 536,271 clearance=69.0
+2026-08-27T20:53:33Z 75 atlas dispatch=33115498035 region=simulations at=536,271 clearance=69.0
