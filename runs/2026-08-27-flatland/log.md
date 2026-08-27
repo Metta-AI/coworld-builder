@@ -97,3 +97,7 @@
 2026-08-27T20:39:02Z 60 check 7 TRUE: committed runs/2026-08-27-flatland/release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)" (no re-download needed)
 2026-08-27T20:39:02Z 60 check 8 TRUE: viewer-check.yml run 33113882071 dispatched 20:33:14Z, green in 1m10s; loaded=true ms=4972 data-replay-loaded=true failure=null; scrub 0%/50%/100% clocks all differ (tick 0->266->496, turn 1->17->31, arrived 0->13->15); artifacts committed to runs/2026-08-27-flatland/viewer-check/. Observations: 4x 404 on leftover ctf soldier_*_front_gun.png locker-room sprites (non-fatal); feed_lines=0 at endcard
 2026-08-27T20:39:02Z 60 verifier complete: VERIFY.md written, 8/8 TRUE
+2026-08-27T20:40:43Z 60 verifier returned: VERIFY.md 8/8 TRUE (3 completed rounds, both champions ranked, replay valid reason=complete, round-3 log CLEAN, static iframe sha-matched, cert liveness skipped-static, viewer loaded+3 differing clocks). Verifier findings noted: round-2 seat-1 fallback 4/31 turns from attempt1Ms=9s vs haiku ~8s tail (tuning nit, latest round clean); 4x leftover ctf soldier sprite 404s (cosmetic). Coordinator rails call: neither is a re-release blocker; pass both to judge.
+2026-08-27T20:40:43Z progress phase=60 marker=VERIFY.md 8/8 TRUE + viewer-check 33113882071
+2026-08-27T20:40:43Z 60 dispatch judge -> runs/2026-08-27-flatland/reviews/verify-verdict.md (fresh context adjudication of VERIFY.md)
+2026-08-27T20:40:43Z heartbeat phase=60
