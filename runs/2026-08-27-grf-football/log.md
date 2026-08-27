@@ -19,3 +19,4 @@
 2026-08-27T08:33:38Z progress phase=20 marker=ci-run-33053836802-green
 2026-08-27T08:33:38Z 20 phase 20 -> 30 round 1
 2026-08-27T08:33:38Z heartbeat phase=30
+2026-08-27T08:34:25Z 30 r1 reviewer dispatching; repo checkout /workspace/cogame-grf-football at 66093e57
