@@ -26,3 +26,7 @@
 2026-08-27T19:57:13Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-27T19:57:13Z heartbeat phase=40
 2026-08-27T19:57:56Z 40 dispatch builder for coworld-release.yml v0.1.0 (put_secret=true, policies from tools/ci/policies.json)
+2026-08-27T20:08:05Z 40 builder returned: release v0.1.0 SUCCESS first dispatch run=33111027460; cow_id=cow_224b5627-9e46-46e5-ad55-1b2692cc503b canonical=true certify.ok=true replay_liveness skipped-static secret_put=true; 4 policies v1 (cornerman player=ply_bac48eb1); release-result.json collected
+2026-08-27T20:08:05Z 40 -> 50 phase transition: entering league
+2026-08-27T20:08:05Z progress phase=40 marker=release-run-33111027460 cow_224b5627
+2026-08-27T20:08:05Z heartbeat phase=50
