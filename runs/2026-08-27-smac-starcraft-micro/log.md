@@ -15,3 +15,6 @@
 2026-08-27T04:20:40Z 10 design.md copied; phase transition 10 -> 20
 2026-08-27T04:20:40Z heartbeat phase=20
 2026-08-27T04:20:40Z progress phase=10 marker=design.md
+2026-08-27T04:22:06Z 20 repo created https://github.com/Metta-AI/cogame-smac-starcraft-micro (public)
+2026-08-27T04:22:06Z 20 propagate-secrets run 33039164604 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-27T04:22:06Z 20 rails: board art per design note §Art = starter's shipped soldier/rig real art (red=ours, blue=enemy, green=swarm recomposited); nano-banana not required (knights-archers/paintball ctf-lineage precedent — design note is authoritative)
