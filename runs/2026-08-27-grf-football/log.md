@@ -60,3 +60,7 @@
 2026-08-27T11:24:12Z 60 verifier returned VERIFY.md 8/8 TRUE; rounds 2+3 completed, both champions ranked (daveey-1 1030.5 rp=2, daveey 969.5 rp=2), replay clean 0 fallbacks, static iframe, viewer-check 33066666879 loaded=true clocks differ; verifier finding: seat-registration race demoted counter:v3 to zonal in round 2 (0 llm turns, 24 not 48 bedrock calls) — routed to judge
 2026-08-27T11:24:12Z progress phase=60 marker=VERIFY.md-8of8
 2026-08-27T11:24:12Z heartbeat phase=60
+2026-08-27T11:33:16Z 60 judge verify-verdict blocking: 0 (all 8 items re-fetched independently; registration race ruled non-blocking, recorded for learnings; fillers-timing + binary-replay caveats noted)
+2026-08-27T11:33:16Z progress phase=60 marker=verify-verdict.md
+2026-08-27T11:33:16Z 60 phase 60 -> 70
+2026-08-27T11:33:16Z heartbeat phase=70
