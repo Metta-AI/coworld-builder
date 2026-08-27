@@ -10,3 +10,7 @@
 2026-08-27T21:50:01Z progress phase=10 marker=design.md written and accepted (1859 lines)
 2026-08-27T21:50:01Z 10 -> 20 phase transition: entering build
 2026-08-27T21:50:01Z heartbeat phase=20
+2026-08-27T21:50:56Z 20 repo created: https://github.com/Metta-AI/cogame-vizdoom-deathmatch (public)
+2026-08-27T21:50:56Z 20 propagate-secrets.yml run 33119972081 green; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-27T21:50:56Z 20 dispatch builder round 1
+2026-08-27T21:50:56Z heartbeat phase=20
