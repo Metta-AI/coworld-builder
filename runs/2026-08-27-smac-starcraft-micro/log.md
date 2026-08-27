@@ -67,3 +67,6 @@
 2026-08-27T11:13:15Z 60 waiting for >=1 completed round on 0.1.3 image before re-verify (rounds every 15m)
 2026-08-27T11:13:15Z heartbeat phase=60
 2026-08-27T11:13:15Z progress phase=60 marker=33065622007
+2026-08-27T11:23:15Z 60 round 6 completed on 0.1.3 (round_e71db7a4, ereq_805f41dc): coordinator pre-grep of hosted log = 0 hits (CLEAN)
+2026-08-27T11:23:15Z 60 verifier re-dispatched (focused) thread=sthr_011XMQDdHmRkf8tMPhNEkhBA bound=40min session=c7061c35
+2026-08-27T11:23:15Z heartbeat phase=60
