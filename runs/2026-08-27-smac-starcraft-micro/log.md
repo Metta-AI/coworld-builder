@@ -8,3 +8,4 @@
 2026-08-27T04:02:20Z 00 startability: real-time tick-loop micro combat, one cog per unit vs scripted enemy -> coworld-ctf starter row (SPEC pin: ANY real-time loop with new rules); idea names Metta-AI/coworld-bw (not a mounted starter) as base and itself sanctions a dependency-free SMAX-style clone -> coworld-bw is RULES/SCENARIO REFERENCE only, ships as new public Metta-AI/cogame-smac-starcraft-micro per trick-taking/poker EXTENSION precedent; not confidential
 2026-08-27T04:02:20Z 00 phase transition 00 -> 10
 2026-08-27T04:02:20Z heartbeat phase=10
+2026-08-27T04:02:51Z 10 starter=coworld-ctf (real-time tick-loop micro combat with new rules -> starter table row 2; knights-archers/paintball precedent; coworld-bw not mounted, SMAX-style dependency-free clone sanctioned by idea text)
