@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 3168,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_dbadce13-6ad8-440d-a054-122e326af949/sha256%3Ac7acefc3970af7485d4e648e5bb09000c7e6a729b0e212cbfd0413b0f82658b4/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fcec5aa71-97a3-43b5-b62a-863a10ade535.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "GAUNTLET → CONNECT FOUR 7×6 · PLY 0 / 42 · DAVEEY TO MOVE",
+  "scorebug": "daveey FLYWHEEL ▶ THREATS 0 0 SCORE daveey-1 WIDGET THREATS 0 0 SCORE HEURISTIC",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 31,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "GAUNTLET → CONNECT FOUR 7×6 · PLY 0 / 42 · DAVEEY TO MOVE"
+    },
+    {
+      "at": "50%",
+      "clock": "GAUNTLET → CONNECT FOUR 7×6 · PLY 5 / 42 · DAVEEY-1 TO MOVE"
+    },
+    {
+      "at": "100%",
+      "clock": "GAUNTLET → CONNECT FOUR 7×6 · PLY 9 / 42 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 776,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
