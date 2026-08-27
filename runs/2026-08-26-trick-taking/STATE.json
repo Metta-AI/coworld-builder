@@ -5,7 +5,7 @@
   "slug": "trick-taking",
   "repo": "Metta-AI/cogame-trick-taking",
   "starter": "cogame-babel",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "30": 1
   },
@@ -44,7 +44,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-27T04:32:30Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542391365218861086"
   },
   "atlas": {
     "status": "",
@@ -58,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T04:32:30Z",
+  "heartbeat_at": "2026-08-27T04:32:49Z",
   "session_ended_at": null,
   "session_id": "6ada72fc",
   "log": "runs/2026-08-26-trick-taking/log.md"
