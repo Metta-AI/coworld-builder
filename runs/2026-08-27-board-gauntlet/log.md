@@ -69,3 +69,6 @@
 2026-08-27T05:44:42Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20623 status=pr_open (automerge armed; merge queue is human-driven)
 2026-08-27T05:44:42Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20623
 2026-08-27T05:44:42Z 75 -> 80 phase transition
+2026-08-27T05:46:31Z 80 close: exec summary on run task (story 1217892195041970) + condensed on idea task (story 1217892153380798); LEARNINGS entry appended; all 9 phase subtasks complete; idea 1217748423800483 completed; run task 1217888487035302 moved to Done
+2026-08-27T05:46:31Z progress phase=80 marker=run-task-Done
+2026-08-27T05:46:31Z 80 close complete — run Done; session 59a6df5c ended cleanly; no next action
