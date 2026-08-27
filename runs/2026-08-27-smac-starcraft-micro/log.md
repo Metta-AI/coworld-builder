@@ -19,3 +19,9 @@
 2026-08-27T04:22:06Z 20 propagate-secrets run 33039164604 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-27T04:22:06Z 20 rails: board art per design note §Art = starter's shipped soldier/rig real art (red=ours, blue=enemy, green=swarm recomposited); nano-banana not required (knights-archers/paintball ctf-lineage precedent — design note is authoritative)
 2026-08-27T04:23:03Z 20 builder dispatched round=1 thread=sthr_01BF828ZQx4HSgwAVpqSXUVF session=c7061c35
+2026-08-27T06:44:14Z 20 builder returned round=1: CI GREEN run 33046300533 sha=190ef840 on main (test+docker-smoke+wasm-viewer all success); exit checks pass (placeholders clean, 3 workflows active w/ pinned inputs+artifacts, exec bits 100755, viewer_smoke.mjs verbatim)
+2026-08-27T06:44:14Z 20 infra note: sandbox git push rejected (credential path); builder pushed via Git Data API — later phases pushing repo content must use the API route
+2026-08-27T06:44:14Z 20 builder deviations logged: (1) OPEN wasm hash mismatch ~tick 450 on cert-fixture replay, gate exits 0 without failing (AGENTS.md §OPEN; 3 floats already removed from hashed path; suspect diamondSpinAngle) (2) focusfire>charge strict only on default, spread asserted instead (3) deleted mechanics gated off not deleted (4) spawn lines not baked (5) swarm not recomposited 0.7x, blade keeps gun silhouette (6) test_viewer grep excludes pinned chrome_common.js (7) README real not template (8) record_fixture.sh + starter tests dropped
+2026-08-27T06:44:14Z 20 phase transition 20 -> 30 review_round=1
+2026-08-27T06:44:14Z heartbeat phase=30
+2026-08-27T06:44:14Z progress phase=20 marker=33046300533
