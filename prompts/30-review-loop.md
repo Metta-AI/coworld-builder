@@ -149,6 +149,16 @@ A finding is **blocking** if and only if it falsifies one of these. Everything e
     - `index.html` / `static_replay*.js` set `data-replay-loaded="true"` on `<html>` on the
       **first drawn frame** and `data-replay-error="<message>"` on failure. Both markers, both
       set from the shell's own code paths.
+    - **Playback opens at the game start, never the recorded lobby.** A ladder episode records
+      the pre-game lobby (seats joining, LLM registration) before its `gameStart` record — 63 to
+      270 frozen frames on real prod replays — and a runtime that dwells through them at
+      presentation cadence sits stuck on its first tick for 10–45 s until someone scrubs
+      (cogame-pommerman / cogame-magent-battle / cogame-rware-warehouse, 2026-08-27). The replay
+      runtime must open playback at `gameStarts[0].tick` and clamp every seek there, matching
+      the scrubber axis (`st`) that already skips the dead lobby; the hash-checked
+      re-simulation still runs the lobby frames internally. Check with a replay whose gameStart
+      is LATE (record with a large `lobbyJoinTimeoutTicks` and no joining seats) — the CI
+      replay's 1-tick lobby cannot show this.
     - The emscripten link flags in `replay-viewer/config.nims` (`-s MODULARIZE=1`,
       `-s EXPORT_NAME=<X>`) and the bootstrap in the worker/shell come from the **SAME starter**.
       Read both and check they agree:
