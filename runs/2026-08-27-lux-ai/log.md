@@ -79,3 +79,5 @@
 2026-08-27T19:18:49Z heartbeat phase=75
 2026-08-27T19:19:50Z 75 atlas continent=paintlands reason=1v1 zero-sum economy RTS (the continent's own RTS row); slug live in /api/coworlds (episodes_7d=3)
 2026-08-27T19:19:50Z 75 atlas dispatch=33107889196 region=paintlands at=202,270 clearance=39.5
+2026-08-27T19:23:50Z 75 atlas dispatch 1 (33107889196) failed: 38 unplaced leagues — placing them all via extra_cities (continents: 4 paintlands, 7 simulations, 8 tabletop, 1 shire, 12 commons, 6 parlour; all clearances >=22.9)
+2026-08-27T19:23:50Z 75 atlas dispatch=33108209512 region=paintlands at=202,270 clearance=39.5 extra_cities=38
