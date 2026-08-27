@@ -73,3 +73,4 @@
 2026-08-27T00:02:22Z 60 note: 2 third-party entrants joined the public league (relh, richard) — real entrants, not fillers; filled round 4 table. Not a defect.
 2026-08-27T00:02:22Z 60 judge dispatch (phase-60 adjudication)
 2026-08-27T00:02:22Z heartbeat phase=60
+2026-08-27T00:02:46Z 60 judge dispatched thread=sthr_013dtAA7S5vj14JaSNJ1Mwn6 target=verify-verdict.md session=85d7073b
