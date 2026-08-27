@@ -110,3 +110,4 @@
 2026-08-27T20:52:24Z progress phase=70 marker=discord_message_id 1542637897709125654
 2026-08-27T20:52:24Z 70 -> 75 phase transition: STATE.phase=75 written before atlas work
 2026-08-27T20:52:24Z heartbeat phase=75
+2026-08-27T20:53:11Z 75 atlas continent=simulations (rails call: borrowed world — flatland-rl rail-scheduling benchmark port; fully cooperative, not commons mixed-motive); atlas_spot 536,271 clearance=69.0
