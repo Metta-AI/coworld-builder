@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 4471,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_476a8db4-f5df-4d93-b0c2-1c302ba201bc/sha256%3A4575435fea3737665c72aa4ed75fc6621b6d5407b82234eb8359d66c75df8c38/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fa2def614-f588-47eb-a1d6-9db771806a65.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:00 BATTLE 1/3 · DEFAULT · 5 V 5 · TURN 1/12",
+  "scorebug": "─▸ daveey DMG 0 0k ─▸ daveey-1 DMG 0 0k ╱ Baseline DMG 0 0k 1:00 BATTLE 1/3 · DEFAULT · 5 V 5 · TURN 1/12 ╱ Baseline ( DMG 0 0k ╱ Baseline ( DMG 0 0k OURS 5 UP · 480/480 (100%) THEIRS 5 UP · 480/480 (100%)",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:00 BATTLE 1/3 · DEFAULT · 5 V 5 · TURN 1/12"
+    },
+    {
+      "at": "50%",
+      "clock": "0:38 BATTLE 1/3 · DEFAULT · 2 V 1 · TURN 5/12"
+    },
+    {
+      "at": "100%",
+      "clock": ":01 BATTLE 2/3 · DEFAULT · 1 V 0 · TURN 7/12"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
