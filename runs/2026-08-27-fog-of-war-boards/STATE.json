@@ -5,19 +5,24 @@
   "slug": "fog-of-war-boards",
   "repo": "https://github.com/Metta-AI/cogame-fog-of-war-boards",
   "starter": "cogame-babel",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_5f8e4d33-49d7-4b19-8092-cc69d201344c",
+    "manifest_sha": "sha256:3af044a284b6a9e2b4b5a1d7d73c03d0cc9fc701ebc4a3dff49af9fc8e569341",
+    "release_run_id": "33034451372"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "fog-of-war-boards-cartographer:v1",
+    "champion2": "fog-of-war-boards-prober:v1",
+    "fillers": [
+      "fog-of-war-boards-probe:v1",
+      "fog-of-war-boards-sweep:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T02:48:06Z",
+  "heartbeat_at": "2026-08-27T02:56:35Z",
   "session_ended_at": null,
   "session_id": "325aebfd",
   "log": "runs/2026-08-27-fog-of-war-boards/log.md"

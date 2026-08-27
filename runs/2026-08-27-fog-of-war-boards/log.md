@@ -34,3 +34,8 @@
 2026-08-27T02:48:06Z progress phase=30 marker=r1-verdict.md
 2026-08-27T02:48:06Z 30 -> 40 phase transition at sha 0e893df12ee180b31e95a5701a88c20a73e16745
 2026-08-27T02:48:06Z heartbeat phase=40
+2026-08-27T02:56:35Z 40 release 0.1.0 first dispatch success: run 33034451372, canonical true, hosted certification certified, secret_put true, 4 policy versions (prober:v1 owned by daveey-1)
+2026-08-27T02:56:35Z 40 cow_id=cow_5f8e4d33-49d7-4b19-8092-cc69d201344c manifest_sha=sha256:3af044a284b6a9e2b4b5a1d7d73c03d0cc9fc701ebc4a3dff49af9fc8e569341
+2026-08-27T02:56:35Z progress phase=40 marker=release-run-33034451372
+2026-08-27T02:56:35Z 40 -> 50 phase transition
+2026-08-27T02:56:35Z heartbeat phase=50
