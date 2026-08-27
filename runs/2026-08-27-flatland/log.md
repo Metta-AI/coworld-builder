@@ -5,3 +5,4 @@
 2026-08-27T12:00:52Z heartbeat phase=10
 2026-08-27T12:03:30Z 00 -> 10 phase transition: entering design
 2026-08-27T12:03:30Z 10 starter=coworld-ctf reason=per-tick grid loop port of an existing external RL env (flatland-rl); 7-deep precedent of external-env ports on coworld-ctf all green (gridlock, pistonball, knights-archers, walker-waterworld, smac, magent, rware); moba PORTING row rejected — moba ships no client/ or replay-viewer/ stack and the viewer wasm must compile the same sim module
+2026-08-27T12:05:30Z 10 dispatch designer round=1 for docs/plans/2026-08-27-flatland-design.md -> runs/2026-08-27-flatland/design.md
