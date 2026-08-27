@@ -61,3 +61,7 @@
 2026-08-27T21:53:20Z progress phase=60 marker=60-verdict.md blocking=0
 2026-08-27T21:53:20Z heartbeat phase=70
 2026-08-27T21:54:01Z 70 announce attempted_at written (pre-POST marker)
+2026-08-27T21:54:21Z 70 announce msg=1542653472145674322 (200, flags=4, embeds=[])
+2026-08-27T21:54:21Z 70 -> 75 phase transition: entering atlas
+2026-08-27T21:54:21Z progress phase=70 marker=discord_message_id=1542653472145674322
+2026-08-27T21:54:21Z heartbeat phase=75
