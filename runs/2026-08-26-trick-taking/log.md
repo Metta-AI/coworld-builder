@@ -32,3 +32,6 @@
 2026-08-27T02:43:53Z 00 resume at phase 30 attempt=1 session=6ada72fc
 2026-08-27T02:45:00Z 30 resume-context: prior session d199e038 fixer (sthr_01CvoiBTWvv6vLVKumWhpJEc) died without r1-fixes.md; repo shows 6 fix commits a2c8e214..c1f14b85 (B1,B2,B3,N1,N5,N3) all CI green (last run 33031272311 success at c1f14b85); N2,N4,N6-N12 unaddressed in commit log
 2026-08-27T02:45:00Z 30 fixer re-dispatched r1 (verify existing fix commits + address/refute remaining findings + write r1-fixes.md) session=6ada72fc
+2026-08-27T03:11:36Z 30 fixer returned r1: r1-fixes.md written; head=179aa999 CI green run 33035205309 (test+docker-smoke+wasm-viewer); 6 prior commits verified, 9 new commits (N2,N4,N6,N8,N9,N11,N12 fixed; N7,N10 disputed with evidence); tests only tightened; 2 items flagged for judge (B3 tracker-vs-design constants, player.html attachLive)
+2026-08-27T03:11:36Z 30 judge dispatched r1 sha=179aa9993c4d1308b1a26945e1d758e63d16957f session=6ada72fc
+2026-08-27T03:11:36Z heartbeat phase=30
