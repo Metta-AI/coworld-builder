@@ -249,8 +249,9 @@ the documented way to blow the 720 s budget. Nothing in v1 uses it.)
 1. **`beginPly`.** `mover = (config.first + p) mod 2`.
 2. **Wall-clock guard.** If `now + worstPlySeconds > playDeadline` → `settle("deadline",
    "wall-clock")` and stop. Checked **here, before any observation is built**, so the episode never
-   stops mid-ply. `worstPlySeconds = 2 × llmTimeoutSeconds + 2 = 62`;
-   `playDeadline = gameStart + 0.6 × episodeTimeoutSeconds`.
+   stops mid-ply. Every wait that follows the guard is inside it:
+   `worstPlySeconds = 2 × llmTimeoutSeconds + 2 + plySpacing + turnDelay = 60 + 2 + 4 + 0.25 =
+   66.25`; `playDeadline = gameStart + 0.6 × episodeTimeoutSeconds`.
 3. **Build the mover's observation** (§`## Server, player, protocol`), including
    `legalMoves(sim)` — produced by the **same proc the validator applies** in step 5, so the printed
    set and the accepted set cannot drift.
@@ -431,8 +432,22 @@ of one bot. It **never defends**: it maximises its own progress and ignores the 
      legal wall that maximises `dist(opponent)`, ties by lowest anchor index, and if no wall
      increases it, step along its own shortest route.
 
+**Neither baseline has a tunable parameter**, which is why this repo ships no grid harness: both
+are pure one-ply lookahead over `legalMoves` / `applyProbe` / `standing`, with no thresholds,
+weights, temperatures or search depths to sweep. The only numbers in the loop are the four
+`standing` definitions fixed verbatim above, and they are scoring rules, not knobs. What a harness
+would otherwise establish is established by tests instead: the fillers beat a uniform-random legal
+mover, they disagree with each other, and they never walk past an immediate win or into an
+immediate loss.
+
 A test asserts `tactician` and `hustler` disagree on **at least 30 %** of plies over 200 seeded
-episodes per game — two fillers that play the same game are one filler — and a second test asserts
+episodes per game — two fillers that play the same game are one filler — with **one recorded
+exception: Connect Four, where the floor is 25 %**. Both baselines score from the same window
+heuristic, both take the centre file first and both play a winning move on sight, and there are
+only seven files to disagree about, so the measured rate sits at 28–30 % however the ply
+population is drawn; Breakthrough (~72 %), Hex (~85 %) and Quoridor (~37 %) clear 30 %
+comfortably. The exception is written into the test it governs
+(`tests/test_bot.nim`, suite *baseline diversity*). A second test asserts
 `tactician` beats a seeded uniform-random legal mover (mean score > 0 over 200 episodes per game),
 so the fillers are a real opponent rather than a punching bag.
 
@@ -445,6 +460,10 @@ Haiku is `cut off at max_tokens` at 400), `model = "claude-sonnet-5"` (the hoste
 `us.anthropic.claude-haiku-4-5-20251001-v1:0` first, and **the candidate list drops
 `us.anthropic.claude-sonnet-4-6`**, which times out on every sidecar call — raid, 2026-08-23),
 `plySpacingSeconds = 0` meaning *derive as 4*, `turnDelayMs = 250` (0 in the cert fixture).
+The direct Anthropic request body also carries `output_config: {"effort": "low"}` — a board move
+needs no long deliberation and low effort is the cheaper, faster setting — but **only** when the
+model is neither a Haiku nor a `4-5` tier, which reject the whole request with a 400 if the field
+is present. The Bedrock path never sends it.
 
 **Rate floor.** The Bedrock sidecar caps **30 requests per minute per episode**. A ply issues at
 most 2 requests (the call plus one retry), so the minimum spacing between the starts of two
@@ -465,16 +484,20 @@ per-ply wall clock is `max(4 s floor, ~3 s haiku latency) + ~0.4 s apply/broadca
 
 Every variant's **full-length** game fits inside 60 % of the timeout with room to spare, which is
 why `maxPlies` is 80 and not 200. The pathological case is latency, not length: worst case per ply
-is `2 × llmTimeoutSeconds + 2 = 62 s`, and `80 × 62 = 4960 s` would overrun by nearly seven times.
-That is why **step 2 of the resolution order refuses to open a ply unless `now + 62 s ≤
-playDeadline`** and settles `deadline` / `wall-clock` instead, scored on `standing`. The guard, not
-optimism, is what keeps the episode inside the budget.
+is `2 × llmTimeoutSeconds + 2 + plySpacing + turnDelay = 66.25 s`, and `80 × 66.25 = 5300 s` would
+overrun by more than seven times. That is why **step 2 of the resolution order refuses to open a
+ply unless `now + 66.25 s ≤ playDeadline`** and settles `deadline` / `wall-clock` instead, scored on
+`standing`. The spacing sleep and the turn delay are counted because they run **after** the guard;
+leaving them out let the settle land ~2 s past the 720 s mark. The guard, not optimism, is what
+keeps the episode inside the budget.
 
 Certification / smoke path: with no `ANTHROPIC_API_KEY` both seats play scripted, there is no LLM
 call, the spacing floor does not apply, `turnDelayMs = 0`, and the `breakthrough-6` fixture
-completes in well under 3 s of play — inside `coworld certify`'s 60 s default. The release workflow
-still passes `--timeout-seconds 300`, and a test pins the fixture's scripted duration under 50 s
-(cogame-commons-family 0.1.0, 2026-08-24).
+completes in well under 3 s of play — inside `coworld certify`'s 60 s default, which is the only
+budget the certify step has: the shared `coworld-release.yml` template passes `--no-open-report`
+and nothing else, and this repo ships that template **byte for byte**, so no `--timeout-seconds`
+is added here. A test pins the fixture's scripted duration under 50 s (cogame-commons-family
+0.1.0, 2026-08-24), which is what keeps it inside that default.
 
 ### The ladder — degrade, never hang
 
@@ -828,8 +851,12 @@ rule and the resolved game are all given to both seats every ply. That is the po
 
 `normalizeMove` is deliberately tolerant, and identically so in the validator and in the tests: the
 string is lower-cased, trimmed, and stripped of every character outside `a-z0-9`; then, per game —
-`connect-four`: the first character must be a file letter `a`..`g`, or a digit `1`..`7` mapping to
-`a`..`g`; anything after it is ignored (`"d"`, `"D"`, `"4"`, `"column d — centre"` all mean `d`).
+`connect-four`: the move is the **first standalone one-character token** that is a file letter
+`a`..`g` or a digit `1`..`7` mapping to `a`..`g`; every byte outside `a-z0-9` in the raw reply
+becomes a separator first, so multi-byte punctuation splits tokens instead of joining them, and a
+reply with no such token falls back to its first character (`"d"`, `"D"`, `"4"`,
+`"column d — centre"` all mean `d` — note that a literal *first character* rule would read that
+last one as the `c` of "column", which is why the rule is per token).
 `hex`: must match `^[a-g][1-7]$`. `breakthrough`: must match `^[a-f][1-6][a-f][1-6]$` after
 stripping (so `b2-c3`, `b2c3`, `b2 x c3` all mean `b2-c3`); the canonical form written to the event
 is `b2-c3`. `quoridor`: `^[a-i][1-9]$` is a pawn move, `^[a-h][1-8][hv]$` a wall. Anything else
@@ -840,7 +867,7 @@ cap)` (babel's `cleanNotes`, generalised): `say` (80), `notes` (400), `move` (12
 prompt (4000), and any error text that reaches an event or the log (200). A byte-boundary cut is
 exactly how a replay renders in a browser but fails a strict JSON parser; `tests/test_replay.nim`
 pins it with multi-byte input at exactly the cap. Newlines in `say` are replaced by spaces (it is
-drawn on one line in a reserved band).
+drawn in a reserved band under the board, wrapped over as many lines as the cap needs).
 
 ### Replay bytes (self-sufficient)
 
@@ -916,17 +943,24 @@ is set.
   **byte-for-byte**. Not one starter rule is edited or deleted. The game's rules are **appended**
   below the last starter line under `/* ===== board-gauntlet game block ===== */`: the board
   frame, the eval bar, the `say` band, the four beat-kind classes and their modifiers, the
-  `--band` / `--hudscale` consumers, and the ≤ 640 px / ≤ 360 px media queries.
+  `--band` / `--hudscale` consumers, and the ≤ 640 px / ≤ 360 px media queries. Each of those two
+  media queries is written **twice** — once as `@media`, once keyed on `body.narrow-640` /
+  `body.narrow-360` — declaration for declaration. A page cannot resize the viewport it is loaded
+  into, so `tools/ci/renderer_fixture.html` narrows the stage in place and sets those classes;
+  without the second copy the narrow-width rules would ship untested. Both copies are below the
+  game-block banner, so no starter rule is touched, and they must be edited together.
 - **`client/chrome_common.js`** — the chrome half of cogame-babel's `client/renderer.js`, copied
   **byte-for-byte** out of the starter file (`cp` + slice; not one line is retyped, reformatted or
   "tidied") as these contiguous regions of `d55d999`, in this order:
+  **23** (`COLORS`, the seat palette), **85–87** (`seatColor`) — both are referenced by the copied
+  `renderFeed` and `updateEndscreen`, so they come across with them —
   **101–124** (`ellipsize`, `hexToRgb`, `shade`, `rgba`), **680–733** (`// ---- Names ----` through
   `clampName`: `isBaselineFiller`, `makeNameMap`, `applyNames`, `clampName`), **735–744**
   (`// ---- Event feed ----`, `roundBase`), **790–863** (`blockHead`, `renderFeed`, `escapeHtml`),
   **963–970** (`reasonLine`), **972–1027** (`updateEndscreen`), **1029–1048** (`bindFeedToggle`)
   and **1142–1222** (the scrubber comment and `buildScrub`). It exports `window.GauntletChrome`.
 
-  **Exactly six copied lines/regions are edited**, and each is named here so a reviewer can find
+  **Exactly seven copied lines/regions are edited**, and each is named here so a reviewer can find
   it — everything else in the file is copied bytes or appended at the end:
 
   | # | Starter line(s) | Edit |
@@ -937,10 +971,13 @@ is set.
   | 4 | 1179–1189 (`buildScrub`) | babel's marker-`div` loop → `markPlyBeat(container, event, i, events.length, onSeek)` for **every** event; `markPlyBeat` is appended at the end of the file |
   | 5 | 1004–1008 and 1020–1023 (`updateEndscreen`) | the hard-coded `end-head` labels and the `cell(...)` calls → one injected `endColumns(results)` returning `{heads:[…], cell(i)}`, injected by `GauntletChrome.setEndColumns(fn)` |
   | 6 | 966–967 (`reasonLine`) | `results.rounds` / `results.maxRounds` → `results.plies` / `results.maxPlies`, and the word `rounds` → `plies` |
+  | 7 | 994–999 (`updateEndscreen`) | the endcard verdict and title, which §Readouts already specifies: `… " LEADS THE TABLE" : "ALL LEVEL"` → `escapeHtml(clampName(names[topIndex])).toUpperCase() + " WINS" : "DRAWN"` (two seats and a zero-sum result — one of them wins or the game is drawn), and `FINAL — <rounds> ROUND(S)` → `FINAL — <plies> PLY/PLIES` |
 
-  **Appended** at the end of `chrome_common.js`, in this order: `relayout()`, `markPlyBeat()`,
-  `setFeedText()`, `setEndColumns()`, and the `window.GauntletChrome` export. **Nothing is renamed
-  in place.**
+  **Appended** at the end of `chrome_common.js`, in this order: `relayout()`, `setBeatNames()`,
+  `beatSeatName()`, `beatLabel()`, `markPlyBeat()`, `setFeedText()`, `setEndColumns()`, and the
+  `window.GauntletChrome` export. (`setBeatNames`, `beatSeatName` and `beatLabel` are what give a
+  beat button its `aria-label` / `title` — `markPlyBeat` calls `beatLabel`, which needs the name
+  map the driver installs.) **Nothing is renamed in place.**
 
   Babel's game-specific procs are **not** copied; their replacements live in the game block: the
   palette/geometry/scene drawing at 17–100 and 126–679, `spellTokens` (746–749), `describeEvent`
@@ -966,8 +1003,11 @@ is set.
   - **Removed from the starter page: nothing.** No starter element is deleted from any of the four
     pages.
   - **Changed:** the `<title>` text, the `#wordmark` inner text
-    (`BA<span>BEL</span>` → `GAUNT<span>LET</span>`), and the `<script src>` list, which gains
-    `/client/chrome_common.js` ahead of `/client/renderer.js`.
+    (`BA<span>BEL</span>` → `GAUNT<span>LET</span>`), the `#clock` placeholder text
+    (`ROUND 0` → `PLY 0`, because this ladder counts plies and the placeholder is on screen until
+    the first frame lands), the `<script src>` list, which gains `/client/chrome_common.js` ahead
+    of `/client/renderer.js`, and the bootstrap's `BabelRenderer` → `GauntletRenderer`. The
+    element itself is kept, with its id; only the text inside it changes.
   - **Appended:** one `<script>` block at the end that registers the game's feed text and endcard
     columns with `GauntletChrome`, and **one** new element — `<div id="evalbar"><i></i></div>` —
     appended **inside the existing `#scorebug`** by the game block at runtime, never spliced into
@@ -1011,20 +1051,29 @@ pawns, and walls drawn as planks that snap into their groove.
   `GAUNTLET → QUORIDOR 9×9 · PLY 22 / 80 · FINAL`. The rotation arrow appears only when
   `config.rotated` is true.
 - **Scorebug** (`#scorebug`): one plate per seat — seat colour chip; `.plate-name` carrying the
-  **policy name** (spectator side) with the anonymous alias as a small sub-label; the per-game
-  readout (`TO CONNECT 3` / `PATH 6 · WALLS 7` / `PIECES 9 · ROW 4` / `THREATS 2`); and this ply's
-  `say` in a **reserved band** sized from `MaxSayLen = 80` measured in the render font at the
-  current `--hudscale`, so a full-cap line can never be laid out at a negative coordinate
-  (cogchemists, 2026-08-24). `.plate-name` gets `flex: 1 1 auto; min-width: 3.2em` and its label is
+  **policy name** (spectator side) with the anonymous alias as a small sub-label; and the per-game
+  readout (`TO CONNECT 3` / `PATH 6 · WALLS 7` / `PIECES 9 · ROW 4` / `THREATS 2`).
+  `.plate-name` gets `flex: 1 1 auto; min-width: 3.2em` and its label is
   hidden under 640 px — the featured-match iframe on softmax.com is ~360 px wide and names
   otherwise collapse to "…".
+- **Say band** (`canvas#table`, under the board): this ply's `say` for **both** seats, in a
+  **reserved band** whose height is measured from the cap — `MaxSayLen = 80` runes plus a clamped
+  name, wrapped in the render font at the current canvas width — so a full-cap line on both seats
+  has room reserved for it whether or not anyone is speaking, and can neither be laid out at a
+  negative coordinate nor cut to fit (cogchemists, 2026-08-24). A remark that does not fit on one
+  line **wraps** onto the next; it is never ellipsized, because an ellipsis is a label affordance
+  and a defect on a sentence (`prompts/30-review-loop.md` item 15). The band is drawn on the
+  canvas rather than in the plate because the canvas is what `viewer_smoke.mjs --strict-text-bounds`
+  instruments — a DOM remark is invisible to every gate that measures drawn text.
 - **Eval bar** (`#evalbar`, inside `#scorebug`): a horizontal bar with a centre tick, filled from
   the centre toward the leading seat by `evalBar(sim)`, captioned **`HEURISTIC`** in 8 px caps —
   it is this repo's own heuristic, not an engine, and the caption says so.
 - **Feed** (`#feed`): one block per ply — `PLY 14 · SPROCKET`, then the move in words:
   `drops into d — lands on d3`, `b2 takes c3`, `plays c4`, `pawn to e5`, `wall at e3 (horizontal)`;
   then the quoted `say`. The `win` line reads `Sprocket connects a4–g4`, `Gizmo lines up d3-e4-f5-g6`,
-  `Sprocket breaks through on f6`, `Gizmo reaches rank 1`, or `Gizmo has no legal move`. The end
+  `Sprocket breaks through on f6`, `Gizmo reaches rank 1`, or — for a starved opponent —
+  `Gizmo wins: the opponent has no legal move`, phrased from the seat the `win` event names, which
+  is the **victor** (`sim.nim:300`), so every `win` line reads about the same seat. The end
   block names the reason and the ending in words (`complete — ply cap, adjudicated on position` /
   `deadline — stopped after 21 of 80 plies, adjudicated on position`).
 - **Endcard** (`#endscreen`): the verdict (`SPROCKET WINS` / `DRAWN`), a reason line, and one row
@@ -1041,8 +1090,14 @@ pawns, and walls drawn as planks that snap into their groove.
 - `data/font.ttf` + `data/FONT_LICENSE.txt` — copied from babel (Rajdhani).
 - `data/arena_floor.png` — copied byte-for-byte from babel (MIT, originally coworld-ctf); the table
   surface under the board.
-- `data/soldier_red_front.png`, `data/soldier_blue_front.png` — copied from babel; the two seat
-  avatars in the scorebug plates.
+- `data/soldier_red_front.png`, `data/soldier_blue_front.png` — **new, authored for this repo**
+  under babel's filenames (the chrome asks for those two names): 192×192 seat cogs, generated as
+  one two-up sheet by `scripts/art/generate_cog_sheet.py` from
+  `scripts/art/source/cog_seats_sheet.png` and keyed/split/padded by
+  `scripts/art/split_cog_sheet.py`, so each seat holds this ladder's own pieces — the red cog a
+  Connect Four disc and a Hex stone, the blue cog a Breakthrough pawn and a Quoridor wall plank
+  — rather than babel's spellcasters. They are the two seat avatars in the scorebug plates and
+  are **not** byte-copies of babel's (which are 180×192).
 - **`data/board_grain.png`** — new, authored for this repo: a 64×64 seamlessly tileable printed-
   board paper grain in `--ink` on transparent, laid under every board so the four games share one
   surface.
@@ -1180,9 +1235,10 @@ It is committed mode `100755`.
 
 - **`.github/workflows/`** — `ci.yml`, `coworld-release.yml` and `coworld-submit.yml` from
   `coworld-builder/templates/`, with `SLUG=board-gauntlet`, `IMAGE=coworld-board-gauntlet`,
-  `<SEATS>=2`. The release workflow's certify step passes `--timeout-seconds 300`, its `secret put`
-  step reads the namespace from the manifest's `game.name`, and it keeps the load-bearing step
-  order build → certify → **upload-policies** → upload-coworld → secret put.
+  `<SEATS>=2`. The two coworld workflows are the substituted templates **byte for byte** — nothing
+  is added to the certify step, which passes `--no-open-report` as the template does — its
+  `secret put` step reads the namespace from the manifest's `game.name`, and it keeps the
+  load-bearing step order build → certify → **upload-policies** → upload-coworld → secret put.
 
 - **`tools/ci/policies.json`** — the four policies from `## Decisions`; champion #2 carries
   `"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"` so it is uploaded while daveey-1 is the
@@ -1252,7 +1308,8 @@ only harness. `NIM_TESTS` is left unset — every `tests/*.nim` runs in both deb
     episode terminates; no baseline ever emits `say` or `notes`.
 14. `tactician` beats a seeded uniform-random legal mover over 200 episodes per game (mean score
     > 0), so the fillers are a real opponent rather than noise.
-15. `tactician` and `hustler` disagree on at least 30 % of plies, per game.
+15. `tactician` and `hustler` disagree on at least 30 % of plies, per game — 25 % for Connect
+    Four, the recorded exception in §*The two scripted baselines*.
 16. `tactician` never walks past an immediate win and never allows an immediate loss when a safe
     move exists — asserted on hand-built positions in all four games.
 17. The scripted-only cert fixture (`breakthrough-6`, 2 seats, `turnDelayMs = 0`) completes in
@@ -1265,6 +1322,14 @@ only harness. `NIM_TESTS` is left unset — every `tests/*.nim` runs in both deb
     — record an episode, run `replayMatch` over its events, and assert every frame's
     `boardStateJson` is identical to the live one. A wall-clock stop must re-derive because
     `settle` is the same proc on both paths (particle-worlds `13c66d7`, 2026-08-26).
+    **One recorded exception: `complete/no-moves`.** It is unreachable from the standard
+    Breakthrough opening — a piece on rank 2 always has a rank-1 square to step to or capture on,
+    and a piece that reached rank 1 has already won — so no recorded episode ends that way and
+    `replayMatch`, which re-runs `initSim(config)` from the standard opening, cannot be handed one.
+    It is covered instead from a hand-built position, applied to two copies of the sim, asserting
+    `boardStateJson` and `resultsJson` are identical on both and that a second `settle` cannot
+    change a settled episode. The path itself is re-derivable: `advance` emits the `win` event and
+    `replayMatch`'s `evWin` branch checks seat / how / path like any other.
 19. `replayMatch` **raises** when a recorded `move.mkind`, `move.capture`, `win.seat`, `win.how` or
     `win.path` disagrees with the re-derivation.
 20. **Strict UTF-8**: build an episode whose every `say` and `notes` is a multi-byte string at
@@ -1325,11 +1390,19 @@ only harness. `NIM_TESTS` is left unset — every `tests/*.nim` runs in both deb
     `viewer_smoke.mjs --url … --strict-text-bounds` run): CI replays carry **zero LLM text** —
     `docker_smoke.sh` runs without a key and the scripted baselines emit no `say` or `notes` — so
     nothing that plays a CI replay ever exercises the say band or the quoted feed lines. The fixture
-    loads the **shipped** `dist/static-replay-viewer/index.html` in an iframe, shims only the wasm
-    entry, feeds it a synthetic payload **for each of the four games** with a full-cap 80-rune `say`
-    on both seats and the longest plausible policy names, and drives the page's own text path at
-    **360, 640 and 1280 px** (particle-worlds `46cf69d`, 2026-08-26 — a fixture that re-implements
-    the drawing gates nothing).
+    loads the **shipped** bundle's own `chrome.css`, `chrome_common.js`, `renderer.js` and
+    `assets/` — it is copied **into** `dist/static-replay-viewer/` before it runs, so every relative
+    path resolves to the artifact CI is about to publish — shims only the wasm entry, feeds
+    `GauntletRenderer.attachReplay` a synthetic payload **for each of the four games** with a
+    full-cap 80-rune `say` on both seats and the longest plausible policy names, and drives the
+    page's own text path at **360, 640 and 1280 px** (particle-worlds `46cf69d`, 2026-08-26 — a
+    fixture that re-implements the drawing gates nothing). It asserts its own remarks are still
+    exactly `MaxSayLen` runes before it draws, and fails via `data-replay-error` if they are not.
+    It runs as the **top-level document**, not in an iframe: `viewer_smoke.mjs` installs its canvas
+    wrapper with an init script but reads the tally back with `page.evaluate()`, which only ever
+    runs in the main frame, so an iframe fixture would report zero canvas text and gate nothing.
+    It therefore retypes the shipped `index.html`'s markup (the same ids, in `#layout` / `#stage`)
+    rather than reusing that file.
 
 29. **Chrome scope check** (`tools/ci/chrome_scope_check.mjs`, same job): asserts that no identifier
     exported by `client/chrome_common.js` is re-declared as a top-level `function` or `var` in
