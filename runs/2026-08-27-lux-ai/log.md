@@ -69,3 +69,6 @@
 2026-08-27T19:12:07Z progress phase=60 marker=round_ee8f3123
 2026-08-27T19:12:07Z 60 dispatch judge for VERIFY.md adjudication -> reviews/verify-verdict.md
 2026-08-27T19:12:07Z heartbeat phase=60
+2026-08-27T19:17:29Z 60 judge returned: BLOCKING=0 (markers agree); check-4 cityTiles threshold ruled non-blocking (design proxy, not SPEC/prompt); all 8 lines re-verified independently -> reviews/verify-verdict.md
+2026-08-27T19:17:29Z 60 -> 70 phase transition: entering announce
+2026-08-27T19:17:29Z heartbeat phase=70
