@@ -23,3 +23,6 @@
 2026-08-27T03:24:05Z 30 coordinator push workaround: git push auth now rejected from this sandbox too — pushes via GitHub contents API (/tmp/push_files.py), reads/rebase via git fetch
 2026-08-27T03:24:05Z 30 reviewer dispatched r1 -> runs/2026-08-27-board-gauntlet/reviews/r1-review.md
 2026-08-27T03:24:05Z heartbeat phase=30
+2026-08-27T03:39:44Z 30 reviewer returned r1-review.md (674 lines): 2 blocking (B1 say-band ellipsizes remarks checklist-15, B2 seventh chrome edit not in design-note table checklist-14), 20 advisory
+2026-08-27T03:39:44Z 30 fixer dispatched r1
+2026-08-27T03:39:44Z heartbeat phase=30
