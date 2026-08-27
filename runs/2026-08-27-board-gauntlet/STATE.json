@@ -5,19 +5,22 @@
   "slug": "board-gauntlet",
   "repo": "https://github.com/Metta-AI/cogame-board-gauntlet",
   "starter": "cogame-babel",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_dbadce13-6ad8-440d-a054-122e326af949",
+    "manifest_sha": "sha256:c7acefc3970af7485d4e648e5bb09000c7e6a729b0e212cbfd0413b0f82658b4",
+    "release_run_id": "33040017344"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "board-gauntlet-grandmaster:v1",
+    "champion2": "board-gauntlet-tempo:v1",
+    "fillers": [
+      "board-gauntlet-tactician:v1",
+      "board-gauntlet-hustler:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T04:37:22Z",
+  "heartbeat_at": "2026-08-27T04:46:22Z",
   "session_ended_at": null,
   "session_id": "59a6df5c",
   "log": "runs/2026-08-27-board-gauntlet/log.md"
