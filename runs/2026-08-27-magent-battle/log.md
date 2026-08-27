@@ -70,3 +70,4 @@
 2026-08-27T10:43:42Z progress phase=70 marker=discord_message_id 1542484706996781097
 2026-08-27T10:43:42Z 70 -> 75 phase transition: entering atlas
 2026-08-27T10:44:39Z 75 atlas slug=magent-battle live in /api/coworlds (episodes_7d=3); continent=paintlands (zero-sum army combat: the paintlands row is shooters/tanks/RTS; coop PZ ports went to commons but this is head-to-head mass combat); spot 202,270 clearance=39.5 label="MAgent Battle" anchor=c
+2026-08-27T10:45:04Z 75 atlas dispatch=33064346097 region=paintlands at=202,270 clearance=39.5
