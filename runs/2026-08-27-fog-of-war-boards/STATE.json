@@ -5,7 +5,7 @@
   "slug": "fog-of-war-boards",
   "repo": "https://github.com/Metta-AI/cogame-fog-of-war-boards",
   "starter": "cogame-babel",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "40": 1
   },
@@ -43,7 +43,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-27T03:35:19Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542376975635710024"
   },
   "atlas": {
     "status": "",
@@ -57,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T03:35:19Z",
+  "heartbeat_at": "2026-08-27T03:35:37Z",
   "session_ended_at": null,
   "session_id": "325aebfd",
   "log": "runs/2026-08-27-fog-of-war-boards/log.md"
