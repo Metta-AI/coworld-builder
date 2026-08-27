@@ -46,3 +46,4 @@
 2026-08-27T10:07:44Z 50 fillers registered 200: line:v3 a3fc517c + pincer:v3 7b36eb1b (neither champion); unpause 200 rounds_paused_at=null; trigger-round 200; round 1 pending, entrant_attributions = both champions
 2026-08-27T10:07:44Z progress phase=50 marker=league_b56ff3be round 1 pending
 2026-08-27T10:07:44Z 50 -> 60 phase transition: entering verify
+2026-08-27T10:09:24Z 60 poll 1: rounds=1 total, completed=0 (round 1 round_number=1 status=pending created 10:06:01Z); check 7 TRUE from committed release-result.json
