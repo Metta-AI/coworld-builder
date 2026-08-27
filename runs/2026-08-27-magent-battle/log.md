@@ -42,3 +42,7 @@
 2026-08-27T10:04:35Z 50 seed 200 lseed_86560d16 league=league_b56ff3be-1f0f-4b2a-b2e7-c44d17839134 (note: GET /leagues returns bare array, not entries)
 2026-08-27T10:04:35Z 50 division 200 div_ea7bd527-bc20-4698-b780-14c643a6067b; settings 200 ladder round_robin/elo interval=15
 2026-08-27T10:04:35Z 50 dispatch coworld-submit champion1 vanguard:v3 as daveey
+2026-08-27T10:07:44Z 50 champion1 submit ok run=33061442758 sub_208c1b21 vanguard:v3 as daveey; champion2 submit ok run=33061492415 marshal:v3 as daveey-1 (pv 361a18b7 player_name=daveey-1 verified)
+2026-08-27T10:07:44Z 50 fillers registered 200: line:v3 a3fc517c + pincer:v3 7b36eb1b (neither champion); unpause 200 rounds_paused_at=null; trigger-round 200; round 1 pending, entrant_attributions = both champions
+2026-08-27T10:07:44Z progress phase=50 marker=league_b56ff3be round 1 pending
+2026-08-27T10:07:44Z 50 -> 60 phase transition: entering verify
