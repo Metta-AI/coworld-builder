@@ -27,3 +27,7 @@
 2026-08-26T23:58:30Z 30 judge dispatched r1 thread=pending sha=04f7a60c32db9e361249218080ef2ef2c992a406 output=reviews/r1-verdict.md session=ng26a441
 2026-08-26T23:58:04Z 30 judge r1 thread=sthr_01WKmKNskNExHVDodoSjAoEb (correcting thread=pending line above)
 2026-08-26T23:58:04Z heartbeat phase=30
+2026-08-27T00:07:06Z 30 judge returned r1: r1-verdict.md blocking=0 (both markers agree); all 15 checklist items PASS at 04f7a60c32db9e361249218080ef2ef2c992a406, CI run 33024746218
+2026-08-27T00:07:06Z 30 -> 40 phase transition: STATE phase=40 (review loop closed in 1 round)
+2026-08-27T00:07:06Z heartbeat phase=40
+2026-08-27T00:07:06Z progress phase=30 marker=r1-verdict.md
