@@ -72,3 +72,28 @@
 2026-08-27T19:52:59Z 60 poll #1 rounds: 1:pending (completed=0)
 2026-08-27T19:58:00Z heartbeat phase=60
 2026-08-27T19:58:00Z 60 poll #2 rounds: 1:completed (completed=1)
+2026-08-27T20:03:01Z heartbeat phase=60
+2026-08-27T20:03:01Z 60 poll #3 rounds: 1:completed (completed=1)
+2026-08-27T20:08:11Z heartbeat phase=60
+2026-08-27T20:08:11Z 60 poll #4 rounds: 2:pending 1:completed (completed=1)
+2026-08-27T20:13:12Z heartbeat phase=60
+2026-08-27T20:13:12Z 60 poll #5 rounds: 2:completed 1:completed (completed=2)
+2026-08-27T20:16:11Z heartbeat phase=60
+2026-08-27T20:16:11Z 60 poll #1 rounds: 2:completed 1:completed (completed=2)
+2026-08-27T20:16:28Z heartbeat phase=60
+2026-08-27T20:16:28Z 60 poll #1 rounds: 2:completed 1:completed (completed=2)
+2026-08-27T20:21:29Z heartbeat phase=60
+2026-08-27T20:21:29Z 60 poll #2 rounds: 3:pending 2:completed 1:completed (completed=2)
+2026-08-27T20:26:30Z heartbeat phase=60
+2026-08-27T20:26:30Z 60 poll #3 rounds: 3:pending 2:completed 1:completed (completed=2)
+2026-08-27T20:31:33Z heartbeat phase=60
+2026-08-27T20:31:33Z 60 poll #4 rounds: 3:completed 2:completed 1:completed (completed=3)
+2026-08-27T20:39:02Z 60 check 1 TRUE: 3 completed rounds (1 @19:56:51Z, 2 @20:11:59Z, 3 @20:27:22Z), 0 failed/discarded; all created after fillers registered 19:49Z
+2026-08-27T20:39:02Z 60 check 2 TRUE: leaderboard daveey-1 rank1 flatland-pathfinder:v3 1014.67 rounds=3; daveey rank2 flatland-signalman:v2 985.33 rounds=3; fillers absent (2-row list)
+2026-08-27T20:39:02Z 60 check 3 TRUE: latest round 3 round_603575ef -> ereq_c4b78ba5-d4e8-4ab6-8504-c54ae08c812d completed, replay_url .../4fe82cbb-76e5-49a9-a0f8-4a1cb64bba2e.replay, seats 0/1 daveey+daveey-1 is_filler=false, seats 2/3 flatland-yielder:v3 is_filler=true
+2026-08-27T20:39:02Z 60 check 4 TRUE: binary COWLDFLT decoded via tools/replay_summary.py (design.md-declared phase-60 substitute); strict jq -e ok; protocol=flatland/v1 reason=complete endRule=tickCap arrived=15 onTime=13; llmTurns=[31,31,0,0] fallbackTurns=[0,0,0,0] 62/62 champion decisions llm, 60 radio lines
+2026-08-27T20:39:02Z 60 check 5 TRUE for latest round 3 (decoded 4 containers, 259 lines, 0 matches = CLEAN). OBSERVATION: round 2 ereq_6b35ad65 had 9 matching lines (seat 1 attempt-1 'Timeout was reached POST 127.0.0.1:9100' x5 -> 4 yielder fallbacks of 31 turns); bedrock-sidecar 63 completes all ok=true status 200, max latency 8059ms vs attempt1Ms=9000 -> flatland-side deadline margin, NOT a Bedrock outage; pommerman cross-check inconclusive (all-scripted seats, llmTurns=[0,0,0,0])
+2026-08-27T20:39:02Z 60 check 6 TRUE: raw HTML has no iframe (client-rendered); featured match read from SSR state.playlist[0] = flatland.r3.e1 round 3; iframe src from POST /coworlds/replays/session = .../v2/coworlds/replays/static/cow_f29f97b1-.../sha256%3Aab884d32...883/index.html?replay=... ready=true, no /client/replay
+2026-08-27T20:39:02Z 60 check 7 TRUE: committed runs/2026-08-27-flatland/release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)" (no re-download needed)
+2026-08-27T20:39:02Z 60 check 8 TRUE: viewer-check.yml run 33113882071 dispatched 20:33:14Z, green in 1m10s; loaded=true ms=4972 data-replay-loaded=true failure=null; scrub 0%/50%/100% clocks all differ (tick 0->266->496, turn 1->17->31, arrived 0->13->15); artifacts committed to runs/2026-08-27-flatland/viewer-check/. Observations: 4x 404 on leftover ctf soldier_*_front_gun.png locker-room sprites (non-fatal); feed_lines=0 at endcard
+2026-08-27T20:39:02Z 60 verifier complete: VERIFY.md written, 8/8 TRUE

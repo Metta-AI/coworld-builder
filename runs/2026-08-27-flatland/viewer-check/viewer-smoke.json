@@ -1,0 +1,55 @@
+{
+  "loaded": true,
+  "ms": 4972,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f29f97b1-da55-4662-8dbc-cefde73f528d/sha256%3Aab884d3298105799394a683dc476cade0c9746d52dc309896c6f4bfdaca22883/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F4fe82cbb-76e5-49a9-a0f8-4a1cb64bba2e.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0",
+  "scorebug": "0/6 SIGNALMAN ON TIME 0 0 late 0/6 YIELDER ON TIME 0 0 late ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0 0/6 PATHFINDER ON TIME 0 0 late 0/6 YIELDER ON TIME 0 0 late",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0"
+    },
+    {
+      "at": "50%",
+      "clock": "ON TIME 13 / 15 PAR · TICK 266/496 · TURN 17/31 · ARRIVED 13 · BROKEN 0 · DEADLOCK 2"
+    },
+    {
+      "at": "100%",
+      "clock": "ON TIME 13 / 15 PAR · TICK 496/496 · TURN 31/31 · ARRIVED 15 · BROKEN 3 · DEADLOCK 0"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f29f97b1-da55-4662-8dbc-cefde73f528d/sha256%3Aab884d3298105799394a683dc476cade0c9746d52dc309896c6f4bfdaca22883/soldier_red_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f29f97b1-da55-4662-8dbc-cefde73f528d/sha256%3Aab884d3298105799394a683dc476cade0c9746d52dc309896c6f4bfdaca22883/soldier_yellow_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f29f97b1-da55-4662-8dbc-cefde73f528d/sha256%3Aab884d3298105799394a683dc476cade0c9746d52dc309896c6f4bfdaca22883/soldier_blue_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_f29f97b1-da55-4662-8dbc-cefde73f528d/sha256%3Aab884d3298105799394a683dc476cade0c9746d52dc309896c6f4bfdaca22883/soldier_green_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

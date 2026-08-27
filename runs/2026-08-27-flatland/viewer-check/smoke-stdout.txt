@@ -1,0 +1,4 @@
+{"loaded":true,"ms":4972,"clock":"ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0","scorebug":"0/6 SIGNALMAN ON TIME 0 0 late 0/6 YIELDER ON TIME 0 0 late ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0 0/6 PATHFINDER ON TIME 0 0 late 0/6 YIELDER ON TIME 0 0 late","feed_lines":0}
+scrub readouts: 0%="ON TIME 0 / 15 PAR · TICK 0/496 · TURN 1/31 · ARRIVED 0 · BROKEN 0 · DEADLOCK 0"  50%="ON TIME 13 / 15 PAR · TICK 266/496 · TURN 17/31 · ARRIVED 13 · BROKEN 0 · DEADLOCK 2"  100%="ON TIME 13 / 15 PAR · TICK 496/496 · TURN 31/31 · ARRIVED 15 · BROKEN 3 · DEADLOCK 0"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
