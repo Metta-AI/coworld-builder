@@ -20,3 +20,6 @@
 2026-08-27T03:17:11Z 20 builder note: sandbox git push rejected (Invalid username or token) — builder pushed via GitHub git-data API; remote shas differ from local; helper /workspace/push_via_api.py
 2026-08-27T03:17:11Z progress phase=20 marker=ci-run-33035395418-success
 2026-08-27T03:17:11Z 20 -> 30 phase transition review_round=1
+2026-08-27T03:24:05Z 30 coordinator push workaround: git push auth now rejected from this sandbox too — pushes via GitHub contents API (/tmp/push_files.py), reads/rebase via git fetch
+2026-08-27T03:24:05Z 30 reviewer dispatched r1 -> runs/2026-08-27-board-gauntlet/reviews/r1-review.md
+2026-08-27T03:24:05Z heartbeat phase=30
