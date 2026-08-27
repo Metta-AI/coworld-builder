@@ -5,7 +5,7 @@
   "slug": "lux-ai",
   "repo": "https://github.com/Metta-AI/cogame-lux-ai",
   "starter": "coworld-ctf",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T12:17:56Z",
+  "heartbeat_at": "2026-08-27T12:42:51Z",
   "session_ended_at": null,
   "session_id": "cd77d683",
   "log": "runs/2026-08-27-lux-ai/log.md"
