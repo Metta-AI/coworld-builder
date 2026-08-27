@@ -41,7 +41,7 @@
     "viewer_check_run": "33067338841"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-27T11:41:54Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -56,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T11:40:30Z",
+  "heartbeat_at": "2026-08-27T11:41:54Z",
   "session_ended_at": null,
   "session_id": "c7061c35",
   "log": "runs/2026-08-27-smac-starcraft-micro/log.md"
