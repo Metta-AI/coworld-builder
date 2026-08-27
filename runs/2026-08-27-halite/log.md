@@ -6,3 +6,6 @@
 2026-08-27T22:42:47Z 10 checklist: starter[x] num_agents[x] resolution-order[x] scoring[x] end-conditions[x] observation[x] reply-caps[x] both-policies[x] parallel-batch+budget[x] degrade[x] name-spaces[x] viewer-static[x] viewer-one-starter[x]=coworld-ctf chrome-provenance[x] transport[x] replay-self-sufficient[x] packaging[x] tests[x] out-of-scope[x] — ACCEPTED round 1
 2026-08-27T22:42:47Z progress phase=10 marker=design.md written and accepted
 2026-08-27T22:42:47Z 10 -> 20 phase transition
+2026-08-27T22:43:43Z 20 repo created https://github.com/Metta-AI/cogame-halite (public)
+2026-08-27T22:43:43Z 20 propagate-secrets run 33123615993 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-halite
+2026-08-27T22:43:43Z 20 builder dispatched round=1
