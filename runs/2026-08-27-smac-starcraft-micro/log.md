@@ -42,3 +42,7 @@
 2026-08-27T10:10:16Z 40 phase transition 40 -> 50
 2026-08-27T10:10:16Z heartbeat phase=50
 2026-08-27T10:10:16Z progress phase=40 marker=33060960111
+2026-08-27T10:11:51Z 50 seed POST /coworld-league-seeds 200 lseed_bbb867a2 league_id=league_f42b4821-882b-428e-b803-630671e86726
+2026-08-27T10:11:51Z 50 division PUT 200 div_efd2ab9a-88fd-4c97-952c-64f38e3fadaa (Competition level 1)
+2026-08-27T10:11:51Z 50 settings POST 200 (elo k=32 round_robin filler_policy, round_interval=15m)
+2026-08-27T10:11:51Z 50 champion1 submit dispatching coworld-submit.yml policy=smac-starcraft-micro-marshal:v3 player=ply_44ae9048
