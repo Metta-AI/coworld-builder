@@ -27,3 +27,7 @@
 2026-08-27T16:14:58Z progress phase=30 marker=r1-fixes.md
 2026-08-27T16:14:58Z 30 dispatch judge round=1 at sha=66b5d3b -> reviews/r1-verdict.md
 2026-08-27T16:14:58Z heartbeat phase=30
+2026-08-27T16:29:36Z 30 judge returned r1: BLOCKING=1 ([correctness] src/lux/replays.nim:125 playback ignores recorded lobby length — falsifies checklist item 2); B1 fix verified, no test loosening -> reviews/r1-verdict.md
+2026-08-27T16:29:36Z progress phase=30 marker=r1-verdict.md
+2026-08-27T16:29:36Z 30 round 2 begins: dispatch reviewer round=2 -> reviews/r2-review.md
+2026-08-27T16:29:36Z heartbeat phase=30
