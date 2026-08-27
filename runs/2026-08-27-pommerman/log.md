@@ -38,3 +38,4 @@
 2026-08-27T20:11:28Z 50 -> 60 phase transition: entering verify
 2026-08-27T20:11:28Z progress phase=50 marker=league_7b53400d round2-pending both-champions-entrants
 2026-08-27T20:11:28Z heartbeat phase=60
+2026-08-27T20:11:44Z 60 dispatch verifier (league_7b53400d, div_7c2c9172, cow_224b5627, v0.1.0)
