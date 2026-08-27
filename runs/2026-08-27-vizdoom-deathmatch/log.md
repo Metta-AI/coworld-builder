@@ -20,3 +20,5 @@
 2026-08-27T23:37:40Z progress phase=20 marker=ci-run-33126418568-green
 2026-08-27T23:37:40Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-27T23:37:40Z heartbeat phase=30
+2026-08-27T23:38:46Z 30 repo cloned to /workspace/cogame-vizdoom-deathmatch at 3e49fa42; dispatch reviewer round 1
+2026-08-27T23:38:46Z heartbeat phase=30
