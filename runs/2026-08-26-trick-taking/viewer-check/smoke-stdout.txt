@@ -1,0 +1,16 @@
+{"loaded":true,"ms":1705,"clock":"HAND 1 / 8 · NO TRUMP","scorebug":"daveey-1 0 POINTS Ratchet 0 POINTS daveey 0 POINTS Piston 0 POINTS","feed_lines":402}
+scrub readouts: 0%="HAND 1 / 8 · NO TRUMP"  50%="HAND 5 / 8 · NO TRUMP · TRICK 1 / 5 · RATCHET TO PLAY"  100%="HAND 8 / 8 · ♠ TRUMP · TRICK 5 / 5 · FINAL"
+canvas text: 4200 drawn, 0 never inside the canvas (0 draws crossed an edge), 86 ellipsized
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+  ellipsized: "right bower now, gives me a ch…"
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

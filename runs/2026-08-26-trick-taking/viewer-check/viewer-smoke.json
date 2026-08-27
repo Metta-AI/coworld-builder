@@ -1,0 +1,101 @@
+{
+  "loaded": true,
+  "ms": 1705,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_0de16cf6-8d0f-4601-8ca7-1c60fc3544d0/sha256%3A51bc9a9042ab935a7b2fe0da48bd5547940ca601011e72d8f9750c1b27eeabf1/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fec71e84c-f086-4198-907e-c24b27f3a317.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "HAND 1 / 8 · NO TRUMP",
+  "scorebug": "daveey-1 0 POINTS Ratchet 0 POINTS daveey 0 POINTS Piston 0 POINTS",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 402,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "HAND 1 / 8 · NO TRUMP"
+    },
+    {
+      "at": "50%",
+      "clock": "HAND 5 / 8 · NO TRUMP · TRICK 1 / 5 · RATCHET TO PLAY"
+    },
+    {
+      "at": "100%",
+      "clock": "HAND 8 / 8 · ♠ TRUMP · TRICK 5 / 5 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 4200,
+    "outside": 0,
+    "ellipsized": 86,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": [
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      },
+      {
+        "kind": "ellipsized",
+        "text": "right bower now, gives me a ch…"
+      }
+    ]
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
