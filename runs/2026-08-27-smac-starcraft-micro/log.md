@@ -75,3 +75,6 @@
 2026-08-27T11:33:23Z 60 judge dispatched for VERIFY.md adjudication
 2026-08-27T11:33:23Z heartbeat phase=60
 2026-08-27T11:33:23Z progress phase=60 marker=viewer-check-33067338841
+2026-08-27T11:40:30Z 60 judge returned: verify-verdict.md blocking=0/BLOCKING=0; all 8 checks independently re-fetched and reconciled; 4 advisories non-blocking
+2026-08-27T11:40:30Z 60 phase transition 60 -> 70
+2026-08-27T11:40:30Z heartbeat phase=70
