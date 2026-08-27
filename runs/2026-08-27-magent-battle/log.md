@@ -66,3 +66,6 @@
 2026-08-27T10:42:19Z 60 judge returned verify-verdict.md blocking:0/BLOCKING:0 (markers agree, verified); 8 live spot-checks reproduced VERIFY.md; 2 non-blocking notes (filler-stamp batching semantics; endcard routed-banner names wrong side in game-2 context — legibility glance for a future round)
 2026-08-27T10:42:19Z 60 -> 70 phase transition: entering announce
 2026-08-27T10:43:24Z 70 announce attempted_at written before POST (body 1769 chars, flags 4)
+2026-08-27T10:43:42Z 70 announce msg=1542484706996781097 (200, flags=4, embeds=0)
+2026-08-27T10:43:42Z progress phase=70 marker=discord_message_id 1542484706996781097
+2026-08-27T10:43:42Z 70 -> 75 phase transition: entering atlas
