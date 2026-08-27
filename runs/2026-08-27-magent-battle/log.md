@@ -15,4 +15,6 @@
 2026-08-27T07:52:00Z 20 push d9d78c0 ci run=33051097971 conclusion=failure jobs=manifest(game.version)+wasm-viewer(_ctf_mismatch_tick)
 2026-08-27T08:01:00Z 20 push 5a61572 ci run=33051627649 conclusion=failure jobs=manifest(version string)+wasm-viewer(renderer fixture feed trim); test+docker-smoke green
 2026-08-27T08:00:16Z 20 push c79f914 ci dispatched
-pending 20 push  ci dispatched
+2026-08-27T08:12:00Z 20 push c79f914e698875b1207646a5acfb8bd499e16b1d ci run=33052090693 conclusion=success jobs=test+manifest+docker-smoke+wasm-viewer all green
+2026-08-27T08:12:00Z 20 verified on the green sha: no-placeholder grep empty; ci.yml/coworld-release.yml/coworld-submit.yml all parse and are active; release inputs version|policies|secret_key_name|put_secret|skip_certify + release-result artifact + per-policy "player" wrapping; submit inputs player_id|policy|league_id + submit-result artifact; step order build->certify->upload-policy->upload-coworld->secret put
+2026-08-27T08:12:00Z 20 deltas vs the design note: mapSize 31 spawns 30/30 not 25/25 (upstream generate_map arithmetic; vendor/PATCHES.md #7); squad controller reads occupancy at DECISION time (without it every game is a 0-kill tickCap draw; vendor/PATCHES.md #6); playback is 8 ticks/s not 1 tick/frame (a decided battle is 30-60 ticks, not 300); broadcast_core.js is a retargeted rewrite of the sprite-protocol compositor, not a line-level fork; league_replayer.html not forked
