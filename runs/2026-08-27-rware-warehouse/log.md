@@ -15,3 +15,7 @@
 2026-08-27T11:22:10Z 20 propagate-secrets run 33066998670 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
 2026-08-27T11:21:46Z 20 dispatch builder round=1
 2026-08-27T11:21:46Z heartbeat phase=20
+2026-08-27T13:01:29Z 20 builder returned round=1: ci.yml GREEN first push, head d303e6c, run 33074159923 (test/manifest/docker-smoke/wasm-viewer all success); smoke seats=4 reason=complete replay=141714B; soak advancing; 106 test assertions; exit checks verified by coordinator (3 workflows active, release inputs version/policies/put_secret/skip_certify + release-result artifact + per-policy player field, submit inputs player_id/policy/league_id + submit-result artifact, placeholder grep clean); builder deviations 1-9 documented in vendor/PATCHES.md for reviewer attention; NOTE git push refused on cogame repo (helper repo-scoped), builder used gh api blobs/tree/commit route
+2026-08-27T13:01:29Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-27T13:01:29Z heartbeat phase=30
+2026-08-27T13:01:29Z progress phase=20 marker=ci run 33074159923 green on d303e6c
