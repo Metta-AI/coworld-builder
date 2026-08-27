@@ -5,7 +5,7 @@
   "slug": "grf-football",
   "repo": "https://github.com/Metta-AI/cogame-grf-football",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T05:01:02Z",
+  "heartbeat_at": "2026-08-27T05:18:21Z",
   "session_ended_at": null,
   "session_id": "a0f36af8",
   "log": "runs/2026-08-27-grf-football/log.md"
