@@ -9,3 +9,8 @@
 2026-08-27T16:27:22Z heartbeat phase=20
 2026-08-27T16:28:14Z 20 repo created https://github.com/Metta-AI/cogame-pommerman (public); propagate-secrets run 33093338852 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present
 2026-08-27T16:28:14Z 20 dispatch builder
+2026-08-27T18:29:18Z 20 builder returned: ci.yml GREEN on main run=33103016744 sha=25efdbb7 (jobs test/manifest/docker-smoke/wasm-viewer all success); verified independently via gh. 10 design deltas reported (rigid 56 not 57; sweep retuned baselines to (3,4,8,2) incl dodgeHorizon 8 — design errata per note's own rule; PlaybackSpeeds no 0.5; art filenames de-paintified; broadcast page provenance via committed build_broadcast_page.py; fuse t+8 upstream behaviour; parseSeatDirective data not closures; sapper tick-88 derived from collapseTicks; chips baked in renderer; soldier pngs kept as fallback). Nano-banana art succeeded. Not shipped: league_replayer.html, expand_replay/extract_events/record_fixture/flake.nix (no consumer). Note for 60: CI replay has no kick event (all-scripted)
+2026-08-27T18:29:18Z 20 exit checks passed: no placeholders; 3 workflows parse; release inputs version/policies/put_secret/skip_certify + submit inputs player_id/policy/league_id; release-result + submit-result artifacts; per-policy player field; exec bits 100755 on remote tree
+2026-08-27T18:29:18Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-27T18:29:18Z progress phase=20 marker=ci-run-33103016744-green
+2026-08-27T18:29:18Z heartbeat phase=30

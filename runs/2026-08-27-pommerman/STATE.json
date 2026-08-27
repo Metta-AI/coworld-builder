@@ -5,9 +5,9 @@
   "slug": "pommerman",
   "repo": "https://github.com/Metta-AI/cogame-pommerman",
   "starter": "coworld-ctf",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {},
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T16:27:22Z",
+  "heartbeat_at": "2026-08-27T18:29:18Z",
   "session_ended_at": null,
   "session_id": "fdce440e",
   "log": "runs/2026-08-27-pommerman/log.md"
