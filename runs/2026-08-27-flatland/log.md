@@ -40,3 +40,7 @@
 2026-08-27T16:07:13Z progress phase=30 marker=r1-fixes.md
 2026-08-27T16:07:13Z 30 dispatch judge round=1 -> reviews/r1-verdict.md (fresh context, sha c54424fc)
 2026-08-27T16:07:13Z heartbeat phase=30
+2026-08-27T16:19:37Z 30 judge returned round=1: reviews/r1-verdict.md blocking: 0 / BLOCKING: 0 (agree) — F1 verified fixed at c54424fc, F7 refuted with test, all 15 checklist items + batch rule PASS; flagged for phase 60: game.docs content type "uri" (starter parity, watch certify)
+2026-08-27T16:19:37Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-27T16:19:37Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-27T16:19:37Z heartbeat phase=40
