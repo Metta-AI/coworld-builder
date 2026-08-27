@@ -84,3 +84,5 @@
 2026-08-27T00:10:14Z 70 -> 75 phase transition: STATE.phase=75
 2026-08-27T00:10:14Z heartbeat phase=75
 2026-08-27T00:11:05Z 75 atlas dispatch=33025965937 region=tabletop at=766,277 clearance=22.9 label='Goofspiel & Oshi' (continent: tabletop — card game port, rails call)
+2026-08-27T00:12:30Z 75 atlas dispatch 1 (33025965937) FAILED: 28 unplaced leagues in backlog (earlier runs' atlas PRs sit unmerged in the queue)
+2026-08-27T00:15:56Z 75 atlas dispatch=33026257287 region=tabletop at=811,289 clearance=22.9 extra_cities=28 (26 spots recovered from poker PR 20533 branch, atari-cabinet spotted simulations 557,280, liars-dice spotted tabletop 796,307 avoiding poker's pending 784,319; own dot respotted 811,289 since cogchemists holds 766,277)
