@@ -24,3 +24,6 @@
 2026-08-27T01:59:32Z progress phase=20 marker=ci-run-33031534557
 2026-08-27T01:59:32Z 20 -> 30 phase transition
 2026-08-27T01:59:32Z heartbeat phase=30
+2026-08-27T02:19:12Z 30 r1 reviewer returned: 15 findings (2 blocking legibility B1 fixture-gate-strength B2 ellipsis-padding; 13 non-blocking N1-N13; 4 could-not-determine incl sense>0 untested in CI)
+2026-08-27T02:19:12Z 30 fixer dispatched on r1-review.md
+2026-08-27T02:19:12Z heartbeat phase=30
