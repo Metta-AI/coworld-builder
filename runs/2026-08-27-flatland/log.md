@@ -67,3 +67,4 @@
 2026-08-27T19:50:51Z progress phase=50 marker=round 1 pending league=league_b8ffbdda-2f8f-45af-b905-e600ba385cff
 2026-08-27T19:50:51Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
 2026-08-27T19:50:51Z heartbeat phase=60
+2026-08-27T19:51:21Z 60 dispatch verifier -> runs/2026-08-27-flatland/VERIFY.md (8 checks; round 1 pending at dispatch; fillers were set before the first trigger)
