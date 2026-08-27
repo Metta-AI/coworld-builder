@@ -1,0 +1,49 @@
+blocking: 0
+
+# r60 verdict — board-gauntlet (phase 60, definition of done)
+
+Head: coworld-builder 7eec286 (VERIFY.md + viewer-check evidence committed)
+Checklist: docs/SPEC.md §Definition of done (phase 60, all fetched, never assumed), items 1–8, as operationalised by prompts/60-verify.md.
+Independent read written before reading fixer/verifier self-assessment beyond VERIFY.md itself: yes — VERIFY.md *is* the artifact under adjudication here; every load-bearing claim in it was independently re-fetched in this session (2026-08-27, post-05:31Z) before this verdict was written.
+
+## Method
+
+Adversarial re-verification: for each of the eight checks I re-ran the fetch myself against the live Observatory API / S3 / GitHub, compared byte-for-byte with what VERIFY.md pasted, and looked for asserted-not-fetched claims. Nothing was taken on the verifier's word.
+
+## Independent checklist pass
+
+| # | item | status | evidence (re-fetched by the judge) |
+|---|---|---|---|
+| 1 | ≥2 completed rounds after fillers set | TRUE | `GET /rounds?league_id=league_e96d74f3…` re-fetched: rounds 2/3/4 `completed` (completed_at 04:50:54Z, 05:06:11Z, 05:20:08Z), round 1 `failed` with the exact error VERIFY quotes (`Temporal RoundWorkflow failed before settling the round.`). Filler registry re-fetched (`/leagues/$L/filler-policies`, elevated): tactician `396d5236…`, hustler `f21847eb…` — both ≠ champion version ids `0bad04b4…`/`f9a218bb…`. log.md phase 50 shows the filler POST line strictly before the trigger line; round 1 (the raced round) carried only champion 1 in entrants while rounds 2–4 carry both champions, corroborating the ordering independently of the declared ~4-min clock skew. Requirement ≥2 met with 3. |
+| 2 | Both champions ranked, fillers absent/Baseline | TRUE | `GET /divisions/div_b857da67…/leaderboard` re-fetched: exactly 2 rows, `daveey` rank 1 (`board-gauntlet-grandmaster:v1`, rounds_played 3) and `daveey-1` rank 2 (`board-gauntlet-tempo:v1`, rounds_played 3). Values byte-identical to VERIFY (scores 1017.3341586646084 / 982.6658413353916). No filler rows at all. |
+| 3 | Latest round's ereq completed with replay | TRUE | `GET /rounds/round_b7e6fcc1…/episode-requests` → one ereq `ereq_5844e394…` `completed`; detail re-fetched: `replay_url` = `…/replays/cec5aa71-97a3-43b5-b62a-863a10ade535.replay`, participants daveey/grandmaster + daveey-1/tempo, both `is_filler:false`, scores +1/−1. Round 4 is still the latest completed round at re-fetch time. |
+| 4 | Replay bytes valid, show the game | TRUE | Replay re-downloaded (5918 bytes, http 200); strict `bytes.decode('utf-8')` + `json.loads` pass. `protocol: gauntlet.replay.v1` — matches design.md:873–877 envelope and design.md:1449 ("reads `gauntlet.replay.v1` and nothing else"); I confirmed the Observatory manifest's `game.protocols` documents only the wire protocols (`gauntlet.player.v1` + global socket), so the design note is the right place to check, as VERIFY argued. `results.reason: complete` (design.md:319's `deadline` allowance not needed). 9/9 moves `scripted:false, fellBack:false`, `fallbacks:[0,0]`, `illegalReplies:[0,0]`, each move with a distinct substantive `say`; win event `path:["d3","d4","d5","d6"]`. All byte-identical to VERIFY's paste. |
+| 5 | Hosted log clean | TRUE | Log re-fetched with elevated header (20580 raw bytes, matching VERIFY); I decoded the `b'…'` reprs myself and grepped the full decoded text: zero matches of `falling back\|LLM provider is unavailable\|cut off at max_tokens\|rejected` — CLEAN, all four containers present. I also re-fetched round 3's log (attempt 1) and confirmed the two hits VERIFY quotes, verbatim. Round 4 needs no platform-wide exemption: it is clean outright, and it is the same episode as items 3/4/6. |
+| 6 | Public page uses static replay path | TRUE | Reproduced all three sub-fetches: (a) raw HTML grep finds no iframe (client-rendered, as the prompt anticipates); (b) SSR payload `playlist[0]` = featured match `board-gauntlet.r4.e1` with `replayUrl` identical to item 3's; (c) `POST /coworlds/replays/session` returned a `viewer_url` byte-identical to VERIFY's: `…/v2/coworlds/replays/static/cow_dbadce13…/sha256%3Ac7acefc3…/index.html?replay=…cec5aa71….replay&v=2`, `ready:true`, sha = the coworld's `manifest_hash` (re-fetched from `/coworlds`), no `/client/replay` anywhere. Source used is recorded in VERIFY as required. |
+| 7 | Certification declared static bundle | TRUE | Read the committed `runs/2026-08-27-board-gauntlet/release-result.json` myself: `.certify.replay_liveness` = `Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)` — required string present verbatim; `.certify.ok` true, `canonical` true, `hosted_certification: certified`, 10/10 transcript steps pass in `output_tail`. |
+| 8 | Viewer executed + spectator judgment | TRUE | Run 33042374554 re-checked via `gh run view`: `conclusion: success`, created 05:24:05Z, workflow viewer-check. I re-downloaded the `viewer-check` artifact from that run and diffed: **byte-identical** to the committed `viewer-check/viewer-smoke.{json,png}` — the evidence is genuinely that run's output, and the json's `url` field is byte-identical to the check-6 `viewer_url`, tying the execution to the live iframe src. (a) `loaded:true` at 3168 ms, `data_replay_loaded:"true"`, bridge `["loading","ready"]`, `failure:null` ✓. (b) Three scrub clocks differ: PLY 0 / PLY 5 / PLY 9, DAVEEY TO MOVE → DAVEEY-1 TO MOVE → FINAL ✓. (c) I opened viewer-smoke.png myself: legible Connect Four 7×6 board in the starter's chrome (wordmark/transport strip, two-seat scorebug with HEURISTIC eval bar, say-feed band, momentum scrubber, centred endcard). Endcard reads FINAL — 9 PLIES / DAVEEY WINS, table 1 daveey 1 10028 0 0 / 2 daveey-1 −1 47 0 0 — every number matches `results` in the replay I downloaded. Visible discs (red d1, blue d2/e1/e2, red d5/d6 with gold win rings; d3/d4 occluded by the endcard) match the recorded move sequence d,d,d,e,d,e,d,e,d. Feed lines are the verbatim `say` strings of events 8 and 7. The judgment paragraph in VERIFY is fair to the picture and claims nothing the artifacts don't show (it even explicitly disclaims the un-clicked `« LOG` control and the feed_lines count's contents). |
+
+## Refuted
+
+None. No claim in VERIFY.md failed re-verification. Every pasted output I re-fetched reproduced byte-identically (rounds, leaderboard, ereq detail, replay bytes, round-4 log size and CLEAN result, round-3 hits, coworld detail, replay-session URL, GH run conclusion, CI artifact bytes).
+
+## Adversarial audit of the verifier's reasoning (points probed, all held)
+
+- **Clock-skew caveat (item 1):** the log's filler timestamp (04:52:00Z) postdates round 2's API creation (04:48:41Z), which the verifier declared rather than hid. The ordering claim survives on three independent legs: the filler POST precedes the trigger POST in the same sequential phase-50 log; round 1 — the only round that could have raced anything — failed with only champion 1 seated (an unpause race, not a filler race); the filler registry's version ids are live and distinct from the champions'. Not a defect.
+- **"Protocol matches the manifest" (item 4):** the SPEC's `protocol matches` is checked against the design note because the manifest genuinely has no replay-protocol field — I fetched `manifest.game.protocols` and confirmed only `gauntlet.player.v1` and the global socket are there (the global text itself pins "STATIC wasm bundle … never by a pod"). The verifier's substitution is sound and was explained, not smuggled.
+- **Round-3 diagnosis (item 5 attempt log):** hits re-fetched and confirmed verbatim. The platform-wide-throttle cross-check (trick-taking, fog-of-war-boards) was not load-bearing for the verdict — round 4 is CLEAN without any exemption — so I did not re-fetch the other coworlds' logs; the verifier's line-81 diagnosis is context, not evidence for a passing check. The seat-0 tactician fallback in round 3 was correctly *not* excused as platform-wide, and correctly escaped by re-running the item against a different (and latest) round, which is exactly what the retry budget is for.
+- **Artifact provenance (item 8):** committed viewer-check evidence diffs byte-identical against the artifact re-downloaded from run 33042374554, and the tested URL is the check-6 iframe src. No possibility the json was hand-edited or from a stale run.
+
+## Non-blocking observations
+
+1. VERIFY.md line 388 says "The decoded `game` container in full" but the paste omits the container's first line (`board-gauntlet: seed not pinned; drew 807933572` — present in my fetch). The line is innocuous and matches no forbidden pattern; CLEAN is unaffected. "In full" should have been "in full minus the seed line" or the line included.
+2. VERIFY's round-3 hit line numbers (81/88) differ from mine (83/90) — a decode-join artifact; the content is verbatim-identical. Immaterial.
+3. `viewer-check/smoke-stderr.txt` (0 bytes) is untracked in git; the prompt requires the png and the json committed, and both are (plus smoke-stdout.txt). Cosmetic.
+4. Both fillers are owned by player `daveey` (ply_44ae9048, same player entity as champion 1). Item 2 is unaffected — fillers are absent from the leaderboard and their version ids differ from both champions' — but worth knowing.
+5. The verifier's standing observation (quoridor wall-blocked-step fallback, 1 of 22 LLM plies across rounds 2–4) is well-evidenced and correctly routed as a phase-30 legibility/prompt nicety, not a phase-60 blocker.
+
+## Verdict
+
+All eight definition-of-done items are TRUE on independently re-fetched evidence. Nothing in VERIFY.md is asserted-not-fetched; the two declared exceptions (committed release-result.json for item 7; the session-dispatched CI run for item 8) are exactly the exceptions the prompt prescribes.
+
+BLOCKING: 0
