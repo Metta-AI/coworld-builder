@@ -23,3 +23,6 @@
 2026-08-27T08:53:35Z 30 r1 reviewer returned r1-review.md (706 lines, F1-F21); key: F1 reason=deadline at reviewed sha (fixed on newer main c5cdc01), F5 byte-slice before clipRunes in llm.nim, F3 canvas_text total=0 (OffscreenCanvas), F14 no grid-tuning artifact; note: orphan builder still pushing (1403e878 08:49 red, GV4)
 2026-08-27T08:53:35Z progress phase=30 marker=r1-review.md
 2026-08-27T08:53:35Z heartbeat phase=30
+2026-08-27T10:02:00Z 30 r1 fixer returned r1-fixes.md; 12 commits on main tip f810b0f, ci 33059866708 green; declines F13,F21 argued; orphan builder quiet since 08:57Z; fixer pushed via Git Data API (sandbox https push auth failing)
+2026-08-27T10:02:00Z progress phase=30 marker=r1-fixes.md
+2026-08-27T10:02:00Z heartbeat phase=30
