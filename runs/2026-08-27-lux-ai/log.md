@@ -77,3 +77,5 @@
 2026-08-27T19:18:49Z progress phase=70 marker=1542614317583831070
 2026-08-27T19:18:49Z 70 -> 75 phase transition: entering atlas
 2026-08-27T19:18:49Z heartbeat phase=75
+2026-08-27T19:19:50Z 75 atlas continent=paintlands reason=1v1 zero-sum economy RTS (the continent's own RTS row); slug live in /api/coworlds (episodes_7d=3)
+2026-08-27T19:19:50Z 75 atlas dispatch=33107889196 region=paintlands at=202,270 clearance=39.5
