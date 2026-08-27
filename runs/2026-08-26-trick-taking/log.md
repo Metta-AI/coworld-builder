@@ -49,3 +49,10 @@
 2026-08-27T03:38:50Z 50 settings POST 200 (elo k=32 round_robin filler_policy, round_interval=15m)
 2026-08-27T03:38:50Z 50 champion1 submit dispatching coworld-submit.yml policy=trick-taking-signaller:v1 player=ply_44ae9048
 2026-08-27T03:39:23Z 50 champion1 submitted ok run=33036988816 sub_3d886623 policy=trick-taking-signaller:v1
+2026-08-27T03:42:12Z 50 champion2 submitted ok run=33037014635 sub_79bf19ce policy=trick-taking-counter:v1 player=daveey-1 (verified player_name=daveey-1 on policy-versions row)
+2026-08-27T03:42:12Z 50 fillers POST 200: follow=a23ccfa9 tracker=e6d34146 (both scripted, neither champion)
+2026-08-27T03:42:12Z 50 unpause 200 paused=false; trigger-round 200 workflow=ladder-league_4764b49e
+2026-08-27T03:42:12Z 50 rounds: r1 failed (auto-fired by submission before fillers registered; known race) r2 pending with both champions in entrant_attributions — exit criterion met
+2026-08-27T03:42:12Z 50 phase transition 50 -> 60
+2026-08-27T03:42:12Z heartbeat phase=60
+2026-08-27T03:42:12Z progress phase=50 marker=league_4764b49e-5b40-40b6-bd3d-3ed1b7bd8aa0
