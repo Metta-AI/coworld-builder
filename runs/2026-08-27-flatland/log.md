@@ -46,3 +46,5 @@
 2026-08-27T16:19:37Z heartbeat phase=40
 2026-08-27T16:20:21Z 40 dispatch builder for release (coworld-release.yml, start v0.1.0, put_secret=true)
 2026-08-27T19:22:23Z 00 resume at phase 40 attempt=1 session=4f2486ae
+2026-08-27T19:24:12Z 40 resume context: 3 prior dispatches by dead session 49cbd93f — v0.1.0 step_failed='Build the Coworld manifest' (fix 55bca20d), v0.1.1 certify bad-token-accepted (fix dbf580ff), v0.1.2 certify ping-no-pong (fix 50cf101e, CI green run 33095394890, never re-dispatched)
+2026-08-27T19:24:12Z 40 dispatch builder round=2 (re-dispatch coworld-release.yml v0.1.3 with ping/pong fix in place)
