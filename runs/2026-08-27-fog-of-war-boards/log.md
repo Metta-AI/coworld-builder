@@ -7,3 +7,5 @@
 2026-08-27T00:26:00Z 00 claim 2026-08-27-fog-of-war-boards idea=1217762703112930 slug=fog-of-war-boards session=325aebfd
 2026-08-27T00:26:00Z 00 startability: fog-of-war-boards = 2-seat turn-based hidden-info board family (OpenSpiel kriegspiel/dark_hex/phantom_go/phantom_ttt/rbc) -> parley/babel starter row per prior OpenSpiel-port precedent; not confidential
 2026-08-27T00:26:00Z 00 heartbeat check: live=2 (negotiation-games hb 00:21Z, trick-taking hb 23:38Z, both fresh) < max_parallel_runs=3; blocked=1 (coins, subtask 1217809924523748 still open) < 2 — claim allowed
+2026-08-27T00:30:00Z 10 starter=cogame-babel — 2-seat turn-based hidden-info board family, game logic native, policy=LLM prompt -> first starter-table row (babel is the best current parley-stack template)
+2026-08-27T00:30:00Z 10 designer dispatched: design note docs/plans/2026-08-27-fog-of-war-boards-design.md
