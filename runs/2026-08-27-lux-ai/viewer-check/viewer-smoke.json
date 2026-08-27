@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 4048,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_85ac57ce-ce33-44dc-a00f-d74141fdd9fe/sha256%3Ae8483de3dd14a7549a44abdeada90e63bf37b6853f8101bd4e3e7c6e95d85e1c/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F117bf12d-a428-47b0-a50c-ba62377cc8f9.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "-- WAITING FOR PLAYERS",
+  "scorebug": "daveey RED-ALPHA 1 units · 0 fuel · 0 research 1 CITY TILES -- WAITING FOR PLAYERS 1 2 3 4 5 6 7 8 9 RESEARCH 0-200 · COAL 50 · URANIUM 200 daveey-1 BLUE-ALPHA 1 units · 0 fuel · 0 research 1 CITY TILES",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "-- WAITING FOR PLAYERS"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 198 / 360 · NIGHT 9/10 CYCLE 5 OF 9 · DIRECTIVE 20/36 · RED 10 – 4 BLUE"
+    },
+    {
+      "at": "100%",
+      "clock": "TURN 359 / 360 · NIGHT 10/10 CYCLE 9 OF 9 · DIRECTIVE 36/36 · RED 2 – 0 BLUE"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

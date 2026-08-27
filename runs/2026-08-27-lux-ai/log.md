@@ -64,3 +64,8 @@
 2026-08-27T18:43:11Z 50 -> 60 phase transition: entering verify
 2026-08-27T18:43:11Z heartbeat phase=60
 2026-08-27T18:43:53Z 60 dispatch verifier: eight checks per prompts/60-verify.md -> runs/2026-08-27-lux-ai/VERIFY.md (75-min round bound)
+2026-08-27T19:12:07Z 60 verifier returned: 8/8 TRUE -> VERIFY.md (rounds 1+2 completed, both champions ranked 2 rounds, replay complete/full_time 72/72 llm directives 0 fallbacks, logs CLEAN, static iframe sha matches manifest, cert skipped-static, viewer-check 33106609970 loaded:true clocks advance)
+2026-08-27T19:12:07Z 60 check-4 deviation recorded: cityTiles sum = 2 vs design threshold >2; verifier marked TRUE on prompt's own criteria, flagged for judge
+2026-08-27T19:12:07Z progress phase=60 marker=round_ee8f3123
+2026-08-27T19:12:07Z 60 dispatch judge for VERIFY.md adjudication -> reviews/verify-verdict.md
+2026-08-27T19:12:07Z heartbeat phase=60

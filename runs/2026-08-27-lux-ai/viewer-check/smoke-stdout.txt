@@ -1,0 +1,4 @@
+{"loaded":true,"ms":4048,"clock":"-- WAITING FOR PLAYERS","scorebug":"daveey RED-ALPHA 1 units · 0 fuel · 0 research 1 CITY TILES -- WAITING FOR PLAYERS 1 2 3 4 5 6 7 8 9 RESEARCH 0-200 · COAL 50 · URANIUM 200 daveey-1 BLUE-ALPHA 1 units · 0 fuel · 0 research 1 CITY TILES","feed_lines":0}
+scrub readouts: 0%="-- WAITING FOR PLAYERS"  50%="TURN 198 / 360 · NIGHT 9/10 CYCLE 5 OF 9 · DIRECTIVE 20/36 · RED 10 – 4 BLUE"  100%="TURN 359 / 360 · NIGHT 10/10 CYCLE 9 OF 9 · DIRECTIVE 36/36 · RED 2 – 0 BLUE"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -34,9 +34,13 @@
     "division": "div_42529bfd-3620-42c3-93df-068da80201dc"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_83a470cc",
+      "round_ee8f3123"
+    ],
+    "replay": "https://softmax.com/api/observatory/v2/replays/117bf12d-a428-47b0-a50c-ba62377cc8f9.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33106609970"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T18:43:11Z",
+  "heartbeat_at": "2026-08-27T19:12:07Z",
   "session_ended_at": null,
   "session_id": "cd77d683",
   "log": "runs/2026-08-27-lux-ai/log.md"
