@@ -70,3 +70,7 @@
 2026-08-27T15:46:08Z 75 -> 80 phase transition: STATE.phase=80 written
 2026-08-27T15:46:08Z heartbeat phase=80
 2026-08-27T15:46:08Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20636
+2026-08-27T15:47:59Z 80 executive summary posted (run task story 1217912906572789, idea task story 1217912906509127); LEARNINGS section appended; all 9 phase subtasks complete; idea 1217748613226645 completed; run task moved to Done
+2026-08-27T15:47:59Z 80 close complete — run Done. Session ending; no further action required.
+2026-08-27T15:47:59Z heartbeat phase=80
+2026-08-27T15:47:59Z progress phase=80 marker=run task Done, idea completed
