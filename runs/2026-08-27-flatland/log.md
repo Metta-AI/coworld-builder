@@ -32,3 +32,7 @@
 2026-08-27T14:28:46Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-27T14:28:46Z heartbeat phase=30
 2026-08-27T14:30:07Z 30 dispatch reviewer round=1 -> reviews/r1-review.md (repo sha 7b831f85f2c5c10e9b690547cd563cfb406ec93d)
+2026-08-27T14:53:20Z 30 reviewer returned round=1: reviews/r1-review.md (654 lines) — 1 blocking (F1 networkPool not recorded in replay config -> branchline replay re-derives as mainline, checklist item 2), 24 non-blocking F2-F25, 4 could-not-determine
+2026-08-27T14:53:20Z progress phase=30 marker=r1-review.md
+2026-08-27T14:53:20Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
+2026-08-27T14:53:20Z heartbeat phase=30
