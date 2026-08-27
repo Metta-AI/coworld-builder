@@ -47,3 +47,5 @@
 2026-08-27T04:54:00Z 50 rounds: r1 failed (Temporal RoundWorkflow failed before settling — raced the unpause; fillers WERE set before trigger), r2 pending with both champions in entrant_attributions (grandmaster 0bad04b4, tempo f9a218bb)
 2026-08-27T04:50:17Z progress phase=50 marker=league_e96d74f3-745a-4308-86cf-0ed6489300e5 round2 pending
 2026-08-27T04:50:17Z 50 -> 60 phase transition
+2026-08-27T04:51:05Z 60 verifier dispatched: 8 checks -> VERIFY.md, 75-min round wait bound
+2026-08-27T04:51:05Z heartbeat phase=60
