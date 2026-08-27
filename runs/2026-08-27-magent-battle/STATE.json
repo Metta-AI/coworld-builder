@@ -46,7 +46,7 @@
     "viewer_check_run": "33063093381"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-08-27T10:43:24Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -61,7 +61,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T10:42:19Z",
+  "heartbeat_at": "2026-08-27T10:43:24Z",
   "session_ended_at": null,
   "session_id": "3064436a",
   "log": "runs/2026-08-27-magent-battle/log.md"
