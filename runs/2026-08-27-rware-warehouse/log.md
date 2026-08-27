@@ -54,3 +54,6 @@
 2026-08-27T15:30:07Z 60 dispatch judge for VERIFY.md adjudication vs SPEC definition of done
 2026-08-27T15:30:07Z heartbeat phase=60
 2026-08-27T15:30:07Z progress phase=60 marker=VERIFY.md 8/8 TRUE viewer-check 33087427495
+2026-08-27T15:38:42Z 60 judge returned: verify-verdict.md blocking: 0 / BLOCKING: 0; all 8 checks re-verified by judge's own fetches (r2/r3/r4 now completed, leaderboard daveey-1 1029.20 / daveey 970.80 rounds_played=3, replay re-derived byte-identical, static route sha==manifest_sha, viewer-check green); four flagged points all ruled SATISFIED
+2026-08-27T15:38:42Z 60 -> 70 phase transition: STATE.phase=70 written
+2026-08-27T15:38:42Z heartbeat phase=70
