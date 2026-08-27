@@ -5,7 +5,7 @@
   "slug": "vizdoom-deathmatch",
   "repo": "https://github.com/Metta-AI/cogame-vizdoom-deathmatch",
   "starter": "coworld-ctf",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T21:24:15Z",
+  "heartbeat_at": "2026-08-27T21:50:01Z",
   "session_ended_at": null,
   "session_id": "7565f38f",
   "log": "runs/2026-08-27-vizdoom-deathmatch/log.md"
