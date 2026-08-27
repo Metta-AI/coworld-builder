@@ -1728,3 +1728,160 @@ Nim, in the starter's layout: `tests/test_pom_*.nim`, imported by the four balan
   barriers, trenches, perks, handicaps, lives, respawning, four-team play, achievements, campaign
   mode, the procedural map generator, the map pool, the map editor and mapkit — all deleted, not
   disabled (§Sim module), and none of them return in v1.
+
+---
+
+## Errata — what shipped, where it differs from the note above
+
+Recorded after the r1 review of `25efdbb`. The note above is left as written; this section is the
+authority where the two disagree, and it is what `sim_types.nim`, `baselines.nim`,
+`tests/test_pom_board.nim` and `tools/ci/baseline_tuning.json` mean when they cite "an errata in
+`docs/plans/2026-08-27-pommerman-design.md`". Each entry says what the note claims, what the code
+does, and why.
+
+### Board and tuning
+
+1. **56 rigid / 36 wood / 29 passage, not 57 / 28.** The note's §Board line says 57 rigid and 28
+   passage. The generator lays 40 border cells plus a 4 × 4 interior lattice = **56** rigid, 36
+   wood and **29** passage, on every seed. `board.nim:162-186`; asserted over 1000 seeds at
+   `tests/test_pom_board.nim:64`; `docs/RULES.md:34` already says 56/36/29.
+2. **The swept tunables are `(bombEnemyRange 3, powerupSearch 4, dodgeHorizon 8, campExits 2)`,
+   not `(2, 8, 6, 2)`.** The note's §Baselines table predates the sweep. The shipped numbers are
+   the grid's pick and are pinned in four places at once — `baselines.nim:36-39`,
+   `tools/ci/baseline_tuning.json`, `sim_config.nim:23` (`dodgeHorizon: 8`) and the manifest's
+   `config_schema` default — with `tests/test_pom_tuning.nim` and a `ci.yml` re-run of
+   `tools/tune_baselines.nim --check` holding them together. Everywhere the note says
+   `dodgeHorizon = 6`, read 8.
+3. **`camper` reads the CONFIG dodge horizon.** It used its own `params.dodgeHorizon` copy while
+   the controller read `sim.config.dodgeHorizon`; a hosted `game_config` that moved the horizon
+   would have split them. `baselines.nim` now calls `sim.dangerNow()`. The sweep is unchanged —
+   `tools/tune_baselines.nim` assigns `config.dodgeHorizon` from the candidate params before every
+   episode.
+
+### Turn structure and the decision path
+
+4. **`turnSpacingMs` is a blocking wait on the game loop, and ticks do NOT advance during it.**
+   The note's §Turn and tick structure step 8 says the loop keeps stepping ticks while it waits.
+   It does not: `decide.turn` sleeps for the remainder of the spacing before issuing the batch, and
+   `episode.runTurnIfDue` is synchronous inside the frame. The wait is bounded (`sim_config` clamps
+   `turnSpacingMs` to ≤ 60 000 ms; the shipped value is 10 000) and it is a floor on the interval
+   between **batch starts**, so it only fires when the previous turn's calls came back faster than
+   the floor. The per-turn deadline now starts *after* the wait (r1/F4): counting the wait inside
+   `turnBudgetMs` meant a 10 s spacing plus an 8 s attempt already exceeded the 12 s budget and the
+   single retry was skipped on exactly the turns that had waited.
+
+### The replay record
+
+5. **`MaxDirectiveRunes` is 4000, and the record carries the observation.** The note's reply-schema
+   table caps the whole `directive` record at 900 runes *and* lists the mirrored observation among
+   its fields; those two cannot both hold — a seat view measures 1005 runes at tick 0 and 3224 with
+   the bomb pool full. At 900 the record shrank the `say` to nothing and then dropped the view on
+   every turn of every episode, so no `say` ever reached `#killfeed` or
+   `tools/replay_summary.py`, and the replay explained no decision. The cap is now sized from the
+   worst case the rules can produce (3493 runes: a full-pool view, the record's own fields and a
+   full-cap 100-rune `say`), and if a record ever does overrun, the **view** is shed first — it is
+   re-derivable from the replay's order records, while the `say` exists nowhere else. `say` is
+   still capped at 100 runes and `notes` still never reaches the replay at all.
+   No wire-format change and no `GameVersion` bump: the `view` field was always in the record
+   schema, the binary record kinds are untouched and the sim hash is unaffected.
+6. **A recorded episode is ~190 KB, not ~20 KB.** The note's §Replay size estimate counted 144
+   hashes, 144 order records and ~15 chat records. Two things make it bigger: a hash is written on
+   **every frame** (`episode.nim:140`), including the lobby and the 90-frame game-over hold, and
+   every turn writes four `directive` chat records that now carry the observation (item 5). The CI
+   smoke replay is 189 260 B. The hash chain is still strictly increasing in frame and playback
+   re-derives it frame for frame.
+7. **The `fallback` cause for a seat that never joined is `disconnected`, and it does NOT count in
+   `fallbackTurns`.** The note's test item 23 reads as if it should. `fallbackTurns` counts a
+   policy that failed to answer; an absent seat never had one and plays the scripted baseline from
+   the first tick. The absence is carried by `deadSeats`, the closed failure payload and one
+   `disconnected` record per turn — all asserted in `tests/test_pom_engine.nim`.
+
+### The viewer
+
+8. **The board canvas is an OffscreenCanvas in a Worker, so `viewer_smoke.mjs` against the smoke
+   replay reports `canvas_text: total 0`.** That number is not evidence of anything (acceptance
+   checklist item 15), and it cannot be made non-zero for that step without moving the board's
+   drawing back onto the main thread. `tools/ci/renderer_fixture.html` is therefore where the gate
+   bites: besides driving the shipped page's DOM feed with a full-cap 100-rune `say` on all four
+   seats, it runs the shipped `client/broadcast_core.js` on a canvas it owns, at 360/640/1280 px,
+   over a frame built to hurt (bombers on the top and bottom rows, bombs in every corner, the whole
+   fuse ladder, a distinct radio pair per width and seat), measures every `fillText`/`strokeText`
+   itself, fails if it ever sees zero draws or a draw that crossed the board edge, and publishes the
+   merged main-frame + iframe report as top-level `window.__coworldTextBounds`. CI run 33107478798:
+   `canvas text: 110 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized`.
+   The note's §Tests item 40 describes the measurer as living on the *iframe's*
+   `CanvasRenderingContext2D` and re-pointing the iframe's `window.parent`; the measurer sits where
+   the draws are instead, and `window.parent` needs no shim because the shipped page posts
+   `src: 'pommerman-replay'` only under `?embed=1` — `viewer_smoke.mjs`'s bridge relays only
+   `src: 'coworld-replay'`, so nothing can end the harness early.
+9. **There is no canvas speech bubble.** The note's reply-schema table says a `say` is "rendered in
+   the feed and as a speech bubble". Only the feed exists: `say` is DOM (`.pm-say` in `#killfeed`),
+   and the only strings the board draws are digits — the bomb fuse and the radio pair.
+10. **`#stage.tiny` toggles at `boardW < 640`, not 620.** `page_script.js:601-605`, asserted at
+    `tests/test_pom_viewer.nim:223`. 640 is what acceptance checklist item 11 asks for ("labels
+    hidden under 640px"); the starter's 620 would leave the boundary width unlabelled.
+11. **`--preload-file data@data` is not on the wasm link line.** Nothing in the wasm entry reads a
+    virtual filesystem (`replay-viewer/pommerman_replay.nim` imports only the sim modules; no pixie,
+    no `readFile`), so there is no `.data` payload — `Dockerfile.replay-viewer` asserts the bundle
+    ships `pommerman_replay.{wasm,js}` and no `.data`, and the art is copied as plain files the page
+    fetches. `-s FILESYSTEM=1` is kept.
+12. **The state JSON is the starter's envelope, not the flat object the note prints.** Every
+    pommerman field is nested under `pm` (`{t, st, mx, mt, ph, lob, pl, lp, sk, ff, sp, en, pov,
+    teams, roster, gv, pm:{…}}`, plus `lulls`/`beats`/`lead` once), which is what lets
+    `chrome_common.js` drive the clock, transport, scrubber and momentum graph unchanged. There is
+    no top-level `feed` key: the feed is derived client-side from `pm.events`
+    (`client/game_block.html`). `tests/test_pom_engine.nim` pins the shipped shape.
+13. **`client/replay_broadcast.html` is not a byte-identical prefix of the starter's page.** It is
+    the starter's page with the removal list applied by the committed builder
+    (`tools/build_broadcast_page.py`, re-runnable and diff-clean) and the page IIFE swapped for
+    `client/page_script.js`; the prefix that remains is byte-pinned by length + SHA-1 at
+    `tests/test_pom_viewer.nim:109-123`.
+
+### Tooling and flags
+
+14. **`tools/expand_replay.nim`, `tools/extract_events.nim`, `tools/record_fixture.sh`,
+    `flake.nix` and `client/league_replayer.html` were not carried over.** The note lists them
+    among the kept files. Nothing in `.github/`, `tools/`, `tests/` or `docs/` references them;
+    `tools/replay_summary.py` (stdlib-only) covers the forensics they were listed for.
+15. **`showPlayerLabels` is accepted, pinned false, and read by nothing.** The only thing it could
+    turn on is a real policy name on the board, which the two-name-spaces rule forbids, so it is
+    inert by design and can only fail closed. It stays in the schema so a hosted `game_config`
+    carrying it still validates. `sim_types.nim` says so at the field.
+16. **`tools/ci/docker_smoke.sh` now fails on `reason == "fault"`.** The note says it does; the
+    template it was copied from only printed the reason. This is the only edit to that template
+    beyond its three substitutions.
+17. **The tick-budget test's bound is the note's "< 1 s" in release and 4000 ms in debug**
+    (`tests/test_pom_sim.nim`), because `ci.yml` runs every test in both modes. Measured: 1-3 ms
+    release, ~20 ms debug.
+18. **The live `/global` feed carries the directive-derived events.** `EpisodeFrame.records` was
+    never filled, so `broadcast.stepEvents` saw no chat records in live mode and the local
+    spectator got no `turn`, `order`, `radio`, `say` or `fallback` line. The frame now returns the
+    records it wrote and `server.nim` passes them, so live and playback build the feed from one
+    vocabulary. Hosted spectating is still the static replay bundle only.
+
+### The remaining declared deltas
+
+19. **`PlaybackSpeeds` is `[1, 2, 4, 8]`, without the note's `0.5`.**
+    `client/chrome_common.js` is carried from the starter byte for byte and its speed→command map
+    has no half-speed entry, so a `0.5` chip would render and then do nothing.
+    `sim_types.nim:56`; `wire_constants.nim` emits the array; `replay_runtime.applyCommand` maps
+    `'1','2','4','8'` to indices 0-3.
+20. **The art filenames are the pommerman ones.**
+    `data/{bomber_red,bomber_blue,bomber_red_crown,bomber_blue_crown,bomb,powerup_range,
+    powerup_kick,arena_floor}.png`, with the starter's `soldier_red.png` / `soldier_blue.png` kept
+    byte-identical as the fallback (`broadcast_core.js` `withFallback(...)`), so a missing derived
+    sprite degrades to real art rather than to a coloured square. No `paint*`/`spray*`/`shield*`
+    filename survives, which is what lets the forbidden-word sweep in
+    `tests/test_pom_endcard_labels.nim` pass.
+21. **A bomb's fuse does not tick on the tick it was placed.** `sim.nim:187-189` skips the
+    decrement when `placedTick == tick`, so a bomb laid at `t` reaches `fuse == 0` at exactly
+    `t + bombFuse` — which is what `docs/RULES.md` and the system prompt's "8-tick fuse" both
+    promise. Without the skip the same bomb would detonate a tick early and every hand-worked
+    example in the note would be off by one.
+22. **The rest of the declared deltas are as the note's own delta list describes them** and are
+    listed here only so this section is the single place to look: `parseSeatDirective` takes
+    values (`livingEnemies: set[uint8]`, `nearestEnemy: int`) rather than closures, because Nim
+    cannot capture a `var` parameter; the sapper's inward-march tick is derived
+    (`collapseTicks[0] - 8`) rather than the literal 88; and the bomber chips, the floor bake and
+    the wall composite are baked in `client/broadcast_core.js` rather than in a `rig_art.nim`,
+    which is why no pixie import exists outside the server.

@@ -18,3 +18,6 @@
 2026-08-27T18:53:00Z 30 reviewer returned r1-review.md (19 findings; F1 say/view always dropped from directive records at 900-rune cap; F2 canvas_text total:0 both smoke steps — OffscreenCanvas; rest minor/tensions; verified-correct section extensive)
 2026-08-27T18:53:00Z 30 dispatch fixer round=1
 2026-08-27T18:53:00Z heartbeat phase=30
+2026-08-27T19:45:01Z 30 fixer returned r1-fixes.md: 9 fixed (F1 MaxDirectiveRunes 900->4000 view-shed-first say-never; F2 fixture measures real broadcast_core draws, non-vacuity proven; F4 F5 F10 F11 F12 F13 F15 F18), 4 refuted w/ evidence (F3 F14 F16 F17), 5 advisory (F6-F9 F19); main=9fa80f8 CI green run=33108749059
+2026-08-27T19:45:01Z 30 dispatch judge round=1 (fresh context, sha 9fa80f8)
+2026-08-27T19:45:01Z heartbeat phase=30
