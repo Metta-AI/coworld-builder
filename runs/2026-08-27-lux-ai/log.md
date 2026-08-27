@@ -13,3 +13,9 @@
 2026-08-27T12:42:51Z heartbeat phase=20
 2026-08-27T12:43:50Z 20 repo created: https://github.com/Metta-AI/cogame-lux-ai (public); propagate-secrets run 33073239885 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY listed on repo
 2026-08-27T12:44:45Z 20 dispatch builder round=1: implement design.md on Metta-AI/cogame-lux-ai until ci.yml green on main
+2026-08-27T15:11:45Z 20 builder returned round=1: ci.yml GREEN run=33085620073 sha=1c36d56b main; 3 red rounds fixed en route (player exit, COG_BASE, wasm32 getAppDir/mixHash64); art=nano-banana; workflows parse, inputs verified, placeholder grep clean; design note bytes at docs/plans identical
+2026-08-27T15:11:45Z 20 note: builder pushed via GitHub API (sandbox git push limited to claude/ branches); remote tree verified byte-identical, no force
+2026-08-27T15:11:45Z 20 deviations logged for reviewer: production-before-research amendment, prospector night-guard+seed-blob, broadcast_core.js inherited byte-for-byte, CTF_WIRE x3, tuned baseline params, forensics helpers omitted
+2026-08-27T15:11:45Z progress phase=20 marker=33085620073
+2026-08-27T15:11:45Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-27T15:11:45Z heartbeat phase=30
