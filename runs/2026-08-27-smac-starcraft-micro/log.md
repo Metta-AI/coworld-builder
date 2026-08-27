@@ -32,3 +32,7 @@
 2026-08-27T09:11:52Z 30 fixer returned r1: r1-fixes.md; head=84b271b8 CI green run 33055917137; 19 commits (B1 advanceBattle one-proc live+playback, B2 native replay test found 2 recorder infidelities, B3 gate can fail + corrupt-hash test, B4 focus>charge strict all 4 variants via real control fixes + charge over-commit, B5/B6 viewer pins, B7 renderer text fixture + shoutBubbleMaxHeight live, B8 reason==complete, N9/N7a/N5 fixed, N1 disputed w/ evidence); deviation flagged: baselines' prose in design note refuted by measurement, docs/RULES.md+manifest regenerated to match code
 2026-08-27T09:11:52Z 30 judge dispatched r1 sha=84b271b85f8f809699a90adbc89a538e59013f0f session=c7061c35
 2026-08-27T09:11:52Z heartbeat phase=30
+2026-08-27T09:23:26Z 30 judge returned r1: verdict blocking=0/BLOCKING=0 (r1-verdict.md); all B1-B8 resolved at head 84b271b8; independent 15-item checklist pass + parallel-batch rule; residue non-blocking
+2026-08-27T09:23:26Z 30 phase transition 30 -> 40
+2026-08-27T09:23:26Z heartbeat phase=40
+2026-08-27T09:23:26Z progress phase=30 marker=r1-verdict.md
