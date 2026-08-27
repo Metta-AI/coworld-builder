@@ -35,3 +35,6 @@
 2026-08-27T04:37:22Z 30 -> 40 phase transition
 2026-08-27T04:38:10Z 40 builder dispatched: coworld-release.yml v0.1.0, policies from tools/ci/policies.json (attempt 1 of 3)
 2026-08-27T04:38:10Z heartbeat phase=40
+2026-08-27T04:46:22Z 40 builder returned: release v0.1.0 success first dispatch — run 33040017344, cow_dbadce13-6ad8-440d-a054-122e326af949, canonical true, hosted certification certified, replay_liveness skipped-static, secret_put true, 4 policies (grandmaster/tempo champions, tactician/hustler fillers), champion2 player ply_bac48eb1
+2026-08-27T04:46:22Z progress phase=40 marker=release-run-33040017344
+2026-08-27T04:46:22Z 40 -> 50 phase transition
