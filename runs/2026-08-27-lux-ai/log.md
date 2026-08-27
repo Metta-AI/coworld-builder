@@ -11,3 +11,4 @@
 2026-08-27T12:42:51Z progress phase=10 marker=runs/2026-08-27-lux-ai/design.md
 2026-08-27T12:42:51Z 10 -> 20 phase transition: entering build
 2026-08-27T12:42:51Z heartbeat phase=20
+2026-08-27T12:43:50Z 20 repo created: https://github.com/Metta-AI/cogame-lux-ai (public); propagate-secrets run 33073239885 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY listed on repo
