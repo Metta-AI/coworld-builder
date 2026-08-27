@@ -7,3 +7,5 @@
 2026-08-27T16:27:22Z 10 -> 20 phase transition: entering build; design copy already at runs/2026-08-27-pommerman/design.md
 2026-08-27T16:27:22Z progress phase=10 marker=design.md written and accepted round 1
 2026-08-27T16:27:22Z heartbeat phase=20
+2026-08-27T16:28:14Z 20 repo created https://github.com/Metta-AI/cogame-pommerman (public); propagate-secrets run 33093338852 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present
+2026-08-27T16:28:14Z 20 dispatch builder
