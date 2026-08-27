@@ -56,8 +56,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T11:51:52Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-27T11:54:04Z",
+  "session_ended_at": "2026-08-27T11:54:04Z",
   "session_id": "c7061c35",
   "log": "runs/2026-08-27-smac-starcraft-micro/log.md"
 }

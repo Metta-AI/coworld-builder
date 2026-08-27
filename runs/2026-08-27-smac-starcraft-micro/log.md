@@ -93,3 +93,7 @@
 2026-08-27T11:51:52Z heartbeat phase=80
 2026-08-27T11:51:52Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20632
 2026-08-27T11:53:23Z 80 close: exec summary posted (run task 1217902971090111, idea task 1217902886519593); LEARNINGS appended
+2026-08-27T11:54:04Z 80 close: all 9 phase subtasks complete; idea task 1217748613153120 completed; run task 1217890744511822 moved to Done
+2026-08-27T11:54:04Z 80 run closed — coworld shipped: 0.1.3 cow_345bfc54, league_f42b4821 7 rounds, announced msg=1542499437710934097, atlas PR 20632 open in merge queue
+2026-08-27T11:54:04Z progress phase=80 marker=run-done
+2026-08-27T11:54:04Z session end: run complete at phase 80; no further action — session_ended_at=2026-08-27T11:54:04Z
