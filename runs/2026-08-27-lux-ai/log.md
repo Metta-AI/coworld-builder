@@ -23,3 +23,7 @@
 2026-08-27T15:32:18Z 30 reviewer returned r1: 20 findings (1 blocking B1 legibility DOM-text/fixture-inert, 19 non-blocking) -> reviews/r1-review.md
 2026-08-27T15:32:18Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
 2026-08-27T15:32:18Z heartbeat phase=30
+2026-08-27T16:14:58Z 30 fixer returned r1: B1 fixed (e673713, lux-say band + fixture assertions + CI textfit gate), N2/N14/N16/N4 fixed, N5 refused with evidence; CI green run=33090975748 sha=66b5d3b -> reviews/r1-fixes.md
+2026-08-27T16:14:58Z progress phase=30 marker=r1-fixes.md
+2026-08-27T16:14:58Z 30 dispatch judge round=1 at sha=66b5d3b -> reviews/r1-verdict.md
+2026-08-27T16:14:58Z heartbeat phase=30
