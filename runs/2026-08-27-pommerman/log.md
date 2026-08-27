@@ -49,3 +49,6 @@
 2026-08-27T21:14:13Z heartbeat phase=60
 2026-08-27T21:19:24Z 60 poll: round 6 completed but created 21:10:35Z < release finish 21:11:24Z — ran 0.1.0 image (old retry wording in log, 11 hits); round 7 (~21:25Z) is the first true 0.1.1 sample; waiting
 2026-08-27T21:19:24Z heartbeat phase=60
+2026-08-27T21:33:38Z 60 check 5 pre-check on round 7 (first 0.1.1 episode, ereq_1274172a): grep CLEAN, 2 will-retry notices, fallbackTurns [0,0,0,0], llmTurns [36,36,0,0], reason complete — fix confirmed; re-dispatching verifier for full VERIFY.md rewrite
+2026-08-27T21:33:38Z progress phase=60 marker=round7-check5-CLEAN
+2026-08-27T21:33:38Z heartbeat phase=60
