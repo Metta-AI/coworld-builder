@@ -112,3 +112,5 @@
 2026-08-27T20:52:24Z heartbeat phase=75
 2026-08-27T20:53:11Z 75 atlas continent=simulations (rails call: borrowed world — flatland-rl rail-scheduling benchmark port; fully cooperative, not commons mixed-motive); atlas_spot 536,271 clearance=69.0
 2026-08-27T20:53:33Z 75 atlas dispatch=33115498035 region=simulations at=536,271 clearance=69.0
+2026-08-27T20:57:44Z 75 atlas dispatch 1 (33115498035) failed: step=build, 40 unplaced leagues; retry approach: extra_cities with all 40 — lux-ai PR #20645's 39 coordinates reused verbatim (open, unmerged; ~20 atlas PRs stacked in the merge queue) + pommerman placed at 223,261 paintlands (zero-sum bomberman); flatland moved to 575,265 simulations clearance 22.9 (536,271 collides with citysim in #20645)
+2026-08-27T20:57:44Z 75 atlas placed-for-others: the 39 leagues from PR #20645 + pommerman (coordinates in dispatch input)
