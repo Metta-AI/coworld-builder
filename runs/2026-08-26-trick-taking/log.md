@@ -27,3 +27,4 @@
 2026-08-27T00:50:10Z heartbeat phase=30
 2026-08-27T00:50:10Z progress phase=20 marker=33027812959
 2026-08-27T00:50:58Z 30 reviewer dispatched r1 thread=sthr_01BgxLK73s4oaDg2yYJ8XZXf sha=80aeb68c session=d199e038
+2026-08-27T01:09:13Z 30 reviewer returned r1: 3 blocking (B1 640px breakpoint missing, B2 notes band not sized from caps/mid-string ellipsis, B3 no baseline tuning harness) + 12 advisory; r1-review.md 601 lines
