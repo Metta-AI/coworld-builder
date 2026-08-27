@@ -39,3 +39,4 @@
 2026-08-27T03:23:43Z 30 phase transition 30 -> 40
 2026-08-27T03:23:43Z heartbeat phase=40
 2026-08-27T03:23:43Z progress phase=30 marker=r1-verdict.md
+2026-08-27T03:24:47Z 40 builder dispatched thread=sthr_01WHxqU8sUt2PzXJWYj8qMD4 (release chain, version 0.1.0 first, budget 3 dispatches) session=6ada72fc
