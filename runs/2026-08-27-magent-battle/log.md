@@ -72,3 +72,4 @@
 2026-08-27T10:44:39Z 75 atlas slug=magent-battle live in /api/coworlds (episodes_7d=3); continent=paintlands (zero-sum army combat: the paintlands row is shooters/tanks/RTS; coop PZ ports went to commons but this is head-to-head mass combat); spot 202,270 clearance=39.5 label="MAgent Battle" anchor=c
 2026-08-27T10:45:04Z 75 atlas dispatch=33064346097 region=paintlands at=202,270 clearance=39.5
 2026-08-27T10:49:06Z 75 atlas dispatch 33064346097 failed: 34 unplaced leagues (merge-queue backlog). Fix per step 8 + knights-archers trick: extra_cities = board-gauntlet PR #20623 CITIES diff (33 rows) + smac-starcraft-micro placed by this run ("SMAC Micro",199,294,paintlands,clearance 23.4); own spot recomputed vs augmented map: 220,285 clearance 22.9
+2026-08-27T10:49:32Z 75 atlas dispatch=33064659974 region=paintlands at=220,285 clearance=22.9 extra_cities=34
