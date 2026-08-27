@@ -66,3 +66,6 @@
 2026-08-27T05:42:49Z 75 atlas placed 32 leagues for other runs via extra_cities (atlas_spot iterative, all clearance >=22.9); board-gauntlet re-picked at 814,283 clearance=23.4 (766,277 went to fog-of-war-boards)
 2026-08-27T05:42:49Z 75 atlas dispatch=33043347612 region=tabletop at=814,283 clearance=23.4 (attempt 2 of 3, extra_cities x32)
 2026-08-27T05:42:49Z heartbeat phase=75
+2026-08-27T05:44:42Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20623 status=pr_open (automerge armed; merge queue is human-driven)
+2026-08-27T05:44:42Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20623
+2026-08-27T05:44:42Z 75 -> 80 phase transition
