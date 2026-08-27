@@ -20,3 +20,6 @@
 2026-08-27T13:01:29Z heartbeat phase=30
 2026-08-27T13:01:29Z progress phase=20 marker=ci run 33074159923 green on d303e6c
 2026-08-27T13:02:29Z 30 dispatch reviewer round=1 (repo checkout at d303e6c, review -> reviews/r1-review.md)
+2026-08-27T13:22:07Z 30 reviewer returned round=1: r1-review.md (666 lines, F1-F23); behaviour-changing: F1 hold drives robot via park rule, F2 asciiMap never sent to seats, F3 refill candidate pool includes just-delivered shelf (upstream divergence), F17 deliver order never finishes (robot parks on workstation pad), F5 fetch tie-break by queue position not shelf id, F14 turnSpacingMs sleep inside turnBudgetMs window kills retry batch for slow seats; evidence: F10 canvas text 0 drawn (worker canvas invisible to viewer_smoke hook; mitigated by DOM renderer fixture); undocumented deviations F4,F6,F7,F8,F9,F11,F12; smaller F13,F15,F16,F18-F23; chrome provenance PROVEN (build_broadcast_page.py reproduces committed page byte-for-byte from starter)
+2026-08-27T13:22:07Z 30 dispatch fixer round=1
+2026-08-27T13:22:07Z heartbeat phase=30
