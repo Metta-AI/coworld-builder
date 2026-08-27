@@ -80,3 +80,7 @@
 2026-08-27T00:56:52Z 75 atlas dispatch=33028487577 region=commons at=416,574 clearance=22.9
 2026-08-27T01:00:18Z 75 atlas dispatch 1 (33028487577) failed: 29 unplaced leagues on main (their PRs queued unmerged); fix per step 8: extra_cities=29 taken verbatim from goofspiel PR 20600 branch places.mjs; own dot respotted 416,574 -> 482,553 (chemistry holds 416,574 in the full set)
 2026-08-27T01:00:18Z 75 atlas dispatch=33028662069 region=commons at=482,553 clearance=22.9 extra_cities=29
+2026-08-27T01:02:09Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20604 status=pr_open
+2026-08-27T01:02:09Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20604
+2026-08-27T01:02:09Z 75 -> 80 phase transition: STATE phase=80
+2026-08-27T01:02:09Z heartbeat phase=80
