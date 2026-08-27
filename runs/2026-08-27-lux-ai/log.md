@@ -47,3 +47,7 @@
 2026-08-27T17:55:18Z 40 rails decision: authorise dispatch #4 v0.1.3 — not a cert failure (certify.ok true on both attempts); change #4 = workflow canonical read-back, distinct from bumps; template delta (templates/coworld-release.yml reads canonical too early) noted for phase 80 LEARNINGS
 2026-08-27T17:55:18Z progress phase=40 marker=33100074041
 2026-08-27T17:55:18Z heartbeat phase=40
+2026-08-27T18:27:58Z 40 dispatch #4 v0.1.3 run=33100903880: all criteria green except canonical read-back — raw urllib GET from runner 403s (same URL+token 200 from sandbox); cow_48fbd033 confirmed canonical:true via API; fix 77ee1d5 switches poll to 'coworld status --json'
+2026-08-27T18:27:58Z 40 rails decision: authorise dispatch #5 v0.1.4 — bumps are free; adopting 0.1.3 would ship a release-result.json saying canonical:false which fails phase 60 check 7 as written; change #5 (CLI read-back) distinct from all four before
+2026-08-27T18:27:58Z progress phase=40 marker=33100903880
+2026-08-27T18:27:58Z heartbeat phase=40
