@@ -31,3 +31,4 @@
 2026-08-27T00:07:06Z 30 -> 40 phase transition: STATE phase=40 (review loop closed in 1 round)
 2026-08-27T00:07:06Z heartbeat phase=40
 2026-08-27T00:07:06Z progress phase=30 marker=r1-verdict.md
+2026-08-27T00:07:52Z 40 builder dispatched (release) thread=sthr_01N3eADAhp8SuWYUsAbYMx7F session=ng26a441
