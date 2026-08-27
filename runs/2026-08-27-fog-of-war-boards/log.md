@@ -27,3 +27,6 @@
 2026-08-27T02:19:12Z 30 r1 reviewer returned: 15 findings (2 blocking legibility B1 fixture-gate-strength B2 ellipsis-padding; 13 non-blocking N1-N13; 4 could-not-determine incl sense>0 untested in CI)
 2026-08-27T02:19:12Z 30 fixer dispatched on r1-review.md
 2026-08-27T02:19:12Z heartbeat phase=30
+2026-08-27T02:37:57Z 30 r1 fixer returned: 10 commits, green sha 0e893df12ee180b31e95a5701a88c20a73e16745 CI run 33033443296 success; B1 B2 N1 N2 N4 N5 N8a N11 N12 N13d fixed, N3 N6 N7 N8b N10 N13-rest rebutted, N9 needs-design noted
+2026-08-27T02:37:57Z 30 judge dispatched (fresh context) on r1 at sha 0e893df
+2026-08-27T02:37:57Z heartbeat phase=30
