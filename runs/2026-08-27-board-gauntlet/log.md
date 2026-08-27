@@ -16,3 +16,7 @@
 2026-08-27T01:36:23Z 20 propagate-secrets run 33030604467 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-27T01:36:23Z 20 builder dispatched: implement design.md, drive ci.yml to green on main (round 1 of 3)
 2026-08-27T01:36:23Z heartbeat phase=20
+2026-08-27T03:17:11Z 20 builder returned: ci.yml green on main first push; green sha ad8054c3207ee0ff3c5ff5ec90185a57215d3f82 run 33035395418 (jobs test/docker-smoke/wasm-viewer success); nano-banana art succeeded; 7 documented deviations (bot-diversity C4 25%, no-moves hand-built position, chrome edit 7, 2 extra copied regions, say-band, fixture main-frame, narrow-class rules) — handed to phase 30 reviewer
+2026-08-27T03:17:11Z 20 builder note: sandbox git push rejected (Invalid username or token) — builder pushed via GitHub git-data API; remote shas differ from local; helper /workspace/push_via_api.py
+2026-08-27T03:17:11Z progress phase=20 marker=ci-run-33035395418-success
+2026-08-27T03:17:11Z 20 -> 30 phase transition review_round=1
