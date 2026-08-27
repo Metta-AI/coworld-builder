@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 1455,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_649ab26c-c3a7-4755-8997-a909c953ef01/sha256%3A128417c70c353c7e9d2925dd6bcad55872477ae5c83fd99567cab07075b99cb4/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fda00ff5a-a4d6-4adc-9dd8-5d9b557c44a0.replay&v=2",
+  "bundle": null,
+  "replay": null,
+  "clock": "GOOFSPIEL · ROUND 0 / 13",
+  "scorebug": "relh RATCHET 0 pts daveey TINKER 0 pts daveey-1 WIDGET 0 pts richard GIZMO 0 pts",
+  "status": "REPLAY",
+  "loading_text": "LOADING REPLAY…",
+  "feed_lines": 42,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "loading",
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "GOOFSPIEL · ROUND 0 / 13"
+    },
+    {
+      "at": "50%",
+      "clock": "GOOFSPIEL · ROUND 7 / 13 · PRIZE 7"
+    },
+    {
+      "at": "100%",
+      "clock": "GOOFSPIEL · ROUND 13 / 13 · FINAL"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 1783,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] loading",
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -67,3 +67,5 @@
 2026-08-26T23:56:36Z heartbeat phase=60
 2026-08-26T23:56:36Z 60 checks 1-7 fetched: r2,r3,r4 completed; leaderboard daveey+daveey-1 rounds_played=3; ereq_1e52db7f completed replay da00ff5a; protocol gozu.replay.v1 reason=complete; log CLEAN; iframe static ready=true; cert liveness skipped
 2026-08-26T23:56:36Z 60 check8 dispatched viewer-check.yml run=33025003314
+2026-08-27T00:01:09Z heartbeat phase=60
+2026-08-27T00:01:09Z 60 VERIFY.md written: verdict all-true (8/8). c1 rounds 3+4 completed; c2 daveey-1 r1 + daveey r4, fillers absent; c3 ereq_1e52db7f completed; c4 gozu.replay.v1 complete/prizes-exhausted 0 fallbacks; c5 log CLEAN 26/26 bedrock 200; c6 static viewer_url ready=true; c7 liveness skipped; c8 viewer-check run=33025003314 loaded=true ms=1455 clocks 0%/50%/100% all differ
