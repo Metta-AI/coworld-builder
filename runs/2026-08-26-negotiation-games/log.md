@@ -64,3 +64,5 @@
 2026-08-27T00:49:44Z 60 check7 TRUE: committed runs/.../release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
 2026-08-27T00:49:44Z 60 check8 TRUE: viewer-check.yml run 33027843730 (dispatched 00:44:33Z, conclusion=success) loaded=true ms=2909 feed_lines=71 signals.bridge=[loading,ready]; scrub 0%="MATCH 0 / 6" 50%="MATCH 4 / 6 · TURN 2 / 10 · DAVEEY TO MOVE" 100%="FINAL · 6 MATCHES" (all differ); canvas_text 915 drawn 0 outside 0 ellipsized; artifact committed at runs/2026-08-26-negotiation-games/viewer-check/
 2026-08-27T00:49:44Z 60 VERIFY.md written: verdict all-true 8/8
+2026-08-27T00:50:57Z 60 verifier returned: VERIFY.md 8/8 TRUE (2 rounds completed, both champions ranked, replay clean 0 fallbacks on champions, hosted log CLEAN, static iframe, cert liveness skipped-static, viewer-check 33027843730 loaded=true 3 distinct clocks); viewer-check/ committed
+2026-08-27T00:50:57Z 60 judge dispatched (verify adjudication) thread=pending output=reviews/r-verify-verdict.md session=ng26a441
