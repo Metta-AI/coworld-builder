@@ -56,3 +56,7 @@
 2026-08-27T21:48:11Z 60 dispatch judge for VERIFY adjudication
 2026-08-27T21:48:11Z progress phase=60 marker=VERIFY.md-8of8-TRUE round7
 2026-08-27T21:48:11Z heartbeat phase=60
+2026-08-27T21:53:20Z 60 judge returned 60-verdict.md blocking: 0 / BLOCKING: 0; all 8 DoD items PASS; judge re-fetched rounds/leaderboard/ereq/replay/log/page/viewer-check independently; 5 attention items dismissed non-blocking; note hosted_certification captured mid-flight as certifying (coworld canonical, 8 hosted episodes since)
+2026-08-27T21:53:20Z 60 -> 70 phase transition: entering announce
+2026-08-27T21:53:20Z progress phase=60 marker=60-verdict.md blocking=0
+2026-08-27T21:53:20Z heartbeat phase=70
