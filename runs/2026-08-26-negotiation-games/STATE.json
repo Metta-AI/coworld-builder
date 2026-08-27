@@ -5,7 +5,7 @@
   "slug": "negotiation-games",
   "repo": "https://github.com/Metta-AI/cogame-negotiation-games",
   "starter": "cogame-babel",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 2
   },
@@ -23,11 +23,14 @@
       "negotiation-games-haggler:v2",
       "negotiation-games-hardliner:v2"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "f8763013-a6ee-41ce-8ab2-2e208719d870",
+      "44c9e9fc-3e70-4d17-b413-8a9470299575"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_88e9052f-8e37-4f2e-aea1-ea4f5fdb20e7",
+    "division": "div_5699e6c3-6cf1-4a38-9e69-e2b954332c91"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-27T00:22:27Z",
+  "heartbeat_at": "2026-08-27T00:26:03Z",
   "session_ended_at": null,
   "session_id": "ng26a441",
   "log": "runs/2026-08-26-negotiation-games/log.md"

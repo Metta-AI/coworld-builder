@@ -41,3 +41,11 @@
 2026-08-27T00:23:38Z 50 seed 200: lseed_45f01dae league_id=league_88e9052f-8e37-4f2e-aea1-ea4f5fdb20e7
 2026-08-27T00:23:38Z 50 division 200: div_5699e6c3-6cf1-4a38-9e69-e2b954332c91 (Competition L1) — note: GET /leagues returns a bare array here, not .entries (filtered client-side on .[])
 2026-08-27T00:23:38Z 50 settings 200: ladder round_robin/filler_policy, elo 1000/32 mean, interval 15m
+2026-08-27T00:26:03Z 50 champion1 submit ok run=33026689122 sub_21d668ae policy=negotiation-games-anchor:v2 player=daveey
+2026-08-27T00:26:03Z 50 champion2 submit ok run=33026723174 sub_50342e32 policy=negotiation-games-integrative:v2 player=daveey-1
+2026-08-27T00:26:03Z 50 fillers registered 200: haggler:v2=f8763013-a6ee-41ce-8ab2-2e208719d870 hardliner:v2=44c9e9fc-3e70-4d17-b413-8a9470299575 (neither champion)
+2026-08-27T00:26:03Z 50 unpause 200 paused=false; trigger-round 200 workflow=ladder-league_88e9052f; round 1 status=pending error=-
+2026-08-27T00:26:03Z 50 entrants verified: both champions in round_config.entrant_attributions (594069a3=anchor:v2, b8aeca6a=integrative:v2)
+2026-08-27T00:26:03Z 50 -> 60 phase transition: STATE phase=60
+2026-08-27T00:26:03Z heartbeat phase=60
+2026-08-27T00:26:03Z progress phase=50 marker=league_88e9052f-8e37-4f2e-aea1-ea4f5fdb20e7
