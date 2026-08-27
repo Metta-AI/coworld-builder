@@ -84,3 +84,5 @@
 2026-08-27T01:02:09Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20604
 2026-08-27T01:02:09Z 75 -> 80 phase transition: STATE phase=80
 2026-08-27T01:02:09Z heartbeat phase=80
+2026-08-27T01:04:04Z 80 close: summary on run task (1217888402524832) + idea task (1217888292695966); LEARNINGS appended; 9/9 subtasks complete; idea 1217747862225999 completed; run task moved to Done
+2026-08-27T01:04:04Z 80 run closed — session ng26a441 ends; no next action (run complete)
