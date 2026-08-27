@@ -12,3 +12,7 @@
 2026-08-27T06:30:31Z 20 repo Metta-AI/cogame-magent-battle created public; propagate-secrets run 33046084129 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present
 2026-08-27T06:30:31Z 20 dispatch builder round=1
 2026-08-27T07:46:19Z 20 push d9d78c0 ci run=33051097971 dispatched (test/manifest/docker-smoke/wasm-viewer)
+2026-08-27T07:52:00Z 20 push d9d78c0 ci run=33051097971 conclusion=failure jobs=manifest(game.version)+wasm-viewer(_ctf_mismatch_tick)
+2026-08-27T08:01:00Z 20 push 5a61572 ci run=33051627649 conclusion=failure jobs=manifest(version string)+wasm-viewer(renderer fixture feed trim); test+docker-smoke green
+2026-08-27T08:00:16Z 20 push c79f914 ci dispatched
+pending 20 push  ci dispatched
