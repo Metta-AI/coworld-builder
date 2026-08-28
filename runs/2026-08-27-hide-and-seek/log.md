@@ -66,3 +66,5 @@
 2026-08-28T02:54:12Z progress phase=70 marker=announce.discord_message_id=1542728925627678732
 2026-08-28T02:54:12Z 70 -> 75 phase transition: entering atlas
 2026-08-28T02:54:12Z heartbeat phase=75
+2026-08-28T02:54:50Z 75 atlas continent=paintlands (zero-sum team pursuit/evasion); spot 202,270 clearance=39.5
+2026-08-28T02:54:50Z 75 atlas dispatch=33137336495 region=paintlands at=202,270 clearance=39.5
