@@ -58,3 +58,6 @@
 2026-08-28T22:24:14Z 60 verifier returned: VERIFY.md 8/8 TRUE — rounds 2+3 completed, leaderboard daveey 1030.5 / daveey-1 969.5, replay reason=complete 0 fallbacks, log CLEAN, iframe static (?v=2#replay= shape), viewer-check 33216261052 loaded:true clocks advance; observation: feed_lines selector mismatch (instrumentation, non-blocking)
 2026-08-28T22:24:14Z progress phase=60 marker=round_4441a16c
 2026-08-28T22:24:14Z 60 judge dispatched to adjudicate VERIFY.md
+2026-08-28T22:33:07Z 60 judge returned: verify-verdict.md blocking=0 (markers agree) — all 8 checks adjudicated TRUE, deviations 4+6 accepted with re-fetched evidence
+2026-08-28T22:33:07Z 60 -> 70 phase transition: STATE.phase=70 written
+2026-08-28T22:33:07Z heartbeat phase=70
