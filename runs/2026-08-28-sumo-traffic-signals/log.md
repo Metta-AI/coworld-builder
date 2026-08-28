@@ -49,3 +49,5 @@
 2026-08-28T18:26:06Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-28T18:27:07Z 75 atlas continent=commons (cooperative shared-infrastructure game with local-vs-global tension — the Commons' mixed-motive/shared-stock shape; not paintlands, not a port)
 2026-08-28T18:27:07Z 75 atlas dispatch=33199320251 region=commons at=416,574 clearance=22.9 label="Traffic Signals"
+2026-08-28T18:32:32Z 75 atlas dispatch 1 failed: build unplaced-leagues (49 slugs, all with open queued PRs — e.g. metta#20706 carries them); fix per step 8: mirror #20706's 49 extra_cities and re-spot against augmented places.mjs
+2026-08-28T18:32:32Z 75 atlas dispatch=33199733980 region=commons at=398,589 clearance=23.4 label="Traffic Signals" extra_cities=49 (mirrored from metta#20706: placements for atari-cabinet..walker-waterworld incl. citysim+gnomic)
