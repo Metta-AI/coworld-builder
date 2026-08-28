@@ -61,3 +61,4 @@
 2026-08-28T23:20:19Z 60 builder v2 dispatch next: implement addendum, CI green, then judge r2, release 0.1.1
 2026-08-28T23:21:17Z 60 builder v2 dispatched thread=sthr_01KDUULfYUsdx3KEpWZKqw3X target=addendum-v2 implementation, ci green, no release dispatch
 2026-08-28T23:21:17Z heartbeat phase=60
+2026-08-28T23:22:54Z 60 INCIDENT: addendum v2 lost — coordinator's 'git reset --hard origin/main' (used as contents-API sync) ran after a failed design.md publish (jq argv limit) and reverted the working tree before the python retry read it; commit 7e5464a is empty. Builder v2 correctly refused to build from pointers. Fix: designer re-emits; publish will verify remote blob sha + line count BEFORE any reset; resets replaced by per-file checkout going forward
