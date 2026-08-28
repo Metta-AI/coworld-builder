@@ -1324,3 +1324,25 @@ the starter after the fact.
   a step of 8 reads as a seek and the page drops the events. Also `viewer_smoke.mjs` assigns
   `window.parent` inside frames, so a fixture shim must hang its data off the iframe's own
   window, not `window.parent`.
+
+## 2026-08-28 halite
+
+- **A moba-lineage port shipped with a dead LLM transport and every gate still passed**: the
+  player pod built `AnthropicBedrock()` with no `base_url` (403 "Invalid API Key format"), every
+  champion decision fell back to scripted — and CI, certification, rounds, leaderboard, and the
+  viewer were all green. Only check 4's `llm_turns` / note-`source` scan caught it. Two fixes for
+  future runs: LLM calls must POST the episode sidecar (`127.0.0.1:9100`), never a direct Bedrock
+  client; and docker-smoke should assert `llm_turns > 0` for an LLM-seated episode so this dies
+  in phase 20, not phase 60.
+- **Recovering from a mid-phase-60 re-release is a scoping problem**: after the 0.1.1 re-release
+  and v2 resubmits, all eight checks were re-run scoped to rounds created after the v2
+  submissions, proven by fetching a boundary round's episode-request and showing its
+  `policy_version_ids` are still v1 (round 4 was created 20 s before the v2 fillers existed).
+  "≥2 completed rounds" means ≥2 rounds *of the release you are certifying*.
+- **Atlas backlog shortcut**: instead of iteratively re-spreading 46 backlog leagues with
+  `atlas_spot.py`, fetch `places.mjs` from the NEWEST pending atlas PR branch (a build that
+  already passed) and reuse its entries verbatim as `extra_cities` — content-consistent with the
+  queue, zero re-decisions, and your own dot's coordinates may already be in it (this run's
+  halite dot was; adopted 220,285 from PR 20703 over a freshly computed spot). Also: two pending
+  PRs had independently picked the identical spot (202,270) for different leagues — when
+  computing fresh spots, seed the pending PRs' dots into the local `places.mjs` first.
