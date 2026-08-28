@@ -45,3 +45,5 @@
 2026-08-28T21:18:08Z 60 check-5 attempt 1: decision (rails, parameter tuning): raise attempt1Ms 5000->10000, retryMs 2000->5000, turnBudgetMs 7500->16000; label transport timeouts timeout not parse_error; re-release 0.1.1; builder dispatched
 2026-08-28T21:38:37Z 60 fix pushed (efff06ae deadlines 10000/5000/16000 + ee29e5e2 timeout label), ci 33212517860 green; release 0.1.1 run 33212822202 ok/canonical/certify.ok/secret_put true, cow_a82788ed; policies minted v2 (image changed) — league keeps seated v1 UUIDs; fix lives in game container so reseating NOT needed (decide.nim compiles into game server only; player binary is thin) — rails decision: do not reseat
 2026-08-28T21:38:37Z progress phase=60 marker=release 0.1.1 run 33212822202 canonical
+2026-08-28T21:44:25Z 60 poll: round 6 completed 21:34 but ran on 0.1.0 (started pre-canonical); its logs still show falling back (expected); round 7 pending — first round on 0.1.1
+2026-08-28T21:44:25Z heartbeat phase=60
