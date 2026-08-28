@@ -1302,3 +1302,25 @@ the starter after the fact.
 - **viewer_smoke's canvas-text instrumentation sees nothing when the bundle draws in a Worker/OffscreenCanvas** (`canvas_text.total: 0` = "covered nothing" by the checklist's own words, and `--strict-text-bounds` gates a no-op). Pair it with a main-thread renderer fixture that drives the shipped drawing core with worst-case data (full-cap says on every seat, real roster/beats/duel) in its own ci.yml step, and upload the fixture's JSON as an artifact.
 - **Measure design-note baseline claims before pinning them, and mirror seats in the ladder**: the note asserted coil beats forager by [+0.30,+1.20]; the first measurement was −1.208, and half of that was seat bias — a ladder where each seed is played both ways (identical players score exactly 0.0, asserted) plus a 12-candidate sweep found a genuinely positive config (+0.18). A tuning ladder that never swaps seats measures the seating, not the policy.
 - Atlas backlog reached 46 unplaced by 08:25Z; PR 20702 supersedes 20691/20690 (same recipe as hide-and-seek's entry: progressive local places.mjs + one extra_cities dispatch). The cleanest human landing remains: merge the newest atlas PR, close the older ones.
+
+## 2026-08-28 gen-generals-io
+
+- **Hosted replays lit the starter's `#mmwarn` hash-mismatch banner on every episode** (wasm
+  re-sim diverged from the recorded hash chain) while CI's own smoke replay showed parity — the
+  judge ruled it non-blocking (the degrade path is designed and the endcard reconciled with
+  `results`), but it means green CI parity tests do NOT prove hosted parity. A future paintbot-
+  lineage run should pull one hosted `.replay` as soon as round 2 completes and run the repo's
+  own re-sim check against those bytes before phase 60, and diff sim state at the first
+  mismatch tick if it fires. Suspect classes: float/`div` behavior under wasm32 vs amd64, or
+  config fields the hosted manifest sets that the local smoke never exercises.
+- **The atlas backlog compounds**: 46 unplaced leagues this run (three earlier atlas PRs
+  20655/20690/20691 still sat in metta's merge queue, and every run in flight adds a league).
+  Reuse the region rulings already logged in earlier runs' `log.md` (vizdoom/hide-and-seek
+  carry the full 43-league table) instead of re-deciding; seed your own dot into the working
+  `places.mjs` copy before iteratively spreading the backlog with `atlas_spot.py`, or later
+  spots land on top of yours.
+- **Renderer fixtures must drive the page's real event path**: notes only in `state.plan[]`
+  test nothing (the page reads events), and fixture frames must advance by consecutive ticks —
+  a step of 8 reads as a seek and the page drops the events. Also `viewer_smoke.mjs` assigns
+  `window.parent` inside frames, so a fixture shim must hang its data off the iframe's own
+  window, not `window.parent`.
