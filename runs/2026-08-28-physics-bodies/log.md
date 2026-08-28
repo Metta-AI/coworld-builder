@@ -28,3 +28,5 @@
 2026-08-28T12:22:11Z heartbeat phase=30
 2026-08-28T14:08:15Z 30 r1 fixer returned: 20 commits, main=5237976, CI green run 33177512252; N1 fixture made real (found+fixed off-frame note row at 360px), N2 no-show force-start implemented; duplicate-commit-chain disclosure logged
 2026-08-28T14:08:15Z progress phase=30 marker=r1-fixes.md
+2026-08-28T14:09:22Z 30 r1 judge dispatched thread=sthr_01KUd26pQNB44eiyjyu74agb sha=5237976 fresh-context
+2026-08-28T14:09:22Z heartbeat phase=30
