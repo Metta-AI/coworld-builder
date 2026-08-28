@@ -69,3 +69,5 @@
 2026-08-28T15:35:18Z progress phase=60 marker=VERIFY.md-attempt-2-all-true+viewer-check-33184965298
 2026-08-28T15:35:18Z 60 judge dispatched for VERIFY.md adjudication
 2026-08-28T15:35:18Z heartbeat phase=60
+2026-08-28T15:39:25Z 60 judge returned: reviews/verify-verdict.md BLOCKING: 0 — all 8 checks TRUE, spot-checks reproduced; 3 observations ruled not blocking (seek-jump, WebGL warnings, first_blood attribution — quality items)
+2026-08-28T15:39:25Z 60 -> 70 phase transition: STATE.phase=70 written
