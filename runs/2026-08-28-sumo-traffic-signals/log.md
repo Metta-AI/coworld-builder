@@ -22,3 +22,6 @@
 2026-08-28T16:34:05Z 30 r1 fixer dispatched thread=sthr_0152hoFrFwJJg7CPMgDhNeLp
 2026-08-28T17:16:36Z 30 r1 fixer returned: 16 commits, B1 restored (033b3c7), 15 advisories fixed, CI green run=33193230780 sha=e20601af; r1-fixes.md written
 2026-08-28T17:17:32Z 30 r1 judge dispatched thread=sthr_01RxyYjvAdNV1aM2WyZKoQYG sha=e20601af
+2026-08-28T17:29:45Z 30 r1 judge returned: verdict blocking=0 (B1 refuted at head — 033b3c7 restored both assertions; all checklist items pass) sha=e20601af
+2026-08-28T17:29:45Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-28T17:29:45Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
