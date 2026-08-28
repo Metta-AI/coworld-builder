@@ -37,11 +37,17 @@
       1,
       2,
       3,
-      4
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay",
+    "replay": "round 10 (all cow_84cce351): 3 completed ereqs with replay_urls; featured = f8910aae",
     "iframe_static": true,
-    "viewer_check_run": "33211231543"
+    "viewer_check_run": "33217648127"
   },
   "announce": {
     "attempted_at": null,
@@ -59,7 +65,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:35:28Z",
+  "heartbeat_at": "2026-08-28T22:46:22Z",
   "session_ended_at": null,
   "session_id": "454a5d0b",
   "log": "runs/2026-08-28-procgen/log.md"

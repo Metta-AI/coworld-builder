@@ -60,3 +60,7 @@
 2026-08-28T22:35:28Z 60 round 10 (all 3 ereqs on cow_84cce351 = 0.1.2): ALL CLEAN under gate grep — check 5 evidence now exists; verifier re-dispatched to refresh VERIFY.md
 2026-08-28T22:35:28Z progress phase=60 marker=round 10 CLEAN on 0.1.2 (check 5 turned true)
 2026-08-28T22:35:28Z heartbeat phase=60
+2026-08-28T22:46:22Z 60 verifier refresh returned VERIFY.md 8/8 TRUE (751 lines, fetched 22:36-22:45Z); round 10 all-clean on 0.1.2, 0 fallbacks, viewer-check 33217648127 loaded+advancing; external player richard joined at rank 1 (noted for announce)
+2026-08-28T22:46:22Z progress phase=60 marker=VERIFY.md 8/8 TRUE; viewer-check 33217648127
+2026-08-28T22:46:22Z 60 judge dispatched for definition-of-done adjudication
+2026-08-28T22:46:22Z heartbeat phase=60

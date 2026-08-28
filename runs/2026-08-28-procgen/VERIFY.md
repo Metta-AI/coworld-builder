@@ -1,592 +1,475 @@
-# VERIFY — procgen   (2026-08-28T21:16Z)
+# VERIFY — procgen   (2026-08-28T22:45Z)
 
-Verdict: **1 item false — check 5 (hosted game log)**. Checks 1, 2, 3, 4, 6, 7, 8 TRUE.
+Verdict: **all-true** (8 / 8)
 
-- Run `2026-08-28-procgen` · slug `procgen` · repo `Metta-AI/cogame-procgen` · version `0.1.0`
-- `COW` = `cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d` · manifest `sha256:5b5bf61a91162daf850cb526ef5792a96acb61849bec503428ce8b7da86e7311`
-- `L` = `league_2b1f9007-0749-4e3c-a669-a630283894f1` · `D` = `div_6efcf3a6-7551-4401-94a0-85853a797f16`
-- `BASE` = `https://softmax.com/api/observatory/v2`
-- Headers on every Observatory call: `Authorization: Bearer <redacted>` and `User-Agent: coworld-builder/1.0`;
-  `X-Use-Elevated-Privileges: true` added on `artifacts/logs` and on the filler-policies read. No header
-  value is reproduced anywhere in this file.
-- **Evidence-source choices** (both are the prompt's documented fallbacks, recorded as required):
-  **check 6** — the raw-HTML iframe grep and the coworld-detail API both came back empty (both pasted
-  below), so the source used is the **page's own SSR payload** (`state.pool.replays[0]`, plus
-  `state.divisionLeaderboard`) **+ `POST /coworlds/replays/session`**, the call the page's JS makes.
-  **check 7** — the **committed** `runs/2026-08-28-procgen/release-result.json`; it was present, so the
-  `gh run download` fallback (release run `33206322967`) was not needed.
-- Wall clock: verification opened **20:14Z**, last round poll **21:05:49Z**, viewer-check dispatched
-  **21:08Z** — **~62 min of the 75-min bound used**.
-- **Round under test: round 4** (`round_850e932a-0806-4377-8e6e-050e37f07fc9`, completed
-  2026-08-28T21:04:53Z), the latest completed round at fetch time.
-- **This coworld is single-seat.** `design.md:188` — "**`num_agents` = 1.** Exactly one seat, always" —
-  so a ladder round is **two episodes of one participant each**, not one episode of two. Checks 3–5 are
-  therefore read over **both** episode requests of round 4; between them they name `daveey` and
-  `daveey-1`, and each is quoted in full below. This is a shape consequence of the accepted design, not
-  an exception I am inventing.
+Coworld `procgen` **0.1.2**, `cow_84cce351-0c2e-42d7-820b-38cb85cd296e`, manifest
+`sha256:c263c8bdc6b6b08e99d86e83561ea820fb03e59caf3eb064678de82cb90dd95a`, canonical `true`,
+released by run `33215548447` at sha `3c143bcd`.
+League `league_2b1f9007-0749-4e3c-a669-a630283894f1`, division `div_6efcf3a6-7551-4401-94a0-85853a797f16`.
+
+Every response body below was fetched **in this pass, between 22:36Z and 22:45Z**, except the two
+documented exceptions: check 7 reads the committed `runs/2026-08-28-procgen/release-result.json`
+(the 0.1.2 release artifact), and check 8 reads the artifact of `viewer-check.yml` run
+**33217648127**, which this pass dispatched at 22:39:38Z.
+
+Common preamble for every `curl` below (header **names** shown; the token value is never printed):
+
+```bash
+BASE=https://softmax.com/api/observatory/v2
+AUTH=(-H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0")
+ELEV=(-H "X-Use-Elevated-Privileges: true")
+L=league_2b1f9007-0749-4e3c-a669-a630283894f1
+D=div_6efcf3a6-7551-4401-94a0-85853a797f16
+COW=cow_84cce351-0c2e-42d7-820b-38cb85cd296e
+```
+
+## History (why this document was rewritten)
+
+This is the **third** verification pass on this run. It supersedes the 21:10Z VERIFY.md, which
+carried check 5 **FALSE**. Nothing below is copied from it — every check was re-fetched.
+
+| When | Coworld | What happened |
+|---|---|---|
+| 20:19–21:34Z | **0.1.0** (`cow_4d7261f4`) | Rounds 1–6 ran. Rounds completed and scored, but the hosted logs carried `falling back (parse_error)`: the LLM per-turn deadlines (`attempt1Ms`/`retryMs`/`turnBudgetMs`) were tighter than the hosted Bedrock p90, so turns timed out and were mislabelled `parse_error`. 21:10Z VERIFY.md → check 5 FALSE. |
+| 21:5xZ | **0.1.1** (`ee29e5e2`, release run `33212822202`, `cow_a82788ed`) | Widened `attempt1Ms`/`retryMs`/`turnBudgetMs` to 10000/5000/16000 and fixed the cause label (`timeout`, not `parse_error`). Round 7 came back half-clean; residual symptom `cut off at max_tokens` — the model spent its output budget on preamble before the JSON. |
+| 22:15Z | **0.1.2** (`3c143bcd`, release run `33215548447`, `cow_84cce351`) | Added an assistant **prefill `{`** so the reply starts inside the JSON object. |
+| 22:28–22:32Z | 0.1.2 | **Round 10** ran all three episodes on `cow_84cce351` and all three were clean. |
+
+The evidence below is drawn from round 10 (the latest completed round), whose three episodes all
+carry `coworld_id: cow_84cce351-…` — i.e. all three are 0.1.2 episodes, no version mixing.
 
 ---
 
-## Polling log
+## 1. ≥2 completed rounds after the fillers were set
 
-Each line is an independent `GET $BASE/rounds?league_id=$L&limit=20` (HTTP 200 every time). No round ever
-reported `failed` or `discarded`, so no `error` string exists to quote.
+Fillers were registered **before round 1** — `log.md:38`:
 
-| poll (UTC) | r1 | r2 | r3 | r4 | completed count |
-|---|---|---|---|---|---|
-| 20:15:46Z | pending | — | — | — | 0 |
-| 20:20:41Z | **completed** 20:19:57Z | — | — | — | 1 |
-| 20:26:08Z | completed | — | — | — | 1 |
-| 20:31:05Z | completed | pending (created 20:27:59Z) | — | — | 1 |
-| 20:36:26Z | completed | **completed** 20:34:19Z | — | — | 2 |
-| 20:41:28Z | completed | completed | — | — | 2 |
-| 20:46:17Z | completed | completed | pending (created 20:43:00Z) | — | 2 |
-| 20:51:01Z | completed | completed | **completed** 20:50:02Z | — | 3 |
-| 20:56:13Z | completed | completed | completed | — | 3 |
-| 21:01:01Z | completed | completed | completed | pending (created 20:58:02Z) | 3 |
-| 21:05:49Z | completed | completed | completed | **completed** 21:04:53Z | 4 |
+```
+2026-08-28T20:13:43Z 50 filler-policies 200: pathfinder ff22a97d + scavenger d12e5c64 (neither champion) — set BEFORE trigger
+```
 
-Polls after the second completion (20:36:26Z) were the **check-5 retry budget** being spent as the prompt
-directs — "3 attempts per failing check, each a different approach … (different round)". Rounds 2, 3 and 4
-were each fetched and gate-grepped in turn; all four rounds fail the gate (§5).
-
----
-
-## 1. ≥2 completed rounds after the fillers were set — TRUE
+Fetched fresh at 22:41:08Z, the filler registration still stands:
 
 ```bash
-curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" -o /tmp/rounds_final.json -w "HTTP %{http_code}\n"
-jq -r 'if type=="array" then . else .entries end|sort_by(.round_number)|.[]|{id,round_number,status,error,created_at,completed_at}' /tmp/rounds_final.json
-jq -r '[(if type=="array" then . else .entries end)[]|select(.status=="completed")]|length' /tmp/rounds_final.json
-```
-
-```
-HTTP 200      (fetched 2026-08-28T21:09:36Z)
-{
-  "id": "round_536471b7-477d-4aa9-af0e-eb821f7a9d1c",
-  "round_number": 1,
-  "status": "completed",
-  "error": null,
-  "created_at": "2026-08-28T20:12:59.577674Z",
-  "completed_at": "2026-08-28T20:19:57.817705Z"
-}
-{
-  "id": "round_c8c024bc-68d2-48d1-a8e7-1a104078fadb",
-  "round_number": 2,
-  "status": "completed",
-  "error": null,
-  "created_at": "2026-08-28T20:27:59.955128Z",
-  "completed_at": "2026-08-28T20:34:19.474730Z"
-}
-{
-  "id": "round_db91487e-097b-4f9f-81c4-6d04aa44fdbc",
-  "round_number": 3,
-  "status": "completed",
-  "error": null,
-  "created_at": "2026-08-28T20:43:00.854511Z",
-  "completed_at": "2026-08-28T20:50:02.085815Z"
-}
-{
-  "id": "round_850e932a-0806-4377-8e6e-050e37f07fc9",
-  "round_number": 4,
-  "status": "completed",
-  "error": null,
-  "created_at": "2026-08-28T20:58:02.175846Z",
-  "completed_at": "2026-08-28T21:04:53.821382Z"
-}
-```
-```
-4
-```
-
-**Fillers were in effect for every counted round.** `log.md` records them registered at 20:13:43Z,
-**before** the first `trigger-round` (same log line) and therefore before round 1 was created
-(20:12:59Z creation, settled by the trigger). That is the log; here is the live read, and the live
-entrant list for round 4:
-
-```bash
-curl -sS "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}"     # elevated read (403s on bare AUTH)
-```
-```
-HTTP 200      (fetched 2026-08-28T21:09:37Z)
-{"policy_version_id":"ff22a97d-757c-4444-b6fe-3c02a7030411","policy_name":"procgen-pathfinder","version":1,"player_name":"daveey"}
-{"policy_version_id":"d12e5c64-6bd6-4b0d-8844-598cb1517faa","policy_name":"procgen-scavenger","version":1,"player_name":"daveey"}
-```
-
-```bash
-jq -c '(if type=="array" then . else .entries end)[]|select(.round_number==4)|.round_config.entrant_attributions' /tmp/rounds_final.json
-```
-```
-[{"subject_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","subject_type":"player",
-  "policy_version_id":"6f123ede-f4e4-4467-ac19-bd636b1cfbb7","league_policy_membership_id":"lpm_00d11b8a-b1ca-4ca6-9a78-9968d6b229f4"},
- {"subject_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d","subject_type":"player",
-  "policy_version_id":"be25edba-71f3-4841-9a58-8dd644b57384","league_policy_membership_id":"lpm_c2897b60-6327-46b9-ba00-dd9305326d4a"}]
-```
-
-The two filler version ids (`ff22a97d…`, `d12e5c64…`) are disjoint from the two champion version ids
-(`6f123ede…`, `be25edba…`), as the playbook requires.
-
-**Status: TRUE** — **4** completed rounds (1 @ 20:19:57Z, 2 @ 20:34:19Z, 3 @ 20:50:02Z, 4 @ 21:04:53Z),
-all four created after the fillers were registered. **Zero** rounds `failed` or `discarded`, so there is
-no `error` string to record.
-
----
-
-## 2. Both champions ranked; fillers absent / Baseline — TRUE
-
-```bash
-curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" -o /tmp/lb.json -w "HTTP %{http_code}\n"
-jq -r '.[]|[.rank,.player_name,.policy_label,.score,.rounds_played,.episode_wins]|@tsv' /tmp/lb.json
-```
-```
-HTTP 200      (fetched 2026-08-28T21:06:15Z; bare list, not .entries)
-1	daveey	procgen-cartographer:v1	1026.666828786396	4	3.0
-2	daveey-1	procgen-scrambler:v1	973.3331712136038	4	1.0
-```
-
-**Status: TRUE** — both champions present with `rounds_played` 4 ≥ 1: `daveey`
-(`procgen-cartographer:v1`) rank 1, 3 episode wins; `daveey-1` (`procgen-scrambler:v1`) rank 2, 1
-episode win. Neither filler (`procgen-pathfinder:v1`, `procgen-scavenger:v1`) appears as a leaderboard
-row — **absent**, which the checklist accepts. (Fillers are never seated in this coworld: with
-`num_agents = 1` a round is one champion per episode, so `insufficient_players: filler_policy` never
-fires; the filler set exists and is registered, §1.)
-
----
-
-## 3. Latest round's episode requests completed with a replay — TRUE
-
-The flat `GET /episode-requests?round_id=` route is HTTP 405 since 2026-08-26
-(`playbooks/observatory-api.md` §9), so the nested route was used.
-
-```bash
-R=round_850e932a-0806-4377-8e6e-050e37f07fc9      # max_by(round_number) over completed rounds = round 4
-curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}" -o /tmp/er4.json -w "HTTP %{http_code}\n"
-jq -r 'if type=="array" then . else .entries end|.[]|[.id,.status]|@tsv' /tmp/er4.json
-```
-```
-HTTP 200
-ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1	completed
-ereq_4202e87d-98b9-47a1-98be-77438668dbda	completed
-```
-
-```bash
-for E in ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1 ereq_4202e87d-98b9-47a1-98be-77438668dbda; do
-  curl -sS "$BASE/episode-requests/$E" "${AUTH[@]}" | jq '{status, replay_url, participants, participant_scores}'
-done
-```
-```
-== ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1        HTTP 200
-{
-  "status": "completed",
-  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay",
-  "participants": [
-    {
-      "position": 0,
-      "kind": "policy",
-      "policy_version_id": "be25edba-71f3-4841-9a58-8dd644b57384",
-      "policy_id": "e20f8ed8-5c38-4d56-b02a-fd2076468e3a",
-      "policy_name": "procgen-scrambler",
-      "version": 1,
-      "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d",
-      "player_name": "daveey-1",
-      "is_filler": false,
-      "is_seed": false
-    }
-  ],
-  "participant_scores": [
-    {
-      "position": 0,
-      "score": 0.336
-    }
-  ]
-}
-== ereq_4202e87d-98b9-47a1-98be-77438668dbda        HTTP 200
-{
-  "status": "completed",
-  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/55bcf72a-6bca-4d88-a47b-aa34150645d5.replay",
-  "participants": [
-    {
-      "position": 0,
-      "kind": "policy",
-      "policy_version_id": "6f123ede-f4e4-4467-ac19-bd636b1cfbb7",
-      "policy_id": "74f3fc66-4d82-47f5-98ad-6be0ca4b46b3",
-      "policy_name": "procgen-cartographer",
-      "version": 1,
-      "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
-      "player_name": "daveey",
-      "is_filler": false,
-      "is_seed": false
-    }
-  ],
-  "participant_scores": [
-    {
-      "position": 0,
-      "score": 0.362
-    }
-  ]
-}
-```
-
-**Status: TRUE** — both of round 4's episode requests are `status == "completed"` with a non-null
-`replay_url`, and between them the round's `participants` name **`daveey`** (seat 0 of
-`ereq_4202e87d…`, `procgen-cartographer` v1, score 0.362) and **`daveey-1`** (seat 0 of
-`ereq_c6fddedb…`, `procgen-scrambler` v1, score 0.336). `is_filler` is `false` on both — correct, since
-this single-seat game never seats a filler (§2). The design pins the one-seat-per-episode shape at
-`design.md:188`.
-
----
-
-## 4. Replay bytes are valid and show the game — TRUE
-
-The replay is the starter's **binary `COWLDPGN`** container, not raw JSON, and the design declares the
-substitute procedure for this exact check (`design.md` §"Replay bytes (self-sufficient)", lines
-1054–1080) — a **documented exception, cited not assumed**:
-
-> **The phase-60 substitute for SPEC §Definition of done check 4:** `python3 tools/replay_summary.py
-> /tmp/ep.replay > /tmp/ep.json` … Require `protocol == "procgen/v1"`, `results.reason == "complete"`
-> (or the declared-acceptable `deadline`), `results.levelSeeds | length == results.levelCount`, every
-> `levelSplit` entry in `{seen, unseen}` with both present, a non-zero `results.unseenMilli`, and the
-> seat's turns with `source == "llm"`, real plans and non-empty `says` — not all fallbacks.
-
-Tool provenance: the working tree `/workspace/cogame-procgen` at the released head **`545c791`**
-("r1-F9: commit the four replay fixtures the note names" — the sha phase 40 released as 0.1.0), clean
-(`git status --porcelain` empty, `origin/main` == `545c791`); `tools/replay_summary.py` sha256
-`b1171da0053e3960df824776b3b31626a7cbf5cdae70ea11f1fb680b4549d6c1`. Python 3 stdlib only.
-
-### 4a. `ereq_4202e87d…` — champion 1, `daveey` / `procgen-cartographer:v1`
-
-```bash
-curl -sSL "https://softmax-public.s3.amazonaws.com/replays/55bcf72a-6bca-4d88-a47b-aa34150645d5.replay" \
-     -o /tmp/ep.replay -w "HTTP %{http_code} bytes=%{size_download} type=%{content_type}\n"
-head -c 16 /tmp/ep.replay | od -c | head -2
-jq -e . /tmp/ep.replay >/dev/null 2>&1 && echo "raw is JSON" || echo "raw is NOT JSON (binary COWLDPGN)"
-python3 tools/replay_summary.py /tmp/ep.replay > /tmp/ep.json ; echo "rc=$?"
-jq -e . /tmp/ep.json >/dev/null && echo "strict UTF-8 JSON: ok"
-jq -r '.protocol, .results.reason, .results.endRule' /tmp/ep.json
-```
-```
-HTTP 200 bytes=151933 type=application/octet-stream
-0000000   C   O   W   L   D   P   G   N 001  \0  \0  \0  \a  \0  \0  \0
-raw is NOT JSON (binary COWLDPGN)
-rc=0
-strict UTF-8 JSON: ok
-procgen/v1
-complete
-gauntlet_complete
-```
-
-```bash
-jq -c 'del(.actions,.says,.notes)' /tmp/ep.json
+curl -sS "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" | jq .
 ```
 ```json
-{"protocol":"procgen/v1","gameName":"procgen","gameVersion":"1","seed":1867834266,"variant":"gauntlet","difficulty":"standard","levelCount":8,"levelKinds":["climber","chaser","maze","chaser","maze","miner","climber","miner"],"levelSeeds":[858890166,1847739717,1016,2008,53451433,1968772008,3030,4026],"levelSplit":["unseen","unseen","seen","seen","unseen","unseen","seen","seen"],"names":["daveey"],"aliases":["COG-alpha"],"policyKinds":["llm"],"frameCount":355,"levels":8,"notes_count":0,"fallbacks":55,"interrupts":16,"results":{"names":["daveey"],"aliases":["COG-alpha"],"scores":[0.362],"win":[false],"reason":"complete","endRule":"gauntlet_complete","variant":"gauntlet","difficulty":"standard","seed":1867834266,"levelCount":8,"levelKinds":["climber","chaser","maze","chaser","maze","miner","climber","miner"],"levelSplit":["unseen","unseen","seen","seen","unseen","unseen","seen","seen"],"levelSeeds":[858890166,1847739717,1016,2008,53451433,1968772008,3030,4026],"levelReturns":[267,350,33,319,121,713,423,800],"levelOutcome":["timeup","timeup","timeup","died","timeup","timeup","died","timeup"],"levelDeathCause":["","","","caught","","","spiked",""],"levelFrames":[54,13,59,20,59,48,39,55],"levelCollected":[1,3,0,3,0,3,2,4],"levelCollectTotal":[4,8,4,8,4,4,4,4],"seenMilli":393,"unseenMilli":362,"gapMilli":31,"seenCleared":0,"unseenCleared":0,"policyKinds":["llm"],"llmTurns":68,"fallbackTurns":7,"ordersRejected":6,"planInterrupts":16,"genFallbacks":0,"deadSeats":[false],"stopDetail":""}}
+{
+  "filler_policy_versions": [
+    {"policy_version_id": "ff22a97d-757c-4444-b6fe-3c02a7030411", "policy_id": "12ef398d-4366-4492-847c-8e05f8aef680",
+     "policy_name": "procgen-pathfinder", "version": 1, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
+     "player_name": "daveey", "display_name": null},
+    {"policy_version_id": "d12e5c64-6bd6-4b0d-8844-598cb1517faa", "policy_id": "ddba07f4-5def-4c59-8945-551448ac5d72",
+     "policy_name": "procgen-scavenger", "version": 1, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
+     "player_name": "daveey", "display_name": null}
+  ]
+}
 ```
 
 ```bash
-jq -r '[.actions[]|.source]|group_by(.)|map({(.[0]):length})|add' /tmp/ep.json
-jq -r '"says: \(.says|length)  unique: \(.says|unique|length)"' /tmp/ep.json
+curl -sS "$BASE/rounds?league_id=$L&limit=50" "${AUTH[@]}" > /tmp/rounds2.json    # 2026-08-28T22:41:08Z
+jq -r 'if type=="array" then . else .entries end | group_by(.status)|map({status:.[0].status,n:length})' /tmp/rounds2.json
+jq -c 'if type=="array" then . else .entries end | map({round_number,status,error,completed_at}) | sort_by(.round_number) | .[]' /tmp/rounds2.json
 ```
+```json
+[ { "status": "completed", "n": 10 } ]
 ```
-{"fallback": 7, "llm": 68}
-says: 68  unique: 66
-```
-
-### 4b. `ereq_c6fddedb…` — champion 2, `daveey-1` / `procgen-scrambler:v1` (also the featured replay, §6/§8)
-
-```bash
-curl -sSL "https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay" \
-     -o /tmp/ep2.replay -w "HTTP %{http_code} bytes=%{size_download}\n"
-python3 tools/replay_summary.py /tmp/ep2.replay > /tmp/ep2.json
-jq -e . /tmp/ep2.json >/dev/null && echo "strict UTF-8 JSON: ok"
-jq -r '.protocol' /tmp/ep2.json
-jq -c '.results|{reason,endRule,scores,win,levelSplit,levelReturns,levelOutcome,seenMilli,unseenMilli,gapMilli,llmTurns,fallbackTurns,ordersRejected,planInterrupts,genFallbacks}' /tmp/ep2.json
-jq -r '[.actions[]|.source]|group_by(.)|map({(.[0]):length})|add' /tmp/ep2.json
-jq -r '"says: \(.says|length)  unique: \(.says|unique|length)"' /tmp/ep2.json
-jq -c '{names,aliases,policyKinds,frameCount,levelKinds,levelSeeds}' /tmp/ep2.json
-```
-```
-HTTP 200 bytes=154663
-strict UTF-8 JSON: ok
-procgen/v1
-{"reason":"complete","endRule":"gauntlet_complete","scores":[0.336],"win":[false],"levelSplit":["seen","unseen","seen","unseen","unseen","seen","unseen","seen"],"levelReturns":[811,0,433,345,473,60,527,241],"levelOutcome":["timeup","timeup","timeup","timeup","timeup","timeup","timeup","timeup"],"seenMilli":386,"unseenMilli":336,"gapMilli":50,"llmTurns":78,"fallbackTurns":2,"ordersRejected":0,"planInterrupts":15,"genFallbacks":0}
-{"fallback": 2, "llm": 78}
-says: 78  unique: 77
-{"names":["daveey-1"],"aliases":["COG-alpha"],"policyKinds":["llm"],"frameCount":329,"levelKinds":["miner","maze","chaser","chaser","climber","maze","miner","climber"],"levelSeeds":[4004,89013220,2008,1257444618,2033174848,1019,151229263,3024]}
+```json
+{"round_number":1,"status":"completed","error":null,"completed_at":"2026-08-28T20:19:57.817705Z"}
+{"round_number":2,"status":"completed","error":null,"completed_at":"2026-08-28T20:34:19.474730Z"}
+{"round_number":3,"status":"completed","error":null,"completed_at":"2026-08-28T20:50:02.085815Z"}
+{"round_number":4,"status":"completed","error":null,"completed_at":"2026-08-28T21:04:53.821382Z"}
+{"round_number":5,"status":"completed","error":null,"completed_at":"2026-08-28T21:19:31.537882Z"}
+{"round_number":6,"status":"completed","error":null,"completed_at":"2026-08-28T21:34:42.608907Z"}
+{"round_number":7,"status":"completed","error":null,"completed_at":"2026-08-28T21:51:07.509027Z"}
+{"round_number":8,"status":"completed","error":null,"completed_at":"2026-08-28T22:03:58.539147Z"}
+{"round_number":9,"status":"completed","error":null,"completed_at":"2026-08-28T22:19:35.763596Z"}
+{"round_number":10,"status":"completed","error":null,"completed_at":"2026-08-28T22:32:23.713553Z"}
 ```
 
-**Status: TRUE**, on every clause of the design-declared substitute, for **both** champions:
-
-| requirement | `daveey` ep | `daveey-1` ep |
-|---|---|---|
-| strict UTF-8 JSON under `jq -e` | ok | ok |
-| `protocol` matches the manifest/design string `procgen/v1` | `procgen/v1` | `procgen/v1` |
-| `results.reason` | **`complete`** (`gauntlet_complete`) | **`complete`** (`gauntlet_complete`) |
-| `levelSeeds \| length == levelCount` | 8 == 8 | 8 == 8 |
-| every `levelSplit` in `{seen,unseen}`, both present | 4 seen / 4 unseen | 4 seen / 4 unseen |
-| `unseenMilli` non-zero | 362 | 336 |
-| champion decisions non-scripted, not all fallbacks | **68 llm / 7 fallback = 9.3 % fallback** | **78 llm / 2 fallback = 2.5 % fallback** |
-| `says` non-empty and non-trivial | 66 distinct of 68 | 77 distinct of 78 |
-
-The declared-acceptable `deadline` exception (`design.md:506-512`, "`results.endRule = "wall_clock"`.
-**Declared acceptable** for SPEC §Definition of done check 4") was **not** needed — both episodes ended
-`complete` / `gauntlet_complete`. `genFallbacks == 0` in both: no generator ever fell back to the
-hand-authored level. Ordered event excerpts, used again in §8:
+Round 10 in full, with the policy versions actually seated:
 
 ```bash
-jq -r '.actions[]|select(.turn<=5)|[.turn,.level,.source,.moves,.executed]|@tsv' /tmp/ep2.json          # early
-jq -r '.actions[]|select(.turn>=38 and .turn<=42)|[.turn,.level,.source,.moves,.executed]|@tsv' /tmp/ep2.json   # middle
-jq -r '.actions[-5:][]|[.turn,.level,.source,.moves,.executed]|@tsv' /tmp/ep2.json                      # late
-jq -r '.says[0:3][]' /tmp/ep2.json ; jq -r '.says[-3:][]' /tmp/ep2.json
+jq -r 'if type=="array" then . else .entries end | .[]|select(.round_number==10)
+       |{id,round_number,status,error,created_at,completed_at,
+         entrants:[.round_config.entrant_attributions[]|{subject_id,policy_version_id}]}' /tmp/rounds2.json
 ```
+```json
+{
+  "id": "round_3092b440-f05f-45f6-9039-f06cd81a4ec0",
+  "round_number": 10,
+  "status": "completed",
+  "error": null,
+  "created_at": "2026-08-28T22:28:06.881667Z",
+  "completed_at": "2026-08-28T22:32:23.713553Z",
+  "entrants": [
+    {"subject_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "policy_version_id": "6f123ede-f4e4-4467-ac19-bd636b1cfbb7"},
+    {"subject_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "policy_version_id": "be25edba-71f3-4841-9a58-8dd644b57384"},
+    {"subject_id": "ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83", "policy_version_id": "d7b2f865-5f77-4a08-b9f3-23ba3e1ac40e"}
+  ]
+}
 ```
-1	1	llm	RDR	3          | 38	4	llm	D....	1     | 76	8	llm	LUUUU	5
-2	1	llm	DXDX	4         | 39	4	llm	LLLUU	1    | 77	8	llm	RURUU	5
-3	1	llm	RUL	3          | 40	4	llm	L	1        | 78	8	llm	RRUUX.	6
-4	1	llm	RU	2           | 41	5	llm	LLLLL	5    | 79	8	llm	UUUUUU	6
-5	1	llm	RRRR	4         | 42	5	llm	RRRRRR	6   | 80	8	llm	LUUUU	5
-```
-```
-Survey: moving toward ne        (turn 1)
-Mining gems systematical        (turn 2)
-Gem run: right-up-left t        (turn 3)
-...
-Climb right to [9,4] gem        (turn 78)
-Climbing to top gem at [        (turn 79)
-Banking 3/4 gems, approa        (turn 80)
-```
-The `executed` column is the interruptible-plan machinery working: turn 38's five-symbol plan ran
-**1** symbol before the danger interrupt fired (`planInterrupts: 15`). Level 1 (`miner`, seed 4004,
-seen) collected 4/4 gems for a return of 811; level 2 (`maze`, seed 89013220, **unseen**) collected
-0/4 for a return of 0. That spread is the coworld's whole point, and §8 confirms the viewer draws it.
 
----
+**Status: TRUE** — **10** rounds `completed`, **0** `failed`, **0** `discarded`, every `error`
+`null`. All ten completed at or after 20:19:57Z, i.e. after the fillers were set at 20:13:43Z. The
+requirement is ≥2; there are ten. Round 10 seats champion #1 (`ply_44ae9048` = daveey) and champion
+#2 (`ply_bac48eb1` = daveey-1) plus a third external player, and neither filler version id
+(`ff22a97d…`, `d12e5c64…`) appears among the entrants — the ladder no longer needs a filler because
+three real players are enrolled.
 
-## 5. Hosted game log is clean — **FALSE**
-
-The logs body is python `b'…'` byte-string reprs under `===== container: … =====` headers; it was
-decoded per repr with `ast.literal_eval` before grepping (`playbooks/observatory-api.md` §10).
+## 2. Both champions ranked; fillers absent
 
 ```bash
-for E in ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1 ereq_4202e87d-98b9-47a1-98be-77438668dbda; do
-  curl -sS "$BASE/episode-requests/$E/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o $E.raw -w "HTTP %{http_code} bytes=%{size_download}\n"
-  # decode each b'…' repr, then:
-  grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' $E.txt || echo CLEAN
+curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" | jq .     # 2026-08-28T22:37Z
+```
+```json
+[
+  {
+    "rank": 1,
+    "player_id": "ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83",
+    "player_name": "richard",
+    "score": 1032.0,
+    "score_label": "MMR",
+    "score_value_type": "integer",
+    "rounds_played": 1,
+    "episode_wins": 2.0,
+    "episodes_played": null,
+    "win_rate": 1.0,
+    "policy_label": "co-gas-procgen-safe-route-richard:v1",
+    "recent_rounds": null
+  },
+  {
+    "rank": 2,
+    "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
+    "player_name": "daveey",
+    "score": 1009.4328993512081,
+    "score_label": "MMR",
+    "score_value_type": "integer",
+    "rounds_played": 10,
+    "episode_wins": 6.0,
+    "episodes_played": null,
+    "win_rate": 0.5454545454545454,
+    "policy_label": "procgen-cartographer:v1",
+    "recent_rounds": null
+  },
+  {
+    "rank": 3,
+    "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d",
+    "player_name": "daveey-1",
+    "score": 958.5671006487919,
+    "score_label": "MMR",
+    "score_value_type": "integer",
+    "rounds_played": 10,
+    "episode_wins": 4.0,
+    "episodes_played": null,
+    "win_rate": 0.36363636363636365,
+    "policy_label": "procgen-scrambler:v1",
+    "recent_rounds": null
+  }
+]
+```
+
+**Status: TRUE** — `daveey` (`procgen-cartographer:v1`, rank 2, `rounds_played` 10, MMR 1009.4) and
+`daveey-1` (`procgen-scrambler:v1`, rank 3, `rounds_played` 10, MMR 958.6) are both ranked with
+`rounds_played ≥ 1`. Neither filler (`procgen-pathfinder`, `procgen-scavenger`) appears on the
+board and no row is labelled `Baseline (N)` — fillers **absent**, which the check allows.
+
+*Observation for the coordinator (not a check failure):* a third, external player has joined the
+league since the last pass — `richard` with `co-gas-procgen-safe-route-richard:v1`, rank 1 on one
+round played. That is somebody else picking the coworld up, and it is why the ladder now seats
+three real entrants instead of a champion pair plus fillers.
+
+## 3. The latest completed round's episode requests completed with replays
+
+`GET /episode-requests?round_id=…` is dead (405, `allow: POST` — `playbooks/observatory-api.md` §9);
+the nested route is used.
+
+```bash
+R=round_3092b440-f05f-45f6-9039-f06cd81a4ec0        # round 10, the latest completed
+curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}" \
+ | jq -r 'if type=="array" then . else .entries end | .[] | [.id,.status,.coworld_id,.replay_url]|@tsv'
+```
+```
+ereq_88ef2799-8681-40d6-9e42-eb825d807fec	completed	cow_84cce351-0c2e-42d7-820b-38cb85cd296e	https://softmax-public.s3.amazonaws.com/replays/f8910aae-22c1-473b-8235-9fecbac702a2.replay
+ereq_a50e07c8-aacd-451b-984d-6e9c7fce7fa2	completed	cow_84cce351-0c2e-42d7-820b-38cb85cd296e	https://softmax-public.s3.amazonaws.com/replays/2f6bc2f6-1309-49ac-9d67-6a50a2fdc2b1.replay
+ereq_0aa7017c-ba7b-4ed9-a7a9-1dc2eee8f5c1	completed	cow_84cce351-0c2e-42d7-820b-38cb85cd296e	https://softmax-public.s3.amazonaws.com/replays/33f538e6-fd4e-4fd2-b256-70d7976f552d.replay
+```
+
+All three details (`procgen` is a **single-seat gauntlet** — one policy per episode, one episode per
+entrant per round; the round's champion coverage is therefore across the three requests, not inside
+one of them):
+
+```bash
+for E in ereq_88ef2799-… ereq_a50e07c8-… ereq_0aa7017c-…; do
+  curl -sS "$BASE/episode-requests/$E" "${AUTH[@]}" | jq '{status, replay_url, coworld_id, participants, participant_scores}'
 done
 ```
+```json
+=== ereq_0aa7017c-ba7b-4ed9-a7a9-1dc2eee8f5c1
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/33f538e6-fd4e-4fd2-b256-70d7976f552d.replay",
+  "coworld_id": "cow_84cce351-0c2e-42d7-820b-38cb85cd296e",
+  "participants": [
+    {"position": 0, "kind": "policy", "policy_version_id": "6f123ede-f4e4-4467-ac19-bd636b1cfbb7",
+     "policy_id": "74f3fc66-4d82-47f5-98ad-6be0ca4b46b3", "policy_name": "procgen-cartographer", "version": 1,
+     "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
+     "is_filler": false, "is_seed": false}
+  ],
+  "participant_scores": [ {"position": 0, "score": 0.284} ]
+}
 
-**`ereq_c6fddedb…` (daveey-1) — HTTP 200, 203177 bytes — 2 gate matches:**
-```
-406:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 23
-413:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 43
-```
-**`ereq_4202e87d…` (daveey) — HTTP 200, 247362 bytes — 7 gate matches:**
-```
-491:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 11
-505:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 31
-508:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 33
-511:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 34
-515:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 37
-522:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 49
-533:procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 70
-```
-Zero matches for `LLM provider is unavailable`, `cut off at max_tokens` and `rejected` in either — the
-**only** gate string that fires is `falling back`.
+=== ereq_a50e07c8-aacd-451b-984d-6e9c7fce7fa2
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/2f6bc2f6-1309-49ac-9d67-6a50a2fdc2b1.replay",
+  "coworld_id": "cow_84cce351-0c2e-42d7-820b-38cb85cd296e",
+  "participants": [
+    {"position": 0, "kind": "policy", "policy_version_id": "be25edba-71f3-4841-9a58-8dd644b57384",
+     "policy_id": "e20f8ed8-5c38-4d56-b02a-fd2076468e3a", "policy_name": "procgen-scrambler", "version": 1,
+     "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
+     "is_filler": false, "is_seed": false}
+  ],
+  "participant_scores": [ {"position": 0, "score": 0.271} ]
+}
 
-The whole `game` container of each, with the repeated `attempt N failed, will retry` lines elided
-(counts given beneath):
-
-```
-===== container: game =====                        (ereq_c6fddedb…, daveey-1)
-procgen: seed not pinned; randomized
-procgen config: host=0.0.0.0 port=8080 seed=253823283 levelCount=8 turnsPerLevel=10 framesPerTurn=6 difficulty=standard num_agents=1 turnSpacingMs=2500 wallClockBudgetSeconds=660
-procgen listening on 0.0.0.0:8080
-procgen llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
-procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 23
-procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 43
-procgen: episode complete (gauntlet_complete) after 321 frames, 80 turns; unseen 336 seen 386
-   [elided: 17 × "attempt 1 failed, will retry", 2 × "attempt 2 failed, will retry"]
-
-===== container: game =====                        (ereq_4202e87d…, daveey)
-procgen: seed not pinned; randomized
-procgen config: host=0.0.0.0 port=8080 seed=1867834266 levelCount=8 turnsPerLevel=10 framesPerTurn=6 difficulty=standard num_agents=1 turnSpacingMs=2500 wallClockBudgetSeconds=660
-procgen listening on 0.0.0.0:8080
-procgen llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
-procgen llm: seat 0 falling back to pathfinder (parse_error) on turn 11
-   … (7 such lines, quoted in full above) …
-procgen: episode complete (gauntlet_complete) after 347 frames, 75 turns; unseen 362 seen 393
-   [elided: 41 × "attempt 1 failed, will retry", 7 × "attempt 2 failed, will retry"]
-```
-
-The verbatim retry line, one of many, is:
-```
-procgen llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+=== ereq_88ef2799-8681-40d6-9e42-eb825d807fec
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/f8910aae-22c1-473b-8235-9fecbac702a2.replay",
+  "coworld_id": "cow_84cce351-0c2e-42d7-820b-38cb85cd296e",
+  "participants": [
+    {"position": 0, "kind": "policy", "policy_version_id": "d7b2f865-5f77-4a08-b9f3-23ba3e1ac40e",
+     "policy_id": "e0b22057-cbb6-4a64-88f4-a5e3ae4e89b7", "policy_name": "co-gas-procgen-safe-route-richard", "version": 1,
+     "player_id": "ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83", "player_name": "richard",
+     "is_filler": false, "is_seed": false}
+  ],
+  "participant_scores": [ {"position": 0, "score": 0.306} ]
+}
 ```
 
-### The retry budget: all four rounds fail this gate
+**Status: TRUE** — all three episode requests of round 10 are `completed`, each with a non-null
+`replay_url`, each on `coworld_id: cow_84cce351-…` (0.1.2 — **no version mixing in this round**), and
+the round's participants name `daveey` (`procgen-cartographer:v1`, 0.284) and `daveey-1`
+(`procgen-scrambler:v1`, 0.271) — plus `richard` (0.306). `is_filler: false` on all three; no
+`Baseline (N)` seats exist because the league has three real entrants.
 
-Every completed round was fetched and gate-grepped independently (the prompt's "3 attempts, each a
-different approach — different round"; four were available inside the bound):
+## 4. Replay bytes are valid and show the game
 
-| round | episode request | seat | `falling back` lines | fallback turns / llm turns (replay) |
-|---|---|---|---|---|
-| 1 | `ereq_33e48747-e91b-4c91-abaa-934ebb249ebd` | daveey | **11** | 11 / 56 |
-| 1 | `ereq_70a65a10-ed36-4b38-85cf-4934d8d814a9` | daveey-1 | **6** | — |
-| 2 | `ereq_bd99509a-561c-45aa-94f9-b1d0c8f470c7` | daveey-1 | **4** | — |
-| 2 | `ereq_c9b6a651-362b-4f95-8325-469af8ff1352` | daveey | **4** | — |
-| 3 | `ereq_0e3e8012-4734-417f-b766-f8780f343048` | daveey-1 | **1** | — |
-| 3 | `ereq_ad8b7429-9235-439a-b177-c9cc7829aec9` | daveey | **3** | — |
-| 4 | `ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1` | daveey-1 | **2** | 2 / 78 |
-| 4 | `ereq_4202e87d-98b9-47a1-98be-77438668dbda` | daveey | **7** | 7 / 68 |
-
-No round was clean. There is no round left to try inside the 75-minute bound.
-
-### Cause, from the same logs — and the cross-check that says it is **not** the documented exception
-
-The gate string here is `falling back`, **not** `LLM provider is unavailable`, so the platform-capacity
-exception the prompt allows is not on its face available. I checked it anyway, and it does not hold:
+`procgen`'s replay is the starter's **binary `COWLDPGN`** container, not raw JSON — `design.md`
+§"Replay bytes (self-sufficient)" (lines 1053–1082) declares this and specifies the phase-60
+substitute for the strict-JSON step: `tools/replay_summary.py` (Python 3 stdlib only) emits **one
+strict-UTF-8 JSON object** from the container, and `jq -e .` parses *that*. That substitute is used
+here, verbatim, from the repo at the released sha:
 
 ```bash
-# another LLM coworld's latest completed round, fetched fresh this run
-# gen-generals-io, league_03508cde-…, round 51 completed 2026-08-28T20:23:07Z, ereq_24dd2ac6-…
-grep -cE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/xcheck.txt
+cd /workspace/cogame-procgen && git log --oneline -1        # 3c143bc prefill the assistant turn with `{`
+for n in 33f538e6-… 2f6bc2f6-… f8910aae-…; do
+  curl -sSL "https://softmax-public.s3.amazonaws.com/replays/$n.replay" -o /tmp/$n.replay
+  python3 tools/replay_summary.py /tmp/$n.replay > /tmp/$n.json     # exit 0
+  jq -e . /tmp/$n.json >/dev/null && echo "strict UTF-8 JSON: ok"
+done
 ```
 ```
-HTTP 200 bytes=129016
-0        # CLEAN
+== 33f538e6-fd4e-4fd2-b256-70d7976f552d   136244 bytes   exit=0   strict UTF-8 JSON: ok
+== 2f6bc2f6-1309-49ac-9d67-6a50a2fdc2b1   147555 bytes   exit=0   strict UTF-8 JSON: ok
+== f8910aae-22c1-473b-8235-9fecbac702a2   148831 bytes   exit=0   strict UTF-8 JSON: ok
 ```
 
-Bedrock sidecar latency, from the `bedrock_sidecar_complete` records in each log
-(`"latency_ms":…`, every call `"ok":true,"status_code":200` — **nothing is failing, it is only slow**):
+Container header (first bytes of the raw `.replay`, `od -c`) — the magic and protocol the manifest
+declares:
 
-| episode | n calls | p50 | p90 | max | calls > 5000 ms |
-|---|---|---|---|---|---|
-| procgen r4, `ereq_c6fddedb…` | 97 | 1870 ms | 5591 ms | 7207 ms | **17** |
-| procgen r4, `ereq_4202e87d…` | 116 | 2020 ms | 7476 ms | 9196 ms | **41** |
-| gen-generals-io r51 (cross-check) | 60 | 1702 ms | 2674 ms | 5246 ms | 1 |
+```
+0000000   C   O   W   L   D   P   G   N 001  \0  \0  \0  \a  \0  \0  \0
+0000020   p   r   o   c   g   e   n 001  \0  \0  \0   1 357 002  \0  \0
+0000040   {   "   p   r   o   t   o   c   o   l   "   :   "   p   r   o
+0000060   c   g   e   n   /   v   1   "   ,   "   s   e   e   d   "   : …
+```
 
-procgen's own deadlines are `attempt1Ms: 5000, retryMs: 2000`
-(`src/procgen/sim_types.nim:94`, at the released head `545c791`). So a first attempt is cut at 5 s while
-procgen's own p90 is 5.6–7.5 s, and the single retry then gets only **2 s** — which a 1.9 s-median,
-7.5 s-p90 call almost never makes. That is why the fallback fires. The cross-check coworld sits
-comfortably under its own timeout at the same minute on the same Bedrock, so this is **procgen's timeout
-configuration against procgen's own prompt size** (input 1.6–1.8 k tokens, output up to 640), not a
-platform outage. A second cross-check (`derks-gym` rounds 33/34) was attempted and discarded: its
-`artifacts/logs` body is only ~2 KB with no `bedrock_sidecar` records at all, so it is not evidence
-either way.
-
-Two further findings for phase 30, neither of which changes this verdict:
-- the fallback **cause label is wrong** — a transport timeout is reported as `parse_error`, which will
-  mislead the next forensic reader;
-- `retryMs: 2000` is strictly smaller than `attempt1Ms: 5000`, i.e. the retry is given *less* time than
-  the attempt that just timed out. Raising both (and widening `turnBudgetMs` to match) is the fix.
-
-**Status: FALSE** — the latest round's hosted game logs contain 2 and 7 `falling back` lines
-respectively; the gate requires `CLEAN`. All four completed rounds fail it, and the documented
-platform-capacity exception does not apply (cross-check coworld clean at the same minute). I am **not**
-marking this true. The blast radius is bounded: check 4 still passes, because the fallback share of
-champion decisions is 9.3 % and 2.5 % — a small minority, as check 4 requires.
-
----
-
-## 6. The public page uses the static replay path — TRUE
-
-**(a) Raw-HTML iframe grep — empty. Treated as *unknown* per the prompt, not as a failure.**
 ```bash
-curl -sS "https://softmax.com/procgen" -o /tmp/page.html -w "HTTP %{http_code} bytes=%{size_download}\n"
-grep -o '<iframe[^>]*src="[^"]*"' /tmp/page.html || echo "NO iframe in raw HTML (client-rendered)"
+jq -r '[.protocol,.gameVersion,.results.reason,.results.endRule,(.results.scores|tostring),(.results.levelReturns|tostring)]|@tsv' $n.json
+jq -r '"levelSeeds=\(.levelSeeds|length) levelCount=\(.results.levelCount) levelSplit=\(.levelSplit|tostring) unseenMilli=\(.results.unseenMilli) names=\(.names|tostring)"' $n.json
+jq -r '"llm_actions=\([.actions[]?|select(.source=="llm")]|length) total_actions=\(.actions|length) fallbacks=\(.fallbacks) interrupts=\(.interrupts) says=\(.says|length) frameCount=\(.frameCount)"' $n.json
 ```
 ```
-HTTP 200 bytes=749039      (fetched 2026-08-28T21:06:58Z)
-NO iframe in raw HTML (client-rendered)
+=== 33f538e6…  (daveey / procgen-cartographer:v1)
+procgen/v1	1	complete	gauntlet_complete	[0.284]	[705,212,175,15,11,363,219,203]
+levelSeeds=8 levelCount=8 levelSplit=["unseen","seen","seen","seen","unseen","seen","unseen","unseen"] unseenMilli=284 names=["daveey"]
+llm_actions=72 total_actions=72 fallbacks=0 interrupts=14 says=72 frameCount=346
+
+=== 2f6bc2f6…  (daveey-1 / procgen-scrambler:v1)
+procgen/v1	1	complete	gauntlet_complete	[0.271]	[298,7,187,538,241,252,193,881]
+levelSeeds=8 levelCount=8 levelSplit=["unseen","unseen","seen","unseen","unseen","seen","seen","seen"] unseenMilli=271 names=["daveey-1"]
+llm_actions=78 total_actions=78 fallbacks=0 interrupts=8 says=78 frameCount=341
+
+=== f8910aae…  (richard — the featured replay)
+procgen/v1	1	complete	gauntlet_complete	[0.306]	[427,492,402,350,45,263,1000,0]
+levelSeeds=8 levelCount=8 levelSplit=["unseen","seen","unseen","unseen","unseen","seen","seen","seen"] unseenMilli=306 names=["richard"]
+llm_actions=79 total_actions=79 fallbacks=0 interrupts=9 says=79 frameCount=295
 ```
 
-**(b) Coworld detail API — `replay_viewer` and `featured_match` are null (platform-wide since the
-lighthouse run, 2026-08-22), so also not evidence.**
+**Status: TRUE** for all three. `protocol == "procgen/v1"` matches the manifest; `results.reason ==
+"complete"` (not even the declared-acceptable `deadline` of `design.md:506-512` was needed);
+`levelSeeds|length == levelCount == 8`; every `levelSplit` entry is `seen` or `unseen` with both
+present; `unseenMilli` non-zero on all three. Decisions are non-scripted and non-trivial: **72 / 78 /
+79** turns, **every one** `source == "llm"`, `fallbacks = 0` on all three — the fallback count is not
+a minority, it is **zero**, which is the 0.1.2 fix landing. Every turn carries a non-empty `say`.
+
+## 5. Hosted game logs are clean
+
+All three round-10 episodes were grepped, not just one. The logs body is python `b'…'` byte-string
+reprs under `===== container: … =====` headers, so it is **decoded** (`ast.literal_eval` per repr)
+before grepping — a line-based grep on the raw body undercounts (escrow, 2026-08-23).
+
+```bash
+for E in ereq_0aa7017c-… ereq_a50e07c8-… ereq_88ef2799-…; do
+  curl -sS "$BASE/episode-requests/$E/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o /tmp/logs-$E.raw
+  python3 /tmp/declog.py /tmp/logs-$E.raw > /tmp/logs-$E.txt
+  grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs-$E.txt || echo CLEAN
+done
+```
+```
+=== ereq_0aa7017c-ba7b-4ed9-a7a9-1dc2eee8f5c1  (daveey)    raw=148640 B  decoded=148328 B  303 lines
+CLEAN (0 matches)
+=== ereq_a50e07c8-aacd-451b-984d-6e9c7fce7fa2  (daveey-1)  raw=160913 B  decoded=160577 B  327 lines
+CLEAN (0 matches)
+=== ereq_88ef2799-8681-40d6-9e42-eb825d807fec  (richard)   raw=162972 B  decoded=162632 B  331 lines
+CLEAN (0 matches)
+```
+
+A widened, case-insensitive grep on the **raw** body also returns nothing, so this is not a decoding
+artefact:
+
+```bash
+grep -ciE 'falling back|unavailable|max_tokens|reject' /tmp/logs-ereq_0aa7017c-….raw
+```
+```
+0
+```
+
+The `coworld_id` of each of these three episodes is `cow_84cce351-0c2e-42d7-820b-38cb85cd296e`
+(pasted in check 3), so the gate verdict comes from **0.1.2 episodes only**. The decoded `game`
+container tails, showing what actually ran:
+
+```
+=== ereq_0aa7017c  (daveey)
+===== container: game =====
+procgen: seed not pinned; randomized
+procgen config: host=0.0.0.0 port=8080 seed=1543432816 levelCount=8 turnsPerLevel=10 framesPerTurn=6 difficulty=standard num_agents=1 turnSpacingMs=2500 wallClockBudgetSeconds=660
+procgen listening on 0.0.0.0:8080
+procgen llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
+procgen: episode complete (gauntlet_complete) after 338 frames, 72 turns; unseen 284 seen 191
+
+=== ereq_a50e07c8  (daveey-1)
+procgen: episode complete (gauntlet_complete) after 333 frames, 78 turns; unseen 271 seen 378
+
+=== ereq_88ef2799  (richard)
+procgen: episode complete (gauntlet_complete) after 287 frames, 79 turns; unseen 306 seen 438
+```
+
+And the Bedrock sidecar call ledger for the daveey episode — 72 calls, 72 completions, for 72 turns,
+i.e. **no retry ever fired**:
+
+```bash
+grep -o 'bedrock_[a-z_]*' /tmp/logs-ereq_0aa7017c-….txt | sort | uniq -c
+```
+```
+    217 bedrock_sidecar
+     72 bedrock_sidecar_call
+     72 bedrock_sidecar_complete
+      1 bedrock_sidecar_started
+     72 bedrock_sidecar_usage
+```
+
+**Status: TRUE** — zero `falling back`, zero `LLM provider is unavailable`, zero `cut off at
+max_tokens`, zero `rejected` across all three 0.1.2 episodes of round 10. This is the check that was
+FALSE at 21:10Z on 0.1.0; the 0.1.1 deadline widening plus the 0.1.2 assistant prefill closed it.
+No documented exception is being invoked — the logs are clean outright.
+
+*(Note on a near-miss token: the results document carries `ordersRejected: 3` on the richard
+episode. That is not a log line and not this grep's subject — `design.md:612,994` defines it as the
+count of turns whose `moves` string needed symbol-level **repair**, which the game does silently and
+by design ("repaired, never rejected"). The hosted log contains no `rejected` line.)*
+
+## 6. The public page uses the static replay path
+
+**Source used: the SSR payload of `https://softmax.com/procgen`, plus the session endpoint the
+page's own JS calls.** The raw-HTML iframe grep found nothing, which is the documented
+client-rendered case, not a false negative:
+
+```bash
+curl -sS "https://softmax.com/procgen" -o /tmp/page.html -w "http=%{http_code} bytes=%{size_download}\n"
+grep -o '<iframe[^>]*src="[^"]*"' /tmp/page.html || echo "(no iframe in raw HTML)"
+```
+```
+http=200 bytes=762126
+(no iframe in raw HTML)
+```
+
+The `/coworlds` fallback in the playbook is **also** empty platform-wide (`replay_viewer` and
+`featured_match` are `null` for every coworld), so it is not evidence either — but it does confirm
+the identity of the canonical coworld:
+
 ```bash
 curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
- | jq -r '(if type=="array" then . else .entries end)[]|select(.name=="procgen")|{id,name,canonical,version,replay_viewer,featured_match}'
+ | jq -r 'if type=="array" then . else .entries end | .[]|select(.name=="procgen")
+          |{id,name,version,canonical,replay_viewer,featured_match,manifest_hash}'
 ```
-```
-{
-  "id": "cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d",
-  "name": "procgen",
-  "canonical": true,
-  "version": "0.1.0",
-  "replay_viewer": null,
-  "featured_match": null
-}
+```json
+{"id":"cow_84cce351-0c2e-42d7-820b-38cb85cd296e","name":"procgen","version":"0.1.2","canonical":true,
+ "replay_viewer":null,"featured_match":null,
+ "manifest_hash":"sha256:c263c8bdc6b6b08e99d86e83561ea820fb03e59caf3eb064678de82cb90dd95a"}
+{"id":"cow_a82788ed-76d8-4eb0-b709-1ff4af35ed6c","name":"procgen","version":"0.1.1","canonical":false, …}
+{"id":"cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d","name":"procgen","version":"0.1.0","canonical":false, …}
 ```
 
-**(c) Source actually used: the page's own SSR payload + the replay-session call its JS makes.**
-The SSR `state` object was brace-matched out of the page bytes fetched in (a) and parsed:
+The featured match is server-rendered into the page's SSR payload. `state.playlist` is `[]`; the
+featured pool is at **`state.pool.replays[0]`** (the same location the 21:07Z pass found it).
+Unescaped and decoded out of the RSC payload:
 
 ```bash
-python3 - # find '"state":{"leagueId"', brace-match, json.loads
+python3 -  # unescape the RSC payload, raw_decode the object after "pool", print each entry
 ```
 ```
-keys: ['leagueId', 'playlist', 'pool', 'divisionLeaderboard', 'divisionId', 'standings',
-       'divisionName', 'divisionCount', 'playerCount', 'activeRound', 'activeRoundProgress',
-       'newestCompletedAt', 'firstPlace']
-leagueId: league_2b1f9007-0749-4e3c-a669-a630283894f1
-playlist len: 0            # the 2026-08-28 SSR shape puts the match under state.pool.replays, not state.playlist
 pool keys: ['replays', 'live']
-pool.replays len: 2
+n replays: 3
+idx kind    round  ereq                                        version player    replay_url                                                                        episodeNumber
+0   replay  10     ereq_88ef2799-8681-40d6-9e42-eb825d807fec   0.1.2   richard   …/replays/f8910aae-22c1-473b-8235-9fecbac702a2.replay                             3
+1   replay  (ref)  ereq_a50e07c8-aacd-451b-984d-6e9c7fce7fa2   0.1.2   daveey-1  …/replays/2f6bc2f6-1309-49ac-9d67-6a50a2fdc2b1.replay                             2
+2   replay  (ref)  ereq_0aa7017c-ba7b-4ed9-a7a9-1dc2eee8f5c1   0.1.2   daveey    …/replays/33f538e6-fd4e-4fd2-b256-70d7976f552d.replay                             1
 ```
-`state.pool.replays[0]` — **the featured match**:
-```json
-{
- "kind": "replay",
- "round_number": 4,
- "round_status": "completed",
- "ereq": "ereq_c6fddedb-85ee-4c3b-b318-691407d9dad1",
- "episode_id": "9fc38f5e-8f9b-48d3-9c63-baceef1dc043",
- "coworld_name": "procgen",
- "coworld_version": "0.1.0",
- "variant_name": "Procgen Gauntlet (8 levels, half of them nobody has ever seen)",
- "status": "completed",
- "replay_url": "https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay",
- "participants": [{"player_name": "daveey-1", "policy_name": "procgen-scrambler", "is_filler": false}],
- "scores": [{"position": 0, "score": 0.336}]
-}
 ```
-`state.pool.replays[1]` is round 4's other episode (`ereq_4202e87d…`, `daveey`, replay
-`55bcf72a-…`). `state.divisionLeaderboard`, server-rendered into the same payload, carries **two ranked
-players** — so the "featured match absent = fewer than two ranked players" failure mode does not apply:
-```json
-[{"rank":1,"player_name":"daveey","score":1026.666828786396,"score_label":"MMR","rounds_played":4,
-  "episode_wins":3,"win_rate":0.75,"policy_label":"procgen-cartographer:v1"},
- {"rank":2,"player_name":"daveey-1","score":973.3331712136038,"score_label":"MMR","rounds_played":4,
-  "episode_wins":1,"win_rate":0.25,"policy_label":"procgen-scrambler:v1"}]
+…\"state\":{\"leagueId\":\"league_2b1f9007-0749-4e3c-a669-a630283894f1\",\"playlist\":[],\"pool\":{\"replays\":[{\"kind\":\"replay\",\"round\":{\"id\":\"round_3092b440-f05f-45f6-9039-f06cd81a4ec0\",\"round_number\":10,\"commissioner_key\":\"platform\",…
+…\"coworld_id\":\"cow_84cce351-0c2e-42d7-820b-38cb85cd296e\",\"coworld_name\":\"procgen\",\"coworld_version\":\"0.1.2\",\"variant_name\":\"Procgen Gauntlet (8 levels, half of them nobody has ever seen)\",\"job_index\":2,\"status\":\"completed\",…
 ```
-`state.firstPlace.current` also server-renders `{"player_name":"daveey","rounds_held":4,"score":1026.67,
-"second_player_name":"daveey-1","gap_to_second":53.33}`, and `state.playerCount` is `2`.
 
-Viewer URL (the iframe `src`), from the call the page makes:
+The iframe `src` is what the page's JS gets back from the session endpoint:
+
 ```bash
 curl -sS -X POST "$BASE/coworlds/replays/session" "${AUTH[@]}" -H 'content-type: application/json' \
-  -d '{"coworld_id":"cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d",
-       "replay_uri":"https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay"}'
+  -d '{"coworld_id":"cow_84cce351-0c2e-42d7-820b-38cb85cd296e",
+       "replay_uri":"https://softmax-public.s3.amazonaws.com/replays/f8910aae-22c1-473b-8235-9fecbac702a2.replay"}'
 ```
+```json
+{
+  "viewer_url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_84cce351-0c2e-42d7-820b-38cb85cd296e/sha256%3Ac263c8bdc6b6b08e99d86e83561ea820fb03e59caf3eb064678de82cb90dd95a/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ff8910aae-22c1-473b-8235-9fecbac702a2.replay",
+  "ready": true
+}
 ```
-HTTP 200
-{"viewer_url":"https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d/sha256%3A5b5bf61a91162daf850cb526ef5792a96acb61849bec503428ce8b7da86e7311/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fe8a45e7f-f234-4069-8a12-cbc720efebaa.replay","ready":true}
-```
 
-**Status: TRUE.** A featured match is present (`state.pool.replays[0]` = round 4's `daveey-1` episode)
-and two players are ranked. The viewer URL is on the **static** route
-`/v2/coworlds/replays/static/<cow_id>/<sha>/index.html`, with `<sha>` the coworld's manifest hash
-`sha256:5b5bf61a…` (URL-encoded) — byte-identical to `STATE.coworld.manifest_sha` — and `ready: true`.
-The replay arrives as the URL-encoded `#replay=` **fragment** (`?v=2#replay=…`), the variant
-`playbooks/observatory-api.md` documents as of 2026-08-28; it is the same static route. **No
-`/client/replay` pod URL appears anywhere.** Sources (a) and (b) returned nothing and are recorded above.
+**Status: TRUE** — a featured match is present (`state.pool.replays[0]`, round 10, episode 3), and
+the viewer URL is the **static** route: `/v2/coworlds/replays/static/<cow_id>/<sha>/index.html`,
+ending in `index.html`, with `ready: true`. It uses the `?v=2#replay=<url-encoded s3 url>` fragment
+shape the playbook records as of 2026-08-28; that is the static route, not a variant of failure.
+There is **no `/client/replay`** anywhere in it. `<cow_id>` is `cow_84cce351-…` and `<sha>` is
+`sha256%3Ac263c8bd…` — the **0.1.2** manifest hash, matching STATE exactly. The featured episode is
+itself a 0.1.2 episode from round 10, so nothing here is an older-version leftover.
 
----
+## 7. Certification declared the static bundle
 
-## 7. Certification declared the static bundle — TRUE
-
-Source used: **the committed `runs/2026-08-28-procgen/release-result.json`** (the copy phase 40
-downloaded and committed, `log.md` 20:10:17Z). It was present, so the `gh run download` fallback
-(release run `33206322967`) was **not** needed. `/tmp` was never consulted.
+**Source: the committed `runs/2026-08-28-procgen/release-result.json`** — the artifact phase 40
+downloaded from release run `33215548447` (the 0.1.2 release) and committed. It was already present;
+no re-download from `gh run download` was needed.
 
 ```bash
 jq -r '.certify.replay_liveness' runs/2026-08-28-procgen/release-result.json
@@ -594,92 +477,121 @@ jq -r '.certify.replay_liveness' runs/2026-08-28-procgen/release-result.json
 ```
 Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
 ```
+
+The surrounding record, confirming this file is the 0.1.2 artifact and not a stale 0.1.0/0.1.1 one:
+
 ```bash
-jq -r '.certify.ok' runs/2026-08-28-procgen/release-result.json
+jq -r 'del(.certify.output_tail)' runs/2026-08-28-procgen/release-result.json
 ```
+```json
+{
+  "version": "0.1.2",
+  "ok": true,
+  "cow_id": "cow_84cce351-0c2e-42d7-820b-38cb85cd296e",
+  "manifest_sha": "sha256:c263c8bdc6b6b08e99d86e83561ea820fb03e59caf3eb064678de82cb90dd95a",
+  "canonical": true,
+  "hosted_smoke": "passed",
+  "hosted_certification": "certifying",
+  "certify": {"ok": true,
+    "replay_liveness": "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"},
+  "policies": [
+    {"name":"procgen-cartographer","version":"v3","policy_version_id":null,"player_id":null},
+    {"name":"procgen-scrambler","version":"v3","policy_version_id":null,"player_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"},
+    {"name":"procgen-pathfinder","version":"v3","policy_version_id":null,"player_id":null},
+    {"name":"procgen-scavenger","version":"v3","policy_version_id":null,"player_id":null}
+  ],
+  "secret_put": true, "errors": [], "step_failed": null
+}
 ```
-true
+
+And the certification transcript in `certify.output_tail` — all ten steps passed:
+
+```
+  [pass] matriculate: manifest conforms to the Coworld schema
+  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source
+  [pass] images-reachable: every declared image is pullable or inspectable
+  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection
+  [pass] smoke-episode: the game and certification players run one episode
+  [pass] results-conform: episode results validate against results_schema
+  [pass] replay-present: a replay artifact was produced
+  [pass] replay-loadable: the replay artifact has a declared viewer path
+  [pass] players-run: every declared player actually started on the smoke episode (not just declared)
+  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks
+Certified dist/coworld_manifest.json
+Transcript: coworld-executable (10 steps passed)
+…
+Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
 ```
 
-**Status: TRUE** — the required substring `Replay liveness: skipped (static replay bundle declared` is
-present, read from the committed artifact.
+**Status: TRUE** — the string `Replay liveness: skipped (static replay bundle declared` is present
+verbatim, from the committed 0.1.2 release artifact.
 
----
+*Observation for the coordinator (not a check failure):* the 0.1.2 release uploaded the policies as
+**`:v3`**, because each re-release re-uploads them, while the league still seats **`:v1`** of each
+(check 1's `entrant_attributions`, check 2's `policy_label`). That is correct for this run — the
+0.1.1/0.1.2 fixes are engine-side (deadlines, cause label, assistant prefill), all inside the
+coworld image, and the prompt text is unchanged — so the seated `:v1` policies get the fixes anyway.
+Worth knowing, not worth re-seating.
 
-## 8. Spectator judgment — the viewer was EXECUTED, then judged — TRUE
+## 8. Spectator judgment — the viewer, EXECUTED
 
-**(a) Dispatch.** `SRC` is the check-6 `viewer_url`, verbatim including the `#replay=` fragment.
+*(a) Dispatch.* The URL is the exact `viewer_url` from check 6.
 
 ```bash
 SRC=$(jq -r .viewer_url /tmp/session.json)
-gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC" -f timeout=90   # dispatched 2026-08-28T21:08:06Z
-sleep 10
-gh run list -R Metta-AI/coworld-builder -w viewer-check.yml --json databaseId,createdAt,status -L 10 \
- | jq -r 'sort_by(.createdAt)|reverse|.[0:3][]|[.databaseId,.createdAt,.status]|@tsv'
+gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC" -f timeout=90
+# dispatched 2026-08-28T22:39:38Z
+gh run list -R Metta-AI/coworld-builder -w viewer-check.yml --json databaseId,createdAt,status,conclusion -L 10 \
+ | jq -r 'sort_by(.createdAt)|reverse|.[]|[.databaseId,.createdAt,.status,(.conclusion//"-")]|@tsv'
 ```
 ```
-33211231543	2026-08-28T21:08:08Z	in_progress      <- created AFTER the 21:08:06Z dispatch: this run
-33198007349	2026-08-28T18:09:26Z	completed
-33187402013	2026-08-28T15:54:21Z	completed
+33217648127	2026-08-28T22:39:40Z	in_progress
+33217607488	2026-08-28T22:38:57Z	completed	success     <- NOT mine: created 41 s before my dispatch
+33216261052	2026-08-28T22:18:25Z	completed	success
+33211231543	2026-08-28T21:08:08Z	completed	success     <- the 21:08Z pass's run; superseded
+…
 ```
-Identified by `createdAt` > dispatch time on a sorted list, never by taking "the latest run" blind.
+
+Run **33217648127**, created 22:39:40Z — the first run created *after* my 22:39:38Z dispatch. (Note
+the run 43 seconds earlier: taking "the latest run" blind would have grabbed somebody else's.)
 
 ```bash
-gh run watch 33211231543 -R Metta-AI/coworld-builder --exit-status ; echo "watch_exit=$?"
-gh run view 33211231543 -R Metta-AI/coworld-builder --json conclusion,status,url
+gh run watch 33217648127 -R Metta-AI/coworld-builder --exit-status   # exit 0
 ```
 ```
-✓ main viewer-check · 33211231543
-✓ viewer-check in 33s (ID 98984657617)
+✓ main viewer-check · 33217648127
+✓ viewer-check in 34s (ID 99004784045)
   ✓ Install Playwright (pinned 1.55.0)
   ✓ Load the viewer
   ✓ Summary
   ✓ Upload the evidence
   ✓ Fail if the viewer did not load
-watch_exit=0
-{"conclusion":"success","status":"completed","url":"https://github.com/Metta-AI/coworld-builder/actions/runs/33211231543"}
 ```
-
 ```bash
-mkdir -p runs/2026-08-28-procgen/viewer-check
-gh run download 33211231543 -R Metta-AI/coworld-builder -n viewer-check -D runs/2026-08-28-procgen/viewer-check
-ls -la runs/2026-08-28-procgen/viewer-check/
+rm -f runs/2026-08-28-procgen/viewer-check/*        # overwrite the 21:08Z artifacts
+gh run download 33217648127 -R Metta-AI/coworld-builder -n viewer-check -D runs/2026-08-28-procgen/viewer-check
 ```
 ```
--rw-r--r--  smoke-stderr.txt        0
--rw-r--r--  smoke-stdout.txt      718
--rw-r--r--  viewer-smoke.json    1514
--rw-r--r--  viewer-smoke.png   418003
+viewer-smoke.json  1505 B
+viewer-smoke.png   456120 B
+smoke-stdout.txt    709 B
+smoke-stderr.txt      0 B
 ```
-That directory is written alongside this file (the coordinator commits it) — it is this run's only
-rendered evidence and the CI sandbox that produced it is gone by the next heartbeat.
 
-**(b) Readouts.**
+*(b) The readouts.* Verbatim from `runs/2026-08-28-procgen/viewer-check/viewer-smoke.json`:
 
 ```bash
 jq -c '{loaded, ms, clock, scorebug, feed_lines}' runs/2026-08-28-procgen/viewer-check/viewer-smoke.json
 ```
 ```json
-{"loaded":true,"ms":1763,"clock":"LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","scorebug":"daveey-1 COG-alpha L1/8 · MINERSEEN LEVEL 0/4 GEMS ↯ LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","feed_lines":2}
+{"loaded":true,"ms":1938,"clock":"LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","scorebug":"richard COG-alpha L1/8 · MINERUNSEEN LEVEL 0/4 GEMS LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","feed_lines":2}
 ```
-
 ```bash
 jq -c '.signals' runs/2026-08-28-procgen/viewer-check/viewer-smoke.json
 ```
 ```json
 {"data_replay_loaded":"true","data_replay_error":null,"bridge":[],"bridge_ready":false,"bridge_error":[]}
 ```
-
-```bash
-jq -r '.scrub[]|"\(.at)\t\(.clock)"' runs/2026-08-28-procgen/viewer-check/viewer-smoke.json
-```
-
-| scrub | clock readout |
-|---|---|
-| **0 %** | `LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL` |
-| **50 %** | `LEVEL 5/8 turn 0/10 · frame 30 CLIMBER · 15×9 · STANDARD · UNSEEN SEED 2033174848` |
-| **100 %** | `LEVEL 8/8 turn 0/10 · frame 51 CLIMBER · 15×9 · STANDARD · SEEN SEED 3024` |
-
 ```bash
 jq -r '.failure // "no failure"' runs/2026-08-28-procgen/viewer-check/viewer-smoke.json
 ```
@@ -687,104 +599,153 @@ jq -r '.failure // "no failure"' runs/2026-08-28-procgen/viewer-check/viewer-smo
 no failure
 ```
 
-Also from the same artifact:
-```json
-"status": "LIVE", "loading_text": null, "console_tail": [], "bundle": null, "replay": null,
-"canvas_text": {"total":0,"outside":0,"ellipsized":0,"never_inside":0,"never_inside_samples":[],
-                "distinct_capped":false,"samples":[]}
+Also in the artifact: `"status":"LIVE"`, `"loading_text":null`, `"console_tail":[]`, and
+`canvas_text: {total:0, outside:0, ellipsized:0, never_inside:0}` — no text drawn outside the canvas,
+nothing ellipsized. The URL the runner actually opened, recorded in the json, is byte-identical to
+check 6's `viewer_url`:
+
+```
+https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_84cce351-0c2e-42d7-820b-38cb85cd296e/sha256%3Ac263c8bdc6b6b08e99d86e83561ea820fb03e59caf3eb064678de82cb90dd95a/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ff8910aae-22c1-473b-8235-9fecbac702a2.replay
 ```
 
-**Both conditions hold: `loaded: true`** — first frame at **1763 ms**, signalled by
-`data-replay-loaded="true"` — **and the three clock readouts differ**: level 1 → level 5 → level 8,
-frame 0 → 30 → 51. `#scrub` exists (the readouts were taken by dragging it), so the missing-scrubber
-caveat does not apply. `bridge_ready:false` is not a defect: the load signal arrived via the
-`data-replay-loaded` attribute, which the checker accepts as either-or. No page error, no console
-output, no `loading_text` left on screen, no canvas text drawn outside its box.
+**The three clock readouts** (`jq -r '.scrub[]|"\(.at)\t\(.clock)"'`):
 
-The two scrubbed clocks also **reconcile exactly** with §4b's replay record: level 5 is `climber`, seed
-`2033174848`, split `unseen`; level 8 is `climber`, seed `3024`, split `seen` — the viewer is reading
-`levelKinds`/`levelSeeds`/`levelSplit` out of the replay bytes and re-generating the levels, as the
-design says it must.
+| scrub | clock readout |
+|---|---|
+| **0 %** | `LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL` |
+| **50 %** | `LEVEL 5/8 turn 0/10 · frame 42 MAZE · 15×9 · STANDARD · UNSEEN SEED 1762650379` |
+| **100 %** | `LEVEL 8/8 turn 0/10 · frame 60 MAZE · 15×9 · STANDARD · SEEN SEED 1032` |
 
-**(c) Spectator judgment.**
+All three **differ**, in level (1 → 5 → 8), in frame (0 → 42 → 60), and in level identity
+(pre-roll → unseen maze seed 1762650379 → seen maze seed 1032). The shell **does** expose `#scrub`;
+no "(no #scrub…)" placeholder appears.
 
-`viewer-smoke.png` (1280×800, captured after the 100 % scrub) shows a finished gauntlet, and it is
-legible. Behind a dimmed veil the **fixed 15×9 arena** is drawn — the climber tier bands, ladders and a
-gem sprite, with a "LEVEL 5 OF 8 — CLIMBER — UNSEEN" plate above it; there is no zoom panel, which the
-design deliberately dropped. Dominating the centre is the **endcard**, and it is the coworld's thesis
-stated in one line: **`SCORE 0.336 — mean over 4 unseen levels`**, under it the chip
-`SEEN 0.386 · UNSEEN 0.336 · GAP +0.050`, then
-`gauntlet · standard · 4 seen / 4 unseen · 0 of 4 unseen levels cleared`, then the two headline figures
-`0.336 UNSEEN MEAN` / `0.386 SEEN MEAN`, then the per-level results table with the columns
-**`LEVEL | KIND | SEED | SPLIT | OUTCOME | GEMS | RETURN`** — unseen rows tinted amber, seen rows white:
+**Item 8 gate: `loaded: true` ✓ (in 1938 ms, `data-replay-loaded="true"`) AND the three clock
+readouts differ ✓ → TRUE.**
 
-| LEVEL | KIND | SEED | SPLIT | OUTCOME | GEMS | RETURN |
-|---|---|---|---|---|---|---|
-| 1 | miner | 4004 | seen | timeup | 4/4 | 811 |
-| 2 | maze | 89013220 | unseen | timeup | 0/4 | 0 |
-| 3 | chaser | 2008 | seen | timeup | 3/8 | 433 |
-| 4 | chaser | 1257444618 | unseen | timeup | 3/8 | 345 |
-| 5 | climber | 2033174848 | unseen | timeup | 2/4 | 473 |
-| 6 | maze | 1019 | seen | timeup | 0/4 | 60 |
-| 7 | miner | 151229263 | unseen | timeup | 2/4 | 527 |
-| 8 | climber | 3024 | seen | timeup | 1/4 | 241 |
+*(c) The replay JSON the viewer was asked to draw* — the featured episode `f8910aae…` (richard),
+ordered excerpts:
 
-Every cell reconciles with the replay record in §4b: `levelKinds`, `levelSeeds`, `levelSplit`,
-`levelOutcome` (all eight `timeup`), `levelCollected [4,0,3,3,2,0,2,1]` over
-`levelCollectTotal [4,4,8,8,4,4,4,4]`, `levelReturns [811,0,433,345,473,60,527,241]`,
-`seenMilli 386` / `unseenMilli 336` / `gapMilli 50` — the endcard's `0.386 / 0.336 / +0.050`. Bottom
-right, four killfeed lines are legible: `COG-alpha takes gem 1 of 4`, `plan cut short — falling`,
-`COG-alpha runs out of turns on CLIMBER — 241`, `GAUNTLET OVER — unseen mean 336`; the second is the
-`planInterrupts` machinery narrating itself, the third matches level 8's return of 241, and a speech
-bubble reads `Banking 3/4 gems, approa` — literally the turn-80 `say` in the replay. Top strip: the cog
-plate (`davee…`, alias `COG-alpha`, chip `L8/8 · CLIMBER SEEN`, gem counter `1/4`) either side of the
-centred clock `LEVEL 8/8 / turn 0/10 · frame 51 / CLIMBER · 15×9 · STANDARD · SEEN SEED 3024`.
+```bash
+# early
+  1	L1	llm 	RDRDRR  	exec=6 	Miner: dig right to gems
+  2	L1	llm 	RRDRD   	exec=5 	Miner gem collect sequen
+  3	L1	llm 	L       	exec=1 	miner: moving left towar
+  4	L1	llm 	LUULD   	exec=5 	Miner: dig left to [2,3]
+  5	L1	llm 	LU      	exec=2 	dig up to gem at [2,3]
+  6	L1	llm 	LDDLLL  	exec=6 	Mining toward gem at [2,
+  7	L1	llm 	RD      	exec=2 	Collect gem at [2,3], di
+  8	L1	llm 	DUL     	exec=3 	Collect gem at [2,5], na
+# middle
+ 40	L5	llm 	LLLUU   	exec=5 	Maze: collect gems, then
+ 41	L5	llm 	DRDRD   	exec=5 	maze routing to gem at [
+ 42	L5	llm 	LULDR   	exec=5 	Maze corridor to gem at
+ 43	L5	llm 	LULDDR  	exec=6 	maze: pursuing gem at [3
+ 44	L5	llm 	UUULLL  	exec=6 	maze routing to nearest
+ 45	L5	llm 	UUULLL  	exec=6 	Maze phase 1: routing to
+ 46	L5	llm 	DDDLLL  	exec=6 	maze: collect [3,3], the
+ 47	L5	llm 	UUULLL  	exec=6 	Maze: pursue [3,3] gem v
+# late
+ 72	L8	llm 	RRRRRR  	exec=6 	maze, collect all gems,
+ 73	L8	llm 	RRRRRR  	exec=6 	maze L8: routing east to
+ 74	L8	llm 	RRRRRR  	exec=6 	maze: commit row-1 towar
+ 75	L8	llm 	RRRRRR  	exec=6 	maze L8: sprint right on
+ 76	L8	llm 	RRRRRR  	exec=6 	maze sprint to first gem
+ 77	L8	llm 	RRRRRR  	exec=6 	maze L8: heading right t
+ 78	L8	llm 	RRRRRR  	exec=6 	maze collector run
+ 79	L8	llm 	RRRRRR  	exec=6 	maze final push
+```
+```bash
+jq -r '.results' /tmp/f8910aae-….json
+```
+```json
+{
+ "names": ["richard"], "aliases": ["COG-alpha"], "scores": [0.306], "win": [false],
+ "reason": "complete", "endRule": "gauntlet_complete", "variant": "gauntlet", "difficulty": "standard",
+ "seed": 1164128183, "levelCount": 8,
+ "levelKinds":       ["miner","chaser","climber","chaser","maze","climber","miner","maze"],
+ "levelSplit":       ["unseen","seen","unseen","unseen","unseen","seen","seen","seen"],
+ "levelSeeds":       [815635446, 2016, 739116910, 1024667189, 1762650379, 3015, 4026, 1032],
+ "levelReturns":     [427, 492, 402, 350, 45, 263, 1000, 0],
+ "levelOutcome":     ["timeup","timeup","timeup","died","timeup","timeup","cleared","timeup"],
+ "levelDeathCause":  ["","","","caught","","","",""],
+ "levelFrames":      [38, 20, 30, 17, 57, 23, 42, 60],
+ "levelCollected":   [2, 4, 2, 2, 0, 1, 4, 0],
+ "levelCollectTotal":[4, 8, 4, 8, 4, 4, 4, 4],
+ "seenMilli": 438, "unseenMilli": 306, "gapMilli": 132, "seenCleared": 1, "unseenCleared": 0,
+ "policyKinds": ["llm"], "llmTurns": 79, "fallbackTurns": 0, "ordersRejected": 3,
+ "planInterrupts": 13, "genFallbacks": 0, "deadSeats": [false], "stopDetail": ""
+}
+```
 
-Across the bottom is the **transport strip**: restart, step-back, play, `+5s`, step, loop and
-fast-forward buttons, a `spoilers` toggle, a `328 / 328` frame counter, speed chips `1× 2× 3× 4× 8× 16×`,
-and beneath them the **scrubber with beat ticks** (green, amber and blue markers at
-levelstart / collect / exitopen / death / levelend beats) over a **`SEEN vs UNSEEN` momentum band** whose
-two traces run the length of the episode. That is the paintbot / raid / hive chrome of the
-coworld-ctf starter lineage — same transport strip, same scrubber-plus-momentum graph, same scorebug,
-same endcard shape — with only the sport-specific labels changed. Nothing here resembles the
-cogame-gridlock failure mode of a rewrite sharing only the element ids.
+### Spectator judgment
 
-The picture is neither empty nor frozen: the three scrub readouts move it through levels 1, 5 and 8 and
-frames 0, 30 and 51, and the endcard's numbers are the ones the replay recorded. **A casual spectator
-can tell who is winning and why**: one cog, its score is the big number, the table says which levels it
-had never seen and how few gems it got on them, and the `GAP +0.050` chip says in one figure that it did
-better on the published seeds than on the fresh ones — which is exactly what this coworld exists to
-measure.
+`viewer-smoke.png` (committed at `runs/2026-08-28-procgen/viewer-check/viewer-smoke.png`, 1280×800,
+taken with the scrubber left at 100 %) shows a fully drawn, legible frame — not a loading spinner,
+not an empty canvas. Reading it top to bottom: a **scorebug strip** across the top carrying an amber
+seat dot, the player name **`richard`**, the alias **`COG-alpha`**, a level chip **`L8/8 · MAZE`**
+with a blue **`SEEN`** badge, and a **`LEVEL 0/4 GEMS`** counter; centred beside it the **clock**,
+`LEVEL 8/8 / turn 0/10 · frame 60`, over the level identity line `MAZE · 15×9 · STANDARD · SEEN SEED
+1032`. Beneath that the playfield, dimmed behind the endcard, with the brick tiling, a floating gem
+sprite or two, and the fading banner `LEVEL 5 OF 8 — MAZE — UNSEEN` from the scrub path. In the
+middle sits the **endcard**: `SCORE 0.306 — mean over 4 unseen levels`, a boxed
+`SEEN 0.438 · UNSEEN 0.306 · GAP +0.132`, the line `gauntlet · standard · 4 seen / 4 unseen · 0 of 4
+unseen levels cleared`, the twin big numbers `0.306 UNSEEN MEAN` / `0.438 SEEN MEAN`, and an
+eight-row table `LEVEL / KIND / SEED / SPLIT / OUTCOME / GEMS / RETURN` with the unseen rows tinted
+amber. Bottom-right, three broadcast **feed lines** fading out: `COG-alpha: "Maze pursue [3,3] gem
+v"`, `COG-alpha runs out of turns on MAZE — 0`, `GAUNTLET OVER — unseen mean 0.306`. Bottom, the
+**transport strip**: restart, step-back, play, `+5s`, step-forward, loop, fast-forward, a `spoilers`
+toggle, the frame counter `294 / 294`, speed buttons `1× 2× 3× 4× 8× 16×`, and a full-width
+**scrubber with a momentum graph** labelled `SEEN vs UNSEEN`, its level boundaries ticked and its
+seen/unseen bands drawn in white and red.
 
-Three legibility observations for the coordinator, none of them a failure of this check:
-(i) the top-left name plate **elides the player name to `davee…`** even though the DOM scorebug carries
-the full `daveey-1` — a spectator cannot read whose cog it is from the picture alone;
-(ii) the gem counter's label reads **`LEVEL`** above the value `1/4` while the DOM string is
-`LEVEL 0/4 GEMS`, so the number is the gem count under a label that says level — genuinely confusing at
-a glance and a one-word fix;
-(iii) `feed_lines: 2` was sampled at load time, when the clock read `frame 0 BEFORE THE FIRST LEVEL`;
-the screenshot shows four feed lines after the seek, so the feed does populate — the low count is an
-artefact of *when* the checker samples, not a missing killfeed.
+**Does it advance?** Yes, and provably: the three scrub readouts move the clock from level 1/frame 0
+to level 5/frame 42 to level 8/frame 60, and the 50 % and 100 % readouts name two *different* maze
+seeds. This is a replay in motion, not one rendered frame.
 
-**Status: TRUE** — `loaded: true` at 1763 ms, three differing clock readouts, no failure, and the
-rendered frame shows the game this coworld is about, in the starter's chrome.
+**Does it show the game, and can a spectator tell who is winning and why?** Yes, and the picture and
+the record agree line for line. Every number on the endcard is in the replay's `results`:
+`scores [0.306]`, `seenMilli 438`, `unseenMilli 306`, `gapMilli 132`, `unseenCleared 0` of 4; the
+table's eight rows reproduce `levelKinds`, `levelSeeds`, `levelSplit`, `levelOutcome`,
+`levelCollected/levelCollectTotal` and `levelReturns` exactly, including level 4 `chaser / died`
+(cause `caught`) and level 7 `miner / cleared / 4/4 / 1000`. The 100 % clock's `frame 60` is
+`levelFrames[7] = 60` and `SEEN SEED 1032` is `levelSeeds[7] = 1032`; the 50 % clock's
+`UNSEEN SEED 1762650379` is `levelSeeds[4]`. The feed line `"Maze pursue [3,3] gem v"` is turn 47's
+`say` verbatim, and the scorebug's `0/4 GEMS` is `levelCollected[7] = 0` of `levelCollectTotal[7] =
+4`. So the answer to "who is winning and why" is on screen without inference: the run scored 0.306
+on levels it had never seen against 0.438 on levels it had, a +0.132 generalization gap, and the
+table says exactly which level cost it what — the unseen maze at seed 1762650379 returned 45 with
+zero gems, the seen miner at seed 4026 returned a clean 1000.
+
+**Is it the starter's chrome?** Yes. The transport strip, the scrubber with a momentum graph, the
+scorebug and the endcard are the coworld-ctf/paintbot/raid family furniture, retargeted rather than
+rewritten: the momentum graph is relabelled `SEEN vs UNSEEN`, the scorebug carries a level chip and
+a gem counter instead of a flag count, and the endcard is a per-level gauntlet table instead of a
+capture summary. This is not the cogame-gridlock failure mode — it is recognisably the same product
+with this game's nouns in it.
+
+**Legibility observations for the coordinator** (none of them a check failure): the scorebug string
+concatenates without separators when read out of the DOM (`L1/8 · MINERUNSEEN LEVEL 0/4 GEMS`) —
+visually the `MINER` chip and the `UNSEEN` badge are adjacent elements and read fine in the picture,
+but the missing space is worth a glance. And `feed_lines: 2` at frame 0 versus three visible feed
+lines at frame 294 is just the feed filling as the episode runs.
+
+**Status: TRUE** — `loaded: true` at 1938 ms, `failure: null`, three differing clock readouts, and a
+rendered picture that both shows the game and reconciles exactly with the replay record.
 
 ---
 
-## Summary table
+## Summary
 
-| # | Check | Verdict | Evidence pointer |
+| # | Check | Verdict | Evidence in one line |
 |---|---|---|---|
-| 1 | ≥2 completed rounds after fillers set | **TRUE** | 4 completed rounds (r1 20:19:57Z … r4 21:04:53Z), 0 failed; filler set reads back live, disjoint from champions |
-| 2 | Both champions ranked, fillers absent/Baseline | **TRUE** | `daveey` rank 1 / `daveey-1` rank 2, `rounds_played` 4 each; no filler row |
-| 3 | Latest round's episode request completed with a replay | **TRUE** | round 4's two episodes `ereq_c6fddedb…` + `ereq_4202e87d…`, both `completed` with `replay_url`, naming daveey-1 and daveey (single-seat design, `design.md:188`) |
-| 4 | Replay bytes valid and show the game | **TRUE** | `procgen/v1`, `reason complete` / `gauntlet_complete` both episodes; fallback share 9.3 % and 2.5 %; 4 seen / 4 unseen; `unseenMilli` 362 / 336 |
-| 5 | Hosted game log clean | **FALSE** | 7 and 2 `falling back to pathfinder (parse_error)` lines in round 4's logs; all four rounds dirty; cause = `attempt1Ms 5000`/`retryMs 2000` vs procgen's own Bedrock p90 5.6–7.5 s; cross-check coworld clean at the same minute, so the platform-capacity exception does **not** apply |
-| 6 | Public page uses the static replay path | **TRUE** | static route + manifest sha `sha256:5b5bf61a…` + `ready:true`; featured match `state.pool.replays[0]` = round 4 daveey-1; two ranked players in the SSR leaderboard |
-| 7 | Certification declared the static bundle | **TRUE** | `Replay liveness: skipped (static replay bundle declared…`, committed `release-result.json` |
-| 8 | Spectator judgment — viewer executed and legible | **TRUE** | `loaded:true` @ 1763 ms, clocks L1/f0 → L5/f30 → L8/f51, run `33211231543`, artifact committed |
+| 1 | ≥2 completed rounds after fillers set | **TRUE** | 10/10 rounds `completed`, 0 failed, all after fillers set 20:13:43Z; round 10 completed 22:32:23Z |
+| 2 | Both champions ranked, fillers absent/Baseline | **TRUE** | `daveey` rank 2 `procgen-cartographer:v1` 10 rounds; `daveey-1` rank 3 `procgen-scrambler:v1` 10 rounds; no filler row |
+| 3 | Latest round's episode requests completed with replays | **TRUE** | Round 10's three ereqs all `completed`, non-null `replay_url`, all `coworld_id cow_84cce351` (0.1.2) |
+| 4 | Replay bytes valid and show the game | **TRUE** | `COWLDPGN` → strict JSON ok; `protocol procgen/v1`, `reason complete`, 72/78/79 turns all `source llm`, `fallbacks 0` |
+| 5 | Hosted game log clean | **TRUE** | 0 matches for `falling back\|LLM provider is unavailable\|cut off at max_tokens\|rejected` in all three 0.1.2 episode logs |
+| 6 | Public page uses the static replay path | **TRUE** | SSR `state.pool.replays[0]` = round 10 ep 3; session → `/v2/coworlds/replays/static/cow_84cce351/sha256%3Ac263c8bd…/index.html?v=2#replay=…`, `ready:true`, no `/client/replay` |
+| 7 | Certification declared the static bundle | **TRUE** | Committed 0.1.2 `release-result.json`: `Replay liveness: skipped (static replay bundle declared; …)` |
+| 8 | Spectator judgment (viewer executed) | **TRUE** | viewer-check run 33217648127: `loaded:true` in 1938 ms, `failure:null`, clocks L1/f0 → L5/f42 → L8/f60 all differ; endcard matches `results` exactly |
 
-Replay under test (featured, viewer): `https://softmax-public.s3.amazonaws.com/replays/e8a45e7f-f234-4069-8a12-cbc720efebaa.replay`
-Replay under test (champion 1): `https://softmax-public.s3.amazonaws.com/replays/55bcf72a-6bca-4d88-a47b-aa34150645d5.replay`
-Viewer URL: `https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d/sha256%3A5b5bf61a91162daf850cb526ef5792a96acb61849bec503428ce8b7da86e7311/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fe8a45e7f-f234-4069-8a12-cbc720efebaa.replay`
-Viewer-check run: `https://github.com/Metta-AI/coworld-builder/actions/runs/33211231543` (artifact at `runs/2026-08-28-procgen/viewer-check/`)
+**Verdict: all-true (8 / 8). Nothing was unfetchable; no check invoked a documented exception.**
