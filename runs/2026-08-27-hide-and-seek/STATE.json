@@ -5,23 +5,23 @@
   "slug": "hide-and-seek",
   "repo": "https://github.com/Metta-AI/cogame-hide-and-seek",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "20": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_0b024727-c231-4f5b-a9b6-16e2254701e6",
-    "manifest_sha": "sha256:78d5ecf583b978e8418438969b5dc3672c380536d96f49deeb783a30c190b446",
-    "release_run_id": "33133223399"
+    "version": "0.1.2",
+    "cow_id": "cow_ccb33c23-b885-414d-b46f-86a1ff4a0292",
+    "manifest_sha": "sha256:c7efab015aa7a543f0f97562e2045a5d03eef687e6b6004d8e210de05b42d3c2",
+    "release_run_id": "33134567408"
   },
   "policies": {
-    "champion1": "hns-quartermaster:v2",
-    "champion2": "hns-torchbearer:v2",
+    "champion1": "hns-quartermaster:v3",
+    "champion2": "hns-torchbearer:v3",
     "fillers": [
-      "hns-burrow:v2",
-      "hns-scatter:v2"
+      "hns-burrow:v3",
+      "hns-scatter:v3"
     ]
   },
   "league": {
@@ -49,7 +49,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T01:49:54Z",
+  "heartbeat_at": "2026-08-28T02:10:47Z",
   "session_ended_at": null,
   "session_id": "5bd46913",
   "log": "runs/2026-08-27-hide-and-seek/log.md"

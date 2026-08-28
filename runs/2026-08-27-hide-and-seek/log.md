@@ -34,3 +34,7 @@
 2026-08-28T01:49:54Z 40 builder returned: 0.1.0 run 33132574305 failed (hosted smoke: seats never joined in 600 lobby ticks); 0.1.1 run 33133223399 SUCCESS after cert-fixture fix (lobbyJoinTimeoutTicks 600->4800, wallClockBudgetSeconds 240->480, commit 56e17e89). canonical=true certified secret_put=true; policies hns-quartermaster:v2 / hns-torchbearer:v2 (ply_bac48eb1) / hns-burrow:v2 / hns-scatter:v2; cow_0b024727-c231-4f5b-a9b6-16e2254701e6
 2026-08-28T01:49:54Z progress phase=40 marker=release run 33133223399 v0.1.1 canonical certified
 2026-08-28T01:49:54Z 40 rails decision: raise BOTH league variants lobbyJoinTimeoutTicks 2400->4800 (hosted smoke proved 25 s join window too small; 100 s is at risk; worst-case cadence 510->610 s, still < 660 s engine stop and < 720 s DoD bound); re-dispatch as 0.1.2 before phase 50 so league rounds cannot fail on slow pod joins
+2026-08-28T02:10:47Z 40 builder returned: 0.1.2 run 33134567408 SUCCESS (variants lobbyJoinTimeoutTicks 2400->4800, commit 9a800de8, ci 33134088941 green). canonical=true certified secret_put=true; NEW cow_ccb33c23-b885-414d-b46f-86a1ff4a0292; policies rebuilt to v3 (image digest changes per release — no dedupe)
+2026-08-28T02:10:47Z progress phase=40 marker=release run 33134567408 v0.1.2 canonical certified
+2026-08-28T02:10:47Z 40 -> 50 phase transition: entering league
+2026-08-28T02:10:47Z heartbeat phase=50
