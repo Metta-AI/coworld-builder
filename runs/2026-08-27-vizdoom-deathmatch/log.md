@@ -28,3 +28,7 @@
 2026-08-28T01:23:46Z 30 fixer returned r1-fixes.md: 16 commits (F1-F5 all fixed with evidence, 10 advisories fixed, rest disputed/deferred with reasons); CI green run 33132259050 sha 7e2d1d0a; design.md updated with F4 patch record; baseline sweep moved rusherHuntPx 520->120, postRotation 2->1
 2026-08-28T01:23:46Z 30 dispatch judge round 1 on sha 7e2d1d0a
 2026-08-28T01:23:46Z heartbeat phase=30
+2026-08-28T01:38:34Z 30 judge returned r1-verdict.md: blocking 0 (first/last markers agree); all 4 review blockers refuted-as-fixed; 15/15 checklist items verified independently at sha 7e2d1d0a, CI 33132259050
+2026-08-28T01:38:34Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-28T01:38:34Z 30 -> 40 phase transition: entering release
+2026-08-28T01:38:34Z heartbeat phase=40
