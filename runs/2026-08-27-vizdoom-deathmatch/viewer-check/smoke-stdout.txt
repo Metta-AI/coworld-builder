@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3551,"clock":"tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0","scorebug":"0 DAVEEY + BASELINE FRAGS 0 0 DEATHS · 4 UP tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0 0 DAVEEY-1 + BASELINE FRAGS 0 0 DEATHS · 4 UP","feed_lines":0}
+scrub readouts: 0%="tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0"  50%="tick 966/2592 · turn 9/24 RED 6 FRAGS 4 DEATHS · BLUE 4 FRAGS 6 DEATHS 2 — -2 · MARGIN +4"  100%="tick 1446/2592 · turn 14/24 RED 8 FRAGS 7 DEATHS · BLUE 7 FRAGS 8 DEATHS 1 — -1 · MARGIN +2"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

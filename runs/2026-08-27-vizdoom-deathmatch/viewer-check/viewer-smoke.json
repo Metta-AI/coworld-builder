@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 3551,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4e53e339-ec7c-4059-8e13-881aedbea5ba/sha256%3A1cb9398bbcc252f2754c17d423c4fe3d8cbc0685ddf579f167db38ff338e04fa/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fca0f7fc8-967f-4de8-9b47-ba746186dd3c.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0",
+  "scorebug": "0 DAVEEY + BASELINE FRAGS 0 0 DEATHS · 4 UP tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0 0 DAVEEY-1 + BASELINE FRAGS 0 0 DEATHS · 4 UP",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "tick 0/2592 · turn 1/24 RED 0 FRAGS 0 DEATHS · BLUE 0 FRAGS 0 DEATHS 0 — 0 · MARGIN 0"
+    },
+    {
+      "at": "50%",
+      "clock": "tick 966/2592 · turn 9/24 RED 6 FRAGS 4 DEATHS · BLUE 4 FRAGS 6 DEATHS 2 — -2 · MARGIN +4"
+    },
+    {
+      "at": "100%",
+      "clock": "tick 1446/2592 · turn 14/24 RED 8 FRAGS 7 DEATHS · BLUE 7 FRAGS 8 DEATHS 1 — -1 · MARGIN +2"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

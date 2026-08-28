@@ -33,9 +33,13 @@
     "division": "div_67b01fa1-41ae-493c-8a1d-bb69f08bd83a"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_3eabfb3f (r2, completed)",
+      "round_b1b9548f (r3, completed)"
+    ],
+    "replay": "https://softmax.com/api/observatory/v2 replays/ca0f7fc8-967f-4de8-9b47-ba746186dd3c.replay (ereq_c9f0e294-6a18-48ee-9d07-5b051a366a49)",
+    "iframe_static": true,
+    "viewer_check_run": "33135119698"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T01:52:30Z",
+  "heartbeat_at": "2026-08-28T02:17:33Z",
   "session_ended_at": null,
   "session_id": "7565f38f",
   "log": "runs/2026-08-27-vizdoom-deathmatch/log.md"

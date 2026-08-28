@@ -47,3 +47,8 @@
 2026-08-28T01:52:30Z progress phase=50 marker=league_00dcb926-7f23-4507-8a2d-6684cb0e7c4b round-2-pending
 2026-08-28T01:52:30Z 50 -> 60 phase transition: entering verify
 2026-08-28T01:52:30Z heartbeat phase=60
+2026-08-28T02:17:33Z 60 verifier returned VERIFY.md: 8/8 TRUE — rounds 2+3 completed, both champions ranked (elo 1001.47/998.53), replay complete/full_time with 48 LLM directives 0 fallbacks, hosted log CLEAN, static iframe route (fragment #replay= variant), release-result liveness skipped, viewer-check 33135119698 loaded=true clocks advance
+2026-08-28T02:17:33Z 60 verifier notes (non-blocking): viewer_smoke feed selector misses #killfeed (probe artefact); scrub clicks undershoot (endcard unobserved); inherited 'hill red=0 blue=0' log line; ordersRejected[0]=1
+2026-08-28T02:17:33Z progress phase=60 marker=VERIFY.md 8/8 viewer-check-33135119698
+2026-08-28T02:17:33Z 60 dispatch judge for definition-of-done adjudication
+2026-08-28T02:17:33Z heartbeat phase=60
