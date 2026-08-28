@@ -17,3 +17,4 @@
 2026-08-28T16:07:03Z 20 builder returned r1: ci.yml green on main run=33187823599 sha=54fd0408 (verified: all 3 jobs success, workflows active, hooks 100755); 10 documented divergences incl. wave-bug fix, wire-alias, api-push route
 2026-08-28T16:07:03Z progress phase=20 marker=ci-run-33187823599-green
 2026-08-28T16:07:03Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-28T16:08:01Z 30 r1 reviewer dispatched thread=sthr_01GFvykbKp8vLQPu5vkoMqKE repo-clone=/workspace/scratch/cogame-sumo-traffic-signals sha=54fd0408
