@@ -68,3 +68,7 @@
 2026-08-28T22:34:42Z heartbeat phase=75
 2026-08-28T22:35:46Z 75 atlas continent=paintlands (zero-sum arcade score-attack; precedent atari-cabinet 2026-08-26 also paintlands)
 2026-08-28T22:35:46Z 75 atlas dispatch=33217399986 region=paintlands at=202,270 clearance=39.5
+2026-08-28T22:40:18Z 75 atlas dispatch 1 (33217399986) failed: build unplaced-leagues (52 slugs); fix per step 8: mirror queued metta#20723's 50 extra_cities and place minigrid+procgen too
+2026-08-28T22:40:18Z 75 atlas continent REVISED to simulations (queued #20723 re-places atari-cabinet in simulations — Atari-57 is the borrowed RL benchmark suite; consistency over my earlier paintlands call)
+2026-08-28T22:40:18Z 75 atlas placed-for-others: 50 mirrored from metta#20723 (atari-cabinet..walker-waterworld incl citysim+gnomic) + minigrid=(578,289,simulations,cl22.9) + procgen=(521,310,simulations,cl23.4)
+2026-08-28T22:40:18Z 75 atlas dispatch=33217674106 region=simulations at=497,277 clearance=22.9 extra_cities=52
