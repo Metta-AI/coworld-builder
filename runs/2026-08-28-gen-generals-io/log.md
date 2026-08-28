@@ -52,3 +52,6 @@
 2026-08-28T08:37:16Z progress phase=60 marker=round_6ef8dba1-4398-49ff-bffd-29062836a405
 2026-08-28T08:37:16Z 60 dispatch judge on VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
 2026-08-28T08:37:16Z heartbeat phase=60
+2026-08-28T08:45:40Z 60 judge returned: reviews/verify-verdict.md BLOCKING=0 (markers agree); all 8 items re-fetched independently and stand; hash-mismatch banner ruled non-blocking (design's degrade path; endcard reconciles with results) but recorded as a real defect to track — wasm re-sim not bit-identical to hosted episode despite green CI parity; round 4 completed since, strengthening 1-3+6
+2026-08-28T08:45:40Z 60 -> 70 phase transition
+2026-08-28T08:45:40Z heartbeat phase=70
