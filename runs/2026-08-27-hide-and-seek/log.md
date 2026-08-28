@@ -26,3 +26,7 @@
 2026-08-28T01:01:55Z 30 rails decision: no GameVersion bump for F7/F8/F17 behaviour changes — no coworld release exists yet, no replays in the wild to protect
 2026-08-28T01:01:55Z 30 r1 dispatch judge: fresh-context verdict on 5c819abc against r1-review.md + acceptance checklist
 2026-08-28T01:01:55Z heartbeat phase=30
+2026-08-28T01:19:04Z 30 r1 judge returned r1-verdict.md: blocking 0 (all 4 reviewer blockers verified fixed at 5c819abc; independent checklist all-pass). Residue non-blocking: burrow-vs-scatter margin -178 permille vs note target (v2 driver), docker_smoke template over-claim, doc drift
+2026-08-28T01:19:04Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-28T01:19:04Z 30 -> 40 phase transition: entering release
+2026-08-28T01:19:04Z heartbeat phase=40
