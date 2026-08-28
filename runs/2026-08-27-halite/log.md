@@ -22,3 +22,7 @@
 2026-08-28T03:25:28Z progress phase=30 marker=r1-fixes.md
 2026-08-28T03:25:28Z 30 r1 judge dispatched
 2026-08-28T03:25:28Z heartbeat phase=30
+2026-08-28T03:42:04Z 30 r1 judge verdict blocking=1 — [other] commit 76caaf0 deleted 8 green tests from tests/test_server.py incl. F3's own evidence tests; fixes-report claim false
+2026-08-28T03:42:04Z progress phase=30 marker=r1-verdict.md
+2026-08-28T03:42:04Z 30 round 2: reviewer dispatched
+2026-08-28T03:42:04Z heartbeat phase=30
