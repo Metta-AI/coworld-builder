@@ -47,3 +47,5 @@
 2026-08-28T18:26:06Z 70 announce msg=1542963435338334338 (200, flags=4, embeds=[])
 2026-08-28T18:26:06Z progress phase=70 marker=discord_message_id=1542963435338334338
 2026-08-28T18:26:06Z 70 -> 75 phase transition: STATE.phase=75 written
+2026-08-28T18:27:07Z 75 atlas continent=commons (cooperative shared-infrastructure game with local-vs-global tension — the Commons' mixed-motive/shared-stock shape; not paintlands, not a port)
+2026-08-28T18:27:07Z 75 atlas dispatch=33199320251 region=commons at=416,574 clearance=22.9 label="Traffic Signals"
