@@ -42,3 +42,4 @@
 2026-08-28T07:54:24Z 30 -> 40 phase transition
 2026-08-28T07:54:24Z heartbeat phase=40
 2026-08-28T07:54:56Z 40 builder dispatched for release (version 0.1.0 first attempt)
+2026-08-28T08:02:46Z 40 dispatch version=0.1.0 run=33153320765 step_failed=none decision=first dispatch, policies from tools/ci/policies.json — ok/canonical/certify.ok true, replay liveness skipped (static bundle), 4 policies at v1, secret_put true; no retry needed
