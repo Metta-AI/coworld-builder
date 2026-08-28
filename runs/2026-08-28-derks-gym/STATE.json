@@ -7,7 +7,7 @@
   "starter": "cogame-moba",
   "phase": "30",
   "phase_attempts": {},
-  "review_round": 1,
+  "review_round": 2,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T11:14:25Z",
+  "heartbeat_at": "2026-08-28T12:14:13Z",
   "session_ended_at": null,
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"

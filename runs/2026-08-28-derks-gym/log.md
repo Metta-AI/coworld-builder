@@ -23,3 +23,6 @@
 2026-08-28T11:59:07Z 30 fixer returned r1: reviews/r1-fixes.md — 8 fixed (F1,F2,F7,F8,F9,F10,F11,F13), 7 argued no-change (F3,F4,F5,F6,F12,F14,F15); main=624f1cb3 ci run 33167936624 success (verified)
 2026-08-28T11:59:07Z 30 judge dispatched round=1
 2026-08-28T11:59:07Z heartbeat phase=30
+2026-08-28T12:14:13Z 30 judge returned r1: reviews/r1-verdict.md blocking=1 — [correctness] players/derk_player.py:147 checklist item 8: parse not prose-tolerant (only fence-strip); all other items pass
+2026-08-28T12:14:13Z 30 round 2 begins: review_round=2 written
+2026-08-28T12:14:13Z 30 reviewer dispatched round=2
