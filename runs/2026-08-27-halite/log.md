@@ -124,3 +124,4 @@
 2026-08-28T12:50:27Z 75 atlas continent=paintlands — zero-sum four-seat FFA with fleet combat central (collision rule), RTS-like; precedent lux-ai/gen-generals-io. Spot picked against main+pending PRs (lux-ai 202,270; gen-generals-io 202,270; snake-royale 196,318) to avoid stacking
 2026-08-28T12:50:27Z 75 atlas dispatch=33172728700 region=paintlands at=193,291 clearance=22.9
 2026-08-28T12:50:27Z heartbeat phase=75
+2026-08-28T12:53:43Z 75 atlas dispatch 1 run=33172728700 failed: build refused — 46 unplaced leagues (backlog atlas PRs 20645/20702/20703 et al unmerged, main stale). Fix per step-8: dispatch 2 with all 46 as extra_cities, placements reused verbatim from PR 20703 branch (a passing build); halite moved 193,291 -> 220,285 to match that PR
