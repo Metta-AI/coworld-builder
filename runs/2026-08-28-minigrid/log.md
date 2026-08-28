@@ -38,3 +38,12 @@
 2026-08-28T22:09:39Z progress phase=40 marker=release-run-33215083433
 2026-08-28T22:09:39Z 40 -> 50 phase transition: STATE.phase=50 written
 2026-08-28T22:09:39Z heartbeat phase=50
+2026-08-28T22:10:45Z 50 league seeded: lseed_64e3c57d league_id=league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca (POST coworld-league-seeds 200)
+2026-08-28T22:10:45Z 50 division created: div_721f571a-ece7-4ed9-8b1c-15eb2cd072be (PUT divisions 200); settings posted (round_robin, filler_policy, elo, 15min) 200
+2026-08-28T22:13:04Z 50 champion1 submitted: run 33215736275 ok=true sub_aee3b135 policy=minigrid-cartographer:v1 player=daveey
+2026-08-28T22:13:04Z 50 champion2 submitted: run 33215777481 ok=true policy=minigrid-missionfirst:v1 player=daveey-1 (uuid 8e8fff3c row player_name=daveey-1 confirmed)
+2026-08-28T22:13:04Z 50 fillers registered BEFORE trigger: scout=dd96f37f bumper=bc769311 (POST filler-policies 200, response lists exactly these two)
+2026-08-28T22:13:04Z 50 unpaused (rounds_paused_at:null) + trigger-round dispatched; round 1 status=pending, entrants=both champions
+2026-08-28T22:13:04Z progress phase=50 marker=league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca
+2026-08-28T22:13:04Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-28T22:13:04Z heartbeat phase=60
