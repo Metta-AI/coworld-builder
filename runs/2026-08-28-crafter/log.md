@@ -8,3 +8,4 @@
 2026-08-28T23:48:34Z 10 -> 20 phase transition: build
 2026-08-28T23:49:34Z 20 repo created: https://github.com/Metta-AI/cogame-crafter (public)
 2026-08-28T23:49:34Z 20 propagate-secrets run 33221646319 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-crafter
+2026-08-28T23:50:36Z 20 builder dispatched round=1 thread=sthr_01UovTdQakeW1rzSu1z26bMt repo=Metta-AI/cogame-crafter
