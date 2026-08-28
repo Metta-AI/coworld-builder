@@ -19,3 +19,4 @@
 2026-08-28T20:49:37Z progress phase=20 marker=ci-run-33209437659-green
 2026-08-28T20:49:37Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-28T20:49:37Z heartbeat phase=30
+2026-08-28T20:50:26Z 30 reviewer dispatched (round 1) thread=sthr_019HF8KgKSi4YyFHNEW5yZaL sha=d8f9e7c2 output=runs/2026-08-28-minigrid/reviews/r1-review.md
