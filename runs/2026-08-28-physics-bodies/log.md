@@ -75,3 +75,7 @@
 2026-08-28T16:00:46Z progress phase=60 marker=VERIFY.md-8of8
 2026-08-28T16:01:35Z 60 judge dispatched thread=sthr_01Jp91YqFv4VUsTqhAKDRaED for verify adjudication
 2026-08-28T16:01:35Z heartbeat phase=60
+2026-08-28T16:06:27Z 60 judge verdict: blocking 0 / BLOCKING 0; checks 1,2,3,5,6 re-fetched live, 4 re-decoded, 7 from committed artifact, 8 png re-viewed; filler-timestamp citation error noted (ordering verified independently, TRUE stands)
+2026-08-28T16:06:27Z progress phase=60 marker=verify-verdict-blocking-0
+2026-08-28T16:06:27Z 60 -> 70 phase transition
+2026-08-28T16:06:27Z heartbeat phase=70
