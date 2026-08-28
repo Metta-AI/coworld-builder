@@ -44,3 +44,6 @@
 2026-08-28T18:24:41Z 60 judge returned: verify-verdict.md blocking=0 (all 8 items independently re-fetched and confirmed)
 2026-08-28T18:24:41Z 60 -> 70 phase transition: STATE.phase=70 written
 2026-08-28T18:25:38Z 70 announce attempt marker written before POST
+2026-08-28T18:26:06Z 70 announce msg=1542963435338334338 (200, flags=4, embeds=[])
+2026-08-28T18:26:06Z progress phase=70 marker=discord_message_id=1542963435338334338
+2026-08-28T18:26:06Z 70 -> 75 phase transition: STATE.phase=75 written
