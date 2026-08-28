@@ -6,3 +6,4 @@
 2026-08-28T23:03:32Z 00 run task 1217965068474377 created in Running; heartbeat_at custom field stamped; 9 phase subtasks created
 2026-08-28T23:03:32Z 00 -> 10 phase transition; session=30d37c05
 2026-08-28T23:07:00Z 10 starter=Metta-AI/coworld-ctf — single-agent turn-driven grid dungeon crawl; NetHack/MiniHack task family re-implemented as own deterministic seeded Nim sim (not a bit-exact NLE port: NLE is a C/Python package that cannot compile to the wasm static viewer); precedent: minigrid, procgen, atari-57, vizdoom-deathmatch all coworld-ctf
+2026-08-28T23:08:30Z 10 designer dispatched (round 1) thread=sthr_0155y4p2VwZqG6dxZ6oPsK6Z output=runs/2026-08-28-nethack/design.md
