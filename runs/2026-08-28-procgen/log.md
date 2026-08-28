@@ -55,3 +55,5 @@
 2026-08-28T22:15:58Z 60 prefill fix 3c143bcd, ci 33215259744 green; release 0.1.2 run 33215548447 ok/canonical/certify.ok/secret_put true, cow_84cce351; policies v3 minted (expected), league keeps v1; echoed-brace guard kept (coordinator ack)
 2026-08-28T22:15:58Z progress phase=60 marker=release 0.1.2 run 33215548447 canonical
 2026-08-28T22:15:58Z heartbeat phase=60
+2026-08-28T22:21:14Z 60 round 9: ereq_9562b30c CLEAN, ereq_0876185e 1x max_tokens BUT its coworld_id=cow_a82788ed (0.1.1) — round 9 predates 0.1.2 canonical; not evidence against prefill; waiting for round 10 on cow_84cce351
+2026-08-28T22:21:14Z heartbeat phase=60
