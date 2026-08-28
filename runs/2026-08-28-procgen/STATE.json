@@ -11,10 +11,10 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d",
-    "manifest_sha": "sha256:5b5bf61a91162daf850cb526ef5792a96acb61849bec503428ce8b7da86e7311",
-    "release_run_id": "33206322967"
+    "version": "0.1.1",
+    "cow_id": "cow_a82788ed-76d8-4eb0-b709-1ff4af35ed6c",
+    "manifest_sha": "sha256:e289d17664bb1f94cbceba6924b67ec653e725a56572ac31777105c739c979f6",
+    "release_run_id": "33212822202"
   },
   "policies": {
     "champion1": "procgen-cartographer:v1",
@@ -59,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:18:08Z",
+  "heartbeat_at": "2026-08-28T21:38:37Z",
   "session_ended_at": null,
   "session_id": "454a5d0b",
   "log": "runs/2026-08-28-procgen/log.md"
