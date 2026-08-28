@@ -55,3 +55,4 @@
 2026-08-28T02:26:03Z 60 judge returned verify-verdict.md: blocking 0 — all 8 items TRUE, all 4 substitutions ruled SOUND, evidence re-fetched independently
 2026-08-28T02:26:03Z 60 -> 70 phase transition: entering announce
 2026-08-28T02:26:03Z heartbeat phase=70
+2026-08-28T02:27:05Z 70 announce attempted_at written before POST
