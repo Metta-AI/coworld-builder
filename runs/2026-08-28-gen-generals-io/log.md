@@ -20,3 +20,7 @@
 2026-08-28T06:10:17Z 30 reviewer returned round=1: reviews/r1-review.md (664 lines) — 2 blocking (B1 static-viewer: playback opens at tick 0 not gameStart, seeks unclamped; B2 legibility: renderer fixture never draws an LLM remark, no full-length assertion), 25 non-blocking
 2026-08-28T06:10:17Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
 2026-08-28T06:10:17Z heartbeat phase=30
+2026-08-28T07:35:13Z 30 fixer returned round=1: reviews/r1-fixes.md; 19 commits one-per-finding; final sha=e8be315f CI GREEN run=33151358030; B1 fixed (open at startTick, seeks clamped, probe test with startWaitTicks=300), B2 fixed via N1 root cause (plan note recorded+replayed, fixture drives real feed path, full-length assertions, 318 drawn/0 never_inside/0 ellipsized), N5 fixed (coworld CLI installed, continue-on-error removed); 16 non-blocking fixed, N2/N8/N10 NEEDS-DESIGN, N6/N12/N20/N21 disputed with evidence
+2026-08-28T07:35:13Z 30 coordinator ruling on N2 (rails): threat override stays unimplemented in v1 — implementing it inverts the tuned baseline ordering the note itself asserts (sprawl ahead), so the note conflicts with itself; resolution is prompt-truth: if any text promises an automatic threat override, align it to plan-level defend. N8/N10 remain advisory residue for v1 unless the judge rules them blocking
+2026-08-28T07:35:13Z 30 dispatch judge round=1 fresh-context on sha=e8be315f -> reviews/r1-verdict.md
+2026-08-28T07:35:13Z heartbeat phase=30
