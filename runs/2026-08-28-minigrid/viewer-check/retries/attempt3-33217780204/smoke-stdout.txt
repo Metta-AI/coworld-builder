@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2080,"clock":"SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0","scorebug":"— MISSIONFIRST Carrying 0/5 ALPHA · SCORE 0 SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0","feed_lines":0}
+scrub readouts: 0%="SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0"  50%="SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000"  100%="SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
