@@ -48,3 +48,10 @@
 2026-08-28T22:13:04Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-28T22:13:04Z heartbeat phase=60
 2026-08-28T22:14:08Z 60 verifier dispatched thread=sthr_01283UWZvAaNCgkBwGpPsvyT output=runs/2026-08-28-minigrid/VERIFY.md + viewer-check/
+2026-08-28T22:59:52Z 60 verifier returned: VERIFY.md (818 lines) — checks 1,2,3,4,7 TRUE; 5,6,8 FALSE. 3 completed rounds; both champions ranked; replays healthy (cartographer 46/46 llm, 2 tasks solved)
+2026-08-28T22:59:52Z progress phase=60 marker=VERIFY.md+viewer-check-33217607488
+2026-08-28T22:59:52Z 60 check5 FALSE: 1 fallback turn (2.8%) round-3 champ2 — Bedrock p90 5-6s vs attempt1Ms 6000; NOT platform-wide (procgen clean); fix=raise deadlines client-side + fix parse_error mislabel
+2026-08-28T22:59:52Z 60 check6 FALSE: featured match absent — STRUCTURAL for single-participant episodes (playlist [] while pool has replays; procgen same; every >=2-participant coworld has one). RAILS DECISION: num_agents 1 -> 4 isolated lanes, precedent atari-57 design line 64-69 (same starter, same shape)
+2026-08-28T22:59:52Z 60 check8 FALSE: viewer loads+advances but 50%==100% — scrubber click-to-seek mis-scaled + clock desync; also feed_lines=0 (say never drawn), pip caption smear, gutter overlays, 3 sprite 404s
+2026-08-28T22:59:52Z 60 decision: one combined fix round — designer addendum (4 lanes) -> builder -> judge r2 verdict -> release 0.1.1 -> re-verify; phase stays 60, attempt 1 of 3 per failing check
+2026-08-28T22:59:52Z heartbeat phase=60
