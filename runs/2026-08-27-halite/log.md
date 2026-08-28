@@ -15,3 +15,6 @@
 2026-08-28T01:44:17Z progress phase=20 marker=ci-run-33133144503
 2026-08-28T01:44:17Z 20 -> 30 phase transition review_round=1
 2026-08-28T01:44:17Z heartbeat phase=30
+2026-08-28T02:04:56Z 30 r1 reviewer returned reviews/r1-review.md — 16 findings (F1 elimination-yard fidelity divergence, F2 observe frame missing step/remainingOverageTime, F3 hard-stop window, F4-F16 lesser)
+2026-08-28T02:04:56Z 30 r1 fixer dispatched
+2026-08-28T02:04:56Z heartbeat phase=30
