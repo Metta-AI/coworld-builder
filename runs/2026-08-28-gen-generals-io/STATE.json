@@ -5,7 +5,7 @@
   "slug": "gen-generals-io",
   "repo": "https://github.com/Metta-AI/cogame-gen-generals-io",
   "starter": "coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T07:35:13Z",
+  "heartbeat_at": "2026-08-28T07:48:07Z",
   "session_ended_at": null,
   "session_id": "3c0b203f",
   "log": "runs/2026-08-28-gen-generals-io/log.md"

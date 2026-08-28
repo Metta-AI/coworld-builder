@@ -24,3 +24,8 @@
 2026-08-28T07:35:13Z 30 coordinator ruling on N2 (rails): threat override stays unimplemented in v1 — implementing it inverts the tuned baseline ordering the note itself asserts (sprawl ahead), so the note conflicts with itself; resolution is prompt-truth: if any text promises an automatic threat override, align it to plan-level defend. N8/N10 remain advisory residue for v1 unless the judge rules them blocking
 2026-08-28T07:35:13Z 30 dispatch judge round=1 fresh-context on sha=e8be315f -> reviews/r1-verdict.md
 2026-08-28T07:35:13Z heartbeat phase=30
+2026-08-28T07:48:07Z 30 judge returned round=1: reviews/r1-verdict.md blocking=0 (markers agree); B1/B2 resolved at e8be315f, all 15 checklist items + batch rule PASS independently; residue non-blocking: N2 threat-override prompt promise, 360px banner-chip clip, seFallback cleared pre-frame, registration re-sends, fixture is item-15's only real gate
+2026-08-28T07:48:07Z 30 coordinator final ruling on residue (rails): accepted for v1 as-is — no post-verdict code change; N2 stays as logged (plan-level defend is real, auto-override aspirational); residue goes into the close summary and LEARNINGS
+2026-08-28T07:48:07Z progress phase=30 marker=r1-verdict.md
+2026-08-28T07:48:07Z 30 -> 40 phase transition
+2026-08-28T07:48:07Z heartbeat phase=40
