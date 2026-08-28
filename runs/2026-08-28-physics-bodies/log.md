@@ -88,3 +88,7 @@
 2026-08-28T16:09:00Z 75 atlas dispatch=33188557208 region=paintlands at=202,270 clearance=39.5
 2026-08-28T16:12:52Z 75 atlas dispatch 1 failed run=33188557208: 48 unplaced leagues (stacked atlas PRs unmerged, main stale); fix per step-8: dispatch 2 reuses PR 20705's placements verbatim (physics-bodies -> 241,276 paintlands; my 202,270 was derks-gym's pending dot) with all 48 as extra_cities
 2026-08-28T16:12:52Z 75 atlas dispatch=33188864203 region=paintlands at=241,276 extra_cities=48
+2026-08-28T16:15:05Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20706 status=pr_open
+2026-08-28T16:15:05Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20706
+2026-08-28T16:15:05Z 75 -> 80 phase transition
+2026-08-28T16:15:05Z heartbeat phase=80
