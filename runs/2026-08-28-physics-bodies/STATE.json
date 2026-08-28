@@ -31,9 +31,13 @@
     "division": "div_03ffc06b-ea16-4df0-8c56-989bf1ed5254"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_84212c64-94f8-448d-ad13-f8a79546afde",
+      "round_ade551f5-d3c5-439c-86eb-2a25c616ca09"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/fa7ce35f-0b91-4ffe-8f11-6d21b47f84d1.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33187402013"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T15:33:55Z",
+  "heartbeat_at": "2026-08-28T16:01:35Z",
   "session_ended_at": null,
   "session_id": "463f6469",
   "log": "runs/2026-08-28-physics-bodies/log.md"

@@ -73,3 +73,5 @@
 2026-08-28T15:57:00Z heartbeat phase=60 VERIFY.md written: 8/8 TRUE, all-true; 3 non-blocking legibility observations (stale ROUND 1/5 intro card, feed_lines=0 selector gap, transport 1921/1925 vs tickCount 2062)
 2026-08-28T16:00:46Z 60 verifier returned: VERIFY.md 8/8 TRUE; rounds 2+3 completed post-filler; replay fa7ce35f (complete/full_time, 100 llm turns, 0 fallbacks); viewer-check run 33187402013 loaded=true clocks advance; 3 non-blocking legibility observations noted
 2026-08-28T16:00:46Z progress phase=60 marker=VERIFY.md-8of8
+2026-08-28T16:01:35Z 60 judge dispatched thread=sthr_01Jp91YqFv4VUsTqhAKDRaED for verify adjudication
+2026-08-28T16:01:35Z heartbeat phase=60
