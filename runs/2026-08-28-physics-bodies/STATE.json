@@ -4,7 +4,7 @@
   "run_task": "1217944915444078",
   "slug": "physics-bodies",
   "repo": "https://github.com/Metta-AI/cogame-physics-bodies",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
