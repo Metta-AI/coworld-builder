@@ -22,3 +22,7 @@
 2026-08-27T23:44:37Z 30 r1 reviewer returned r1-review.md (20 findings, 4 mapped blocking: F1 knownEnemy dead path, F2 unclamped shout bubble, F3 no renderer fixture for model text, F4 stopDetail untruncated)
 2026-08-27T23:44:37Z 30 r1 dispatch fixer: fix findings in r1-review.md, CI green, write r1-fixes.md
 2026-08-27T23:44:37Z heartbeat phase=30
+2026-08-28T01:01:55Z 30 r1 fixer returned r1-fixes.md: 17 commits (4 blocking F1-F4 fixed, 12 others fixed, 6 refuted with evidence); ci.yml run 33131110037 success on main sha 5c819abc
+2026-08-28T01:01:55Z 30 rails decision: no GameVersion bump for F7/F8/F17 behaviour changes — no coworld release exists yet, no replays in the wild to protect
+2026-08-28T01:01:55Z 30 r1 dispatch judge: fresh-context verdict on 5c819abc against r1-review.md + acceptance checklist
+2026-08-28T01:01:55Z heartbeat phase=30
