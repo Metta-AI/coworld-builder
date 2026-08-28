@@ -46,3 +46,4 @@
 2026-08-28T08:05:01Z progress phase=50 marker=league_03508cde-90d2-43fa-a963-32265afd4737
 2026-08-28T08:05:01Z 50 -> 60 phase transition
 2026-08-28T08:05:01Z heartbeat phase=60
+2026-08-28T08:05:44Z 60 dispatch verifier: 8 checks per prompts/60-verify.md -> VERIFY.md + viewer-check/
