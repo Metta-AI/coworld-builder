@@ -25,3 +25,5 @@
 2026-08-28T19:58:56Z 30 judge returned r1-verdict.md blocking=0/BLOCKING=0 (all 15 checklist items PASS at 545c7911, ci 33204619462; 13 findings moot at head, rest advisory) — loop exits round 1
 2026-08-28T19:58:56Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-28T19:58:56Z 30 -> 40 phase transition
+2026-08-28T19:59:13Z 40 builder dispatched for release (version 0.1.0 first attempt)
+2026-08-28T19:59:13Z heartbeat phase=40
