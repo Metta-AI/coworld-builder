@@ -29,3 +29,6 @@
 2026-08-28T12:28:07Z 30 reviewer returned r2: reviews/r2-review.md 8 findings — F1 blocking (item 8 prose tolerance, = r1 verdict), F2 ws-heartbeat vs blocking LLM call (new, empirically reproduced), F3 cert drafter deadline, F4 fallback-recording semantics, F5-F8 minor
 2026-08-28T12:28:07Z 30 fixer dispatched round=2
 2026-08-28T12:28:07Z heartbeat phase=30
+2026-08-28T12:53:40Z 30 fixer returned r2: reviews/r2-fixes.md — 7 commits 624f1cb..7c87e98, all 8 findings addressed (F1 blocking fixed via first_json_object); ci run 33172526475 success at 7c87e98d (verified)
+2026-08-28T12:53:40Z 30 judge dispatched round=2
+2026-08-28T12:53:40Z heartbeat phase=30
