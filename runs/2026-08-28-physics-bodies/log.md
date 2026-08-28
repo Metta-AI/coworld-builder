@@ -26,3 +26,5 @@
 2026-08-28T12:21:32Z 30 r1 fixer dispatch next
 2026-08-28T12:22:11Z 30 r1 fixer dispatched thread=sthr_01STLEP4uvozMRDLcizyBqTF
 2026-08-28T12:22:11Z heartbeat phase=30
+2026-08-28T14:08:15Z 30 r1 fixer returned: 20 commits, main=5237976, CI green run 33177512252; N1 fixture made real (found+fixed off-frame note row at 360px), N2 no-show force-start implemented; duplicate-commit-chain disclosure logged
+2026-08-28T14:08:15Z progress phase=30 marker=r1-fixes.md
