@@ -5,7 +5,7 @@
   "slug": "physics-bodies",
   "repo": "https://github.com/Metta-AI/cogame-physics-bodies",
   "starter": "coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -41,7 +41,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-28T16:07:36Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542928701325574185"
   },
   "atlas": {
     "status": "",
@@ -55,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T16:07:36Z",
+  "heartbeat_at": "2026-08-28T16:07:58Z",
   "session_ended_at": null,
   "session_id": "463f6469",
   "log": "runs/2026-08-28-physics-bodies/log.md"
