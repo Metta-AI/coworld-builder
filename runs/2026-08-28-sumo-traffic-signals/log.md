@@ -41,3 +41,5 @@
 2026-08-28T18:18:16Z 60 verifier returned: VERIFY.md 8/8 TRUE — rounds 2+3 completed, both champions ranked (1016/984), replay strict-UTF8 via replay_summary.py, log CLEAN (1 honest game-vocab hit), static iframe (fragment form), cert liveness skipped, viewer-check 33198007349 loaded=true clocks advance never_inside=0
 2026-08-28T18:18:16Z progress phase=60 marker=rounds-2-3-completed+viewer-check-33198007349
 2026-08-28T18:18:53Z 60 judge dispatched to adjudicate VERIFY.md thread=sthr_01MMknnvKaAZC4JStcJixZmE
+2026-08-28T18:24:41Z 60 judge returned: verify-verdict.md blocking=0 (all 8 items independently re-fetched and confirmed)
+2026-08-28T18:24:41Z 60 -> 70 phase transition: STATE.phase=70 written
