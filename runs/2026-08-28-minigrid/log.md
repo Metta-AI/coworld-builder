@@ -11,3 +11,5 @@
 2026-08-28T19:04:56Z progress phase=10 marker=design.md written and accepted round 1
 2026-08-28T19:04:56Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
 2026-08-28T19:04:56Z heartbeat phase=20
+2026-08-28T19:06:01Z 20 repo created public: https://github.com/Metta-AI/cogame-minigrid
+2026-08-28T19:06:01Z 20 propagate-secrets run 33202312365 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-minigrid
