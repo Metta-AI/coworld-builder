@@ -87,7 +87,7 @@ scoring rule is **frags − deaths**, team-summed and zero-sum.
 | Public `Metta-AI/cogame-vizdoom-deathmatch` | §Packaging (created `--public`; `source-resolves` 404s on private) |
 | LLM policy **and** scripted baseline day one, one image, env-switched | §Decisions (`PLAYER_PROMPT` vs `PLAYER_SCRIPTED=rusher\|sentry`) |
 | Static wasm replay viewer, never a pod | §Viewer (`game.replay_viewer.bundle = "static-replay-viewer"`, `tools/build_replay_viewer.sh`) |
-| Starter chrome verbatim, real art | §Viewer (chrome provenance; `chrome_common.js` byte-for-byte; the starter's shipped art plus one nano-banana pass) |
+| Starter chrome verbatim, real art | §Viewer (chrome provenance; `chrome_common.js` byte-for-byte but for the named two-line wire patch; the starter's shipped art plus one nano-banana pass) |
 | Two name spaces | §The game → Seats (`RED-alpha`…`BLUE-delta` in-game; real policy names spectator-side only) |
 | Degrade never hang, play inside 60 % of 1200 s | §Decisions (league typical 154 s, all-LLM worst 530 s, engine stop 660 s, 60 % budget 720 s) |
 | `num_agents` in every variant **and** the cert fixture, inside `game_config` | §Packaging — `num_agents: 8`, three times, plus `SMOKE_SEATS=8` |
@@ -842,11 +842,11 @@ reason the game lives in the starter's language.
 | `src/ctf/sim_config.nim` → `src/vzd/sim_config.nim` | **fork** | `GameConfig` lifecycle, `config.update`, the `mapSpec` pinning at `sim_config.nim:844-855` |
 | `src/ctf.nim` → `src/vizdoom_deathmatch.nim` | **fork** | the entrypoint, **including seed randomisation before `config.update`** so seed-derived draws (the pool pick) follow the final seed |
 | `src/paintball_player.nim` → `src/vizdoom_deathmatch_player.nim` | **fork** | the thin seat registrar (§Decisions) |
-| `client/chrome_common.js` | **byte-for-byte** (40 022 bytes) | §Viewer |
+| `client/chrome_common.js` | **byte-for-byte apart from the named two-line wire patch** (40 022 bytes either way) | §Viewer → Chrome provenance |
 | `client/broadcast_core.js`, `client/replay_broadcast.html`, `client/league_replayer.html` | **fork** | §Viewer |
 | `replay-viewer/config.nims`, `static_replay.js`, `static_replay_worker.js` | **fork: identifiers and the output name only** | the emscripten link flags and the Worker bootstrap (§Viewer) |
 | `replay-viewer/ctf_replay.nim` → `replay-viewer/vzd_replay.nim` | **fork** | §Viewer |
-| `Dockerfile`, `Dockerfile.replay-viewer`, `tools/build_replay_viewer.sh`, `tools/wasm_replay_smoke.cjs`, `tools/expand_replay.nim`, `tools/extract_events.nim`, `tools/replay_summary.py`, `tools/record_fixture.sh`, `tools/tune_baselines.nim`, `nimby.lock`, `flake.nix`, `tests/config.nims`, `tests/helpers.nim` | **byte-for-byte apart from names/paths** | build, bundle and forensics wiring; `build_replay_viewer.sh` already carries the ecos `mkdir -p "$(dirname …)"` fix and the buildx / `--platform linux/amd64` handling |
+| `Dockerfile`, `Dockerfile.replay-viewer`, `tools/build_replay_viewer.sh`, `tools/wasm_replay_smoke.cjs`, `tools/expand_replay.nim`, `tools/extract_events.nim`, `tools/replay_summary.py`, `tools/record_fixture.sh`, `nimby.lock`, `flake.nix`, `tests/config.nims`, `tests/helpers.nim` | **byte-for-byte apart from names/paths** | build, bundle and forensics wiring; `build_replay_viewer.sh` already carries the ecos `mkdir -p "$(dirname …)"` fix and the buildx / `--platform linux/amd64` handling |
 | `tools/ci/check_gameversion.sh`, `tools/ci/next_coworld_version.py` (+ its test) | **byte-for-byte** | version discipline |
 | `data/arena_floor.png`, `data/font.ttf`, `data/ascii.png`, `data/pallete.png`, `data/atlas/*`, `data/medkit.png`, `data/soldier_{red,blue}*.png`, `data/soldier_{red,blue}_front{,_gun}.png`, `client/art/**` | **byte-for-byte** | real art (§Viewer → Art) |
 
@@ -1222,9 +1222,29 @@ samples an unpainted shell.
 
 ### Chrome provenance
 
-- **`client/chrome_common.js` is copied byte-for-byte** (40 022 bytes in the starter). Not edited, not
-  reformatted; `tests/test_vzd_viewer.nim` pins its sha256 against the starter's file. Everything this
-  game adds lives in the appended game block. Its `markBeat` / `killMarkerTeam` /
+- **`client/chrome_common.js` is the starter's file with ONE named, minimal patch.** A named,
+  minimal patch is the only admissible change to the inherited chrome (acceptance checklist item 14),
+  so here it is in full — two lines, both a rename of the game's own wire namespace, nothing else:
+
+  ```diff
+  --- coworld-ctf/client/chrome_common.js
+  +++ client/chrome_common.js
+  @@ -14 +14 @@
+  -//    both embedded pages (src/ctf/server.nim);
+  +//    both embedded pages (src/vzd/server.nim);
+  @@ -72 +72 @@
+  -  var WIRE = window.CTF_WIRE || {};
+  +  var WIRE = window.VZD_WIRE || {};
+  ```
+
+  **Why it is required, not cosmetic:** `tools/gen_wire_constants.nim` emits `window.VZD_WIRE={…}`
+  and `Dockerfile.replay-viewer` hard-asserts `grep -q '^window.VZD_WIRE={'` on the bundled
+  `wire_constants.js`. A chrome still reading `window.CTF_WIRE` would find an empty object and every
+  wire constant would silently fall back to its default. The patch is length-preserving — `ctf`→`vzd`
+  and `CTF`→`VZD`, three characters twice — so both files are 40 022 bytes; nothing is reformatted,
+  added or removed. `tests/test_vzd_viewer.nim` pins that byte length and the sha1 of the patched
+  file, and asserts `window.VZD_WIRE` is present and `window.CTF_WIRE` absent, so any further
+  divergence fails the build. Everything else this game adds lives in the appended game block. Its `markBeat` / `killMarkerTeam` /
   `renderBeatMarkers` / `ingestBeats` / `renderClock` / `renderTransport` / `ingestLullSpans` /
   `renderMomentum` remain; `ingestBeats` ignores kinds it does not know.
 - **`client/replay_broadcast.html` is the starter's page with a game block appended** — never a rewrite
@@ -1761,8 +1781,9 @@ starter's, unchanged.
 
 **Viewer** (`tests/test_vzd_viewer.nim`, static assertions in the `test` job)
 
-33. `chrome_common is byte-identical` — sha256 of `client/chrome_common.js` equals the starter's,
-    pinned as a literal (40 022 bytes).
+33. `chrome_common is the starter's, patched exactly twice` — `client/chrome_common.js` is 40 022
+    bytes, the starter's own length (the named wire patch above is length-preserving), its hash is
+    pinned as a literal, and `window.VZD_WIRE` appears exactly where `window.CTF_WIRE` did.
 34. `broadcast html is starter plus block` — the file begins with the starter's bytes up to the
     documented splice marker and only appends after it; `broadcast_core.js`'s kept procs are
     byte-identical to the starter's, `pushFeed`'s signature included.

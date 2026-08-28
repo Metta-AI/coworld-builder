@@ -25,3 +25,6 @@
 2026-08-28T00:00:58Z 30 reviewer returned r1-review.md: 29 findings, 4 blocking (F1 replay re-derivation test missing, F2 model-text legibility fixture missing, F3 baseline tuning absent, F4 chrome_common.js divergence undocumented) + F5 team-kill scoring defect flagged non-blocking
 2026-08-28T00:00:58Z 30 dispatch fixer round 1
 2026-08-28T00:00:58Z heartbeat phase=30
+2026-08-28T01:23:46Z 30 fixer returned r1-fixes.md: 16 commits (F1-F5 all fixed with evidence, 10 advisories fixed, rest disputed/deferred with reasons); CI green run 33132259050 sha 7e2d1d0a; design.md updated with F4 patch record; baseline sweep moved rusherHuntPx 520->120, postRotation 2->1
+2026-08-28T01:23:46Z 30 dispatch judge round 1 on sha 7e2d1d0a
+2026-08-28T01:23:46Z heartbeat phase=30
