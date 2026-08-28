@@ -14,3 +14,11 @@
 2026-08-28T03:25:54Z 20 repo created https://github.com/Metta-AI/cogame-snake-royale (public); propagate-secrets run=33138843164 green; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-28T03:25:54Z 20 builder dispatched round=1
 2026-08-28T03:25:54Z heartbeat phase=20
+2026-08-28T05:19:14Z 20 builder returned: ci.yml green on main run=33144094331 sha=f985499c563359a169cf6f5bea31ef04ccf28985 (jobs test/docker-smoke/wasm-viewer all success; verified independently)
+2026-08-28T05:19:14Z 20 note: builder used 4 red rounds (budget 3) — round 4 (offline sim replica to measure baseline ladder) produced the green; logged as budget overrun, phase succeeded
+2026-08-28T05:19:14Z 20 note: git push over HTTPS refused for this repo from sandbox (No anonymous write access); builder pushed via Git Data API — carry this into fixer briefs
+2026-08-28T05:19:14Z 20 deviations recorded for review: (1) design §Tests27 baseline-margin claim empirically false, replaced with measured pinned ladder in tools/ci/baseline_tuning.json; (2) broadcast_core.js fork-in-spirit (JSON frame wire vs sprite protocol); (3) replay_broadcast.html driver IIFE partly rewritten via scripts/build_replay_page.py audit trail; (4) bitworld dep dropped; (5) replay fixtures not committed (recipes tested); (6) killfeed allowlisted in endcard-vocab test; (7) renderer_fixture.html drives broadcast_core directly; (8) whole-second attempt1Ms/retryMs guard + head-on-loser corpse exception
+2026-08-28T05:19:14Z 20 exit checks: placeholders none; 3 workflows parse+active; release inputs 4/4, submit inputs 3/3; release-result/submit-result/player hits; both hooks 100755
+2026-08-28T05:19:14Z progress phase=20 marker=ci-run-33144094331-green
+2026-08-28T05:19:14Z 20 -> 30 phase transition review_round=1
+2026-08-28T05:19:14Z heartbeat phase=30
