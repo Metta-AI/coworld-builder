@@ -80,3 +80,7 @@
 2026-08-28T15:47:38Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20705 status=pr_open (48 extra cities placed for other runs; automerge armed, lands via Graphite queue)
 2026-08-28T15:47:38Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20705
 2026-08-28T15:47:38Z 75 -> 80 phase transition: STATE.phase=80 written
+2026-08-28T15:49:51Z 80 executive summary posted on run task (1217955555302518) and condensed on idea task (1217955842175093); LEARNINGS.md dated section + 2 playbook gotcha rows appended
+2026-08-28T15:49:51Z 80 all 9 phase subtasks complete; idea task 1217748466222687 completed; run task 1217944927934087 moved to Done
+2026-08-28T15:49:51Z progress phase=80 marker=run-task-Done
+2026-08-28T15:49:51Z 80 run closed — session ending; no next action (run complete)

@@ -55,8 +55,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T15:47:38Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-28T15:49:51Z",
+  "session_ended_at": "2026-08-28T15:49:51Z",
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"
 }
