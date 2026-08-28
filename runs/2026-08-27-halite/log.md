@@ -78,3 +78,5 @@
 2026-08-28T08:34:54Z progress phase=60 marker=VERIFY.md written; check-4 root cause identified
 2026-08-28T08:34:54Z 60 check-4 remediation attempt 1: builder dispatched to fix players/llm.py transport to the sidecar pattern and re-release 0.1.1
 2026-08-28T08:34:54Z heartbeat phase=60
+2026-08-28T08:56:10Z 40 dispatch version=0.1.1 run=33156839080 step_failed=none decision=ok:true canonical:true certify.ok:true (replay liveness skipped, static bundle) secret_put:true; 4 policies at v2, champion #2 halite-privateer owned by ply_bac48eb1; cow_c6743b6c-2028-4bef-8361-f7aa7d8296a2
+2026-08-28T08:56:10Z 60 fix commit fdd5272d9b8c534850b8cd52c4b5bb8871674afd ci run 33156498373 green (sidecar transport)
