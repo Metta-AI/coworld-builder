@@ -11,3 +11,6 @@
 2026-08-28T03:24:46Z progress phase=10 marker=design.md written and accepted
 2026-08-28T03:24:46Z 10 -> 20 phase transition
 2026-08-28T03:24:46Z heartbeat phase=20
+2026-08-28T03:25:54Z 20 repo created https://github.com/Metta-AI/cogame-snake-royale (public); propagate-secrets run=33138843164 green; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-28T03:25:54Z 20 builder dispatched round=1
+2026-08-28T03:25:54Z heartbeat phase=20
