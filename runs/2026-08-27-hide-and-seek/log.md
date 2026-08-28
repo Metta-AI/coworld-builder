@@ -57,3 +57,7 @@
 2026-08-28T02:47:03Z progress phase=60 marker=viewer-check run 33136591103 loaded=true; rounds round_56279bed+round_8983ee66 completed
 2026-08-28T02:47:03Z 60 dispatch judge: re-read VERIFY.md against SPEC definition of done
 2026-08-28T02:47:03Z heartbeat phase=60
+2026-08-28T02:52:39Z 60 judge returned verify-verdict.md: BLOCKING 0 (re-fetched rounds/leaderboard/replay/log/session-route independently; all eight checks stand)
+2026-08-28T02:52:39Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-28T02:52:39Z 60 -> 70 phase transition: entering announce
+2026-08-28T02:52:39Z heartbeat phase=70
