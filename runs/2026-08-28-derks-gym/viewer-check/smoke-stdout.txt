@@ -1,0 +1,3 @@
+{"loaded":true,"ms":1774,"clock":null,"scorebug":null,"feed_lines":0}
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
