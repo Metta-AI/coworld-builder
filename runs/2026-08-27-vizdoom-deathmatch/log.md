@@ -34,3 +34,7 @@
 2026-08-28T01:38:34Z heartbeat phase=40
 2026-08-28T01:39:04Z 40 dispatch builder for release (version 0.1.0 first attempt)
 2026-08-28T01:39:04Z heartbeat phase=40
+2026-08-28T01:48:36Z 40 release dispatch 1/3: version=0.1.0 run=33133544667 step_failed=null — SUCCESS first dispatch; canonical=true, certify.ok=true (replay_liveness skipped/static), secret_put=true; cow_4e53e339-ec7c-4059-8e13-881aedbea5ba; policies vzd-pointman:v1 vzd-crossfire:v1 (daveey-1) vzd-rusher:v1 vzd-sentry:v1
+2026-08-28T01:48:36Z progress phase=40 marker=release-run-33133544667 release-result.json
+2026-08-28T01:48:36Z 40 -> 50 phase transition: entering league
+2026-08-28T01:48:36Z heartbeat phase=50
