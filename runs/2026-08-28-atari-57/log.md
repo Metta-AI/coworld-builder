@@ -66,3 +66,5 @@
 2026-08-28T22:34:42Z progress phase=70 marker=1543026008503099424
 2026-08-28T22:34:42Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-28T22:34:42Z heartbeat phase=75
+2026-08-28T22:35:46Z 75 atlas continent=paintlands (zero-sum arcade score-attack; precedent atari-cabinet 2026-08-26 also paintlands)
+2026-08-28T22:35:46Z 75 atlas dispatch=33217399986 region=paintlands at=202,270 clearance=39.5
