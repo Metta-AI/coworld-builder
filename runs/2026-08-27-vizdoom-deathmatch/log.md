@@ -32,3 +32,5 @@
 2026-08-28T01:38:34Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-28T01:38:34Z 30 -> 40 phase transition: entering release
 2026-08-28T01:38:34Z heartbeat phase=40
+2026-08-28T01:39:04Z 40 dispatch builder for release (version 0.1.0 first attempt)
+2026-08-28T01:39:04Z heartbeat phase=40
