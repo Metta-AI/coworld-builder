@@ -48,3 +48,4 @@
 2026-08-28T21:54:59Z progress phase=50 marker=33214495726
 2026-08-28T21:54:59Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-28T21:54:59Z heartbeat phase=60
+2026-08-28T21:55:24Z 60 verifier dispatched (league league_942b4588 round 2 pending at dispatch; 75-min poll bound)
