@@ -5,19 +5,24 @@
   "slug": "minigrid",
   "repo": "https://github.com/Metta-AI/cogame-minigrid",
   "starter": "coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329",
+    "manifest_sha": "sha256:90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4",
+    "release_run_id": "33215083433"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "minigrid-cartographer:v1",
+    "champion2": "minigrid-missionfirst:v1",
+    "fillers": [
+      "minigrid-scout:v1",
+      "minigrid-bumper:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:00:07Z",
+  "heartbeat_at": "2026-08-28T22:09:39Z",
   "session_ended_at": null,
   "session_id": "65d65a2f",
   "log": "runs/2026-08-28-minigrid/log.md"
