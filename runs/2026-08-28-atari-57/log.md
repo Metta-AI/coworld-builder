@@ -49,3 +49,12 @@
 2026-08-28T21:54:59Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-28T21:54:59Z heartbeat phase=60
 2026-08-28T21:55:24Z 60 verifier dispatched (league league_942b4588 round 2 pending at dispatch; 75-min poll bound)
+2026-08-28T22:02:00Z heartbeat phase=60
+2026-08-28T22:02:00Z 60 poll: round 2 completed at 21:59:28Z (round 1 failed, not counted); waiting for round 3
+2026-08-28T22:18:54Z heartbeat phase=60
+2026-08-28T22:18:54Z 60 rounds 2+3 completed; ereq_c6f8d48c completed; replay ok (protocol atari-57/v1, complete/full_time, 0 fallbacks); log CLEAN; static iframe ready:true; viewer-check run 33216261052 dispatched
+2026-08-28T22:23:16Z 60 VERIFY.md written: 8/8 TRUE (rounds 2+3; daveey #1 / daveey-1 #2; ereq_c6f8d48c; replay 820b851b protocol atari-57/v1 complete/full_time 38 llm 0 fallback; log CLEAN; static iframe ready:true; cert liveness skipped-static; viewer-check 33216261052 loaded:true clocks 2:00/1:00/0:00)
+2026-08-28T22:23:16Z heartbeat phase=60
+2026-08-28T22:24:14Z 60 verifier returned: VERIFY.md 8/8 TRUE — rounds 2+3 completed, leaderboard daveey 1030.5 / daveey-1 969.5, replay reason=complete 0 fallbacks, log CLEAN, iframe static (?v=2#replay= shape), viewer-check 33216261052 loaded:true clocks advance; observation: feed_lines selector mismatch (instrumentation, non-blocking)
+2026-08-28T22:24:14Z progress phase=60 marker=round_4441a16c
+2026-08-28T22:24:14Z 60 judge dispatched to adjudicate VERIFY.md

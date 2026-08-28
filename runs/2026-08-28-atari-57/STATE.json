@@ -34,9 +34,13 @@
     "division": "div_6a44a425-829a-41ae-926f-a0139e8b95d3"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_ed18a4d8",
+      "round_4441a16c"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/820b851b-5e44-4631-bb96-e5d0cebc6abd.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33216261052"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:54:59Z",
+  "heartbeat_at": "2026-08-28T22:24:14Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"

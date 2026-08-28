@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2984,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4b06234f-97d8-4b65-8553-e2f967e89d8c/sha256%3A81b1272cf22d7b6440e5d6e2664f0a638178d9b2080db25d43f4f7b127a8f6a4/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F820b851b-5e44-4631-bb96-e5d0cebc6abd.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24",
+  "scorebug": "SCR 1 DAVEEY SCORE 3.000 0 PTS SCR 1 BASELINE SCORE 3.000 0 PTS 2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24 SCR 1 DAVEEY-1 SCORE 3.000 0 PTS SCR 1 BASELINE (2) SCORE 3.000 0 PTS",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24"
+    },
+    {
+      "at": "50%",
+      "clock": "1:00 TIME LEFT CHOMPER · PAR 2600 · TURN 13/24"
+    },
+    {
+      "at": "100%",
+      "clock": "0:00 TIME LEFT CHOMPER · PAR 2600 · TURN 24/24"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

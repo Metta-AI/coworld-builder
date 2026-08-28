@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2984,"clock":"2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24","scorebug":"SCR 1 DAVEEY SCORE 3.000 0 PTS SCR 1 BASELINE SCORE 3.000 0 PTS 2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24 SCR 1 DAVEEY-1 SCORE 3.000 0 PTS SCR 1 BASELINE (2) SCORE 3.000 0 PTS","feed_lines":0}
+scrub readouts: 0%="2:00 TIME LEFT CHOMPER · PAR 2600 · TURN 1/24"  50%="1:00 TIME LEFT CHOMPER · PAR 2600 · TURN 13/24"  100%="0:00 TIME LEFT CHOMPER · PAR 2600 · TURN 24/24"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
