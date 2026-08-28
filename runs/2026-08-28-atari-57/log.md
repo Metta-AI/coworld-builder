@@ -41,3 +41,10 @@
 2026-08-28T21:52:32Z 50 division HTTP200 div_6a44a425-829a-41ae-926f-a0139e8b95d3; settings HTTP200 (round_robin, filler_policy, elo mean, interval 15m)
 2026-08-28T21:52:32Z progress phase=50 marker=league_942b4588-00ce-4b37-b5ae-9f1254d97db4
 2026-08-28T21:52:32Z heartbeat phase=50
+2026-08-28T21:54:59Z 50 champion1 submit run=33214447307 ok:true (atari-57-highroller:v1, daveey)
+2026-08-28T21:54:59Z 50 champion2 submit run=33214495726 ok:true (atari-57-onecredit:v1, daveey-1 — policy-versions row confirms player_name=daveey-1)
+2026-08-28T21:54:59Z 50 fillers HTTP200: arcader=44a28876-eba6-4ec8-bcf6-6cfe647d9fc7 hoover=d0712eac-62b0-4f34-ad30-b562afebc3a3 (neither champion)
+2026-08-28T21:54:59Z 50 unpause HTTP200; trigger HTTP200; rounds: r1 failed (Temporal RoundWorkflow failed before settling — pre-trigger race), r2 pending with both champions in entrant_attributions
+2026-08-28T21:54:59Z progress phase=50 marker=33214495726
+2026-08-28T21:54:59Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-28T21:54:59Z heartbeat phase=60

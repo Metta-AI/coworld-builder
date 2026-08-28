@@ -5,7 +5,7 @@
   "slug": "atari-57",
   "repo": "https://github.com/Metta-AI/cogame-atari-57",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -24,7 +24,10 @@
       "atari-57-arcader:v1",
       "atari-57-hoover:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "44a28876-eba6-4ec8-bcf6-6cfe647d9fc7",
+      "d0712eac-62b0-4f34-ad30-b562afebc3a3"
+    ]
   },
   "league": {
     "id": "league_942b4588-00ce-4b37-b5ae-9f1254d97db4",
@@ -51,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:52:32Z",
+  "heartbeat_at": "2026-08-28T21:54:59Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"
