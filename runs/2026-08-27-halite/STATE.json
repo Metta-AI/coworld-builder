@@ -7,7 +7,8 @@
   "starter": "cogame-moba",
   "phase": "60",
   "phase_attempts": {
-    "30": 1
+    "30": 1,
+    "60": 1
   },
   "review_round": 2,
   "coworld": {
@@ -53,8 +54,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T09:33:41Z",
+  "heartbeat_at": "2026-08-28T12:38:40Z",
   "session_ended_at": null,
-  "session_id": "2c908cae",
+  "session_id": "eb5243fd",
   "log": "runs/2026-08-27-halite/log.md"
 }

@@ -109,3 +109,5 @@
 2026-08-28T09:27:07Z heartbeat phase=60
 2026-08-28T09:33:41Z 60 VERIFY.md attempt 2 written — ALL 8 TRUE (supersedes attempt-1 pass whose check 4 was FALSE against 0.1.0/v1); v2 rounds 5+6, llm_turns [20,20,0,0] / [10,20,0,0], 0 fallbacks, replay da1179c8, viewer-check 33159290682
 2026-08-28T09:33:41Z heartbeat phase=60
+2026-08-28T12:38:40Z 00 attempts_reset phase=60 reason=progress marker=VERIFY.md-attempt-2-all-true
+2026-08-28T12:38:40Z 00 resume at phase 60 attempt=1 session=eb5243fd
