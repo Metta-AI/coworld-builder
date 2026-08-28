@@ -22,3 +22,6 @@
 2026-08-27T23:37:40Z heartbeat phase=30
 2026-08-27T23:38:46Z 30 repo cloned to /workspace/cogame-vizdoom-deathmatch at 3e49fa42; dispatch reviewer round 1
 2026-08-27T23:38:46Z heartbeat phase=30
+2026-08-28T00:00:58Z 30 reviewer returned r1-review.md: 29 findings, 4 blocking (F1 replay re-derivation test missing, F2 model-text legibility fixture missing, F3 baseline tuning absent, F4 chrome_common.js divergence undocumented) + F5 team-kill scoring defect flagged non-blocking
+2026-08-28T00:00:58Z 30 dispatch fixer round 1
+2026-08-28T00:00:58Z heartbeat phase=30
