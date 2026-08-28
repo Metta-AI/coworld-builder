@@ -68,3 +68,5 @@
 2026-08-28T02:54:12Z heartbeat phase=75
 2026-08-28T02:54:50Z 75 atlas continent=paintlands (zero-sum team pursuit/evasion); spot 202,270 clearance=39.5
 2026-08-28T02:54:50Z 75 atlas dispatch=33137336495 region=paintlands at=202,270 clearance=39.5
+2026-08-28T03:01:03Z 75 atlas dispatch 1 run=33137336495 failed: 43 unplaced leagues named by build.mjs
+2026-08-28T03:01:03Z 75 atlas dispatch=33137633132 region=paintlands at=202,270 clearance=39.5 extra_cities=43 (13 from idea outposts, 30 via atlas_spot; continents: paintlands 9+1, tabletop 11, commons 11, simulations 8, parlour 3, shire 2)
