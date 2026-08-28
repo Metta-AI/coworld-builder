@@ -13,3 +13,5 @@
 2026-08-28T19:04:56Z heartbeat phase=20
 2026-08-28T19:06:01Z 20 repo created public: https://github.com/Metta-AI/cogame-minigrid
 2026-08-28T19:06:01Z 20 propagate-secrets run 33202312365 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-minigrid
+2026-08-28T19:06:58Z 20 builder dispatched (round 1) thread=sthr_01UniMBZ7v9N3ro51CH7ypyh repo=Metta-AI/cogame-minigrid
+2026-08-28T19:06:58Z heartbeat phase=20
