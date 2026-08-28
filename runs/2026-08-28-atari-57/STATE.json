@@ -5,7 +5,7 @@
   "slug": "atari-57",
   "repo": "https://github.com/Metta-AI/cogame-atari-57",
   "starter": "coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {
     "20": 1
   },
@@ -47,7 +47,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:28:20Z",
+  "heartbeat_at": "2026-08-28T21:41:44Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"

@@ -28,3 +28,7 @@
 2026-08-28T21:28:20Z heartbeat phase=30
 2026-08-28T21:29:31Z 30 note: coordinator pushes to coworld-builder now also 401 over git-HTTPS; replaying commits via git-data API (/tmp/gitdata_push.py), non-forced ref updates only
 2026-08-28T21:29:31Z 30 judge dispatched round=1 (repo main@c8498ce481637d6acdac33192bf688a5d9f55ee5, fresh context, no fixes ledger)
+2026-08-28T21:41:44Z 30 judge returned round=1: runs/2026-08-28-atari-57/reviews/r1-verdict.md blocking=0 (markers agree) — review loop complete in 1 round
+2026-08-28T21:41:44Z progress phase=30 marker=r1-verdict.md
+2026-08-28T21:41:44Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-28T21:41:44Z heartbeat phase=40
