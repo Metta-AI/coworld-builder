@@ -70,3 +70,7 @@
 2026-08-28T02:54:50Z 75 atlas dispatch=33137336495 region=paintlands at=202,270 clearance=39.5
 2026-08-28T03:01:03Z 75 atlas dispatch 1 run=33137336495 failed: 43 unplaced leagues named by build.mjs
 2026-08-28T03:01:03Z 75 atlas dispatch=33137633132 region=paintlands at=202,270 clearance=39.5 extra_cities=43 (13 from idea outposts, 30 via atlas_spot; continents: paintlands 9+1, tabletop 11, commons 11, simulations 8, parlour 3, shire 2)
+2026-08-28T03:04:07Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20691 status=pr_open (automerge armed; lands via Graphite merge queue, human merges). Placed 43 backlog leagues for others: atari-cabinet board-gauntlet chemistry chorus citysim cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting daycare factory-commons firm flatland fog-of-war-boards fruit-market garble gift-refinements gnomic goofspiel-oshi-zumo grf-football grid-wars hanabi hidden-agenda knights-archers liars-dice lux-ai magent-battle matrix-games negotiation-games particle-worlds pistonball pommerman rware-warehouse smac-starcraft-micro territory trick-taking vizdoom-deathmatch walker-waterworld
+2026-08-28T03:04:07Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20691
+2026-08-28T03:04:07Z 75 -> 80 phase transition: entering close
+2026-08-28T03:04:07Z heartbeat phase=80
