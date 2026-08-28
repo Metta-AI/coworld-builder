@@ -27,8 +27,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_942b4588-00ce-4b37-b5ae-9f1254d97db4",
+    "division": "div_6a44a425-829a-41ae-926f-a0139e8b95d3"
   },
   "verify": {
     "rounds": [],
@@ -51,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:51:11Z",
+  "heartbeat_at": "2026-08-28T21:52:32Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"
