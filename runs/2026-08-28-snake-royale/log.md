@@ -50,3 +50,7 @@
 2026-08-28T07:37:59Z 50 -> 60 phase transition
 2026-08-28T07:37:59Z heartbeat phase=60
 2026-08-28T07:38:49Z 60 verifier dispatched (8 checks, 75-min round-wait bound)
+2026-08-28T08:11:26Z 60 verifier returned VERIFY.md 8/8 TRUE (2 completed rounds b1b63f05+0ee7c3f1; leaderboard daveey-1 1030.53 / daveey 969.47 both rounds_played=2; replay complete/full_time fallback 0%; log CLEAN r3; static route manifest-sha match; viewer-check 33153918882 loaded=true clocks 0/26/50 differ)
+2026-08-28T08:11:26Z 60 advisories carried to LEARNINGS: parse_error mislabels transport timeout; attempt1Ms=6000 tight vs haiku tail (r2 had 3 fallback lines); feed queue not flushed on seek
+2026-08-28T08:11:26Z 60 judge dispatched for verify adjudication
+2026-08-28T08:11:26Z heartbeat phase=60
