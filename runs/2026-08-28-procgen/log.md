@@ -77,3 +77,6 @@
 2026-08-28T22:56:29Z 75 atlas dispatch 1 (33218412189) failed: 52 unplaced leagues; fix per step 8 = extra_cities (precedent physics-bodies): 49 tuples reused verbatim from PR 20706 branch + 3 new placements decided here — atari-57 521,310 simulations (borrowed ALE world), minigrid 506,241 simulations (borrowed RL world), sumo-traffic-signals 398,589 commons (mixed-motive city grid); procgen respotted 578,289 clearance=22.9 (536,271 was taken by atari-cabinet in PR 20706)
 2026-08-28T22:56:52Z 75 atlas dispatch=33218668504 region=simulations at=578,289 clearance=22.9 extra_cities=52
 2026-08-28T22:56:52Z heartbeat phase=75
+2026-08-28T22:58:50Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20746 status=pr_open (placed 52 leagues incl. atari-57/minigrid/sumo-traffic-signals for other runs)
+2026-08-28T22:58:50Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20746
+2026-08-28T22:58:50Z 75 -> 80 phase transition
