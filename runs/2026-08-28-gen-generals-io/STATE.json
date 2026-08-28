@@ -5,12 +5,13 @@
   "slug": "gen-generals-io",
   "repo": "https://github.com/Metta-AI/cogame-gen-generals-io",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1,
     "50": 1,
     "60": 1,
-    "70": 1
+    "70": 1,
+    "75": 2
   },
   "review_round": 1,
   "coworld": {
@@ -49,18 +50,18 @@
     "discord_message_id": "1542817648344174632"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20703",
+    "branch": "atlas/gen-generals-io-33156965025",
+    "region": "paintlands",
+    "x": 202,
+    "y": 270,
+    "dispatch_run_id": "33156965025",
+    "attempted_at": "2026-08-28T08:53:27Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T08:46:41Z",
+  "heartbeat_at": "2026-08-28T08:53:27Z",
   "session_ended_at": null,
   "session_id": "3c0b203f",
   "log": "runs/2026-08-28-gen-generals-io/log.md"
