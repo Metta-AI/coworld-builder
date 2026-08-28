@@ -18,3 +18,4 @@
 2026-08-28T16:07:03Z progress phase=20 marker=ci-run-33187823599-green
 2026-08-28T16:07:03Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-28T16:08:01Z 30 r1 reviewer dispatched thread=sthr_01GFvykbKp8vLQPu5vkoMqKE repo-clone=/workspace/scratch/cogame-sumo-traffic-signals sha=54fd0408
+2026-08-28T16:33:31Z 30 r1 reviewer returned: r1-review.md (796 lines) — 1 blocking (test-loosened in d3fdc93), 29 non-blocking, 4 undetermined
