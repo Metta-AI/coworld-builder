@@ -37,3 +37,4 @@
 2026-08-28T17:45:17Z 50 rounds: r1 failed (placement-time, pre-filler; known pattern) — r2 pending with both champions in entrant_attributions
 2026-08-28T17:45:17Z progress phase=50 marker=league_0a4b0ef0+round2-pending
 2026-08-28T17:45:17Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
+2026-08-28T17:46:10Z 60 verifier dispatched thread=sthr_01V1ZinLxb5xLZ8 (sthr_01V1ZinLxb5xuXLZ8ryzgxK8) — polls rounds up to 75 min, writes VERIFY.md + viewer-check/
