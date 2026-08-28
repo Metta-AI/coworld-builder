@@ -1,14 +1,14 @@
 {
   "loaded": true,
-  "ms": 1774,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_81624b16-c509-470a-8fc2-69da83d64a3e/sha256%3Af1338b1f06b6534eaf22a49dd19dbcc336b5cd2e605d64a9c7248abbb4349c71/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F02c16518-1131-4968-ba7e-05031eac8934.replay",
+  "ms": 2041,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_03c45b25-de4b-42e1-8e2f-056a496878c4/sha256%3Ab5e7d1927bb411fe56fa82c9a708bb6332169b69c9ccef080d0c60ef3b629fef/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F4af31312-183f-4975-83c4-0f6359719fae.replay",
   "bundle": null,
   "replay": null,
-  "clock": null,
-  "scorebug": null,
+  "clock": "tick 0 / 2504 · 0:00",
+  "scorebug": "RADIANT 4500 0 towers 0 kills DIRE 4500 0 towers 0 kills",
   "status": "",
   "loading_text": null,
-  "feed_lines": 0,
+  "feed_lines": 6,
   "signals": {
     "data_replay_loaded": "true",
     "data_replay_error": null,
@@ -16,7 +16,20 @@
     "bridge_ready": false,
     "bridge_error": []
   },
-  "scrub": [],
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "tick 0 / 2504 · 0:00"
+    },
+    {
+      "at": "50%",
+      "clock": "tick 6 / 2504 · 0:01"
+    },
+    {
+      "at": "100%",
+      "clock": "tick 11 / 2504 · 0:02"
+    }
+  ],
   "soak": null,
   "canvas_text": {
     "total": 0,
@@ -58,7 +71,7 @@
     "[warning] WebGL: INVALID_VALUE: vertexAttribPointer: index out of range",
     "[warning] WebGL: INVALID_VALUE: enableVertexAttribArray: index out of range",
     "[warning] WebGL: INVALID_VALUE: vertexAttribPointer: index out of range",
-    "[warning] WebGL: INVALID_VALUE: enableVertexAttribArray: index out of range"
+    "[warning] WebGL: too many errors, no more errors will be reported to the console for this context."
   ],
   "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
 }

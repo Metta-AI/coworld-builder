@@ -1,3 +1,4 @@
-{"loaded":true,"ms":1774,"clock":null,"scorebug":null,"feed_lines":0}
+{"loaded":true,"ms":2041,"clock":"tick 0 / 2504 · 0:00","scorebug":"RADIANT 4500 0 towers 0 kills DIRE 4500 0 towers 0 kills","feed_lines":6}
+scrub readouts: 0%="tick 0 / 2504 · 0:00"  50%="tick 6 / 2504 · 0:01"  100%="tick 11 / 2504 · 0:02"
 canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
