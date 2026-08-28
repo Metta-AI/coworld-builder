@@ -50,3 +50,5 @@
 2026-08-28T21:54:09Z 60 round 7 (first on 0.1.1): ereq_78fb7538 CLEAN, ereq_f5f05499 has 2x "cut off at max_tokens" — timeouts fixed, new symptom exposed; per 60-verify check-5 table: raise maxOutputTokens to 900, re-release
 2026-08-28T21:54:09Z 60 check-5 attempt 2: raise maxOutputTokens 640->900, release 0.1.2; builder dispatched
 2026-08-28T21:54:09Z heartbeat phase=60
+2026-08-28T21:56:13Z 60 check-5 attempt 2 revised: maxOutputTokens already 900 since d33639d (triage row pre-satisfied); rails decision = option B, assistant prefill "{" (bounds the prose-before-JSON failure by construction, reduces latency; A rejected: trades max_tokens for timeout fallbacks at 10s attempt1Ms; C rejected: log-laundering); release 0.1.2
+2026-08-28T21:56:13Z heartbeat phase=60
