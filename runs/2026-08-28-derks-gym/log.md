@@ -71,3 +71,4 @@
 2026-08-28T15:35:18Z heartbeat phase=60
 2026-08-28T15:39:25Z 60 judge returned: reviews/verify-verdict.md BLOCKING: 0 — all 8 checks TRUE, spot-checks reproduced; 3 observations ruled not blocking (seek-jump, WebGL warnings, first_blood attribution — quality items)
 2026-08-28T15:39:25Z 60 -> 70 phase transition: STATE.phase=70 written
+2026-08-28T15:40:08Z 70 announce attempted_at written before POST
