@@ -69,3 +69,5 @@
 2026-08-28T08:53:27Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20703
 2026-08-28T08:53:27Z 75 -> 80 phase transition
 2026-08-28T08:53:27Z heartbeat phase=80
+2026-08-28T08:55:13Z 80 close: summaries posted (run 1217944092768716, idea 1217947576942687); LEARNINGS appended; all 9 subtasks complete; idea 1217748485511318 completed; run task -> Done
+2026-08-28T08:55:13Z 80 run closed: claim -> design(1 round) -> build(green r1, 3 CI fixes) -> review(1 round, BLOCKING 0) -> release(v0.1.0 canonical, 1 dispatch) -> league(2 champions, 2 fillers, rounds live) -> verify(8/8 TRUE, judge 0) -> announce(msg 1542817648344174632) -> atlas(PR 20703 open, queue) -> closed. Session 3c0b203f ends; no further action needed.
