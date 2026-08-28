@@ -20,3 +20,6 @@
 2026-08-28T11:14:25Z heartbeat phase=30
 2026-08-28T11:26:50Z 30 reviewer returned r1: reviews/r1-review.md 15 findings (F1-F15), reviewer-assessed 0 blocking
 2026-08-28T11:26:50Z 30 fixer dispatched round=1
+2026-08-28T11:59:07Z 30 fixer returned r1: reviews/r1-fixes.md — 8 fixed (F1,F2,F7,F8,F9,F10,F11,F13), 7 argued no-change (F3,F4,F5,F6,F12,F14,F15); main=624f1cb3 ci run 33167936624 success (verified)
+2026-08-28T11:59:07Z 30 judge dispatched round=1
+2026-08-28T11:59:07Z heartbeat phase=30
