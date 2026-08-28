@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2643,"clock":":05 STARTING IN ROUND 1 OF 5 · RING 3.00 M","scorebug":"0.000 SEAT 1 ROUNDS 0 0 KNOCKDOWNS · 0 RING-OUTS :05 STARTING IN ROUND 1 OF 5 · RING 3.00 M 0.000 SEAT 0 ROUNDS 0 0 KNOCKDOWNS · 0 RING-OUTS","feed_lines":0}
+scrub readouts: 0%=":05 STARTING IN ROUND 1 OF 5 · RING 3.00 M"  50%="0:04 ROUND CLOCK ROUND 3 OF 5 · RING 2.39 M"  100%="0:00 ROUND CLOCK ROUND 5 OF 5 · RING 2.01 M"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

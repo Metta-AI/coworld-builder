@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2643,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e51c593d-8b3e-41e9-92eb-04ff70083bbd/sha256%3A3c7e9da8432c2342f20945677bd739da973dfbfefedf82d79af2746920c0127c/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Ffa7ce35f-0b91-4ffe-8f11-6d21b47f84d1.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": ":05 STARTING IN ROUND 1 OF 5 · RING 3.00 M",
+  "scorebug": "0.000 SEAT 1 ROUNDS 0 0 KNOCKDOWNS · 0 RING-OUTS :05 STARTING IN ROUND 1 OF 5 · RING 3.00 M 0.000 SEAT 0 ROUNDS 0 0 KNOCKDOWNS · 0 RING-OUTS",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": ":05 STARTING IN ROUND 1 OF 5 · RING 3.00 M"
+    },
+    {
+      "at": "50%",
+      "clock": "0:04 ROUND CLOCK ROUND 3 OF 5 · RING 2.39 M"
+    },
+    {
+      "at": "100%",
+      "clock": "0:00 ROUND CLOCK ROUND 5 OF 5 · RING 2.01 M"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

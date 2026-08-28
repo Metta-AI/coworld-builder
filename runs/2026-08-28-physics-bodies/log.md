@@ -57,3 +57,19 @@
 2026-08-28T15:33:04Z heartbeat phase=60
 2026-08-28T15:33:55Z 60 verifier dispatched thread=sthr_018CecsA72KXFZ2PTdRenYmC
 2026-08-28T15:33:55Z heartbeat phase=60
+2026-08-28T15:34:03Z heartbeat phase=60 poll=1 rounds: r2 pending, r1 failed (pre-filler)
+2026-08-28T15:39:10Z heartbeat phase=60 poll rounds=[{"n":2,"s":"completed"},{"n":1,"s":"failed"}] completed_after_fillers=1
+2026-08-28T15:44:55Z heartbeat phase=60 poll rounds=[{"n":2,"s":"completed"},{"n":1,"s":"failed"}] completed_after_fillers=1
+2026-08-28T15:49:43Z heartbeat phase=60 poll rounds=[{"n":3,"s":"pending"},{"n":2,"s":"completed"},{"n":1,"s":"failed"}] completed_after_fillers=1
+2026-08-28T15:52:52Z heartbeat phase=60 poll rounds=[{"n":3,"s":"completed"},{"n":2,"s":"completed"},{"n":1,"s":"failed"}] completed_after_fillers=2
+2026-08-28T15:53:02Z heartbeat phase=60 check1 TRUE rounds 2+3 completed (r1 failed pre-filler, not counted)
+2026-08-28T15:53:09Z heartbeat phase=60 check2 TRUE leaderboard daveey#1 1030.53 rp=2 / daveey-1#2 969.47 rp=2; no filler rows
+2026-08-28T15:53:15Z heartbeat phase=60 check3 TRUE ereq_05afb4b3 completed replay fa7ce35f participants daveey+daveey-1 (flat route 405 as documented; nested used)
+2026-08-28T15:53:30Z heartbeat phase=60 check4 TRUE binary COWLDPBD 88731B; replay_summary strict-UTF8 ok; protocol physics-bodies/v1; complete/full_time; 50+50 llm decisions 0 fallbacks
+2026-08-28T15:53:44Z heartbeat phase=60 check5 TRUE hosted log CLEAN 447 decoded lines, 4 containers (raw grep clean too)
+2026-08-28T15:53:54Z heartbeat phase=60 check6 TRUE static route via POST /coworlds/replays/session ready=true sha256%3A3c7e9da8 #replay fragment; featured match physics-bodies.r3.e1 in SSR playlist[0]; raw-HTML iframe grep empty (client-rendered)
+2026-08-28T15:55:00Z heartbeat phase=60 check7 TRUE committed release-result.json "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-28T15:55:30Z heartbeat phase=60 check8 TRUE viewer-check run=33187402013 loaded=true ms=2643 scrub r1/3.00m -> r3/2.39m -> r5/2.01m (three differ); artifacts committed under viewer-check/
+2026-08-28T15:57:00Z heartbeat phase=60 VERIFY.md written: 8/8 TRUE, all-true; 3 non-blocking legibility observations (stale ROUND 1/5 intro card, feed_lines=0 selector gap, transport 1921/1925 vs tickCount 2062)
+2026-08-28T16:00:46Z 60 verifier returned: VERIFY.md 8/8 TRUE; rounds 2+3 completed post-filler; replay fa7ce35f (complete/full_time, 100 llm turns, 0 fallbacks); viewer-check run 33187402013 loaded=true clocks advance; 3 non-blocking legibility observations noted
+2026-08-28T16:00:46Z progress phase=60 marker=VERIFY.md-8of8
