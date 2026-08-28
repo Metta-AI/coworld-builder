@@ -74,3 +74,4 @@
 2026-08-28T22:52:07Z 75 atlas continent=simulations reason=borrowed world (OpenAI Procgen benchmark reinterpretation, single-agent) precedent flatland/particle-worlds; spot 536,271 clearance=69.0
 2026-08-28T22:52:28Z 75 atlas dispatch=33218412189 region=simulations at=536,271 clearance=69.0
 2026-08-28T22:52:28Z heartbeat phase=75
+2026-08-28T22:56:29Z 75 atlas dispatch 1 (33218412189) failed: 52 unplaced leagues; fix per step 8 = extra_cities (precedent physics-bodies): 49 tuples reused verbatim from PR 20706 branch + 3 new placements decided here — atari-57 521,310 simulations (borrowed ALE world), minigrid 506,241 simulations (borrowed RL world), sumo-traffic-signals 398,589 commons (mixed-motive city grid); procgen respotted 578,289 clearance=22.9 (536,271 was taken by atari-cabinet in PR 20706)
