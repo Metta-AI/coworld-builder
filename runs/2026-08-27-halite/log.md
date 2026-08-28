@@ -111,3 +111,4 @@
 2026-08-28T09:33:41Z heartbeat phase=60
 2026-08-28T12:38:40Z 00 attempts_reset phase=60 reason=progress marker=VERIFY.md-attempt-2-all-true
 2026-08-28T12:38:40Z 00 resume at phase 60 attempt=1 session=eb5243fd
+2026-08-28T12:39:49Z 60 judge dispatched — verify-verdict over VERIFY.md attempt 2 (all 8 TRUE, v2 scope rounds>=5)
