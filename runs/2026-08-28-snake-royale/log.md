@@ -54,3 +54,7 @@
 2026-08-28T08:11:26Z 60 advisories carried to LEARNINGS: parse_error mislabels transport timeout; attempt1Ms=6000 tight vs haiku tail (r2 had 3 fallback lines); feed queue not flushed on seek
 2026-08-28T08:11:26Z 60 judge dispatched for verify adjudication
 2026-08-28T08:11:26Z heartbeat phase=60
+2026-08-28T08:18:08Z 60 judge returned verify-verdict.md blocking:0 — all 8 checks re-fetched and reproduced; notes: scorebug place-chip swap (legibility, non-blocking), round-2 latency advisory to LEARNINGS
+2026-08-28T08:18:08Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-28T08:18:08Z 60 -> 70 phase transition
+2026-08-28T08:18:08Z heartbeat phase=70
