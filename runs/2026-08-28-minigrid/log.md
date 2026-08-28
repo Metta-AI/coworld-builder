@@ -33,3 +33,4 @@
 2026-08-28T22:00:07Z progress phase=30 marker=r1-verdict.md
 2026-08-28T22:00:07Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-28T22:00:07Z heartbeat phase=40
+2026-08-28T22:01:15Z 40 builder dispatched (release) thread=sthr_01UYLnKxtvE1ScC5cjyZAx4F version-plan=0.1.0 output=runs/2026-08-28-minigrid/release-result.json
