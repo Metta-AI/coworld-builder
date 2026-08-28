@@ -29,3 +29,7 @@
 2026-08-28T21:47:34Z heartbeat phase=30
 2026-08-28T21:49:59Z 30 judge dispatched (round 1, fresh context) thread=sthr_01H7FkfnUVXA3PZ7rQUV7etu sha=b19bc085 output=runs/2026-08-28-minigrid/reviews/r1-verdict.md
 2026-08-28T21:49:59Z 30 note: coworld-builder push failing 401 on github.com git endpoints since ~21:45Z (api.github.com fine); commits queued locally, retrying with backoff
+2026-08-28T22:00:07Z 30 judge returned r1: r1-verdict.md collected from file — blocking: 0 / BLOCKING: 0 (well-formed, both markers agree); B1 refuted-as-fixed at b19bc085; independent checklist pass all 15 items PASS
+2026-08-28T22:00:07Z progress phase=30 marker=r1-verdict.md
+2026-08-28T22:00:07Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-28T22:00:07Z heartbeat phase=40
