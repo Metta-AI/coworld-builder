@@ -57,3 +57,8 @@
 2026-08-28T08:06:53Z 50 -> 60 phase transition
 2026-08-28T08:06:53Z heartbeat phase=60
 2026-08-28T08:07:16Z 60 verifier dispatched (8 checks, 75 min poll bound)
+2026-08-28T08:08:15Z 60 poll rounds: 1 pending, 0 completed
+2026-08-28T08:08:20Z 60 check7 release-result.json (committed copy) certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)" TRUE
+2026-08-28T08:13:01Z 60 poll rounds: round 1 completed, 1 total — need >= 2
+2026-08-28T08:13:30Z 60 poll episode-requests round 1: ereq_18dcbc0b-57c0-4b27-9fa6-296e6fc3a84a completed
+2026-08-28T08:13:19Z heartbeat phase=60
