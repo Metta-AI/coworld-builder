@@ -11,16 +11,18 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.1",
+    "cow_id": "cow_0b024727-c231-4f5b-a9b6-16e2254701e6",
+    "manifest_sha": "sha256:78d5ecf583b978e8418438969b5dc3672c380536d96f49deeb783a30c190b446",
+    "release_run_id": "33133223399"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
-    "filler_version_ids": []
+    "champion1": "hns-quartermaster:v2",
+    "champion2": "hns-torchbearer:v2",
+    "fillers": [
+      "hns-burrow:v2",
+      "hns-scatter:v2"
+    ]
   },
   "league": {
     "id": "",
@@ -47,7 +49,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T01:19:04Z",
+  "heartbeat_at": "2026-08-28T01:49:54Z",
   "session_ended_at": null,
   "session_id": "5bd46913",
   "log": "runs/2026-08-27-hide-and-seek/log.md"
