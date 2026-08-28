@@ -12,3 +12,6 @@
 2026-08-28T16:27:00Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
 2026-08-28T16:27:00Z progress phase=10 marker=runs/2026-08-28-atari-57/design.md
 2026-08-28T16:27:00Z heartbeat phase=20
+2026-08-28T16:40:00Z 20 repo created: https://github.com/Metta-AI/cogame-atari-57 (public)
+2026-08-28T16:41:10Z 20 propagate-secrets run 33191112518 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-atari-57
+2026-08-28T16:41:30Z 20 builder dispatched round=1
