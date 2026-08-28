@@ -26,3 +26,5 @@
 2026-08-28T21:28:20Z 30 fixer returned round=1: runs/2026-08-28-atari-57/reviews/r1-fixes.md — fixed B1,N1,N2,N7,N12; declined N4-N6,N8-N11,N13,N14; N3 NEEDS-DESIGN; main@c8498ce ci run 33210994977 success; note: fixer used git-data API (HTTPS push 401s in sandbox), no force-push
 2026-08-28T21:28:20Z progress phase=30 marker=r1-fixes.md
 2026-08-28T21:28:20Z heartbeat phase=30
+2026-08-28T21:29:31Z 30 note: coordinator pushes to coworld-builder now also 401 over git-HTTPS; replaying commits via git-data API (/tmp/gitdata_push.py), non-forced ref updates only
+2026-08-28T21:29:31Z 30 judge dispatched round=1 (repo main@c8498ce481637d6acdac33192bf688a5d9f55ee5, fresh context, no fixes ledger)
