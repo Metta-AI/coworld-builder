@@ -1,0 +1,77 @@
+{
+  "loaded": true,
+  "ms": 2080,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F9d6c6eac-46b7-47d1-b936-d70761c155e2.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0",
+  "scorebug": "— MISSIONFIRST Carrying 0/5 ALPHA · SCORE 0 SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0"
+    },
+    {
+      "at": "50%",
+      "clock": "SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000"
+    },
+    {
+      "at": "100%",
+      "clock": "SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/soldier_yellow_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/soldier_yellow_front.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/soldier_green_front.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/soldier_green_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119",
+    "[warning] Unknown sprite protocol message type: 119"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
