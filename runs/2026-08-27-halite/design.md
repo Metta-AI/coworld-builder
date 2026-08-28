@@ -1124,3 +1124,92 @@ Everything runs in `ci.yml` (the sandbox has no docker, no nim, no emsdk, no bro
 - **An in-viewer multi-step risk heatmap** (reachability beyond one turn), a spectator "what if" scrub,
   and per-ship LLM control (v1's LLM issues a 20-turn directive; the micro layer moves the ships).
 - **A live spectator pod** of any kind — replays are a static file plus the wasm bundle, always.
+
+---
+
+## Deviations (build)
+
+*Appended during the phase-30 review round 1 (`runs/2026-08-27-halite/reviews/r1-*.md`). Everything
+above is the design as written before the repo existed; this appendix is the short list of places the
+built repo does something else, each with the reason it had to. It is part of the note in both copies
+(run directory and `docs/plans/`), byte for byte.*
+
+1. **Four ids listed under §Chrome provenance "Removed" survive as hidden stubs.** `#momentum`,
+   `#lulls`, `#ffwd-chip` and `#ffwd-mini` are in the DOM with
+   `display: none !important` (`client/replay_broadcast.html`, banner comment at the top of the
+   appended block). Cause: `client/chrome_common.js` is pinned **byte-for-byte** and dereferences all
+   four unconditionally (`$('ffwd-chip')`, `$('ffwd-mini')`, `$('lulls')` and the momentum block), so
+   removing the nodes makes the first frame throw. The pin wins over the removal list — un-pinning
+   the chrome to delete four `getElementById` calls is exactly what checklist item 14 forbids. The
+   nodes are never written to and never drawn; `tests/test_viewer.py` asserts both the stubs' presence
+   and that every id the chrome dereferences exists.
+2. **There is no `/client/replay` pod path.** §Runtime contract inherits "`/client/replay` serving the
+   same bundle locally" from the moba starter; the phase-30 acceptance checklist (item 3) requires
+   "No `/client/replay` pod path anywhere", and the checklist wins. Nothing needs the route: this
+   game declares `game.replay_viewer.bundle`, and `coworld certify` then skips the legacy
+   `/client/replay` + `/replay` liveness probe outright ("a declared static bundle replaces this
+   legacy route requirement"). `GET /replay-data` stays — it is bytes, not a viewer, and is how the
+   built bundle is pointed at a local episode.
+3. **The runtime env names are `COGAME_HOST` / `COGAME_PORT`.** §Runtime contract writes `HOST`/`PORT`
+   as shorthand; the code, `docs/PROTOCOL.md` and `tools/ci/docker_smoke.sh` use the `COGAME_`-prefixed
+   names, which is what the cogame-moba starter does and what the platform sets.
+4. **The `observe` frame carries `step` and `remainingOverageTime`.** The note's example frame omits
+   both while its prose promises `Board(obs, config)` works unchanged; `helpers.Board` reads both
+   through `Observation`, so the frame carries them. `turn` remains and always equals `step`;
+   `remainingOverageTime` is always the config default (60), as §Out of scope says.
+5. **Both wall-clock budgets are measured from process start, and the artifact phase is capped at
+   20 s.** §The wall-clock budget models the lobby (20 s there, bounded at 120 s elsewhere) and the
+   artifact writes as sitting *outside* the 660 s hard stop, which leaves the 720 s platform pin
+   unbounded by anything the code enforces. `server.py` therefore hands the engine
+   `PROCESS_STARTED_AT`, so the lobby is spent inside the guard and the hard stop, and caps the
+   artifact phase (`ARTIFACT_WRITE_BUDGET_SECONDS`). Worst case from process start:
+   660 (hard stop) + 18 (one in-flight directive turn) + 20 (artifacts) + 20 (shutdown grace) =
+   **718 s**, asserted by a test. The `results.reason` mapping is unchanged.
+6. **`game.docs` carries the doc text inline** (`{"type":"text","value":…}`) rather than the starter's
+   `blob` URLs; §Packaging pins the *object* shape and the platform's schema accepts both forms, and
+   the inline form is what checklist item 10 spells out. `game.protocols` keeps the `uri` form the
+   note pins. A test asserts each inline value is byte-identical to the repo file it came from.
+7. **The replay worker makes a fourth adaptation to coworld-ctf's files**: its `importScripts` drops
+   ctf's `wire_constants.js`. §Viewer says "exactly the three adaptations"; the fourth is forced —
+   `wire_constants.js` is not in the ctf tree, ctf *generates* it during its own image build
+   (`tools/gen_wire_constants.nim`) and it carries ctf's paintball wire enums, so there is nothing to
+   copy and importing it would 404 the Worker's boot. Named in `static_replay.js`'s header, at the
+   call site, in `docs/REPLAY.md`, and pinned by `tests/test_viewer.py`.
+8. **Over-cap action entries are counted in an engine audit counter, not in `results.fallbacks`.** The
+   reply-cap table says "rest dropped and counted"; `results.fallbacks` is closed to the five wire
+   causes in three places and an over-cap reply is not a substitution (the reply is used), so the
+   count lives in `engine.seats[s].dropped_over_cap`, is logged when it first happens and is printed
+   in the end-of-episode audit block.
+9. **The fidelity gate has a second stream.** §The fidelity gate describes 8 seeds of a
+   random-but-legal stream built so no seat can be eliminated — which leaves the elimination
+   transcription outside the gate. `tests/fidelity_stream.py::elimination_stream_step` adds 3 seeds
+   that bankrupt one seat to no ships, a bank under the spawn cost and **a shipyard still standing**,
+   then raze that abandoned yard, and `status`/`reward` are compared at every turn rather than at the
+   end. That is what pins the upstream rule the note's own §The game step 9 states loosely: upstream
+   keeps a DONE seat's shipyards ("its remaining assets are cleared" is true only of a status that is
+   neither ACTIVE nor DONE, which this engine never produces).
+10. **The baselines' constants are the grid harness's choice, and three of them differ from the
+    note's.** §The micro layer and §Directive repair name `tidewalker` as
+    `mine/300/2/100/500/CENTER/None` and `corsair` as `raid/340/2/150/350`, without describing how
+    either was chosen; checklist item 7 wants a harness. `tools/tune/grid_search.py` is the sweep and
+    `docs/tuning/2026-08-28-micro-grid.md` records the run: a 48-combination grid over 6 seeds, then
+    a runoff of the top five plus the incumbent over **16 fresh seeds**. The runoff is decisive, so
+    the shipped values are its winners — `tidewalker` `mineFloor` 200, `returnAt` 300, `spawnUntil`
+    200 (the note's `100/500/300` won 0 of 16 runoff episodes; this wins 7), `corsair` `mineFloor`
+    200, `returnAt` 300, `spawnUntil` 300 (the note's won 5 of 16; this wins 10). `stance`, `yards`,
+    `focus` and `avoid` are the note's. Because `TIDEWALKER` **is** the turn-0 directive an LLM seat
+    starts from, §Directive repair's turn-0 default table moves with it:
+    `{stance: "mine", spawnUntil: 200, yards: 2, mineFloor: 200, returnAt: 300, focus: "CENTER",
+    avoid: null}`. `tests/test_tuning.py` asserts the shipped constants are the recorded winners.
+11. **The byte-for-byte chrome pin is enforced by recorded digests.** §Design pins verifies ctf's
+    `chrome_common.js` / `broadcast_core.js` by comparing against the starter mount, which does not
+    exist on a CI runner; the sha256 of each is recorded in `tests/test_viewer.py` and asserted
+    unconditionally, with the mount comparison kept where the mount exists.
+12. **The two replay viewer-smoke passes report `canvas_text.total == 0`, by construction.** Nothing
+    in this viewer draws canvas text: the wasm renderer emits sprites, the Worker blits pixels into an
+    OffscreenCanvas, and every string a spectator reads is a DOM node. `tools/ci/renderer_fixture.html`
+    is therefore the text gate (ci.yml gates it on `total >= 12` and `never_inside == 0`), and a test
+    asserts no viewer file calls `fillText`/`strokeText` so the zero cannot start hiding something.
+13. **The remote history carries nine duplicated early commits** (two parallel chains of the same nine
+    phase-20 messages). The tree at `main` is single and coherent; removing them needs a force-push
+    over pushed history, which this repo's rules forbid, so they stay.

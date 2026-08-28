@@ -18,3 +18,7 @@
 2026-08-28T02:04:56Z 30 r1 reviewer returned reviews/r1-review.md — 16 findings (F1 elimination-yard fidelity divergence, F2 observe frame missing step/remainingOverageTime, F3 hard-stop window, F4-F16 lesser)
 2026-08-28T02:04:56Z 30 r1 fixer dispatched
 2026-08-28T02:04:56Z heartbeat phase=30
+2026-08-28T03:25:28Z 30 r1 fixer returned reviews/r1-fixes.md — 13 fixed / 2 refuted (F9,F16) / 1 wontfix (F14 dup commits, force-push forbidden); main 17fa7b5ee41f0aa74c9e165fd51bba558736928e CI green 33138420080
+2026-08-28T03:25:28Z progress phase=30 marker=r1-fixes.md
+2026-08-28T03:25:28Z 30 r1 judge dispatched
+2026-08-28T03:25:28Z heartbeat phase=30
