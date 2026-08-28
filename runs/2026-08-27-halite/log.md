@@ -47,3 +47,12 @@
 2026-08-28T08:03:35Z progress phase=40 marker=release-run-33153320765
 2026-08-28T08:03:35Z 40 -> 50 phase transition
 2026-08-28T08:03:35Z heartbeat phase=50
+2026-08-28T08:06:53Z 50 seed 200 league_82571537-04b2-4611-8200-59349283a022 (lseed_358ac2f3-adb8-4a54-9563-b76a24fac3c8)
+2026-08-28T08:06:53Z 50 division 200 div_165193cb-f037-4f20-ac3d-25a3a4a7d440; settings 200 (elo k=32, round_robin, filler_policy, 15 min interval)
+2026-08-28T08:06:53Z 50 champion1 submit run 33153896513 ok=true sub_6d1a8551-c2d0-4630-9e16-de3d0f8c19b6 halite-tidereader:v1 (daveey)
+2026-08-28T08:06:53Z 50 champion2 submit run 33153937335 ok=true sub_34172467-352d-4c5a-9377-aafee96bdec2 halite-privateer:v1 (daveey-1, player_name verified)
+2026-08-28T08:06:53Z 50 fillers 200 registered tidewalker=dc3af747-7ccb-4cdd-9c25-2e14d93b1467 corsair=633dd3f6-2647-4438-b407-6416b1c9f144
+2026-08-28T08:06:53Z 50 unpause 200; trigger-round 200; round 1 pending; both champions in entrant_attributions
+2026-08-28T08:06:53Z progress phase=50 marker=league_82571537-04b2-4611-8200-59349283a022
+2026-08-28T08:06:53Z 50 -> 60 phase transition
+2026-08-28T08:06:53Z heartbeat phase=60
