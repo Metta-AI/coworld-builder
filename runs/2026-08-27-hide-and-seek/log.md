@@ -38,3 +38,8 @@
 2026-08-28T02:10:47Z progress phase=40 marker=release run 33134567408 v0.1.2 canonical certified
 2026-08-28T02:10:47Z 40 -> 50 phase transition: entering league
 2026-08-28T02:10:47Z heartbeat phase=50
+2026-08-28T02:13:10Z 50 seed 200: league_7931991b-df9e-4248-98ca-c613dac7137d (lseed_6f425809)
+2026-08-28T02:13:10Z 50 division PUT 200: div_8ea628e9-769b-4aeb-a4a1-ed60092fea03 (Competition, level 1)
+2026-08-28T02:13:10Z 50 settings POST 200: round_robin/filler_policy, elo k=32, round_interval=15m
+2026-08-28T02:13:10Z 50 dispatch coworld-submit.yml champion1 hns-quartermaster:v3 as ply_44ae9048 (daveey)
+2026-08-28T02:13:10Z heartbeat phase=50
