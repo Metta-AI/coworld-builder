@@ -74,3 +74,7 @@
 2026-08-28T08:29:38Z heartbeat phase=60
 2026-08-28T08:33:13Z 60 VERIFY.md written — 7 TRUE / 1 FALSE (check 4: llm_turns=[0,0,0,0], 40/40 champion notes source=scripted with 403 Invalid API Key format; cross-checked snake-royale + gen-generals-io reach the 127.0.0.1:9100 sidecar normally)
 2026-08-28T08:33:13Z heartbeat phase=60
+2026-08-28T08:34:54Z 60 verifier returned VERIFY.md — checks 1,2,3,5,6,7,8 TRUE; check 4 FALSE: llm_turns [0,0,0,0], 40/40 champion decisions scripted-fallback, player pod 403s real Bedrock endpoint (AnthropicBedrock() no base_url) instead of episode sidecar 127.0.0.1:9100
+2026-08-28T08:34:54Z progress phase=60 marker=VERIFY.md written; check-4 root cause identified
+2026-08-28T08:34:54Z 60 check-4 remediation attempt 1: builder dispatched to fix players/llm.py transport to the sidecar pattern and re-release 0.1.1
+2026-08-28T08:34:54Z heartbeat phase=60
