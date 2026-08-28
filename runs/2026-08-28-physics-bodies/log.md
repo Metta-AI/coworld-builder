@@ -24,3 +24,5 @@
 2026-08-28T12:03:08Z heartbeat phase=30
 2026-08-28T12:21:32Z 30 r1 reviewer returned: 0 blocking, 17 non-blocking (N1 canvas_text total:0 structural — pixie-baked text; N2 never-joining seat stalls in Lobby to 660s stop), 3 could-not-determine; r1-review.md 399 lines
 2026-08-28T12:21:32Z 30 r1 fixer dispatch next
+2026-08-28T12:22:11Z 30 r1 fixer dispatched thread=sthr_01STLEP4uvozMRDLcizyBqTF
+2026-08-28T12:22:11Z heartbeat phase=30
