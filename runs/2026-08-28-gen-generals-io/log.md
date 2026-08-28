@@ -17,3 +17,6 @@
 2026-08-28T05:47:40Z 20 -> 30 phase transition review_round=1
 2026-08-28T05:47:40Z heartbeat phase=30
 2026-08-28T05:48:35Z 30 dispatch reviewer round=1 target sha=56e7b170 -> reviews/r1-review.md
+2026-08-28T06:10:17Z 30 reviewer returned round=1: reviews/r1-review.md (664 lines) — 2 blocking (B1 static-viewer: playback opens at tick 0 not gameStart, seeks unclamped; B2 legibility: renderer fixture never draws an LLM remark, no full-length assertion), 25 non-blocking
+2026-08-28T06:10:17Z 30 dispatch fixer round=1 -> reviews/r1-fixes.md
+2026-08-28T06:10:17Z heartbeat phase=30
