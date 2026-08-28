@@ -4,7 +4,7 @@
   "run_task": "1217965068474377",
   "slug": "nethack",
   "repo": "https://github.com/Metta-AI/cogame-nethack",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T23:03:32Z",
+  "heartbeat_at": "2026-08-28T23:07:00Z",
   "session_ended_at": null,
   "session_id": "30d37c05",
   "log": "runs/2026-08-28-nethack/log.md"
