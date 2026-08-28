@@ -32,3 +32,7 @@
 2026-08-28T12:53:40Z 30 fixer returned r2: reviews/r2-fixes.md — 7 commits 624f1cb..7c87e98, all 8 findings addressed (F1 blocking fixed via first_json_object); ci run 33172526475 success at 7c87e98d (verified)
 2026-08-28T12:53:40Z 30 judge dispatched round=2
 2026-08-28T12:53:40Z heartbeat phase=30
+2026-08-28T13:03:11Z 30 judge returned r2: reviews/r2-verdict.md blocking=0 (first/last markers agree) — review loop complete after 2 rounds
+2026-08-28T13:03:11Z 30 design.md run-dir copy synced to 6-value fallback enum (editor's note) per r2 verdict non-blocking note
+2026-08-28T13:03:11Z progress phase=30 marker=r2-verdict.md
+2026-08-28T13:03:11Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch

@@ -682,7 +682,7 @@ One draft record (the **draft-reveal record**):
 ```
 
 `source` ∈ `{"seat", "house"}`; `fallback_cause` ∈
-`{"none","timeout","malformed","wrong_shape","unknown_item","disconnected","oversize"}`.
+`{"none","timeout","wrong_shape","unknown_item","disconnected","oversize"}`. *(Editor's note, 2026-08-28 r2: `malformed` was unreachable — invalid JSON resolves as `wrong_shape` — and was removed from the enum in fix F9/r1; the in-repo copy is authoritative.)*
 House records carry `player_name: null`, `seat: null`, the neutral picks and `decision_ms: 0`.
 
 **Why this is self-sufficient**: the viewer needs (a) names — real names in `config.players` and
