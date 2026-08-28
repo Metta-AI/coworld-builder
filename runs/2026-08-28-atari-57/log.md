@@ -20,3 +20,4 @@
 2026-08-28T19:42:17Z 20 exit checks pass: files+exec bits ok, placeholders clean, 3 workflows parse (release inputs version/policies/put_secret/skip_certify; submit inputs player_id/policy/league_id), release-result+submit-result artifacts present, champion2 player=ply_bac48eb1-662e-44f8-973d-f3e016dccf5d, num_agents=4 in 3 variants + cert fixture
 2026-08-28T19:42:17Z progress phase=20 marker=33203089677
 2026-08-28T19:42:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-28T19:42:48Z 30 reviewer dispatched round=1 (repo checkout /tmp/cogame-atari-57 @ 309a9b34)
