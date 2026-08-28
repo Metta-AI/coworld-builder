@@ -71,3 +71,7 @@
 2026-08-28T08:27:30Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20702
 2026-08-28T08:27:30Z 75 -> 80 phase transition
 2026-08-28T08:27:30Z heartbeat phase=80
+2026-08-28T08:29:59Z 80 exec summary posted (run task + idea task); LEARNINGS section appended; Ping->Pong fork-loss gotcha row added to make-coworld.md
+2026-08-28T08:29:59Z 80 all 9 phase subtasks complete; idea 1217748613361187 completed; run task 1217946798253412 moved to Done
+2026-08-28T08:29:59Z progress phase=80 marker=run closed, idea completed, task in Done
+2026-08-28T08:29:59Z 80 run closed. Session ends: phase 80 done, no next action.
