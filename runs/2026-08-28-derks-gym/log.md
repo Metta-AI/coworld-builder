@@ -63,3 +63,5 @@
 2026-08-28T15:06:20Z 50/60 reseat at v4: champion1 submit run 33183310110 ok, champion2 submit run 33183367599 ok (daveey-1 verified), fillers replaced with v4 UUIDs b697f833/36e7252a (GET confirms exactly those two), trigger-round HTTP200 — round 10 pending with both v4 champions in entrant_attributions (rounds 5-9 completed at v1 during the fix window)
 2026-08-28T15:06:20Z 60 verifier dispatched attempt=2
 2026-08-28T15:06:20Z heartbeat phase=60
+2026-08-28T15:12:18Z 60 builder returned gate: commit cad9bd49 gates ci.yml upload-coworld on UPLOAD_REQUIRED=='true' (+AGENTS.md doc fix); ci run 33183451727 success with upload-coworld SKIPPED; registry read-back: 4 derks-gym rows, only 0.1.3 canonical, no 0.1.4 — no bump needed
+2026-08-28T15:12:18Z heartbeat phase=60
