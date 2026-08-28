@@ -5,7 +5,7 @@
   "slug": "halite",
   "repo": "Metta-AI/cogame-halite",
   "starter": "cogame-moba",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "30": 1,
     "60": 1
@@ -44,7 +44,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-28T12:48:26Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542878560727859311"
   },
   "atlas": {
     "status": "",
@@ -58,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T12:48:26Z",
+  "heartbeat_at": "2026-08-28T12:48:42Z",
   "session_ended_at": null,
   "session_id": "eb5243fd",
   "log": "runs/2026-08-27-halite/log.md"
