@@ -39,3 +39,12 @@
 2026-08-28T13:15:59Z 40 builder returned: coworld-release.yml run 33173805205 success, version=0.1.0 canonical=true certified (replay_liveness skipped/static), cow_id=cow_81624b16-c509-470a-8fc2-69da83d64a3e, secret_put=true, 4 policies v1 (champion2 owner ply_bac48eb1); release-result.json persisted
 2026-08-28T13:15:59Z progress phase=40 marker=release-run-33173805205
 2026-08-28T13:15:59Z 40 -> 50 phase transition: STATE.phase=50 written before league work
+2026-08-28T13:16:19Z 50 seed HTTP200 lseed_0ee18e64 league_44e55a9f-aa40-4523-9ed0-7f86ccc73d08
+2026-08-28T13:16:40Z 50 division HTTP200 div_1bc6a659-31e8-40fe-a99b-726c82426998; settings HTTP200 (round_robin/filler_policy/elo/15min)
+2026-08-28T13:17:05Z 50 champion1 submit run 33174702465 ok=true sub_1840690c (derk-drafter-v1:v1, daveey)
+2026-08-28T13:19:30Z 50 champion2 submit run 33174752765 ok=true (derk-metagamer-v1:v1, daveey-1 verified via policy-versions)
+2026-08-28T13:21:00Z 50 fillers HTTP200: derk-puffer-forge 0d434975-efba-4ffd-b071-24ab8f4fc6e0, derk-lane-brawler 4b650c45-b098-40ee-af64-58e2a16d98ac (neither champion)
+2026-08-28T13:21:30Z 50 unpause HTTP200 paused=false; trigger-round HTTP200
+2026-08-28T13:22:10Z 50 rounds: r1 failed (raced placement, single entrant) — r2 pending with BOTH champions in entrant_attributions; exit criterion met
+2026-08-28T13:19:40Z progress phase=50 marker=league_44e55a9f-aa40-4523-9ed0-7f86ccc73d08
+2026-08-28T13:19:40Z 50 -> 60 phase transition: STATE.phase=60 written

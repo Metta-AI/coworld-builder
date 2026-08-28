@@ -5,7 +5,7 @@
   "slug": "derks-gym",
   "repo": "https://github.com/Metta-AI/cogame-derks-gym",
   "starter": "cogame-moba",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -21,11 +21,14 @@
       "derk-puffer-forge:v1",
       "derk-lane-brawler:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "0d434975-efba-4ffd-b071-24ab8f4fc6e0",
+      "4b650c45-b098-40ee-af64-58e2a16d98ac"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_44e55a9f-aa40-4523-9ed0-7f86ccc73d08",
+    "division": "div_1bc6a659-31e8-40fe-a99b-726c82426998"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T13:15:59Z",
+  "heartbeat_at": "2026-08-28T13:19:40Z",
   "session_ended_at": null,
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"
