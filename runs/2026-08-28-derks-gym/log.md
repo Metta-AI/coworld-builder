@@ -75,3 +75,4 @@
 2026-08-28T15:40:34Z 70 announce msg=1542921785505488987 (flags=4, embeds=[], 1795 chars)
 2026-08-28T15:40:34Z progress phase=70 marker=announce.discord_message_id=1542921785505488987
 2026-08-28T15:40:34Z 70 -> 75 phase transition: STATE.phase=75 written
+2026-08-28T15:41:24Z 75 atlas dispatch=33186360746 region=paintlands at=202,270 clearance=39.5 (continent: team zero-sum MOBA, parent moba is paintlands)
