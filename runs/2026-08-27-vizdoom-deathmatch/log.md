@@ -52,3 +52,6 @@
 2026-08-28T02:17:33Z progress phase=60 marker=VERIFY.md 8/8 viewer-check-33135119698
 2026-08-28T02:17:33Z 60 dispatch judge for definition-of-done adjudication
 2026-08-28T02:17:33Z heartbeat phase=60
+2026-08-28T02:26:03Z 60 judge returned verify-verdict.md: blocking 0 — all 8 items TRUE, all 4 substitutions ruled SOUND, evidence re-fetched independently
+2026-08-28T02:26:03Z 60 -> 70 phase transition: entering announce
+2026-08-28T02:26:03Z heartbeat phase=70
