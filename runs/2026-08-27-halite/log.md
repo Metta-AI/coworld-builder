@@ -72,3 +72,5 @@
 2026-08-28T08:08:20Z 60 check7 TRUE — committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)"
 2026-08-28T08:29:00Z 60 check8 TRUE — viewer-check run 33155420501 loaded=true ms=2106, clocks 0%=TURN 8 / 50%=TURN 200 / 100%=TURN 398 (differ); png shows board+scorebug+transport+scrubber
 2026-08-28T08:29:38Z heartbeat phase=60
+2026-08-28T08:33:13Z 60 VERIFY.md written — 7 TRUE / 1 FALSE (check 4: llm_turns=[0,0,0,0], 40/40 champion notes source=scripted with 403 Invalid API Key format; cross-checked snake-royale + gen-generals-io reach the 127.0.0.1:9100 sidecar normally)
+2026-08-28T08:33:13Z heartbeat phase=60
