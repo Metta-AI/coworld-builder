@@ -126,3 +126,7 @@
 2026-08-28T12:50:27Z heartbeat phase=75
 2026-08-28T12:53:43Z 75 atlas dispatch 1 run=33172728700 failed: build refused — 46 unplaced leagues (backlog atlas PRs 20645/20702/20703 et al unmerged, main stale). Fix per step-8: dispatch 2 with all 46 as extra_cities, placements reused verbatim from PR 20703 branch (a passing build); halite moved 193,291 -> 220,285 to match that PR
 2026-08-28T12:54:05Z 75 atlas dispatch=33172989196 region=paintlands at=220,285 extra_cities=46
+2026-08-28T12:55:54Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20704 status=pr_open (automerge armed; lands via Graphite merge queue, human merge-when-ready; 46 backlog leagues re-placed as extra_cities verbatim from PR 20703)
+2026-08-28T12:55:54Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20704
+2026-08-28T12:55:54Z phase 75 -> 80
+2026-08-28T12:55:54Z heartbeat phase=80

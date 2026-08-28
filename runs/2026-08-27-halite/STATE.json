@@ -5,7 +5,7 @@
   "slug": "halite",
   "repo": "Metta-AI/cogame-halite",
   "starter": "cogame-moba",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "30": 1,
     "60": 1
@@ -47,18 +47,18 @@
     "discord_message_id": "1542878560727859311"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20704",
+    "branch": "atlas/halite-33172989196",
+    "region": "paintlands",
+    "x": 220,
+    "y": 285,
+    "dispatch_run_id": "33172989196",
+    "attempted_at": "2026-08-28T12:55:54Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T12:48:42Z",
+  "heartbeat_at": "2026-08-28T12:55:54Z",
   "session_ended_at": null,
   "session_id": "eb5243fd",
   "log": "runs/2026-08-27-halite/log.md"
