@@ -33,9 +33,13 @@
     "division": "div_013d13d5-8ef6-430d-bc77-592c81a0aa5a"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      2,
+      3
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/4c2c2a45-861a-4bfb-b275-adcac8a11cf7.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33198007349"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T17:46:10Z",
+  "heartbeat_at": "2026-08-28T18:18:16Z",
   "session_ended_at": null,
   "session_id": "072b9408",
   "log": "runs/2026-08-28-sumo-traffic-signals/log.md"

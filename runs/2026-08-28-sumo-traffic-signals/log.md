@@ -38,3 +38,5 @@
 2026-08-28T17:45:17Z progress phase=50 marker=league_0a4b0ef0+round2-pending
 2026-08-28T17:45:17Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
 2026-08-28T17:46:10Z 60 verifier dispatched thread=sthr_01V1ZinLxb5xLZ8 (sthr_01V1ZinLxb5xuXLZ8ryzgxK8) — polls rounds up to 75 min, writes VERIFY.md + viewer-check/
+2026-08-28T18:18:16Z 60 verifier returned: VERIFY.md 8/8 TRUE — rounds 2+3 completed, both champions ranked (1016/984), replay strict-UTF8 via replay_summary.py, log CLEAN (1 honest game-vocab hit), static iframe (fragment form), cert liveness skipped, viewer-check 33198007349 loaded=true clocks advance never_inside=0
+2026-08-28T18:18:16Z progress phase=60 marker=rounds-2-3-completed+viewer-check-33198007349

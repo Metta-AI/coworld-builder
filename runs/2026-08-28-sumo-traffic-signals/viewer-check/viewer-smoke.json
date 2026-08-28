@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2494,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_ec8a6c5d-d31e-4c81-9b8d-2f5d404c1944/sha256%3A77577277184749d6d02741c62a62de8109ac4b6c2b752ac788970570e3653298/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F4c2c2a45-861a-4bfb-b275-adcac8a11cf7.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "THROUGH 0 / 260 PAR DEMAND 4 · WAITING 0 · SPILLBACK 0 · GRIDLOCK 0 · WAVES 0",
+  "scorebug": "DAVEEY NW SERVED 0 0 car-s waiting BASELINE SW SERVED 0 0 car-s waiting THROUGH 0 / 260 PAR DEMAND 4 · WAITING 0 · SPILLBACK 0 · GRIDLOCK 0 · WAVES 0 DAVEEY-1 NE SERVED 0 0 car-s waiting BASELINE (2) SE SERVED 0 0 car-s waiting ALPHA daveey 0 out 0 car-s BETA daveey-1 0 out 0 car-s GAMMA Baseline 0 out 0 car-s DELTA Baseline (2) 0 out 0 car-s A B C D 1 2 3 4",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "THROUGH 0 / 260 PAR DEMAND 4 · WAITING 0 · SPILLBACK 0 · GRIDLOCK 0 · WAVES 0"
+    },
+    {
+      "at": "50%",
+      "clock": "THROUGH 46 / 260 PAR DEMAND 328 · WAITING 16182 · SPILLBACK 3 · GRIDLOCK 0 · WAVES 0"
+    },
+    {
+      "at": "100%",
+      "clock": "THROUGH 134 / 260 PAR DEMAND 422 · WAITING 48093 · SPILLBACK 3 · GRIDLOCK 0 · WAVES 0"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
