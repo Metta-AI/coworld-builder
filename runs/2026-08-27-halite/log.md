@@ -62,3 +62,13 @@
 2026-08-28T08:13:01Z 60 poll rounds: round 1 completed, 1 total — need >= 2
 2026-08-28T08:13:30Z 60 poll episode-requests round 1: ereq_18dcbc0b-57c0-4b27-9fa6-296e6fc3a84a completed
 2026-08-28T08:13:19Z heartbeat phase=60
+2026-08-28T08:21:28Z 60 poll rounds: round 2 pending (created 08:21:01), round 1 completed
+2026-08-28T08:26:23Z 60 poll rounds: rounds 1+2 completed — check1 TRUE (2 completed, fillers in effect in both: is_filler participants + Baseline names)
+2026-08-28T08:26:32Z 60 check2 leaderboard TRUE — daveey r1 1030.53 rp=2 wins=2, daveey-1 r2 969.47 rp=2 wins=0; fillers absent
+2026-08-28T08:26:50Z 60 check3 TRUE — round 2 ereq_bdbd9a3f-4dba-4b6f-869d-e3e7abeefc9e completed, replay ce7c0511-7ba9-4287-8397-a7212fa2d7db, daveey+daveey-1 seats 0/1, 2 fillers
+2026-08-28T08:27:05Z 60 check4 FALSE — replay strict-JSON ok, protocol halite/1, reason complete, BUT llm_turns=[0,0,0,0] and all 40 note events source=scripted carrying "PermissionDeniedError: 403 Invalid API Key format" — champion decisions 100% scripted, not a documented exception (snake-royale + gen-generals-io LLM healthy in the same window)
+2026-08-28T08:27:10Z 60 check5 TRUE — hosted game log grep CLEAN (0 matches); note: player-pod logs are not in the artifacts, so the 403 does not surface there
+2026-08-28T08:27:20Z 60 check6 TRUE — SSR playlist[0] featured match = round 2 replay; session -> static index.html#replay (ready:true), no /client/replay
+2026-08-28T08:08:20Z 60 check7 TRUE — committed release-result.json: "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-28T08:29:00Z 60 check8 TRUE — viewer-check run 33155420501 loaded=true ms=2106, clocks 0%=TURN 8 / 50%=TURN 200 / 100%=TURN 398 (differ); png shows board+scorebug+transport+scrubber
+2026-08-28T08:29:38Z heartbeat phase=60
