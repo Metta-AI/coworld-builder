@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2998,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_dfae8bd2-c198-460c-acaf-1c3fc709688c/sha256%3A7c10c697df9f3ce9cf043d3e3964fb31a97a7aa46d0720581188f0ae49795ca3/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F544f5847-40b8-4c88-b209-b2ca4b966226.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE",
+  "scorebug": "daveey COG-alpha 3 LEN HP ↯ Baseline COG-gamma 3 LEN HP ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE daveey-1 COG-beta 3 LEN HP ↯ Baseline (2) COG-delta 3 LEN HP",
+  "status": "LIVE",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE"
+    },
+    {
+      "at": "50%",
+      "clock": "ALIVE 3/4 turn 26/50 ROYALE · 17×9 · WALLS · FOOD 3 · HEALTH ON"
+    },
+    {
+      "at": "100%",
+      "clock": "ALIVE 2/4 turn 50/50 ROYALE · 17×9 · WALLS · FOOD 3 · HEALTH ON"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2998,"clock":"ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE","scorebug":"daveey COG-alpha 3 LEN HP ↯ Baseline COG-gamma 3 LEN HP ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE daveey-1 COG-beta 3 LEN HP ↯ Baseline (2) COG-delta 3 LEN HP","feed_lines":0}
+scrub readouts: 0%="ALIVE 4/4 turn 0/50 BEFORE THE FIRST MOVE"  50%="ALIVE 3/4 turn 26/50 ROYALE · 17×9 · WALLS · FOOD 3 · HEALTH ON"  100%="ALIVE 2/4 turn 50/50 ROYALE · 17×9 · WALLS · FOOD 3 · HEALTH ON"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
