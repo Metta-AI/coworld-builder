@@ -63,3 +63,4 @@
 2026-08-28T08:19:29Z progress phase=70 marker=discord_message_id=1542810787784040559
 2026-08-28T08:19:29Z 70 -> 75 phase transition
 2026-08-28T08:19:29Z heartbeat phase=75
+2026-08-28T08:20:05Z 75 atlas: slug live in /api/coworlds (episodes_7d=3); continent=paintlands (zero-sum spatial battle royale — step-2 table row 1); spot 202,270 clearance 39.5
