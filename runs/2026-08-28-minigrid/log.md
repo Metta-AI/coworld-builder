@@ -15,3 +15,7 @@
 2026-08-28T19:06:01Z 20 propagate-secrets run 33202312365 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-minigrid
 2026-08-28T19:06:58Z 20 builder dispatched (round 1) thread=sthr_01UniMBZ7v9N3ro51CH7ypyh repo=Metta-AI/cogame-minigrid
 2026-08-28T19:06:58Z heartbeat phase=20
+2026-08-28T20:49:37Z 20 builder returned r1: ci.yml green on main run=33209437659 sha=d8f9e7c2 (verified: all 3 jobs success, workflows active, hooks 100755, scaffold files present); 9 documented divergences incl fresh-written sim/server in starter shape, derived broadcast page, CTF_WIRE alias
+2026-08-28T20:49:37Z progress phase=20 marker=ci-run-33209437659-green
+2026-08-28T20:49:37Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-28T20:49:37Z heartbeat phase=30
