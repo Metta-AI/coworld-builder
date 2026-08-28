@@ -26,3 +26,6 @@
 2026-08-28T12:14:13Z 30 judge returned r1: reviews/r1-verdict.md blocking=1 — [correctness] players/derk_player.py:147 checklist item 8: parse not prose-tolerant (only fence-strip); all other items pass
 2026-08-28T12:14:13Z 30 round 2 begins: review_round=2 written
 2026-08-28T12:14:13Z 30 reviewer dispatched round=2
+2026-08-28T12:28:07Z 30 reviewer returned r2: reviews/r2-review.md 8 findings — F1 blocking (item 8 prose tolerance, = r1 verdict), F2 ws-heartbeat vs blocking LLM call (new, empirically reproduced), F3 cert drafter deadline, F4 fallback-recording semantics, F5-F8 minor
+2026-08-28T12:28:07Z 30 fixer dispatched round=2
+2026-08-28T12:28:07Z heartbeat phase=30
