@@ -9,17 +9,17 @@
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_81624b16-c509-470a-8fc2-69da83d64a3e",
-    "manifest_sha": "sha256:f1338b1f06b6534eaf22a49dd19dbcc336b5cd2e605d64a9c7248abbb4349c71",
-    "release_run_id": "33173805205"
+    "version": "0.1.3",
+    "cow_id": "cow_03c45b25-de4b-42e1-8e2f-056a496878c4",
+    "manifest_sha": "sha256:b5e7d1927bb411fe56fa82c9a708bb6332169b69c9ccef080d0c60ef3b629fef",
+    "release_run_id": "33182295860"
   },
   "policies": {
-    "champion1": "derk-drafter-v1:v1",
-    "champion2": "derk-metagamer-v1:v1",
+    "champion1": "derk-drafter-v1:v4",
+    "champion2": "derk-metagamer-v1:v4",
     "fillers": [
-      "derk-puffer-forge:v1",
-      "derk-lane-brawler:v1"
+      "derk-puffer-forge:v4",
+      "derk-lane-brawler:v4"
     ],
     "filler_version_ids": [
       "0d434975-efba-4ffd-b071-24ab8f4fc6e0",
@@ -51,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T13:19:40Z",
+  "heartbeat_at": "2026-08-28T15:03:40Z",
   "session_ended_at": null,
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"

@@ -55,3 +55,8 @@
 2026-08-28T13:52:04Z 60 retry attempt-2 plan: (a) instrument fix — additive lineage selector fallbacks in templates/tools/ci/viewer_smoke.mjs (#seek/[id$="-clock"]/[id$="-scorebug"]); (b) builder fix — bedrock sidecar transport in derk_player + USE_BEDROCK in policies.json+manifest, emit missing ancient event; (c) release 0.1.1, resubmit champions v2, re-verify
 2026-08-28T13:52:04Z progress phase=60 marker=VERIFY.md-attempt-1+viewer-check-33176460797
 2026-08-28T13:52:04Z heartbeat phase=60
+2026-08-28T15:03:40Z 60 builder returned fix round: commit 4897b52e (bedrock transport, USE_BEDROCK on champions+drafter, ancient event, 58 tests) ci 33178482769 green; release attempts 0.1.1 run 33179328591 (409 raced ci.yml upload), 0.1.2 run 33179644569 (hosted-cert churn 404, knights-archers gotcha), 0.1.3 run 33182295860 OK canonical certified cow_03c45b25-de4b-42e1-8e2f-056a496878c4, policies v4, secret_put=true; release-result.json overwritten
+2026-08-28T15:03:40Z 60 decision (rails): gate ci.yml upload-coworld on UPLOAD_REQUIRED repo variable — a push-published uncertified version became canonical (0.1.1) and would silently supersede 0.1.3 on any future push; publishing belongs to coworld-release.yml
+2026-08-28T15:03:40Z 60 decision (rails): re-run phase-50 seating at v4 (champions daveey/daveey-1 + fillers) — v1 policies predate the certified 0.1.3 image
+2026-08-28T15:03:40Z progress phase=60 marker=release-run-33182295860
+2026-08-28T15:03:40Z heartbeat phase=60
