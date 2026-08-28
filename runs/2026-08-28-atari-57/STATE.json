@@ -4,7 +4,7 @@
   "run_task": "1217956230954022",
   "slug": "atari-57",
   "repo": "https://github.com/Metta-AI/cogame-atari-57",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
