@@ -29,3 +29,7 @@
 2026-08-28T07:00:02Z 30 fixer returned r1-fixes.md: 24/25 fixed one-commit-each, F20 refuted, F8 divergence recorded; main=d8652fa2d92b14a6da207d71076027f806f7849e CI run=33149313876 green
 2026-08-28T07:00:02Z 30 judge dispatched round=1
 2026-08-28T07:00:02Z heartbeat phase=30
+2026-08-28T07:14:40Z 30 judge returned r1-verdict.md blocking:0/BLOCKING:0 agree — all 15 checklist items + batch rule PASS at d8652fa; residue advisory only (F8 documented divergence, F20 note inconsistency, margin band unreachable, gameversion-tripwire PR-only)
+2026-08-28T07:14:40Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-28T07:14:40Z 30 -> 40 phase transition (review loop closed in 1 round)
+2026-08-28T07:14:40Z heartbeat phase=40
