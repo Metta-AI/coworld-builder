@@ -43,3 +43,4 @@
 2026-08-28T18:18:53Z 60 judge dispatched to adjudicate VERIFY.md thread=sthr_01MMknnvKaAZC4JStcJixZmE
 2026-08-28T18:24:41Z 60 judge returned: verify-verdict.md blocking=0 (all 8 items independently re-fetched and confirmed)
 2026-08-28T18:24:41Z 60 -> 70 phase transition: STATE.phase=70 written
+2026-08-28T18:25:38Z 70 announce attempt marker written before POST
