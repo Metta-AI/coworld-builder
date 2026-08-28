@@ -5,7 +5,7 @@
   "slug": "sumo-traffic-signals",
   "repo": "https://github.com/Metta-AI/cogame-sumo-traffic-signals",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1
   },
@@ -46,18 +46,18 @@
     "discord_message_id": "1542963435338334338"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20723",
+    "branch": "atlas/sumo-traffic-signals-33199733980",
+    "region": "commons",
+    "x": 398,
+    "y": 589,
+    "dispatch_run_id": "33199733980",
+    "attempted_at": "2026-08-28T18:34:11Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T18:32:32Z",
+  "heartbeat_at": "2026-08-28T18:34:11Z",
   "session_ended_at": null,
   "session_id": "072b9408",
   "log": "runs/2026-08-28-sumo-traffic-signals/log.md"

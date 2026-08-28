@@ -51,3 +51,6 @@
 2026-08-28T18:27:07Z 75 atlas dispatch=33199320251 region=commons at=416,574 clearance=22.9 label="Traffic Signals"
 2026-08-28T18:32:32Z 75 atlas dispatch 1 failed: build unplaced-leagues (49 slugs, all with open queued PRs — e.g. metta#20706 carries them); fix per step 8: mirror #20706's 49 extra_cities and re-spot against augmented places.mjs
 2026-08-28T18:32:32Z 75 atlas dispatch=33199733980 region=commons at=398,589 clearance=23.4 label="Traffic Signals" extra_cities=49 (mirrored from metta#20706: placements for atari-cabinet..walker-waterworld incl. citysim+gnomic)
+2026-08-28T18:34:11Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20723 status=pr_open
+2026-08-28T18:34:11Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20723
+2026-08-28T18:34:11Z 75 -> 80 phase transition: STATE.phase=80 written
