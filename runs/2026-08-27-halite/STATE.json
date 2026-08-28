@@ -11,17 +11,17 @@
   },
   "review_round": 2,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_97d89fb8-8a54-423b-ac60-7080b318271a",
-    "manifest_sha": "sha256:1c51119aacefa5ae5f99f1e1c06e992578486333a81e3d8395d60745dcd7630b",
-    "release_run_id": "33153320765"
+    "version": "0.1.1",
+    "cow_id": "cow_c6743b6c-2028-4bef-8361-f7aa7d8296a2",
+    "manifest_sha": "sha256:cd52ca31d9c6c00bef566e9f20c7903abaca055a14e2bec77d48b602f7e6a665",
+    "release_run_id": "33156839080"
   },
   "policies": {
-    "champion1": "halite-tidereader:v1",
-    "champion2": "halite-privateer:v1",
+    "champion1": "halite-tidereader:v2",
+    "champion2": "halite-privateer:v2",
     "fillers": [
-      "halite-tidewalker:v1",
-      "halite-corsair:v1"
+      "halite-tidewalker:v2",
+      "halite-corsair:v2"
     ],
     "filler_version_ids": [
       "dc3af747-7ccb-4cdd-9c25-2e14d93b1467",
@@ -53,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T08:34:54Z",
+  "heartbeat_at": "2026-08-28T08:58:36Z",
   "session_ended_at": null,
   "session_id": "2c908cae",
   "log": "runs/2026-08-27-halite/log.md"

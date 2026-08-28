@@ -80,3 +80,7 @@
 2026-08-28T08:34:54Z heartbeat phase=60
 2026-08-28T08:56:10Z 40 dispatch version=0.1.1 run=33156839080 step_failed=none decision=ok:true canonical:true certify.ok:true (replay liveness skipped, static bundle) secret_put:true; 4 policies at v2, champion #2 halite-privateer owned by ply_bac48eb1; cow_c6743b6c-2028-4bef-8361-f7aa7d8296a2
 2026-08-28T08:56:10Z 60 fix commit fdd5272d9b8c534850b8cd52c4b5bb8871674afd ci run 33156498373 green (sidecar transport)
+2026-08-28T08:58:36Z 60 builder returned: sidecar fix fdd5272 CI 33156498373 green; release 0.1.1 canonical+certified run 33156839080, cow_c6743b6c-2028-4bef-8361-f7aa7d8296a2, policies v2
+2026-08-28T08:58:36Z progress phase=60 marker=release-run-33156839080
+2026-08-28T08:58:36Z 50 re-entrancy: resubmitting champions at v2, refreshing fillers, new round
+2026-08-28T08:58:36Z heartbeat phase=60
