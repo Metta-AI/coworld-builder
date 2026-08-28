@@ -13,3 +13,8 @@
 2026-08-28T09:39:03Z 20 builder dispatched round=1
 2026-08-28T11:03:33Z 20 builder returned round=1: ci.yml run 33165228867 success on main sha 2bcf052f1aec (verified); exit-criterion self-check passed
 2026-08-28T11:03:33Z 20 retry: follow-up dispatched to builder — 2 manifest fixes per gotcha pins (cert players_missing raid 0.1.2->0.1.3: seat drafter+lane-brawler in certification.players; hive 2026-08-23: add ANTHROPIC_API_KEY_URI to drafter player env)
+2026-08-28T11:14:25Z 20 builder returned follow-up: commit 70db5596 ci.yml run 33166095890 success on main (verified: conclusion=success headSha=70db5596b8ab90bb9207faf7e22ddb946a800375 == main HEAD); cert seats all 3 declared players; drafter env has ANTHROPIC_API_KEY_URI
+2026-08-28T11:14:25Z progress phase=20 marker=ci-run-33166095890
+2026-08-28T11:14:25Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-28T11:14:25Z 30 reviewer dispatched round=1
+2026-08-28T11:14:25Z heartbeat phase=30
