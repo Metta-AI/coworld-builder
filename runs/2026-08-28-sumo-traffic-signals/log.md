@@ -6,3 +6,7 @@
 2026-08-28T13:23:24Z 00 -> 10 phase transition: STATE.phase=10 written before designer dispatch
 2026-08-28T13:24:03Z 10 starter=Metta-AI/coworld-ctf — real-time tick loop on a grid road network, rules written for this coworld (own vehicle sim, not a SUMO port, no external engine); precedent: gridlock, flatland
 2026-08-28T13:24:41Z 10 designer dispatched (round 1) thread=sthr_01GVYNt5fkjXYf8cKXfHcMwH output=runs/2026-08-28-sumo-traffic-signals/design.md
+2026-08-28T13:47:26Z 10 designer returned r1: design.md (1854 lines) collected from file
+2026-08-28T13:47:26Z 10 checklist: starter-named=x num_agents-fixed(4,all-variants+cert)=x resolution-order-numbered=x scoring-formula+sign+rank=x end-conditions+reason-enum=x observation-visible/hidden=x reply-schema-caps+rune-trunc=x both-policies-env-switched+baseline-algos=x parallel-batch+budget<=720s=x degrade-never-hang=x two-name-spaces=x viewer-static-wasm+hook+readouts+360px=x viewer-four-files-one-starter(coworld-ctf)+loaded/error-attrs=x chrome-provenance+removed-list+zoom-dropped=x transport-rules=x replay-self-sufficient=x packaging(compose+manifest+docs+protocols-both)=x tests(sim,bounded-orders,e2e-replay,utf8,viewer-smoke-executed)=x out-of-scope-nonempty=x — ACCEPTED round 1 (chrome_common sha256 verified against starter: match)
+2026-08-28T13:47:26Z progress phase=10 marker=design.md written and accepted r1
+2026-08-28T13:47:26Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
