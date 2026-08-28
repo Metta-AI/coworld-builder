@@ -32,3 +32,8 @@
 2026-08-28T17:42:37Z 50 seed 200: league_0a4b0ef0-557c-4c54-b439-788cede68a73 (lseed_927ab17e)
 2026-08-28T17:42:37Z 50 division PUT 200: div_013d13d5-8ef6-430d-bc77-592c81a0aa5a; settings POST 200 (round_robin, elo k32, filler_policy, 15min)
 2026-08-28T17:42:37Z heartbeat phase=50
+2026-08-28T17:45:17Z 50 champ1 submit ok run=33195949651 sub_d1a7ae82 (signals-greenwave:v1, daveey); champ2 submit ok run=33196002305 sub_1cca35af (signals-gatekeeper:v1, daveey-1)
+2026-08-28T17:45:17Z 50 fillers POST 200: signals-greedy f0398934 + signals-fixedcycle 9ccb76ef (neither champion); unpause 200; trigger 200
+2026-08-28T17:45:17Z 50 rounds: r1 failed (placement-time, pre-filler; known pattern) — r2 pending with both champions in entrant_attributions
+2026-08-28T17:45:17Z progress phase=50 marker=league_0a4b0ef0+round2-pending
+2026-08-28T17:45:17Z 50 -> 60 phase transition: STATE.phase=60 written before verifier dispatch
