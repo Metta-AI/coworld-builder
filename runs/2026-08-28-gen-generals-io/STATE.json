@@ -34,9 +34,13 @@
     "division": "div_4deef2a2-7942-4235-8dd0-effed3d31905"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_6f2a048e-e9c0-4549-9f82-caf18c1bb98f",
+      "round_6ef8dba1-4398-49ff-bffd-29062836a405"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/16454404-98c1-4ffd-b4a6-f27965b88be1.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33155441744"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T08:05:01Z",
+  "heartbeat_at": "2026-08-28T08:37:16Z",
   "session_ended_at": null,
   "session_id": "3c0b203f",
   "log": "runs/2026-08-28-gen-generals-io/log.md"

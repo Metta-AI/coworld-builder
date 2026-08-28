@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2005,"clock":"TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND","scorebug":"daveey LAND 2 3 army · 0 cities Baseline LAND 1 3 army · 0 cities TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND daveey-1 LAND 2 3 army · 0 cities Baseline (2) LAND 1 3 army · 0 cities","feed_lines":0}
+scrub readouts: 0%="TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND"  50%="TURN 171 / 240 PLAN 22/30 · 3 CROWNS STANDING · GREEN LEADS 73 LAND"  100%="FINAL GAME OVER"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

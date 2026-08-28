@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 2005,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_faf3b0f4-c6b0-43e0-88b8-772046e5c61d/sha256%3A6fd438487a909a3b2144f8fb74b4db8db4bd3d13e650f3912481e14744126e94/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F16454404-98c1-4ffd-b4a6-f27965b88be1.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND",
+  "scorebug": "daveey LAND 2 3 army · 0 cities Baseline LAND 1 3 army · 0 cities TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND daveey-1 LAND 2 3 army · 0 cities Baseline (2) LAND 1 3 army · 0 cities",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "TURN 2 / 240 PLAN 1/30 · 4 CROWNS STANDING · RED LEADS 2 LAND"
+    },
+    {
+      "at": "50%",
+      "clock": "TURN 171 / 240 PLAN 22/30 · 3 CROWNS STANDING · GREEN LEADS 73 LAND"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

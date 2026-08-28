@@ -47,3 +47,8 @@
 2026-08-28T08:05:01Z 50 -> 60 phase transition
 2026-08-28T08:05:01Z heartbeat phase=60
 2026-08-28T08:05:44Z 60 dispatch verifier: 8 checks per prompts/60-verify.md -> VERIFY.md + viewer-check/
+2026-08-28T08:37:16Z 60 verifier returned: VERIFY.md all-true 8/8; rounds 2+3 completed (round1 failed pre-filler, recorded); replay round3 16454404-...be1.replay reason=complete endRule=conquest 37/37 champion plans source=llm fallbacks=0; logs CLEAN both rounds; static route confirmed via SSR playlist (featured_match null platform-wide, documented); viewer-check run=33155441744 loaded=true 2005ms clocks differ; leaderboard daveey-1 1030.5 (2 wins) / daveey 969.5
+2026-08-28T08:37:16Z 60 verifier observations (non-blocking, for judge + close): REPLAY HASH MISMATCH banner lit on both hosted replays (viewer degrades to recorded plans as designed; CI smoke replay does not reproduce it); mmwarn banner overlaps endcard GAME OVER + clips fog-lens chips; feed cards stack overlapping on round-2 probe; canvas_text 0-drawn (all chrome text is DOM); round3 seated crown in both filler seats
+2026-08-28T08:37:16Z progress phase=60 marker=round_6ef8dba1-4398-49ff-bffd-29062836a405
+2026-08-28T08:37:16Z 60 dispatch judge on VERIFY.md vs SPEC definition-of-done -> reviews/verify-verdict.md
+2026-08-28T08:37:16Z heartbeat phase=60
