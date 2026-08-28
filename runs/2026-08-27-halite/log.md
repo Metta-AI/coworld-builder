@@ -33,3 +33,7 @@
 2026-08-28T07:18:30Z 00 attempts_reset phase=30 reason=progress marker=r2-review.md
 2026-08-28T07:18:30Z 00 resume at phase 30 attempt=1 session=2c908cae
 2026-08-28T07:19:21Z 30 r2 fixer re-dispatched (previous session died before r2-fixes.md was written)
+2026-08-28T07:39:23Z 30 r2 fixer returned reviews/r2-fixes.md — 5 fixed (F1,F2,F3,F4,F7) / 2 refuted (F5,F6); main cb6dd64cb2c09be25e6b1dc47896d4e7bba87c8b CI green 33143385643
+2026-08-28T07:39:23Z progress phase=30 marker=r2-fixes.md
+2026-08-28T07:39:23Z 30 r2 judge dispatched
+2026-08-28T07:39:23Z heartbeat phase=30
