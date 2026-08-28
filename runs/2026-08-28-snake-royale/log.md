@@ -26,3 +26,6 @@
 2026-08-28T05:41:03Z 30 reviewer returned r1-review.md (861 lines, findings=25; hard-evidence: F1 scrubber s:<tick> parsed as fraction, F2 baseline ladder margin -0.097, F3 test13 loosened to tautology in 5537503, F5 worker OffscreenCanvas escapes canvas_text gate)
 2026-08-28T05:41:03Z 30 fixer dispatched round=1
 2026-08-28T05:41:03Z heartbeat phase=30
+2026-08-28T07:00:02Z 30 fixer returned r1-fixes.md: 24/25 fixed one-commit-each, F20 refuted, F8 divergence recorded; main=d8652fa2d92b14a6da207d71076027f806f7849e CI run=33149313876 green
+2026-08-28T07:00:02Z 30 judge dispatched round=1
+2026-08-28T07:00:02Z heartbeat phase=30
