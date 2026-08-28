@@ -62,3 +62,7 @@
 2026-08-28T23:21:17Z 60 builder v2 dispatched thread=sthr_01KDUULfYUsdx3KEpWZKqw3X target=addendum-v2 implementation, ci green, no release dispatch
 2026-08-28T23:21:17Z heartbeat phase=60
 2026-08-28T23:22:54Z 60 INCIDENT: addendum v2 lost — coordinator's 'git reset --hard origin/main' (used as contents-API sync) ran after a failed design.md publish (jq argv limit) and reverted the working tree before the python retry read it; commit 7e5464a is empty. Builder v2 correctly refused to build from pointers. Fix: designer re-emits; publish will verify remote blob sha + line count BEFORE any reset; resets replaced by per-file checkout going forward
+2026-08-28T23:24:42Z 60 addendum v2 re-emitted and persisted: design.md 2851 lines, remote blob 878f41b8 verified byte-identical after round-trip fetch; durable copy at /tmp/design-with-addendum-v2.md
+2026-08-28T23:24:42Z progress phase=60 marker=design.md-addendum-v2-persisted-blob-878f41b8
+2026-08-28T23:24:42Z 60 builder v2 resumed (same thread sthr_01KDUULfYUsdx3KEpWZKqw3X) against the persisted addendum
+2026-08-28T23:24:42Z heartbeat phase=60
