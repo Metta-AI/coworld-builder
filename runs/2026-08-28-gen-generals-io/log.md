@@ -30,3 +30,7 @@
 2026-08-28T07:48:07Z 30 -> 40 phase transition
 2026-08-28T07:48:07Z heartbeat phase=40
 2026-08-28T07:48:45Z 40 dispatch builder for release chain: coworld-release.yml v0.1.0 first, policies from tools/ci/policies.json
+2026-08-28T07:59:50Z 40 builder returned: release v0.1.0 one-shot GREEN run=33152888435; ok/canonical/certify.ok true, replay_liveness skipped-static, secret_put true; cow_faf3b0f4-c6b0-43e0-88b8-772046e5c61d; 4 policies v1 uploaded, champion2 owned by ply_bac48eb1; release-result.json persisted to run dir
+2026-08-28T07:59:50Z progress phase=40 marker=release-run-33152888435
+2026-08-28T07:59:50Z 40 -> 50 phase transition
+2026-08-28T07:59:50Z heartbeat phase=50

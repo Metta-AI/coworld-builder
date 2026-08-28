@@ -5,19 +5,24 @@
   "slug": "gen-generals-io",
   "repo": "https://github.com/Metta-AI/cogame-gen-generals-io",
   "starter": "coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_faf3b0f4-c6b0-43e0-88b8-772046e5c61d",
+    "manifest_sha": "sha256:6fd438487a909a3b2144f8fb74b4db8db4bd3d13e650f3912481e14744126e94",
+    "release_run_id": "33152888435"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "gen-generals-io-landgrab:v1",
+    "champion2": "gen-generals-io-regicide:v1",
+    "fillers": [
+      "gen-generals-io-sprawl:v1",
+      "gen-generals-io-crown:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T07:48:07Z",
+  "heartbeat_at": "2026-08-28T07:59:50Z",
   "session_ended_at": null,
   "session_id": "3c0b203f",
   "log": "runs/2026-08-28-gen-generals-io/log.md"
