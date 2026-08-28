@@ -16,3 +16,7 @@
 2026-08-28T16:41:10Z 20 propagate-secrets run 33191112518 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-atari-57
 2026-08-28T16:41:30Z 20 builder dispatched round=1
 2026-08-28T19:40:24Z 00 resume at phase 20 attempt=1 session=f573b7e6
+2026-08-28T19:42:17Z 20 builder round 1 complete (background thread survived prior session): pushes d31e0f79 + 309a9b34; ci.yml run 33201067921 success, run 33203089677 success on main@309a9b34
+2026-08-28T19:42:17Z 20 exit checks pass: files+exec bits ok, placeholders clean, 3 workflows parse (release inputs version/policies/put_secret/skip_certify; submit inputs player_id/policy/league_id), release-result+submit-result artifacts present, champion2 player=ply_bac48eb1-662e-44f8-973d-f3e016dccf5d, num_agents=4 in 3 variants + cert fixture
+2026-08-28T19:42:17Z progress phase=20 marker=33203089677
+2026-08-28T19:42:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
