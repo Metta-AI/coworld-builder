@@ -340,3 +340,4 @@
 2026-08-28T22:02:22Z heartbeat: cap reached (live=3/3)
 2026-08-28T22:12:13Z heartbeat: cap reached (live=3/3)
 2026-08-28T22:42:20Z heartbeat: cap reached (live=3/3)
+2026-08-28T23:24:08Z 00 skipped idea=1217965069486142 reason="pinned framework Metta-AI/polyworld is private and not one of the six starters; human-in-the-loop 3D mode unsupported; 2D remap materially different" card=1217965070769672
