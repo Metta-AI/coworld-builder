@@ -20,3 +20,6 @@
 2026-08-28T20:49:37Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-28T20:49:37Z heartbeat phase=30
 2026-08-28T20:50:26Z 30 reviewer dispatched (round 1) thread=sthr_019HF8KgKSi4YyFHNEW5yZaL sha=d8f9e7c2 output=runs/2026-08-28-minigrid/reviews/r1-review.md
+2026-08-28T21:12:16Z 30 reviewer returned r1: r1-review.md (706 lines) collected from file — 1 blocking-candidate (B1 manifest game.runnable shape, coworld build KeyError reproduced), 18 non-blocking, 3 minor
+2026-08-28T21:12:16Z progress phase=30 marker=r1-review.md
+2026-08-28T21:12:16Z heartbeat phase=30
