@@ -27,3 +27,7 @@
 2026-08-28T19:58:56Z 30 -> 40 phase transition
 2026-08-28T19:59:13Z 40 builder dispatched for release (version 0.1.0 first attempt)
 2026-08-28T19:59:13Z heartbeat phase=40
+2026-08-28T20:10:17Z 40 release dispatch 1: version=0.1.0 run=33206322967 step_failed=null — ok/canonical/certify.ok/secret_put all true, hosted certification certified, replay_liveness skipped-static; 4 policy labels v1; champ2 player_id matches
+2026-08-28T20:10:17Z 40 release-result.json persisted to runs/2026-08-28-procgen/
+2026-08-28T20:10:17Z progress phase=40 marker=release run 33206322967 canonical
+2026-08-28T20:10:17Z 40 -> 50 phase transition
