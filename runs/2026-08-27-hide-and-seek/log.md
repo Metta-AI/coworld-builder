@@ -43,3 +43,12 @@
 2026-08-28T02:13:10Z 50 settings POST 200: round_robin/filler_policy, elo k=32, round_interval=15m
 2026-08-28T02:13:10Z 50 dispatch coworld-submit.yml champion1 hns-quartermaster:v3 as ply_44ae9048 (daveey)
 2026-08-28T02:13:10Z heartbeat phase=50
+2026-08-28T02:14:05Z 50 champ1 submit run 33135243507 success: ok=true sub_9fc0f915-ff33-4fda-9cad-4d661422da80 (hns-quartermaster:v3, ply_44ae9048)
+2026-08-28T02:14:05Z 50 dispatch coworld-submit.yml champion2 hns-torchbearer:v3 as ply_bac48eb1 (daveey-1)
+2026-08-28T02:16:12Z 50 champ2 submit run 33135290179 success: ok=true sub_e8ad2b59-2737-4127-8c72-4c7679b92fe3 (hns-torchbearer:v3, ply_bac48eb1, uploads row confirms daveey-1)
+2026-08-28T02:16:12Z 50 filler-policies POST 200: hns-burrow:v3 fcef50fe-c1b7-4e23-a82e-315f2c9341e2, hns-scatter:v3 21ddd411-3d38-43ce-a1d0-f9c41e92c8f3 (neither champion)
+2026-08-28T02:16:12Z 50 rounds-paused POST 200: paused=false; trigger-round POST 200: workflow ladder-league_7931991b
+2026-08-28T02:16:12Z 50 rounds: round 1 failed (Temporal RoundWorkflow, auto-fired before fillers registered), round 2 pending with both champions in entrant_attributions
+2026-08-28T02:16:12Z progress phase=50 marker=league_7931991b div_8ea628e9 sub_9fc0f915+sub_e8ad2b59 fillers registered round2 pending
+2026-08-28T02:16:12Z 50 -> 60 phase transition: entering verify
+2026-08-28T02:16:12Z heartbeat phase=60
