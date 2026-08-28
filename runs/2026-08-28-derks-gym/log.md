@@ -77,3 +77,6 @@
 2026-08-28T15:40:34Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-28T15:41:24Z 75 atlas dispatch=33186360746 region=paintlands at=202,270 clearance=39.5 (continent: team zero-sum MOBA, parent moba is paintlands)
 2026-08-28T15:45:48Z 75 atlas dispatch=33186710763 region=paintlands at=202,270 clearance=39.5 extra_cities=48 (placed for other runs: gen-generals-io grid-wars halite lux-ai magent-battle smac-starcraft-micro vizdoom-deathmatch pommerman snake-royale physics-bodies hide-and-seek -> paintlands; atari-cabinet flatland rware-warehouse grf-football walker-waterworld pistonball particle-worlds knights-archers citysim -> simulations; board-gauntlet fog-of-war-boards goofspiel-oshi-zumo hanabi liars-dice trick-taking cogiavelli cogplomacy -> tabletop; coins commons-family cooperative-hunting factory-commons fruit-market gift-refinements territory firm chemistry matrix-games gnomic cogchemists -> commons; garble chorus hidden-agenda cogmud cogolf negotiation-games -> parlour; daycare collab-cooking -> shire)
+2026-08-28T15:47:38Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20705 status=pr_open (48 extra cities placed for other runs; automerge armed, lands via Graphite queue)
+2026-08-28T15:47:38Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20705
+2026-08-28T15:47:38Z 75 -> 80 phase transition: STATE.phase=80 written
