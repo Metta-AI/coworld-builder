@@ -5,19 +5,24 @@
   "slug": "sumo-traffic-signals",
   "repo": "https://github.com/Metta-AI/cogame-sumo-traffic-signals",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 1
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_ec8a6c5d-d31e-4c81-9b8d-2f5d404c1944",
+    "manifest_sha": "sha256:77577277184749d6d02741c62a62de8109ac4b6c2b752ac788970570e3653298",
+    "release_run_id": "33195026416"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "signals-greenwave:v1",
+    "champion2": "signals-gatekeeper:v1",
+    "fillers": [
+      "signals-greedy:v1",
+      "signals-fixedcycle:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T17:30:29Z",
+  "heartbeat_at": "2026-08-28T17:41:38Z",
   "session_ended_at": null,
   "session_id": "072b9408",
   "log": "runs/2026-08-28-sumo-traffic-signals/log.md"

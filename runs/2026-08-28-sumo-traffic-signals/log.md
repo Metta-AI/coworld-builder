@@ -26,3 +26,6 @@
 2026-08-28T17:29:45Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-28T17:29:45Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-28T17:30:29Z 40 builder dispatched for release thread=sthr_016HpgLgESXdHioos8Lzs9Zi version-plan=0.1.0
+2026-08-28T17:41:38Z 40 release 0.1.0 dispatch 1/3: run=33195026416 step_failed=null canonical=true certified secret_put=true cow_id=cow_ec8a6c5d-d31e-4c81-9b8d-2f5d404c1944; 4 policy labels distinct, champion2 player ok
+2026-08-28T17:41:38Z progress phase=40 marker=release-run-33195026416
+2026-08-28T17:41:38Z 40 -> 50 phase transition: STATE.phase=50 written
