@@ -88,3 +88,11 @@
 2026-08-28T09:01:34Z progress phase=50 marker=sub_911a6dda-c291-4fb8-85a9-e145677bbd8b
 2026-08-28T09:01:34Z 60 verifier re-dispatched (attempt 2 on check 4; v2 rounds >=5 only)
 2026-08-28T09:01:34Z heartbeat phase=60
+2026-08-28T09:03:07Z 60 attempt2 start — scoping to rounds >=5 (v2 policies); round 4 ereq_0223cacb confirmed OLD: cow_97d89fb8 + v1 version ids 734ab104/ce5ab226/dc3af747
+2026-08-28T09:03:07Z 60 poll rounds 09:02Z: round 5 pending (created 09:00:47Z), rounds 1-4 completed but v1 — 0 in-scope completed
+2026-08-28T09:03:07Z 60 check7 TRUE — committed runs/2026-08-27-halite/release-result.json (0.1.1, commit 79132de): certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-08-28T09:07:54Z 60 poll rounds 09:07:44Z: round 5 COMPLETED 09:04:52Z — 1 in-scope (v2) completed, need 2
+2026-08-28T09:08:43Z 60 check4 round5 TRUE — llm_turns=[10,20,0,0], fallbacks all zero, 30/30 note events source=llm (seat0 10, seat1 20), zero 403/holding-directive texts; protocol halite/1, reason complete
+2026-08-28T09:08:43Z 60 check5 round5 TRUE — hosted log grep CLEAN; game container llm_turns=[10, 20, 0, 0]
+2026-08-28T09:08:49Z 60 check2 TRUE — leaderboard bare list: daveey halite-tidereader:v2 rank1 1008.23 rp=5 wins=3; daveey-1 halite-privateer:v2 rank2 991.77 rp=5 wins=2; fillers absent
+2026-08-28T09:08:49Z heartbeat phase=60
