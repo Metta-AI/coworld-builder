@@ -121,3 +121,6 @@
 2026-08-28T12:48:42Z progress phase=70 marker=discord_message_id=1542878560727859311
 2026-08-28T12:48:42Z phase 70 -> 75
 2026-08-28T12:48:42Z heartbeat phase=75
+2026-08-28T12:50:27Z 75 atlas continent=paintlands — zero-sum four-seat FFA with fleet combat central (collision rule), RTS-like; precedent lux-ai/gen-generals-io. Spot picked against main+pending PRs (lux-ai 202,270; gen-generals-io 202,270; snake-royale 196,318) to avoid stacking
+2026-08-28T12:50:27Z 75 atlas dispatch=33172728700 region=paintlands at=193,291 clearance=22.9
+2026-08-28T12:50:27Z heartbeat phase=75
