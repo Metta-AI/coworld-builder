@@ -16,3 +16,6 @@
 2026-08-28T18:38:16Z 20 -> 30 phase transition review_round=1
 2026-08-28T18:38:44Z 30 reviewer dispatched round=1 sha=556cb50f (checkout /workspace/cogame-procgen)
 2026-08-28T18:38:44Z heartbeat phase=30
+2026-08-28T19:00:19Z 30 reviewer returned r1-review.md (742 lines, 25 findings F1-F25, reviewer sees zero blocking; 6 unrecorded deviations F2/F12/F13/F14/F19/F23; judge-flags F22,F25; 5 could-not-determine)
+2026-08-28T19:00:19Z 30 fixer dispatched round=1
+2026-08-28T19:00:19Z heartbeat phase=30
