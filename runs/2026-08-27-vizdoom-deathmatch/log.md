@@ -60,3 +60,5 @@
 2026-08-28T02:27:33Z progress phase=70 marker=discord_message_id=1542722202187603998
 2026-08-28T02:27:33Z 70 -> 75 phase transition: entering atlas
 2026-08-28T02:27:33Z heartbeat phase=75
+2026-08-28T02:28:26Z 75 atlas continent=paintlands (zero-sum 4v4 shooter — rails call); slug live in /api/coworlds (episodes_7d=3)
+2026-08-28T02:28:26Z 75 atlas dispatch=33136003784 region=paintlands at=202,270 clearance=39.5
