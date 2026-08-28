@@ -38,3 +38,11 @@
 2026-08-28T08:02:30Z 50 note: GET /leagues returns a bare array here, not {entries}; used league_id from the seed response (retry approach 1)
 2026-08-28T08:02:40Z 50 divisions PUT 200 div_4deef2a2-7942-4235-8dd0-effed3d31905
 2026-08-28T08:03:10Z 50 settings POST 200 (elo k=32, round_robin, filler_policy, 15min interval)
+2026-08-28T08:07:30Z 50 champion1 submit run=33153653910 success ok=true sub_91b3996b (landgrab:v1, daveey)
+2026-08-28T08:10:40Z 50 champion2 submit run=33153686237 success ok=true (regicide:v1, daveey-1)
+2026-08-28T08:12:10Z 50 policy-versions resolved: landgrab=6ab310de(daveey) regicide=d9eb7254(daveey-1) sprawl=5b80935f crown=a0a62a58
+2026-08-28T08:12:40Z 50 filler-policies POST 200: sprawl+crown registered (neither champion); rounds-paused=false; trigger-round OK
+2026-08-28T08:16:00Z 50 rounds: round1 failed (Temporal RoundWorkflow pre-filler auto-round race — known; fillers were set before MY trigger), round2 pending with entrant_attributions = both champions; exit criterion met
+2026-08-28T08:05:01Z progress phase=50 marker=league_03508cde-90d2-43fa-a963-32265afd4737
+2026-08-28T08:05:01Z 50 -> 60 phase transition
+2026-08-28T08:05:01Z heartbeat phase=60

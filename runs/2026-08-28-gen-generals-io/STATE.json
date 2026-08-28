@@ -5,9 +5,10 @@
   "slug": "gen-generals-io",
   "repo": "https://github.com/Metta-AI/cogame-gen-generals-io",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
-    "40": 1
+    "40": 1,
+    "50": 1
   },
   "review_round": 1,
   "coworld": {
@@ -23,11 +24,14 @@
       "gen-generals-io-sprawl:v1",
       "gen-generals-io-crown:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "5b80935f-88ce-4130-9024-d1a3da6f55f0",
+      "a0a62a58-0ba4-4539-aef8-22e39e261ed0"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_03508cde-90d2-43fa-a963-32265afd4737",
+    "division": "div_4deef2a2-7942-4235-8dd0-effed3d31905"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T07:59:50Z",
+  "heartbeat_at": "2026-08-28T08:05:01Z",
   "session_ended_at": null,
   "session_id": "3c0b203f",
   "log": "runs/2026-08-28-gen-generals-io/log.md"
