@@ -7,7 +7,8 @@
   "starter": "coworld-ctf",
   "phase": "60",
   "phase_attempts": {
-    "40": 1
+    "40": 1,
+    "60": 1
   },
   "review_round": 1,
   "coworld": {
@@ -33,9 +34,23 @@
     "division": "div_721f571a-ece7-4ed9-8b1c-15eb2cd072be"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      {
+        "n": 1,
+        "id": "round_d23b23fc-be7d-4e96-aa40-b147106b3eda"
+      },
+      {
+        "n": 2,
+        "id": "round_a4ab0f21-6588-4b6c-8eb0-5d25565535ee"
+      },
+      {
+        "n": 3,
+        "id": "round_aa501498-e555-4a71-b4cb-bae6c84076b1"
+      }
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33217607488"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +68,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:13:04Z",
+  "heartbeat_at": "2026-08-28T22:59:52Z",
   "session_ended_at": null,
   "session_id": "65d65a2f",
   "log": "runs/2026-08-28-minigrid/log.md"
