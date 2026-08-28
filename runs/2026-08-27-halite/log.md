@@ -107,3 +107,5 @@
 2026-08-28T09:25:08Z 60 check6 TRUE — SSR playlist[0] = halite.r6.e1, coworldVersion 0.1.1, cow_c6743b6c, replay da1179c8; session -> static index.html for cow_c6743b6c/sha256%3Acd52ca31... ready:true, no /client/replay
 2026-08-28T09:27:07Z 60 check8 TRUE — viewer-check run 33159290682 (dispatched 09:25:16Z, green, url: line confirms cow_c6743b6c + sha256:cd52ca31 + replay da1179c8): loaded=true ms=2800, bridge ready, clocks 0%=TURN 8 MINING / 50%=TURN 200 RAIDING / 100%=TURN 398 HAULING (all differ)
 2026-08-28T09:27:07Z heartbeat phase=60
+2026-08-28T09:33:41Z 60 VERIFY.md attempt 2 written — ALL 8 TRUE (supersedes attempt-1 pass whose check 4 was FALSE against 0.1.0/v1); v2 rounds 5+6, llm_turns [20,20,0,0] / [10,20,0,0], 0 fallbacks, replay da1179c8, viewer-check 33159290682
+2026-08-28T09:33:41Z heartbeat phase=60
