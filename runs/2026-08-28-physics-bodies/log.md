@@ -36,3 +36,10 @@
 2026-08-28T14:22:08Z heartbeat phase=40
 2026-08-28T14:22:54Z 40 builder dispatched (same thread sthr_017sTJAQqMeNGUGaYEMbpXDE) for release v0.1.0
 2026-08-28T14:22:54Z heartbeat phase=40
+2026-08-28T15:18:57Z 40 dispatch 1 v0.1.0 run=33179907772 step_failed=manifest-CLI-validate (workflow bug: template lacks game.version by design) fix=433d35d validate dist manifest post-build
+2026-08-28T15:18:57Z 40 dispatch 2 v0.1.1 run=33180313131 step_failed=upload-coworld (hosted smoke 1/5: slot 1 never joined) canonical=false
+2026-08-28T15:18:57Z 40 dispatch 3 v0.1.2 run=33181453269 step_failed=upload-coworld (hosted smoke 3/5, same) — lobby-budget bump cfcb01b was a wrong diagnosis
+2026-08-28T15:18:57Z 40 root cause found: admit loop latched playerIndices=-1 permanently on out-of-order slot join (Table iteration order); fix 3b913af sorts pending by slot + retries non-fatal refusals; regression test fails on old code; CI green 33183874388
+2026-08-28T15:18:57Z 40 coordinator authorises dispatch 4 v0.1.3: cert-failure fix count is 2 (budget bump, root-cause fix) — Blocked bar 'survives three distinct fixes' not met; 0.1.0 was a distinct workflow bug. Keeping cfcb01b as insurance; variants' 720 untouched
+2026-08-28T15:18:57Z progress phase=40 marker=fix-3b913af+ci-33183874388
+2026-08-28T15:18:57Z heartbeat phase=40
