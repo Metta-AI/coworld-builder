@@ -18,3 +18,5 @@
 2026-08-28T11:14:25Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-28T11:14:25Z 30 reviewer dispatched round=1
 2026-08-28T11:14:25Z heartbeat phase=30
+2026-08-28T11:26:50Z 30 reviewer returned r1: reviews/r1-review.md 15 findings (F1-F15), reviewer-assessed 0 blocking
+2026-08-28T11:26:50Z 30 fixer dispatched round=1
