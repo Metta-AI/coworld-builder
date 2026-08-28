@@ -43,3 +43,7 @@
 2026-08-28T07:54:24Z heartbeat phase=40
 2026-08-28T07:54:56Z 40 builder dispatched for release (version 0.1.0 first attempt)
 2026-08-28T08:02:46Z 40 dispatch version=0.1.0 run=33153320765 step_failed=none decision=first dispatch, policies from tools/ci/policies.json — ok/canonical/certify.ok true, replay liveness skipped (static bundle), 4 policies at v1, secret_put true; no retry needed
+2026-08-28T08:03:35Z 40 builder returned: release 0.1.0 canonical+certified first dispatch; cow_97d89fb8-8a54-423b-ac60-7080b318271a run 33153320765
+2026-08-28T08:03:35Z progress phase=40 marker=release-run-33153320765
+2026-08-28T08:03:35Z 40 -> 50 phase transition
+2026-08-28T08:03:35Z heartbeat phase=50

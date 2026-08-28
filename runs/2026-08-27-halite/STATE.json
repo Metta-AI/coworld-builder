@@ -5,22 +5,24 @@
   "slug": "halite",
   "repo": "Metta-AI/cogame-halite",
   "starter": "cogame-moba",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "30": 1
   },
   "review_round": 2,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_97d89fb8-8a54-423b-ac60-7080b318271a",
+    "manifest_sha": "sha256:1c51119aacefa5ae5f99f1e1c06e992578486333a81e3d8395d60745dcd7630b",
+    "release_run_id": "33153320765"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
-    "filler_version_ids": []
+    "champion1": "halite-tidereader:v1",
+    "champion2": "halite-privateer:v1",
+    "fillers": [
+      "halite-tidewalker:v1",
+      "halite-corsair:v1"
+    ]
   },
   "league": {
     "id": "",
@@ -47,7 +49,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T07:54:24Z",
+  "heartbeat_at": "2026-08-28T08:03:35Z",
   "session_ended_at": null,
   "session_id": "2c908cae",
   "log": "runs/2026-08-27-halite/log.md"
