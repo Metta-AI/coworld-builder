@@ -67,3 +67,7 @@
 2026-08-28T08:20:28Z 75 atlas dispatch=33154931587 region=paintlands at=202,270 clearance=39.5
 2026-08-28T08:25:29Z 75 atlas dispatch 1 failed: 46 unplaced leagues (hide-and-seek PR 20691 + ~40 other atlas PRs unmerged, main stale); fix per step-8: dispatch 2 with all 46 as extra_cities, fresh non-colliding spots (regions from each run's recorded STATE.atlas; coins/gen-generals-io/halite->paintlands|commons decided here; citysim->simulations gnomic->parlour); snake-royale moved 202,270->196,318 (202,270 is hide-and-seek's pending dot)
 2026-08-28T08:25:29Z 75 atlas dispatch=33155253060 region=paintlands at=196,318 clearance=22.9 extra_cities=46
+2026-08-28T08:27:30Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20702 status=pr_open (46 extra cities placed for other runs: atari-cabinet board-gauntlet chemistry chorus citysim cogchemists cogiavelli cogmud cogolf cogplomacy coins collab-cooking commons-family cooperative-hunting daycare factory-commons firm flatland fog-of-war-boards fruit-market garble gen-generals-io gift-refinements gnomic goofspiel-oshi-zumo grf-football grid-wars halite hanabi hidden-agenda hide-and-seek knights-archers liars-dice lux-ai magent-battle matrix-games negotiation-games particle-worlds pistonball pommerman rware-warehouse smac-starcraft-micro territory trick-taking vizdoom-deathmatch walker-waterworld)
+2026-08-28T08:27:30Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20702
+2026-08-28T08:27:30Z 75 -> 80 phase transition
+2026-08-28T08:27:30Z heartbeat phase=80
