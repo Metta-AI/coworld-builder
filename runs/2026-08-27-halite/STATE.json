@@ -5,7 +5,7 @@
   "slug": "halite",
   "repo": "Metta-AI/cogame-halite",
   "starter": "cogame-moba",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "30": 1,
     "60": 1
@@ -34,9 +34,13 @@
     "division": "div_165193cb-f037-4f20-ac3d-25a3a4a7d440"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_35e9cbf2-c630-44c0-b088-9e9f5990d2f7",
+      "round_d608a35e-28b2-4282-862b-33f49d3db7f2"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/da1179c8-90e2-4c7c-833b-bc0e88145f16.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33159290682"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T12:38:40Z",
+  "heartbeat_at": "2026-08-28T12:46:46Z",
   "session_ended_at": null,
   "session_id": "eb5243fd",
   "log": "runs/2026-08-27-halite/log.md"

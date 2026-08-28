@@ -112,3 +112,7 @@
 2026-08-28T12:38:40Z 00 attempts_reset phase=60 reason=progress marker=VERIFY.md-attempt-2-all-true
 2026-08-28T12:38:40Z 00 resume at phase 60 attempt=1 session=eb5243fd
 2026-08-28T12:39:49Z 60 judge dispatched — verify-verdict over VERIFY.md attempt 2 (all 8 TRUE, v2 scope rounds>=5)
+2026-08-28T12:46:46Z 60 judge returned verify-verdict.md BLOCKING: 0 — all 8 checks independently reproduced (rounds now 19 completed; round-19 replay llm_turns=[20,20,0,0], 0 fallbacks; leaderboard daveey rank1 / daveey-1 rank2)
+2026-08-28T12:46:46Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-28T12:46:46Z phase 60 -> 70
+2026-08-28T12:46:46Z heartbeat phase=70
