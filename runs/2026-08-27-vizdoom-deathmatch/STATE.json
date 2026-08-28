@@ -5,7 +5,7 @@
   "slug": "vizdoom-deathmatch",
   "repo": "https://github.com/Metta-AI/cogame-vizdoom-deathmatch",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "vzd-rusher:v1",
       "vzd-sentry:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "009fc22a-b786-4708-9c49-070061583e0e",
+      "8dd54435-87ee-4353-ad6e-9ff5b5374b63"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_00dcb926-7f23-4507-8a2d-6684cb0e7c4b",
+    "division": "div_67b01fa1-41ae-493c-8a1d-bb69f08bd83a"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T01:48:36Z",
+  "heartbeat_at": "2026-08-28T01:52:30Z",
   "session_ended_at": null,
   "session_id": "7565f38f",
   "log": "runs/2026-08-27-vizdoom-deathmatch/log.md"

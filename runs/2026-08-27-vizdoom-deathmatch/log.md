@@ -38,3 +38,12 @@
 2026-08-28T01:48:36Z progress phase=40 marker=release-run-33133544667 release-result.json
 2026-08-28T01:48:36Z 40 -> 50 phase transition: entering league
 2026-08-28T01:48:36Z heartbeat phase=50
+2026-08-28T01:52:30Z 50 seed POST 200 lseed_daa2baf2; league league_00dcb926-7f23-4507-8a2d-6684cb0e7c4b (GET /leagues returns bare array, not .entries — filtered client-side)
+2026-08-28T01:52:30Z 50 division PUT 200 div_67b01fa1-41ae-493c-8a1d-bb69f08bd83a; settings POST 200 (elo, round_robin, filler_policy, 15 min)
+2026-08-28T01:52:30Z 50 champion1 submit run 33134044321 ok=true vzd-pointman:v1 daveey; champion2 submit run 33134075747 ok=true vzd-crossfire:v1 daveey-1
+2026-08-28T01:52:30Z 50 policy-versions resolved: pointman d4fdd9d3 daveey, crossfire 3a4fba26 daveey-1, rusher 009fc22a, sentry 8dd54435
+2026-08-28T01:52:30Z 50 filler-policies POST 200: rusher+sentry UUIDs only, neither champion; rounds-paused false 200; trigger-round 200
+2026-08-28T01:52:30Z 50 rounds: round 1 failed (Temporal RoundWorkflow, auto-round before fillers landed — superseded), round 2 pending with both champions in entrant_attributions
+2026-08-28T01:52:30Z progress phase=50 marker=league_00dcb926-7f23-4507-8a2d-6684cb0e7c4b round-2-pending
+2026-08-28T01:52:30Z 50 -> 60 phase transition: entering verify
+2026-08-28T01:52:30Z heartbeat phase=60
