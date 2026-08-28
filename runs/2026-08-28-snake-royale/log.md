@@ -6,3 +6,8 @@
 2026-08-28T03:02:32Z heartbeat phase=10
 2026-08-28T03:04:08Z 10 starter=coworld-ctf reason=simultaneous per-tick grid loop with new merged rules (not a bit-exact port of one env) — starter-table row 2; precedent matrix-games/paintball/hide-and-seek
 2026-08-28T03:04:08Z 10 designer dispatched round=1
+2026-08-28T03:24:46Z 10 designer returned design.md (1674 lines) round=1
+2026-08-28T03:24:46Z 10 checklist: starter[x] num_agents[x]=4 resolution-order[x]1-15 scoring[x]placement-permille-zero-sum end-conditions[x]complete/deadline/fault observation[x] reply-caps[x]say24/notes160-rune both-policies[x]strangler/glutton+coil/forager parallel-batch+budget[x]640s degrade[x] name-spaces[x] viewer-static[x] viewer-one-starter[x]=coworld-ctf chrome-provenance[x]byte-for-byte+appended-block transport[x] zoom[x]dropped replay-self-sufficient[x] packaging[x]3-variants tests[x]49 out-of-scope[x] — ACCEPTED round 1
+2026-08-28T03:24:46Z progress phase=10 marker=design.md written and accepted
+2026-08-28T03:24:46Z 10 -> 20 phase transition
+2026-08-28T03:24:46Z heartbeat phase=20
