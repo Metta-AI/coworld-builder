@@ -23,3 +23,6 @@
 2026-08-28T19:42:48Z 30 reviewer dispatched round=1 (repo checkout /tmp/cogame-atari-57 @ 309a9b34)
 2026-08-28T20:00:46Z 30 reviewer returned round=1: runs/2026-08-28-atari-57/reviews/r1-review.md (1 blocking [static-viewer: live zoom/pan wiring on fixed arena], 14 non-blocking)
 2026-08-28T20:00:46Z heartbeat phase=30
+2026-08-28T21:28:20Z 30 fixer returned round=1: runs/2026-08-28-atari-57/reviews/r1-fixes.md — fixed B1,N1,N2,N7,N12; declined N4-N6,N8-N11,N13,N14; N3 NEEDS-DESIGN; main@c8498ce ci run 33210994977 success; note: fixer used git-data API (HTTPS push 401s in sandbox), no force-push
+2026-08-28T21:28:20Z progress phase=30 marker=r1-fixes.md
+2026-08-28T21:28:20Z heartbeat phase=30
