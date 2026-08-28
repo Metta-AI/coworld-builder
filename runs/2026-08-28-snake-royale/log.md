@@ -22,3 +22,4 @@
 2026-08-28T05:19:14Z progress phase=20 marker=ci-run-33144094331-green
 2026-08-28T05:19:14Z 20 -> 30 phase transition review_round=1
 2026-08-28T05:19:14Z heartbeat phase=30
+2026-08-28T05:19:59Z 30 reviewer dispatched round=1
