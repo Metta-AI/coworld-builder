@@ -59,3 +59,5 @@
 2026-08-28T23:20:19Z 60 addendum v2 returned and ACCEPTED: design.md now 2851 lines — num_agents=4 isolated lanes (same-seed, synchronized phases), ladder 11000/6000/17000/11000 (worst 631s<660s<720s), seek/clock contract, feed fix, quad layout + gutters, sprite/protocol pins, truthful fallback causes, GameVersion 2, 13 new tests
 2026-08-28T23:20:19Z progress phase=60 marker=design.md-addendum-v2
 2026-08-28T23:20:19Z 60 builder v2 dispatch next: implement addendum, CI green, then judge r2, release 0.1.1
+2026-08-28T23:21:17Z 60 builder v2 dispatched thread=sthr_01KDUULfYUsdx3KEpWZKqw3X target=addendum-v2 implementation, ci green, no release dispatch
+2026-08-28T23:21:17Z heartbeat phase=60
