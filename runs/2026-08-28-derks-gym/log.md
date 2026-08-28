@@ -48,3 +48,5 @@
 2026-08-28T13:22:10Z 50 rounds: r1 failed (raced placement, single entrant) — r2 pending with BOTH champions in entrant_attributions; exit criterion met
 2026-08-28T13:19:40Z progress phase=50 marker=league_44e55a9f-aa40-4523-9ed0-7f86ccc73d08
 2026-08-28T13:19:40Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-28T13:20:08Z 60 verifier dispatched
+2026-08-28T13:20:08Z heartbeat phase=60
