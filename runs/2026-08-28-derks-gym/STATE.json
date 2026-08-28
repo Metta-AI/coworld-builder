@@ -31,9 +31,13 @@
     "division": "div_1bc6a659-31e8-40fe-a99b-726c82426998"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      10,
+      11
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/4af31312-183f-4975-83c4-0f6359719fae.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33184965298"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T15:03:40Z",
+  "heartbeat_at": "2026-08-28T15:35:18Z",
   "session_ended_at": null,
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"

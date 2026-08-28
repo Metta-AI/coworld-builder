@@ -65,3 +65,7 @@
 2026-08-28T15:06:20Z heartbeat phase=60
 2026-08-28T15:12:18Z 60 builder returned gate: commit cad9bd49 gates ci.yml upload-coworld on UPLOAD_REQUIRED=='true' (+AGENTS.md doc fix); ci run 33183451727 success with upload-coworld SKIPPED; registry read-back: 4 derks-gym rows, only 0.1.3 canonical, no 0.1.4 — no bump needed
 2026-08-28T15:12:18Z heartbeat phase=60
+2026-08-28T15:35:18Z 60 verifier returned attempt-2: VERIFY.md rewritten, 8/8 TRUE on v4-era rounds 10+11 (champion decision_ms 2903/2390, distinct notes, non-table picks; viewer-check 33184965298 loaded:true with 3 differing clock readouts); 3 non-blocking observations (seek-position-not-jump, WebGL warnings, first_blood attribution)
+2026-08-28T15:35:18Z progress phase=60 marker=VERIFY.md-attempt-2-all-true+viewer-check-33184965298
+2026-08-28T15:35:18Z 60 judge dispatched for VERIFY.md adjudication
+2026-08-28T15:35:18Z heartbeat phase=60
