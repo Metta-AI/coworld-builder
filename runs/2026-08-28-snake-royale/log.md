@@ -23,3 +23,6 @@
 2026-08-28T05:19:14Z 20 -> 30 phase transition review_round=1
 2026-08-28T05:19:14Z heartbeat phase=30
 2026-08-28T05:19:59Z 30 reviewer dispatched round=1
+2026-08-28T05:41:03Z 30 reviewer returned r1-review.md (861 lines, findings=25; hard-evidence: F1 scrubber s:<tick> parsed as fraction, F2 baseline ladder margin -0.097, F3 test13 loosened to tautology in 5537503, F5 worker OffscreenCanvas escapes canvas_text gate)
+2026-08-28T05:41:03Z 30 fixer dispatched round=1
+2026-08-28T05:41:03Z heartbeat phase=30
