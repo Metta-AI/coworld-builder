@@ -21,3 +21,5 @@
 2026-08-28T19:42:17Z progress phase=20 marker=33203089677
 2026-08-28T19:42:17Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-28T19:42:48Z 30 reviewer dispatched round=1 (repo checkout /tmp/cogame-atari-57 @ 309a9b34)
+2026-08-28T20:00:46Z 30 reviewer returned round=1: runs/2026-08-28-atari-57/reviews/r1-review.md (1 blocking [static-viewer: live zoom/pan wiring on fixed arena], 14 non-blocking)
+2026-08-28T20:00:46Z heartbeat phase=30
