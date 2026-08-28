@@ -29,3 +29,6 @@
 2026-08-28T17:41:38Z 40 release 0.1.0 dispatch 1/3: run=33195026416 step_failed=null canonical=true certified secret_put=true cow_id=cow_ec8a6c5d-d31e-4c81-9b8d-2f5d404c1944; 4 policy labels distinct, champion2 player ok
 2026-08-28T17:41:38Z progress phase=40 marker=release-run-33195026416
 2026-08-28T17:41:38Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-28T17:42:37Z 50 seed 200: league_0a4b0ef0-557c-4c54-b439-788cede68a73 (lseed_927ab17e)
+2026-08-28T17:42:37Z 50 division PUT 200: div_013d13d5-8ef6-430d-bc77-592c81a0aa5a; settings POST 200 (round_robin, elo k32, filler_policy, 15min)
+2026-08-28T17:42:37Z heartbeat phase=50
