@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2730,"clock":"SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0","scorebug":"— CARTOGRAPHER Carrying 0/5 ALPHA · SCORE 0 SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0","feed_lines":0}
+scrub readouts: 0%="SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0"  50%="SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000"  100%="SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
