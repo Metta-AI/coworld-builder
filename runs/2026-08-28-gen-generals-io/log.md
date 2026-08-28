@@ -8,3 +8,6 @@
 2026-08-28T03:55:00Z 10 -> 20 phase transition
 2026-08-28T03:55:00Z progress phase=10 marker=runs/2026-08-28-gen-generals-io/design.md
 2026-08-28T03:55:00Z heartbeat phase=20
+2026-08-28T03:47:40Z 20 repo created https://github.com/Metta-AI/cogame-gen-generals-io (public)
+2026-08-28T03:49:30Z 20 propagate-secrets run=33139962893 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-28T03:57:00Z 20 dispatch builder round=1: implement design.md on Metta-AI/cogame-gen-generals-io until ci.yml green on main
