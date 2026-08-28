@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_2b1f9007-0749-4e3c-a669-a630283894f1",
+    "division": "div_6efcf3a6-7551-4401-94a0-85853a797f16"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T20:10:17Z",
+  "heartbeat_at": "2026-08-28T20:11:16Z",
   "session_ended_at": null,
   "session_id": "454a5d0b",
   "log": "runs/2026-08-28-procgen/log.md"

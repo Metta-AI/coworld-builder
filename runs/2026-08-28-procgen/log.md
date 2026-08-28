@@ -31,3 +31,5 @@
 2026-08-28T20:10:17Z 40 release-result.json persisted to runs/2026-08-28-procgen/
 2026-08-28T20:10:17Z progress phase=40 marker=release run 33206322967 canonical
 2026-08-28T20:10:17Z 40 -> 50 phase transition
+2026-08-28T20:11:16Z 50 seed 200 league_2b1f9007-0749-4e3c-a669-a630283894f1; division 200 div_6efcf3a6-7551-4401-94a0-85853a797f16; settings 200 (elo mean, round_robin filler_policy, 15min)
+2026-08-28T20:11:16Z heartbeat phase=50
