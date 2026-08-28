@@ -60,3 +60,5 @@
 2026-08-28T08:46:41Z progress phase=70 marker=discord_message_id=1542817648344174632
 2026-08-28T08:46:41Z 70 -> 75 phase transition
 2026-08-28T08:46:41Z heartbeat phase=75
+2026-08-28T08:47:36Z 75 atlas slug live in /api/coworlds (episodes_7d=3); continent=paintlands (rails: zero-sum FFA grid conquest — the RTS/battle-royale shore, not commons/tabletop: new rules, no mixed motive, no board-game port)
+2026-08-28T08:47:36Z 75 atlas dispatch=33156722384 region=paintlands at=202,270 clearance=39.5
