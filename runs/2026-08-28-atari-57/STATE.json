@@ -5,21 +5,25 @@
   "slug": "atari-57",
   "repo": "https://github.com/Metta-AI/cogame-atari-57",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "20": 1
+    "20": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_4b06234f-97d8-4b65-8553-e2f967e89d8c",
+    "manifest_sha": "sha256:81b1272cf22d7b6440e5d6e2664f0a638178d9b2080db25d43f4f7b127a8f6a4",
+    "release_run_id": "33213738190"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "atari-57-highroller:v1",
+    "champion2": "atari-57-onecredit:v1",
+    "fillers": [
+      "atari-57-arcader:v1",
+      "atari-57-hoover:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -47,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T21:41:44Z",
+  "heartbeat_at": "2026-08-28T21:51:11Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"

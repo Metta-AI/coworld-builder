@@ -33,3 +33,7 @@
 2026-08-28T21:41:44Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-28T21:41:44Z heartbeat phase=40
 2026-08-28T21:42:05Z 40 builder dispatched for release (version 0.1.0, policies from tools/ci/policies.json)
+2026-08-28T21:51:11Z 40 release dispatch 1/3: version=0.1.0 run=33213738190 step_failed=null — ok:true canonical:true certify.ok:true liveness skipped-static secret_put:true; 4 policies v1, champion2 player_id=ply_bac48eb1-662e-44f8-973d-f3e016dccf5d; cow_id=cow_4b06234f-97d8-4b65-8553-e2f967e89d8c
+2026-08-28T21:51:11Z progress phase=40 marker=33213738190
+2026-08-28T21:51:11Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-28T21:51:11Z heartbeat phase=50
