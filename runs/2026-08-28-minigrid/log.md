@@ -34,3 +34,7 @@
 2026-08-28T22:00:07Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-28T22:00:07Z heartbeat phase=40
 2026-08-28T22:01:15Z 40 builder dispatched (release) thread=sthr_01UYLnKxtvE1ScC5cjyZAx4F version-plan=0.1.0 output=runs/2026-08-28-minigrid/release-result.json
+2026-08-28T22:09:39Z 40 builder returned: release 0.1.0 dispatch 1 run=33215083433 success — ok:true canonical:true certify.ok:true liveness-skipped-static secret_put:true; 4 policies v1, champion2 player_id=ply_bac48eb1; verified from runs/2026-08-28-minigrid/release-result.json
+2026-08-28T22:09:39Z progress phase=40 marker=release-run-33215083433
+2026-08-28T22:09:39Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-28T22:09:39Z heartbeat phase=50
