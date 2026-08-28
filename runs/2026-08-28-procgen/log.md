@@ -80,3 +80,6 @@
 2026-08-28T22:58:50Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20746 status=pr_open (placed 52 leagues incl. atari-57/minigrid/sumo-traffic-signals for other runs)
 2026-08-28T22:58:50Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20746
 2026-08-28T22:58:50Z 75 -> 80 phase transition
+2026-08-28T23:01:23Z 80 executive summary on run task (1217965198330465) + condensed on idea task (1217965166755097); LEARNINGS entry + 2 gotcha rows; all 9 phase subtasks complete; idea 1217748424046143 completed; run task moved to Done
+2026-08-28T23:01:23Z progress phase=80 marker=run closed, idea completed
+2026-08-28T23:01:23Z 80 run closed — session ends; no further action for this run
