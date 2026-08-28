@@ -50,3 +50,8 @@
 2026-08-28T13:19:40Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-28T13:20:08Z 60 verifier dispatched
 2026-08-28T13:20:08Z heartbeat phase=60
+2026-08-28T13:52:04Z 60 verifier returned attempt-1: VERIFY.md 5/8 TRUE — FALSE: 4g (champions drafted scripted: decision_ms=1, picks==puffer-forge table), 5 (player logs unobservable via artifacts API), 8 (loaded:true but scrub readouts empty — instrument probes #scrub/#clock, shell has #seek/#derk-clock)
+2026-08-28T13:52:04Z 60 root cause check 4: cogolf gotcha (make-coworld.md L373) — player-side LLM policies need USE_BEDROCK:"true" in policies.json env; platform gates player-pod Bedrock sidecar on it; ANTHROPIC_API_KEY never materialises in player pods
+2026-08-28T13:52:04Z 60 retry attempt-2 plan: (a) instrument fix — additive lineage selector fallbacks in templates/tools/ci/viewer_smoke.mjs (#seek/[id$="-clock"]/[id$="-scorebug"]); (b) builder fix — bedrock sidecar transport in derk_player + USE_BEDROCK in policies.json+manifest, emit missing ancient event; (c) release 0.1.1, resubmit champions v2, re-verify
+2026-08-28T13:52:04Z progress phase=60 marker=VERIFY.md-attempt-1+viewer-check-33176460797
+2026-08-28T13:52:04Z heartbeat phase=60

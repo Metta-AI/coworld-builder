@@ -422,19 +422,28 @@ const READOUT_SCRIPT = `(() => {
     return (node.innerText || node.textContent || "").replace(/\\s+/g, " ").trim();
   };
   const statusNode = document.querySelector("#statuschip, #status, .statuschip, [data-status]");
-  const feed = document.querySelector("#feed, .feed, #log");
+  // Selector lists carry lineage-specific fallbacks: the parley/paintbot
+  // shells use #clock/#scorebug/#feed/#scrub; the moba/emscripten lineage
+  // prefixes its game chrome (e.g. #derk-clock) and names its scrubber
+  // #seek (2026-08-28, cogame-derks-gym check 8: loaded:true but every
+  // readout null because only the parley ids were probed).
+  const feed = document.querySelector('#feed, .feed, #log, [id$="-feed"]');
   return {
-    clock: text("#clock"),
-    tick: text("#tick-clock, #tick, .tick-clock"),
-    scorebug: text("#scorebug"),
+    clock: text('#clock, [id$="-clock"]'),
+    tick: text("#tick-clock, #tick, .tick-clock, #tickinfo"),
+    scorebug: text('#scorebug, [id$="-scorebug"]'),
     status: statusNode ? (statusNode.innerText || statusNode.textContent || "").replace(/\\s+/g, " ").trim() : null,
     loading: text("#loading"),
     feed_lines: feed ? feed.querySelectorAll("*").length : 0,
     loaded_attr: document.documentElement.getAttribute("data-replay-loaded"),
     error_attr: document.documentElement.getAttribute("data-replay-error"),
-    has_scrub: !!document.querySelector("#scrub"),
+    has_scrub: !!document.querySelector('#scrub, #seek, input[type="range"]'),
   };
 })();`;
+
+// The scrubber element the scrub readouts click: #scrub (parley lineage),
+// #seek (moba lineage), else any range input.
+const SCRUB_SELECTOR = '#scrub, #seek, input[type="range"]';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -571,7 +580,7 @@ async function main() {
     scrub.push({ at: "0%", clock: readout.clock });
     for (const fraction of [0.5, 1.0]) {
       try {
-        const box = await page.locator("#scrub").first().boundingBox();
+        const box = await page.locator(SCRUB_SELECTOR).first().boundingBox();
         if (!box) break;
         const x = box.x + Math.max(1, Math.min(box.width - 1, box.width * fraction));
         await page.mouse.click(x, box.y + box.height / 2);
