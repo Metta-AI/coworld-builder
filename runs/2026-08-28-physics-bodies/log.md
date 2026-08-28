@@ -43,3 +43,8 @@
 2026-08-28T15:18:57Z 40 coordinator authorises dispatch 4 v0.1.3: cert-failure fix count is 2 (budget bump, root-cause fix) — Blocked bar 'survives three distinct fixes' not met; 0.1.0 was a distinct workflow bug. Keeping cfcb01b as insurance; variants' 720 untouched
 2026-08-28T15:18:57Z progress phase=40 marker=fix-3b913af+ci-33183874388
 2026-08-28T15:18:57Z heartbeat phase=40
+2026-08-28T15:28:35Z 40 dispatch 4 v0.1.3 run=33184563689 SUCCESS: canonical=true certify.ok=true replay_liveness=skipped-static secret_put=true hosted_smoke=passed 5/5; cow_e51c593d-8b3e-41e9-92eb-04ff70083bbd
+2026-08-28T15:28:35Z 40 policies uploaded: ringcraft:v3 (daveey) toppler:v3 (daveey-1) pusher:v3 anchor:v3; release-result.json persisted
+2026-08-28T15:28:35Z progress phase=40 marker=release-run-33184563689
+2026-08-28T15:28:35Z 40 -> 50 phase transition
+2026-08-28T15:28:35Z heartbeat phase=50
