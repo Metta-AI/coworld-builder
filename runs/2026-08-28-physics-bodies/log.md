@@ -48,3 +48,10 @@
 2026-08-28T15:28:35Z progress phase=40 marker=release-run-33184563689
 2026-08-28T15:28:35Z 40 -> 50 phase transition
 2026-08-28T15:28:35Z heartbeat phase=50
+2026-08-28T15:30:06Z 50 seed 200 lseed_db8ff97c league_6fe36e5b-1b03-44f4-864e-8b5408d639ca; division 200 div_03ffc06b-ea16-4df0-8c56-989bf1ed5254; settings 200 (round_robin, elo 1000/32, filler_policy, 15min)
+2026-08-28T15:33:04Z 50 champion1 submit ok run=33185437180 sub_2fce2ef9 (ringcraft:v3, daveey); champion2 submit ok run=33185491619 sub_155ab1a7 (toppler:v3, daveey-1 verified owner)
+2026-08-28T15:33:04Z 50 filler-policies 200: pusher:v3=aeaa9567-948e-4811-acf6-d42bf8e21d28 anchor:v3=e375ac44-0dbf-4f77-9225-979512dff006 (neither champion)
+2026-08-28T15:33:04Z 50 unpause 200; trigger-round 200; round 1 failed (auto-trigger predates fillers), round 2 pending with both champions in entrant_attributions
+2026-08-28T15:33:04Z progress phase=50 marker=league_6fe36e5b+round2-pending
+2026-08-28T15:33:04Z 50 -> 60 phase transition
+2026-08-28T15:33:04Z heartbeat phase=60
