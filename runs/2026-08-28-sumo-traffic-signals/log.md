@@ -54,3 +54,4 @@
 2026-08-28T18:34:11Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20723 status=pr_open
 2026-08-28T18:34:11Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20723
 2026-08-28T18:34:11Z 75 -> 80 phase transition: STATE.phase=80 written
+2026-08-28T18:35:44Z 80 summaries posted (run story 1217960458744586, idea story 1217960397424488); LEARNINGS entry appended

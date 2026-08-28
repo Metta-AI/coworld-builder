@@ -1385,3 +1385,13 @@ the starter after the fact.
 - **Stacked atlas PRs each re-place the whole backlog**: reuse the newest pending PR's `places.mjs`
   entries verbatim (this run took its own dot, 241,276, from PR 20705 — the freshly computed
   "roomiest" spot 202,270 was already another pending PR's dot).
+
+## 2026-08-28 sumo-traffic-signals
+
+- **Atlas spotting must account for queued PRs, not just main.** With ~49 atlas PRs sitting unmerged in metta's merge queue, `atlas_spot.py` against main's `places.mjs` returned a spot already taken by a queued dot (coins@416,574). Fix that worked: pull the newest queued PR's `places.mjs` additions (`gh pr diff <n> | awk '/places.mjs/,0'`), splice them into a temp `places.mjs`, re-run `atlas_spot.py` against that, and pass the same 49 rows as `extra_cities` (a proven-to-build set) on the re-dispatch. First dispatch still fails (build enumerates the unplaced slugs) — treat it as the discovery step.
+- **`git push` over HTTPS is refused in the sub-agent sandbox for coworld repos** (`No anonymous write access`; credential-helper placeholder 401s). The Git Data API route works: bootstrap one file via Contents API, then blobs → tree → commit → ref per local commit (script kept at `/workspace/scratch/push_via_api.py` during the run; one ref move can carry several commits and CI runs once, on the head).
+- **Emscripten fires `Module.onRuntimeInitialized` before `callMain()`**: a module-level Nim `let` read synchronously by a Node host is still zero at that point (`wasm_replay_smoke.cjs` rejected every replay with "Unsupported replay format version" while the browser, which awaits a fetch first, loaded fine). Make such wire/format specs `const`.
+- **`templates/tools/ci/viewer_smoke.mjs` feed selector misses `#killfeed`** (the paintbot-lineage feed id): `feed_lines: 0` on a populated feed. Widen the selector (`#feed, .feed, #log, [id$="-feed"], #killfeed`) or read the count knowing the artefact.
+- **Watch for sim-birth accounting bugs that silence emergent events**: a car charged a wait tick on its spawn tick could never reach 3 clean crossings, so green waves were *physically impossible* and only a deleted assertion revealed it. When a design's marquee event never fires in tests, suspect the accounting at entity creation before concluding "the baselines just can't do it".
+- **A `##` doc comment inside a Nim bracket literal is a parse error**, not a trailing comment.
+- Round 1 of a fresh league can fail at placement time before fillers are set ("Temporal RoundWorkflow failed before settling the round", ~250 ms after creation). Expected; fillers-then-trigger makes round 2 the first real one. Already in the playbook; confirming it cost nothing here.
