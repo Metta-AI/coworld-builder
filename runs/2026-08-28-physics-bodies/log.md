@@ -84,3 +84,5 @@
 2026-08-28T16:07:58Z progress phase=70 marker=discord_message_id=1542928701325574185
 2026-08-28T16:07:58Z 70 -> 75 phase transition
 2026-08-28T16:07:58Z heartbeat phase=75
+2026-08-28T16:09:00Z 75 atlas slug live (episodes_7d=3); continent=paintlands (zero-sum physics duel — the Paintlands take zero-sum combat games); spot 202,270 clearance 39.5
+2026-08-28T16:09:00Z 75 atlas dispatch=33188557208 region=paintlands at=202,270 clearance=39.5
