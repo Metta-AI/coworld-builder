@@ -13,3 +13,4 @@
 2026-08-28T13:48:21Z 20 repo created: https://github.com/Metta-AI/cogame-sumo-traffic-signals (public)
 2026-08-28T13:48:21Z 20 propagate-secrets run 33177060544 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-28T13:48:21Z heartbeat phase=20
+2026-08-28T13:49:17Z 20 builder dispatched (round 1) thread=sthr_01Cfevbbo4QzhnSnuzKgmY52
