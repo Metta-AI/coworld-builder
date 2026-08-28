@@ -1,4 +1,4 @@
-{"loaded":true,"ms":2106,"clock":"TURN 8 / 399 MINING","scorebug":"ALPHA daveey 2500 ♔ AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 CHARLIE Baseline 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 TURN 8 / 399 MINING BRAVO daveey-1 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 DELTA Baseline (2) 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0","feed_lines":0}
-scrub readouts: 0%="TURN 8 / 399 MINING"  50%="TURN 200 / 399 MINING"  100%="TURN 398 / 399 HAULING"
+{"loaded":true,"ms":2800,"clock":"TURN 8 / 399 MINING","scorebug":"ALPHA daveey 2500 ♔ AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 CHARLIE Baseline 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 TURN 8 / 399 MINING BRAVO daveey-1 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 DELTA Baseline (2) 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0","feed_lines":0}
+scrub readouts: 0%="TURN 8 / 399 MINING"  50%="TURN 200 / 399 RAIDING"  100%="TURN 398 / 399 HAULING"
 canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

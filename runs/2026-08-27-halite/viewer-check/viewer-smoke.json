@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 2106,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_97d89fb8-8a54-423b-ac60-7080b318271a/sha256%3A1c51119aacefa5ae5f99f1e1c06e992578486333a81e3d8395d60745dcd7630b/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fce7c0511-7ba9-4287-8397-a7212fa2d7db.replay",
+  "ms": 2800,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_c6743b6c-2028-4bef-8361-f7aa7d8296a2/sha256%3Acd52ca31d9c6c00bef566e9f20c7903abaca055a14e2bec77d48b602f7e6a665/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fda1179c8-90e2-4c7c-833b-bc0e88145f16.replay",
   "bundle": null,
   "replay": null,
   "clock": "TURN 8 / 399 MINING",
-  "scorebug": "ALPHA daveey 2500 ♔ AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 CHARLIE Baseline 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 TURN 8 / 399 MINING BRAVO daveey-1 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0 DELTA Baseline (2) 2500 AFLOAT 218 4 SHIPS · 1 YARDS AT RISK 0",
+  "scorebug": "ALPHA daveey 2500 ♔ AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 CHARLIE Baseline 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 TURN 8 / 399 MINING BRAVO daveey-1 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0 DELTA Baseline (2) 2500 AFLOAT 281 4 SHIPS · 1 YARDS AT RISK 0",
   "status": "",
   "loading_text": null,
   "feed_lines": 0,
@@ -25,7 +25,7 @@
     },
     {
       "at": "50%",
-      "clock": "TURN 200 / 399 MINING"
+      "clock": "TURN 200 / 399 RAIDING"
     },
     {
       "at": "100%",

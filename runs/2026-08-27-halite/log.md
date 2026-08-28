@@ -99,3 +99,11 @@
 2026-08-28T09:14:12Z 60 poll rounds 09:14:07Z: round 5 completed, round 6 not yet created (interval 15 min from 09:00:47Z)
 2026-08-28T09:19:01Z 60 poll rounds 09:18:52Z: round 6 round_d608a35e pending (created 09:15:52Z), round 5 completed — 1 in-scope completed
 2026-08-28T09:19:01Z heartbeat phase=60
+2026-08-28T09:24:03Z 60 poll rounds 09:23:55Z: rounds 5+6 COMPLETED (09:04:52Z, 09:19:56Z) — check1 TRUE (2 in-scope v2 rounds)
+2026-08-28T09:25:08Z 60 check3 TRUE — round 6 (latest completed >=5) ereq_385753a2 completed, replay da1179c8, coworld cow_c6743b6c, entrant policy_version_ids = v2 UUIDs fae0a703/7b716123 + fillers 79e81e5a/9ed30562
+2026-08-28T09:25:08Z 60 check4 TRUE — round 6 replay: strict JSON ok, protocol halite/1, reason complete/full_time, llm_turns=[20,20,0,0], 40/40 champion notes source=llm, 0 fallbacks
+2026-08-28T09:25:08Z 60 check5 TRUE — round 6 hosted log grep CLEAN (4 containers, 1705 decoded bytes)
+2026-08-28T09:25:08Z 60 check2 TRUE (refetched post-round-6) — daveey-1 halite-privateer:v2 rank1 1008.53 rp=6 wins=3; daveey halite-tidereader:v2 rank2 991.47 rp=6 wins=3; fillers absent
+2026-08-28T09:25:08Z 60 check6 TRUE — SSR playlist[0] = halite.r6.e1, coworldVersion 0.1.1, cow_c6743b6c, replay da1179c8; session -> static index.html for cow_c6743b6c/sha256%3Acd52ca31... ready:true, no /client/replay
+2026-08-28T09:27:07Z 60 check8 TRUE — viewer-check run 33159290682 (dispatched 09:25:16Z, green, url: line confirms cow_c6743b6c + sha256:cd52ca31 + replay da1179c8): loaded=true ms=2800, bridge ready, clocks 0%=TURN 8 MINING / 50%=TURN 200 RAIDING / 100%=TURN 398 HAULING (all differ)
+2026-08-28T09:27:07Z heartbeat phase=60
