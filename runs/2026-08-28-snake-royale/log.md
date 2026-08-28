@@ -34,3 +34,9 @@
 2026-08-28T07:14:40Z 30 -> 40 phase transition (review loop closed in 1 round)
 2026-08-28T07:14:40Z heartbeat phase=40
 2026-08-28T07:15:29Z 40 builder dispatched for release chain (version 0.1.0 first, budget 3 dispatches)
+2026-08-28T07:34:11Z 40 builder returned: v0.1.0 run=33150809050 step_failed=certify (websocket Ping->Pong lost in fork; lux-ai scar repeated) -> code fix 93bc8f4+18b9da8 (second commit removed a TextMessage-only guard that dropped binary registration frames); v0.1.1 run=33151446939 SUCCESS
+2026-08-28T07:34:11Z 40 release: canonical=true certify.ok=true replay_liveness=skipped(static) secret_put=true cow_id=cow_dfae8bd2-c198-460c-acaf-1c3fc709688c manifest_sha=sha256:7c10c697df9f3ce9cf043d3e3964fb31a97a7aa46d0720581188f0ae49795ca3; policies strangler:v1(daveey) glutton:v1(ply_bac48eb1) coil:v1 forager:v1; release-result.json persisted to run dir
+2026-08-28T07:34:11Z 40 learning-candidate: Ping->Pong fork loss is a repeat (lux-ai 0.1.0, snake-royale 0.1.0) — starter tripwire test suggestion for phase 80 LEARNINGS
+2026-08-28T07:34:11Z progress phase=40 marker=release-run-33151446939 v0.1.1
+2026-08-28T07:34:11Z 40 -> 50 phase transition
+2026-08-28T07:34:11Z heartbeat phase=50
