@@ -47,3 +47,4 @@
 2026-08-28T22:13:04Z progress phase=50 marker=league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca
 2026-08-28T22:13:04Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-28T22:13:04Z heartbeat phase=60
+2026-08-28T22:14:08Z 60 verifier dispatched thread=sthr_01283UWZvAaNCgkBwGpPsvyT output=runs/2026-08-28-minigrid/VERIFY.md + viewer-check/
