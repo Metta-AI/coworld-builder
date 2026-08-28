@@ -30,3 +30,7 @@
 2026-08-28T14:08:15Z progress phase=30 marker=r1-fixes.md
 2026-08-28T14:09:22Z 30 r1 judge dispatched thread=sthr_01KUd26pQNB44eiyjyu74agb sha=5237976 fresh-context
 2026-08-28T14:09:22Z heartbeat phase=30
+2026-08-28T14:22:08Z 30 r1 judge verdict: blocking 0 / BLOCKING 0 (agree); all 15 items + parallel-batch rider PASS at 5237976; review loop done in 1 round
+2026-08-28T14:22:08Z progress phase=30 marker=r1-verdict.md
+2026-08-28T14:22:08Z 30 -> 40 phase transition
+2026-08-28T14:22:08Z heartbeat phase=40
