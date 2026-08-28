@@ -1969,3 +1969,883 @@ both debug and `-d:release`). `tests/config.nims` (`--path:"../src"`) is the sta
   perks, handicaps, lives, teams, four-team play, shouts, achievements, campaign mode, multi-game
   episodes, the procedural map generator, the map pool, the map editor and mapkit — all deleted, not
   disabled (§Sim module), and none of them return in v1.
+
+---
+
+## Addendum v2 — four isolated lanes (2026-08-28)
+
+**This section overrides the note above wherever it says "overrides".** Everything it does not
+override stands unchanged: the 13 × 13 board, the seven task families and their generators, the
+7 × 7 visibility flood, the seven primitives, the two macros, the per-lane scoring formula, the rune
+caps, the static wasm viewer built from `coworld-ctf` and nothing else, the chrome-provenance rules,
+and `data-replay-loaded` / `data-replay-error`. Target release: **0.1.1**, `GameVersion` **`"2"`**.
+
+### Why this exists
+
+Phase 60 (`runs/2026-08-28-minigrid/VERIFY.md`) passed checks 1, 2, 3, 4 and 7 and failed 5, 6 and 8.
+
+1. **Check 6 — no featured match, structurally.** `num_agents = 1` makes every league episode a
+   one-participant episode. `softmax.com/minigrid`'s SSR payload shows `state.playlist: []` while
+   `state.pool.replays` holds three real episodes, and the stage renders **"No featured match yet"**
+   after three completed rounds with three ranked players. The verifier cross-checked seven coworld
+   pages: every recent coworld whose episodes seat **≥ 2** participants has a featured match
+   (atari-57, snake-royale, vizdoom-deathmatch, gnomic); both that seat **exactly one** — minigrid
+   and the platform's own procgen — show "No featured match yet". `state.playlist[0].matchup` is a
+   `{first, second}` pair, i.e. the stage is built around a head-to-head. No scoring or viewer work
+   fixes this; the episode must carry more than one participant.
+   **Coordinator rails decision, final: `num_agents` = 4, four ISOLATED lanes** — the atari-57 shape
+   (`runs/2026-08-28-atari-57/design.md` §Seats, lanes, aliases and §Isolation). This addendum makes
+   `num_agents` **4** in both variants' `game_config`, in `certification.game_config`, and in
+   `<SEATS>`. It is not a range and it is not configurable.
+2. **Check 5 — one `falling back` line.** Bedrock haiku in production measured p50 2 467–4 608 ms,
+   p90 4 931–6 011 ms, max 6 712 ms across four episodes; v1's `attempt1Ms = 6000` sits *inside* that
+   distribution, and `retryMs = 3000` gave the retry **less** headroom than the first attempt, so a
+   slow-but-healthy call that missed attempt 1 usually missed attempt 2 too. §Cadence below
+   re-derives the whole ladder for four parallel calls and the observed latency.
+3. **Check 5, second finding — the cause label lied.** The log read
+   `falling back to scout (parse_error) on turn 21` when **both** attempts had failed with
+   `llm transport: Timeout was reached`. §Fallback causes below makes the recorded cause the cause of
+   the failure that actually happened.
+4. **Check 8 — four rendered defects.** Scrubber seek mis-scaled and the clock stopped tracking the
+   playhead (readouts at 50 % and 100 % byte-identical across three runs and two replays);
+   `feed_lines: 0`; task-pip captions smeared into `LAVAGDORMILET·KEYCORBABYAIR` with the mission
+   ribbon and the 7 × 7 inset drawn *over* the board's left edge and the `TASK n/5 · FAMILY` line
+   clipped by the top band; three sprite 404s and 22 `Unknown sprite protocol message type: 34`
+   warnings. §Viewer v2 below gives each a decided fix.
+
+### Lane isolation — the invariant, stated once and tested
+
+**Four seats, four lanes. Lane `s` is a complete private instance of the SAME seeded five-task
+gauntlet.** Every generator draw is `mix64(seed, taskIndex, salt)` — the episode seed, the task
+index, a salt — and **the lane index is deliberately not an input**. Consequence: all four lanes get
+byte-identical layouts, byte-identical mission sentences and byte-identical `xland` rule tables. Same
+challenge, so `scores[i]` compare directly and a head-to-head episode is a fair race, not a lottery.
+
+`stepLane(lane, primitive)` is a **pure function of one lane's own state and that lane's own
+primitive.** It takes no `SimServer`, reads no other lane and writes no other lane. The tick loop
+calls it once per active lane in ascending seat index. Pinned by
+`tests/test_minigrid_isolation.nim` (§Tests v2, test 46):
+
+- Replacing lane `j`'s entire plan stream with anything at all leaves lane `i ≠ j`'s per-tick state
+  **bit-identical**.
+- Running lane `i` alone in a one-lane sim reproduces its four-lane trajectory exactly.
+- Four lanes given the identical plan stream end with identical `tasksSolved`, `taskProgress` and
+  `taskTicks` — the fairness proof that same seed really is same challenge.
+
+**Nothing crosses lanes — not even a scoreboard.** This is the one place this design departs from the
+atari-57 precedent, and the reason is specific: atari-57 is score attack, whose single strategic
+lever is *bank or push*, which is unusable without knowing whether you are ahead. A gauntlet has no
+such lever — whatever a rival is doing, your best move is to solve your own board faster — so a rival
+scoreboard would be pure noise in the prompt, would grow the already-large observation (the verifier
+measured 1 740–1 913 input tokens, which is what put the calls near the deadline), and would **leak**:
+a rival's `tasks_solved` on an identical board tells you that board is solvable in N turns.
+`tests/test_minigrid_isolation.nim` asserts the observation builder for seat `i` reads only
+`lanes[i]` and that no rival alias, score or progress field exists in the observation schema.
+
+**Aliases and the two name spaces, with four seats.** The in-game aliases are
+**`Alpha`, `Beta`, `Gamma`, `Delta`** — `IdentityNames[0..3]` from the starter's
+`src/ctf/roster.nim:64-65`, title-cased by `seatAlias(slot)`, **with the array itself unedited**
+(v1's "two named edits to `roster.nim`" edit 1 stands: no roster edit). *Note for the coordinator:
+the brief's parenthetical said "Alpha/Bravo/Charlie/Delta"; the starter's `IdentityNames` array is
+Greek (`alpha, beta, gamma, delta`), and "from the starter roster" is the binding half of the
+instruction, so the aliases are Alpha/Beta/Gamma/Delta and `IdentityNames` is not touched.* Lane
+colours are ctf's four team colours in seat order — **`red`, `blue`, `green`, `yellow`** — used for
+the lane frames, plates, beat markers and feed rows. Real policy/player names (`daveey`, `daveey-1`,
+`Baseline (1)`, `Baseline (2)`) live **only** in `results.names`, the replay join records, and
+spectator-side chrome (plates, POV caption, endcard). `showPlayerLabels` stays `false`. No
+observation, prompt, `say`, feed row or board label ever carries a real name.
+
+| seat | alias | colour | quadrant of the 27 × 27 board surface (cell origin) |
+|---|---|---|---|
+| 0 | `Alpha` | red | top-left `(0, 0)` |
+| 1 | `Beta` | blue | top-right `(14, 0)` |
+| 2 | `Gamma` | green | bottom-left `(0, 14)` |
+| 3 | `Delta` | yellow | bottom-right `(14, 14)` |
+
+There is **no seat → lane permutation**: the lanes are identical by construction, so a permutation
+would be decoration and one more thing to get wrong.
+
+### Synchronised phases (overrides §The game → "The gauntlet, and the clock")
+
+The five tasks become five **phases**, and **phase boundaries are synchronised across all four
+lanes**. Every lane starts phase `k` on the same turn. A lane that resolves its phase early
+**idles** — it is removed from the decision batch and its board is drawn with a `RESOLVED` plate —
+until the phase boundary. Reasons, in order:
+
+- it makes the four lanes a **race on the same task at the same moment**, which is the only version
+  of this game a spectator can read, and it is what turns the featured match into a real head-to-head
+  rather than four unrelated timelines;
+- it gives the viewer **one** shared mission ribbon and **one** shared five-pip row instead of four
+  desynchronised ones — which is what makes the gutter layout in §Viewer v2 possible at 360 px;
+- an idling lane costs **no LLM call**, so the batch shrinks and the wall clock does not pay for it;
+- finishing early is still worth something, because `speed` is scored per lane (§Scoring v2).
+
+New constants (these **override** the v1 values):
+
+| Constant | v1 | **v2** | Why |
+|---|---|---|---|
+| `turnTicks` | 12 | **24** | fewer, bigger decisions — the wall clock is now four calls per turn |
+| `maxActionsPerTurn` | 12 | **24** | same cap as `turnTicks`, so a full turn can be planned in one reply |
+| `taskTurnCap` (turns per phase, per lane) | 11 | **6** | 30 turns is what fits the four-seat batch inside 660 s (§Cadence v2) |
+| `taskCount` | 5 | 5 | unchanged |
+| `maxTurns` | 55 | **30** | `taskCount × taskTurnCap` |
+| `maxTicks` | 660 | **720** | `maxTurns × turnTicks` |
+| primitives per phase, per lane | 132 | **144** | *more* than v1: the cog loses replans, not movement |
+| `macroPrimitiveCap` | 40 | 40 | unchanged; ≥ `turnTicks`, so a `goto` can fill a whole turn |
+
+**Per-turn structure with four lanes** (overrides §The game → "Turn and tick structure", steps 1–8):
+
+1. If the previous turn ended a phase, advance every lane to phase `k+1` together: generate the
+   layout from `mix64(seed, k, …)` (identical in all four lanes), place each lane's agent, emit one
+   `taskstart` event.
+2. For each lane in ascending seat index, recompute its 7 × 7 visible set, merge it into that lane's
+   known map, and build that seat's observation (lane-local; §Observation v2).
+3. **Issue ONE `engine.client.curl.makeRequests` batch** carrying one request per **active** seat —
+   an active seat is one that is connected, is an LLM seat, and whose lane has not resolved the
+   current phase. Batch size 0 … 4. Seats are **never** queried sequentially: this is now a genuinely
+   simultaneous-decision game and the starter's batch API (`src/ctf/decide.nim:427`) is used
+   unchanged. Attempt-1 deadline `attempt1Ms`.
+4. Every seat that timed out, errored, returned non-JSON or returned no usable `actions` is retried
+   **once**, again as a **single batch**, deadline `retryMs`.
+5. A seat still without a usable reply takes the **`scout`** plan computed server-side for that lane,
+   and a `fallback` record is written with the truthful cause (§Fallback causes v2).
+6. Validate and expand each seat's plan against **its own lane's** known map, exactly as v1 step 6,
+   with the caps now `maxActionsPerTurn = 24` and `turnTicks = 24`.
+7. Each seat's `say` (≤ 140 runes) and `notes` (≤ 300 runes) are sanitised on rune boundaries and
+   written as that seat's `directive` record. `notes` is echoed to that seat only. `say` is drawn in
+   the shared feed, tagged with the speaker's **alias**.
+8. `turnSpacingMs` is a floor on the wall clock between consecutive **batch starts**
+   (`src/ctf/decide.nim:386-389`, kept).
+
+**Per-tick structure with four lanes** (overrides §The game → the numbered tick loop):
+
+The global tick is `tick = (T − 1) × turnTicks + k + 1` for sub-step `k = 0 … turnTicks − 1` — a pure
+function of the turn and the sub-step, so it is identical in the native and wasm builds. At each
+sub-step, **for each lane in ascending seat index that is still active this turn** (its phase not yet
+resolved), run v1's tick steps 2–7 on that lane alone: pop the primitive (or `wait`), apply it, move
+that lane's obstacles, fire that lane's production rules, evaluate that lane's termination, then
+recompute that lane's visibility and subgoals. A lane whose phase resolves at sub-step `k` stops
+stepping for the rest of the turn. Then, once per sub-step:
+
+- mix the sub-step into `gameHash` (§Replay v2) and append it to the hash chain;
+- **if every lane's current phase is resolved, break the turn's tick loop** — the shared phase ends
+  early and phase `k+1` begins on the next turn. This is v1's "settle early" rule, now collective.
+
+`laneTicks[i]` counts only the sub-steps lane `i` actually stepped; `finalTick` is the global
+counter. `laneTicks[i] ≤ finalTick ≤ turnsPlayed × turnTicks`.
+
+### Cadence, batching, and the wall-clock arithmetic (overrides §Decisions → Cadence)
+
+**Per-turn LLM call budget: exactly ONE request per active seat per turn, plus at most ONE retry
+each — so at most 4 requests per batch, at most 8 requests per turn, and at most
+`4 × 30 × 2 = 240` provider calls per episode.** Typical is `4 × 30 = 120` calls, fewer as lanes
+resolve phases early and drop out of the batch.
+
+The ladder is re-derived from two measurements, not guessed. The verifier's own numbers from the
+sidecar's `bedrock_sidecar_complete` records, three production episodes:
+
+| episode | calls | all ok | p50 | p90 | max |
+|---|---|---|---|---|---|
+| r2 cartographer | 56 | 56 | 4 608 ms | 5 648 ms | 6 272 ms |
+| r3 cartographer | 46 | 46 | 4 075 ms | 4 931 ms | 5 919 ms |
+| r3 missionfirst | 40 | 40 | 2 467 ms | 6 011 ms | 6 712 ms |
+
+Every call returned `ok: true, status 200` — the provider is healthy and the deadline was the
+problem. So:
+
+```
+attempt1Ms              11 000 ms   1.64x the observed single-call MAX (6 712 ms), with room for
+                                    four calls contending on one sidecar
+retryMs                  6 000 ms   >= the observed p90 (6 011 ms) -- v1's 3 000 ms gave the retry
+                                    LESS headroom than attempt 1, which is why a slow-but-healthy
+                                    call missed both attempts (VERIFY check 5)
+turnBudgetMs            17 000 ms   attempt1Ms + retryMs = 17 000 <= 17 000. sim_config.nim:691
+                                    raises only on ">", so exact equality is legal and is used
+                                    deliberately: no millisecond of the budget is unreachable
+turnSpacingMs           11 000 ms   4 requests / 11 s = 21.8 req/min steady; a turn in which all
+                                    four seats retry adds 4 more inside the window -> ~26 req/min,
+                                    under the rolling guard (28) and the sidecar cap (30)
+wallClockBudgetSeconds     660 s    unchanged
+lobbyJoinTimeoutTicks     2 400     = 100 s at TargetFps 24 (sim_types.nim:376) -- unchanged
+```
+
+Both deadlines are whole seconds, as `src/ctf/sim_config.nim:696-706` requires.
+
+```
+turn 1's batch starts at t = 0; turns 2..30 start >= turnSpacingMs apart
+   29 x 11 s                                                        = 319 s
+the last turn's own batch (typical ~7 s for 4 parallel haiku calls) =   7 s
+720 ticks x 4 lanes of integer grid work, fastMode                  =   1 s
+lobby / connect wait for FOUR player pods (typical 20 s;
+   cap lobbyJoinTimeoutTicks 2400 = 100 s)                          =  20 s
+gameOverTicks hold + results + replay write (retried uploader)      =  20 s
+                                                                     -------
+typical total                                                       = 367 s   < 720 s  (51 % of it)
+
+absolute worst case -- EVERY turn burns the whole turnBudgetMs, i.e. all four
+seats time out on attempt 1 AND on the retry, on all thirty turns:
+   30 x 17 s                                                        = 510 s
+ + lobby at its 100 s cap + 20 s artifacts + 1 s sim                = 121 s
+                                                                     -------
+absolute worst total                                                = 631 s   < 660 s stop, < 720 s
+engine hard stop wallClockBudgetSeconds                             = 660 s   -> reason "deadline"
+platform kill (episodeTimeoutSeconds)                               = 1200 s
+```
+
+The worst case is inside the engine stop **without** relying on the budget guard, which is the same
+standard v1 held itself to. When the spacing floor binds (the normal case) a turn costs 11 s; when
+the budget binds (the pathological case) it costs 17 s; `30 × 17 + 121 = 631` is the bound, and
+`tests/test_minigrid_manifest.nim` asserts
+`maxTurns × turnBudgetMs / 1000 + 121 ≤ wallClockBudgetSeconds` for every shipped variant and the
+cert fixture.
+
+**Budget guard** (retargeted for the batch, `src/ctf/decide.nim:328-346` kept): at the start of each
+turn, if `elapsed + 2 × (turnSpacingMs + turnBudgetMs) > wallClockBudgetSeconds` — i.e. fewer than
+56 s of headroom — the LLM is switched off for **every** remaining turn and **every** lane; all four
+lanes finish on `scout` (microseconds per turn); the episode still ends `complete`. A `budget_guard`
+record names the turn.
+
+**Rate guard** (kept, unchanged in mechanism): a rolling 60 s request counter; if issuing the next
+batch would push the trailing-60 s count above **28**, the seats that would exceed it skip the call
+for that turn and take the `scout` plan with `cause = "rate_guard"`. Bounded, logged, never a sleep
+on the critical path.
+
+**Observation size bound (new).** The verifier measured 1 740–1 913 input tokens per call, which is
+what put minigrid's calls near the deadline while procgen's (p50 1 786 ms) were nowhere near it. The
+observation is therefore bounded: `objects` carries at most the **24 most recently observed** entries
+(sorted ascending by `(y, x)` within that set) and `productions` at most the **last 12** firings; the
+whole observation JSON is capped at **4 000 characters**, reduced by dropping whole `objects` entries
+from the least-recently-seen end, never by cutting a string mid-value. `known` and `view` are never
+truncated — they are the game. A test asserts the cap holds on a worst-case board.
+
+`fastMode: true` in every variant, unchanged: the seats send no per-tick inputs (the server computes
+every primitive), so the Sprite v1 Ready packet's dead-reckoning hazard cannot arise.
+
+### Fallback causes, recorded truthfully (overrides §Decisions → Degrade, never hang)
+
+The v1 defect is a classification defect, not a control-flow defect: the fallback path derived the
+cause from the **parse** step — which is where the ladder lands when there is no body to parse — so
+two transport timeouts were logged as `parse_error`. The fix is structural: **the cause is set at the
+point of failure and copied, never re-derived.** `attemptResult` gains a `cause` field; the
+`fallback` record and the log line copy it.
+
+Closed cause enum (**overrides** v1's list):
+
+| `cause` | Set when |
+|---|---|
+| `transport_timeout` | curly reports a timeout (`Timeout was reached`) on that attempt |
+| `transport_error` | any other socket/transport failure |
+| `http_error` | HTTP status ≥ 400 (the status goes in `detail`) |
+| `parse_error` | `extractJsonObject` finds no balanced `{…}`, or the body is not a JSON object |
+| `schema_error` | the body parses but has neither a usable `actions` array nor a `say` |
+| `no_credentials` | the LLM client is `disabled` |
+| `rate_guard` | the rolling-60 s guard skipped this seat's call |
+| `budget_guard` | the wall-clock guard has switched the LLM off |
+| `disconnected` | the seat's socket is gone |
+
+**A `fallback` record is written for BOTH attempts**, `{turn, slot, attempt: 1|2, cause, detail}`,
+each with its own cause — so the replay shows `transport_timeout, transport_timeout` rather than one
+mislabelled line. The attempt-1 log line keeps the starter's phrasing
+(`src/ctf/decide.nim:463`, "failed, will retry"), and only the second failure logs
+`minigrid llm: seat <s> falling back to scout (<cause>) on turn <T>` (`decide.nim:491`). New results
+field **`fallbackCauses[i]`**: a `{cause: count}` object per seat whose values sum to
+`fallbackTurns[i]`. `tests/test_minigrid_driver.nim` test 50 forces each cause and asserts the label.
+
+With `attempt1Ms = 11 000` and `retryMs = 6 000`, a `falling back` line now requires one call over
+11 s **and** a second over 6 s against a provider whose observed maximum is 6 712 ms — which is the
+fix for VERIFY check 5.
+
+### Scoring with four lanes (overrides §The game → Scoring)
+
+The formula is unchanged and is now computed **per lane**, `i = 0 … 3`:
+
+```
+speed[i][t]      = (taskTurnCap - taskTurns[i][t]) if solved else 0     (0 .. 5)
+tasksSolved[i]   = sum_t solved[i][t]                                   (0 ..  5)
+progressTotal[i] = sum_t progress[i][t]                                 (0 .. 15)
+speedTotal[i]    = sum_t speed[i][t]                                    (0 .. 25)
+
+scores[i]        = 100_000 * tasksSolved[i]
+                 +   1_000 * progressTotal[i]
+                 +      10 * speedTotal[i]
+```
+
+Sign unchanged: **higher is better, every term only adds, the minimum is 0.** New bounds from
+`taskTurnCap = 6`: `speedTotal ≤ 25` (v1: 50) and the **maximum score is 515 250** (v1: 515 500).
+Lexicography still holds by construction: `1 000 × 15 = 15 000 < 100 000` and
+`10 × 25 = 250 < 1 000`. `tests/test_minigrid_sim.nim` test 13 asserts the new bounds and the new
+maximum.
+
+- `results.win[i]` = `tasksSolved[i] >= parTasks` — a per-lane "cleared the bar" flag, four booleans.
+- **`results.winner`** = the seat index with the **strictly** highest `scores`. Because `scores` is
+  already lexicographic in (tasksSolved, progressTotal, speedTotal), an exact tie in `scores` is an
+  exact tie in all three components — a genuine draw — so on a tie for the maximum
+  **`winner` is `null` and `results.tied` is `true`**. No index tie-break: with four identical lanes
+  an index tie-break would name a winner where the game found none.
+- **The league ranks by `results.scores[i]`**, exactly as v1. The Elo now has a genuine per-episode
+  multi-seat comparison, and the platform's normal fill (champion #1, champion #2, two scripted
+  fillers shown as `Baseline (1)` / `Baseline (2)`) puts both champions in the **same** episode on
+  the **same** boards. That — not any scoring change — is the fix for VERIFY check 6.
+
+### End conditions with four lanes (overrides §The game → End conditions)
+
+- **A lane is done** when all five of its phases have resolved (`solved`, `timeout`, `died`,
+  `crashed`).
+- **The episode ends** at the first of: every lane done; `turnsPlayed == maxTurns` (30); the
+  wall-clock stop (`src/ctf/server.nim:1407-1417`, kept).
+- **`results.reason`** stays the closed enum **`complete` | `deadline` | `fault`**, unchanged, with
+  `deadline` still declared acceptable for `docs/SPEC.md` §Definition of done check 4.
+- **`results.endRule`** (episode level) is now the closed enum
+  **`allLanesComplete` | `turnCap` | `wallClock` | `fault`**.
+- **`results.laneEndRule[i]`** (new, four entries) is the closed enum
+  **`gauntletComplete` | `turnCap` | `wallClock`** — what ended *that* lane.
+- **On the wall-clock stop**, every lane settles at its current state; in **every** lane, every phase
+  not yet started is `taskOutcome = "unreached"` with `taskTurns = 0`, `taskTicks = 0`,
+  `taskProgress = 0`, and every lane not already done gets `laneEndRule = "wallClock"`. Scores are
+  the real scores so far, never zeroed, so a `deadline` episode is still rankable and still a
+  head-to-head.
+- **A dead seat does not end the episode**: a seat that never connects, disconnects, or fails every
+  decision has its lane driven by `scout` to the lane's natural end, with `deadSeats[i] = true` and
+  exactly one closed-schema `{"message","failed_policy_index"}` failure payload. The other three
+  lanes are untouched — that is what isolation buys.
+
+### Observation with four lanes (overrides §Decisions → Per-seat observation, minimally)
+
+**Strictly lane-local, and otherwise identical to v1.** Every field of the v1 observation object
+stands: `task`, `turn`, `tick`, `world`, `agent`, `view` (7 strings of 7, agent-up, same flood),
+`known` (13 strings of 13, world-oriented), `objects`, `productions`, `last_plan`, `subgoals`,
+`tasks_solved`, `notes`. Three changes and nothing else:
+
+- `"you"` is the seat's alias, one of `Alpha|Beta|Gamma|Delta`.
+- a new field `"lane": 0..3` — the seat's own lane index, so a `say` can be read against the board.
+- `task.turns_left` now counts against `taskTurnCap = 6` and `task.ticks_left` against 144.
+
+**Still hidden**, and now also hidden across lanes: the episode `seed`; every unobserved cell; every
+layout parameter; unopened box contents; the `xland` rule table; future obstacle motion; future
+phases' missions and families; the seat's own score; its own real policy name; **and every fact about
+every other lane** — no rival alias, score, progress, position, board or `say` appears in any
+observation. `say` is spectator-facing narration only. A seat cannot tell whether it is racing three
+LLMs, three baselines, or a mix.
+
+**Prompt text needs no lane awareness** — each seat sees only its own lane, so both champion prompts
+and the shared system prompt remain the texts printed in §Decisions. **Three numeric strings must be
+re-pinned in the same commit**, and they are not about lanes:
+
+1. system prompt, `WHAT YOU SEND`: "up to 12 actions" → **"up to 24 actions"**;
+2. system prompt, same paragraph: "Anything past 12 ticks of movement is CUT OFF" →
+   **"past 24 ticks"**;
+3. champion #2 `minigrid-missionfirst`: "you get eleven turns … If you have spent five and the
+   target is still unseen" → **"you get six turns … If you have spent two and the target is still
+   unseen"**.
+
+Champion #1 `minigrid-cartographer` needs no edit (it names no turn count). Policy names, owners and
+env switches are unchanged: `minigrid-cartographer` (daveey), `minigrid-missionfirst` (daveey-1,
+`"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`), `minigrid-scout`, `minigrid-bumper`.
+
+### Results document with four lanes (overrides §Server → Results document)
+
+Every per-seat scalar becomes a **4-element array**; every per-task array becomes a **4 × 5 array of
+arrays**; `taskFamilies` and `taskMissions` stay **flat 5-element arrays**, because all four lanes run
+the same seeded ladder — the isolation guarantee, made visible in the results.
+
+```json
+{
+  "names":              ["daveey", "daveey-1", "Baseline (1)", "Baseline (2)"],
+  "aliases":            ["Alpha", "Beta", "Gamma", "Delta"],
+  "lanes":              [0, 1, 2, 3],
+  "scores":             [311090, 208030, 104000, 1000],
+  "win":                [true, false, false, false],
+  "winner":             0,
+  "tied":               false,
+  "reason":             "complete",
+  "endRule":            "allLanesComplete",
+  "laneEndRule":        ["gauntletComplete","gauntletComplete","gauntletComplete","gauntletComplete"],
+  "variant":            "gauntlet",
+  "seed":               1734029581,
+  "taskCount":          5,
+  "parTasks":           3,
+  "cellsTotal":         169,
+  "taskFamilies":       ["lavagap","doorkey","multiroom","keycorridor","babyai"],
+  "taskMissions":       ["get to the green goal square", "…", "…", "…", "…"],
+  "phaseTurns":         [4, 6, 6, 6, 6],
+  "tasksSolved":        [3, 2, 1, 0],
+  "progressTotal":      [11, 8, 4, 1],
+  "speedTotal":         [9, 3, 0, 0],
+  "taskSolved":         [[true,true,false,false,true],[true,true,false,false,false],
+                         [false,true,false,false,false],[false,false,false,false,false]],
+  "taskOutcome":        [["solved","solved","timeout","timeout","solved"],
+                         ["solved","solved","timeout","timeout","timeout"],
+                         ["died","solved","timeout","timeout","timeout"],
+                         ["died","timeout","timeout","timeout","timeout"]],
+  "taskTurns":          [[2,4,6,6,3],[4,5,6,6,6],[3,6,6,6,6],[2,6,6,6,6]],
+  "taskTicks":          [[41,79,144,144,55],[88,112,144,144,144],
+                         [52,131,144,144,144],[37,144,144,144,144]],
+  "taskProgress":       [[3,3,2,0,3],[3,3,1,1,0],[1,3,0,0,0],[0,1,0,0,0]],
+  "taskCellsSeen":      [[63,88,71,54,97],[70,92,64,60,88],[41,80,55,49,77],[29,44,38,31,52]],
+  "laneTicks":          [463, 632, 615, 613],
+  "deaths":             [0, 0, 1, 1],
+  "crashes":            [0, 0, 0, 0],
+  "doorsOpened":        [4, 3, 1, 0],
+  "objectsPickedUp":    [3, 2, 1, 0],
+  "productionsFired":   [0, 0, 0, 0],
+  "primitivesExecuted": [421, 588, 561, 549],
+  "actionsDropped":     [6, 2, 0, 0],
+  "macrosUnreachable":  [2, 4, 1, 0],
+  "repliesRepaired":    [1, 0, 0, 0],
+  "finalTick":          660,
+  "turnsPlayed":        28,
+  "policyKinds":        ["llm", "llm", "scripted", "scripted"],
+  "llmTurns":           [27, 28, 0, 0],
+  "fallbackTurns":      [1, 0, 0, 0],
+  "fallbackCauses":     [{"transport_timeout": 1}, {}, {}, {}],
+  "deadSeats":          [false, false, false, false],
+  "stopDetail":         ""
+}
+```
+
+`taskOutcome` entries stay the closed enum `solved | timeout | died | crashed | unreached`.
+`phaseTurns[t] = max_i taskTurns[i][t]` — the turns the shared phase actually consumed.
+`primitivesExecuted[i]` still counts non-`wait` primitives only.
+
+Five identities hold in every results document and are asserted by
+`tests/test_minigrid_engine.nim`:
+
+1. `Σ_t phaseTurns[t] == turnsPlayed` — here `4+6+6+6+6 = 28` ✓;
+2. `taskTurns[i][t] ≤ phaseTurns[t] ≤ taskTurnCap` for every `i, t` ✓;
+3. `laneTicks[i] == Σ_t taskTicks[i][t]` (463, 632, 615, 613) and
+   `laneTicks[i] ≤ finalTick ≤ turnsPlayed × turnTicks` (here `max = 632 ≤ 660 ≤ 28 × 24 = 672`;
+   the 12 missing global ticks are the sub-steps of phase 1's last turn, which broke early because
+   all four lanes had resolved that phase) ✓;
+4. `taskSolved[i][t] == (taskOutcome[i][t] == "solved")`, and `taskSolved[i][t]` implies
+   `taskProgress[i][t] == 3` ✓;
+5. `scores[i] == 100_000 × tasksSolved[i] + 1_000 × progressTotal[i] + 10 × speedTotal[i]`, with
+   `speedTotal[i] = Σ_t (6 − taskTurns[i][t])` over that lane's **solved** phases only —
+   seat 0 solved phases 1, 2 and 5 in 2, 4 and 3 turns → `4+2+3 = 9`, so
+   `300_000 + 11_000 + 90 = 311_090` ✓; seat 1 solved phases 1 and 2 in 4 and 5 turns → `2+1 = 3`,
+   so `200_000 + 8_000 + 30 = 208_030` ✓; seat 2 solved phase 2 in the full 6 turns → `0`, so
+   `100_000 + 4_000 + 0 = 104_000` ✓; seat 3 solved nothing → `0 + 1_000 + 0 = 1_000` ✓.
+
+Adding a key means updating `gauntletResultsJson`, the manifest's `results_schema` and
+`tools/ci/docker_smoke.sh`'s expected-key set in the same commit.
+
+### Replay with four lanes (overrides §Server → Replay bytes and Record vocabulary)
+
+- **`GameVersion` bumps `"1"` → `"2"`**, with one new prepend-only changelog comment line in
+  `src/minigrid/sim_types.nim` naming this addendum; `tools/ci/check_gameversion.sh` enforces it.
+  **Every committed replay fixture under `tests/replays/` is re-recorded** by
+  `tools/record_fixture.sh` in the same commit, and the fixture version sweep (v1 test 32) fails the
+  build otherwise. A `GameVersion "1"` replay is **not** playable by the v2 bundle and is not
+  expected to be: the platform serves the bundle at the manifest sha, so 0.1.0 replays keep their
+  0.1.0 bundle.
+- **Config JSON** now records `num_agents: 4`, four `players[].name` (real names), four `slots[]`,
+  and the changed constants: `turnTicks 24`, `maxActionsPerTurn 24`, `taskTurnCap 6`, `maxTurns 30`,
+  `maxTicks 720`, `attempt1Ms 11000`, `retryMs 6000`, `turnBudgetMs 17000`, `turnSpacingMs 11000`.
+- **Joins**: four join records (`name`, `slot`, `token`).
+- **Plans**: per turn, **per seat** — the accepted action list. This game's entire input log.
+- **Chat records**: `register` (×4), `directive` (per turn per seat, now carrying `slot` and
+  `alias`), `fallback` (per attempt, carrying `slot`, `attempt` and its own `cause`),
+  `budget_guard`, `stop`, `result`.
+- **`gameHash` mixes**, in this fixed order: for each seat in ascending index — `taskIndex`,
+  `taskTick`, the `laneResolved` flag, the agent's `(x, y, dir, carriedType, carriedColour)`, then
+  every cell of that lane's 13 × 13 grid in ascending `(y, x)` as `(contentKind, colour, doorState)`,
+  then that lane's obstacles in ascending index as `(x, y)`, then its `xland` fired-rule bitmask and
+  `productionsFired`, then its three subgoal credit bits — then the four `taskOutcome` vectors and
+  four `taskProgress` vectors, then `turnsPlayed`, then the global `tick`.
+- **The wall-clock stop stays a load-bearing record**, applied by the same proc on record and on
+  playback; the record → re-derive check runs for **every** end reason
+  (`allLanesComplete`, `turnCap`, `wallClock`, `fault`).
+- **Size**: 720 hashes + ≤ 120 plan records (4 × 30) + ~200 chat records ≈ **45 KB**. Every layout,
+  mission sentence and hidden rule table is still re-generated in the browser from the seed and the
+  variant — the replay bytes remain self-sufficient and no server is contacted except S3.
+- **Broadcast event vocabulary**: the closed enum stays the eighteen kinds of v1
+  (`taskstart`, `turn`, `plan`, `say`, `fallback`, `pickup`, `drop`, `open`, `close`, `unlock`,
+  `produce`, `subgoal`, `lava`, `crash`, `solved`, `failed`, `budget`, `end`), with **every
+  lane-specific kind now carrying a `slot`**: `plan`, `say`, `fallback`, `pickup`, `drop`, `open`,
+  `close`, `unlock`, `produce`, `subgoal`, `lava`, `crash`, `solved`, `failed`. `taskstart`, `turn`,
+  `budget` and `end` are episode-wide and carry no slot.
+- **Beats** (scrubber markers) stay the seven kinds `taskstart`, `solved`, `failed`, `unlock`,
+  `produce`, `fallback`, `end`; the five lane-specific ones gain a second class
+  `lane0|lane1|lane2|lane3` mapped to the four lane colours. **CSS must exist for exactly**
+  `{solved, failed, unlock, produce, fallback} × {lane0…lane3}` **plus bare** `taskstart` **and**
+  `end` — 22 rules, no more and no fewer (v1 test 38 updated).
+- `tools/replay_summary.py` output gains `aliases` (4), `lanes` (4), per-seat `plans`, per-seat
+  `says`, and `fallbackCauses`; `protocol` stays `minigrid/v1`.
+
+### Viewer v2 (overrides §Viewer wherever it conflicts)
+
+Unchanged and re-affirmed: **all four viewer files come from the one starter `coworld-ctf`** —
+`replay-viewer/config.nims`, the wasm entry `replay-viewer/minigrid_replay.nim`,
+`replay-viewer/static_replay.js` + `static_replay_worker.js`, and `index.html` built from
+`client/replay_broadcast.html`; never a mixture. The shell still sets
+**`data-replay-loaded="true"`** on `<html>` in `static_replay.js`'s `'loaded'` branch (`:158-161`)
+after `ingestPacket()` has drawn a frame, and **`data-replay-error`** in `showFailure()` (`:8-20`).
+`client/chrome_common.js` is still copied **byte-for-byte** (sha256
+`7ace7287e0d19bf0fddb2362c55e4d76dfb44adcd4fbc8d1743b0557ced72f7c`), and
+`client/replay_broadcast.html` is still the starter's page **with a game block appended** at the
+`:4344` banner through the renamed `window.MinigridChrome.install/frame/event` hook — never a rewrite
+that reuses the ids. `replay_viewer.bundle = static-replay-viewer`; the build hook is
+`tools/build_replay_viewer.sh`, committed executable; no `/client/replay` viewer is declared.
+
+#### Board composition: a 2 × 2 quad on a 27 × 27 cell surface
+
+The board surface is **27 × 27 cells** — `13 + 1 separator + 13` in each axis — with the four lane
+panels at the origins in the seat table above and a one-cell separator cross between them. Each panel
+is framed in its lane colour with the alias burned into the frame's top edge, exactly the way
+atari-57 frames its quadrants.
+
+**Why the quad and not a 4 × 1 strip.** A 4 × 1 strip (55 × 13 cells, aspect 4.23) gives more pixels
+per cell at 360 px — but it consumes the **full frame width**, and the letterbox side gutters
+disappear. Those gutters are precisely where defect (c)'s three homeless elements have to go. The
+quad keeps the board **aspect 1.000**, identical to v1, so `relayout()`'s letterboxing is unchanged
+and the two side gutters survive at every width. Legibility is bought back a different way (below):
+the quad is **the race**, the POV inset is **the detail**.
+
+#### The layout contract (fixes defect (c))
+
+`relayout()` is kept verbatim (`client/replay_broadcast.html:4276-4317`): it sets `--band`,
+`--topband` and `--hudscale` on `:root` and toggles `#stage.tiny` at `boardW ≤ 620`. The game block
+computes the **board rect** from `broadcast_core.js`'s own letterbox math and positions every added
+element **outside it**, in a gutter or in the top band, and **never inside `var(--band)`**.
+
+At **360 × 203** (the featured-match iframe): `--hudscale` clamps to 0.5, `.tiny` is on, and with the
+starter's own reserves the play region is ≈ **360 × 119**. Aspect 1.000 ⇒ **height binds** ⇒ the
+board draws at **119 × 119**, i.e. **4.4 px per cell**, each lane panel **57 px square**, leaving two
+letterbox gutters of **(360 − 119)/2 = 120 px**:
+
+- **Left gutter (120 px)** — the **mission ribbon**: `PHASE 3/5 · MULTIROOM` on its own line, then
+  the shared mission sentence wrapped to at most three lines at 9 px with `text-overflow: ellipsis`
+  on the fourth, the full sentence in the element's `title`. Anchored at
+  `top: calc(var(--topband) + 6 * var(--u))` — so it is **below** the top band and cannot be clipped
+  by it, which is defect (c)'s third symptom. Beneath it, the **five task pips as a vertical stack**,
+  one row per phase, each row `pip + family name` on its own line in a fixed-width column — a
+  vertical stack is why the captions can no longer collide, which is defect (c)'s first symptom
+  (`LAVAGDORMILET·KEYCORBABYAIR`).
+- **Right gutter (120 px)** — the **POV inset** (below) at 110 × 110 px, and beneath it the
+  **match feed** as a 4-row column.
+- **Nothing is drawn over the board**, and nothing is drawn inside the transport band. A test
+  asserts `ribbonRect ∩ boardRect = ∅`, `pipsRect ∩ boardRect = ∅`, `insetRect ∩ boardRect = ∅`,
+  `feedRect ∩ boardRect = ∅`, and that all four sit above `var(--band)` and below `var(--topband)`.
+
+At **1280 × 720**: the play region is ≈ 1280 × 560 ⇒ board 560 × 560 at **20.7 px per cell**, panels
+269 px square, gutters **360 px** each — the ribbon gets its sentence on two lines at 14 px, the pips
+get their family captions in full, the inset goes to 210 px and the feed to 8 rows.
+
+**Pip anatomy.** A pip is a 13 px square split into **four quadrants**, one per lane in lane colour:
+hollow = pending, filled = solved, slashed = failed, grey = unreached; a ring around the whole pip
+marks the current phase. One glance gives "who solved what, on which task".
+
+#### The POV inset (restores `#povBadge`; overrides v1's removal list)
+
+v1 removed `#povBadge` and `togglePov` because one seat had nothing to select. With four lanes they
+come **back**, and they are exactly the starter machinery for this: `#fpv` is the agent's **7 × 7
+egocentric window** for the **POV lane**, agent-up, drawing the `view` array that seat receives, with
+`#fpv-cap` reading `AGENT VIEW 7×7` and `#fpv-name` reading `GAMMA · FACING EAST`. Clicking a
+scorebug plate or a lane panel sets POV (the starter's `togglePov`, kept); `#povBadge` reads
+`👁 GAMMA — click to clear`. **Default POV** is seat 0 at turn 0 and thereafter the lane with the
+highest `scores`, re-evaluated **only at a phase boundary** so it cannot flicker mid-phase. At 360 px
+the inset draws 7 cells across 110 px = **15.7 px per cell** — the largest cells on screen, which is
+how object identity survives a 4.4 px board. `#fpv-grip` resize is disabled under `.tiny` so it
+cannot be dragged over the board.
+
+Still removed from `#fpv` (v1's decision, unchanged): `#fpv-hp` (`:1537`), `#fpv-gear` (`:1538`),
+`#fpv-map` and `#fpv-map-canvas` (`:1542-1543`). Still removed entirely: `#viewpanel` and its
+children (`:1510-1521`) and the `core.attachMinimap($('minimap-canvas'))` call (`:4200`) — **the zoom
+decision is unchanged: dropped**, because the 27 × 27 quad is still a fixed board that letterboxes
+whole with no off-frame area.
+
+**`#plates-r` is no longer empty** (overrides v1): `#plates-l` carries `Alpha` and `Beta`,
+`#plates-r` carries `Gamma` and `Delta` — chrome_common's own four-plate ordering, structurally
+unchanged. Each plate: alias, colour chip, the **real policy name** (spectator side only), the lane's
+running score as the numeral, `n/5` solved, a carrying chip, and a `↯` glyph on a lane that has taken
+a fallback. Under `.tiny` a plate keeps alias + name + `n/5` + carrying chip.
+
+#### Seek and clock — the contract (fixes defect (a))
+
+Two bugs, one contract, both stated so they cannot recur.
+
+**1. One axis, one denominator.** A single function `scrubAxis()` returns `{first, last, span}` where
+`first` is the **first post-lobby tick** (the replay's first non-lobby frame), `last` is
+`results.finalTick`, and `span = last − first`. **Exactly five consumers call it and nothing computes
+its own denominator**: the `#scrub` click handler, `#scrub-fill`'s width, `#scrub-head`'s position,
+every beat marker's position, and the lull-span shading. A click at horizontal fraction
+`f = clamp((clientX − scrubRect.left) / scrubRect.width, 0, 1)` seeks to `first + round(f × span)` —
+so `f = 1.0` lands on `last`, which is what v1 got wrong (a click at 100 % landed at tick 158 of
+315). A test asserts the five call sites and checks the mapping at `f ∈ {0, 0.25, 0.5, 0.75, 1.0}`.
+
+**2. Every readout derives from the playhead frame.** `#clock`, `#clock-time`, `#clock-caption`,
+`#tick-clock`, the mission ribbon, the pips, the four plates and the POV inset are **pure functions
+of the state packet currently on the canvas** — never of a cached "latest state", never memoised
+across a seek. `MinigridChrome.frame(s, ctx, jumped)` recomputes all of them on **every** frame,
+including `jumped === true`. v1's defect was a caption still reading `TICK 299 · SCORE 104000` after
+a seek back to tick 158. A test asserts the numeric tick in `#clock-caption` equals `#tick-clock`'s
+numerator on 20 sampled frames.
+
+**Readout content with four lanes.** `#clock` shows `TURN 14/30`; `#clock-time` shows
+`PHASE 3/5 · MULTIROOM`; `#clock-caption` shows
+`tick 336/720 · Alpha 3 · Beta 2 · Gamma 1 · Delta 0` (solved counts in seat order, colour-chipped).
+`#momentum` becomes **four cumulative curves**, one per lane in lane colour, of subgoal credits
+earned (0 … 15), with phase boundaries as vertical ticks — ctf's four-team `lead` branch, retargeted.
+Filled from the load-time pre-scan so it draws at full width on the first frame.
+
+**Playback rate** stays **10 ticks/second** (speed chips `[0.5, 1, 2, 4, 8]`, default 1): 720 ticks =
+**72 s** of playback, a turn = 24 ticks = 2.4 s, which is what lets `viewer_smoke.mjs --soak 10`
+observe real advancement. A **lull** is now 30 consecutive ticks with **no event in any lane** and no
+lane's agent changing cell.
+
+Transport rules unchanged and re-affirmed: `relayout()` owns `--band` / `--topband` / `--hudscale` on
+`:root`; **no overlay sits in the transport band**; the **endcard stops at `var(--band)`**
+(`#endcard { bottom: var(--band, 0px) }`, `:1047`) and is **dismissed by every seek**; **scrubber
+beats are clickable, labelled `<button class="beat-marker <kind> <lane>">` elements** built by
+`mgBeat(tick, kind, slot, label)` — the `mg-` prefix so it can never shadow `chrome_common.js`'s
+`markBeat` alias (`:1635`, the tandem hoisting trap) — with CSS for **every** kind emitted and no
+others (the 22 rules listed above).
+
+#### The feed (fixes defect (b))
+
+**Root cause, named.** v1 routed `say` into a per-lane overlay and never called the starter's
+`ctx.pushFeed(...)`, and the appended block's `event()` returned `true` for every kind, swallowing
+them — hence `feed_lines: 0` in all three verifier runs. The fix is a **table** plus a test that
+drives every kind through `event()` and counts the rows.
+
+`MinigridChrome.event(e, s, ctx)` calls `ctx.pushFeed(...)` for exactly these kinds and returns
+`false` for anything it does not consume:
+
+| kind | row (aliases only — never a policy name) | when |
+|---|---|---|
+| `taskstart` | `PHASE 3/5 — MULTIROOM: "get to the green goal square"` | once per phase |
+| `say` | `GAMMA: "the key must be behind that door"` | every `say`, up to 4 per turn |
+| `plan` | `GAMMA — goto (6,3), toggle, forward ×5` (≤ 6 verbs, then `+N`) | every turn, per lane |
+| `pickup` / `drop` | `BETA PICKS UP THE YELLOW KEY` | every |
+| `open` / `close` / `unlock` | `ALPHA UNLOCKS THE YELLOW DOOR (6,3)` | every |
+| `produce` | `DELTA FINDS A RULE — RED KEY + BLUE BALL → PURPLE BOX` | every |
+| `subgoal` | `BETA — DOOR OPEN (2/3)` | every |
+| `lava` / `crash` | `ALPHA STEPS INTO LAVA — PHASE 1 LOST` | every |
+| `solved` / `failed` | `GAMMA SOLVES PHASE 2 IN 4 TURNS` | every |
+| `fallback` | `BETA MISSED THE CALL — scout plan (transport_timeout)` | second attempt only |
+| `budget` | `CLOCK GUARD — remaining turns run scripted` | once |
+| `turn`, `end` | not fed (the clock and the endcard carry them) | — |
+
+The queue is the starter's `#killfeed`, **8 rows at desktop, 4 under `.tiny`**, rows expiring after
+6 s of playback, each row tinted in its lane's colour. **Priority when the queue overflows**, decided
+so the LLM stays visible: `solved`/`failed`/`lava`/`crash`/`produce`/`unlock` > `say` >
+`subgoal`/`pickup`/`drop`/`open`/`close`/`fallback` > `plan`. **`say` rows are never dropped** — they
+are the whole point of the feed. Phase 1's `taskstart` row is pushed on the **first drawn frame**, so
+`feed_lines ≥ 1` at load, which is exactly what the verifier measured as 0.
+
+#### Sprites and the wire protocol (fixes defect (d))
+
+**The three 404s.** `soldier_red_front_gun.png`, `soldier_green_front.png` and
+`soldier_blue_front_gun.png` were requested by inherited starter code but were not in v1's
+`Dockerfile.replay-viewer` asset list. Decided, both halves:
+
+- **Ships** (added to the asset list, kept byte-for-byte in `data/`): the four top-down board rigs
+  `soldier_{red,blue,green,yellow}.png` and the four plate avatars
+  `soldier_{red,blue,green,yellow}_front.png` — **eight files**. Four lanes need four colours, so
+  one of the three 404s (`soldier_green_front.png`) disappears simply by being needed and shipped;
+  the other two are `_front_gun` variants and are fixed by the next bullet. Also restored to the shipped
+  list: `client/art/lockerroom/{red,blue,green,yellow}_*.webp` (v1 shipped red only).
+- **Never shipped and never requested**: `soldier_*_front_gun.png` and `soldier_*_crown.png` — gun
+  and crown variants belong to mechanics §Sim module deletes. Their **request sites are deleted from
+  `client/broadcast_core.js` in the same commit** (the FPV billboard loader's `_front_gun` fallback
+  and the crown overlay). Zero-404 is then enforced **statically**: a test resolves every image URL
+  constructed anywhere in `broadcast_core.js` and `replay_broadcast.html` against the built
+  `dist/static-replay-viewer/` file list and asserts zero misses, and the `wasm-viewer` job fails on
+  any `[http 404]` console line.
+
+**`Unknown sprite protocol message type: 34` (×22).** Diagnosis, from the starter: the sprite
+protocol has exactly **six** message types — `0x01` sprite, `0x02` object, `0x03` delete object,
+`0x04` clear objects, `0x05` viewport, `0x06` layer — handled at
+`client/broadcast_core.js:888, 953, 1011, 1023, 1028, 1049`, with the parser warning and closing the
+stream on anything else (`:1053`). **34 decimal = 0x22 is not a type at all**: the parser's cursor is
+landing on a byte that is not a type byte, i.e. the packet stream is **mis-framed** because some
+writer's payload length disagrees with the three length tables the starter keeps in lockstep
+(`src/ctf/global.nim:3294-3303` the scanner, `:3332-3356` the keyframe scan, `:3399-3419` the
+applier). Decisions:
+
+1. **The fork adds no message type.** The set is exactly the starter's six, pinned as an enum in
+   `src/minigrid/wire_constants.nim` and emitted into `dist/wire_constants.js` by
+   `tools/gen_wire_constants.nim` (the starter's one-source mechanism,
+   `src/ctf/wire_constants.nim` + `tools/gen_wire_constants.nim`). Everything this game draws is
+   expressed with those six: cells, doors, objects, cogs and fog are all `0x02` object messages
+   against sprites registered with `0x01`. If a future feature ever needs a seventh, the writer, the
+   **three** length tables, `broadcast_core.js` and `wire_constants.js` change in one commit.
+2. **A round-trip test** (`tests/test_minigrid_wire.nim`) drives every packet the fork can emit
+   through all three length tables and asserts the cursor lands **exactly** on each packet's end, and
+   asserts the set of types the fork emits equals the set `broadcast_core.js` handles equals the set
+   in `wire_constants.js`. `viewer_smoke.mjs` additionally fails the job on any
+   `Unknown sprite protocol message type` console warning.
+3. **Object budget, so the framing stays cheap.** Each lane's 13 × 13 static layout (walls, lava,
+   goal, unmoved objects) is emitted **once per phase** into the starter's static band
+   (`broadcast_core.js:637-639`, ids 40–99, `staticBandsDirty`), and re-baked only at a phase
+   boundary. Per frame only the dynamic set moves: four cogs, four carried chips, doors whose state
+   changed, objects that moved, ≤ 6 obstacles per lane, and the **fog**, which is emitted as
+   horizontal **run** sprites — one `0x02` per run of unseen cells in a row, drawn from a baked
+   family of 13 run-lengths × 2 wash levels = 26 sprites, with ids **outside** the static band. That
+   caps the per-frame dynamic object count at roughly **150** for all four lanes, well inside the
+   starter's pools.
+
+#### Art with four lanes
+
+Unchanged from v1 in method — real art from the starter's shipped assets plus install-time pixie
+bakes, no placeholders, no downloads — with these additions: the **cog is baked in four colours**
+(`soldier_{red,blue,green,yellow}.png` composited by `rig_art.nim` into 4 facings × 2 sizes × 4
+colours = **32 chips**), each lane panel gets a **1-cell frame** baked in its lane colour with the
+alias burned into the frame's top edge in `data/font.ttf`, and the **fog run family** (26 chips)
+replaces v1's per-cell wash. Doors (18 chips), keys/balls/boxes (18 chips), lava (2 frames), walls
+(`client/art/walls/wall_{h,v}.jpg`), floor (`data/arena_floor.png`) and the goal tile are unchanged.
+Under `.tiny` the per-cell object chips collapse to **colour dots** — 4.4 px cannot carry a
+key-versus-ball glyph — and object identity moves to the POV inset (15.7 px/cell) and the feed. The
+locker-room loader uses all four colour webps with the caption `Reading the mission…`.
+
+### Packaging v2 (overrides §Packaging)
+
+- **Version 0.1.1.** Repo, slug, `game.name`, secret namespace, compose service `minigrid` and
+  placeholder `{{MINIGRID_IMAGE}}`, `Dockerfile`, `Dockerfile.replay-viewer` (asset list amended per
+  §Sprites), `episode_timeout_minutes: 20`, tags, `game.replay_viewer`, `game.docs` (`readme` +
+  three `pages`) and `game.protocols` (**both** `player` and `global`, as `{"type","value"}`
+  objects) are all unchanged.
+- **`config_schema`**: `num_agents` becomes `{integer, minimum: 4, maximum: 4, default: 4}`; array
+  bounds become `tokens` 4/4, `players` 4/4, `slots` 0/4, `taskLadder` 5/5; the changed constants
+  above replace their v1 values. `tokens` is still declared runner-injected and still appears in
+  **no** `game_config`.
+- **`results_schema`** is regenerated to match §Results v2 exactly, with
+  `reason: enum["complete","deadline","fault"]`,
+  `endRule: enum["allLanesComplete","turnCap","wallClock","fault"]`,
+  `laneEndRule` items `enum["gauntletComplete","turnCap","wallClock"]`, and `taskOutcome` as a 4 × 5
+  array of `enum["solved","timeout","died","crashed","unreached"]`.
+- **`player[]` carries TWO declared players, `scout` and `bumper`** (overrides v1's "exactly one").
+  v1 declared one because a single certification slot cannot seat two, and the raid 0.1.2 rule
+  requires **every declared player to occupy at least one certification slot**. With four slots both
+  fit, so both are declared and both are seated. Each keeps
+  `resources: {requests: {cpu: "100m", memory: "64Mi"}, limits: {cpu: "1"}}` — `limits.cpu` below
+  `"1"` is a 400 at upload (pistonball 0.1.1).
+- **Variants** — both keep their ladders (`gauntlet`: `lavagap, doorkey, multiroom, keycorridor,
+  babyai`, `parTasks 3`; `xland`: `dynamic, xland, xland, xland, babyai`, `parTasks 2`) and both get
+  **`num_agents: 4` inside `game_config`, never at the variant top level** (`CoworldVariant` is
+  `additionalProperties: false` — goofspiel-oshi-zumo 0.1.0):
+
+  ```json
+  "game_config": {
+    "players": [{"name": "Alpha"}, {"name": "Beta"}, {"name": "Gamma"}, {"name": "Delta"}],
+    "num_agents": 4, "minPlayers": 4,
+    "gridSize": 13, "viewSize": 7,
+    "turnTicks": 24, "taskTurnCap": 6, "taskCount": 5,
+    "taskLadder": ["lavagap", "doorkey", "multiroom", "keycorridor", "babyai"],
+    "maxTurns": 30, "maxTicks": 720, "parTasks": 3,
+    "obstacleCount": 6, "xlandRules": 3, "xlandObjects": 6, "babyaiObjects": 6,
+    "maxActionsPerTurn": 24, "macroPrimitiveCap": 40, "spinTurns": 24,
+    "attempt1Ms": 11000, "retryMs": 6000,
+    "turnBudgetMs": 17000, "turnSpacingMs": 11000,
+    "wallClockBudgetSeconds": 660, "lobbyJoinTimeoutTicks": 2400,
+    "fastMode": true, "showPlayerLabels": false
+  }
+  ```
+
+  (the `xland` variant is the same object with its own `taskLadder` and `"parTasks": 2`.)
+- **Certification fixture** — `num_agents: 4` a third time, four players, and **both** declared
+  players seated so neither is `players_missing`:
+
+  ```json
+  "certification": {
+    "players": [{"player_id": "scout"}, {"player_id": "bumper"},
+                {"player_id": "scout"}, {"player_id": "bumper"}],
+    "game_config": { …the gauntlet object above…, "seed": 42,
+                     "wallClockBudgetSeconds": 240, "lobbyJoinTimeoutTicks": 600 }
+  }
+  ```
+
+  so that
+  `len(certification.players) == len(certification.game_config.players) == num_agents == SMOKE_SEATS == 4`
+  — the four `SEAT-COUNT` invariants `tools/ci/docker_smoke.sh` cross-checks (template lines
+  141-150). Seed 42 is asserted to produce a fixture episode in which at least one lane solves at
+  least one phase, at least one `unlock` and at least one `pickup` occur, and **the four lanes'
+  layouts are identical** — so the smoke replay exercises the solved, unlock, pickup and
+  lane-equality paths. Up to 720 ticks ⇒ up to **72 s** of playback for the viewer soak. Certify
+  still runs with `--timeout-seconds 300`.
+- **CI** — `<SEATS>` becomes **`4`** in `tools/ci/docker_smoke.sh`; `SMOKE_REQUIRE_REPLAY_JSON=0`,
+  `--soak 10` and `--strict-text-bounds` are unchanged; the `wasm-viewer` job gains three failing
+  conditions (§Tests v2 tests 53–55). `tools/ci/policies.json` is unchanged apart from champion #2's
+  re-pinned numeric strings.
+
+### Tests v2
+
+**Amended from the v1 list** (same numbers, new content): 1–12 and 15–16 now run per lane; **13**
+asserts `speedTotal ≤ 25` and maximum `515 250`; **14** asserts the new episode and lane end enums
+including the four-lane `wallClock` settle; **17–23** run the baselines against four lanes;
+**24–27** run four-seat episodes; **28–32** cover four lanes, `GameVersion "2"` and re-recorded
+fixtures; **33** asserts `num_agents == 4` in both variants' `game_config` **and**
+`certification.game_config`, `num_agents` absent at every variant top level, `len(player) == 2` with
+both seated in `certification.players`,
+`len(certification.players) == len(certification.game_config.players) == 4`, the whole-second
+deadline rule, `attempt1Ms + retryMs ≤ turnBudgetMs`, and
+`maxTurns × turnBudgetMs / 1000 + 121 ≤ wallClockBudgetSeconds ≤ 660`; **38** asserts the 22 beat CSS
+rules; **39** asserts the new removed/kept id sets (`#povBadge` and `#fpv` **kept**).
+
+**New:**
+
+46. **Lane isolation** (`tests/test_minigrid_isolation.nim`) — replacing lane `j`'s whole plan stream
+    leaves lane `i ≠ j` bit-identical at every tick; lane `i` run alone reproduces its four-lane
+    trajectory exactly; the observation builder for seat `i` reads only `lanes[i]`; the observation
+    schema contains no rival field.
+47. **Same seed, same layout across lanes** — for 200 seeds × both variants, all four lanes' five
+    layouts, mission sentences and `xland` rule tables are byte-identical; four lanes given the
+    identical plan stream end with identical `tasksSolved`, `taskProgress` and `taskTicks`.
+48. **Synchronised phases** — every lane starts phase `k` on the same turn; a lane that resolves
+    early is excluded from the batch and consumes no LLM call; `Σ phaseTurns == turnsPlayed`;
+    `taskTurns[i][t] ≤ phaseTurns[t] ≤ taskTurnCap`; a phase ends early only when all four lanes have
+    resolved it.
+49. **Four-seat batch** — the engine issues exactly **one** `curl.makeRequests` call per turn
+    carrying one request per active seat and never sequential calls; the batch is 4 with four active
+    lanes and 2 with two resolved; the per-turn wall clock never exceeds `turnBudgetMs`; the rolling
+    60 s counter never exceeds 28; the per-episode call count never exceeds 240.
+50. **Fallback causes are truthful** — forcing a transport timeout on **both** attempts records
+    `cause == "transport_timeout"` in both `fallback` records **and** in the `falling back` log line,
+    never `parse_error`; a non-JSON body records `parse_error`; a parsed body with no `actions` and
+    no `say` records `schema_error`; `Σ fallbackCauses[i].values == fallbackTurns[i]`.
+51. **Deadline ladder fits the validators and the measurements** — whole seconds;
+    `attempt1Ms + retryMs ≤ turnBudgetMs`; `attempt1Ms ≥ 11000`; `retryMs ≥ 6000` (≥ the observed
+    provider p90); `4 × 60000 / turnSpacingMs ≤ 24` (the steady state cannot trip the 28 rate guard);
+    asserted for every shipped variant and the cert fixture.
+52. **Seek/clock contract** — `scrubAxis()` is the single denominator and has exactly five call
+    sites (click handler, `#scrub-fill`, `#scrub-head`, beat positions, lull spans); a click at
+    `f ∈ {0, 0.25, 0.5, 0.75, 1.0}` seeks to `first + round(f × span)`; the numeric tick in
+    `#clock-caption` equals `#tick-clock`'s numerator on 20 sampled frames.
+53. **Readouts differ across the timeline** — the `wasm-viewer` job's `viewer_smoke.mjs` invocation
+    asserts the clock readouts sampled at **0 %, 50 % and 100 % are pairwise distinct**. This is the
+    exact assertion VERIFY check 8 failed, promoted into CI so it cannot regress.
+54. **Feed rows are drawn** — `viewer_smoke.mjs` asserts `feed_lines ≥ 1` at load and `≥ 4` after the
+    soak; `tools/ci/renderer_fixture.html` drives every fed event kind and asserts one row each, the
+    documented priority order on overflow, lane colouring, and that **no row contains a real policy
+    name**.
+55. **No 404s, no unknown message types** — a static test resolves every image URL constructed in
+    `broadcast_core.js` and `replay_broadcast.html` against the built `dist/static-replay-viewer/`
+    file list and asserts zero misses; `tests/test_minigrid_wire.nim` asserts the emitted
+    message-type set equals the set `broadcast_core.js` handles equals `wire_constants.js`, and
+    round-trips every emittable packet through the three length tables landing exactly on each
+    packet end; the `wasm-viewer` job fails on any `[http 404]` or
+    `Unknown sprite protocol message type` console line.
+56. **Layout contract at 360 px and 1280 px** — `renderer_fixture.html` measures the bounding boxes
+    of the mission ribbon, the five task pips, the POV inset, the four plates and the feed at both
+    widths and asserts: none intersects the board rect; none intersects `var(--band)`; none is
+    clipped by `var(--topband)`; the five pip captions do not overlap each other; and
+    `canvas_text.never_inside == 0`.
+57. **Quad composition** — the board surface is 27 × 27 cells, each lane panel sits at its declared
+    origin, the one-cell separator cross is drawn, and the four frame colours are
+    red/blue/green/yellow in seat order.
+58. **Observation size bound** — on a worst-case fully-explored board with 12 objects and 12
+    productions, the observation JSON is ≤ 4 000 characters, `objects` is ≤ 24 entries,
+    `productions` is ≤ 12, and `view` and `known` are never truncated.
+
+### What does NOT change
+
+The 13 × 13 board and its border ring; the seven task families, their generators, their success
+predicates and their three named subgoals each; the two variant ladders and their `parTasks`; the
+7 × 7 visibility flood; the seven primitives and their exact effects; the `goto` / `face` macros and
+the BFS traversability rule; the reply schema's field names and the caps `say` ≤ 140 runes,
+`notes` ≤ 300 runes, reply ≤ 4096 bytes, `PLAYER_PROMPT` ≤ 4000 runes, all truncated on **rune**
+boundaries via `src/ctf/directives.nim:61-68`; the per-lane scoring formula and its lexicographic
+proof; `results.reason`'s three legal values; the four policies and their owners; the static wasm
+bundle from `coworld-ctf` only, with `data-replay-loaded` / `data-replay-error`, byte-for-byte
+`chrome_common.js`, the appended-game-block rule, the dropped `#viewpanel`, and the
+`tools/build_replay_viewer.sh` hook; `compose.yaml`, `game.docs`, `game.protocols`,
+`episode_timeout_minutes: 20`; and every §Out of scope (v1) item.
