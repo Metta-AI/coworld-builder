@@ -20,3 +20,5 @@
 2026-08-28T12:00:57Z progress phase=20 marker=ci-run-33168835069
 2026-08-28T12:00:57Z 20 -> 30 phase transition review_round=1
 2026-08-28T12:00:57Z heartbeat phase=30
+2026-08-28T12:03:08Z 30 r1 reviewer dispatched thread=sthr_018n7wcm4L1tdmTi2tof9fxZ repo-clone=/workspace/cogame-physics-bodies@f6976bc5
+2026-08-28T12:03:08Z heartbeat phase=30
