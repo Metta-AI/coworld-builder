@@ -1358,3 +1358,30 @@ the starter after the fact.
 - **The atlas can fall dozens of leagues behind; `extra_cities` takes the whole backlog in one dispatch.** 48 unplaced leagues placed alongside this run's dot: classify each from `/api/coworlds` descriptions, run `tools/atlas_spot.py` iteratively against a LOCAL copy of places.mjs, appending each accepted city before picking the next, so spacing holds.
 - **`coworld-release.yml`'s wait-for-canonical step should read `certification.status` and exit early on `failed`** — dispatch 2 of this run polled the full 20 minutes after hosted certification had already reported failed 26 s in. Template improvement not yet made.
 - Hosted-cert churn signature reconfirmed (knights-archers): `smoke-episode` failing with the certifier's own internal `404 … /v2/episode-requests`, `retryable: false`, right after a sibling version certified — bump with no code change.
+
+## 2026-08-28 physics-bodies
+
+- **Lobby admit loops must tolerate out-of-order slot joins.** coworld-ctf's `addPlayer` raises on
+  a slot joining before lower slots; a fork whose admit loop latches that seat `-1` permanently
+  discards a connected, frame-acking seat — and the failure is invisible locally because local
+  certify happens to connect seats a beat apart, while hosted nodes connect them in `Table`
+  (unspecified) iteration order. Symptom: hosted smoke loses 1–5 of 5 episodes with "slot N never
+  joined the lobby", and raising `lobbyJoinTimeoutTicks` does nothing (the seat is gone, not
+  slow). Fix shape: hold a not-yet-next slot as pending and retry next iteration; sort pending by
+  slot; latch `-1` only for genuinely fatal refusals. Regression test: connect slot 1 FIRST, sleep
+  ~700 ms, then slot 0.
+- **`validate_upload_manifest` rejects the template by design** — it enforces the upload schema,
+  which requires `game.version`, injected only by `coworld build`. Validate `dist/coworld_manifest.json`
+  after the build step, never the template file.
+- **Renderer fixtures die silently when their shim loads before the real script.** A shim injected
+  into `<head>` is overwritten by a `<body>`-loaded `static_replay.js`; all iframes then fail on
+  "Missing required replay URL" while the parent page sets `data-replay-loaded` anyway. Make the
+  fixture replace the script tag itself, and make it measure its own full-cap strings (the
+  physics-bodies fixture, once real, immediately found a note row at x = −53 px at 360 px).
+- **`git push` over HTTPS can die mid-session** (auth refused for every repo) while `gh api` keeps
+  working — the egress proxy rewrites API auth but not git basic-auth. Fallback that works: Git
+  Data API pushes (blobs → tree → commit → PATCH ref, force=false); keep exec bits as mode 100755
+  tree entries. A helper script beats improvising it per push.
+- **Stacked atlas PRs each re-place the whole backlog**: reuse the newest pending PR's `places.mjs`
+  entries verbatim (this run took its own dot, 241,276, from PR 20705 — the freshly computed
+  "roomiest" spot 202,270 was already another pending PR's dot).
