@@ -7,3 +7,6 @@
 2026-08-28T16:42:45Z 10 checklist: starter[x]=coworld-ctf num_agents[x]=1 resolution-order[x]L1-L3+numbered scoring[x]scores[0]=unseenMilli/1000 higher-better end-conditions[x]complete/deadline/fault observation[x]916-983 reply-caps[x]moves6/say24/notes160-rune both-policies[x]pathfinder+scavenger env-switched parallel-batch+budget[x]660s-guard-306s-typical degrade[x]retry-once-fallback name-spaces[x]COG-alpha+hidden-split viewer-static[x] viewer-one-starter[x]=coworld-ctf-all-four chrome-provenance[x]byte-for-byte-7ace7287+appended-install-hook transport[x]7-beat-kinds zoom[x]viewpanel-dropped-fixed-arena replay-self-sufficient[x]L1053 packaging[x]3-variants+docs+both-protocols tests[x]49 out-of-scope[x]non-empty — ACCEPTED round 1
 2026-08-28T16:42:45Z progress phase=10 marker=design.md written and accepted
 2026-08-28T16:42:45Z 10 -> 20 phase transition
+2026-08-28T16:43:45Z 20 repo Metta-AI/cogame-procgen created public; propagate-secrets run 33191305028 green; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
+2026-08-28T16:43:45Z 20 builder dispatched round=1
+2026-08-28T16:43:45Z heartbeat phase=20
