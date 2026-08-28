@@ -72,3 +72,7 @@
 2026-08-28T22:40:18Z 75 atlas continent REVISED to simulations (queued #20723 re-places atari-cabinet in simulations — Atari-57 is the borrowed RL benchmark suite; consistency over my earlier paintlands call)
 2026-08-28T22:40:18Z 75 atlas placed-for-others: 50 mirrored from metta#20723 (atari-cabinet..walker-waterworld incl citysim+gnomic) + minigrid=(578,289,simulations,cl22.9) + procgen=(521,310,simulations,cl23.4)
 2026-08-28T22:40:18Z 75 atlas dispatch=33217674106 region=simulations at=497,277 clearance=22.9 extra_cities=52
+2026-08-28T22:42:37Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20742 status=pr_open
+2026-08-28T22:42:37Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20742
+2026-08-28T22:42:37Z 75 -> 80 phase transition: STATE.phase=80 written
+2026-08-28T22:42:37Z heartbeat phase=80

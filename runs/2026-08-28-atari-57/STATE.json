@@ -5,7 +5,7 @@
   "slug": "atari-57",
   "repo": "https://github.com/Metta-AI/cogame-atari-57",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -47,18 +47,18 @@
     "discord_message_id": "1543026008503099424"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20742",
+    "branch": "atlas/atari-57-33217674106",
+    "region": "simulations",
+    "x": 497,
+    "y": 277,
+    "dispatch_run_id": "33217674106",
+    "attempted_at": "2026-08-28T22:42:37Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:34:42Z",
+  "heartbeat_at": "2026-08-28T22:42:37Z",
   "session_ended_at": null,
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"
