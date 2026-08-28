@@ -1274,3 +1274,14 @@ the starter after the fact.
   recipe (append each accepted pick to a local `places.mjs`, re-run `atlas_spot.py`) landed 41
   dots at ≥ 22.4 clearance in one `extra_cities` dispatch. Until metta's merge queue drains,
   every atlas PR must carry the whole backlog, content-consistent with the open PRs.
+
+## 2026-08-27 vizdoom-deathmatch
+
+- Sandbox `git push` over HTTPS to github.com now fails (`Invalid username or token`) even though it worked earlier in the same session — the egress vault substitutes GH_TOKEN for `api.github.com` only. Reroute through the Git Data API (blobs → trees → commits → PATCH ref, `force:false`); a 422 on the ref PATCH means the remote moved — fetch, rebase, re-push. Keep the helper generic: it preserves per-commit messages.
+- `GET /v2/leagues?limit=200` returns a BARE ARRAY, not `{entries:[…]}` (phase-50 prompt's jq fails). Same for `/rounds` in some shapes. Use `jq 'if type=="array" then . else .entries end'` everywhere.
+- Flat `GET /episode-requests?round_id=` now 405s; the nested `GET /rounds/<id>/episode-requests` works (playbook §9).
+- The platform's replay session API hands the static viewer URL with the replay as a FRAGMENT (`#replay=`), not `?replay=` — treat both as the static route in check 6.
+- A league seeded+settings-set can auto-fire round 1 before fillers are registered; it fails with `Temporal RoundWorkflow failed before settling the round` and is harmless — the post-filler trigger's round is the one that counts. Register fillers immediately after champion submits to shrink the window.
+- Atlas dispatch 1 for any new coworld now fails until EVERY shipped-but-unplaced league is placed: 43 accumulated by 2026-08-28. Placing them is mechanical (iteratively append each pick to the local places.mjs copy so atlas_spot.py accounts for earlier picks, then one `extra_cities` dispatch) — budget one extra dispatch for it, and expect future runs to hit `already_placed`.
+- An idea that names its own "cheaper alternative" starter path (ViZDoom → coworld-ctf first-person raycast) is startable on that path; the starter already shipping a first-person PiP (`firstPersonJson`) made the "port" mostly a retargeting. Check the starter for latent features the idea wants before designing new ones.
+- ereq logs decode: 48/48 Bedrock haiku calls 200 this run — the 2026-08-25 coins-era daily-token throttle is currently clear at this scale.
