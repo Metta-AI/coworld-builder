@@ -52,3 +52,6 @@
 2026-08-28T21:54:09Z heartbeat phase=60
 2026-08-28T21:56:13Z 60 check-5 attempt 2 revised: maxOutputTokens already 900 since d33639d (triage row pre-satisfied); rails decision = option B, assistant prefill "{" (bounds the prose-before-JSON failure by construction, reduces latency; A rejected: trades max_tokens for timeout fallbacks at 10s attempt1Ms; C rejected: log-laundering); release 0.1.2
 2026-08-28T21:56:13Z heartbeat phase=60
+2026-08-28T22:15:58Z 60 prefill fix 3c143bcd, ci 33215259744 green; release 0.1.2 run 33215548447 ok/canonical/certify.ok/secret_put true, cow_84cce351; policies v3 minted (expected), league keeps v1; echoed-brace guard kept (coordinator ack)
+2026-08-28T22:15:58Z progress phase=60 marker=release 0.1.2 run 33215548447 canonical
+2026-08-28T22:15:58Z heartbeat phase=60
