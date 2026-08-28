@@ -1157,14 +1157,25 @@ built repo does something else, each with the reason it had to. It is part of th
    both while its prose promises `Board(obs, config)` works unchanged; `helpers.Board` reads both
    through `Observation`, so the frame carries them. `turn` remains and always equals `step`;
    `remainingOverageTime` is always the config default (60), as §Out of scope says.
-5. **Both wall-clock budgets are measured from process start, and the artifact phase is capped at
-   20 s.** §The wall-clock budget models the lobby (20 s there, bounded at 120 s elsewhere) and the
-   artifact writes as sitting *outside* the 660 s hard stop, which leaves the 720 s platform pin
-   unbounded by anything the code enforces. `server.py` therefore hands the engine
-   `PROCESS_STARTED_AT`, so the lobby is spent inside the guard and the hard stop, and caps the
-   artifact phase (`ARTIFACT_WRITE_BUDGET_SECONDS`). Worst case from process start:
+5. **Both wall-clock budgets are measured from the instant the episode begins, and the artifact
+   phase is capped at 20 s.** §The wall-clock budget models the lobby (20 s there, bounded at 120 s
+   elsewhere) and the artifact writes as sitting *outside* the 660 s hard stop, which leaves the
+   720 s platform pin unbounded by anything the code enforces. `GameServer.run_episode` therefore
+   takes the budget anchor **before the lobby** and hands it to the engine, so the lobby is spent
+   inside the guard and the hard stop, and caps the artifact phase
+   (`ARTIFACT_WRITE_BUDGET_SECONDS`). The anchor is the episode's own start, not process start
+   (`PROCESS_STARTED_AT` is the default and the container's age in the settle log, nothing else):
+   the platform may reuse a warm container or start the process long before the episode, and with
+   the anchor at import a process older than the hard stop settled its first episode at turn 0 with
+   `reason = "deadline"`. Worst case from the episode's start:
    660 (hard stop) + 18 (one in-flight directive turn) + 20 (artifacts) + 20 (shutdown grace) =
-   **718 s**, asserted by a test. The `results.reason` mapping is unchanged.
+   **718 s**, asserted by
+   `tests/test_server.py::test_the_worst_case_container_time_fits_inside_the_platform_pin`, which
+   also pins the two assumptions the sum rests on: the in-flight turn is ONE deadline (the engine's
+   observe writes are bounded and share the turn's budget with the replies, so a socket that will
+   not drain cannot make it two) and the directive spacing floor cannot add to it (it is only slept
+   while the budget guard is off, and guard + spacing + deadline is inside the hard stop). The
+   `results.reason` mapping is unchanged.
 6. **`game.docs` carries the doc text inline** (`{"type":"text","value":…}`) rather than the starter's
    `blob` URLs; §Packaging pins the *object* shape and the platform's schema accepts both forms, and
    the inline form is what checklist item 10 spells out. `game.protocols` keeps the `uri` form the
