@@ -14,3 +14,5 @@
 2026-08-28T18:38:16Z 20 exit checks verified by coordinator: placeholder grep empty, 3 workflows active, release/submit inputs+artifacts present, exec bits 100755, policies.json 2 prompts + 2 baselines, champ2 player id set
 2026-08-28T18:38:16Z progress phase=20 marker=ci run 33199610304 green
 2026-08-28T18:38:16Z 20 -> 30 phase transition review_round=1
+2026-08-28T18:38:44Z 30 reviewer dispatched round=1 sha=556cb50f (checkout /workspace/cogame-procgen)
+2026-08-28T18:38:44Z heartbeat phase=30
