@@ -15,3 +15,8 @@
 2026-08-28T09:03:51Z 20 repo created https://github.com/Metta-AI/cogame-physics-bodies (public); propagate-secrets run 33157796808 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-28T09:04:41Z 20 builder dispatched thread=sthr_017sTJAQqMeNGUGaYEMbpXDE
 2026-08-28T09:04:41Z heartbeat phase=20
+2026-08-28T12:00:57Z 20 builder returned: CI green run 33168835069 sha f6976bc5 (3 commits, 2 red-fix rounds: dangling-HTML-comment transport swallow; 1x-bake-on-2x-layer sprites); coordinator verified conclusion=success on main head, 3 workflows active
+2026-08-28T12:00:57Z 20 builder sandbox fact: git push auth fails in sub-agent sandbox; pushes went through GitHub Git Data API (blobs->tree->commit->PATCH ref, no force)
+2026-08-28T12:00:57Z progress phase=20 marker=ci-run-33168835069
+2026-08-28T12:00:57Z 20 -> 30 phase transition review_round=1
+2026-08-28T12:00:57Z heartbeat phase=30
