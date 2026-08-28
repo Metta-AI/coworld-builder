@@ -55,3 +55,4 @@
 2026-08-28T22:59:52Z 60 check8 FALSE: viewer loads+advances but 50%==100% — scrubber click-to-seek mis-scaled + clock desync; also feed_lines=0 (say never drawn), pip caption smear, gutter overlays, 3 sprite 404s
 2026-08-28T22:59:52Z 60 decision: one combined fix round — designer addendum (4 lanes) -> builder -> judge r2 verdict -> release 0.1.1 -> re-verify; phase stays 60, attempt 1 of 3 per failing check
 2026-08-28T22:59:52Z heartbeat phase=60
+2026-08-28T23:00:53Z 60 designer addendum requested (same thread sthr_017LUgvzi63w6CzkhdL4GR62): 4 isolated lanes, deadline ladder re-derived, viewer defect fixes — appended to design.md as Addendum v2
