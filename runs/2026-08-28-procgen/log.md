@@ -19,3 +19,6 @@
 2026-08-28T19:00:19Z 30 reviewer returned r1-review.md (742 lines, 25 findings F1-F25, reviewer sees zero blocking; 6 unrecorded deviations F2/F12/F13/F14/F19/F23; judge-flags F22,F25; 5 could-not-determine)
 2026-08-28T19:00:19Z 30 fixer dispatched round=1
 2026-08-28T19:00:19Z heartbeat phase=30
+2026-08-28T19:44:59Z 30 fixer returned r1-fixes.md: 14 commits (11 code + 3 doc/CI), head 545c7911, ci 33204619462 green; 11 no-change-with-evidence; 4 of 5 could-not-determine settled; note: sandbox CAN build nim via nimby (record for later phases)
+2026-08-28T19:44:59Z 30 judge dispatched round=1 sha=545c7911
+2026-08-28T19:44:59Z heartbeat phase=30
