@@ -34,3 +34,7 @@
 2026-08-28T07:59:50Z progress phase=40 marker=release-run-33152888435
 2026-08-28T07:59:50Z 40 -> 50 phase transition
 2026-08-28T07:59:50Z heartbeat phase=50
+2026-08-28T08:00:06Z 50 seed POST 200 lseed_d8bf1876 league_03508cde-90d2-43fa-a963-32265afd4737
+2026-08-28T08:02:30Z 50 note: GET /leagues returns a bare array here, not {entries}; used league_id from the seed response (retry approach 1)
+2026-08-28T08:02:40Z 50 divisions PUT 200 div_4deef2a2-7942-4235-8dd0-effed3d31905
+2026-08-28T08:03:10Z 50 settings POST 200 (elo k=32, round_robin, filler_policy, 15min interval)
