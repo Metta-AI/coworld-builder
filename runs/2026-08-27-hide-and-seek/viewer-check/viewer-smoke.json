@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 4759,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_ccb33c23-b885-414d-b46f-86a1ff4a0292/sha256%3Ac7efab015aa7a543f0f97562e2045a5d03eef687e6b6004d8e210de05b42d3c2/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F2b8607e0-12fd-44fa-95f0-a7b7d1a3c03a.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:30 UNSEEN 0 · SEEN 0 · LOCKED 0 · SEALED 0 PREP 15S · TICK 947/2160 · TURN 1/12 · GAME 1/2",
+  "scorebug": "0 HIDERS UNSEEN 0 0 LOCKED · 0 SEALED 1:30 UNSEEN 0 · SEEN 0 · LOCKED 0 · SEALED 0 PREP 15S · TICK 947/2160 · TURN 1/12 · GAME 1/2 0 SEEKERS UNSEEN 0 0 LOCKED · 0 SEALED LOCKED 0 · SEALED 0/3 · RAMPS LOCKED 0/2",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:30 UNSEEN 0 · SEEN 0 · LOCKED 0 · SEALED 0 PREP 15S · TICK 947/2160 · TURN 1/12 · GAME 1/2"
+    },
+    {
+      "at": "50%",
+      "clock": "0:35 UNSEEN 0 · SEEN 0 · LOCKED 0 · SEALED 0 PREP 15S · TICK 2267/2160 · TURN 1/12 · GAME 2/2"
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL GAME OVER HUNT 0S · TICK 3584/2160 · TURN 15/12 · GAME 2/2"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

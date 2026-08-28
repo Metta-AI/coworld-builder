@@ -53,3 +53,7 @@
 2026-08-28T02:16:12Z 50 -> 60 phase transition: entering verify
 2026-08-28T02:16:12Z heartbeat phase=60
 2026-08-28T02:16:34Z 60 dispatch verifier: execute prompts/60-verify.md eight checks, write VERIFY.md
+2026-08-28T02:47:03Z 60 verifier returned VERIFY.md: 8/8 TRUE. rounds 2+3 completed post-fillers; leaderboard daveey 1030.53 / daveey-1 969.47; ereq_60c137bb replay complete, 40 LLM directives 0 fallbacks; hosted log CLEAN (round 2 had one transient Bedrock timeout+fallback, recorded); static viewer path sha-matched; viewer-check run 33136591103 loaded=true, 3 clock readouts differ, endcard reconciles with results
+2026-08-28T02:47:03Z progress phase=60 marker=viewer-check run 33136591103 loaded=true; rounds round_56279bed+round_8983ee66 completed
+2026-08-28T02:47:03Z 60 dispatch judge: re-read VERIFY.md against SPEC definition of done
+2026-08-28T02:47:03Z heartbeat phase=60
