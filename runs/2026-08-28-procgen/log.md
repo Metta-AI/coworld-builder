@@ -67,3 +67,4 @@
 2026-08-28T22:49:54Z 60 judge returned r-verify-verdict.md blocking=0/BLOCKING=0 — judged on round 11 (completed 22:47Z, all cow_84cce351, CLEAN, 0 fallbacks); definition of done all-true
 2026-08-28T22:49:54Z progress phase=60 marker=r-verify-verdict.md blocking=0
 2026-08-28T22:49:54Z 60 -> 70 phase transition
+2026-08-28T22:50:58Z 70 announce.attempted_at written and pushed before POST
