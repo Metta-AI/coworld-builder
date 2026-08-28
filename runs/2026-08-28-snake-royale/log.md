@@ -64,3 +64,4 @@
 2026-08-28T08:19:29Z 70 -> 75 phase transition
 2026-08-28T08:19:29Z heartbeat phase=75
 2026-08-28T08:20:05Z 75 atlas: slug live in /api/coworlds (episodes_7d=3); continent=paintlands (zero-sum spatial battle royale — step-2 table row 1); spot 202,270 clearance 39.5
+2026-08-28T08:20:28Z 75 atlas dispatch=33154931587 region=paintlands at=202,270 clearance=39.5
