@@ -55,3 +55,4 @@
 2026-08-28T08:45:40Z 60 judge returned: reviews/verify-verdict.md BLOCKING=0 (markers agree); all 8 items re-fetched independently and stand; hash-mismatch banner ruled non-blocking (design's degrade path; endcard reconciles with results) but recorded as a real defect to track — wasm re-sim not bit-identical to hosted episode despite green CI parity; round 4 completed since, strengthening 1-3+6
 2026-08-28T08:45:40Z 60 -> 70 phase transition
 2026-08-28T08:45:40Z heartbeat phase=70
+2026-08-28T08:46:22Z 70 announce.attempted_at written pre-POST
