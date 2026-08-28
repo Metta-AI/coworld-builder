@@ -93,3 +93,6 @@
 2026-08-28T16:15:05Z 75 -> 80 phase transition
 2026-08-28T16:15:05Z heartbeat phase=80
 2026-08-28T16:16:32Z 80 summaries posted (run task + idea task); LEARNINGS section appended
+2026-08-28T16:17:03Z 80 all 9 phase subtasks complete; idea 1217748485564041 completed; run task 1217944915444078 moved to Done
+2026-08-28T16:17:03Z progress phase=80 marker=run-closed
+2026-08-28T16:17:03Z 80 run closed — session ending cleanly in phase 80; no next action (run is Done)
