@@ -11,3 +11,5 @@
 2026-08-28T09:55:00Z progress phase=10 marker=runs/2026-08-28-derks-gym/design.md
 2026-08-28T09:39:03Z 20 repo created https://github.com/Metta-AI/cogame-derks-gym; propagate-secrets run 33160197297 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY present
 2026-08-28T09:39:03Z 20 builder dispatched round=1
+2026-08-28T11:03:33Z 20 builder returned round=1: ci.yml run 33165228867 success on main sha 2bcf052f1aec (verified); exit-criterion self-check passed
+2026-08-28T11:03:33Z 20 retry: follow-up dispatched to builder — 2 manifest fixes per gotcha pins (cert players_missing raid 0.1.2->0.1.3: seat drafter+lane-brawler in certification.players; hive 2026-08-23: add ANTHROPIC_API_KEY_URI to drafter player env)
