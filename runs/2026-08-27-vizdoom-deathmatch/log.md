@@ -65,3 +65,7 @@
 2026-08-28T02:32:46Z 75 atlas dispatch 1 (33136003784) failed: build refused — 43 unplaced leagues; fix per step 8: place them all via extra_cities
 2026-08-28T02:32:46Z 75 atlas placed-for-others (43): paintlands=atari-cabinet,grf-football,grid-wars,hide-and-seek,knights-archers,lux-ai,magent-battle,pommerman,smac-starcraft-micro; tabletop=board-gauntlet,cogiavelli,cogplomacy,fog-of-war-boards,goofspiel-oshi-zumo,hanabi,liars-dice,trick-taking; commons=chemistry,cogchemists,coins,commons-family,cooperative-hunting,factory-commons,firm,fruit-market,garble,gift-refinements,gnomic,matrix-games,territory; simulations=citysim,cogmud,flatland,particle-worlds,pistonball,rware-warehouse,walker-waterworld; parlour=chorus,cogolf,hidden-agenda,negotiation-games; shire=collab-cooking,daycare — spots via atlas_spot.py iteratively, all clearance>=22.9
 2026-08-28T02:32:46Z 75 atlas dispatch=33136223752 region=paintlands at=202,270 clearance=39.5 extra_cities=43
+2026-08-28T02:34:56Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20690 status=pr_open
+2026-08-28T02:34:56Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20690
+2026-08-28T02:34:56Z 75 -> 80 phase transition: entering close
+2026-08-28T02:34:56Z heartbeat phase=80
