@@ -65,3 +65,5 @@
 2026-08-28T08:19:29Z heartbeat phase=75
 2026-08-28T08:20:05Z 75 atlas: slug live in /api/coworlds (episodes_7d=3); continent=paintlands (zero-sum spatial battle royale — step-2 table row 1); spot 202,270 clearance 39.5
 2026-08-28T08:20:28Z 75 atlas dispatch=33154931587 region=paintlands at=202,270 clearance=39.5
+2026-08-28T08:25:29Z 75 atlas dispatch 1 failed: 46 unplaced leagues (hide-and-seek PR 20691 + ~40 other atlas PRs unmerged, main stale); fix per step-8: dispatch 2 with all 46 as extra_cities, fresh non-colliding spots (regions from each run's recorded STATE.atlas; coins/gen-generals-io/halite->paintlands|commons decided here; citysim->simulations gnomic->parlour); snake-royale moved 202,270->196,318 (202,270 is hide-and-seek's pending dot)
+2026-08-28T08:25:29Z 75 atlas dispatch=33155253060 region=paintlands at=196,318 clearance=22.9 extra_cities=46
