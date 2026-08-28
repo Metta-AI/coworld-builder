@@ -36,3 +36,6 @@
 2026-08-28T13:03:11Z 30 design.md run-dir copy synced to 6-value fallback enum (editor's note) per r2 verdict non-blocking note
 2026-08-28T13:03:11Z progress phase=30 marker=r2-verdict.md
 2026-08-28T13:03:11Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-28T13:15:59Z 40 builder returned: coworld-release.yml run 33173805205 success, version=0.1.0 canonical=true certified (replay_liveness skipped/static), cow_id=cow_81624b16-c509-470a-8fc2-69da83d64a3e, secret_put=true, 4 policies v1 (champion2 owner ply_bac48eb1); release-result.json persisted
+2026-08-28T13:15:59Z progress phase=40 marker=release-run-33173805205
+2026-08-28T13:15:59Z 40 -> 50 phase transition: STATE.phase=50 written before league work
