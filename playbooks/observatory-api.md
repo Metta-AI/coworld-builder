@@ -323,7 +323,7 @@ curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
 
 (`?name=` on `/coworlds` is ignored — filter client-side, and select on the key `canonical`.)
 The static replay route is
-`…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>`; a `/client/replay` pod
+`…/v2/coworlds/replays/static/<cow_id>/<sha>/index.html?replay=<s3 url>` — since 2026-08-28 the session endpoint returns the replay as a URL-encoded **fragment** instead, `…/index.html?v=2#replay=<s3 url>`; both are the static route; a `/client/replay` pod
 URL is a failure either way.
 
 **Answered (lighthouse run, 2026-08-22):** the page is now **client-rendered** for the iframe —

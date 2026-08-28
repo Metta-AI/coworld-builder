@@ -74,3 +74,7 @@
 2026-08-28T03:04:07Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20691
 2026-08-28T03:04:07Z 75 -> 80 phase transition: entering close
 2026-08-28T03:04:07Z heartbeat phase=80
+2026-08-28T03:07:20Z 80 exec summary posted (run task + idea task); LEARNINGS section appended; observatory-api.md replay-fragment shape folded in
+2026-08-28T03:07:20Z 80 all 9 phase subtasks complete; idea 1217748485449661 completed; run task moved to Done
+2026-08-28T03:07:20Z progress phase=80 marker=run closed, idea completed, task in Done
+2026-08-28T03:07:20Z 80 run closed. Session ends: phase 80 done, no next action.
