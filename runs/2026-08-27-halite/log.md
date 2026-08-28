@@ -32,3 +32,4 @@
 2026-08-28T04:08:35Z heartbeat phase=30
 2026-08-28T07:18:30Z 00 attempts_reset phase=30 reason=progress marker=r2-review.md
 2026-08-28T07:18:30Z 00 resume at phase 30 attempt=1 session=2c908cae
+2026-08-28T07:19:21Z 30 r2 fixer re-dispatched (previous session died before r2-fixes.md was written)
