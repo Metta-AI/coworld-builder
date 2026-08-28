@@ -40,3 +40,12 @@
 2026-08-28T07:34:11Z progress phase=40 marker=release-run-33151446939 v0.1.1
 2026-08-28T07:34:11Z 40 -> 50 phase transition
 2026-08-28T07:34:11Z heartbeat phase=50
+2026-08-28T07:37:59Z 50 seed 200 league_9f435441-c018-419e-b8af-124d7a488081 (lseed_51f62146); /leagues returns bare array not .entries — filtered client-side
+2026-08-28T07:37:59Z 50 division 200 div_9b84c813-77d9-41be-9fff-6e48af4cc474; settings 200 (round_robin, filler_policy, elo k32, 15min)
+2026-08-28T07:37:59Z 50 champion1 submit run=33152011311 ok=true strangler:v1 ply_44ae9048; champion2 submit run=33152052887 ok=true glutton:v1 ply_bac48eb1
+2026-08-28T07:37:59Z 50 policy-versions resolved: strangler=ccd1e387 glutton=c360e14f(daveey-1 confirmed) coil=f87382d5 forager=b21c23a0
+2026-08-28T07:37:59Z 50 fillers 200 registered coil+forager only; unpause 200; trigger 200
+2026-08-28T07:37:59Z 50 rounds: round1 failed instantly (created 07:36:02, pre-unpause artifact) — round2 pending round_b1b63f05 created 07:36:52 with both champions in entrant_attributions
+2026-08-28T07:37:59Z progress phase=50 marker=league_9f435441 round_b1b63f05 pending
+2026-08-28T07:37:59Z 50 -> 60 phase transition
+2026-08-28T07:37:59Z heartbeat phase=60

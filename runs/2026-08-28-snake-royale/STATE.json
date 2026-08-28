@@ -5,7 +5,7 @@
   "slug": "snake-royale",
   "repo": "https://github.com/Metta-AI/cogame-snake-royale",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 1
   },
@@ -23,11 +23,14 @@
       "snake-royale-coil:v1",
       "snake-royale-forager:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "f87382d5-f5e1-4f86-9d5d-6f7b2c9fcddd",
+      "b21c23a0-4e13-4539-aa72-c2e58ac4ed71"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_9f435441-c018-419e-b8af-124d7a488081",
+    "division": "div_9b84c813-77d9-41be-9fff-6e48af4cc474"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T07:34:11Z",
+  "heartbeat_at": "2026-08-28T07:37:59Z",
   "session_ended_at": null,
   "session_id": "3b129f7e",
   "log": "runs/2026-08-28-snake-royale/log.md"
