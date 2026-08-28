@@ -47,3 +47,6 @@
 2026-08-28T21:38:37Z progress phase=60 marker=release 0.1.1 run 33212822202 canonical
 2026-08-28T21:44:25Z 60 poll: round 6 completed 21:34 but ran on 0.1.0 (started pre-canonical); its logs still show falling back (expected); round 7 pending — first round on 0.1.1
 2026-08-28T21:44:25Z heartbeat phase=60
+2026-08-28T21:54:09Z 60 round 7 (first on 0.1.1): ereq_78fb7538 CLEAN, ereq_f5f05499 has 2x "cut off at max_tokens" — timeouts fixed, new symptom exposed; per 60-verify check-5 table: raise maxOutputTokens to 900, re-release
+2026-08-28T21:54:09Z 60 check-5 attempt 2: raise maxOutputTokens 640->900, release 0.1.2; builder dispatched
+2026-08-28T21:54:09Z heartbeat phase=60
