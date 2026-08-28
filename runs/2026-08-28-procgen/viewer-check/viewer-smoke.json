@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 1763,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4d7261f4-1766-4ca3-84df-0e61eedd1b4d/sha256%3A5b5bf61a91162daf850cb526ef5792a96acb61849bec503428ce8b7da86e7311/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fe8a45e7f-f234-4069-8a12-cbc720efebaa.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL",
+  "scorebug": "daveey-1 COG-alpha L1/8 · MINERSEEN LEVEL 0/4 GEMS ↯ LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL",
+  "status": "LIVE",
+  "loading_text": null,
+  "feed_lines": 2,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL"
+    },
+    {
+      "at": "50%",
+      "clock": "LEVEL 5/8 turn 0/10 · frame 30 CLIMBER · 15×9 · STANDARD · UNSEEN SEED 2033174848"
+    },
+    {
+      "at": "100%",
+      "clock": "LEVEL 8/8 turn 0/10 · frame 51 CLIMBER · 15×9 · STANDARD · SEEN SEED 3024"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -39,3 +39,7 @@
 2026-08-28T20:13:43Z 50 unpause 200; trigger-round 200; round 1 pending; entrant_attributions = both champions
 2026-08-28T20:13:43Z progress phase=50 marker=league_2b1f9007 round 1 pending both champions entrants
 2026-08-28T20:13:43Z 50 -> 60 phase transition
+2026-08-28T21:18:08Z 60 verifier returned VERIFY.md: checks 1,2,3,4,6,7,8 TRUE; check 5 FALSE — "falling back (parse_error)" lines in all 4 rounds (7+2 in r4); cause = attempt1Ms 5000 vs Bedrock p90 5.6-7.5s max 9.2s, 200s all ok; cross-check gen-generals-io r51 CLEAN same minute => NOT platform capacity, procgen config defect
+2026-08-28T21:18:08Z 60 viewer-check run 33211231543 loaded=true clocks differ; artifacts committed under viewer-check/
+2026-08-28T21:18:08Z progress phase=60 marker=checks 1-4,6-8 TRUE in VERIFY.md; viewer-check 33211231543
+2026-08-28T21:18:08Z 60 check-5 attempt 1: decision (rails, parameter tuning): raise attempt1Ms 5000->10000, retryMs 2000->5000, turnBudgetMs 7500->16000; label transport timeouts timeout not parse_error; re-release 0.1.1; builder dispatched

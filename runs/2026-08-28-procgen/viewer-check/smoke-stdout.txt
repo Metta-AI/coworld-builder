@@ -1,0 +1,4 @@
+{"loaded":true,"ms":1763,"clock":"LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","scorebug":"daveey-1 COG-alpha L1/8 · MINERSEEN LEVEL 0/4 GEMS ↯ LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL","feed_lines":2}
+scrub readouts: 0%="LEVEL 1/8 turn 0/10 · frame 0 BEFORE THE FIRST LEVEL"  50%="LEVEL 5/8 turn 0/10 · frame 30 CLIMBER · 15×9 · STANDARD · UNSEEN SEED 2033174848"  100%="LEVEL 8/8 turn 0/10 · frame 51 CLIMBER · 15×9 · STANDARD · SEEN SEED 3024"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
