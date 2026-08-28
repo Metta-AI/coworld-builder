@@ -96,3 +96,6 @@
 2026-08-28T09:08:43Z 60 check5 round5 TRUE — hosted log grep CLEAN; game container llm_turns=[10, 20, 0, 0]
 2026-08-28T09:08:49Z 60 check2 TRUE — leaderboard bare list: daveey halite-tidereader:v2 rank1 1008.23 rp=5 wins=3; daveey-1 halite-privateer:v2 rank2 991.77 rp=5 wins=2; fillers absent
 2026-08-28T09:08:49Z heartbeat phase=60
+2026-08-28T09:14:12Z 60 poll rounds 09:14:07Z: round 5 completed, round 6 not yet created (interval 15 min from 09:00:47Z)
+2026-08-28T09:19:01Z 60 poll rounds 09:18:52Z: round 6 round_d608a35e pending (created 09:15:52Z), round 5 completed — 1 in-scope completed
+2026-08-28T09:19:01Z heartbeat phase=60
