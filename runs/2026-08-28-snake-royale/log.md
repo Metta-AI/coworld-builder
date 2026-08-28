@@ -49,3 +49,4 @@
 2026-08-28T07:37:59Z progress phase=50 marker=league_9f435441 round_b1b63f05 pending
 2026-08-28T07:37:59Z 50 -> 60 phase transition
 2026-08-28T07:37:59Z heartbeat phase=60
+2026-08-28T07:38:49Z 60 verifier dispatched (8 checks, 75-min round-wait bound)
