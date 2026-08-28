@@ -57,3 +57,6 @@
 2026-08-28T22:15:58Z heartbeat phase=60
 2026-08-28T22:21:14Z 60 round 9: ereq_9562b30c CLEAN, ereq_0876185e 1x max_tokens BUT its coworld_id=cow_a82788ed (0.1.1) — round 9 predates 0.1.2 canonical; not evidence against prefill; waiting for round 10 on cow_84cce351
 2026-08-28T22:21:14Z heartbeat phase=60
+2026-08-28T22:35:28Z 60 round 10 (all 3 ereqs on cow_84cce351 = 0.1.2): ALL CLEAN under gate grep — check 5 evidence now exists; verifier re-dispatched to refresh VERIFY.md
+2026-08-28T22:35:28Z progress phase=60 marker=round 10 CLEAN on 0.1.2 (check 5 turned true)
+2026-08-28T22:35:28Z heartbeat phase=60
