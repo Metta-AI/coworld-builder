@@ -24,3 +24,8 @@
 2026-08-28T21:12:16Z progress phase=30 marker=r1-review.md
 2026-08-28T21:12:16Z heartbeat phase=30
 2026-08-28T21:12:49Z 30 fixer dispatched (round 1) thread=sthr_016yFqiEx5TKF8fuGv1k3NjJ input=r1-review.md output=runs/2026-08-28-minigrid/reviews/r1-fixes.md
+2026-08-28T21:47:34Z 30 fixer returned r1: r1-fixes.md collected from file — B1 fixed (manifest game.runnable shape, reproduced before/after vs coworld==0.1.43), N10/N1/N17 + 9 more fixed, 17 commits, 2 NEEDS-DESIGN, 6 disputed; ci green run=33213509695 sha=b19bc085
+2026-08-28T21:47:34Z progress phase=30 marker=r1-fixes.md
+2026-08-28T21:47:34Z heartbeat phase=30
+2026-08-28T21:49:59Z 30 judge dispatched (round 1, fresh context) thread=sthr_01H7FkfnUVXA3PZ7rQUV7etu sha=b19bc085 output=runs/2026-08-28-minigrid/reviews/r1-verdict.md
+2026-08-28T21:49:59Z 30 note: coworld-builder push failing 401 on github.com git endpoints since ~21:45Z (api.github.com fine); commits queued locally, retrying with backoff
