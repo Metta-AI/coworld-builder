@@ -5,3 +5,4 @@
 2026-08-28T13:23:24Z 00 run task 1217950132700140 created in Running with 9 phase subtasks; heartbeat_at=2026-08-28T13:23:24Z session=072b9408
 2026-08-28T13:23:24Z 00 -> 10 phase transition: STATE.phase=10 written before designer dispatch
 2026-08-28T13:24:03Z 10 starter=Metta-AI/coworld-ctf — real-time tick loop on a grid road network, rules written for this coworld (own vehicle sim, not a SUMO port, no external engine); precedent: gridlock, flatland
+2026-08-28T13:24:41Z 10 designer dispatched (round 1) thread=sthr_01GVYNt5fkjXYf8cKXfHcMwH output=runs/2026-08-28-sumo-traffic-signals/design.md
