@@ -22,3 +22,5 @@
 2026-08-28T12:00:57Z heartbeat phase=30
 2026-08-28T12:03:08Z 30 r1 reviewer dispatched thread=sthr_018n7wcm4L1tdmTi2tof9fxZ repo-clone=/workspace/cogame-physics-bodies@f6976bc5
 2026-08-28T12:03:08Z heartbeat phase=30
+2026-08-28T12:21:32Z 30 r1 reviewer returned: 0 blocking, 17 non-blocking (N1 canvas_text total:0 structural — pixie-baked text; N2 never-joining seat stalls in Lobby to 660s stop), 3 could-not-determine; r1-review.md 399 lines
+2026-08-28T12:21:32Z 30 r1 fixer dispatch next
