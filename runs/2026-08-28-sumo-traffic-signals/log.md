@@ -25,3 +25,4 @@
 2026-08-28T17:29:45Z 30 r1 judge returned: verdict blocking=0 (B1 refuted at head — 033b3c7 restored both assertions; all checklist items pass) sha=e20601af
 2026-08-28T17:29:45Z progress phase=30 marker=r1-verdict.md blocking=0
 2026-08-28T17:29:45Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-28T17:30:29Z 40 builder dispatched for release thread=sthr_016HpgLgESXdHioos8Lzs9Zi version-plan=0.1.0
