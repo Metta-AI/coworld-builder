@@ -11,3 +11,8 @@
 2026-08-28T03:47:40Z 20 repo created https://github.com/Metta-AI/cogame-gen-generals-io (public)
 2026-08-28T03:49:30Z 20 propagate-secrets run=33139962893 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-28T03:57:00Z 20 dispatch builder round=1: implement design.md on Metta-AI/cogame-gen-generals-io until ci.yml green on main
+2026-08-28T05:47:40Z 20 builder returned round=1: ci.yml GREEN run=33145429852 sha=56e7b170 main; 3 red rounds fixed en route (wire-constants src path, static-replay adapter rename, emscripten getAppDir); placeholder grep clean; workflows all parse+active; release/submit inputs+artifacts verified; design bytes identical at docs/plans; 9 documented deviations (empirical baseline test, tuning objective, scores placement in roster.nim, broadcast_core one-line, derived page via build_broadcast_page.py, speed chips no 0.5, no shard aggregators, starter art sufficient, Git Data API push) — all rails-class, left for phase-30 review
+2026-08-28T05:47:40Z 20 exit criterion verified by coordinator: conclusion=success jobs=test/docker-smoke/wasm-viewer; placeholder grep clean; num_agents=4 in 3 variants+cert; bundle=static-replay-viewer; protocols global+player; both hooks 100755; policies.json 4 entries
+2026-08-28T05:47:40Z progress phase=20 marker=ci-run-33145429852
+2026-08-28T05:47:40Z 20 -> 30 phase transition review_round=1
+2026-08-28T05:47:40Z heartbeat phase=30
