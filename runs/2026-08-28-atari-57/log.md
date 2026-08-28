@@ -77,3 +77,6 @@
 2026-08-28T22:42:37Z 75 -> 80 phase transition: STATE.phase=80 written
 2026-08-28T22:42:37Z heartbeat phase=80
 2026-08-28T22:43:46Z 80 LEARNINGS section appended; exec summary composed
+2026-08-28T22:44:28Z 80 close complete: exec summary on run task (1217965100793033) + idea task (1217965042953233); LEARNINGS appended; all 9 subtasks complete; idea 1217748424043450 completed; run task -> Done
+2026-08-28T22:44:28Z progress phase=80 marker=run-task-Done
+2026-08-28T22:44:28Z session f573b7e6 ended in phase 80 — run COMPLETE (00->80 in one session); no next action

@@ -58,8 +58,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:42:37Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-28T22:44:28Z",
+  "session_ended_at": "2026-08-28T22:44:28Z",
   "session_id": "f573b7e6",
   "log": "runs/2026-08-28-atari-57/log.md"
 }
