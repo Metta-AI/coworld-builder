@@ -62,3 +62,6 @@
 2026-08-28T08:46:41Z heartbeat phase=75
 2026-08-28T08:47:36Z 75 atlas slug live in /api/coworlds (episodes_7d=3); continent=paintlands (rails: zero-sum FFA grid conquest — the RTS/battle-royale shore, not commons/tabletop: new rules, no mixed motive, no board-game port)
 2026-08-28T08:47:36Z 75 atlas dispatch=33156722384 region=paintlands at=202,270 clearance=39.5
+2026-08-28T08:51:20Z 75 atlas dispatch 1 run=33156722384 failed: build refused — 46 unplaced leagues (backlog PRs 20655/20690/20691 still in merge queue + 2 new: halite, snake-royale)
+2026-08-28T08:51:20Z 75 atlas placed-for-others (46): regions reused from vizdoom/hide-and-seek runs' logged rulings; new rails calls: halite->paintlands (zero-sum resource-conquest RTS), snake-royale->paintlands (zero-sum spatial FFA); spots via atlas_spot.py iteratively vs a working places.mjs seeded with my own dot; all clearance >=22
+2026-08-28T08:51:20Z 75 atlas dispatch=33156965025 region=paintlands at=202,270 clearance=39.5 extra_cities=46
