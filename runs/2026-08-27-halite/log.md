@@ -26,3 +26,7 @@
 2026-08-28T03:42:04Z progress phase=30 marker=r1-verdict.md
 2026-08-28T03:42:04Z 30 round 2: reviewer dispatched
 2026-08-28T03:42:04Z heartbeat phase=30
+2026-08-28T04:08:35Z 30 r2 reviewer returned reviews/r2-review.md — 7 findings (F1 deleted tests still absent, F2 unbounded per-turn observe send = hang class, F3-F7 lesser)
+2026-08-28T04:08:35Z progress phase=30 marker=r2-review.md
+2026-08-28T04:08:35Z 30 r2 fixer dispatched
+2026-08-28T04:08:35Z heartbeat phase=30
