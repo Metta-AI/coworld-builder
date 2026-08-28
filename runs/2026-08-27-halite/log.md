@@ -84,3 +84,7 @@
 2026-08-28T08:58:36Z progress phase=60 marker=release-run-33156839080
 2026-08-28T08:58:36Z 50 re-entrancy: resubmitting champions at v2, refreshing fillers, new round
 2026-08-28T08:58:36Z heartbeat phase=60
+2026-08-28T09:01:34Z 50 v2 resubmits: champ1 run 33157525992 ok sub_11335b44; champ2 run 33157567489 ok sub_911a6dda (daveey-1); fillers v2 registered tidewalker=79e81e5a corsair=9ed30562; trigger ok; round 5 pending with both champions at v2 UUIDs
+2026-08-28T09:01:34Z progress phase=50 marker=sub_911a6dda-c291-4fb8-85a9-e145677bbd8b
+2026-08-28T09:01:34Z 60 verifier re-dispatched (attempt 2 on check 4; v2 rounds >=5 only)
+2026-08-28T09:01:34Z heartbeat phase=60

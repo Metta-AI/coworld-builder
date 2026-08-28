@@ -24,8 +24,8 @@
       "halite-corsair:v2"
     ],
     "filler_version_ids": [
-      "dc3af747-7ccb-4cdd-9c25-2e14d93b1467",
-      "633dd3f6-2647-4438-b407-6416b1c9f144"
+      "79e81e5a-3c68-4072-ad7c-02251b25cb56",
+      "9ed30562-956a-41d1-a1bb-580b60886ab8"
     ]
   },
   "league": {
@@ -53,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T08:58:36Z",
+  "heartbeat_at": "2026-08-28T09:01:34Z",
   "session_ended_at": null,
   "session_id": "2c908cae",
   "log": "runs/2026-08-27-halite/log.md"
