@@ -10,3 +10,6 @@
 2026-08-28T13:47:26Z 10 checklist: starter-named=x num_agents-fixed(4,all-variants+cert)=x resolution-order-numbered=x scoring-formula+sign+rank=x end-conditions+reason-enum=x observation-visible/hidden=x reply-schema-caps+rune-trunc=x both-policies-env-switched+baseline-algos=x parallel-batch+budget<=720s=x degrade-never-hang=x two-name-spaces=x viewer-static-wasm+hook+readouts+360px=x viewer-four-files-one-starter(coworld-ctf)+loaded/error-attrs=x chrome-provenance+removed-list+zoom-dropped=x transport-rules=x replay-self-sufficient=x packaging(compose+manifest+docs+protocols-both)=x tests(sim,bounded-orders,e2e-replay,utf8,viewer-smoke-executed)=x out-of-scope-nonempty=x — ACCEPTED round 1 (chrome_common sha256 verified against starter: match)
 2026-08-28T13:47:26Z progress phase=10 marker=design.md written and accepted r1
 2026-08-28T13:47:26Z 10 -> 20 phase transition: STATE.phase=20 written before builder dispatch
+2026-08-28T13:48:21Z 20 repo created: https://github.com/Metta-AI/cogame-sumo-traffic-signals (public)
+2026-08-28T13:48:21Z 20 propagate-secrets run 33177060544 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
+2026-08-28T13:48:21Z heartbeat phase=20
