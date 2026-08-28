@@ -4,7 +4,7 @@
   "run_task": "1217960652523276",
   "slug": "minigrid",
   "repo": "https://github.com/Metta-AI/cogame-minigrid",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
