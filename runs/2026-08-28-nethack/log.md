@@ -14,3 +14,4 @@
 2026-08-28T23:29:37Z 20 repo created: https://github.com/Metta-AI/cogame-nethack (public)
 2026-08-28T23:29:37Z 20 propagate-secrets.yml run 33220582173 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-nethack
 2026-08-28T23:29:37Z heartbeat phase=20
+2026-08-28T23:30:30Z 20 builder dispatched (round 1) thread=sthr_01DSmKdDQMnT6UJjfFPbSPp1 target=ci.yml green on main of Metta-AI/cogame-nethack
