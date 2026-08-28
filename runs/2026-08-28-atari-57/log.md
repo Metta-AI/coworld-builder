@@ -61,3 +61,4 @@
 2026-08-28T22:33:07Z 60 judge returned: verify-verdict.md blocking=0 (markers agree) — all 8 checks adjudicated TRUE, deviations 4+6 accepted with re-fetched evidence
 2026-08-28T22:33:07Z 60 -> 70 phase transition: STATE.phase=70 written
 2026-08-28T22:33:07Z heartbeat phase=70
+2026-08-28T22:34:18Z 70 announce attempted_at written before POST (body 1776 chars)
