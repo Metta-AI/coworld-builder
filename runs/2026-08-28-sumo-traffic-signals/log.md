@@ -14,3 +14,6 @@
 2026-08-28T13:48:21Z 20 propagate-secrets run 33177060544 success; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY
 2026-08-28T13:48:21Z heartbeat phase=20
 2026-08-28T13:49:17Z 20 builder dispatched (round 1) thread=sthr_01Cfevbbo4QzhnSnuzKgmY52
+2026-08-28T16:07:03Z 20 builder returned r1: ci.yml green on main run=33187823599 sha=54fd0408 (verified: all 3 jobs success, workflows active, hooks 100755); 10 documented divergences incl. wave-bug fix, wire-alias, api-push route
+2026-08-28T16:07:03Z progress phase=20 marker=ci-run-33187823599-green
+2026-08-28T16:07:03Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
