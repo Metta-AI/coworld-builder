@@ -32,3 +32,4 @@
 2026-08-28T21:41:44Z progress phase=30 marker=r1-verdict.md
 2026-08-28T21:41:44Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-28T21:41:44Z heartbeat phase=40
+2026-08-28T21:42:05Z 40 builder dispatched for release (version 0.1.0, policies from tools/ci/policies.json)
