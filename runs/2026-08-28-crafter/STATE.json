@@ -4,7 +4,7 @@
   "run_task": "1217965201207246",
   "slug": "crafter",
   "repo": "https://github.com/Metta-AI/cogame-crafter",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T23:25:51Z",
+  "heartbeat_at": "2026-08-28T23:26:38Z",
   "session_ended_at": null,
   "session_id": "40794145",
   "log": "runs/2026-08-28-crafter/log.md"
