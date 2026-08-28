@@ -5,7 +5,7 @@
   "slug": "procgen",
   "repo": "https://github.com/Metta-AI/cogame-procgen",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 0
   },
@@ -23,7 +23,10 @@
       "procgen-pathfinder:v1",
       "procgen-scavenger:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "ff22a97d-757c-4444-b6fe-3c02a7030411",
+      "d12e5c64-6bd6-4b0d-8844-598cb1517faa"
+    ]
   },
   "league": {
     "id": "league_2b1f9007-0749-4e3c-a669-a630283894f1",
@@ -50,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T20:11:16Z",
+  "heartbeat_at": "2026-08-28T20:13:43Z",
   "session_ended_at": null,
   "session_id": "454a5d0b",
   "log": "runs/2026-08-28-procgen/log.md"

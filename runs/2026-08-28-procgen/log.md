@@ -33,3 +33,9 @@
 2026-08-28T20:10:17Z 40 -> 50 phase transition
 2026-08-28T20:11:16Z 50 seed 200 league_2b1f9007-0749-4e3c-a669-a630283894f1; division 200 div_6efcf3a6-7551-4401-94a0-85853a797f16; settings 200 (elo mean, round_robin filler_policy, 15min)
 2026-08-28T20:11:16Z heartbeat phase=50
+2026-08-28T20:13:43Z 50 champ1 submit run=33207170935 ok=true sub_6de0f8d4 (procgen-cartographer:v1 as daveey)
+2026-08-28T20:13:43Z 50 champ2 submit run=33207213447 ok=true sub_a04a92b6 (procgen-scrambler:v1 as daveey-1, player_name verified daveey-1)
+2026-08-28T20:13:43Z 50 filler-policies 200: pathfinder ff22a97d + scavenger d12e5c64 (neither champion) — set BEFORE trigger
+2026-08-28T20:13:43Z 50 unpause 200; trigger-round 200; round 1 pending; entrant_attributions = both champions
+2026-08-28T20:13:43Z progress phase=50 marker=league_2b1f9007 round 1 pending both champions entrants
+2026-08-28T20:13:43Z 50 -> 60 phase transition
