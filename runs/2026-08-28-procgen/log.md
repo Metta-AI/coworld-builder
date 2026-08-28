@@ -22,3 +22,6 @@
 2026-08-28T19:44:59Z 30 fixer returned r1-fixes.md: 14 commits (11 code + 3 doc/CI), head 545c7911, ci 33204619462 green; 11 no-change-with-evidence; 4 of 5 could-not-determine settled; note: sandbox CAN build nim via nimby (record for later phases)
 2026-08-28T19:44:59Z 30 judge dispatched round=1 sha=545c7911
 2026-08-28T19:44:59Z heartbeat phase=30
+2026-08-28T19:58:56Z 30 judge returned r1-verdict.md blocking=0/BLOCKING=0 (all 15 checklist items PASS at 545c7911, ci 33204619462; 13 findings moot at head, rest advisory) — loop exits round 1
+2026-08-28T19:58:56Z progress phase=30 marker=r1-verdict.md blocking=0
+2026-08-28T19:58:56Z 30 -> 40 phase transition
