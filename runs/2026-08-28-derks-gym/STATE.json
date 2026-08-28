@@ -5,7 +5,7 @@
   "slug": "derks-gym",
   "repo": "https://github.com/Metta-AI/cogame-derks-gym",
   "starter": "cogame-moba",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -41,7 +41,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-28T15:40:08Z",
-    "discord_message_id": ""
+    "discord_message_id": "1542921785505488987"
   },
   "atlas": {
     "status": "",
@@ -55,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T15:40:08Z",
+  "heartbeat_at": "2026-08-28T15:40:34Z",
   "session_ended_at": null,
   "session_id": "3c1a9d54",
   "log": "runs/2026-08-28-derks-gym/log.md"
