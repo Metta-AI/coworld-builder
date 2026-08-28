@@ -70,3 +70,6 @@
 2026-08-28T02:34:56Z 75 -> 80 phase transition: entering close
 2026-08-28T02:34:56Z heartbeat phase=80
 2026-08-28T02:36:12Z 80 executive summary posted on run task (1217944824896154) and idea task (1217943997717256); LEARNINGS.md section appended
+2026-08-28T02:36:37Z 80 all 9 phase subtasks complete; idea task 1217748519766654 completed; run task moved to Done
+2026-08-28T02:36:37Z progress phase=80 marker=run-task-Done idea-completed
+2026-08-28T02:36:37Z 80 close: RUN COMPLETE — session ending; no next action (atlas PR merge is a human's merge-when-ready)
