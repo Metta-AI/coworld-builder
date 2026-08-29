@@ -24,3 +24,8 @@
 2026-08-29T08:38:07Z heartbeat phase=30
 2026-08-29T08:38:57Z 30 dispatched reviewer sthr_01VTXFHtVPnJoNj5RQQE9ebe round=1 brief=trace /tmp/cogame-sokoban@464b2ab vs design.md -> reviews/r1-review.md
 2026-08-29T08:41:13Z 20 CI GREEN on main sha=464b2ab run=33243111396 conclusion=success (test + docker-smoke + wasm-viewer); all four phase-20 exit checks pass
+2026-08-29T08:42:32Z 20 builder returned: ci.yml green run=33243111396 sha=464b2ab (3 commits, 13 documented deviations, all rails-scope; exit checks 4/4 pass)
+2026-08-29T08:42:32Z 20 coordinator verified: run 33243111396 conclusion=success on main head 464b2ab; three workflows registered+active
+2026-08-29T08:42:32Z progress phase=20 marker=ci-run-33243111396
+2026-08-29T08:42:32Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-29T08:42:32Z heartbeat phase=30
