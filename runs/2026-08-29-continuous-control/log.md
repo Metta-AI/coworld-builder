@@ -26,3 +26,6 @@
 2026-08-29T11:09:10Z 30 r1 reviewer returned r1-review.md (18 findings: 1 blocking-candidate F1 uncapped stop-detail rune truncation, 17 advisory)
 2026-08-29T11:09:10Z 30 r1 fixer dispatched
 2026-08-29T11:09:10Z heartbeat phase=30
+2026-08-29T11:28:28Z 30 r1 fixer returned r1-fixes.md: 10 fixed (F1 e9902cc rune-cap stop detail, F2,F3,F4,F5,F6,F13,F14,F16,F17), 8 no-change with evidence (F7,F8,F9,F10,F11,F12,F15,F18); green a8db2b3 run 33249877981
+2026-08-29T11:28:28Z 30 r1 judge dispatched (sha a8db2b3)
+2026-08-29T11:28:28Z heartbeat phase=30
