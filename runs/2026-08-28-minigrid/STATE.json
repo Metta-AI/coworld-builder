@@ -12,17 +12,17 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.0",
-    "cow_id": "cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329",
-    "manifest_sha": "sha256:90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4",
-    "release_run_id": "33215083433"
+    "version": "0.1.1",
+    "cow_id": "cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
+    "manifest_sha": "sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032",
+    "release_run_id": "33226095645"
   },
   "policies": {
-    "champion1": "minigrid-cartographer:v1",
-    "champion2": "minigrid-missionfirst:v1",
+    "champion1": "minigrid-cartographer:v2",
+    "champion2": "minigrid-missionfirst:v2",
     "fillers": [
-      "minigrid-scout:v1",
-      "minigrid-bumper:v1"
+      "minigrid-scout:v2",
+      "minigrid-bumper:v2"
     ],
     "filler_version_ids": [
       "dd96f37f-ce9e-485c-8e13-412e923e816a",
@@ -68,7 +68,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-28T22:59:52Z",
+  "heartbeat_at": "2026-08-29T01:29:13Z",
   "session_ended_at": null,
   "session_id": "65d65a2f",
   "log": "runs/2026-08-28-minigrid/log.md"
