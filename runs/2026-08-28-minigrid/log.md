@@ -79,3 +79,6 @@
 2026-08-29T01:18:39Z 60 release 0.1.1 dispatch next (builder thread reused)
 2026-08-29T01:19:12Z 60 release 0.1.1 dispatched to builder thread sthr_01KDUULfYUsdx3KEpWZKqw3X (v2 at 8a78a6bf, judge r2 clean)
 2026-08-29T01:19:12Z heartbeat phase=60
+2026-08-29T01:29:13Z 60 release 0.1.1 dispatch 1 run=33226095645 success — canonical cow_753b4d23, certify 10/10, secret_put; 4 policies minted v2 (champion2 owned by daveey-1); verified from release-result.json
+2026-08-29T01:29:13Z progress phase=60 marker=release-run-33226095645
+2026-08-29T01:29:13Z 60 league v2 rollover next: submit v2 champions, replace fillers with v2 UUIDs BEFORE next trigger (v1 binaries incompatible with v2 wire), then trigger and re-verify
