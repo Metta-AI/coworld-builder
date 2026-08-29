@@ -134,3 +134,5 @@
 2026-08-29T07:07:51Z 70 -> 75 phase transition: STATE.phase=75
 2026-08-29T07:07:51Z heartbeat phase=75
 2026-08-29T07:08:34Z 75 atlas continent=simulations (borrowed benchmark world — Farama MiniGrid/BabyAI/XLand; matches atari-57/procgen/nethack/crafter precedent); spot 536,271 clearance=69.0
+2026-08-29T07:08:54Z 75 atlas dispatch=33240144287 region=simulations at=536,271 clearance=69.0
+2026-08-29T07:08:54Z heartbeat phase=75
