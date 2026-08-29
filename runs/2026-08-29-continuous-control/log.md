@@ -39,3 +39,7 @@
 2026-08-29T12:33:50Z 30 r2 fixer returned r2-fixes.md: 7 fixed (F1 38cc254a feed row Node + regenerated page + console-clean CI step; B1 460e7ddb+cd6784bb fixture 140-rune say row asserted at 360/640/1280; F2,F3,F4,F6,F7,F8), 1 informational no-change (F5); green b67f8c86 run 33252260364, feed_lines=2, console chrome errors 0
 2026-08-29T12:33:50Z 30 r2 judge dispatched (sha b67f8c86)
 2026-08-29T12:33:50Z heartbeat phase=30
+2026-08-29T12:46:34Z 30 r2 judge returned r2-verdict.md: blocking=0/BLOCKING=0 — all 15 checklist items PASS at b67f8c86 (run 33252260364); test-pin change judged a correction
+2026-08-29T12:46:34Z progress phase=30 marker=r2-verdict.md
+2026-08-29T12:46:34Z 30 -> 40 phase transition: entering release (2 rounds used of 4)
+2026-08-29T12:46:34Z heartbeat phase=40
