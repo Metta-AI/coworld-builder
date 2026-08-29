@@ -35,3 +35,9 @@
 2026-08-29T03:32:40Z progress phase=30 marker=r1-verdict.md
 2026-08-29T03:33:35Z 40 builder dispatched (release) thread=sthr_01PP4bu2pRp3WrQcjiyKUwdx target=coworld-release.yml canonical+certified, policies from tools/ci/policies.json, start version 0.1.0
 2026-08-29T03:33:35Z heartbeat phase=40
+2026-08-29T03:44:17Z 40 dispatch 1: version=0.1.0 run=33231707696 step_failed="Build the Coworld manifest" (pydantic: game.image extra_forbidden; player[0].type=policy not in enum) — builder fixed manifest, validated locally with coworld==0.1.43 before re-dispatch (commit 3e37c93)
+2026-08-29T03:44:17Z 40 dispatch 2: version=0.1.1 run=33231811404 success — ok:true canonical:true certify.ok:true liveness-skipped-static secret_put:true; 4 policy labels distinct, champion2 player_id=ply_bac48eb1; release-result.json persisted to run dir
+2026-08-29T03:44:17Z 40 coordinator verified artifact field-by-field; cow_id=cow_1346325e-7184-4c94-9fbc-d3aeb750889c manifest_sha=sha256:3452373e...
+2026-08-29T03:44:17Z 40 note for LEARNINGS(80): design.md test 39 (CI runs installed coworld validate_upload_manifest) was never wired into ci.yml — exactly the gap that let 2 schema errors reach a release dispatch; candidate templates/ci.yml improvement
+2026-08-29T03:44:17Z 40 -> 50 phase transition: STATE.phase=50 written
+2026-08-29T03:44:17Z progress phase=40 marker=release-run-33231811404
