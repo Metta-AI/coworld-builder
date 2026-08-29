@@ -119,3 +119,7 @@
 2026-08-29T06:42:02Z heartbeat phase=60
 2026-08-29T06:44:57Z heartbeat phase=60
 2026-08-29T06:54:02Z heartbeat phase=60
+2026-08-29T06:55:17Z 60 verifier r3 returned: VERIFY.md 8/8 TRUE — check 5 resolved (14/14 qualifying-round logs clean, 1073/1073 sidecar 200s, max batch 12477ms vs 18000ms ladder); viewer-check run 33239074400 loaded:true clocks distinct; 4 non-blocking findings (endcard unreachable at 100% scrub; lane labels; champion-vs-filler solves; replay_summary protocol constant)
+2026-08-29T06:55:17Z progress phase=60 marker=VERIFY.md-round3-8of8-TRUE+viewer-check-33239074400
+2026-08-29T06:55:17Z 60 judge dispatched (fresh context) on VERIFY.md round 3 output=runs/2026-08-28-minigrid/reviews/r4-verdict.md
+2026-08-29T06:55:17Z heartbeat phase=60
