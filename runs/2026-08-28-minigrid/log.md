@@ -66,3 +66,7 @@
 2026-08-28T23:24:42Z progress phase=60 marker=design.md-addendum-v2-persisted-blob-878f41b8
 2026-08-28T23:24:42Z 60 builder v2 resumed (same thread sthr_01KDUULfYUsdx3KEpWZKqw3X) against the persisted addendum
 2026-08-28T23:24:42Z heartbeat phase=60
+2026-08-29T00:51:40Z 60 builder v2 returned: ci green run=33224429999 sha=32555dec (verified) — seats=4 smoke, scrub readouts pairwise distinct, feed_lines=9, 0 sprite 404s/unknown types; 7 documented divergences; root causes: killfeed id mismatch, u16 label overflow (type-34), clock-caption tick
+2026-08-29T00:51:40Z progress phase=60 marker=ci-run-33224429999-green-v2
+2026-08-29T00:51:40Z 60 rails: builder told to fix stale 'eleven turns' in shared system prompt + policies.json (one commit) before judge r2
+2026-08-29T00:51:40Z heartbeat phase=60
