@@ -1,20 +1,35 @@
-# VERIFY — minigrid   (2026-08-28T22:55Z)
+# VERIFY — minigrid   (2026-08-29T02:15Z)
 
-Verdict: **3 items false** (checks 5, 6, 8) — checks 1, 2, 3, 4, 7 TRUE.
+Verdict: **1 item false** (check 5) — checks 1, 2, 3, 4, 6, 7, 8 TRUE.
 
-Run: `2026-08-28-minigrid` · slug `minigrid` · `$COW` `cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329`
-version `0.1.0` · `$L` `league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca`
-`$D` `div_721f571a-ece7-4ed9-8b1c-15eb2cd072be` · manifest_sha
-`sha256:90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4`
+**Round 2 — this file supersedes the 0.1.0 verification.** The first verification of this run
+(2026-08-28T22:55Z, preserved in git history) ran against release **0.1.0** / `cow_5201d3e2` and
+returned checks 5, 6 and 8 FALSE: check 6 because a single-seat episode can never produce a
+featured match, check 8 because the viewer's 50 % and 100 % scrub readouts were identical, and
+check 5 because of one champion-seat fallback against a 6 000 ms attempt-1 deadline. The coworld
+was redesigned to **four isolated lanes** (`num_agents` 1 → 4), the viewer seek/clock contract was
+fixed, the deadline ladder was widened to `attempt1Ms 11000` / `retryMs 6000`, and the result was
+re-released as **0.1.1** (`cow_753b4d23`, manifest `sha256:fdd3b4cb…656032`, release run
+`33226095645`). Every one of the eight checks below was **re-executed from scratch** in this
+verifier session (2026-08-29 01:50Z – 02:15Z) against 0.1.1; nothing is carried over from the
+0.1.0 round. Checks 6 and 8 are now TRUE — the featured match exists and the three clock readouts
+are pairwise distinct. Check 5 is **still FALSE**, but for a different and better-understood
+reason, documented in §5.
 
-All ids read from `runs/2026-08-28-minigrid/STATE.json`. Every fetch below was made in this
-verifier session (2026-08-28 22:14Z – 22:55Z); nothing is reused from an earlier phase except
-check 7 (the committed `release-result.json`, as `prompts/60-verify.md` §7 directs) and check 8's
-rendered evidence (the `viewer-check.yml` runs dispatched by this session at 22:38, 22:40 and
-22:41Z).
+Run: `2026-08-28-minigrid` · slug `minigrid` · version `0.1.1`
+`$COW` `cow_753b4d23-00cd-417a-99eb-b643f0f0f526`
+`$L` `league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca`
+`$D` `div_721f571a-ece7-4ed9-8b1c-15eb2cd072be`
+manifest_sha `sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032`
+repo `Metta-AI/cogame-minigrid` @ `8a78a6bf`
+
+All ids read from `runs/2026-08-28-minigrid/STATE.json`. Documented exceptions to "fetch fresh":
+**check 7** reads the committed `runs/2026-08-28-minigrid/release-result.json` (as
+`prompts/60-verify.md` §7 directs), and **check 8**'s rendered evidence is the artifact of the
+`viewer-check.yml` run this session dispatched at 01:54:33Z (run `33227616497`).
 
 Headers on every Observatory call: `Authorization: Bearer $SOFTMAX_TOKEN` and
-`User-Agent: coworld-builder/1.0`; `X-Use-Elevated-Privileges: true` added on the two reads that
+`User-Agent: coworld-builder/1.0`; `X-Use-Elevated-Privileges: true` added on the reads that
 require it (`/artifacts/logs`, `/leagues/$L/filler-policies`). Values are never printed.
 
 ```bash
@@ -23,641 +38,918 @@ AUTH=(-H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/
 ELEV=(-H "X-Use-Elevated-Privileges: true")
 L=league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca
 D=div_721f571a-ece7-4ed9-8b1c-15eb2cd072be
-COW=cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329
+COW=cow_753b4d23-00cd-417a-99eb-b643f0f0f526
 ```
 
-Poll log (checks 1 and 3, per `prompts/60-verify.md` §Waiting; bound 75 min from 22:14Z):
+Poll log (`prompts/60-verify.md` §Waiting; bound 75 min from 01:50Z, i.e. expiring 03:05Z):
 
-| UTC | rounds seen |
+| UTC | observation |
 |---|---|
-| 22:14:15 | round 1 `pending` |
-| 22:15:26 | round 1 `pending` |
-| 22:20:23 | round 1 **completed** 22:15:37Z |
-| 22:26:04 | round 1 completed; no round 2 yet |
-| 22:30:53 | round 2 `pending` |
-| 22:35:47 | round 2 **completed** 22:32:00Z → bound satisfied (2 completed rounds, 21 min in) |
-| 22:49:23 | round 3 **completed** 22:46:09Z |
+| 01:51:0xZ | rounds 1–16 all `completed`; 15 and 16 carry the all-v2 entrant set → the ≥2 bound was already satisfied at the first poll |
+| 01:56:25Z | no round 17 yet; checks 3/4/6/8 executed against round 16 (the latest completed) |
+| 02:00:54Z | round 17 `pending` (created 01:58:13Z) |
+| 02:10:49Z | round 17 **completed** 02:04:47Z → fetched as check-5 retry attempt 3 (§5) |
+| 02:11:31Z | `softmax.com/minigrid` re-fetched; featured match has rolled to `minigrid.r17.e1` (§6) |
+
+Bound used: 21 of 75 minutes. The ladder produces a round every ~15 minutes, so "the latest
+completed round" is a moving target; §§3, 4, 6 and 8 were executed against **round 16**, which was
+the latest completed round at the moment each was run (01:52–01:55Z). Round 17 completed at
+02:04:47Z, afterwards. Where that matters it is stated in the section, and §5 and §6 were both
+re-run against round 17 rather than left stale.
 
 ---
 
 ## 1. ≥2 completed rounds after the fillers were set
 
-```bash
-curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
- | jq 'if type=="array" then . else .entries end
-       | [.[]|{id,round_number,status,error,created_at,completed_at,
-               entrants:.round_config.entrant_policy_version_ids}]'
-```
+**TRUE** — rounds **15** and **16** completed after the v2 filler pair went live, both with the
+all-v2 entrant set. No round in this league has ever been `failed` or `discarded`.
 
-Fetched 2026-08-28T22:35:57Z:
-
-```json
-[
-  {
-    "id": "round_a4ab0f21-6588-4b6c-8eb0-5d25565535ee",
-    "round_number": 2,
-    "status": "completed",
-    "error": null,
-    "created_at": "2026-08-28T22:27:00.890259Z",
-    "completed_at": "2026-08-28T22:32:00.838673Z",
-    "entrants": [
-      "6eed9b32-93bb-42db-9c06-2a33a41678ae",
-      "8e8fff3c-dfee-4dfc-81ba-841de3a7e355"
-    ]
-  },
-  {
-    "id": "round_d23b23fc-be7d-4e96-aa40-b147106b3eda",
-    "round_number": 1,
-    "status": "completed",
-    "error": null,
-    "created_at": "2026-08-28T22:12:00.490449Z",
-    "completed_at": "2026-08-28T22:15:37.416229Z",
-    "entrants": [
-      "6eed9b32-93bb-42db-9c06-2a33a41678ae",
-      "8e8fff3c-dfee-4dfc-81ba-841de3a7e355"
-    ]
-  }
-]
-```
-
-```bash
-curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
- | jq -r 'if type=="array" then . else .entries end
-          | [.[]|select(.status=="completed")]|length'
-```
-```
-2
-```
-
-Re-fetched 2026-08-28T22:49:23Z (a third round landed while check 8 was running):
-
-```json
-[{"round_number":3,"status":"completed","completed_at":"2026-08-28T22:46:09.421195Z"},
- {"round_number":2,"status":"completed","completed_at":"2026-08-28T22:32:00.838673Z"},
- {"round_number":1,"status":"completed","completed_at":"2026-08-28T22:15:37.416229Z"}]
-```
-
-No round has status `failed` or `discarded`; every `error` is `null`.
-
-**Fillers were set before round 1.** `runs/2026-08-28-minigrid/log.md:45`:
-
-```
-2026-08-28T22:13:04Z 50 fillers registered BEFORE trigger: scout=dd96f37f bumper=bc769311
-  (POST filler-policies 200, response lists exactly these two)
-```
-
-and the live read confirms exactly those two are the league's fillers now:
+First, what the live filler set actually is (this is the "after the fillers were set" reference
+point; the read needs the elevated header even though it is a read):
 
 ```bash
 curl -sS "$BASE/leagues/$L/filler-policies" "${AUTH[@]}" "${ELEV[@]}" | jq .
 ```
+
+Fetched 2026-08-29T01:52:0xZ — HTTP 200:
+
 ```json
 {
   "filler_policy_versions": [
-    {"policy_version_id": "dd96f37f-ce9e-485c-8e13-412e923e816a",
-     "policy_name": "minigrid-scout", "version": 1, "player_name": "daveey"},
-    {"policy_version_id": "bc769311-e87c-49ff-86b7-67794b891c6b",
-     "policy_name": "minigrid-bumper", "version": 1, "player_name": "daveey"}
+    {
+      "policy_version_id": "1f17a736-1407-4eac-bde7-6400d0b3b0ed",
+      "policy_id": "4551842d-05d0-4fd0-9aeb-bf6a8c7deefc",
+      "policy_name": "minigrid-scout",
+      "version": 2,
+      "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
+      "player_name": "daveey",
+      "display_name": null
+    },
+    {
+      "policy_version_id": "d984c287-a3d7-4dcd-9248-f8200df6cc8a",
+      "policy_id": "d885f184-1d7d-4eaf-ad0f-739597087f74",
+      "policy_name": "minigrid-bumper",
+      "version": 2,
+      "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3",
+      "player_name": "daveey",
+      "display_name": null
+    }
   ]
 }
 ```
-(rows trimmed to the identifying fields; `policy_id` / `display_name` omitted.)
 
-Status: **TRUE** — rounds 1, 2 and 3 are `completed` (22:15:37Z, 22:32:00Z, 22:46:09Z), all after
-the fillers were registered at 22:13:04Z; both completed rounds seated only the two champion
-policy versions (`6eed9b32…` = cartographer, `8e8fff3c…` = missionfirst).
+Both are **v2** and neither uuid is a champion uuid (champions are `52906971…` and `bdf22f53…`).
+`log.md` records the replacement at `2026-08-29T01:31Z`, immediately before round 14.
 
----
-
-## 2. Both champions ranked; fillers absent or Baseline
+Then the rounds:
 
 ```bash
-curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" \
- | jq -r '.[]|[.rank,.player_name,.policy_label,.score,.rounds_played,.episode_wins]|@tsv'
+curl -sS "$BASE/rounds?league_id=$L&limit=30" "${AUTH[@]}" \
+ | jq 'if type=="array" then . else .entries end
+       | [.[]|{id,round_number,status,error,created_at,completed_at,
+               entrants:.round_config.entrant_policy_version_ids}] | sort_by(.round_number)'
 ```
 
-Fetched 2026-08-28T22:35:57Z (bare list, as `playbooks/observatory-api.md` §11 says):
+Fetched 2026-08-29T01:51:0xZ — HTTP 200. Sixteen rounds returned, **all `"status":"completed"`,
+all `"error": null`** (zero `failed`, zero `discarded`). Trimmed to rounds 13–16, which is where
+the v1 → v2 rollover happens:
 
 ```json
 [
-  {"rank": 1, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
-   "score": 1030.5304984710244, "score_label": "MMR", "rounds_played": 2, "episode_wins": 2.0,
-   "win_rate": 1.0, "policy_label": "minigrid-cartographer:v1"},
-  {"rank": 2, "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
-   "score": 969.4695015289755, "score_label": "MMR", "rounds_played": 2, "episode_wins": 0.0,
-   "win_rate": 0.0, "policy_label": "minigrid-missionfirst:v1"}
+  { "id": "round_a27653e9-e82a-43fc-bd28-a20da01ec8b1", "round_number": 13,
+    "status": "completed", "error": null,
+    "created_at": "2026-08-29T01:15:46.654439Z", "completed_at": "2026-08-29T01:19:19.075534Z",
+    "entrants": ["6eed9b32-93bb-42db-9c06-2a33a41678ae",
+                 "8e8fff3c-dfee-4dfc-81ba-841de3a7e355",
+                 "9b23f82c-29fc-4167-a802-1cf15eca7c53"] },
+  { "id": "round_65144971-4922-40a5-ab8d-be00b7bcad5e", "round_number": 14,
+    "status": "completed", "error": null,
+    "created_at": "2026-08-29T01:30:43.353011Z", "completed_at": "2026-08-29T01:36:33.210483Z",
+    "entrants": ["52906971-a8a1-414d-b538-847d072173df",
+                 "8e8fff3c-dfee-4dfc-81ba-841de3a7e355",
+                 "9b23f82c-29fc-4167-a802-1cf15eca7c53"] },
+  { "id": "round_a4dba3c3-d5c7-4e62-9eda-40ce114e6f1c", "round_number": 15,
+    "status": "completed", "error": null,
+    "created_at": "2026-08-29T01:36:34.023729Z", "completed_at": "2026-08-29T01:42:21.159750Z",
+    "entrants": ["52906971-a8a1-414d-b538-847d072173df",
+                 "bdf22f53-d38d-463b-b0ca-07deb733981c",
+                 "9b23f82c-29fc-4167-a802-1cf15eca7c53"] },
+  { "id": "round_6f2dadf4-b743-4f29-b9f4-119141ca8db7", "round_number": 16,
+    "status": "completed", "error": null,
+    "created_at": "2026-08-29T01:43:13.039669Z", "completed_at": "2026-08-29T01:49:21.551025Z",
+    "entrants": ["52906971-a8a1-414d-b538-847d072173df",
+                 "bdf22f53-d38d-463b-b0ca-07deb733981c",
+                 "9b23f82c-29fc-4167-a802-1cf15eca7c53"] }
 ]
 ```
 
-Re-fetched 2026-08-28T22:49:23Z, after round 3:
+Round 13 seats **cartographer v1** (`6eed9b32`) and **missionfirst v1** (`8e8fff3c`). Round 14
+seats cartographer **v2** but missionfirst still **v1** (the placement snapshot was taken before
+the v2 submission landed). Rounds **15 and 16** seat both champions on **v2** — `52906971` =
+`minigrid-cartographer:v2` (daveey) and `bdf22f53` = `minigrid-missionfirst:v2` (daveey-1). The
+third uuid `9b23f82c` is the third-party entrant `co-gas-minigrid-subgoal-router-richard:v1`
+(player `richard`), not a filler.
 
-```
-1	daveey	minigrid-cartographer:v1	1058.3447599852047	3	4.0
-2	richard	co-gas-minigrid-subgoal-router-richard:v1	1000.0	1	1.0
-3	daveey-1	minigrid-missionfirst:v1	941.655240014795	3	0.0
+Corroboration that the **v2** filler pair was actually seated in those rounds (the round config
+lists only entrants; the filler shows up in the episode):
+
+```bash
+for r in round_65144971-… round_a4dba3c3-… ; do
+  e=$(curl -sS "$BASE/rounds/$r/episode-requests" "${AUTH[@]}" | jq -r '.entries[0].id')
+  curl -sS "$BASE/episode-requests/$e" "${AUTH[@]}" \
+   | jq -c '[.participants[]|{position,policy_name,version,player_name,is_filler}]'
+done
 ```
 
-Status: **TRUE** — `daveey` (`minigrid-cartographer:v1`) and `daveey-1`
-(`minigrid-missionfirst:v1`) are both ranked with `rounds_played = 3 ≥ 1`. Neither filler
-(`minigrid-scout:v1`, `minigrid-bumper:v1`) appears on the leaderboard at all, and no row is
-labelled `Baseline` — the fillers were never needed, because the division always had ≥2 entrants.
-Note for the coordinator: a third, **external** entrant appeared between the two fetches —
-`richard` / `co-gas-minigrid-subgoal-router-richard:v1` (`rounds_played 1`). It is a submitted
-third-party policy, not one of this run's fillers, and it does not affect this check.
+Fetched 2026-08-29T01:57:5xZ:
+
+```json
+round 14 (ereq_33e1b859-c6ca-4a9d-bbf3-16c556224d95):
+[{"position":0,"policy_name":"minigrid-cartographer","version":2,"player_name":"daveey","is_filler":false},
+ {"position":1,"policy_name":"minigrid-missionfirst","version":1,"player_name":"daveey-1","is_filler":false},
+ {"position":2,"policy_name":"co-gas-minigrid-subgoal-router-richard","version":1,"player_name":"richard","is_filler":false},
+ {"position":3,"policy_name":"minigrid-bumper","version":2,"player_name":"daveey","is_filler":true}]
+
+round 15 (ereq_6c612420-5975-40b7-a538-8014744efe3e):
+[{"position":0,"policy_name":"minigrid-cartographer","version":2,"player_name":"daveey","is_filler":false},
+ {"position":1,"policy_name":"minigrid-missionfirst","version":2,"player_name":"daveey-1","is_filler":false},
+ {"position":2,"policy_name":"co-gas-minigrid-subgoal-router-richard","version":1,"player_name":"richard","is_filler":false},
+ {"position":3,"policy_name":"minigrid-bumper","version":2,"player_name":"daveey","is_filler":true}]
+```
+
+Status: **TRUE** — the v2 filler pair (`minigrid-scout:v2`, `minigrid-bumper:v2`) is the live
+filler set; rounds **15** (completed 2026-08-29T01:42:21Z) and **16** (completed
+2026-08-29T01:49:21Z) both completed after it was set and both seat both champions on v2 — two
+qualifying completed rounds. Fourteen further rounds (1–14) also completed; none failed or was
+discarded, so there is no `error` string to record.
 
 ---
 
-## 3. The latest round's episode requests completed with a replay
+## 2. Both champions ranked
 
-The flat route in the prompt is dead — `playbooks/observatory-api.md` §9 records
-`GET $BASE/episode-requests?round_id=…` returning **HTTP 405** since 2026-08-26. The nested route
-is used instead, exactly as that playbook directs:
+**TRUE.**
 
 ```bash
-R=$(curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}" \
-    | jq -r 'if type=="array" then . else .entries end
-             |[.[]|select(.status=="completed")]|max_by(.round_number).id')
-# R=round_aa501498-e555-4a71-b4cb-bae6c84076b1   (round 3, latest completed, 22:49:23Z)
-curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}" \
- | jq -c 'if type=="array" then . else .entries end|[.[]|{id,status}]'
+curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}" | jq .
 ```
+
+Fetched 2026-08-29T01:52:0xZ — HTTP 200, bare JSON list:
+
 ```json
-[{"id":"ereq_e90fc9d0-5fc2-431a-a563-0cf62ad169db","status":"completed"},
- {"id":"ereq_a6cb6363-5621-4d40-a99c-ebbe390656a7","status":"completed"},
- {"id":"ereq_243aa916-6b55-4d88-800b-3469c4f356d5","status":"completed"}]
+[
+  {"rank":1,"player_id":"ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83","player_name":"richard",
+   "score":1039.2124455408778,"score_label":"MMR","rounds_played":14,"episode_wins":15.0,
+   "win_rate":0.5357142857142857,"policy_label":"co-gas-minigrid-subgoal-router-richard:v1"},
+  {"rank":2,"player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey",
+   "score":1001.0113369839092,"score_label":"MMR","rounds_played":16,"episode_wins":18.0,
+   "win_rate":0.6,"policy_label":"minigrid-cartographer:v2"},
+  {"rank":3,"player_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d","player_name":"daveey-1",
+   "score":959.7762174752124,"score_label":"MMR","rounds_played":16,"episode_wins":11.0,
+   "win_rate":0.36666666666666664,"policy_label":"minigrid-missionfirst:v2"}
+]
 ```
+
+```
+rank  player_name  policy_label                                 score     rounds  wins
+1     richard      co-gas-minigrid-subgoal-router-richard:v1    1039.212  14      15.0
+2     daveey       minigrid-cartographer:v2                     1001.011  16      18.0
+3     daveey-1     minigrid-missionfirst:v2                      959.776  16      11.0
+```
+
+Status: **TRUE** — `daveey` (rank 2, `minigrid-cartographer:v2`, `rounds_played` 16) and
+`daveey-1` (rank 3, `minigrid-missionfirst:v2`, `rounds_played` 16) are both present with
+`rounds_played ≥ 1`, and both are carrying their **v2** labels. The two filler policies
+(`minigrid-scout`, `minigrid-bumper`) are **absent** from the leaderboard entirely, which is the
+stronger of the two conditions the check allows. `richard` at rank 1 is an independent third-party
+entrant (`ply_ded11f40`), not a filler and not one of this run's policies.
+
+---
+
+## 3. The latest round's episode request completed with a replay
+
+**TRUE.** Latest completed round **at the time this check ran (01:52Z)** = **16**
+(`round_6f2dadf4-b743-4f29-b9f4-119141ca8db7`, completed 01:49:21Z). Round 17 completed later, at
+02:04:47Z; its episode request `ereq_924bca47-0f9f-4ee7-b814-236c19ec9211` was fetched for §5 and
+is also `"status":"completed"` with the same four-participant shape (daveey cartographer v2,
+daveey-1 missionfirst v2, richard v1, scout v2 `is_filler`) and a non-null `replay_url`, so the
+check holds for it too.
 
 ```bash
-for E in …; do curl -sS "$BASE/episode-requests/$E" "${AUTH[@]}" \
-  | jq -c '{status, replay_url, participants:[.participants[]|{policy_name,player_name,is_filler}],
-            participant_scores}'; done
-```
-```json
-{"status":"completed","replay_url":"https://softmax-public.s3.amazonaws.com/replays/2f0f47fd-0110-4fe5-8190-84a00820c8a8.replay","participants":[{"policy_name":"co-gas-minigrid-subgoal-router-richard","player_name":"richard","is_filler":false}],"participant_scores":[{"position":0,"score":108000.0}]}
-{"status":"completed","replay_url":"https://softmax-public.s3.amazonaws.com/replays/70a0e17b-ae6c-4f4f-99bd-cdf0e8b0ab61.replay","participants":[{"policy_name":"minigrid-missionfirst","player_name":"daveey-1","is_filler":false}],"participant_scores":[{"position":0,"score":106100.0}]}
-{"status":"completed","replay_url":"https://softmax-public.s3.amazonaws.com/replays/5eb66cb5-6917-4dee-a4c5-3f00c60d27d8.replay","participants":[{"policy_name":"minigrid-cartographer","player_name":"daveey","is_filler":false}],"participant_scores":[{"position":0,"score":209090.0}]}
+R=round_6f2dadf4-b743-4f29-b9f4-119141ca8db7
+curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}" | jq '{count:(.entries|length), …}'
 ```
 
-Round 2 (the latest completed round when checks 3–5 were first executed, 22:35–22:37Z, and the
-round whose replay check 8 rendered) — full untrimmed detail, both champion episodes:
+Fetched 2026-08-29T01:52:4xZ — HTTP 200. One episode request:
+`ereq_737c8831-0e00-4a7c-868e-732a2ca0df67`.
+
+```bash
+curl -sS "$BASE/episode-requests/ereq_737c8831-0e00-4a7c-868e-732a2ca0df67" "${AUTH[@]}" \
+ | jq '{status, replay_url, participants, participant_scores}'
+```
+
+Fetched 2026-08-29T01:53:0xZ — HTTP 200:
 
 ```json
-=== ereq_b5878b96-ceb5-42b4-87f3-d99d725aa322
 {
   "status": "completed",
-  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/9d6c6eac-46b7-47d1-b936-d70761c155e2.replay",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
   "participants": [
-    {"position": 0, "kind": "policy",
-     "policy_version_id": "8e8fff3c-dfee-4dfc-81ba-841de3a7e355",
-     "policy_name": "minigrid-missionfirst", "version": 1,
-     "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
-     "is_filler": false, "is_seed": false}
+    {"position":0,"kind":"policy","policy_version_id":"52906971-a8a1-414d-b538-847d072173df",
+     "policy_name":"minigrid-cartographer","version":2,
+     "player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey",
+     "is_filler":false,"is_seed":false},
+    {"position":1,"kind":"policy","policy_version_id":"bdf22f53-d38d-463b-b0ca-07deb733981c",
+     "policy_name":"minigrid-missionfirst","version":2,
+     "player_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d","player_name":"daveey-1",
+     "is_filler":false,"is_seed":false},
+    {"position":2,"kind":"policy","policy_version_id":"9b23f82c-29fc-4167-a802-1cf15eca7c53",
+     "policy_name":"co-gas-minigrid-subgoal-router-richard","version":1,
+     "player_id":"ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83","player_name":"richard",
+     "is_filler":false,"is_seed":false},
+    {"position":3,"kind":"policy","policy_version_id":"1f17a736-1407-4eac-bde7-6400d0b3b0ed",
+     "policy_name":"minigrid-scout","version":2,
+     "player_id":"ply_44ae9048-3242-4654-881f-6d9d43347fa3","player_name":"daveey",
+     "is_filler":true,"is_seed":false}
   ],
-  "participant_scores": [{"position": 0, "score": 7000.0}]
-}
-=== ereq_87f22275-7a55-46a8-936f-dd64f6d9a373
-{
-  "status": "completed",
-  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay",
-  "participants": [
-    {"position": 0, "kind": "policy",
-     "policy_version_id": "6eed9b32-93bb-42db-9c06-2a33a41678ae",
-     "policy_name": "minigrid-cartographer", "version": 1,
-     "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
-     "is_filler": false, "is_seed": false}
-  ],
-  "participant_scores": [{"position": 0, "score": 104000.0}]
+  "participant_scores": [
+    {"position":0,"score":3000.0},
+    {"position":1,"score":5000.0},
+    {"position":2,"score":211010.0},
+    {"position":3,"score":312040.0}
+  ]
 }
 ```
 
-**One participant per episode request is by design, not a missing seat.**
-`runs/2026-08-28-minigrid/design.md:102-105` §Seats and aliases: *"`num_agents` = 1. Exactly one
-seat, always … Every episode is a solo time-trial; policies are compared across episodes, not
-within one."* The round therefore fans out into one episode per entrant, and `daveey` and
-`daveey-1` are both named across the round's episode requests (round 2: two episodes, one each;
-round 3: three, one per entrant).
-
-Status: **TRUE** — every episode request of the latest completed round is `completed` with a
-non-null `replay_url`; `player_name` is `daveey` on one and `daveey-1` on another, `is_filler` is
-`false` on both, and no `Baseline (N)` seat appears.
+Status: **TRUE** — `status == "completed"`, `replay_url` non-null, and the participants name
+**`daveey`** (position 0, cartographer v2) and **`daveey-1`** (position 1, missionfirst v2). The
+episode now has **four** participants, as 0.1.1's `num_agents: 4` requires: the two champions, the
+third-party entrant `richard`, and one filler seat carrying `"is_filler": true`
+(`minigrid-scout:v2`). The four `participant_scores` match the replay's `results.scores`
+`[3000, 5000, 211010, 312040]` exactly (see §4), so the API record and the replay agree.
 
 ---
 
-## 4. Replay bytes are valid and show the game
+## 4. The replay bytes are valid and show the game
 
-The replay is the starter's **binary `COWLDMGD`** format, kept deliberately
-(`design.md:1197-1223` §Replay bytes: a JSON replay would mean rewriting `replays.nim`,
-`replay_runtime.nim`, `static_replay_worker.js` and `wasm_replay_smoke.cjs`). The design note
-declares the strict-UTF-8-JSON evidence path for this check: `tools/replay_summary.py` from the
-coworld repo, whose output is one strict-UTF-8 JSON object.
+**TRUE.**
+
+The minigrid replay is a **binary `COWLDMGD`** container, not JSON, so `jq -e .` on the raw bytes
+is not the right strict parser — the repo ships `tools/replay_summary.py` for exactly this, and
+the design note (`docs/plans/2026-08-28-minigrid-design.md` lines 1208-1220) declares it the
+phase-60 evidence path. The repo was cloned fresh at `8a78a6bf` (the sha this release was cut from) for
+this check.
 
 ```bash
-git clone --depth 1 https://github.com/Metta-AI/cogame-minigrid /tmp/cogame-minigrid   # b19bc08
-curl -sSL "https://softmax-public.s3.amazonaws.com/replays/5eb66cb5-6917-4dee-a4c5-3f00c60d27d8.replay" \
-     -o /tmp/r3-cart.replay              # HTTP 200 bytes=79215
-python3 /tmp/cogame-minigrid/tools/replay_summary.py /tmp/r3-cart.replay > /tmp/r3-cart.json
-jq -e . /tmp/r3-cart.json >/dev/null && echo "strict UTF-8 JSON: ok"
+curl -sSL "https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay" \
+     -o /tmp/ep.replay                 # HTTP 200, 190974 bytes
+python3 tools/replay_summary.py /tmp/ep.replay > /tmp/ep.json
+jq -e . /tmp/ep.json >/dev/null && echo "strict UTF-8 JSON: ok"
 ```
 
-Latest round (3), champion #1 `daveey` / cartographer, and champion #2 `daveey-1` / missionfirst:
-
 ```
-r3-cart HTTP 200 bytes=79215
-r3-cart strict UTF-8 JSON: ok
-protocol=minigrid/v1 reason=complete endRule=gauntletComplete tasksSolved=2 llmTurns=46 fallbackTurns=0 plans=46 says=46 fallbackRecords=0 name=cartographer
-{"llm":46}
-
-r3-mf HTTP 200 bytes=68817
-r3-mf strict UTF-8 JSON: ok
-protocol=minigrid/v1 reason=complete endRule=gauntletComplete tasksSolved=1 llmTurns=35 fallbackTurns=1 plans=36 says=35 fallbackRecords=6 name=missionfirst
-{"fallback":1,"llm":35}
-```
-
-Round 2, cartographer (`5c5bd71e…` — the replay check 8 rendered), full `results`:
-
-```json
-{
-  "names": ["cartographer"], "aliases": ["Alpha"], "scores": [104000],
-  "reason": "complete", "endRule": "gauntletComplete", "variant": "gauntlet",
-  "seed": 1249637142, "taskCount": 5, "parTasks": 3, "tasksSolved": 1,
-  "progressTotal": 4, "speedTotal": 0,
-  "taskFamilies": ["lavagap","doorkey","multiroom","keycorridor","babyai"],
-  "taskMissions": ["get to the green goal square",
-                   "use the yellow key to open the door and then get to the green goal square",
-                   "get to the green goal square", "pick up the blue ball",
-                   "put the red ball next to the blue key"],
-  "taskSolved": [false,true,false,false,false],
-  "taskOutcome": ["died","solved","timeout","timeout","timeout"],
-  "taskTurns": [8,11,11,11,11], "taskTicks": [43,65,69,51,86],
-  "taskProgress": [1,3,0,0,0], "deaths": 1, "crashes": 0,
-  "taskCellsSeen": [160,153,49,103,169], "cellsTotal": 169,
-  "doorsOpened": 1, "objectsPickedUp": 1, "productionsFired": 0,
-  "primitivesExecuted": 313, "actionsDropped": 0, "macrosUnreachable": 4,
-  "repliesRepaired": 0, "finalTick": 314, "turnsPlayed": 52,
-  "policyKinds": ["llm"], "llmTurns": 52, "fallbackTurns": 0,
-  "deadSeats": [false], "stopDetail": ""
-}
+200 190974
+strict UTF-8 JSON: ok
 ```
 
 ```bash
-jq -c '[.plans[].source]|group_by(.)|map({(.[0]):length})|add' /tmp/r2-cart.json
+jq -c '{protocol, gameVersion, variant, seed, tickCount,
+        reason:.results.reason, endRule:.results.endRule,
+        names:.results.names, aliases:.results.aliases,
+        policyKinds:.results.policyKinds,
+        llmTurns:.results.llmTurns, fallbackTurns:.results.fallbackTurns,
+        fallbackCauses:.results.fallbackCauses,
+        tasksSolved:.results.tasksSolved, scores:.results.scores,
+        turnsPlayed:.results.turnsPlayed, deaths:.results.deaths,
+        crashes:.results.crashes, actionsDropped:.results.actionsDropped}' /tmp/ep.json
 ```
+
 ```json
-{"llm":52}
+{"protocol":"minigrid/v1","gameVersion":"2","variant":"gauntlet","seed":1261404912,
+ "tickCount":720,"reason":"complete","endRule":"allLanesComplete",
+ "names":["cartographer","missionfirst","prompt","scout"],
+ "aliases":["Alpha","Beta","Gamma","Delta"],
+ "policyKinds":["llm","llm","llm","scripted"],
+ "llmTurns":[30,25,25,0],"fallbackTurns":[0,0,4,0],
+ "fallbackCauses":[{},{},{"transport_timeout":4},{}],
+ "tasksSolved":[0,0,2,3],"scores":[3000,5000,211010,312040],
+ "turnsPlayed":30,"deaths":[0,1,0,0],"crashes":[0,0,0,0],
+ "actionsDropped":[0,0,0,0]}
 ```
 
-**Champion decisions are LLM decisions with non-trivial content, not fallbacks.** Every plan in
-the round-2 cartographer replay has `source == "llm"` (52 of 52, `fallbackTurns: 0`), and the
-round-2 missionfirst replay is 45 of 45 llm, `fallbackTurns: 0`. In the latest round, cartographer
-is 46 of 46 llm / 0 fallback turns and missionfirst is 35 llm + **1** fallback turn of 36
-(2.8 % — a small minority, as the check requires). The verbs and `say` lines are the game being
-played, not filler (round 2 cartographer, task 2 = `doorkey`, the task it solved):
+`protocol` is `minigrid/v1`, which is what the manifest's protocol document declares and what the
+v2 addendum explicitly pinned: *"`tools/replay_summary.py` output gains `aliases` (4), `lanes` (4),
+per-seat `plans`, per-seat `says`, and `fallbackCauses`; `protocol` stays `minigrid/v1`"*
+(`docs/plans/2026-08-28-minigrid-design.md:2472`). `gameVersion` is `"2"` — the four-lane build.
+`results.reason == "complete"` (not `deadline`), so no documented exception is needed.
 
-```
-turn  task  source  verbs                                            say
-16    1     llm     goto pickup goto      Getting yellow key, then exploring south/east unknowns for goal
-17    1     llm     goto toggle           Going to yellow locked door at (7,5) to open it with my yellow key.
-18    1     llm     forward forward right forward forward left forward forward right forward forward forward
-                                          Moving through open yellow door, exploring east/south for green goal
-19    1     llm     goto                  Going to goal at (11,8)
+Decision counts and the fallback minority, per seat:
+
+```bash
+jq -r '[.plans[]|.source]|group_by(.)|map({(.[0]):length})|add' /tmp/ep.json
+jq -c '{plansBySeat:(.plansBySeat|map(length)), fallbacks, budgetGuards}' /tmp/ep.json
 ```
 
-`results.reason` is `complete` on every replay checked (rounds 2 and 3, both champions) — the
-healthy value; the design's declared-acceptable `deadline` was never needed
-(`design.md:410-440` §End conditions). `protocol` is `minigrid/v1`, which matches the manifest
-(`design.md:1208`).
+```json
+{"fallback":4,"llm":80,"scripted":26}
+{"plansBySeat":[30,25,29,26],"fallbacks":9,"budgetGuards":0}
+```
 
-Status: **TRUE** — bytes fetched from S3, parsed to strict UTF-8 JSON by the repo's documented
-summary path, `protocol` matches, `results.reason == "complete"`, and the champion seats' plans
-are LLM-sourced with real verbs (`goto`, `pickup`, `toggle`, `forward`) and non-empty `say` lines.
+**110 recorded decisions in total, 80 of them LLM directives and 4 fallbacks — 3.6 % of all
+decisions, and 4.8 % of the 84 decisions taken on LLM seats.** The two **champion** seats have
+**zero** fallbacks:
+
+| seat | alias | policy | kind | LLM turns | fallback turns | causes |
+|---|---|---|---|---|---|---|
+| 0 | Alpha | `minigrid-cartographer:v2` (daveey) | llm | 30 | **0** | `{}` |
+| 1 | Beta | `minigrid-missionfirst:v2` (daveey-1) | llm | 25 | **0** | `{}` |
+| 2 | Gamma | `co-gas-…-richard:v1` (third party) | llm | 25 | 4 | `{"transport_timeout":4}` |
+| 3 | Delta | `minigrid-scout:v2` (filler) | scripted | 0 | 0 | `{}` |
+
+(The top-level `fallbacks: 9` counts *attempt-level* `k:"fallback"` control records — two per
+fallen-back turn plus one attempt-1 timeout at turn 19 whose retry succeeded. All nine carry
+`"slot": 2`. `results.fallbackTurns` sums to the 4 turns that actually fell through to the
+scripted plan. Both numbers are consistent; they count different things.)
+
+The champion decisions are non-scripted and non-trivial. Early, middle and late excerpts of
+`.plans[]` (`turn`, seat, `source`, executed-primitive count, `say`):
+
+```
+=== EARLY (turns 1–3) ===
+  1  ALPHA/cartographer     llm       ex=0   Turn 1: Mapping the world. Goal is GREEN GOAL square. Exploring east s…
+  1  BETA/missionfirst      llm       ex=24  get to green goal square; unseen; sweeping north then east to corner
+  1  GAMMA/prompt(richard)  llm       ex=6   Exploring eastward along lava boundary to find the gap and green goal.
+  1  DELTA/scout(filler)    scripted  ex=7
+  2  ALPHA/cartographer     llm       ex=1   Exploring south to map large ? region
+  3  ALPHA/cartographer     llm       ex=9   Exploring south to map the goal location
+=== MIDDLE (turns 15–18) ===
+ 15  ALPHA/cartographer     llm       ex=7   Exploring north-west to find goal and keys before time runs out
+ 15  BETA/missionfirst      llm       ex=13  get to the green goal square; unseen; sweeping NE corner
+ 16  BETA/missionfirst      llm       ex=14  get to the green goal square; not in known map; sweeping to northeast…
+ 18  GAMMA/prompt(richard)  fallback  ex=8
+=== LATE (turns 29–30) ===
+ 29  ALPHA/cartographer     llm       ex=0   Searching for green key in unmapped region. Purple key carried. 1 turn…
+ 29  BETA/missionfirst      llm       ex=1   put purple key next to green key; both keys located; dropping purple k…
+ 30  ALPHA/cartographer     llm       ex=3   FINAL TURN: Searching for unknown green key in south/east ? regions
+ 30  BETA/missionfirst      llm       ex=1   put the purple key next to the green key; purple key in hand; green ke…
+ 30  GAMMA/prompt(richard)  llm       ex=1   Task 5 complete: purple key placed next to green key as required.
+```
+
+The seats are reading the mission sentence, naming the objective, and issuing movement/toggle/
+pickup verbs against it — this is minigrid being played, not a scripted loop. Aggregate per-seat
+action work confirms it:
+
+```json
+seat 0 (cartographer): {"plans":30,"verbs":152,"executed":187,"unreachable":6,"dropped":0,"says":30}
+seat 1 (missionfirst):  {"plans":25,"verbs":234,"executed":253,"unreachable":6,"dropped":0,"says":25}
+seat 2 (richard):       {"plans":29,"verbs":139,"executed":222,"unreachable":0,"dropped":0,"says":25}
+seat 3 (scout filler):  {"plans":26,"verbs":74, "executed":237,"unreachable":0,"dropped":0}
+```
+
+and the game's own outcome record shows the five-task gauntlet actually being worked:
+
+```json
+"taskFamilies":["lavagap","doorkey","multiroom","keycorridor","babyai"],
+"taskMissions":["get to the green goal square",
+                "use the yellow key to open the door and then get to the green goal square",
+                "get to the green goal square","pick up the blue ball",
+                "put the purple key next to the green key"],
+"taskOutcome":[["timeout","timeout","timeout","timeout","timeout"],
+               ["died","timeout","timeout","timeout","timeout"],
+               ["solved","solved","timeout","timeout","timeout"],
+               ["solved","solved","solved","timeout","timeout"]],
+"doorsOpened":[0,2,5,6],"objectsPickedUp":[1,3,3,3],
+"primitivesExecuted":[187,241,219,237],"macrosUnreachable":[6,6,0,0],
+"repliesRepaired":[0,0,0,0],"crashes":[0,0,0,0]
+```
+
+Corroboration from the **other** qualifying round (15,
+`https://softmax-public.s3.amazonaws.com/replays/fb3965a5-9041-486c-bc47-fa4d8c44a579.replay`,
+HTTP 200, same strict parse):
+
+```json
+{"protocol":"minigrid/v1","gameVersion":"2","reason":"complete","endRule":"allLanesComplete",
+ "names":["cartographer","missionfirst","prompt","bumper"],
+ "policyKinds":["llm","llm","llm","scripted"],
+ "llmTurns":[25,26,23,0],"fallbackTurns":[0,1,3,0],
+ "fallbackCauses":[{},{"transport_timeout":1},{"transport_timeout":3},{}],
+ "tasksSolved":[1,0,0,0],"scores":[103010,2000,3000,1000]}
+```
+
+Status: **TRUE** — strict-UTF-8 JSON parse ok; `protocol` `minigrid/v1` as the manifest and the
+design pin; `results.reason == "complete"`; 80 LLM decisions against 4 fallbacks (3.6 % of all
+decisions), and **both champion seats fell back zero times** in the latest round (round 15:
+1 of 26 turns on one champion, 3.8 %). Fallbacks are a small minority on every seat.
+
+**Observations for the coordinator, not check failures.**
+(a) In round 16 both champions solved **0 of 5** tasks while the *scripted filler* `scout` solved
+3 and `richard` solved 2; in round 15 `cartographer` solved 1 and everyone else 0. The LLM
+champions are currently losing to their own scripted baseline. `macrosUnreachable` is 6 for each
+champion and 0 for the two seats that scored, and several champion turns executed **0 or 1**
+primitives (`ex=0` at turns 1 and 29 for cartographer) because the `goto` macro did not resolve —
+that is the mechanism by which the champions burn turns. This is a policy-quality / macro-
+resolution finding for phase 30, not a definition-of-done item.
+(b) `replay_summary.py`'s **top-level** `policyKinds` is emitted in `register`-record arrival order
+(`["llm","llm","scripted","llm"]`) rather than seat order, while `results.policyKinds`
+(`["llm","llm","llm","scripted"]`) is seat-ordered and agrees with the `plans[].slot` stream and
+with the API's `participants`. Cosmetic tool bug; noted so nobody reads the wrong array.
 
 ---
 
-## 5. Hosted game log is clean
+## 5. The hosted game log is clean
+
+**FALSE.** The grep is not empty. Three attempts, three different rounds (16, 15, 17). The
+third-party seat falls back in every one of them, and a **champion** seat falls back in two of the
+three — in round 17 *both* champions did, on the same turn as the third-party seat.
+
+### Attempt 1 — the latest round's episode request (round 16)
 
 ```bash
-curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o raw
-python3 declogs.py raw > decoded.txt     # ast.literal_eval per b'…' repr, per playbook §10
-grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' decoded.txt \
-  || echo CLEAN
+curl -sS "$BASE/episode-requests/ereq_737c8831-0e00-4a7c-868e-732a2ca0df67/artifacts/logs" \
+     "${AUTH[@]}" "${ELEV[@]}" -o /tmp/logs16.raw          # HTTP 200, 13220 bytes
+# the body is python b'…' byte-string reprs under "===== container: … =====" headers;
+# decoded with ast.literal_eval per repr BEFORE grepping (playbooks/observatory-api.md §10)
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs16.txt
 ```
 
-**Round 2 (both champion episodes) — CLEAN:**
+Fetched 2026-08-29T01:54:0xZ:
 
 ```
-cart logs HTTP 200 bytes=116408      (ereq_87f22275…, daveey / cartographer)
---- cart GREP: CLEAN
-mf logs HTTP 200 bytes=97729         (ereq_b5878b96…, daveey-1 / missionfirst)
---- mf GREP: CLEAN
+111:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 7
+114:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 18
+118:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 22
+121:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 25
 ```
 
-game container, round 2 / cartographer, verbatim:
+**NOT CLEAN — 4 matching lines.** Zero of the four are `LLM provider is unavailable`, zero are
+`cut off at max_tokens`, zero are `rejected`. The full `game` container, verbatim and complete:
 
 ```
-===== container: game =====
 minigrid llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
-minigrid: serving on 0.0.0.0:8080 seed 1249637142 variant gauntlet
+minigrid: serving on 0.0.0.0:8080 seed 1261404912 variant gauntlet
+minigrid: player connected on slot 2
+minigrid: seat 2 registered as prompt (llm)
+minigrid: player connected on slot 1
+minigrid: seat 1 registered as missionfirst (llm)
+minigrid: player connected on slot 3
 minigrid: player connected on slot 0
+minigrid: seat 3 registered as scout (scripted)
 minigrid: seat 0 registered as cartographer (llm)
 Dropped message to disconnected client
-minigrid llm: seat 0 attempt 1 failed, will retry: input(1, 33) Error: string literal as key expected
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid: episode complete — reason complete endRule gauntletComplete solved 1/5 score 104000
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 7
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 18
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 22
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 25
+minigrid: episode complete — reason complete endRule allLanesComplete seats 4 — Alpha 0/5 (3000) Beta 0/5 (5000) Gamma 2/5 (211010) Delta 3/5 (312040)
 ```
 
-Those four are **attempt-1 notices**, which the grep does not match and which the design
-distinguishes on purpose (`design.md:561-563`: *"The attempt-1 notice says `will retry`; only a
-genuine second failure logs `falling back`"*). All four turns recovered on attempt 2 —
-`results.fallbackTurns` is `0` for this episode (check 4).
+Seat 2 is `richard`'s third-party entrant. **Both champion seats (0 and 1) are entirely absent
+from the failure lines.** The fallback labelling is now truthful, as the v2 addendum required
+(`design.md:2246-2252`): attempt 1 and attempt 2 are logged separately with their own cause, and
+the cause is `transport_timeout`, not the mislabelled `parse_error` of 0.1.0.
 
-**Round 3 (latest completed round) — champion #1 CLEAN, champion #2 NOT clean:**
-
-```
-r3-cart logs HTTP 200 bytes=95328    (ereq_243aa916…, daveey / cartographer)
---- r3-cart GREP: CLEAN
-
-r3-mf logs HTTP 200 bytes=83971      (ereq_a6cb6363…, daveey-1 / missionfirst)
---- r3-mf GREP:
-178:minigrid llm: seat 0 falling back to scout (parse_error) on turn 21
-```
-
-game container, round 3 / missionfirst, verbatim:
-
-```
-===== container: game =====
-minigrid llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
-minigrid: serving on 0.0.0.0:8080 seed 1250538234 variant gauntlet
-minigrid: player connected on slot 0
-minigrid: seat 0 registered as missionfirst (llm)
-Dropped message to disconnected client
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 attempt 2 failed: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid llm: seat 0 falling back to scout (parse_error) on turn 21
-minigrid llm: seat 0 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
-minigrid: episode complete — reason complete endRule gauntletComplete solved 1/5 score 106100
-```
-
-**Is this the SPEC's documented platform-wide cause? No — cross-checked, and it is not.**
-`prompts/60-verify.md` §5 allows the exception only if another LLM coworld's latest log shows the
-same symptom. The parallel run `2026-08-28-procgen` (phase 60, same minutes, same Bedrock sidecar,
-same model `claude-haiku-4-5`) was checked:
+### Attempt 2 — the other qualifying round (round 15)
 
 ```bash
-PL=league_2b1f9007-0749-4e3c-a669-a630283894f1     # runs/2026-08-28-procgen/STATE.json
-… /rounds/$PR/episode-requests → ereq_9a55d352-9aac-471f-bf21-ba8dbcb7cba9
-curl -sS "$BASE/episode-requests/$PE/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" | decode | grep -nE …
-```
-```
-procgen logs HTTP 200 bytes=148640
---- procgen grep: CLEAN
---- procgen "Timeout was reached" lines: 0
-===== container: game =====
-procgen: seed not pinned; randomized
-procgen llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
-procgen: episode complete (gauntlet_complete) after 282 frames, 72 turns; unseen 181 seen 251
+curl -sS "$BASE/episode-requests/ereq_6c612420-5975-40b7-a538-8014744efe3e/artifacts/logs" \
+     "${AUTH[@]}" "${ELEV[@]}" -o /tmp/logs15.raw          # HTTP 200
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs15.txt
 ```
 
-The provider itself is healthy for both coworlds — **every** Bedrock call in every episode checked
-returned `ok:true, status 200`. What differs is latency against minigrid's client-side deadline
-(`design.md:516` `attempt1Ms = 6.0 s`, `retryMs = 3.0 s`), computed from the sidecar's own
-`bedrock_sidecar_complete` records in the logs above:
+Fetched 2026-08-29T01:55:1xZ:
 
-| episode | calls | all ok | p50 latency | p90 | max | calls > 6 000 ms |
-|---|---|---|---|---|---|---|
-| r2 cartographer | 56 | 56 | 4 608 ms | 5 648 ms | 6 272 ms | 3 |
-| r3 cartographer | 46 | 46 | 4 075 ms | 4 931 ms | 5 919 ms | 0 |
-| r3 missionfirst | 40 | 40 | 2 467 ms | 6 011 ms | 6 712 ms | 4 |
-| **procgen** (same window) | 72 | 72 | 1 786 ms | 2 343 ms | 2 924 ms | **0** |
+```
+103:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 7
+106:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 19
+111:minigrid llm: seat 1 falling back to scout (transport_timeout) on turn 25
+112:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 25
+113:minigrid: episode complete — reason complete endRule allLanesComplete seats 4 — Alpha 1/5 (103010) Beta 0/5 (2000) Gamma 0/5 (3000) Delta 0/5 (1000)
+```
 
-minigrid's prompts (~1 740–1 913 input tokens) sit close enough to the 6.0 s attempt-1 deadline
-that a handful of calls per episode exceed it; on turn 21 of the round-3 missionfirst episode
-*both* attempts exceeded it, producing the one `falling back` line. The episode still ended
-`complete` with 1/5 solved and 1 fallback turn in 36 (2.8 %), i.e. the designed degrade path
-worked — but SPEC check 5 requires **zero** matching lines and the platform-wide exception does
-not apply here.
+**NOT CLEAN — 4 matching lines, and line 111 is `seat 1` = `minigrid-missionfirst:v2`, a
+champion.** So the failure is not confined to the third-party entrant; it reaches champion seats
+too, at roughly 1 turn in 26.
 
-Two further observations for the coordinator (not part of the verdict):
-- the fallback's `cause` is logged as `parse_error` although both attempts failed with a
-  transport timeout; `design.md:560` lists `timeout` / `transport_error` as the causes that fit.
-  The cause label looks mis-attributed.
-- the actionable fix is client-side: raise `attempt1Ms` above 6.0 s (or shorten the prompt), not
-  a provider/capacity change. `retryMs` 3.0 s means a second attempt gets less headroom than the
-  first, so a slow-but-healthy call that misses attempt 1 will usually miss attempt 2 too.
+### Attempt 3 — round 17
 
-Status: **FALSE** — round 2's two champion logs are CLEAN, but on the **latest** completed round
-the champion-#2 game log contains one matching line:
-`minigrid llm: seat 0 falling back to scout (parse_error) on turn 21`. Not zero, and the
-documented platform-wide exception is ruled out by the procgen cross-check above.
+Round **17** (`round_44adaf2b-3ee7-44db-8076-05fc55ce7b6f`) completed at
+2026-08-29T02:04:47.668814Z, i.e. **after** checks 3/4/6/8 had already been executed against the
+then-latest round 16. It was fetched as the third and final attempt at this check, on the theory
+that the round-16 result might be a one-off.
+
+```bash
+R=$(curl -sS "$BASE/rounds?league_id=$L&limit=3" "${AUTH[@]}" \
+    | jq -r 'if type=="array" then . else .entries end|map(select(.status=="completed"))|max_by(.round_number)|.id')
+# R=round_44adaf2b-3ee7-44db-8076-05fc55ce7b6f
+EREQ=$(curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}" | jq -r '.entries[0].id')
+# EREQ=ereq_924bca47-0f9f-4ee7-b814-236c19ec9211  (status completed, 4 participants,
+#   daveey cartographer v2 / daveey-1 missionfirst v2 / richard v1 / scout v2 is_filler)
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o /tmp/logs17.raw
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/logs17.txt
+```
+
+Fetched 2026-08-29T02:10:5xZ — HTTP 200:
+
+```
+110:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 15
+113:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 24
+120:minigrid llm: seat 0 falling back to scout (transport_timeout) on turn 29
+121:minigrid llm: seat 1 falling back to scout (transport_timeout) on turn 29
+122:minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 29
+```
+
+**NOT CLEAN — 5 matching lines, and this time all three LLM seats fell back on the same turn**
+(turn 29: seat 0 = cartographer, seat 1 = missionfirst, seat 2 = richard). The surrounding
+attempt-level lines are the diagnosis — note especially seat 0's **attempt 1**, which failed for a
+different reason (`schema_error: reply has neither actions nor say`) before its attempt 2 timed
+out:
+
+```
+minigrid llm: seat 0 attempt 1 failed, will retry (schema_error): reply has neither actions nor say
+minigrid llm: seat 1 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 1 failed, will retry (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 0 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 1 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 2 attempt 2 failed (transport_timeout): Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+minigrid llm: seat 0 falling back to scout (transport_timeout) on turn 29
+minigrid llm: seat 1 falling back to scout (transport_timeout) on turn 29
+minigrid llm: seat 2 falling back to scout (transport_timeout) on turn 29
+minigrid: episode complete — reason complete endRule allLanesComplete seats 4 — Alpha 0/5 (5000) Beta 0/5 (3000) Gamma 0/5 (6000) Delta 3/5 (312020)
+```
+
+Its replay (`https://softmax-public.s3.amazonaws.com/replays/0746b9a3-3bf0-453b-9045-eb8a334849c0.replay`,
+HTTP 200, strict parse ok) agrees and quantifies it:
+
+```json
+{"protocol":"minigrid/v1","gameVersion":"2","reason":"complete",
+ "names":["cartographer","missionfirst","prompt","scout"],
+ "policyKinds":["llm","llm","llm","scripted"],
+ "llmTurns":[28,25,27,0],"fallbackTurns":[1,1,3,0],
+ "fallbackCauses":[{"transport_timeout":1},{"transport_timeout":1},{"transport_timeout":3},{}],
+ "tasksSolved":[0,0,0,3],"scores":[5000,3000,6000,312020]}
+```
+
+Per-turn batch latency around the three fallback turns, from `.plans[].latency_ms`:
+
+```
+turn 14: 0:llm 5500   1:llm 5500   2:llm 5500      3:scripted
+turn 15: 0:llm 11000  1:llm 11000  2:FALLBACK      3:scripted   ← == attempt1Ms exactly
+turn 23: 0:llm 5480   1:llm 5480   2:llm 5480      3:scripted
+turn 24: 0:llm 10999  1:llm 10999  2:FALLBACK      3:scripted
+turn 28: 0:llm 4839   1:llm 4839   2:llm 4839      3:scripted
+turn 29: 0:FALLBACK   1:FALLBACK   2:FALLBACK      3:scripted   ← ALL THREE LLM seats at once
+turn 30: 0:llm 9966   1:llm 9966   2:llm 9966      3:scripted
+```
+
+Turn 29 is decisive: the three LLM seats failed **together**. That rules out "richard's v1 policy
+is the problem" and confirms the batch-latency reading below — when the concurrent batch goes over
+the deadline, whichever seats are still outstanding all fall back at once. Both champions are
+affected: cartographer 1 fallback turn in 29 (3.4 %), missionfirst 1 in 26 (3.8 %).
+
+One more thing this round exposes, reported because it is a small gap in the "truthful causes"
+commitment rather than a check of its own: seat 0's two attempts failed for **different** reasons —
+attempt 1 `schema_error` ("reply has neither actions nor say"), attempt 2 `transport_timeout` — but
+`results.fallbackCauses[0]` records only `{"transport_timeout": 1}`. The per-attempt `fallback`
+control records in the replay do carry both causes, as `design.md:2246` requires; it is the
+per-seat *summary* map that keeps the last cause and silently drops the first. A reader of
+`fallbackCauses` alone would not learn that a champion produced one malformed reply.
+
+Retry budget: **3 of 3 used** (round 16, round 15, round 17 — three different rounds, one of them
+fetched fresh after the ladder had produced it). The check is false in all three.
+
+
+### Is this the documented platform-wide exception? No — cross-check says no
+
+`prompts/60-verify.md` §5 allows exactly one documented exception, for
+`LLM provider is unavailable` as a platform-wide Bedrock **capacity** symptom, confirmed by
+another LLM coworld's latest log showing the same. That string does not appear here at all, and
+the cross-check comes back negative anyway. Two other **LLM** coworlds, latest episode each,
+fetched fresh 2026-08-29T01:57:1xZ with the same decode-then-grep:
+
+| coworld | episode request | Bedrock calls in log | matching lines |
+|---|---|---|---|
+| `procgen` (`cow_84cce351…`) | `ereq_f7e42fb2-9ab9-4130-a761-99514ad05149`, created 01:45:40Z | 80 | **0** |
+| `atari-57` (`cow_4b06234f…`) | `ereq_fa821a9f-921f-46b1-9112-d16e4af45c2e`, created 01:41:55Z | 66 | **0** |
+
+```bash
+grep -cE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' x_procgen.txt  # 0
+grep -cE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' x_atari57.txt  # 0
+```
+
+Both ran inside the same six-minute window as minigrid round 16 and both are clean. Bedrock is
+**not** degraded platform-wide right now. There is no documented exception that covers this, so
+per the verifier standard ("an undocumented exception is a failure") the item is FALSE.
+
+### What the evidence says the cause actually is
+
+Every upstream call in minigrid's own sidecar **succeeded**:
+
+```bash
+grep -c 'openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"' /tmp/logs16.txt   # 89
+grep -cE 'HTTP/1.1 (4|5)[0-9][0-9]' /tmp/logs16.txt                        # 0
+```
+
+89 calls, 89 × `HTTP/1.1 200 OK`, zero non-2xx. Nothing was refused, throttled or truncated. The
+timeouts are the **client-side deadline** expiring first. The replay's per-turn latency (the
+directive `latency_ms` is the wall clock of the whole concurrent four-seat batch, identical across
+the seats of a turn) shows why:
+
+```
+turn 17: 4732 ms   turn 18: 10001 ms  ← seat 2 fell back
+turn 19: 10999 ms  turn 20: 6138 ms
+turn 21: 5317 ms   turn 22: 11000 ms  ← seat 2 fell back  (== attempt1Ms exactly)
+turn 23: 9150 ms   turn 24: 4296 ms
+turn 25: 10000 ms  ← seat 2 fell back
+turn 28: 10052 ms  turn 30: 5847 ms
+per-seat over LLM turns:  median ≈ 5.7–6.2 s,  p90 ≈ 8.6–10.1 s,  max 11.0 s
+```
+
+The v2 addendum set `attempt1Ms = 11000` / `retryMs = 6000` on the explicit premise that *"a
+`falling back` line now requires one call over 11 s and a second over 6 s against a provider whose
+observed maximum is 6 712 ms — which is the fix for VERIFY check 5"*
+(`docs/plans/2026-08-28-minigrid-design.md:2254-2256`). That premise no longer holds in
+production: the 6 712 ms maximum was measured on the **single-seat** 0.1.0 build, and 0.1.1 issues
+**three concurrent LLM calls per turn** (one per LLM lane). Batch latency now reaches the 11 000 ms
+cap exactly. The ladder's headroom at p90 is about 1 second, so the slowest seat in the slowest
+turn tips over — and it is usually, but not always, `richard`'s seat. The fix addressed the right
+mechanism with a number derived from a distribution the four-lane redesign invalidated.
+
+Status: **FALSE** — 4 matching lines in round 16, 4 in round 15 and 5 in round 17; none is
+covered by the one documented exception, and the cross-check against two other LLM coworlds in the
+same window shows the platform is healthy. Mitigating facts for the adjudicator, offered as context
+and not as a pass: the fallback rate stays a small minority of decisions (3.6 % of 110 in round 16,
+3.7 % of 108 in round 15, 4.4 % of 113 in round 17), the causes are now recorded truthfully as the v2
+addendum required, every episode still ended `reason: complete`, and no episode was lost. The
+champion seats were entirely clean in round 16 — but not in 15 or 17, so this cannot be written off
+as a third-party-entrant artefact.
 
 ---
 
 ## 6. The public page uses the static replay path
 
-**Source A — raw HTML grep (`prompts/60-verify.md` §6, first form).** Fetched 22:14Z, 22:36Z and
-22:49:10Z:
+**TRUE.** Source used: **the SSR payload of `https://softmax.com/minigrid` plus the session
+endpoint the page's own JS calls** — the raw-HTML iframe grep finds nothing, which
+`prompts/60-verify.md` §6 and `playbooks/observatory-api.md` §Featured match both say to treat as
+*unknown*, not as a failure.
 
 ```bash
-curl -sS "https://softmax.com/minigrid" -o page.html   # HTTP 200 bytes=761193 (22:49:10Z)
-grep -o '<iframe[^>]*src="[^"]*"' page.html
-```
-```
-(no match — 0 occurrences of the string "iframe" in the document)
+curl -sS "https://softmax.com/minigrid" -o /tmp/page.html      # HTTP 200, 761738 bytes
+grep -o '<iframe[^>]*src="[^"]*"' /tmp/page.html || echo "NO IFRAME IN RAW HTML"
 ```
 
-Not a false negative: the page is client-rendered for the iframe, exactly as
-`playbooks/observatory-api.md` §Featured match records ("Answered (lighthouse run, 2026-08-22)").
+```
+200 761738
+NO IFRAME IN RAW HTML
+```
 
-**Source B — the coworld detail API.**
+(`iframe` appears 0 times in the whole document; the page is client-rendered, as the lighthouse
+run recorded.) The featured match **is** server-rendered into the SSR payload at
+`state.playlist[0]` — unescaped excerpt, fetched 2026-08-29T01:53:5xZ:
+
+```json
+"state":{"leagueId":"league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca",
+ "playlist":[{"episodeId":"10fb10ad-0527-4933-9a17-9994a913aa7a",
+   "coworldId":"cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
+   "coworldName":"minigrid","coworldVersion":"0.1.1",
+   "replayUrl":"https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
+   "finishedAt":"2026-08-29T01:49:20.705846Z","roundNumber":16,"episodeNumber":1,
+   "code":"minigrid.r16.e1",
+   "matchup":{"divisionId":"div_721f571a-ece7-4ed9-8b1c-15eb2cd072be","divisionName":"Competition",
+     "first":{"rank":1,"player_name":"richard","score":1039.2124455408778,
+              "policy_label":"co-gas-minigrid-subgoal-router-richard:v1"},
+     "second":{"rank":2,"player_name":"daveey","score":1001.0113369839092,
+               "policy_label":"minigrid-cartographer:v2"}},
+   "inspectUrl":"/observatory/v2?tab=overview&detail=episode-request:ereq_737c8831-0e00-4a7c-868e-732a2ca0df67",
+   "outcome":null}],
+ …"playerCount":3,"newestCompletedAt":"2026-08-29T01:49:21.551025Z"}
+```
+
+**A featured match is present** — `minigrid.r16.e1`, the round-16 episode of §3, on
+`cow_753b4d23` / `0.1.1`, with a two-player matchup card. This is the item the 0.1.0 round found
+FALSE: with `num_agents: 1` the playlist was empty because a single-participant episode has no
+matchup. Four-lane episodes fixed it.
+
+The iframe `src` is produced by the call the page's JS makes:
 
 ```bash
-curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
- | jq -r 'if type=="array" then . else .entries end|.[]
-          |select(.name=="minigrid")|{id,name,canonical,replay_viewer,featured_match}'
+curl -sS -X POST "$BASE/coworlds/replays/session" "${AUTH[@]}" -H 'content-type: application/json' \
+  -d '{"coworld_id":"cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
+       "replay_uri":"https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay"}'
 ```
+
+Fetched 2026-08-29T01:54:1xZ — HTTP 200:
+
 ```json
 {
-  "id": "cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329",
-  "name": "minigrid",
-  "canonical": true,
-  "replay_viewer": null,
-  "featured_match": null
-}
-```
-(`featured_match: null` is null platform-wide and is not evidence either way — same playbook §.)
-
-**Source C — the page's SSR payload (`state`), which is where the featured match actually lives.**
-Parsed out of the same `page.html` (22:49:10Z), after unescaping:
-
-```json
-{"leagueId":"league_78d5b417-52a0-4459-8fd6-3b9aeacfe1ca",
- "playlist": [],
- "pool": {"replays": [ …3 entries, round 3 / round 2 episodes… ], "live": null},
- "divisionId":"div_721f571a-ece7-4ed9-8b1c-15eb2cd072be",
- "divisionName":"Competition","divisionCount":1,"playerCount":3,
- "activeRound": null, "newestCompletedAt":"2026-08-28T22:46:09.421195Z"}
-```
-
-and the rendered stage says, verbatim:
-
-```html
-<span class="chip chip-warn">Between rounds</span>
-<h1 …>No featured match yet</h1>
-<div …>The next round is expected in ~10m.</div>
-```
-
-`state.pool.replays[0]` does carry this coworld's episodes (`replay_url`,
-`coworld_id: cow_5201d3e2…`, `participants: [{player_name: "daveey-1", …}]`), so the page has the
-material — it is `state.playlist` that is empty, and the featured stage reads from the playlist.
-
-**Why the playlist is empty — cross-check against five other coworld pages, all fetched
-22:36–22:49Z:**
-
-| page | `playlist` | `pool.replays` | participants per episode | players | newest completed |
-|---|---|---|---|---|---|
-| **minigrid** | **0** | 3 | **1** | 3 | 22:46:09Z |
-| procgen (parallel run, phase 60) | **0** | 3 | **1** | 3 | 22:32:23Z |
-| atari-57 | 1 | 1 | 4 | 3 | 22:31:04Z |
-| snake-royale | 1 | 1 | 4 | 3 | 22:31:06Z |
-| vizdoom-deathmatch | 1 | 1 | 8 | 3 | 22:25:44Z |
-| gnomic | 1 | 1 | 3 | 3 | 2026-08-28T05:29Z |
-| cogriculture | 0 | 4 | 2 | 5 | 2026-08-10T19:51Z (stale) |
-
-Every recent coworld whose episodes seat **≥2 participants** has a featured match; both recent
-coworlds whose episodes seat **exactly one** (minigrid and the platform's own procgen) show
-"No featured match yet". `state.playlist[0].matchup` on gnomic is a `{first, second}` pair, i.e.
-the stage is built around a head-to-head. minigrid is single-seat by design
-(`design.md:102` `num_agents = 1`, the idea's own "Seats: 1"), so it produces no head-to-head
-episode. This is an observed correlation across seven pages, not a claim about the platform's
-source; and it is **not** a documented exception in SPEC or in the design note, so it does not
-excuse the check.
-
-**The static route itself — the call the page's own JS makes** (`playbooks/observatory-api.md`
-§Featured match: *"The iframe `src` comes from … `POST $BASE/coworlds/replays/session`"*):
-
-```bash
-curl -sS -X POST "$BASE/coworlds/replays/session" "${AUTH[@]}" \
-  -H 'content-type: application/json' \
-  -d '{"coworld_id":"cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329",
-       "replay_uri":"https://softmax-public.s3.amazonaws.com/replays/5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay"}'
-```
-```json
-{
-  "viewer_url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay",
+  "viewer_url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_753b4d23-00cd-417a-99eb-b643f0f0f526/sha256%3Afdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
   "ready": true
 }
 ```
 
-That is `/v2/coworlds/replays/static/<cow_id>/<manifest_sha>/index.html` with the replay as the
-URL-encoded fragment — the form the playbook records for 2026-08-28 — with `ready: true`,
-`<cow_id>` = `cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329` and `<sha>` =
-`sha256:90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4`, which is exactly
-`STATE.coworld.manifest_sha`. **The string `/client/replay` does not occur anywhere in the page
-(0 occurrences) or in any session response.** The same call for the round-1 replay returned the
-same static path.
+Decomposed:
 
-Status: **FALSE** (one half true, one half false, evidenced):
-- **static replay path — TRUE.** Every viewer URL this coworld produces is the static route with
-  the right `cow_id` and manifest sha, `ready: true`; no `/client/replay` pod URL anywhere.
-- **featured match present — FALSE.** `state.playlist` is `[]` and the page renders
-  "No featured match yet" at 22:36Z and again at 22:49Z, after three completed rounds and with
-  three ranked players. The prompt's stated cause for absence ("fewer than two ranked players")
-  does not apply; the observed cause is that the page features head-to-head episodes and this
-  game seats one policy per episode by design. Reported, not excused.
+| part | value | required |
+|---|---|---|
+| route | `/v2/coworlds/replays/static/…/index.html` | static route ✔ (no `/client/replay`) |
+| `<cow_id>` | `cow_753b4d23-00cd-417a-99eb-b643f0f0f526` | = STATE `coworld.cow_id` ✔ |
+| `<sha>` | `sha256%3Afdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032` | = the coworld's `manifest_hash` ✔ |
+| replay | `#replay=…3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay` | the round-16 replay, URL-encoded fragment form ✔ |
+| `ready` | `true` | static delivery ✔ |
 
-Sources used: raw-HTML grep (A), `/coworlds` detail (B), the page's SSR `state` payload (C), and
-the `replays/session` POST — four attempts, all recorded above.
+The URL-encoded **fragment** (`?v=2#replay=`) rather than `?replay=` is the documented
+2026-08-28 change (`playbooks/observatory-api.md:326`): both are the static route.
+
+Independently, the coworld detail API confirms `cow_753b4d23` is the canonical `minigrid` at
+`0.1.1` and that its `manifest_hash` is the sha in that path:
+
+```bash
+curl -sS "$BASE/coworlds?limit=200" "${AUTH[@]}" \
+ | jq -r 'if type=="array" then . else .entries end|.[]|select(.name=="minigrid")|{id,version,canonical,manifest_hash}'
+```
+
+```json
+{"id":"cow_753b4d23-00cd-417a-99eb-b643f0f0f526","version":"0.1.1","canonical":true,
+ "manifest_hash":"sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032"}
+{"id":"cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329","version":"0.1.0","canonical":false, …}
+```
+
+(The `/coworlds` list returns a **bare array** here, not `{entries:…}`; the 0.1.0 coworld is still
+listed but `canonical: false`. `featured_match` is not a key on these rows at all — the SSR
+payload is the source, as the playbook records.)
+
+**Re-fetched after round 17 completed**, to be sure the finding is not an artefact of one
+episode. `https://softmax.com/minigrid` fetched again 2026-08-29T02:11:31Z — HTTP 200; the playlist
+has rolled forward:
+
+```json
+"playlist":[{"episodeId":"b9968dc8-e539-4534-be29-c1c4bc24b9c1",
+  "coworldId":"cow_753b4d23-00cd-417a-99eb-b643f0f0f526","coworldName":"minigrid",
+  "coworldVersion":"0.1.1",
+  "replayUrl":"https://softmax-public.s3.amazonaws.com/replays/0746b9a3-3bf0-453b-9045-eb8a334849c0.replay",
+  "finishedAt":"2026-08-29T02:04:42.329702Z","roundNumber":17,"episodeNumber":1,
+  "code":"minigrid.r17.e1","matchup":{…}}]
+```
+
+and its session call (fetched 02:11:4xZ — HTTP 200) returns the same static route with the same
+coworld id and the same manifest sha, differing only in the `#replay=` fragment:
+
+```json
+{
+  "viewer_url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_753b4d23-00cd-417a-99eb-b643f0f0f526/sha256%3Afdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F0746b9a3-3bf0-453b-9045-eb8a334849c0.replay",
+  "ready": true
+}
+```
+
+Status: **TRUE** — a featured match is present at both readings (`minigrid.r16.e1` at 01:53Z,
+`minigrid.r17.e1` at 02:11Z), and in both the iframe `src` is the static route carrying
+`cow_753b4d23` and the current manifest sha with `ready: true`. No `/client/replay` anywhere.
 
 ---
 
 ## 7. Certification declared the static bundle
 
-Read from the **committed** artifact `runs/2026-08-28-minigrid/release-result.json` (the copy
-phase 40 downloaded from release run `33215083433`), not from `/tmp` and not re-downloaded — the
-file was present, so the `gh run download` fallback in `prompts/60-verify.md` §7 was not needed.
+**TRUE.** Source read: **the committed `runs/2026-08-28-minigrid/release-result.json`** in this
+repo (the copy phase 40 wrote for release 0.1.1) — not `/tmp`, and not a re-download.
 
 ```bash
 jq -r '.certify.replay_liveness' runs/2026-08-28-minigrid/release-result.json
 ```
+
 ```
 Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
 ```
 
+Contains the required `Replay liveness: skipped (static replay bundle declared`. The same file
+confirms this is the **0.1.1** artifact and that certification passed in full:
+
 ```bash
-jq -r '.certify|keys' runs/2026-08-28-minigrid/release-result.json
-```
-```json
-["ok", "output_tail", "replay_liveness"]
+jq -c '{version, ok, cow_id, manifest_sha, canonical, hosted_smoke, certify_ok:.certify.ok, secret_put, errors}' \
+   runs/2026-08-28-minigrid/release-result.json
 ```
 
-Status: **TRUE** — the certification output contains
-`Replay liveness: skipped (static replay bundle declared`, read from the committed
-`runs/2026-08-28-minigrid/release-result.json`.
+```json
+{"version":"0.1.1","ok":true,"cow_id":"cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
+ "manifest_sha":"sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032",
+ "canonical":true,"hosted_smoke":"passed","certify_ok":true,"secret_put":true,"errors":[]}
+```
+
+and the certify tail shows 10 of 10 transcript steps passing, ending on the liveness line:
+
+```
+  [pass] matriculate: manifest conforms to the Coworld schema
+  [pass] source-resolves: … source_url that resolves to publicly accessible source
+  [pass] images-reachable: every declared image is pullable or inspectable
+  [pass] fixture-conforms: the certification fixture validates against game.config_schema …
+  [pass] smoke-episode: the game and certification players run one episode
+  [pass] results-conform: episode results validate against results_schema
+  [pass] replay-present: a replay artifact was produced
+  [pass] replay-loadable: the replay artifact has a declared viewer path
+  [pass] players-run: every declared player actually started on the smoke episode …
+  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks
+Certified dist/coworld_manifest.json
+Transcript: coworld-executable (10 steps passed)
+…
+Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)
+```
+
+Bookkeeping note, stated because the prompt asks which source was used: the file **is present** in
+the run directory and is the 0.1.1 artifact, so no re-download was needed — but `git log` shows the
+last *commit* touching it is `3b1d983` ("40 minigrid: release-result 0.1.0"), i.e. the 0.1.1
+contents are in the working tree still awaiting the coordinator's publish
+(`git status` → ` M runs/2026-08-28-minigrid/release-result.json`). To make sure the working-tree
+copy is genuinely this run's artifact and not a local edit, it was diffed byte-for-byte against
+the artifact of the recorded release run:
+
+```bash
+gh run download 33226095645 -R Metta-AI/cogame-minigrid -n release-result -D /tmp/rrcheck
+diff <(jq -S . /tmp/rrcheck/release-result.json) \
+     <(jq -S . runs/2026-08-28-minigrid/release-result.json)
+```
+
+```
+IDENTICAL to release run 33226095645 artifact
+md5  bcf782e156a73ec3171f71fa61b78ada  (both files)
+```
+
+Status: **TRUE** — read from the run directory's `release-result.json`, verified identical to
+release run `33226095645`'s artifact, and it carries
+`Replay liveness: skipped (static replay bundle declared`.
 
 ---
 
-## 8. Spectator judgment — the viewer EXECUTED, then judged
+## 8. Spectator judgment — the viewer was EXECUTED, then judged
 
-### (a) Dispatch
+**TRUE on both mechanical criteria** (`loaded: true`; three pairwise-distinct clock readouts).
+
+*(a) Dispatch.* The iframe `src` from §6 was opened in headless chromium by CI. Nothing here was
+rendered locally; this sandbox has no browser and no screen. The URL dispatched is the one §6's
+session call returned at 01:54:1xZ — the featured match at that moment, `minigrid.r16.e1`. Round 17
+completed ten minutes later and the page's featured match rolled to it; as §6 records, its viewer
+URL is the identical static route with the identical coworld id and manifest sha, differing only in
+the `#replay=` fragment, so the render below exercises exactly the bundle the page serves now. Only
+one `viewer-check.yml` run was dispatched this session; chasing each new round would never
+terminate, since the ladder produces one every 15 minutes.
 
 ```bash
-SRC='https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329/sha256%3A90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay'
+SRC='https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_753b4d23-00cd-417a-99eb-b643f0f0f526/sha256%3Afdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay'
 gh workflow run viewer-check.yml -R Metta-AI/coworld-builder -f url="$SRC" -f timeout=90
+# dispatched 2026-08-29T01:54:33Z
 gh run list -R Metta-AI/coworld-builder -w viewer-check.yml --json databaseId,createdAt,status -L 10 \
- | jq -c 'sort_by(.createdAt)|reverse|.[0:3]'
+ | jq -r 'sort_by(.createdAt)|reverse|.[0:4][]|[.databaseId,.createdAt,.status]|@tsv'
 ```
+
+```
+33227616497	2026-08-29T01:54:33Z	in_progress     ← this run (createdAt == the dispatch time)
+33217780204	2026-08-28T22:41:52Z	completed       ← 0.1.0 round, not used
+33217711224	2026-08-28T22:40:43Z	completed       ← 0.1.0 round, not used
+33217648127	2026-08-28T22:39:40Z	completed       ← 0.1.0 round, not used
+```
+
+The run was found by sorting on `createdAt`, not by taking "the latest run" blind. It finished
+**green**:
+
+```bash
+gh run view 33227616497 -R Metta-AI/coworld-builder --json status,conclusion,jobs
+```
+
 ```json
-[{"createdAt":"2026-08-28T22:38:57Z","databaseId":33217607488,"event":"workflow_dispatch","status":"in_progress"},
- {"createdAt":"2026-08-28T22:18:25Z","databaseId":33216261052,"event":"workflow_dispatch","status":"completed"},
- {"createdAt":"2026-08-28T21:08:08Z","databaseId":33211231543,"event":"workflow_dispatch","status":"completed"}]
+{"status":"completed","conclusion":"success",
+ "steps":[ …, {"name":"Load the viewer","conclusion":"success"},
+               {"name":"Upload the evidence","conclusion":"success"},
+               {"name":"Fail if the viewer did not load","conclusion":"success"}, … ]}
 ```
-Dispatched 22:38:58Z; the run created at 22:38:57Z is the new one (the previous newest was
-22:18:25Z, another run's verifier — this workflow is shared, which is why the run is found by
-sorting on `createdAt` and not by taking "the latest").
 
 ```bash
-gh run watch 33217607488 -R Metta-AI/coworld-builder --exit-status
-```
-```
-✓ viewer-check in 35s (ID 99004650648)
-  ✓ Install Playwright (pinned 1.55.0)
-  ✓ Load the viewer
-  ✓ Upload the evidence
-  ✓ Fail if the viewer did not load
-```
-Green run. Artifact downloaded and committed:
-
-```bash
-gh run download 33217607488 -R Metta-AI/coworld-builder -n viewer-check \
-  -D runs/2026-08-28-minigrid/viewer-check
-```
-```
-runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json   (3910 B)
-runs/2026-08-28-minigrid/viewer-check/viewer-smoke.png    (547117 B)
-runs/2026-08-28-minigrid/viewer-check/smoke-stdout.txt
-runs/2026-08-28-minigrid/viewer-check/smoke-stderr.txt    (empty)
+gh run download 33227616497 -R Metta-AI/coworld-builder -n viewer-check \
+   -D runs/2026-08-28-minigrid/viewer-check
 ```
 
-Two retries (different `timeout`, then a **different replay**) were dispatched under the check's
-retry budget and are committed under `viewer-check/retries/`:
-`33217711224` (22:40:43Z, same replay, timeout 150) and `33217780204` (22:41:52Z, round-2
-missionfirst replay `9d6c6eac…`).
+→ `viewer-smoke.json` (1727 B), `viewer-smoke.png` (393 990 B), `smoke-stdout.txt`,
+`smoke-stderr.txt` (0 B). These files are this run's only rendered evidence; the CI sandbox that
+made them is gone.
 
-### (b) The readouts
+*(b) The readouts, verbatim from `runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json`.*
 
 ```bash
 jq -c '{loaded, ms, clock, scorebug, feed_lines}' runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json
 ```
+
 ```json
-{"loaded":true,"ms":2730,"clock":"SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0","scorebug":"— CARTOGRAPHER Carrying 0/5 ALPHA · SCORE 0 SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0","feed_lines":0}
+{"loaded":true,"ms":2678,"clock":"TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0","scorebug":"— CARTOGRAPHER Carrying 0/5 ALPHA · SCORE 0 — PROMPT Carrying 0/5 GAMMA · SCORE 0 TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0 — MISSIONFIRST Carrying 0/5 BETA · SCORE 0 — SCOUT Carrying 0/5 DELTA · SCORE 0","feed_lines":4}
 ```
 
 ```bash
 jq -c '.signals' runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json
 ```
+
 ```json
 {"data_replay_loaded":"true","data_replay_error":null,"bridge":[],"bridge_ready":false,"bridge_error":[]}
 ```
@@ -665,136 +957,91 @@ jq -c '.signals' runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json
 ```bash
 jq -r '.failure // "no failure"' runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json
 ```
+
 ```
 no failure
 ```
 
-```bash
-jq -r '.scrub[]|"\(.at)\t\(.clock)"' runs/2026-08-28-minigrid/viewer-check/viewer-smoke.json
-```
+Also in the artifact: `"status":"OPEN"`, `"loading_text":null` (no stuck "Loading replay…"),
+`"console_tail":[]`, and `canvas_text` `{"total":0,"outside":0,"ellipsized":0,"never_inside":0}` —
+no text drawn outside the canvas and nothing ellipsized.
+
+**The three clock readouts** (`jq -r '.scrub[]|"\(.at)\t\(.clock)"'`):
 
 | scrub | clock readout |
 |---|---|
-| 0 % | `SOLVED 0/5 TASK 1/5 · TURN 0/11 · TICK 141 · SEEN 35/169 · SCORE 0` |
-| 50 % | `SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000` |
-| 100 % | `SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000` |
+| **0 %** | `TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0` |
+| **50 %** | `TURN 16/30 · PHASE 3/5 · MULTIROOM TICK 361/720 · ALPHA 0 · BETA 0 · GAMMA 2 · DELTA 2` |
+| **100 %** | `TURN 30/30 · PHASE 5/5 · BABYAI TICK 720/720 · ALPHA 0 · BETA 0 · GAMMA 2 · DELTA 3` |
 
-**The 50 % and 100 % readouts are identical.** Reproduced on both retries:
+**All three differ pairwise** — turn 0 → 16 → 30, tick 0 → 361 → 720, phase 1 → 3 → 5, and the
+per-lane scores advance 0/0/0/0 → 0/0/2/2 → 0/0/2/3. This is the item the 0.1.0 round found FALSE
+(50 % and 100 % were identical because click-to-seek was mis-scaled); it is fixed. `loaded: true`
+via `data-replay-loaded="true"` at 2678 ms. (`bridge_ready` is `false` and `bridge` is empty: this
+shell signals readiness through the DOM attribute rather than the `coworld-replay` postMessage
+bridge — the check accepts either, and the attribute is present and `"true"`.)
 
-`retries/attempt2-33217711224` (same replay, timeout 150):
+*(c) Reconciliation against the replay JSON.* The 100 % readout says `GAMMA 2 · DELTA 3`; the
+replay's `results.tasksSolved` is `[0,0,2,3]` and `results.scores` is `[3000,5000,211010,312040]`,
+which is also what the API's `participant_scores` returned in §3. Tick 720/720 matches
+`results.finalTick: 720`; `TURN 30/30` matches `results.turnsPlayed: 30`; `PHASE 5/5 · BABYAI`
+matches `taskFamilies[4] == "babyai"`. The 50 % readout's `PHASE 3/5 · MULTIROOM` matches
+`taskFamilies[2] == "multiroom"`, and its `GAMMA 2 · DELTA 2` matches the replay's
+`taskSolved[2] = [true,true,false,false,false]` and `taskSolved[3] = [true,true,true,false,false]`
+with Delta's third solve still ahead at that point. The picture and the record agree.
 
-| scrub | clock readout |
-|---|---|
-| 0 % | `SOLVED 0/5 TASK 1/5 · TURN 2/11 · TICK 143 · SEEN 37/169 · SCORE 0` |
-| 50 % | `SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000` |
-| 100 % | `SOLVED 1/5 TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000` |
+### Spectator-judgment paragraph
 
-`retries/attempt3-33217780204` (**different replay** — round-2 missionfirst, `9d6c6eac…`):
+The screenshot (`runs/2026-08-28-minigrid/viewer-check/viewer-smoke.png`, 1280×800) is a
+**legible, populated, unmistakably-minigrid frame**, captured at the end of the replay with the
+endcard up. The four-lane quad layout renders: the central field is divided into four quadrants by
+faint dividers, with the bottom two lanes labelled **GAMMA** and **DELTA** in their lanes' colours
+and gridworld furniture — keys (small ⚷ glyphs), balls, doors, walls — drawn in each; the top two
+quadrants are dimmed under the endcard overlay, which is the starter's normal end-of-replay
+behaviour, so ALPHA's and BETA's boards are visible as layout but their labels are covered. The
+**left gutter** carries the mission ribbon exactly as the addendum specified: `PHASE 5/5 · BABYAI`
+above the sentence *"put the purple key next to the green key"*, and below it the five-task **pip
+stack** — LAVAGAP, DOORKEY, MULTIROOM, KEYCORRIDOR, BABYAI — each with its own icon. The **right
+gutter** carries the **POV inset**: `AGENT VIEW 7×7`, a real 7×7 cell grid with two coloured cells
+(an orange object and a yellow key), captioned `DELTA · FACING WEST`, then
+`POV DELTA · 3/5 · SCORE 312040`, then the feed line
+`PHASE 5/5 — BABYAI: "put the purple key next to the green key"`. `feed_lines` is **4** (> 0) in
+the JSON — the 0.1.0 round measured `feed_lines: 0`, so the killfeed id mismatch is fixed; at the
+final frame only one feed line remains on screen, the rest having aged out. Across the top runs a
+per-lane carrying banner (`0/5 Carrying PURPLE KEY`, `2/5 Carrying`, `Carrying 0/5`,
+`Carrying 3/5`) with the big clock `TURN 30/30 · PHASE 5/5 · BABYAI` centred. The endcard itself
+is the clearest thing on the page: **"DELTA TAKES IT — 3 OF 5 SOLVED"**, the badge
+`ENDED COMPLETE (ALLLANESCOMPLETE)`, the one-line story *"30 turns across four isolated lanes,
+13 doors opened, 1 death, 4 fallback turns"*, and a four-row table
+`LANE / POLICY / SOLVED / CREDITS / SCORE` reading ALPHA cartographer 0/5 3/15 3000, BETA
+missionfirst 0/5 5/15 5000, GAMMA prompt 2/5 11/15 211010, DELTA scout 3/5 12/15 312040 — which is
+`results.scores`, `results.tasksSolved` and `results.progressTotal` verbatim. Its one-line story
+reconciles too: `results.turnsPlayed` is 30, `sum(results.doorsOpened)` = 0+2+5+6 = **13**,
+`sum(results.deaths)` = **1**, `sum(results.fallbackTurns)` = **4**. A spectator can therefore tell who is winning
+and why without reading any JSON. It is **not empty, not frozen and not unreadable**: the scrub
+table proves it advances, and the endcard proves it explains itself.
 
-| scrub | clock readout |
-|---|---|
-| 0 % | `SOLVED 0/5 TASK 1/5 · TURN 1/11 · TICK 158 · SEEN 37/169 · SCORE 0` |
-| 50 % | `SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000` |
-| 100 % | `SOLVED 0/5 TASK 3/5 · TURN 11/11 · TICK 281 · SEEN 105/169 · SCORE 3000` |
+**Does it look like the starter's chrome?** Yes. The bottom transport strip is coworld-ctf's:
+restart / step-back / play / `+5s` / step-forward / loop / fast-forward buttons, a `spoilers`
+toggle, a `DELTA — PAR MET 720 / 721` status readout, the `1× 2× 3× 4× 8× 16×` speed selector,
+and the **`PROGRESS` scrubber with the momentum graph** — four coloured traces climbing across the
+timeline with per-lane tick marks above them — which is the same widget paintbot/raid/hive ship.
+The scorebug, endcard and colour language are the same family. This is a fork of the starter, not
+the cogame-gridlock failure mode of a rewrite that merely shares ids.
 
-All three runs: `loaded: true`, `data_replay_loaded: "true"`, `failure: null`, a `#scrub` element
-present (the json records real readouts rather than `"(no #scrub…)"`), and 0 % ≠ 50 % = 100 %.
+**Legibility observations for phase 30 (non-blocking, none of them make this item false).**
+(i) The top strip is crowded at 1280 px: the small per-lane score chips collide —
+`ALPHA SCORE 3000` and `GAMMA SCORE 211010` overlap around x≈380-460, and the centred
+`TICK 720/720 · ALPHA 0 · BETA 0 · GAMMA 2 · DELTA 3` line is squeezed between them. (ii) The
+second lane's carrying banner shows a bare `—` where the carried item name should be. (iii) At the
+final frame only one feed line survives on screen even though four were counted at load, so the
+right gutter looks sparser than it is mid-replay. (iv) The endcard is opaque enough to hide the
+top two lanes' labels entirely, so a spectator who arrives at the end cannot tell which quadrant
+was ALPHA and which was BETA without scrubbing back.
 
-Console tail from `viewer-smoke.json` (verbatim, deduplicated):
-
-```
-[http 404] …/static/cow_5201d3e2…/sha256%3A90039809…/soldier_red_front_gun.png
-[http 404] …/static/cow_5201d3e2…/sha256%3A90039809…/soldier_green_front.png
-[http 404] …/static/cow_5201d3e2…/sha256%3A90039809…/soldier_blue_front_gun.png
-[warning] Unknown sprite protocol message type: 34      (×22)
-```
-
-### (c) What the viewer was asked to draw
-
-From the same replay's summary (`/tmp/r2-cart.json`, check 4) — ordered excerpts:
-
-early (turns 1–6, task 1 `lavagap`):
-```
-1  0 llm  face goto                                    Task 1: Reach the GREEN GOAL square. Exploring to find it.
-2  0 llm  right forward forward right                  Turning west to explore large ? region. Need to find the green goal square.
-3  0 llm  goto                                         Continuing west exploration to map unknown regions and locate green goal.
-4  0 llm  right forward forward forward right forward  Exploring north from (1,5) to map ? region and find goal
-5  0 llm  left forward forward forward right forward   Continuing north to explore ? cells and find the green goal
-6  0 llm  forward forward forward right forward forward Exploring E and S to find goal G
-```
-
-middle (turns 20–26, task 3 `multiroom`):
-```
-20 2 llm  forward right forward forward forward left forward right forward  Exploring south and east toward goal area at (11,8)
-23 2 llm  forward forward right forward forward forward                     Continuing SE exploration to find green goal
-26 2 llm  face goto                                                         Heading east to continue mapping and search for green goal
-```
-
-late (last 6 turns, task 5 `babyai`):
-```
-47 4 llm  goto                       Searching for blue key in bottom-left unknown region
-49 4 llm  goto forward right         Exploring west y=12 for blue key; red ball at (7,9) ready to place.
-52 4 llm  goto pickup                Carry blue key, then position red ball next to it.
-```
-
-`results`: `reason complete`, `endRule gauntletComplete`, `tasksSolved 1`,
-`taskOutcome ["died","solved","timeout","timeout","timeout"]`, `finalTick 314`, `turnsPlayed 52`,
-`llmTurns 52`, `fallbackTurns 0`, `doorsOpened 1`, `objectsPickedUp 1`, `deaths 1`.
-
-### Spectator judgment
-
-**It is legible, and it plainly shows this game — and it is the starter's chrome, not a rewrite.**
-`viewer-smoke.png` (1280 × 800, committed) is a full-frame broadcast, not a loading screen: a
-13 × 13 board drawn edge to edge with bevelled masonry walls on the border ring, gridlined floor,
-and real objects on it — a blue key, a green key, a blue box, a red ball, a grey obstacle ball —
-with the cog itself (the composited red soldier rig) standing at the middle-left under a yellow
-direction wedge. Unseen cells carry the heavy dark wash and seen-but-not-visible cells the lighter
-one, so at a glance you can see how much of the board the cog knows: the design's "single most
-important readout" is doing its job. The top band is the starter's scorebug — `SOLVED 1/5` as the
-big numeral, caption `TASK 3/5 · TURN 7/11 · TICK 299 · SEEN 49/169 · SCORE 104000`, and a single
-left plate reading `1/5 Carrying CARTOGRAPHER` over `ALPHA · SCORE 104000` with the carrying chip
-showing `—`. The mission ribbon reads the sentence in full — *"get to the green goal square"* —
-the five task pips are there in ladder order with the right semantics (red-slashed = failed,
-green = solved, amber ring = current, hollow = pending), the `AGENT VIEW 7×7` inset draws the
-agent-up window with `ALPHA · FACING E…` beneath it, and the bottom is the starter's transport
-strip verbatim: restart / back / play / +5s / forward / loop / skip-lulls / `spoilers`, a
-`158 / 315` tick readout, speed chips `1× 2× 3× 4× 8× 16×`, and the scrubber with beat markers in
-red, orange and green above the `PROGRESS` momentum line. That is the paintbot/ctf chrome
-family — transport strip, scrubber with momentum graph, scorebug, endcard machinery — with this
-game's mission ribbon, task pips and 7 × 7 inset added, exactly as `design.md` §Chrome provenance
-describes. It is not the cogame-gridlock failure mode.
-
-It also **advances**: between the 0 % and 50 % readouts the clock moves from
-`SOLVED 0/5 … TICK 141 … SCORE 0` to `SOLVED 1/5 … TICK 299 … SCORE 104000`, and that matches the
-record — the replay's task 2 (`doorkey`) is the one solved, on turns 16–19, where the LLM says
-*"Going to yellow locked door at (7,5) to open it with my yellow key"* and the plan is
-`goto toggle`. The picture and the record agree.
-
-**Three defects in what was rendered, all in the chrome, none fatal to "it draws":**
-1. **The scrubber's click-to-seek is mis-scaled and the clock stops tracking the playhead.** In
-   the screenshot — taken after the 100 % click — the transport reads `158 / 315`, i.e. the
-   playhead sits at the *middle* of the timeline after a click at the far right edge of `#scrub`,
-   while `#clock-caption` simultaneously reads `TICK 299 · SEEN 49/169 · SCORE 104000` (end-of-
-   episode values, and `TASK 3/5` when the episode's last task was 5/5). The two readouts
-   disagree with each other and neither follows the click. This is what produces the identical
-   50 %/100 % rows above, and it reproduced on a second replay.
-2. **The match feed is empty.** `feed_lines: 0` in all three runs, including the reading taken at
-   the moment of load while the replay was auto-playing at tick 141, and no feed rows are visible
-   anywhere in the frame. `design.md` readout 8 makes the feed the place *"where a spectator sees
-   the LLM playing"* — the `say` lines quoted above never reach the screen.
-3. **Cosmetic:** the five task-pip family captions overlap into an unreadable smear
-   (`LAVAGDORMILET·KEYCORBABYAIR`) at 1280 px; the mission ribbon and the `AGENT VIEW 7×7` inset
-   are drawn *over* the board's left edge rather than in the letterbox gutters; the line above the
-   ribbon (`TASK n/5 · FAMILY`) is clipped by the top band; and three starter sprites 404
-   (`soldier_red_front_gun.png`, `soldier_green_front.png`, `soldier_blue_front_gun.png`) with 22
-   `Unknown sprite protocol message type: 34` warnings.
-
-Status: **FALSE** — criterion (a) passes: `loaded: true` in 2 730 ms with
-`data_replay_loaded: "true"` and no failure. Criterion (b) does **not**: the three clock readouts
-do not differ — 50 % and 100 % are byte-identical, in three dispatched runs across two different
-replays. Motion itself is proven (0 % → 50 %), so this is not the cogame-lantern "never draws a
-frame" failure; it is the scrubber seek/clock defect described above, and by the rule as written
-(`prompts/60-verify.md` §8: *"Item 8 is TRUE only if both hold"*) the item is false.
+Status: **TRUE** — `loaded: true`, three pairwise-distinct clock readouts, `feed_lines: 4`, a
+scorebug naming all four seats, no failure, and a rendered frame that is legible, that shows the
+game, and that reads as the starter's chrome.
 
 ---
 
@@ -802,17 +1049,24 @@ frame" failure; it is the scrubber seek/clock defect described above, and by the
 
 | # | Check | Verdict |
 |---|---|---|
-| 1 | ≥2 completed rounds after fillers set | **TRUE** (3 completed: 22:15:37Z, 22:32:00Z, 22:46:09Z) |
-| 2 | Both champions ranked, fillers absent/Baseline | **TRUE** (daveey #1, daveey-1 #3, 3 rounds each) |
-| 3 | Latest round's episode requests completed w/ replay | **TRUE** |
-| 4 | Replay bytes valid, protocol, reason, not all fallbacks | **TRUE** (`minigrid/v1`, `complete`, 46/46 and 35/36 llm) |
-| 5 | Hosted game log clean | **FALSE** (1 `falling back` line, round 3 / daveey-1; not platform-wide) |
-| 6 | Public page: featured match + static iframe src | **FALSE** (static path TRUE; featured match absent) |
-| 7 | Certification declared the static bundle | **TRUE** |
-| 8 | Viewer executed: loaded + advances + judgment | **FALSE** (`loaded:true`, but 50 % = 100 % readouts) |
+| 1 | ≥2 completed rounds after fillers set | **TRUE** — rounds 15 and 16 (both all-v2 entrants) completed after the v2 filler pair went live; round 17 followed; zero failed/discarded in the whole league |
+| 2 | Both champions ranked, fillers absent/Baseline | **TRUE** — daveey r2 / daveey-1 r3, 16 rounds each; fillers absent |
+| 3 | Latest round's episode request completed with replay | **TRUE** — `ereq_737c8831…` completed, 4 participants, daveey + daveey-1 |
+| 4 | Replay bytes valid and show the game | **TRUE** — strict JSON, `minigrid/v1`, reason `complete`, 80 LLM / 4 fallback decisions, champions 0 fallbacks |
+| 5 | Hosted game log clean | **FALSE** — `falling back … (transport_timeout)`: 4 lines in round 16 (all third-party seat), 4 in round 15 (one champion seat), 5 in round 17 (both champion seats, all three LLM seats on turn 29); no documented exception applies |
+| 6 | Public page uses the static replay path | **TRUE** — featured match present at both readings (`minigrid.r16.e1` 01:53Z, `minigrid.r17.e1` 02:11Z); static route, `cow_753b4d23`, manifest sha, `ready:true`, never `/client/replay` |
+| 7 | Certification declared the static bundle | **TRUE** — `Replay liveness: skipped (static replay bundle declared…` |
+| 8 | Spectator judgment (executed viewer) | **TRUE** — `loaded:true` at 2678 ms, three distinct clocks, `feed_lines:4`, legible quad frame |
 
 For STATE:
-- `verify.rounds`: `[{1,"round_d23b23fc-be7d-4e96-aa40-b147106b3eda"}, {2,"round_a4ab0f21-6588-4b6c-8eb0-5d25565535ee"}, {3,"round_aa501498-e555-4a71-b4cb-bae6c84076b1"}]`
-- `verify.replay`: `https://softmax-public.s3.amazonaws.com/replays/5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay` (round 2, daveey/cartographer — the replay check 8 rendered); latest round's champion replays are `5eb66cb5-6917-4dee-a4c5-3f00c60d27d8` (daveey) and `70a0e17b-ae6c-4f4f-99bd-cdf0e8b0ab61` (daveey-1)
-- `verify.iframe_static`: `true`
-- `verify.viewer_check_run`: `33217607488` (retries `33217711224`, `33217780204`)
+
+```
+verify.rounds       = [{"n":15,"id":"round_a4dba3c3-d5c7-4e62-9eda-40ce114e6f1c"},
+                       {"n":16,"id":"round_6f2dadf4-b743-4f29-b9f4-119141ca8db7"},
+                       {"n":17,"id":"round_44adaf2b-3ee7-44db-8076-05fc55ce7b6f"}]
+                      # all three are qualifying (both champions on v2, v2 fillers live);
+                      # checks 3/4/6/8 were executed against round 16, round 17 completed after
+verify.replay       = "https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay"
+verify.iframe_static = true
+verify.viewer_check_run = "33227616497"
+```
