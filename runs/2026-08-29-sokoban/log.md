@@ -14,3 +14,4 @@
 2026-08-29T05:25:21Z 20 repo created: https://github.com/Metta-AI/cogame-sokoban (public)
 2026-08-29T05:25:21Z 20 propagate-secrets run 33236111568 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
 2026-08-29T05:25:21Z heartbeat phase=20
+2026-08-29T05:26:15Z 20 dispatched builder sthr_01Xiax3SoYNTjBQnvX2b3HCD brief=implement repo to green ci.yml
