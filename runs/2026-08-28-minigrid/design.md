@@ -2849,3 +2849,247 @@ bundle from `coworld-ctf` only, with `data-replay-loaded` / `data-replay-error`,
 `chrome_common.js`, the appended-game-block rule, the dropped `#viewpanel`, and the
 `tools/build_replay_viewer.sh` hook; `compose.yaml`, `game.docs`, `game.protocols`,
 `episode_timeout_minutes: 20`; and every §Out of scope (v1) item.
+
+### Addendum v2.1 — ladder re-derivation for concurrent batches (2026-08-29)
+
+**Overrides the v2 addendum's deadline ladder, its worst-case claim, `fallbackCauses` semantics and
+the `goto` macro. Everything else in v2 stands.** Target release **0.1.2**, `GameVersion` **`"3"`**
+(the `goto` change is sim semantics). Round-2 verification against 0.1.1 passed checks 1, 2, 3, 4, 6,
+7 and 8 — the featured match exists, the quad renders, the scrub readouts are pairwise distinct, the
+feed works. Three things remain.
+
+#### 1. The ladder — re-derived for concurrent batches (fixes check 5)
+
+**The v2 premise was stale, not wrong-headed.** `attempt1Ms = 11000` was sized against the *single
+seat* 0.1.0 distribution (max 6 712 ms). 0.1.1 issues **three** concurrent calls per batch (two
+champions plus a third-party entrant) and the design permits **four**. Measured on 0.1.1, from
+`.plans[].latency_ms` — which is the wall clock of the whole concurrent batch, identical across the
+seats of a turn:
+
+| concurrency | median | p90 | max |
+|---|---|---|---|
+| 1 call (0.1.0) | 2.5–4.6 s | 4.9–6.0 s | 6 712 ms |
+| **3 calls (0.1.1)** | **5.7–6.2 s** | **8.6–10.1 s** | **11.0 s — censored** |
+
+The sidecar shows **89/89 HTTP 200, zero non-2xx**: nothing was refused, throttled or truncated.
+These are latency-cap fallbacks. **The 11.0 s maximum is right-censored at `attempt1Ms`** — a call
+that would have returned at 11.5 s is recorded as a timeout, so the true maximum is unknown and
+strictly greater than 11 s. **A censored maximum cannot be used to size a deadline**, so the ladder
+is sized off the largest *uncensored* statistic (p90 ≈ 10.1 s) and a stated concurrency model, not
+off a max.
+
+**Concurrency model, stated so it can be checked later.** p90 went 6.0 s → 10.1 s as concurrency went
+1 → 3, i.e. roughly **+2.0 s of p90 per additional concurrent call** on one sidecar. One step further,
+to the design's maximum of **four** LLM lanes, projects **p90 ≈ 12.1 s**. The ladder is sized for four,
+not three, because a fourth LLM entrant needs no change to this coworld to appear.
+
+```
+attempt1Ms              18 000 ms   1.5x the PROJECTED four-seat p90 (12.1 s), 1.8x the OBSERVED
+                                    three-seat p90 (10.1 s). Sized off p90 x a multiplier, never
+                                    off the censored max.
+retryMs                 12 000 ms   ~= the projected four-seat p90, so the retry is a genuine second
+                                    chance (v1's error was retry < attempt 1). The retry batch
+                                    carries ONLY the seats that failed, so it is usually ONE request
+                                    on the single-call distribution (observed max 6 712 ms) --
+                                    12 s is generous there, not marginal.
+turnBudgetMs            30 000 ms   attempt1Ms + retryMs = 30 000 <= 30 000; sim_config.nim:691
+                                    raises only on ">", so equality is legal and deliberate.
+turnSpacingMs           11 000 ms   UNCHANGED. 4 req / 11 s = 21.8 req/min steady; a fully retried
+                                    turn adds <= 4 more -> ~26, under the 28 rolling guard and the
+                                    30/min sidecar cap. A slow turn takes >= 30 s start-to-start,
+                                    which only LOWERS the rate, so the guard cannot be tripped by
+                                    the new deadlines.
+per-episode call budget  <= 240     UNCHANGED (4 seats x 30 turns x <= 2 attempts). Calls are per
+                                    TURN, not per second, so the ladder does not move it.
+wallClockBudgetSeconds     660 s    UNCHANGED.
+```
+
+**Wall clock, honestly, in three tiers — the "fits always" claim of v2 is withdrawn.**
+
+```
+typical (batches ~6 s, spacing binds):
+   29 x 11 s spacing + last batch 6 s + lobby 20 + artifacts 20 + sim 1   = 366 s   < 720 s
+p90-ish (three turns in thirty run to ~12 s, over the spacing floor):
+   27 x 11 s + 3 x 12 s + 6 + 41                                          = 380 s   < 720 s
+pathological ARITHMETIC bound (every turn burns the full 30 s budget):
+   30 x 30 + 121                                                          = 1021 s  -- DOES NOT FIT
+```
+
+**There is no ladder that both covers the concurrent-batch p90 with real headroom and multiplies out
+under the 660 s stop at 30 turns** (it would need `turnBudgetMs ≤ 17.9 s`, which is v2's ladder,
+which is what failed). The design therefore moves from *"the worst case fits by arithmetic"* to
+**"the worst case is bounded by the budget guard"**, and the guard's bound is proved:
+
+```
+the guard trips at the start of a turn when
+   elapsed + 2 x (turnSpacingMs + turnBudgetMs) > wallClockBudgetSeconds
+   elapsed + 2 x 41 s > 660 s   ->   elapsed > 578 s
+so the last turn the guard lets start begins at <= 578 s, costs at most turnBudgetMs 30 s,
+every remaining turn then runs `scout` (microseconds), and artifacts take 20 s:
+   578 + 30 + 20                                                          = 628 s   < 660 s stop
+```
+
+**Guarded worst case 628 s, ending `reason: complete`.** The `deadline` path — a `wallClock` stop with
+every unstarted phase marked `unreached` per lane and the real scores kept — remains the designed
+backstop and stays **declared acceptable**, but it is now reachable only if a single turn overruns its
+own `turnBudgetMs`, which the monotonic deadline forbids. `tests/test_minigrid_manifest.nim` test 51's
+assertion is **replaced**: the old
+`maxTurns × turnBudgetMs/1000 + 121 ≤ wallClockBudgetSeconds` becomes
+`(wallClockBudgetSeconds − 2 × (turnSpacingMs + turnBudgetMs)/1000) + turnBudgetMs/1000 + 21
+≤ wallClockBudgetSeconds` — here `578 + 30 + 21 = 629 ≤ 660` ✓ — plus `attempt1Ms ≥ 18000`,
+`retryMs ≥ 12000`, whole seconds, and `attempt1Ms + retryMs ≤ turnBudgetMs`, for every shipped variant
+and the cert fixture. (The cert fixture keeps `wallClockBudgetSeconds: 240`; it is all-scripted, makes
+no LLM call, and the guard never runs there.)
+
+**Game constants are NOT moved.** Fitting the arithmetic bound would need `maxTurns ≤ 17`, i.e. three
+turns a phase, and the champions already lose at six; gutting the 5 × 6 phase structure to protect a
+pathological case that has never occurred in seventeen rounds is the wrong trade. The 5 phases × 6
+turns, `turnTicks 24`, `maxTurns 30`, `maxTicks 720` structure is unchanged.
+
+**Expectation, not a guarantee.** A fallback now needs one batch over **18 s** *and* its retry over
+**12 s**. 105 of the 113 observed batches finished under 11 s and the p90 is 10.1 s, so 18 s sits
+around p99 of the three-seat distribution and near p95 of the projected four-seat one; the retry runs
+on the much faster single-call distribution. **Expected fallback rate below 1 % of decisions**, against
+the 3.6–4.4 % measured on 0.1.1. Because the 0.1.1 maximum is censored this is an expectation with a
+stated model, **not** the "requires … which is the fix" claim v2 made — that overreach is exactly what
+this section corrects.
+
+#### 2. `fallbackCauses` counts BOTH attempts (fixes finding 2)
+
+Observed: round 17 seat 0 failed attempt 1 with `schema_error` and attempt 2 with `transport_timeout`,
+but `fallbackCauses[0]` recorded only `{"transport_timeout": 1}` — the per-attempt `fallback` records
+carried both, the summary map kept the last and silently dropped the first, so a reader of the summary
+alone never learns a champion produced one malformed reply. **Pinned semantics:**
+
+- `results.fallbackCauses[i]` is a `{cause: count}` map over **every failed attempt on a turn that
+  fell back** — both attempts, each under its own cause. The round-17 case becomes
+  `{"schema_error": 1, "transport_timeout": 1}`.
+- The v2 identity `Σ values == fallbackTurns[i]` is therefore **wrong and is replaced** by
+  `fallbackTurns[i] ≤ Σ fallbackCauses[i].values ≤ 2 × fallbackTurns[i]`.
+- Attempt-1 failures on turns that **recovered** stay out of the map (it is scoped to turns that fell
+  back, as its name says) and are counted instead by a new scalar **`results.retriedTurns[i]`** — turns
+  where attempt 1 failed and attempt 2 succeeded. Round 16 seat 2 would read `retriedTurns: 1`.
+- The second-failure log line names both when they differ:
+  `minigrid llm: seat 0 falling back to scout (transport_timeout; attempt 1: schema_error) on turn 29`
+  — still matched by phase 60's `falling back` grep.
+- Adding `retriedTurns` means updating `gauntletResultsJson`, the manifest `results_schema` and
+  `tools/ci/docker_smoke.sh`'s expected-key set in the same commit. Test 50 is amended to the new
+  identity and to assert a mixed-cause turn records both keys.
+
+#### 3. Why the champions score 0/5 — and the fix (finding 3)
+
+**Diagnosis, from the shipped code at `8a78a6bf`.** `gotoPrimitives`
+(`src/minigrid/driver.nim:47-118`) BFSes over `KnownMap.traversable`
+(`src/minigrid/grid.nim:155-167`), whose domain is exactly `'.'`, `'G'` and an **open** door on a
+**seen** cell — `?`, lava, walls, closed and locked doors and obstacle cells are all excluded, as
+designed. If the target is neither traversable-and-reached nor 4-adjacent to a reached cell, the macro
+`return`s with `ok = false`, yields **zero** primitives, and increments `unreachable`
+(`driver.nim:82, 85, 138-140`). The BFS and the domain are **correct and are not changed**.
+
+What is wrong is the **cliff**, and both champions walk straight off it. Their `say` lines name it:
+cartographer turn 1 *"Mapping the world… Exploring east"* `ex=0`, turn 2 *"Exploring south to map
+large ? region"* `ex=1`, turn 29 *"Searching for green key in unmapped region"* `ex=0`; missionfirst
+turns 15–16 *"…unseen; sweeping NE corner"*. They issue `goto` at **unseen coordinates** — the corner,
+the middle of the `?` region — which is the natural reading of "go there" and the direct instruction of
+their own prompts (*"sweep: the goal is almost always in the corner farthest from where you started"*).
+The macro answers with nothing, and a turn whose only action was that `goto` executes **zero of its 24
+ticks**. `macrosUnreachable = 6` on each champion and **0** on both seats that scored, and richard's
+third-party LLM (0 unreachable, 2/5) only ever gotos seen cells. That is the whole mechanism.
+
+Both halves are fixed, because either alone leaves the cliff or leaves the prompts fighting it.
+
+**(a) `goto` becomes best-effort — sim semantics, `GameVersion` 2 → 3.** Replace the two bare `return`s
+with a third case:
+
+> **Case C.** If the target is neither traversable-and-reached nor 4-adjacent to a reached cell, walk
+> to the **reached cell that minimises, in order: (i) Manhattan distance to the target, (ii) BFS
+> distance from the agent, (iii) cell index** — i.e. get as close as the known map allows — then append
+> the turn primitives that **face the axis of greatest remaining offset** toward the target (ties → the
+> x axis, i.e. east/west before north/south). Report `partial = true`. Only when that cell is the
+> agent's **own** cell does the macro yield zero primitives and count `unreachable`.
+
+The walk is still confined to seen, traversable cells, so partial observability, lava safety and the
+"never path through `?`" invariant are untouched — the target's coordinates came from the policy, not
+from the game, so nothing is leaked. `macrosUnreachable` keeps its meaning ("the map gave me nowhere
+to go") and becomes genuinely rare. A new counter **`results.macrosPartial[i]`** and a `partial` field
+in `last_plan` report it back. **`scout` and `bumper` are unaffected**: `scout` only gotos known
+targets and known frontier cells, both of which take cases A/B, so the scripted baseline's 3/5
+benchmark is preserved and the champion-versus-baseline comparison stays honest.
+
+Consequences, all in one commit: `GameVersion` `"2"` → `"3"` with a prepend-only changelog line, every
+`tests/replays/` fixture re-recorded by `tools/record_fixture.sh`, `tools/ci/check_gameversion.sh` and
+the fixture sweep enforcing it, and v2 test 7's *"an unreachable target yields zero primitives"*
+amended to *"yields zero only when no reached cell is strictly closer to the target than the agent's
+own"*, plus a new assertion that a `goto` at an unseen cell across an open room walks toward it and
+sets `partial`. **Rejected alternatives, logged:** treating a closed-but-unlocked door as
+passable-with-`toggle` (it would silently open doors the policy never asked to open, and `toggle` is a
+scored action); and substituting the `scout` plan whenever the expanded queue comes out empty (it
+would hide policy error and make a champion indistinguishable from its own baseline).
+
+**(b) The prompts are re-pinned.** Exact replacements, no other text touched.
+
+*Shared system prompt (`src/minigrid/llm.nim`), the last three lines of the `goto` bullet:*
+
+> *was* — "…standing on it if it is floor or the goal. It refuses to path through ? cells or lava. If
+> it says "unreachable", you have not seen a route yet - go and look."
+>
+> *becomes* — "…standing on it if it is floor or the goal. It never walks through ? cells or lava, so
+> if the target is still ? it walks you AS CLOSE AS IT CAN and turns you toward it - that is a
+> "partial" walk, and it is the right way to explore: aim at the unknown and re-issue the same goto
+> next turn. "unreachable" means it could not move you at all; when you see it, goto a SEEN floor cell
+> next to the ? region instead."
+
+*Shared system prompt, one new line appended to `WHAT YOU SEND`:*
+
+> "NEVER send a turn whose only action is a goto you are unsure of. Follow every goto with two or
+> three "forward" and one "right", so the turn still moves and still looks somewhere new even if the
+> goto stops short."
+
+*`minigrid-cartographer` (champion #1, daveey), two sentences:*
+
+> "Then spend the turn walking to the middle of the largest ? region with one "goto" to the nearest
+> floor cell that touches ?, because a cell that touches ? is where new information is."
+> → **"Then spend the turn crossing into the largest ? region: "goto" a SEEN floor cell that touches ?,
+> then two "forward" and one "right". Never make a goto the only action of a turn."**
+>
+> "If it says unreachable, the route is not discovered yet - explore toward the target's side of the
+> board instead."
+> → **"If it says partial, the goto stopped short because the rest is still ? - re-issue the SAME goto
+> and add two "forward". If it says unreachable, you are already as close as the map allows: turn and
+> add forwards by hand."**
+
+*`minigrid-missionfirst` (champion #2, daveey-1), one bullet and one appended sentence:*
+
+> ""get to the green goal square": if G is in "known", goto it. If not, sweep: the goal is almost
+> always in the corner farthest from where you started."
+> → **""get to the green goal square": if G is in "known", goto it. If not, aim at the corner farthest
+> from where you started - goto that corner even though it is still ?, which walks you as far toward it
+> as the map allows - and add three "forward" and one "right" after it."**
+>
+> Append to the Budget paragraph: **"Every turn must contain at least one movement primitive besides
+> the goto."**
+
+Policy names, owners and env switches are unchanged; both champions stay `PLAYER_PROMPT`. Re-pinning
+prompt text is a `tools/ci/policies.json` edit and mints fresh `vN` policy versions — it is **not** a
+`GameVersion` change on its own; the bump above comes from (a).
+
+**(c) `tools/replay_summary.py`'s top-level `policyKinds` — fixed, one line.** Line 179 builds it as
+`[r.get("kind") for r in registers]`, i.e. **`register`-record arrival order**, which on round 16 gave
+`["llm","llm","scripted","llm"]` while the seat-ordered `results.policyKinds` is
+`["llm","llm","llm","scripted"]`. Worth fixing: this file is the declared phase-60 evidence path, and a
+wrong array in the evidence path is worse than a missing one. Build every top-level per-seat array —
+`policyKinds`, `names`, `aliases` — **indexed by `register.slot`**, sized to `num_agents`, not by append
+order. Tool-only, no bytes change, no `GameVersion` impact. New assertion in test 55: the tool's
+top-level `policyKinds`, `names` and `aliases` equal `results.*` element for element.
+
+#### What v2.1 changes, in one list
+
+`attempt1Ms` 11000 → **18000**; `retryMs` 6000 → **12000**; `turnBudgetMs` 17000 → **30000**;
+`turnSpacingMs`, `maxTurns`, `turnTicks`, `taskTurnCap`, `wallClockBudgetSeconds`, the rate guard and
+the ≤ 240-call budget all **unchanged**; the worst-case claim moves from an arithmetic bound to a
+**guard bound of 628 s < 660 s ending `complete`**, with `deadline` still declared acceptable;
+`fallbackCauses` counts **both** attempts and gains `results.retriedTurns[i]`; `goto` gains the
+**best-effort Case C** with `results.macrosPartial[i]`, bumping `GameVersion` to **`"3"`** and
+re-recording the fixtures; three prompt passages re-pinned verbatim above; `replay_summary.py`'s
+top-level arrays indexed by slot. Release **0.1.2**. Tests 7, 50, 51 and 55 amended; everything else
+in v2 and v1 stands.
