@@ -39,3 +39,7 @@
 2026-08-29T10:06:18Z 30 adopted r1-review-b.md (22 findings, old session's parallel reviewer) into round 1; fixer sthr_01C8YJSdk9Bpgg23U3ek6VRD re-dispatched to triage B-findings vs current main -> reviews/r1-fixes-b.md
 2026-08-29T10:06:18Z 30 note: git-over-HTTPS push auth failing this session; coordinator pushes via REST git-database API (gh api), never forced
 2026-08-29T10:06:18Z heartbeat phase=30
+2026-08-29T10:36:00Z 30 fixer returned r1-fixes-b.md (12 fixed, 6 already-fixed, 4 refuted) sha=a72dbac run=33247581241 conclusion=success
+2026-08-29T10:36:00Z progress phase=30 marker=r1-fixes-b.md
+2026-08-29T10:36:00Z 30 dispatched judge sthr_01PLMj49tVcWvv8fh7hQsNhs round=1 target=a72dbac both reviews -> reviews/r1-verdict.md
+2026-08-29T10:36:00Z heartbeat phase=30
