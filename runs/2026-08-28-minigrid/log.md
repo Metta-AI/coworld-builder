@@ -98,3 +98,7 @@
 2026-08-29T02:22:20Z progress phase=60 marker=design.md-addendum-v2.1-persisted
 2026-08-29T02:22:20Z 60 builder v2.1 dispatched (same thread) — implement, CI green, no release
 2026-08-29T02:22:20Z heartbeat phase=60
+2026-08-29T02:45:57Z 60 builder v2.1 returned: sha=85a2f68c run=33229494065 green (verified) — ladder 18/12/30/11s, both-attempt causes + retriedTurns, goto Case C (GameVersion 3, 480-episode baseline sweep macrosPartial==0), prompt re-pins, replay_summary slot fix; 4 documented divergences incl docker_smoke 17-key check worth folding into templates
+2026-08-29T02:45:57Z progress phase=60 marker=ci-run-33229494065-green-v2.1
+2026-08-29T02:45:57Z 60 judge r3 dispatched (fresh context) thread=sthr_012qkgVFHDpGw84sXxaHC2xE sha=85a2f68c output=reviews/r3-verdict.md
+2026-08-29T02:45:57Z heartbeat phase=60
