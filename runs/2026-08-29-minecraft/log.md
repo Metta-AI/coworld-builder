@@ -14,3 +14,6 @@
 2026-08-29T05:44:25Z progress phase=10 marker=design.md
 2026-08-29T05:44:25Z 10 phase -> 20
 2026-08-29T05:44:25Z heartbeat phase=20
+2026-08-29T05:45:23Z 20 repo created https://github.com/Metta-AI/cogame-minecraft (public)
+2026-08-29T05:45:23Z 20 propagate-secrets run=33236875819 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY on repo
+2026-08-29T05:45:23Z 20 dispatching builder
