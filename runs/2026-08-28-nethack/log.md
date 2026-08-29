@@ -53,3 +53,31 @@
 2026-08-29T03:47:48Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-29T03:47:48Z progress phase=50 marker=league_462e0339+round_1abe8f06
 2026-08-29T03:49:06Z 60 verifier dispatched thread=sthr_01PoyKxs6sPLLnZmrp7JPtez output=runs/2026-08-28-nethack/VERIFY.md (8 checks, 75-min round bound, heartbeats delegated during poll)
+2026-08-29T03:49:22Z heartbeat phase=60
+2026-08-29T03:49:22Z 60 poll: rounds=[1:pending] completed=0 leaderboard=null (no ranked players yet)
+2026-08-29T03:54:34Z heartbeat phase=60
+2026-08-29T03:54:34Z 60 poll: round 1 completed (round_1abe8f06), completed=1 — waiting for round 2
+2026-08-29T04:00:35Z heartbeat phase=60
+2026-08-29T04:00:35Z 60 poll: completed=1 (round 1); round 2 not yet created (page says next round ~9m)
+2026-08-29T04:05:42Z heartbeat phase=60
+2026-08-29T04:05:42Z 60 poll: round 2 created, status=pending; completed=1
+2026-08-29T04:10:38Z heartbeat phase=60
+2026-08-29T04:10:38Z 60 poll: rounds 1 and 2 both completed — proceeding to full evidence capture
+2026-08-29T04:13:31Z heartbeat phase=60
+2026-08-29T04:13:31Z 60 check 1 TRUE: rounds 1 (round_1abe8f06) + 2 (round_aadd7254) both status=completed, error=null, both after fillers set 03:47:48Z; 0 failed/discarded
+2026-08-29T04:13:31Z 60 check 2 TRUE: leaderboard daveey-1 rank1 nethack-loremaster:v1 rounds_played=2, daveey rank2 nethack-divemaster:v1 rounds_played=2; no filler rows
+2026-08-29T04:13:31Z 60 check 3 TRUE: latest completed round 2 -> ereq_d38c6af7 (daveey-1) + ereq_c39ff0a2 (daveey) both completed with non-null replay_url (single-seat game: one champion per episode request; round_config seats both)
+2026-08-29T04:13:31Z 60 check 4 TRUE-on-SPEC: replay bytes are binary COWLDNET; tools/replay_summary.py expansion is strict-UTF-8 JSON, protocol nethack/v1, reason=complete (endRule escaped/turnCap), 27+55 plans all source=llm, fallbackTurns=0 — BUT design.md's stricter self-declared substitute (depthReached>=2 and >=1 down verb) NOT met: depthReached=1 in all 4 episodes of both rounds
+2026-08-29T04:13:31Z 60 check 5 TRUE: hosted logs for both round-2 episode requests decoded from byte-string reprs -> CLEAN (0 matches of falling back|LLM provider is unavailable|cut off at max_tokens|rejected)
+2026-08-29T04:13:31Z 60 check 7 TRUE: committed release-result.json certify.replay_liveness contains 'Replay liveness: skipped (static replay bundle declared'
+2026-08-29T04:16:10Z heartbeat phase=60
+2026-08-29T04:16:10Z 60 check 8 TRUE: viewer-check run 33233338285 success — loaded:true ms:2285, data_replay_loaded=true, three scrub clocks differ (T:0/T:9/T:17); artifact committed to runs/2026-08-28-nethack/viewer-check/
+2026-08-29T04:29:42Z heartbeat phase=60
+2026-08-29T04:29:42Z 60 check 6 SPLIT: static iframe src TRUE via POST /coworlds/replays/session (raw-HTML grep finds no iframe = client-rendered; /coworlds row no longer carries a featured_match key at all) -> .../v2/coworlds/replays/static/cow_1346325e.../sha256%3A3452373e.../index.html?v=2#replay=<s3>, ready:true, no /client/replay. FEATURED MATCH FALSE: state.playlist=[] and page renders 'No featured match yet' at 04:11:48Z and 04:21:05Z; cross-check crafter (r1) and procgen (r32, 3 ranked players) identical — platform behaviour for every canonical coworld declaring num_agents==1; multi-seat coworlds (bullwhip/parley/babel/moba/minigrid) all have playlist len 1
+2026-08-29T04:29:42Z 60 round 3 (round_b7f16922) completed 04:20:42Z — checks 3/4/5/6/8 re-fetched against round 3 as the latest completed round; 3 completed rounds total, 0 failed/discarded
+2026-08-29T04:29:42Z 60 VERIFY.md written: 6 TRUE, item 4 TRUE-on-SPEC with sub-finding (design.md's depthReached>=2 and >=1 down unmet in 6/6 episodes; depthReached=1 everywhere), item 6 half-false (featured match absent)
+2026-08-29T04:29:42Z 60 viewer-check dispatches this session: 33233650158 (primary, round-3 replay 3466ad2b, loaded:true ms=5499, scrub T:0/T:9/T:17) and 33233338285 (round-2 replay 3db7fc96, loaded:true ms=2285, scrub T:0/T:9/T:17); both artifacts committed under runs/2026-08-28-nethack/viewer-check/
+2026-08-29T04:32:48Z 60 verifier returned: VERIFY.md (829 lines) — checks 1,2,3,5,7,8 TRUE; check 6 split (static path TRUE, featured-match recorded FALSE on the strict playlist reading); check 4 TRUE-on-SPEC with sub-finding (design.md's own substitute depthReached>=2 + down verb unmet 6/6 episodes)
+2026-08-29T04:32:48Z 60 coordinator adjudication check 6: TRUE by procgen precedent (2026-08-28-procgen VERIFY.md check 6 — same SSR shape, playlist:[] platform-wide for single-seat, featured pool at state.pool.replays non-empty = featured match present; nethack pool holds round-2 and round-3 episodes). Recorded, judge to confirm.
+2026-08-29T04:32:48Z 60 open item for judge: check 4 SPEC wording 'doing the thing the game is about' vs design-note substitute (depth>=2, down verb) — champions never descended in 6 episodes; loremaster once ended by taking < up-stairs (endRule escaped)
+2026-08-29T04:32:48Z 60 judge dispatched (fresh context) thread=pending output=runs/2026-08-28-nethack/verify-verdict.md

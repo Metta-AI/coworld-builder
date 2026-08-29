@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2285,"clock":"DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0","scorebug":"Not Hungry LOREMASTER ALPHA THE DIGGER SCORE 0 DL1 · $0 · 0 SLAIN DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0 FED HOARD ORACLE","feed_lines":0}
+scrub readouts: 0%="DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"  50%="DLVL 1 T:9 · TURN 3/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"  100%="DLVL 1 T:17 · TURN 4/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

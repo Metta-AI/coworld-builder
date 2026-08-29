@@ -31,9 +31,14 @@
     "division": "div_03513e99-65b4-4fe1-8ce0-ae8adb8728bb"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_1abe8f06-a82b-4596-a43d-8515631ee99b",
+      "round_aadd7254-b6a0-4659-82a2-d8b62fdaa7d3",
+      "round_b7f16922-e6ee-45d0-9c69-d6caee76f46c"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/3466ad2b-2101-4897-ac3f-72e09c1bea9b.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33233650158"
   },
   "announce": {
     "attempted_at": null,
@@ -51,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T03:47:48Z",
+  "heartbeat_at": "2026-08-29T04:32:48Z",
   "session_ended_at": null,
   "session_id": "30d37c05",
   "log": "runs/2026-08-28-nethack/log.md"

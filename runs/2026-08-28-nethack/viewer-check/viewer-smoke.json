@@ -1,0 +1,77 @@
+{
+  "loaded": true,
+  "ms": 5499,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F3466ad2b-2101-4897-ac3f-72e09c1bea9b.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0",
+  "scorebug": "Not Hungry LOREMASTER ALPHA THE DIGGER SCORE 0 DL1 · $0 · 0 SLAIN DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0 FED HOARD ORACLE",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "DLVL 1 T:0 · TURN 0/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"
+    },
+    {
+      "at": "50%",
+      "clock": "DLVL 1 T:9 · TURN 2/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"
+    },
+    {
+      "at": "100%",
+      "clock": "DLVL 1 T:17 · TURN 2/55 · HP 16/16 · $0 · NOT HUNGRY · SCORE 0"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/green_1.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/green_2.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/blue_6.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/yellow_1.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/yellow_5.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/green_3.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/blue_1.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/yellow_6.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/green_5.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/yellow_2.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/blue_2.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/blue_3.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/blue_5.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/soldier_yellow_front_gun.png",
+    "[error] Failed to load resource: the server responded with a status of 404 ()",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_1346325e-7184-4c94-9fbc-d3aeb750889c/sha256%3A3452373ed1c8a7d58191fb3caca4321a7894d405b56639e5fe7dfa8449d7b49e/art/lockerroom/green_6.webp",
+    "[error] Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
