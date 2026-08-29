@@ -89,3 +89,8 @@
 2026-08-29T01:50:00Z progress phase=60 marker=rounds-15-16-completed-v2
 2026-08-29T01:50:00Z heartbeat phase=60
 2026-08-29T01:50:43Z 60 verifier round 2 dispatched thread=sthr_01XSR5o2WtZpfMNh1f3nNY26 against 0.1.1/cow_753b4d23, qualifying rounds >=15
+2026-08-29T02:16:17Z 60 verifier r2 returned: checks 1,2,3,4,6,7,8 TRUE — featured match EXISTS (playlist minigrid.r16.e1, static route cow_753b4d23), viewer readouts pairwise distinct, feed_lines=4, quad layout renders; check 5 FALSE: batch latency hits attempt1Ms=11000 exactly (89/89 sidecar calls HTTP 200 — ladder premise was single-seat 6712ms max; 3 concurrent calls push p90 to ~10.1s); champions 1 fallback turn each in r15/r17, 3.6-4.4% rates, all complete
+2026-08-29T02:16:17Z progress phase=60 marker=VERIFY.md-round2+viewer-check-33227616497
+2026-08-29T02:16:17Z 60 non-check findings: champions 0/5 tasks (macrosUnreachable=6, goto not resolving) while scout 3/5 and richard 2/5; fallbackCauses drops first attempt cause; replay_summary policyKinds ordering cosmetic
+2026-08-29T02:16:17Z 60 decision: check-5 attempt 2 — designer re-derives ladder for 3-concurrent-call batches; builder implements + fallbackCauses fix + goto/prompt diagnosis; release 0.1.2; re-verify check 5
+2026-08-29T02:16:17Z heartbeat phase=60
