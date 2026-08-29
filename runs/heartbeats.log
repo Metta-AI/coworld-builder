@@ -366,3 +366,4 @@
 2026-08-29T08:59:00Z heartbeat: cap reached (live=3/3)
 2026-08-29T09:07:30Z 00 yield run=2026-08-29-sokoban to=session-360af56b (own heartbeat went stale >180min inside phase-20 builder thread; run legitimately resumed 08:36Z; second trace left at reviews/r1-review-b.md for the owner to merge; this session exits without further run writes)
 2026-08-29T09:19:40Z heartbeat: cap reached (live=3/3)
+2026-08-29T09:41:08Z heartbeat: cap reached (live=3/3)
