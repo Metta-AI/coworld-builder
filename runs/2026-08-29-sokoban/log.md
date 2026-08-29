@@ -17,3 +17,4 @@
 2026-08-29T05:26:15Z 20 dispatched builder sthr_01Xiax3SoYNTjBQnvX2b3HCD brief=implement repo to green ci.yml
 2026-08-29T07:49:01Z 20 pushed the initial full implementation (sim, chrome, static wasm viewer, CI scaffold, tests) sha=3724a05 run=33241703242 conclusion=pending
 2026-08-29T08:06:31Z 20 CI round 1 red only in wasm-viewer (page threw "$ is not defined": the viewpanel/billboard cuts over-ran into `var $ = C.$` and ZOOM_STEP); changed approach by adding tools/ci/page_smoke.mjs, a real headless-chromium gate that boots the shipped page with the wasm runtime stubbed, which also caught a pushFeed signature drift. sha=2647295 run=33242366860 conclusion=pending (round 1 run=33241703242 conclusion=failure)
+2026-08-29T08:36:16Z 00 resume at phase 20 attempt=1 session=360af56b
