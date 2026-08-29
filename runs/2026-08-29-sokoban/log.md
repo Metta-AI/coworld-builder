@@ -43,3 +43,7 @@
 2026-08-29T10:36:00Z progress phase=30 marker=r1-fixes-b.md
 2026-08-29T10:36:00Z 30 dispatched judge sthr_01PLMj49tVcWvv8fh7hQsNhs round=1 target=a72dbac both reviews -> reviews/r1-verdict.md
 2026-08-29T10:36:00Z heartbeat phase=30
+2026-08-29T10:47:05Z 30 judge returned r1-verdict.md blocking=0 (41 findings refuted-or-fixed; 4 non-blocking observations logged in verdict)
+2026-08-29T10:47:05Z progress phase=30 marker=r1-verdict.md
+2026-08-29T10:47:05Z 30 -> 40 phase transition: STATE.phase=40
+2026-08-29T10:47:05Z heartbeat phase=40
