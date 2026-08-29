@@ -53,3 +53,8 @@
 2026-08-29T10:24:46Z heartbeat phase=50
 2026-08-29T10:46:11Z 50 rounds still empty after 5 triggers (10:07,10:12,~10:33,10:38 post-pause-cycle,10:42 post-reseed); submissions both status=placed; league object byte-identical to working crafter league; global scheduler ticks (:04/:19/:34/:49) serve other leagues but skip this one; waiting through 10:49 tick before declaring platform-side block
 2026-08-29T10:46:11Z heartbeat phase=50
+2026-08-29T11:09:41Z 50 settings re-post 200 at 10:52Z; no round by 11:08Z (past one full interval) — platform-side, entering 90
+2026-08-29T11:09:41Z 90 blocked phase=50 ask="restart/repair the Temporal ladder workflow for league_390fe9da-f2a6-4001-93df-e08cc2788846 so rounds are created" subtask=1217968147950044
+2026-08-29T11:09:41Z progress phase=50 marker=league_390fe9da-f2a6-4001-93df-e08cc2788846
+2026-08-29T11:09:41Z 00 session end: blocked at phase 50 (run task moved to Blocked); next action = on subtask completion resume phase 50 at the trigger step
+2026-08-29T11:09:41Z heartbeat phase=50
