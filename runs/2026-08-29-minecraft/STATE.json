@@ -4,7 +4,7 @@
   "run_task": "1217967000902530",
   "slug": "minecraft",
   "repo": "https://github.com/Metta-AI/cogame-minecraft",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
