@@ -23,3 +23,6 @@
 2026-08-29T01:12:25Z progress phase=20 marker=ci-run-33225421389
 2026-08-29T01:15:25Z 30 r1 reviewer dispatched thread=sthr_012i5VtkRYPMVTWs83FrUpxt output=runs/2026-08-28-nethack/reviews/r1-review.md sha=c484a248 (shared checkout /workspace/cogame-nethack)
 2026-08-29T01:15:25Z heartbeat phase=30
+2026-08-29T01:36:19Z 30 r1 reviewer returned: r1-review.md (975 lines, 22 findings F1-F22, reviewer says 0 blocking; F17 game.docs type=uri-vs-text and F5 camera-clamp flagged with stricter alternative readings)
+2026-08-29T01:36:19Z 30 r1 fixer dispatched thread=sthr_01DwjzepRAaPMByAfmzsPyUm output=runs/2026-08-28-nethack/reviews/r1-fixes.md
+2026-08-29T01:36:19Z heartbeat phase=30
