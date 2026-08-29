@@ -5,7 +5,7 @@
   "slug": "minigrid",
   "repo": "https://github.com/Metta-AI/cogame-minigrid",
   "starter": "coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "40": 1,
     "60": 1
@@ -36,19 +36,19 @@
   "verify": {
     "rounds": [
       {
-        "n": 15,
-        "id": "round_a4dba3c3-d5c7-4e62-9eda-40ce114e6f1c"
+        "n": 33,
+        "id": "round_5aa199f3-78cf-4087-a953-28df22c7779e"
       },
       {
-        "n": 16,
-        "id": "round_6f2dadf4-b743-4f29-b9f4-119141ca8db7"
+        "n": 34,
+        "id": "round_676b07e5-17d4-4029-8d12-1ab4733bf6f1"
       },
       {
-        "n": 17,
-        "id": "round_44adaf2b-3ee7-44db-8076-05fc55ce7b6f"
+        "n": 35,
+        "id": "round_f8ba8e4f-a3c2-4841-a4cb-59a03507c465"
       }
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/2e5030b6-fdcd-422a-9d4a-c1c6d6eeed9e.replay",
     "iframe_static": true,
     "viewer_check_run": "33239074400"
   },
@@ -68,7 +68,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T06:55:17Z",
+  "heartbeat_at": "2026-08-29T07:05:43Z",
   "session_ended_at": null,
   "session_id": "f1f5afe1",
   "log": "runs/2026-08-28-minigrid/log.md"

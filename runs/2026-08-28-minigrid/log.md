@@ -123,3 +123,7 @@
 2026-08-29T06:55:17Z progress phase=60 marker=VERIFY.md-round3-8of8-TRUE+viewer-check-33239074400
 2026-08-29T06:55:17Z 60 judge dispatched (fresh context) on VERIFY.md round 3 output=runs/2026-08-28-minigrid/reviews/r4-verdict.md
 2026-08-29T06:55:17Z heartbeat phase=60
+2026-08-29T07:05:43Z 60 judge returned r4-verdict.md BLOCKING:0 — 8/8 independently confirmed (incl. 5-round log sample 22/27/31/34/36, replay header decode, md5 release-result); 2 advisories: stale verify.rounds (fixed in this write), is_filler:true shape note
+2026-08-29T07:05:43Z progress phase=60 marker=r4-verdict.md-BLOCKING-0
+2026-08-29T07:05:43Z 60 -> 70 phase transition: STATE.phase=70, verify block updated to round-3 values per VERIFY.md L1148-1159
+2026-08-29T07:05:43Z heartbeat phase=70
