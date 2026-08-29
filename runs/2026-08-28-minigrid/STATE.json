@@ -5,7 +5,7 @@
   "slug": "minigrid",
   "repo": "https://github.com/Metta-AI/cogame-minigrid",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 1,
     "60": 1
@@ -57,18 +57,18 @@
     "discord_message_id": "1543155161197711370"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20796",
+    "branch": "atlas/minigrid-33240278620",
+    "region": "simulations",
+    "x": 506,
+    "y": 241,
+    "dispatch_run_id": "33240278620",
+    "attempted_at": "2026-08-29T07:14:13Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T07:12:19Z",
+  "heartbeat_at": "2026-08-29T07:14:13Z",
   "session_ended_at": null,
   "session_id": "f1f5afe1",
   "log": "runs/2026-08-28-minigrid/log.md"

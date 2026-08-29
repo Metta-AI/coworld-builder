@@ -139,3 +139,7 @@
 2026-08-29T07:11:59Z 75 atlas dispatch 1 (33240144287) failed: 54 unplaced leagues; fix per step 8 = extra_cities: 54 tuples mirrored from queued crafter branch atlas/crafter-33234677153 (metta#20772 chain); minigrid takes the chain-assigned spot 506,241 simulations (was already in the queued chain) instead of respotting
 2026-08-29T07:12:19Z 75 atlas dispatch=33240278620 region=simulations at=506,241 clearance=chain-assigned extra_cities=54
 2026-08-29T07:12:19Z heartbeat phase=75
+2026-08-29T07:14:13Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20796 status=pr_open (54 leagues mirrored from the queued chain, minigrid at chain spot 506,241)
+2026-08-29T07:14:13Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20796
+2026-08-29T07:14:13Z 75 -> 80 phase transition: STATE.phase=80
+2026-08-29T07:14:13Z heartbeat phase=80
