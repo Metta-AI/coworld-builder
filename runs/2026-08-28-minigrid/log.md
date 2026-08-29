@@ -129,3 +129,7 @@
 2026-08-29T07:05:43Z heartbeat phase=70
 2026-08-29T07:07:29Z 70 announce attempted_at written before POST (body 1595 chars)
 2026-08-29T07:07:29Z progress phase=70 marker=announce.attempted_at
+2026-08-29T07:07:51Z 70 announce msg=1543155161197711370 (HTTP 200, flags=4, embeds=[]; correction: body was 1792 chars, not 1595)
+2026-08-29T07:07:51Z progress phase=70 marker=discord_message_id=1543155161197711370
+2026-08-29T07:07:51Z 70 -> 75 phase transition: STATE.phase=75
+2026-08-29T07:07:51Z heartbeat phase=75
