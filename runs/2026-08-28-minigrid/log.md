@@ -107,3 +107,7 @@
 2026-08-29T03:00:25Z 60 release 0.1.2 dispatch next (builder thread)
 2026-08-29T03:00:49Z 60 release 0.1.2 dispatched to builder thread (v2.1 at 85a2f68c, judge r3 clean)
 2026-08-29T03:00:49Z heartbeat phase=60
+2026-08-29T03:17:07Z 60 release 0.1.2 dispatch 1 run=33230336307 success — canonical cow_70e4993f, certify 10/10, secret_put; all 4 policies minted v3 (image fingerprint change)
+2026-08-29T03:17:07Z progress phase=60 marker=release-run-33230336307
+2026-08-29T03:17:07Z 60 league v3 rollover: paused 03:12, champions v3 submitted ok (33230814919, 33230838400), fillers replaced with v3 (verified live), 150s placement wait, unpaused+triggered — round 22 pending with BOTH v3 champions snapshotted
+2026-08-29T03:17:07Z heartbeat phase=60
