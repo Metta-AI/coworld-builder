@@ -23,3 +23,4 @@
 2026-08-29T08:38:07Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-29T08:38:07Z heartbeat phase=30
 2026-08-29T08:38:57Z 30 dispatched reviewer sthr_01VTXFHtVPnJoNj5RQQE9ebe round=1 brief=trace /tmp/cogame-sokoban@464b2ab vs design.md -> reviews/r1-review.md
+2026-08-29T08:41:13Z 20 CI GREEN on main sha=464b2ab run=33243111396 conclusion=success (test + docker-smoke + wasm-viewer); all four phase-20 exit checks pass
