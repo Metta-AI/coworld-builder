@@ -33,9 +33,13 @@
     "division": "div_160b65a4-63bf-4ce9-8bc7-a6e0e9c3b6f5"
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_5c919ee7-5d5d-45a0-aed6-1f3a5ff9e875",
+      "round_48bbe21e-05da-453d-9bfa-ae4ef461f4bc"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/1072532a-9aef-4d0b-91f6-d874077681e4.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33233844065"
   },
   "announce": {
     "attempted_at": null,
@@ -53,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T04:05:04Z",
+  "heartbeat_at": "2026-08-29T04:37:07Z",
   "session_ended_at": null,
   "session_id": "40794145",
   "log": "runs/2026-08-28-crafter/log.md"

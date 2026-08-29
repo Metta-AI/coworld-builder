@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3410,"clock":"DAY 1 · DAY TICK 0/1344 · HP 9 · SCORE 0","scorebug":"DAY 1 HOMESTEADER Carrying 0/22 ALPHA · SCORE 0 DAY 1 · DAY TICK 0/1344 · HP 9 · SCORE 0","feed_lines":0}
+scrub readouts: 0%="DAY 1 · DAY TICK 0/1344 · HP 9 · SCORE 0"  50%="DAY 2 · DAY TICK 221/1344 · HP 9 · SCORE 10221"  100%="DAY 3 · DAY TICK 440/1344 · HP 0 · SCORE 20440"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

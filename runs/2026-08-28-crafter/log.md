@@ -36,3 +36,7 @@
 2026-08-29T04:04:09Z progress phase=50 marker=round-1-pending league_791e396c
 2026-08-29T04:04:09Z 50 -> 60 phase transition: verify
 2026-08-29T04:05:04Z 60 verifier dispatched thread=sthr_01S1AhFMWAesF1DZqCaZbgTB (round 1 pending since 04:02Z; 75-min bound)
+2026-08-29T04:37:07Z 60 verifier returned VERIFY.md (777 lines): checks 1-5,7,8 TRUE; 6a static route TRUE, 6b playlist=[] but both replays in state.pool.replays — procgen precedent (runs/2026-08-28-procgen/VERIFY.md L426-466) reads pool presence as the featured match, playlist=[] normal for single-seat
+2026-08-29T04:37:07Z 60 rounds 1+2 completed (04:04Z, 04:19Z); leaderboard daveey 1001.47 / daveey-1 998.53; replay clean, 34/34 llm decisions, 0 fallbacks; viewer-check run 33233844065 loaded=true clocks advance
+2026-08-29T04:37:07Z 60 phase-30-class observations from live viewer: (A) 8 dead 404 preloads of starter soldier sprites; (B) endcard overflow at 800px (rows 21-22 clipped, bleed into minimap)
+2026-08-29T04:37:07Z progress phase=60 marker=VERIFY.md written, rounds 1+2 completed
