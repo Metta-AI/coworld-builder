@@ -24,7 +24,10 @@
       "sokoban-pusher:v1",
       "sokoban-nudger:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "ddfec3df-23c8-4b98-aa49-1def5e2aef51",
+      "fc2ef667-951c-4501-a75f-fec5d0b583bf"
+    ]
   },
   "league": {
     "id": "league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe",
@@ -51,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T10:56:51Z",
+  "heartbeat_at": "2026-08-29T10:59:29Z",
   "session_ended_at": null,
   "session_id": "360af56b",
   "log": ""

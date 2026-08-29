@@ -57,3 +57,8 @@
 2026-08-29T10:56:51Z 50 division 200 div_e9cf6fb5-77d8-471d-aad1-d808fd28e1cb; settings 200 (elo k=32, round_robin, filler_policy, 15min)
 2026-08-29T10:56:51Z progress phase=50 marker=league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe
 2026-08-29T10:56:51Z heartbeat phase=50
+2026-08-29T10:59:29Z 50 champion1 submit ok run=33248978411 sub_67ce5727 policy=sokoban-lookahead:v1 player=ply_44ae9048
+2026-08-29T10:59:29Z 50 champion2 submit ok run=33249000129 sub_c8c11b79 policy=sokoban-orderfirst:v1 player=ply_bac48eb1 (daveey-1 confirmed on policy-version row)
+2026-08-29T10:59:29Z 50 fillers 200 pusher=ddfec3df nudger=fc2ef667; unpause 200 paused=false; trigger 200 workflow=ladder-league_81761ec5; rounds list still empty, polling
+2026-08-29T10:59:29Z progress phase=50 marker=sub_c8c11b79
+2026-08-29T10:59:29Z heartbeat phase=50
