@@ -56,3 +56,7 @@
 2026-08-29T13:22:17Z 50 division 200: div_07b556f6-3e13-40db-afd8-d0823c6ed9d3
 2026-08-29T13:22:17Z 50 settings 200: round_robin/filler_policy, elo k=32, round_interval=15m
 2026-08-29T13:22:17Z heartbeat phase=50
+2026-08-29T13:26:58Z 50 champion1 submit ok run 33254853655 sub_251157fb (gaitsmith:v2, daveey); champion2 submit ok run 33254884101 sub_a414ae47 (throttle:v2, daveey-1)
+2026-08-29T13:26:58Z 50 fillers registered: trotter:v2 bd151d35, plodder:v2 ece2febe (verified list == fillers only)
+2026-08-29T13:26:58Z 50 unpaused (rounds_paused_at=null); trigger-round accepted workflow ladder-league_62a1e77b; rounds list still empty, polling
+2026-08-29T13:26:58Z heartbeat phase=50
