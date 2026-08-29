@@ -14,3 +14,5 @@
 2026-08-29T02:18:48Z progress phase=20 marker=ci-run-33228279820-success
 2026-08-29T02:18:48Z 20 -> 30 phase transition: review loop round 1
 2026-08-29T02:19:52Z 30 r1 reviewer dispatched thread=sthr_01QShf6aWPyet6bP6HrUwNnX repo-checkout=/tmp/cogame-crafter@71bf90d1
+2026-08-29T02:38:47Z 30 r1 reviewer returned r1-review.md (25 findings; 1 candidate blocking F1 test-skip/deleted-assertion; provenance checks clean)
+2026-08-29T02:38:47Z progress phase=30 marker=r1-review.md
