@@ -29,3 +29,9 @@
 2026-08-29T04:00:42Z 40 -> 50 phase transition: league
 2026-08-29T04:01:46Z 50 seed 200 lseed_06fc2a6d league=league_791e396c-32b3-47f1-bd94-23e276f6b6c5
 2026-08-29T04:01:46Z 50 division 200 div_160b65a4-63bf-4ce9-8bc7-a6e0e9c3b6f5; settings 200 (elo, round_robin, filler_policy, 15min)
+2026-08-29T04:04:09Z 50 champion1 submit run=33232826821 ok sub_7c580ab3 (crafter-techtree:v1, daveey)
+2026-08-29T04:04:09Z 50 champion2 submit run=33232848503 ok sub_316c8df6 (crafter-homesteader:v1, daveey-1)
+2026-08-29T04:04:09Z 50 fillers registered: forager=72a75938-334c-4ecd-8355-51c8aa5bc12c wanderer=6f66cf9c-b4b1-4a1f-9049-97211decde06 (before first trigger)
+2026-08-29T04:04:09Z 50 unpaused; trigger-round accepted; round 1 pending; entrant_attributions = both champions
+2026-08-29T04:04:09Z progress phase=50 marker=round-1-pending league_791e396c
+2026-08-29T04:04:09Z 50 -> 60 phase transition: verify
