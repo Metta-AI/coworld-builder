@@ -8,7 +8,8 @@
   "phase": "50",
   "phase_attempts": {
     "20": 1,
-    "40": 1
+    "40": 1,
+    "50": 1
   },
   "review_round": 1,
   "coworld": {
@@ -54,8 +55,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T11:15:53Z",
-  "session_ended_at": "2026-08-29T11:15:53Z",
-  "session_id": "360af56b",
+  "heartbeat_at": "2026-08-29T11:18:08Z",
+  "session_ended_at": null,
+  "session_id": "deff0b0d",
   "log": ""
 }

@@ -65,3 +65,5 @@
 2026-08-29T11:15:53Z 50 rounds still 0 after 2 triggers (both HTTP 200, workflow ladder-league_81761ec5) and ~20 min of polling; leaderboard null (champion placement still async-pending); minecraft league league_390fe9da also 0 rounds ~2h after its trigger -> platform-side scheduler/placement stall, not a sokoban defect
 2026-08-29T11:15:53Z session end: stopped in phase 50; next action = re-check GET /rounds?league_id=league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe and the div_e9cf6fb5 leaderboard; exit criterion = both champions entrants + >=1 round pending/running/completed; if the stall persists past 45 min of platform outage consider prompts/90-blocked.md; do NOT re-trigger unless a round shows failed
 2026-08-29T11:15:53Z heartbeat phase=50
+2026-08-29T11:18:08Z 00 attempts_reset phase=50 reason=progress marker=sub_c8c11b79
+2026-08-29T11:18:08Z 00 resume at phase 50 attempt=1 session=deff0b0d
