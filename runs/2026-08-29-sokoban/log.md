@@ -33,3 +33,6 @@
 2026-08-29T08:57:39Z 30 reviewer returned r1-review.md (19 findings, none self-declared blocking; F3 rune-truncation and F9 canvas-text coverage flagged for checklist)
 2026-08-29T08:57:39Z 30 dispatched fixer sthr_01C8YJSdk9Bpgg23U3ek6VRD round=1 brief=fix F1-F19 -> reviews/r1-fixes.md, CI green required
 2026-08-29T08:57:39Z heartbeat phase=30
+2026-08-29T10:02:58Z 30 fixer returned r1-fixes.md (16 fixed, 3 dispositioned F6/F10/F14) sha=f31307a run=33246336750 conclusion=success; note: API-replayed commits duplicated the fix series on main, tip tree authoritative, no force-push
+2026-08-29T10:02:58Z progress phase=30 marker=r1-fixes.md
+2026-08-29T10:02:58Z heartbeat phase=30
