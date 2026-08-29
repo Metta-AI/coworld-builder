@@ -81,3 +81,5 @@
 2026-08-29T04:32:48Z 60 coordinator adjudication check 6: TRUE by procgen precedent (2026-08-28-procgen VERIFY.md check 6 — same SSR shape, playlist:[] platform-wide for single-seat, featured pool at state.pool.replays non-empty = featured match present; nethack pool holds round-2 and round-3 episodes). Recorded, judge to confirm.
 2026-08-29T04:32:48Z 60 open item for judge: check 4 SPEC wording 'doing the thing the game is about' vs design-note substitute (depth>=2, down verb) — champions never descended in 6 episodes; loremaster once ended by taking < up-stairs (endRule escaped)
 2026-08-29T04:32:48Z 60 judge dispatched (fresh context) thread=pending output=runs/2026-08-28-nethack/verify-verdict.md
+2026-08-29T04:33:58Z 60 judge dispatched (fresh context) thread=sthr_01VPGwiqNwhsQzJZMH3s7ENe output=runs/2026-08-28-nethack/verify-verdict.md — rulings requested on check 6 (procgen precedent) and check 4 (design-note depth substitute)
+2026-08-29T04:33:58Z heartbeat phase=60
