@@ -6,3 +6,5 @@
 2026-08-29T05:19:32Z 00 phase -> 10
 2026-08-29T05:22:00Z 10 starter=coworld-ctf reason: single-seat real-time grid loop with rules written fresh (tech-tree milestone survival remap of ObtainDiamond); first row of the starter table; precedents crafter/nethack/sokoban/atari-57 all on coworld-ctf with num_agents=1 proven by crafter+nethack
 2026-08-29T05:22:00Z 10 dispatching designer
+2026-08-29T05:21:50Z 10 designer dispatched thread=sthr_01GEnuvfMTqHTspobSiBGxDE output=runs/2026-08-29-minecraft/design-draft.md
+2026-08-29T05:21:50Z heartbeat phase=10
