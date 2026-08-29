@@ -102,3 +102,6 @@
 2026-08-29T02:45:57Z progress phase=60 marker=ci-run-33229494065-green-v2.1
 2026-08-29T02:45:57Z 60 judge r3 dispatched (fresh context) thread=sthr_012qkgVFHDpGw84sXxaHC2xE sha=85a2f68c output=reviews/r3-verdict.md
 2026-08-29T02:45:57Z heartbeat phase=60
+2026-08-29T03:00:25Z 60 judge r3 returned: r3-verdict.md blocking:0/BLOCKING:0 — v2.1 commitments + full checklist pass at 85a2f68c; non-blocking caveat on the 480-episode macrosPartial claim (substance verified via fixture + applyDirective)
+2026-08-29T03:00:25Z progress phase=60 marker=r3-verdict.md
+2026-08-29T03:00:25Z 60 release 0.1.2 dispatch next (builder thread)
