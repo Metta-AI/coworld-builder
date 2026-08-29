@@ -12,21 +12,21 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.1.1",
-    "cow_id": "cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
-    "manifest_sha": "sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032",
-    "release_run_id": "33226095645"
+    "version": "0.1.2",
+    "cow_id": "cow_70e4993f-58ea-4678-8d19-ffa1866214b1",
+    "manifest_sha": "sha256:efc95d4886a5dfde4d7773c302ebe870e677bf1f48879f17d13e516566763e97",
+    "release_run_id": "33230336307"
   },
   "policies": {
-    "champion1": "minigrid-cartographer:v2",
-    "champion2": "minigrid-missionfirst:v2",
+    "champion1": "minigrid-cartographer:v3",
+    "champion2": "minigrid-missionfirst:v3",
     "fillers": [
-      "minigrid-scout:v2",
-      "minigrid-bumper:v2"
+      "minigrid-scout:v3",
+      "minigrid-bumper:v3"
     ],
     "filler_version_ids": [
-      "dd96f37f-ce9e-485c-8e13-412e923e816a",
-      "bc769311-e87c-49ff-86b7-67794b891c6b"
+      "2b6d21f5-c38f-40f9-9b4b-940992d59558",
+      "8a3c9bde-be76-4b80-9001-40766483e943"
     ]
   },
   "league": {
@@ -68,7 +68,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T02:16:17Z",
+  "heartbeat_at": "2026-08-29T03:17:07Z",
   "session_ended_at": null,
   "session_id": "65d65a2f",
   "log": "runs/2026-08-28-minigrid/log.md"
