@@ -69,3 +69,7 @@
 2026-08-29T11:18:08Z 00 resume at phase 50 attempt=1 session=deff0b0d
 2026-08-29T11:21:47Z 50 evidence: rounds still 0 (3rd session check); league detail healthy (unpaused, ladder enabled, fillers ddfec3df+fc2ef667 set, 15min interval); both league-submissions status=placed (sub_67ce5727 daveey, sub_c8c11b79 daveey-1, lpm ids assigned); scheduler alive — minigrid league_78d5b417 got round 54 at 11:19:35Z while sokoban tick-skipped; minecraft league_390fe9da still 0 rounds >3h; plan: poll through 11:34Z tick, then 90 if still empty (platform outage >45min, two failed triggers with fillers verifiably set)
 2026-08-29T11:21:47Z heartbeat phase=50
+2026-08-29T11:36:45Z 90 blocked phase=50 ask="restart/repair the Temporal ladder workflow for league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe so rounds are created" subtask=1217982805347662
+2026-08-29T11:36:45Z 90 asana: run task 1217966725746937 moved to Blocked; idea comment 1217968566475990 on 1217748613503800
+2026-08-29T11:36:45Z session end: stopped in phase 50 (blocked); next action = on subtask 1217982805347662 completion, resume phase 50 at step 9 (confirm a round exists pending/running/completed, then exit criterion check -> phase 60)
+2026-08-29T11:36:45Z heartbeat phase=50

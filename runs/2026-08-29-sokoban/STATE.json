@@ -54,9 +54,20 @@
     "attempted_at": null,
     "reason": ""
   },
-  "blocked": null,
-  "heartbeat_at": "2026-08-29T11:18:08Z",
-  "session_ended_at": null,
+  "blocked": {
+    "phase": "50",
+    "at": "2026-08-29T11:36:45Z",
+    "ask": "restart/repair the Temporal ladder workflow for league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe so rounds are created, then complete this subtask",
+    "error": "POST trigger-round -> HTTP 200 (workflow=ladder-league_81761ec5) twice; GET /rounds?league_id=league_81761ec5 -> {\"entries\":[]} ever after (~37 min, three scheduler ticks skipped); no round object so no round.error exists",
+    "attempts": [
+      "trigger-round twice (HTTP 200 both) with fillers verifiably set, ~20 min polling — rounds stayed empty",
+      "server-side config audit: league unpaused, ladder enabled, fillers registered, both league-submissions status=placed with lpm ids — nothing client-side to fix",
+      "waited through three global scheduler ticks (11:04/11:19/11:34Z) that served minigrid but skipped sokoban; cross-checked minecraft league_390fe9da (same fault >3.5h, its session exhausted trigger/pause-cycle/re-seed/settings-repost)"
+    ],
+    "subtask": "1217982805347662"
+  },
+  "heartbeat_at": "2026-08-29T11:36:45Z",
+  "session_ended_at": "2026-08-29T11:36:45Z",
   "session_id": "deff0b0d",
   "log": ""
 }
