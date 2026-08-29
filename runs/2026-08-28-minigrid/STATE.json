@@ -8,7 +8,7 @@
   "phase": "60",
   "phase_attempts": {
     "40": 1,
-    "60": 1
+    "60": 2
   },
   "review_round": 1,
   "coworld": {
@@ -36,21 +36,21 @@
   "verify": {
     "rounds": [
       {
-        "n": 1,
-        "id": "round_d23b23fc-be7d-4e96-aa40-b147106b3eda"
+        "n": 15,
+        "id": "round_a4dba3c3-d5c7-4e62-9eda-40ce114e6f1c"
       },
       {
-        "n": 2,
-        "id": "round_a4ab0f21-6588-4b6c-8eb0-5d25565535ee"
+        "n": 16,
+        "id": "round_6f2dadf4-b743-4f29-b9f4-119141ca8db7"
       },
       {
-        "n": 3,
-        "id": "round_aa501498-e555-4a71-b4cb-bae6c84076b1"
+        "n": 17,
+        "id": "round_44adaf2b-3ee7-44db-8076-05fc55ce7b6f"
       }
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/5c5bd71e-0bbb-4f75-b114-e94f419e232d.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
     "iframe_static": true,
-    "viewer_check_run": "33217607488"
+    "viewer_check_run": "33227616497"
   },
   "announce": {
     "attempted_at": null,
@@ -68,7 +68,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T01:29:13Z",
+  "heartbeat_at": "2026-08-29T02:16:17Z",
   "session_ended_at": null,
   "session_id": "65d65a2f",
   "log": "runs/2026-08-28-minigrid/log.md"
