@@ -77,3 +77,5 @@
 2026-08-29T01:18:39Z 60 judge r2 returned: r2-verdict.md blocking:0/BLOCKING:0 (well-formed) — all 15 items + all addendum commitments PASS at 8a78a6bf; full independent pass (no r2-review existed); 4 non-blocking observations
 2026-08-29T01:18:39Z progress phase=60 marker=r2-verdict.md
 2026-08-29T01:18:39Z 60 release 0.1.1 dispatch next (builder thread reused)
+2026-08-29T01:19:12Z 60 release 0.1.1 dispatched to builder thread sthr_01KDUULfYUsdx3KEpWZKqw3X (v2 at 8a78a6bf, judge r2 clean)
+2026-08-29T01:19:12Z heartbeat phase=60
