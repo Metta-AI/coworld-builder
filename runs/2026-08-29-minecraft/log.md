@@ -19,3 +19,8 @@
 2026-08-29T05:45:23Z 20 dispatching builder
 2026-08-29T05:46:10Z 20 builder dispatched thread=sthr_01JF8kF6W7RXzuxA7i9cWHqJ
 2026-08-29T05:46:10Z heartbeat phase=20
+2026-08-29T08:09:06Z 20 builder returned: ci.yml green run=33242187530 sha=c1acf2182d80287a3c4e6c7ab773bcce928f8038 (jobs test/docker-smoke/wasm-viewer all success); workflows parse; placeholders clean; num_agents=1 everywhere
+2026-08-29T08:09:06Z 20 builder deviations recorded in repo docs/PORTING-MINECRAFT.md SS A-I; notable: SSC lava effectively absent under note formula (no live hazard), SSG cert seed 8 not 42, playback 24 ticks/s not 10 — handed to phase 30 review as context
+2026-08-29T08:09:06Z progress phase=20 marker=ci-run-33242187530
+2026-08-29T08:09:06Z 20 phase -> 30
+2026-08-29T08:09:06Z heartbeat phase=30
