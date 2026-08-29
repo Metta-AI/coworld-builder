@@ -44,3 +44,10 @@
 2026-08-29T10:03:34Z progress phase=40 marker=release-run-33246579993
 2026-08-29T10:03:34Z 40 phase -> 50
 2026-08-29T10:03:34Z heartbeat phase=50
+2026-08-29T10:04:53Z 50 seed 200 league=league_390fe9da-f2a6-4001-93df-e08cc2788846; division 200 div=div_8b8ad8ef-0d63-4330-8be2-81d20a6eb693; settings 200 (elo, round_robin, filler_policy, 15min)
+2026-08-29T10:04:53Z heartbeat phase=50
+2026-08-29T10:24:46Z 50 champion1 submit run=33246972974 ok sub_74ca8bcd (minecraft-obtaindiamond:v1, daveey)
+2026-08-29T10:24:46Z 50 champion2 submit run=33247001385 ok sub_9e9ee06a (minecraft-branchminer:v1, daveey-1)
+2026-08-29T10:24:46Z 50 fillers registered: miner=016607fa-46dd-4c47-ab1c-126b2f1291c6 scrounger=a046c48a-50fb-4e6f-8670-776ea972690f (before first trigger; response verified: exactly the two baselines)
+2026-08-29T10:24:46Z 50 unpaused 200; trigger-round 1 accepted 10:07Z + trigger 2 10:12Z (both 200, workflow_id ladder-league_390fe9da) but GET /rounds still empty after 18 min — no failed round, no error to quote; polling on
+2026-08-29T10:24:46Z heartbeat phase=50
