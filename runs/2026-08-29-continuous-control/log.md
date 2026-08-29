@@ -36,3 +36,6 @@
 2026-08-29T11:58:44Z 30 r2 reviewer returned r2-review.md: 8 findings, F1 blocking (ccFeed passes string to pushFeed(row:Node) -> TypeError swallowed; feed_lines=0, banners never render; fixture asserts nothing); all 10 r1 fix commits verified clean
 2026-08-29T11:58:44Z 30 r2 fixer dispatched
 2026-08-29T11:58:44Z heartbeat phase=30
+2026-08-29T12:33:50Z 30 r2 fixer returned r2-fixes.md: 7 fixed (F1 38cc254a feed row Node + regenerated page + console-clean CI step; B1 460e7ddb+cd6784bb fixture 140-rune say row asserted at 360/640/1280; F2,F3,F4,F6,F7,F8), 1 informational no-change (F5); green b67f8c86 run 33252260364, feed_lines=2, console chrome errors 0
+2026-08-29T12:33:50Z 30 r2 judge dispatched (sha b67f8c86)
+2026-08-29T12:33:50Z heartbeat phase=30
