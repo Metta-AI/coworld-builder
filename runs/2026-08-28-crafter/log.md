@@ -45,3 +45,6 @@
 2026-08-29T04:42:33Z progress phase=60 marker=verify-verdict.md blocking=0
 2026-08-29T04:42:33Z 60 -> 70 phase transition: announce
 2026-08-29T04:43:26Z 70 announce attempted_at written pre-POST
+2026-08-29T04:43:46Z 70 announce msg=1543118890585030656 (flags=4, embeds=[])
+2026-08-29T04:43:46Z progress phase=70 marker=discord_message_id=1543118890585030656
+2026-08-29T04:43:46Z 70 -> 75 phase transition: atlas

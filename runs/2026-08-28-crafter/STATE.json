@@ -5,7 +5,7 @@
   "slug": "crafter",
   "repo": "https://github.com/Metta-AI/cogame-crafter",
   "starter": "coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "40": 1
   },
@@ -43,7 +43,7 @@
   },
   "announce": {
     "attempted_at": "2026-08-29T04:43:26Z",
-    "discord_message_id": ""
+    "discord_message_id": "1543118890585030656"
   },
   "atlas": {
     "status": "",
@@ -57,7 +57,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T04:43:26Z",
+  "heartbeat_at": "2026-08-29T04:43:46Z",
   "session_ended_at": null,
   "session_id": "40794145",
   "log": "runs/2026-08-28-crafter/log.md"
