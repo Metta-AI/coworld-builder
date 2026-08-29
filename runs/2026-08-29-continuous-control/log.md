@@ -23,3 +23,6 @@
 2026-08-29T10:51:04Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-29T10:51:04Z heartbeat phase=30
 2026-08-29T10:52:18Z 30 r1 reviewer dispatched (sha 4c1b310)
+2026-08-29T11:09:10Z 30 r1 reviewer returned r1-review.md (18 findings: 1 blocking-candidate F1 uncapped stop-detail rune truncation, 17 advisory)
+2026-08-29T11:09:10Z 30 r1 fixer dispatched
+2026-08-29T11:09:10Z heartbeat phase=30
