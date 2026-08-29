@@ -15,3 +15,9 @@
 2026-08-28T23:29:37Z 20 propagate-secrets.yml run 33220582173 success; gh secret list confirms SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-nethack
 2026-08-28T23:29:37Z heartbeat phase=20
 2026-08-28T23:30:30Z 20 builder dispatched (round 1) thread=sthr_01DSmKdDQMnT6UJjfFPbSPp1 target=ci.yml green on main of Metta-AI/cogame-nethack
+2026-08-29T01:12:25Z 20 builder returned r1: CI green run 33225421389 sha c484a248b43f9ff6fdc9208d748c58abcea64d74 (jobs test/docker-smoke/wasm-viewer all success), 0/3 retries used
+2026-08-29T01:12:25Z 20 coordinator verified: placeholder-grep clean; 3 workflows active; release inputs version|policies|put_secret|skip_certify + release-result + per-policy player field; submit inputs player_id|policy|league_id + submit-result; exec bits 100755 on docker_smoke.sh/build_replay_viewer.sh; manifest num_agents=1 both variants+cert, bundle=static-replay-viewer, protocols player+global, docs readme+3 pages; chrome_common.js sha256 match; policies.json 4 entries, champion2 player=ply_bac48eb1
+2026-08-29T01:12:25Z 20 rails decision: builder's measured balance corrections accepted (to-hit 15, startHp 16, regenTicks 12, monsters min(10,2+depth), packs from DL2 — delver died 30/30 seeds under note constants; parameter tuning is a rail). Deviations for reviewer: turn-ends-on-empty-queue (divergence 15), test-29 eats-clause substitution, unshipped wasm_replay_smoke.cjs/renderer_fixture/shards/league_replayer/labels.nim, camera fit-shrink instead of clamp+pan
+2026-08-29T01:12:25Z 20 note: builder reports git-push to coworld repos fails in sandbox (Invalid username or token); pushed via Git Data API — candidate LEARNINGS entry at phase 80
+2026-08-29T01:12:25Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
+2026-08-29T01:12:25Z progress phase=20 marker=ci-run-33225421389
