@@ -4,7 +4,7 @@
   "run_task": "1217981679055859",
   "slug": "continuous-control",
   "repo": "https://github.com/Metta-AI/cogame-continuous-control",
-  "starter": "",
+  "starter": "coworld-ctf",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T07:19:34Z",
+  "heartbeat_at": "2026-08-29T07:20:43Z",
   "session_ended_at": null,
   "session_id": "9924a629",
   "log": "runs/2026-08-29-continuous-control/log.md"
