@@ -44,3 +44,4 @@
 2026-08-29T04:42:33Z 60 judge returned verify-verdict.md: blocking 0 / BLOCKING 0 (check 6 adjudicated satisfied per procgen precedent; endcard overflow + sprite 404s + homesteader 2/22 recorded as advisory residue)
 2026-08-29T04:42:33Z progress phase=60 marker=verify-verdict.md blocking=0
 2026-08-29T04:42:33Z 60 -> 70 phase transition: announce
+2026-08-29T04:43:26Z 70 announce attempted_at written pre-POST
