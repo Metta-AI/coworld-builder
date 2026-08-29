@@ -55,3 +55,7 @@
 2026-08-29T04:51:38Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20772 status=pr_open (placed 54 leagues incl. nethack for another run)
 2026-08-29T04:51:38Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20772
 2026-08-29T04:51:38Z 75 -> 80 phase transition: close
+2026-08-29T04:54:06Z 80 close: summaries posted (run task 1217966725252133, idea 1217966646674931); LEARNINGS entry committed; all 9 phase subtasks complete; idea 1217748613493153 completed; run task moved to Done
+2026-08-29T04:54:06Z progress phase=80 marker=run-task-Done
+2026-08-29T04:54:06Z heartbeat phase=80
+2026-08-29T04:54:06Z session end: run closed at phase 80; no next action — run complete
