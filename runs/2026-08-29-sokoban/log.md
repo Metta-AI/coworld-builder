@@ -30,3 +30,6 @@
 2026-08-29T08:42:32Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
 2026-08-29T08:42:32Z heartbeat phase=30
 2026-08-29T08:43:17Z 30 r1 dispatched reviewer sthr_014vCb9T2jhY63K1AsfiVQAQ target=464b2ab -> reviews/r1-review.md
+2026-08-29T08:57:39Z 30 reviewer returned r1-review.md (19 findings, none self-declared blocking; F3 rune-truncation and F9 canvas-text coverage flagged for checklist)
+2026-08-29T08:57:39Z 30 dispatched fixer sthr_01C8YJSdk9Bpgg23U3ek6VRD round=1 brief=fix F1-F19 -> reviews/r1-fixes.md, CI green required
+2026-08-29T08:57:39Z heartbeat phase=30
