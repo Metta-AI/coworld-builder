@@ -90,3 +90,5 @@
 2026-08-29T04:40:47Z 70 announce msg=1543118096141656136 (200, flags=4, embeds=0)
 2026-08-29T04:40:47Z 70 -> 75 phase transition: STATE.phase=75 written
 2026-08-29T04:40:47Z progress phase=70 marker=discord-msg-1543118096141656136
+2026-08-29T04:41:47Z 75 atlas continent=simulations (borrowed world — NetHack homage; precedent procgen/atari-57 both simulations)
+2026-08-29T04:41:47Z 75 atlas dispatch=33234420917 region=simulations at=536,271 clearance=69.0
