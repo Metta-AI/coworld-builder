@@ -21,3 +21,5 @@
 2026-08-29T01:12:25Z 20 note: builder reports git-push to coworld repos fails in sandbox (Invalid username or token); pushed via Git Data API — candidate LEARNINGS entry at phase 80
 2026-08-29T01:12:25Z 20 -> 30 phase transition: STATE.phase=30 review_round=1 written before reviewer dispatch
 2026-08-29T01:12:25Z progress phase=20 marker=ci-run-33225421389
+2026-08-29T01:15:25Z 30 r1 reviewer dispatched thread=sthr_012i5VtkRYPMVTWs83FrUpxt output=runs/2026-08-28-nethack/reviews/r1-review.md sha=c484a248 (shared checkout /workspace/cogame-nethack)
+2026-08-29T01:15:25Z heartbeat phase=30
