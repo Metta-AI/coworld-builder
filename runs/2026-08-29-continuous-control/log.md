@@ -11,3 +11,5 @@
 2026-08-29T07:47:29Z progress phase=10 marker=design.md
 2026-08-29T07:47:29Z 10 -> 20 phase transition: entering build
 2026-08-29T07:47:29Z heartbeat phase=20
+2026-08-29T07:48:25Z 20 repo Metta-AI/cogame-continuous-control created public; propagate-secrets run 33241676850 success; SOFTMAX_TOKEN+ANTHROPIC_API_KEY confirmed
+2026-08-29T07:48:25Z 20 builder dispatched (round 1)
