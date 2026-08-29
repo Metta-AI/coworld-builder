@@ -33,3 +33,6 @@
 2026-08-29T11:42:43Z progress phase=30 marker=r1-verdict.md
 2026-08-29T11:42:43Z 30 round 2: reviewer dispatched (head a8db2b3, delta focus + standing verdict finding)
 2026-08-29T11:42:43Z heartbeat phase=30
+2026-08-29T11:58:44Z 30 r2 reviewer returned r2-review.md: 8 findings, F1 blocking (ccFeed passes string to pushFeed(row:Node) -> TypeError swallowed; feed_lines=0, banners never render; fixture asserts nothing); all 10 r1 fix commits verified clean
+2026-08-29T11:58:44Z 30 r2 fixer dispatched
+2026-08-29T11:58:44Z heartbeat phase=30
