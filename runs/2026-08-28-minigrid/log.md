@@ -113,3 +113,5 @@
 2026-08-29T03:17:07Z heartbeat phase=60
 2026-08-29T06:34:04Z 00 attempts_reset phase=60 reason=progress marker=release-run-33230336307
 2026-08-29T06:34:04Z 00 resume at phase 60 attempt=1 session=f1f5afe1
+2026-08-29T06:36:49Z 60 resume check: rounds 22-34 completed all-v3 (round 35 pending); spot-check round 34 log CLEAN via nested route (flat episode-requests?round_id= now 405, playbook line 153-160); verifier round 3 dispatch next
+2026-08-29T06:36:49Z heartbeat phase=60
