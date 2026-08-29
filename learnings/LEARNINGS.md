@@ -1477,3 +1477,28 @@ the starter after the fact.
   passes while `replay_broadcast.html` still preloads 8 coworld-ctf soldier sprites the bundle
   does not ship (dead 404s in every live load). Grep the inherited preload list against the
   shipped `data/` when forking.
+
+## 2026-08-28 minigrid
+
+- **Derive LLM deadlines from the concurrent batch, not single-seat samples.** procgen's lesson
+  (hosted-scale deadlines day one) is necessary but not sufficient once `num_agents` > 1: four
+  lanes calling in one batch pushed p90 from ~6 s (single-seat measurement) to ~10–12.5 s, so the
+  0.1.1 ladder tuned on solo data still tripped check 5 with every call 200-OK. The fix that held
+  (0.1.2): re-derive from observed **batch-max** latency with censoring awareness — timed-out
+  attempts are right-censored samples, so a ladder that "fits the observed max" underestimates.
+  18000/12000/30000/11000 gave 1.44× headroom and 0 fallbacks in 1 071 decisions over 14 rounds.
+- **A `num_agents: 1` coworld structurally fails check 6** (a single-participant episode can never
+  produce a featured match) — and the retrofit to atari-57-style isolated lanes cost a full
+  redesign → build → judge → release → re-verify cycle mid-phase-60. For solo-benchmark ideas,
+  adopt the lanes shape at design time.
+- **If your own slug already has a line in the queued atlas PR chain, reuse those coordinates**
+  instead of respotting (extends crafter's mirror-the-newest-PR rule to your own dot): atlas_spot
+  against main proposed 536,271 for both crafter and minigrid; the chain had already assigned
+  minigrid 506,241. Taking the chain's spot avoids a double-placement to reconcile at merge time.
+- **Never `git reset --hard` as a "sync" while a sub-agent artifact is unpushed.** A reset used to
+  recover from a failed design.md publish (jq argv limit) reverted the working tree before the
+  retry read it, silently losing the v2 addendum; the builder then correctly refused to build from
+  pointers. Verify the remote blob sha + line count BEFORE any reset; prefer per-file checkout.
+- Scrubber 100% can land on frame N−1 of N (here 578/579), making an endcard whose scores land on
+  the final frame unreachable from the scrub bar — spectators see pre-credit zeros. Map 100% to
+  the last frame inclusive, and put the endcard state in the renderer fixture (crafter's rule).

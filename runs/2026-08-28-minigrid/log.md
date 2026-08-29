@@ -143,3 +143,4 @@
 2026-08-29T07:14:13Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20796
 2026-08-29T07:14:13Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-29T07:14:13Z heartbeat phase=80
+2026-08-29T07:15:48Z 80 LEARNINGS section appended (5 items: batch-latency ladder, lanes-at-design-time, chain-spot reuse, reset-hard incident, scrub endcard off-by-one)
