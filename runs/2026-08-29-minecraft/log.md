@@ -34,3 +34,7 @@
 2026-08-29T09:40:53Z progress phase=30 marker=r1-fixes.md
 2026-08-29T09:40:53Z 30 r1 judge dispatched thread=sthr_01VZY7w7ZdhfitwCqqvDBvWC judged_sha=6b4ac8afa3c53bdb32b187ac4e7cc9da4cb51266
 2026-08-29T09:40:53Z heartbeat phase=30
+2026-08-29T09:52:59Z 30 r1 judge returned r1-verdict.md blocking=0 (first/last markers agree) — review loop complete in 1 round
+2026-08-29T09:52:59Z progress phase=30 marker=r1-verdict.md
+2026-08-29T09:52:59Z 30 phase -> 40
+2026-08-29T09:52:59Z heartbeat phase=40
