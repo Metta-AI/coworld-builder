@@ -13,3 +13,4 @@
 2026-08-29T02:18:48Z 20 exit checks verified: placeholders-clean executables-755 num_agents=1x3 protocols-both bundle=static-replay-viewer workflows-parse release-inputs+release-result submit-inputs+submit-result player-field policies=2-PROMPT+2-SCRIPTED champion2-player-id
 2026-08-29T02:18:48Z progress phase=20 marker=ci-run-33228279820-success
 2026-08-29T02:18:48Z 20 -> 30 phase transition: review loop round 1
+2026-08-29T02:19:52Z 30 r1 reviewer dispatched thread=sthr_01QShf6aWPyet6bP6HrUwNnX repo-checkout=/tmp/cogame-crafter@71bf90d1
