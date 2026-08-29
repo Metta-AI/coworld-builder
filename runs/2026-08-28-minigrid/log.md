@@ -82,3 +82,6 @@
 2026-08-29T01:29:13Z 60 release 0.1.1 dispatch 1 run=33226095645 success — canonical cow_753b4d23, certify 10/10, secret_put; 4 policies minted v2 (champion2 owned by daveey-1); verified from release-result.json
 2026-08-29T01:29:13Z progress phase=60 marker=release-run-33226095645
 2026-08-29T01:29:13Z 60 league v2 rollover next: submit v2 champions, replace fillers with v2 UUIDs BEFORE next trigger (v1 binaries incompatible with v2 wire), then trigger and re-verify
+2026-08-29T01:34:32Z 60 league v2 rollover: paused 01:29, champions v2 submitted ok (runs 33226543826, 33226560317), fillers REPLACED with v2 pair (verified live list = scout:2,bumper:2), unpaused, triggered — round 14 pending but snapshotted missionfirst v1 (placement async); next round picks up v2
+2026-08-29T01:34:32Z progress phase=60 marker=fillers-v2-1f17a736+d984c287
+2026-08-29T01:34:32Z heartbeat phase=60
