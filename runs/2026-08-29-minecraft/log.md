@@ -40,3 +40,7 @@
 2026-08-29T09:52:59Z heartbeat phase=40
 2026-08-29T09:53:48Z 40 release brief sent to builder thread=sthr_01JF8kF6W7RXzuxA7i9cWHqJ
 2026-08-29T09:53:48Z heartbeat phase=40
+2026-08-29T10:03:34Z 40 release run=33246579993 version=0.1.0 step_failed=null: ok=true canonical=true certify.ok=true replay_liveness=skipped-static secret_put=true; cow_id=cow_8b94b3fa-1fdd-4cc4-b746-829f4daaee67; 4 policies (champ2 owned by ply_bac48eb1)
+2026-08-29T10:03:34Z progress phase=40 marker=release-run-33246579993
+2026-08-29T10:03:34Z 40 phase -> 50
+2026-08-29T10:03:34Z heartbeat phase=50

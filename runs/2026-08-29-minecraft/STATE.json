@@ -5,19 +5,24 @@
   "slug": "minecraft",
   "repo": "https://github.com/Metta-AI/cogame-minecraft",
   "starter": "coworld-ctf",
-  "phase": "40",
-  "phase_attempts": {},
+  "phase": "50",
+  "phase_attempts": {
+    "40": 0
+  },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_8b94b3fa-1fdd-4cc4-b746-829f4daaee67",
+    "manifest_sha": "sha256:e4cc289bbe8bf61e8e5c8139b879959d80a781267188e8ef37730534792a2159",
+    "release_run_id": "33246579993"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "minecraft-obtaindiamond:v1",
+    "champion2": "minecraft-branchminer:v1",
+    "fillers": [
+      "minecraft-miner:v1",
+      "minecraft-scrounger:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T09:53:48Z",
+  "heartbeat_at": "2026-08-29T10:03:34Z",
   "session_ended_at": null,
   "session_id": "4daf4eb7",
   "log": "runs/2026-08-29-minecraft/log.md"
