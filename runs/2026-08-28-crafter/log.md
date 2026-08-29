@@ -49,3 +49,4 @@
 2026-08-29T04:43:46Z progress phase=70 marker=discord_message_id=1543118890585030656
 2026-08-29T04:43:46Z 70 -> 75 phase transition: atlas
 2026-08-29T04:44:31Z 75 atlas: slug live in /api/coworlds (episodes_7d=7); continent=simulations (borrowed-world benchmark family, precedent procgen/atari-57); spot 536,271 clearance 69.0
+2026-08-29T04:44:52Z 75 atlas dispatch=33234537144 region=simulations at=536,271 clearance=69.0
