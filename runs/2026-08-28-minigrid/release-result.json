@@ -1,38 +1,38 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "ok": true,
-  "cow_id": "cow_5201d3e2-0aa8-45ef-b6de-ebd76a45f329",
-  "manifest_sha": "sha256:90039809a9670a2d6c5c8a0769b2d1cf92da10c8bbcf7e8b8fbf1d2e417b09c4",
+  "cow_id": "cow_753b4d23-00cd-417a-99eb-b643f0f0f526",
+  "manifest_sha": "sha256:fdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032",
   "canonical": true,
   "hosted_smoke": "passed",
   "hosted_certification": "certifying",
   "certify": {
     "ok": true,
     "replay_liveness": "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)",
-    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/certification_report.html\nArtifacts: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3\nResults: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/results.json\nReplay: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/logs\nInspect replay: open /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-en9g4nd3/logs\n"
+    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/certification_report.html\nArtifacts: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36\nResults: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/results.json\nReplay: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/logs\nInspect replay: open /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-minigrid/cogame-minigrid/tmp/coworld-cert-5kz1ef36/logs\n"
   },
   "policies": [
     {
       "name": "minigrid-cartographer",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "minigrid-missionfirst",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "minigrid-scout",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "minigrid-bumper",
-      "version": "v1",
+      "version": "v2",
       "policy_version_id": null,
       "player_id": null
     }
