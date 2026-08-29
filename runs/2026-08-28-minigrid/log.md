@@ -137,3 +137,5 @@
 2026-08-29T07:08:54Z 75 atlas dispatch=33240144287 region=simulations at=536,271 clearance=69.0
 2026-08-29T07:08:54Z heartbeat phase=75
 2026-08-29T07:11:59Z 75 atlas dispatch 1 (33240144287) failed: 54 unplaced leagues; fix per step 8 = extra_cities: 54 tuples mirrored from queued crafter branch atlas/crafter-33234677153 (metta#20772 chain); minigrid takes the chain-assigned spot 506,241 simulations (was already in the queued chain) instead of respotting
+2026-08-29T07:12:19Z 75 atlas dispatch=33240278620 region=simulations at=506,241 clearance=chain-assigned extra_cities=54
+2026-08-29T07:12:19Z heartbeat phase=75
