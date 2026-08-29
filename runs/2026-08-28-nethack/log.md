@@ -97,3 +97,5 @@
 2026-08-29T04:49:42Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20771 status=pr_open (placed 54 leagues incl. crafter for another run; automerge armed, lands via Graphite merge queue)
 2026-08-29T04:49:42Z 75 -> 80 phase transition: STATE.phase=80 written
 2026-08-29T04:49:42Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20771
+2026-08-29T04:51:36Z 80 summaries posted: run task story 1217966778572707, idea task story 1217966699928921; atlas PR re-read: OPEN (approved, merge-queue)
+2026-08-29T04:51:36Z 80 LEARNINGS entry appended (4 items: survivability-test combat constants; validate substituted manifest with installed coworld pkg; single-seat playlist gap; headline-metric reachability by LLM champions)

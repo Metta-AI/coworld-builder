@@ -1414,3 +1414,37 @@ the starter after the fact.
 - **The sandbox can build Nim**: nimby 0.1.26 + Nim 2.2.4 from GitHub releases, `nimby --global sync nimby.lock`, then the full test suite runs locally in debug and `-d:release`. Turns every fixer/builder round into compile-and-test-before-push; only Docker/emscripten/browser stay CI-only.
 - **`git push` is refused ("No anonymous write access") for repos created after the session started** — the proxy allowlist is fixed at session start. The Git Data API path (`gh api` blobs → tree → commit → non-forced ref update) works and preserves the no-force rule.
 - viewer-check's `feed_lines` sampled at load (2) undercounts what a seek reveals (4); judge the feed from the png (also seen by physics-bodies).
+
+## 2026-08-28 nethack
+
+- **Survivability-test a design note's combat constants before pinning them.** The accepted note's
+  to-hit/HP/regen/monster-density numbers killed the scripted baseline on dungeon level 1 in 30/30
+  seeds (~160-tick episodes); the builder caught it only by simulating and shipped measured
+  corrections (to-hit 15, startHp 16, regenTicks 12, density min(10,2+depth), packs from DL2) as an
+  accepted rails call. A designer pinning integer combat math should state the survivability target
+  it was tuned against, and a builder brief should expect "the note is unplayable, here are the
+  measured corrections" as a normal, documented outcome — not a stop.
+- **Validate the substituted manifest template with the installed `coworld` package BEFORE
+  re-dispatching a failed release.** Dispatch 1 failed on two pydantic errors (`game.image` is
+  `extra_forbidden` — the image belongs only in `game.runnable.image`; `player[].type` is a closed
+  enum `player|commissioner|grader|diagnoser|optimizer`, not `policy`). `pip install
+  "coworld[auth]==0.1.43"` in a venv and calling `validate_upload_manifest()` on the
+  placeholder-substituted template turned a would-be blind second retry into a confirmed one-shot
+  fix. Neither the starter's ci.yml nor `templates/ci.yml` runs any such step (physics-bodies'
+  "validate dist/, not the template" learning refines where; the gap is that nothing validates at
+  all) — worth adding a CI step that builds and validates `dist/coworld_manifest.json`.
+- **Single-seat coworlds never get a `state.playlist` featured matchup — judge SPEC item 6 on
+  `state.pool.replays`.** The playlist entry's `matchup:{first,second}` needs two ranked players in
+  one episode, structurally impossible at `num_agents: 1`; softmax.com/<slug> shows "No featured
+  match yet" forever while the featured pool carries the episodes and the session endpoint returns
+  the static route. Cross-checked live: crafter and procgen (single-seat) playlist 0, every
+  multi-seat coworld playlist 1. SPEC item 6's wording has a gap for single-seat coworlds; the
+  procgen-precedent reading (pool non-empty + static route = TRUE) is now used twice.
+- **Make the headline metric demonstrably reachable by the intended LLM policy, not just by the
+  scripted baseline.** Depth is this game's 100,000×-dominant scoring term; the scripted delver
+  averages DL 2.1, but across 6 hosted episodes neither haiku champion ever issued `down`
+  (verb histograms ~90% move+search; one episode ended by taking the UP stairs — a legal terminal
+  the prompt never forbade). Shipped as material non-blocking residue. Two forward lessons: (a) a
+  design whose score is dominated by one achievement should include a champion-prompt dry-run
+  criterion the way it includes baseline tuning; (b) forbid degenerate terminals (ascending at
+  start) in the champion prompts explicitly.
