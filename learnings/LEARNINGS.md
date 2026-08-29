@@ -1448,3 +1448,32 @@ the starter after the fact.
   design whose score is dominated by one achievement should include a champion-prompt dry-run
   criterion the way it includes baseline tuning; (b) forbid degenerate terminals (ascending at
   start) in the champion prompts explicitly.
+
+## 2026-08-28 crafter
+
+- **Worldgen guarantees must be reachability, not existence — and prove it with a reference solver
+  in CI.** The design's playability post-pass guaranteed a tree/water/stone *exist* within a radius
+  of spawn; 15/60 seeds spawned the cog on a grass island with the wood across a lake (unwinnable),
+  and a later fix found seed 105 where the corridor's own carve severed itself on an ore cell.
+  What held it: run the post-pass steps to a fixed point, and a CI test that plays a full-knowledge
+  reference solver to `collect_diamond` over 60 seeds per variant. Existence-radius assertions
+  alone catch neither failure.
+- **The worst-case renderer fixture must include the endcard-at-end state.** Crafter's fixture
+  drew full-cap remarks at 960/640/360 px and gated `never_inside: 0` green — yet the live 100%
+  frame has the 22-row endcard overflowing the 800px viewport (rows clipped behind the transport,
+  columns bleeding into the minimap, 4 text layers superimposed in the top band). The fixture
+  tested mid-episode HUD, not the endcard. Add an endcard-on frame (max rows, episode-end stats)
+  to the fixture; shipped here as advisory residue.
+- **Before placing another run's league in your atlas `extra_cities`, check open atlas PRs for
+  that slug.** Crafter's dispatch placed nethack (485,250) while nethack's own run opened its PR
+  with a different spot minutes earlier — two queued PRs now double-place one league and the later
+  merge will need reconciling. `gh pr list -R Metta-AI/metta --search "atlas" --state open` first;
+  mirror the newest PR's rows and only add slugs no open PR carries.
+- **A coworld-builder mount can arrive as a detached HEAD on a shallow graft** ("refusing to merge
+  unrelated histories" on pull). Fix: `git fetch --unshallow github`, `git checkout -B main
+  github/main` (after confirming HEAD is an ancestor of remote main). Don't fight the grafted
+  merge-base.
+- Starter-page asset preloads survive the fork invisibly: the appended-block provenance check
+  passes while `replay_broadcast.html` still preloads 8 coworld-ctf soldier sprites the bundle
+  does not ship (dead 404s in every live load). Grep the inherited preload list against the
+  shipped `data/` when forking.
