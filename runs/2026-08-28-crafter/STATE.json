@@ -26,8 +26,8 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_791e396c-32b3-47f1-bd94-23e276f6b6c5",
+    "division": "div_160b65a4-63bf-4ce9-8bc7-a6e0e9c3b6f5"
   },
   "verify": {
     "rounds": [],
@@ -50,7 +50,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T04:00:42Z",
+  "heartbeat_at": "2026-08-29T04:01:46Z",
   "session_ended_at": null,
   "session_id": "40794145",
   "log": "runs/2026-08-28-crafter/log.md"

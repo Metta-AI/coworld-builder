@@ -27,3 +27,5 @@
 2026-08-29T04:00:42Z 40 release dispatch 1/3 version=0.1.0 run=33232381840 success: canonical=true cow_id=cow_88aa79dd-1661-4c42-9024-abb912d2de34 certify.ok=true replay_liveness=skipped-static secret_put=true policies=4x v1 champion2-player=ply_bac48eb1
 2026-08-29T04:00:42Z progress phase=40 marker=release-run-33232381840
 2026-08-29T04:00:42Z 40 -> 50 phase transition: league
+2026-08-29T04:01:46Z 50 seed 200 lseed_06fc2a6d league=league_791e396c-32b3-47f1-bd94-23e276f6b6c5
+2026-08-29T04:01:46Z 50 division 200 div_160b65a4-63bf-4ce9-8bc7-a6e0e9c3b6f5; settings 200 (elo, round_robin, filler_policy, 15min)
