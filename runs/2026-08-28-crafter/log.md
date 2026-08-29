@@ -41,3 +41,6 @@
 2026-08-29T04:37:07Z 60 phase-30-class observations from live viewer: (A) 8 dead 404 preloads of starter soldier sprites; (B) endcard overflow at 800px (rows 21-22 clipped, bleed into minimap)
 2026-08-29T04:37:07Z progress phase=60 marker=VERIFY.md written, rounds 1+2 completed
 2026-08-29T04:37:40Z 60 judge dispatched thread=sthr_01BWrF24S8yBNFgh2MHynzwJ over VERIFY.md
+2026-08-29T04:42:33Z 60 judge returned verify-verdict.md: blocking 0 / BLOCKING 0 (check 6 adjudicated satisfied per procgen precedent; endcard overflow + sprite 404s + homesteader 2/22 recorded as advisory residue)
+2026-08-29T04:42:33Z progress phase=60 marker=verify-verdict.md blocking=0
+2026-08-29T04:42:33Z 60 -> 70 phase transition: announce
