@@ -99,3 +99,7 @@
 2026-08-29T04:49:42Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20771
 2026-08-29T04:51:36Z 80 summaries posted: run task story 1217966778572707, idea task story 1217966699928921; atlas PR re-read: OPEN (approved, merge-queue)
 2026-08-29T04:51:36Z 80 LEARNINGS entry appended (4 items: survivability-test combat constants; validate substituted manifest with installed coworld pkg; single-seat playlist gap; headline-metric reachability by LLM champions)
+2026-08-29T04:52:17Z 80 all 9 phase subtasks complete; idea 1217748519904179 completed; run task 1217965068474377 moved to Done
+2026-08-29T04:52:17Z 80 run closed: phases 00-80 in one session; residue named in summary (champion descent tuning, ci.yml manifest-validation step)
+2026-08-29T04:52:17Z progress phase=80 marker=run-task-done
+2026-08-29T04:52:17Z session end: run complete at phase 80; no next action — run is Done
