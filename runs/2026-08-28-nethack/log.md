@@ -33,3 +33,5 @@
 2026-08-29T03:32:40Z 30 r1 judge returned: r1-verdict.md blocking:0/BLOCKING:0 (well-formed, both markers agree) — zero blocking findings, loop exits round 1
 2026-08-29T03:32:40Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
 2026-08-29T03:32:40Z progress phase=30 marker=r1-verdict.md
+2026-08-29T03:33:35Z 40 builder dispatched (release) thread=sthr_01PP4bu2pRp3WrQcjiyKUwdx target=coworld-release.yml canonical+certified, policies from tools/ci/policies.json, start version 0.1.0
+2026-08-29T03:33:35Z heartbeat phase=40
