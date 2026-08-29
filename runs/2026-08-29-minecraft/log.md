@@ -51,3 +51,5 @@
 2026-08-29T10:24:46Z 50 fillers registered: miner=016607fa-46dd-4c47-ab1c-126b2f1291c6 scrounger=a046c48a-50fb-4e6f-8670-776ea972690f (before first trigger; response verified: exactly the two baselines)
 2026-08-29T10:24:46Z 50 unpaused 200; trigger-round 1 accepted 10:07Z + trigger 2 10:12Z (both 200, workflow_id ladder-league_390fe9da) but GET /rounds still empty after 18 min — no failed round, no error to quote; polling on
 2026-08-29T10:24:46Z heartbeat phase=50
+2026-08-29T10:46:11Z 50 rounds still empty after 5 triggers (10:07,10:12,~10:33,10:38 post-pause-cycle,10:42 post-reseed); submissions both status=placed; league object byte-identical to working crafter league; global scheduler ticks (:04/:19/:34/:49) serve other leagues but skip this one; waiting through 10:49 tick before declaring platform-side block
+2026-08-29T10:46:11Z heartbeat phase=50
