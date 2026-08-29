@@ -94,3 +94,7 @@
 2026-08-29T02:16:17Z 60 non-check findings: champions 0/5 tasks (macrosUnreachable=6, goto not resolving) while scout 3/5 and richard 2/5; fallbackCauses drops first attempt cause; replay_summary policyKinds ordering cosmetic
 2026-08-29T02:16:17Z 60 decision: check-5 attempt 2 — designer re-derives ladder for 3-concurrent-call batches; builder implements + fallbackCauses fix + goto/prompt diagnosis; release 0.1.2; re-verify check 5
 2026-08-29T02:16:17Z heartbeat phase=60
+2026-08-29T02:22:20Z 60 addendum v2.1 returned, ACCEPTED and persisted (design.md 3095 lines, blob round-trip verified): ladder 18000/12000/30000/11000 with censoring-aware derivation, fits-always withdrawn for guard-bound proof 629<=660, fallbackCauses both attempts + retriedTurns, goto Case C partial walk (GameVersion 3), prompt re-pins, replay_summary slot ordering
+2026-08-29T02:22:20Z progress phase=60 marker=design.md-addendum-v2.1-persisted
+2026-08-29T02:22:20Z 60 builder v2.1 dispatched (same thread) — implement, CI green, no release
+2026-08-29T02:22:20Z heartbeat phase=60
