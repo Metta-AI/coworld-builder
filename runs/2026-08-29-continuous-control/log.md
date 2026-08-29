@@ -18,3 +18,7 @@
 2026-08-29T10:33Z 20 builder round 3 push cfe8855: the replay codec's 32-bit primitives go through uint32 end to end. CI run 33247782024 SUCCESS on main (test, docker-smoke, wasm-viewer). Exit criterion met.
 2026-08-29T10:45Z 20 push 3739c2c (viewer legibility: gait card to the right gutter, brighter link chips, brighter bed) CI run 33248087990 SUCCESS. Push 4c1b310 (horizon drawn as two copies) CI run 33248347102 SUCCESS on main — the shipped green sha.
 2026-08-29T11:00Z 20 EXIT: ci.yml success on main at 4c1b310 (run 33248347102). Placeholder gate clean; all three workflows parse and are registered; release inputs version|policies|put_secret|skip_certify and submit inputs player_id|policy|league_id present; release-result / submit-result artifacts and the per-policy "player" field present; gh secret list shows SOFTMAX_TOKEN + ANTHROPIC_API_KEY; docker_smoke.sh and build_replay_viewer.sh both mode 100755.
+2026-08-29T10:51:04Z 20 verified: ci.yml success on main 4c1b310 run 33248347102; workflows ci/release/submit all active
+2026-08-29T10:51:04Z progress phase=20 marker=33248347102
+2026-08-29T10:51:04Z 20 -> 30 phase transition: entering review loop round 1
+2026-08-29T10:51:04Z heartbeat phase=30
