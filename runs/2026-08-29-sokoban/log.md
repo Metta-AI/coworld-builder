@@ -18,3 +18,7 @@
 2026-08-29T07:49:01Z 20 pushed the initial full implementation (sim, chrome, static wasm viewer, CI scaffold, tests) sha=3724a05 run=33241703242 conclusion=pending
 2026-08-29T08:06:31Z 20 CI round 1 red only in wasm-viewer (page threw "$ is not defined": the viewpanel/billboard cuts over-ran into `var $ = C.$` and ZOOM_STEP); changed approach by adding tools/ci/page_smoke.mjs, a real headless-chromium gate that boots the shipped page with the wasm runtime stubbed, which also caught a pushFeed signature drift. sha=2647295 run=33242366860 conclusion=pending (round 1 run=33241703242 conclusion=failure)
 2026-08-29T08:36:16Z 00 resume at phase 20 attempt=1 session=360af56b
+2026-08-29T08:38:07Z 20 CI green on main confirmed: run=33243111396 sha=464b2ab conclusion=success; exit-criterion checks all pass (placeholders clean, exec bits, 3 workflows parse, inputs+artifacts present, manifest num_agents everywhere, policies.json 2 LLM + 2 scripted)
+2026-08-29T08:38:07Z progress phase=20 marker=33243111396
+2026-08-29T08:38:07Z 20 -> 30 phase transition: STATE.phase=30 review_round=1
+2026-08-29T08:38:07Z heartbeat phase=30
