@@ -1,14 +1,14 @@
 {
   "loaded": true,
-  "ms": 2678,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_753b4d23-00cd-417a-99eb-b643f0f0f526/sha256%3Afdd3b4cbd21f370c1639693a1001400fb80e3c8a7542ec9fae9b7581dc656032/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F3fe6e480-ef59-4b89-89af-01e4c825cd6b.replay",
+  "ms": 1933,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_70e4993f-58ea-4678-8d19-ffa1866214b1/sha256%3Aefc95d4886a5dfde4d7773c302ebe870e677bf1f48879f17d13e516566763e97/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F2e5030b6-fdcd-422a-9d4a-c1c6d6eeed9e.replay",
   "bundle": null,
   "replay": null,
-  "clock": "TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0",
-  "scorebug": "— CARTOGRAPHER Carrying 0/5 ALPHA · SCORE 0 — PROMPT Carrying 0/5 GAMMA · SCORE 0 TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0 — MISSIONFIRST Carrying 0/5 BETA · SCORE 0 — SCOUT Carrying 0/5 DELTA · SCORE 0",
+  "clock": "TURN 1/30 · PHASE 1/5 · LAVAGAP TICK 2/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0",
+  "scorebug": "— CARTOGRAPHER Carrying 0/5 ALPHA · SCORE 0 — PROMPT Carrying 0/5 GAMMA · SCORE 0 TURN 1/30 · PHASE 1/5 · LAVAGAP TICK 2/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0 — MISSIONFIRST Carrying 0/5 BETA · SCORE 0 — SCOUT Carrying 0/5 DELTA · SCORE 0",
   "status": "OPEN",
   "loading_text": null,
-  "feed_lines": 4,
+  "feed_lines": 20,
   "signals": {
     "data_replay_loaded": "true",
     "data_replay_error": null,
@@ -19,15 +19,15 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "TURN 0/30 · PHASE 1/5 · TICK 0/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0"
+      "clock": "TURN 1/30 · PHASE 1/5 · LAVAGAP TICK 2/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 0"
     },
     {
       "at": "50%",
-      "clock": "TURN 16/30 · PHASE 3/5 · MULTIROOM TICK 361/720 · ALPHA 0 · BETA 0 · GAMMA 2 · DELTA 2"
+      "clock": "TURN 13/30 · PHASE 3/5 · MULTIROOM TICK 290/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 2"
     },
     {
       "at": "100%",
-      "clock": "TURN 30/30 · PHASE 5/5 · BABYAI TICK 720/720 · ALPHA 0 · BETA 0 · GAMMA 2 · DELTA 3"
+      "clock": "TURN 25/30 · PHASE 5/5 · BABYAI TICK 578/720 · ALPHA 0 · BETA 0 · GAMMA 0 · DELTA 3"
     }
   ],
   "soak": null,
