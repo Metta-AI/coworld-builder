@@ -66,3 +66,4 @@
 2026-08-29T13:38:33Z progress phase=50 marker=sub_a414ae47
 2026-08-29T13:38:33Z session end: stopped in phase 50 (blocked); next action = on subtask 1217968974654490 completion, resume phase 50 at step 9 (confirm a round exists pending/running/completed, verify exit criterion, then -> 60)
 2026-08-29T13:38:33Z heartbeat phase=50
+2026-08-29T13:39:10Z 90 subtask body + STATE.blocked.error corrected (accurate trigger times 13:21Z/13:31Z; outage age is platform-wide, hours)
