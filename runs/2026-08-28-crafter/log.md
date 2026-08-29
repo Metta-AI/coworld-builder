@@ -52,3 +52,6 @@
 2026-08-29T04:44:52Z 75 atlas dispatch=33234537144 region=simulations at=536,271 clearance=69.0
 2026-08-29T04:48:06Z 75 atlas dispatch 1 (33234537144) failed: 54 unplaced leagues; fix per step 8 = extra_cities (precedent procgen/atari-57): 53 tuples mirrored from queued metta#20746 branch + nethack placed here at 485,250 simulations (borrowed NLE world, cl 22.9); crafter respotted 494,271 cl 22.9 against the PR-branch places (536,271 taken in queued PRs)
 2026-08-29T04:48:32Z 75 atlas dispatch=33234677153 region=simulations at=494,271 clearance=22.9 extra_cities=54
+2026-08-29T04:51:38Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20772 status=pr_open (placed 54 leagues incl. nethack for another run)
+2026-08-29T04:51:38Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20772
+2026-08-29T04:51:38Z 75 -> 80 phase transition: close
