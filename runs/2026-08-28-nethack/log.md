@@ -86,3 +86,4 @@
 2026-08-29T04:39:16Z 60 judge returned: verify-verdict.md blocking:0/BLOCKING:0 — all 8 SPEC items confirmed; check 6 TRUE by precedent (single-seat playlist gap recorded as SPEC-wording issue); check 4 TRUE on SPEC with MATERIAL non-blocking balance finding: no champion has ever descended (depthReached=1 in 6/6, zero down verbs, one episode ended by ascending) — settle-by: prompt/balance tuning + one hosted episode at depth>=2; assigned to close/LEARNINGS for human steering
 2026-08-29T04:39:16Z 60 -> 70 phase transition: STATE.phase=70 written
 2026-08-29T04:39:16Z progress phase=60 marker=verify-verdict.md-blocking-0
+2026-08-29T04:40:14Z 70 announce.attempted_at written and pushed BEFORE the POST (body 1789 bytes, flags=4)
