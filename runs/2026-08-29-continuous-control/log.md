@@ -22,3 +22,4 @@
 2026-08-29T10:51:04Z progress phase=20 marker=33248347102
 2026-08-29T10:51:04Z 20 -> 30 phase transition: entering review loop round 1
 2026-08-29T10:51:04Z heartbeat phase=30
+2026-08-29T10:52:18Z 30 r1 reviewer dispatched (sha 4c1b310)
