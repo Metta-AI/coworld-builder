@@ -30,3 +30,7 @@
 2026-08-29T08:29:17Z progress phase=30 marker=r1-review.md
 2026-08-29T08:29:17Z 30 r1 fixer dispatched thread=sthr_01M7BoTnFavWJVeh4U8PWiai
 2026-08-29T08:29:17Z heartbeat phase=30
+2026-08-29T09:40:53Z 30 r1 fixer returned r1-fixes.md: 22 commits, final sha=6b4ac8afa3c53bdb32b187ac4e7cc9da4cb51266, ci green run=33245676171 (verified); GameVersion 1->3 (lava gate 120->300, unwinnable-seed post-pass), cert seed back to 42, F16 disputed, F9/F12/F17/F19 no-change-with-evidence
+2026-08-29T09:40:53Z progress phase=30 marker=r1-fixes.md
+2026-08-29T09:40:53Z 30 r1 judge dispatched thread=sthr_01VZY7w7ZdhfitwCqqvDBvWC judged_sha=6b4ac8afa3c53bdb32b187ac4e7cc9da4cb51266
+2026-08-29T09:40:53Z heartbeat phase=30
