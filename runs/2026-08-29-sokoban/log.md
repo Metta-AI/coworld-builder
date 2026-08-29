@@ -5,3 +5,9 @@
 2026-08-29T05:02:53Z 00 -> 10 phase transition: STATE.phase=10
 2026-08-29T05:04:30Z 10 starter=coworld-ctf (rail: tick-based grid loop, rules written natively for this coworld; Boxoban levels are data not an engine; precedent minigrid/crafter/nethack/procgen all coworld-ctf)
 2026-08-29T05:05:40Z 10 dispatched designer sthr_01G9rKE2pyJqZ4fkpZyAFNde brief=design note -> runs/2026-08-29-sokoban/design.md
+2026-08-29T05:24:30Z 10 designer returned design.md (commit 73e9425, 2000 lines)
+2026-08-29T05:24:30Z 10 checklist: starter[x] num_agents[x] resolution-order[x] scoring[x] end-conditions[x] observation[x] reply-schema-rune-caps[x] both-policies-env-switched[x] batch+budget[x] degrade-never-hang[x] name-spaces[x] viewer-static-bundle[x] viewer-four-files-one-starter[x] chrome-provenance+zoom[x] transport-rules[x] replay-self-sufficient[x] packaging[x] tests[x] out-of-scope[x]
+2026-08-29T05:24:30Z 10 design note ACCEPTED round 1
+2026-08-29T05:24:30Z progress phase=10 marker=runs/2026-08-29-sokoban/design.md
+2026-08-29T05:24:30Z 10 -> 20 phase transition: STATE.phase=20
+2026-08-29T05:24:30Z heartbeat phase=20
