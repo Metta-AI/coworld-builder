@@ -60,3 +60,9 @@
 2026-08-29T13:26:58Z 50 fillers registered: trotter:v2 bd151d35, plodder:v2 ece2febe (verified list == fillers only)
 2026-08-29T13:26:58Z 50 unpaused (rounds_paused_at=null); trigger-round accepted workflow ladder-league_62a1e77b; rounds list still empty, polling
 2026-08-29T13:26:58Z heartbeat phase=50
+2026-08-29T13:38:33Z 50 second trigger HTTP 200, rounds still 0 — platform round-creation stall (sokoban+minecraft same incident)
+2026-08-29T13:38:33Z 90 blocked phase=50 ask="restart/repair the Temporal ladder workflow for league_62a1e77b-c464-41ba-90df-702fc0d9d3db so rounds are created" subtask=1217968974654490
+2026-08-29T13:38:33Z 90 asana: run task 1217981679055859 moved to Blocked; idea comment 1217968893159423 on 1217748466314558
+2026-08-29T13:38:33Z progress phase=50 marker=sub_a414ae47
+2026-08-29T13:38:33Z session end: stopped in phase 50 (blocked); next action = on subtask 1217968974654490 completion, resume phase 50 at step 9 (confirm a round exists pending/running/completed, verify exit criterion, then -> 60)
+2026-08-29T13:38:33Z heartbeat phase=50
