@@ -9,3 +9,7 @@
 2026-08-28T23:49:34Z 20 repo created: https://github.com/Metta-AI/cogame-crafter (public)
 2026-08-28T23:49:34Z 20 propagate-secrets run 33221646319 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on cogame-crafter
 2026-08-28T23:50:36Z 20 builder dispatched round=1 thread=sthr_01UovTdQakeW1rzSu1z26bMt repo=Metta-AI/cogame-crafter
+2026-08-29T02:18:48Z 20 builder returned: CI green run=33228279820 sha=71bf90d1af107a6c5162a4d7d53f683c9c55cab1 (4 CI rounds; 5 documented divergences in docs/PORTING-CRAFTER.md; nano-banana art landed)
+2026-08-29T02:18:48Z 20 exit checks verified: placeholders-clean executables-755 num_agents=1x3 protocols-both bundle=static-replay-viewer workflows-parse release-inputs+release-result submit-inputs+submit-result player-field policies=2-PROMPT+2-SCRIPTED champion2-player-id
+2026-08-29T02:18:48Z progress phase=20 marker=ci-run-33228279820-success
+2026-08-29T02:18:48Z 20 -> 30 phase transition: review loop round 1
