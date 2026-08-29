@@ -85,3 +85,6 @@
 2026-08-29T01:34:32Z 60 league v2 rollover: paused 01:29, champions v2 submitted ok (runs 33226543826, 33226560317), fillers REPLACED with v2 pair (verified live list = scout:2,bumper:2), unpaused, triggered — round 14 pending but snapshotted missionfirst v1 (placement async); next round picks up v2
 2026-08-29T01:34:32Z progress phase=60 marker=fillers-v2-1f17a736+d984c287
 2026-08-29T01:34:32Z heartbeat phase=60
+2026-08-29T01:50:00Z 60 rounds 15+16 completed with all-v2 entrants (cartographer 52906971, missionfirst bdf22f53); v2 fillers live; verifier round 2 next
+2026-08-29T01:50:00Z progress phase=60 marker=rounds-15-16-completed-v2
+2026-08-29T01:50:00Z heartbeat phase=60
