@@ -26,3 +26,7 @@
 2026-08-29T01:36:19Z 30 r1 reviewer returned: r1-review.md (975 lines, 22 findings F1-F22, reviewer says 0 blocking; F17 game.docs type=uri-vs-text and F5 camera-clamp flagged with stricter alternative readings)
 2026-08-29T01:36:19Z 30 r1 fixer dispatched thread=sthr_01DwjzepRAaPMByAfmzsPyUm output=runs/2026-08-28-nethack/reviews/r1-fixes.md
 2026-08-29T01:36:19Z heartbeat phase=30
+2026-08-29T03:18:08Z 30 r1 fixer returned: r1-fixes.md — 13 findings fixed (one commit each), 8 refuted/accepted-rails with evidence (F17 uri precedent: coworld-ctf/moba/factorio all ship uri); final sha ae95996519e51b70346499240e0845ad013b3fb8, CI green run 33230652674, SEAT-COUNT FAIL grep=0; duplicate no-op commit range a362c6a..4a8c81e from stale-ref replay, documented in-history d570e64, not force-cleaned
+2026-08-29T03:18:08Z 30 coordinator verified: run 33230652674 success at ae95996 (test/docker-smoke/wasm-viewer)
+2026-08-29T03:18:08Z 30 r1 judge dispatched (fresh context) thread=sthr_01LQX2mgsG9RUFDYePHW4BP7 output=runs/2026-08-28-nethack/reviews/r1-verdict.md sha=ae95996
+2026-08-29T03:18:08Z heartbeat phase=30
