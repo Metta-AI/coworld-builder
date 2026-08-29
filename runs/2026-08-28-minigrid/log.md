@@ -144,3 +144,6 @@
 2026-08-29T07:14:13Z 75 -> 80 phase transition: STATE.phase=80
 2026-08-29T07:14:13Z heartbeat phase=80
 2026-08-29T07:15:48Z 80 LEARNINGS section appended (5 items: batch-latency ladder, lanes-at-design-time, chain-spot reuse, reset-hard incident, scrub endcard off-by-one)
+2026-08-29T07:16:43Z 80 close complete: exec summary on run task (1217967263914065), condensed on idea (1217967258926854), LEARNINGS appended, all 9 subtasks complete, idea completed, run task -> Done
+2026-08-29T07:16:43Z progress phase=80 marker=run-task-Done
+2026-08-29T07:16:43Z session f1f5afe1 ended cleanly in phase 80 (run CLOSED); no next action — run complete

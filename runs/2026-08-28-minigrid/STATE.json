@@ -68,8 +68,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T07:14:13Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-08-29T07:16:43Z",
+  "session_ended_at": "2026-08-29T07:16:43Z",
   "session_id": "f1f5afe1",
   "log": "runs/2026-08-28-minigrid/log.md"
 }
