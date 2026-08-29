@@ -41,3 +41,14 @@
 2026-08-29T03:44:17Z 40 note for LEARNINGS(80): design.md test 39 (CI runs installed coworld validate_upload_manifest) was never wired into ci.yml — exactly the gap that let 2 schema errors reach a release dispatch; candidate templates/ci.yml improvement
 2026-08-29T03:44:17Z 40 -> 50 phase transition: STATE.phase=50 written
 2026-08-29T03:44:17Z progress phase=40 marker=release-run-33231811404
+2026-08-29T03:47:48Z 50 seed 200: lseed_7a906e14 league_462e0339-0d14-4f35-8bb2-ad882f4b0224
+2026-08-29T03:47:48Z 50 division 200: div_03513e99-65b4-4fe1-8ce0-ae8adb8728bb (Competition, level 1)
+2026-08-29T03:47:48Z 50 settings 200: round_robin/filler_policy, elo k=32 mean, round_interval=15m
+2026-08-29T03:47:48Z 50 champion1 submit: run 33232191252 ok:true sub_e0b369da (daveey, nethack-divemaster:v1)
+2026-08-29T03:47:48Z 50 champion2 submit: run 33232215535 ok:true (daveey-1, nethack-loremaster:v1)
+2026-08-29T03:47:48Z 50 policy-version uuids resolved: divemaster=20a7c701 loremaster=dea3d12b(player_name=daveey-1 confirmed) delver=86835dea bumbler=5c2bc078
+2026-08-29T03:47:48Z 50 fillers 200: delver+bumbler registered, neither champion
+2026-08-29T03:47:48Z 50 unpause 200 (paused:false); trigger-round 200 (ladder workflow)
+2026-08-29T03:47:48Z 50 round 1 pending, entrant_attributions = both champions (ply_44ae9048+20a7c701, ply_bac48eb1+dea3d12b)
+2026-08-29T03:47:48Z 50 -> 60 phase transition: STATE.phase=60 written
+2026-08-29T03:47:48Z progress phase=50 marker=league_462e0339+round_1abe8f06

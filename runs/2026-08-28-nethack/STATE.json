@@ -5,7 +5,7 @@
   "slug": "nethack",
   "repo": "https://github.com/Metta-AI/cogame-nethack",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,11 +21,14 @@
       "nethack-delver:v1",
       "nethack-bumbler:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "86835dea-5b4b-491a-a693-879fd40c10be",
+      "5c2bc078-fc49-499f-8e89-4c4f89f2bc1c"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_462e0339-0d14-4f35-8bb2-ad882f4b0224",
+    "division": "div_03513e99-65b4-4fe1-8ce0-ae8adb8728bb"
   },
   "verify": {
     "rounds": [],
@@ -48,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T03:44:17Z",
+  "heartbeat_at": "2026-08-29T03:47:48Z",
   "session_ended_at": null,
   "session_id": "30d37c05",
   "log": "runs/2026-08-28-nethack/log.md"
