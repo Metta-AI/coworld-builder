@@ -20,3 +20,6 @@
 2026-08-29T03:32:49Z 30 r1 fixer returned r1-fixes.md: 25/25 resolved (15 code fixes incl F1 skip-removed+source_url restored, 10 documented divergences); CI green run=33231383944 sha=2a62f81c2d6ac29a2c9002021ce6884a784e1dcc
 2026-08-29T03:32:49Z progress phase=30 marker=r1-fixes.md
 2026-08-29T03:34:10Z 30 r1 judge dispatched thread=sthr_017Snz33kouFe5j6fW96K7U3 sha=2a62f81c
+2026-08-29T03:49:15Z 30 r1 judge returned r1-verdict.md: blocking 0 / BLOCKING 0 (all 25 findings dismissed-fixed-or-documented; independent checklist pass clean; 4 advisories logged)
+2026-08-29T03:49:15Z progress phase=30 marker=r1-verdict.md
+2026-08-29T03:49:15Z 30 -> 40 phase transition: release (sha=2a62f81c ci=33231383944)
