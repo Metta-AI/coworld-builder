@@ -30,3 +30,6 @@
 2026-08-29T03:18:08Z 30 coordinator verified: run 33230652674 success at ae95996 (test/docker-smoke/wasm-viewer)
 2026-08-29T03:18:08Z 30 r1 judge dispatched (fresh context) thread=sthr_01LQX2mgsG9RUFDYePHW4BP7 output=runs/2026-08-28-nethack/reviews/r1-verdict.md sha=ae95996
 2026-08-29T03:18:08Z heartbeat phase=30
+2026-08-29T03:32:40Z 30 r1 judge returned: r1-verdict.md blocking:0/BLOCKING:0 (well-formed, both markers agree) — zero blocking findings, loop exits round 1
+2026-08-29T03:32:40Z 30 -> 40 phase transition: STATE.phase=40 written before release dispatch
+2026-08-29T03:32:40Z progress phase=30 marker=r1-verdict.md
