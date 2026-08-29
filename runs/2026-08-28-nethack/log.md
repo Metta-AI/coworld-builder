@@ -52,3 +52,4 @@
 2026-08-29T03:47:48Z 50 round 1 pending, entrant_attributions = both champions (ply_44ae9048+20a7c701, ply_bac48eb1+dea3d12b)
 2026-08-29T03:47:48Z 50 -> 60 phase transition: STATE.phase=60 written
 2026-08-29T03:47:48Z progress phase=50 marker=league_462e0339+round_1abe8f06
+2026-08-29T03:49:06Z 60 verifier dispatched thread=sthr_01PoyKxs6sPLLnZmrp7JPtez output=runs/2026-08-28-nethack/VERIFY.md (8 checks, 75-min round bound, heartbeats delegated during poll)
