@@ -5,21 +5,25 @@
   "slug": "sokoban",
   "repo": "Metta-AI/cogame-sokoban",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "20": 1
+    "20": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.0",
+    "cow_id": "cow_71631422-adaa-43fd-b234-5f1aa8a08b43",
+    "manifest_sha": "sha256:91df94dc27d710b8116aca94e1fe8c9162302f8e54661a3bbeabb3cff15f11bd",
+    "release_run_id": "33248649858"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "sokoban-lookahead:v1",
+    "champion2": "sokoban-orderfirst:v1",
+    "fillers": [
+      "sokoban-pusher:v1",
+      "sokoban-nudger:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -47,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T10:47:47Z",
+  "heartbeat_at": "2026-08-29T10:55:54Z",
   "session_ended_at": null,
   "session_id": "360af56b",
   "log": ""

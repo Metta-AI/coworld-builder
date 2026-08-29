@@ -49,3 +49,7 @@
 2026-08-29T10:47:05Z heartbeat phase=40
 2026-08-29T10:47:47Z 40 dispatched builder sthr_01LLSBWcBi9GsW6T9b6tUdoo brief=release 0.1.0 via coworld-release.yml, persist release-result.json
 2026-08-29T10:47:47Z heartbeat phase=40
+2026-08-29T10:55:54Z 40 builder returned: 0.1.0 | run 33248649858 | step_failed=null | green first dispatch, canonical+certified, secret_put=true, 4 policies v1, champ2 player ply_bac48eb1
+2026-08-29T10:55:54Z progress phase=40 marker=33248649858
+2026-08-29T10:55:54Z 40 -> 50 phase transition: STATE.phase=50
+2026-08-29T10:55:54Z heartbeat phase=50
