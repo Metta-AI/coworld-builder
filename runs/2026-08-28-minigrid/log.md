@@ -74,3 +74,6 @@
 2026-08-29T01:07:08Z progress phase=60 marker=ci-run-33224940969-green
 2026-08-29T01:07:08Z 60 judge r2 dispatched (fresh context) thread=sthr_01ARBUXDhAcrv3uuz3CSvc1Y sha=8a78a6bf output=runs/2026-08-28-minigrid/reviews/r2-verdict.md
 2026-08-29T01:07:08Z heartbeat phase=60
+2026-08-29T01:18:39Z 60 judge r2 returned: r2-verdict.md blocking:0/BLOCKING:0 (well-formed) — all 15 items + all addendum commitments PASS at 8a78a6bf; full independent pass (no r2-review existed); 4 non-blocking observations
+2026-08-29T01:18:39Z progress phase=60 marker=r2-verdict.md
+2026-08-29T01:18:39Z 60 release 0.1.1 dispatch next (builder thread reused)
