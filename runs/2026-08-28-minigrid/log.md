@@ -88,3 +88,4 @@
 2026-08-29T01:50:00Z 60 rounds 15+16 completed with all-v2 entrants (cartographer 52906971, missionfirst bdf22f53); v2 fillers live; verifier round 2 next
 2026-08-29T01:50:00Z progress phase=60 marker=rounds-15-16-completed-v2
 2026-08-29T01:50:00Z heartbeat phase=60
+2026-08-29T01:50:43Z 60 verifier round 2 dispatched thread=sthr_01XSR5o2WtZpfMNh1f3nNY26 against 0.1.1/cow_753b4d23, qualifying rounds >=15
