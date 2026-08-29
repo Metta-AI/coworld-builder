@@ -127,3 +127,5 @@
 2026-08-29T07:05:43Z progress phase=60 marker=r4-verdict.md-BLOCKING-0
 2026-08-29T07:05:43Z 60 -> 70 phase transition: STATE.phase=70, verify block updated to round-3 values per VERIFY.md L1148-1159
 2026-08-29T07:05:43Z heartbeat phase=70
+2026-08-29T07:07:29Z 70 announce attempted_at written before POST (body 1595 chars)
+2026-08-29T07:07:29Z progress phase=70 marker=announce.attempted_at
