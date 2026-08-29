@@ -24,3 +24,6 @@
 2026-08-29T03:49:15Z progress phase=30 marker=r1-verdict.md
 2026-08-29T03:49:15Z 30 -> 40 phase transition: release (sha=2a62f81c ci=33231383944)
 2026-08-29T03:50:02Z 40 builder dispatched for release thread=sthr_01Vj2m8p1ARqUAbPCKVhb6BW version-plan=0.1.0
+2026-08-29T04:00:42Z 40 release dispatch 1/3 version=0.1.0 run=33232381840 success: canonical=true cow_id=cow_88aa79dd-1661-4c42-9024-abb912d2de34 certify.ok=true replay_liveness=skipped-static secret_put=true policies=4x v1 champion2-player=ply_bac48eb1
+2026-08-29T04:00:42Z progress phase=40 marker=release-run-33232381840
+2026-08-29T04:00:42Z 40 -> 50 phase transition: league
