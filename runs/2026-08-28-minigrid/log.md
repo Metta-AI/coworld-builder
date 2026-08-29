@@ -70,3 +70,7 @@
 2026-08-29T00:51:40Z progress phase=60 marker=ci-run-33224429999-green-v2
 2026-08-29T00:51:40Z 60 rails: builder told to fix stale 'eleven turns' in shared system prompt + policies.json (one commit) before judge r2
 2026-08-29T00:51:40Z heartbeat phase=60
+2026-08-29T01:07:08Z 60 builder prompt re-pin returned: sha=8a78a6bf run=33224940969 green (verified) — six-turn wording in llm.nim only; policies.json unchanged deliberately (champions carry no stale count)
+2026-08-29T01:07:08Z progress phase=60 marker=ci-run-33224940969-green
+2026-08-29T01:07:08Z 60 judge r2 dispatched (fresh context) thread=sthr_01ARBUXDhAcrv3uuz3CSvc1Y sha=8a78a6bf output=runs/2026-08-28-minigrid/reviews/r2-verdict.md
+2026-08-29T01:07:08Z heartbeat phase=60
