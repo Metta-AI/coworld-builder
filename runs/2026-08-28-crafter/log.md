@@ -23,3 +23,4 @@
 2026-08-29T03:49:15Z 30 r1 judge returned r1-verdict.md: blocking 0 / BLOCKING 0 (all 25 findings dismissed-fixed-or-documented; independent checklist pass clean; 4 advisories logged)
 2026-08-29T03:49:15Z progress phase=30 marker=r1-verdict.md
 2026-08-29T03:49:15Z 30 -> 40 phase transition: release (sha=2a62f81c ci=33231383944)
+2026-08-29T03:50:02Z 40 builder dispatched for release thread=sthr_01Vj2m8p1ARqUAbPCKVhb6BW version-plan=0.1.0
