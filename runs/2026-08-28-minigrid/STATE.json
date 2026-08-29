@@ -8,7 +8,7 @@
   "phase": "60",
   "phase_attempts": {
     "40": 1,
-    "60": 2
+    "60": 1
   },
   "review_round": 1,
   "coworld": {
@@ -68,8 +68,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T03:17:07Z",
+  "heartbeat_at": "2026-08-29T06:34:04Z",
   "session_ended_at": null,
-  "session_id": "65d65a2f",
+  "session_id": "f1f5afe1",
   "log": "runs/2026-08-28-minigrid/log.md"
 }

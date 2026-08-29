@@ -111,3 +111,5 @@
 2026-08-29T03:17:07Z progress phase=60 marker=release-run-33230336307
 2026-08-29T03:17:07Z 60 league v3 rollover: paused 03:12, champions v3 submitted ok (33230814919, 33230838400), fillers replaced with v3 (verified live), 150s placement wait, unpaused+triggered — round 22 pending with BOTH v3 champions snapshotted
 2026-08-29T03:17:07Z heartbeat phase=60
+2026-08-29T06:34:04Z 00 attempts_reset phase=60 reason=progress marker=release-run-33230336307
+2026-08-29T06:34:04Z 00 resume at phase 60 attempt=1 session=f1f5afe1
