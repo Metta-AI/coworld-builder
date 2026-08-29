@@ -35,3 +35,4 @@
 2026-08-29T04:04:09Z 50 unpaused; trigger-round accepted; round 1 pending; entrant_attributions = both champions
 2026-08-29T04:04:09Z progress phase=50 marker=round-1-pending league_791e396c
 2026-08-29T04:04:09Z 50 -> 60 phase transition: verify
+2026-08-29T04:05:04Z 60 verifier dispatched thread=sthr_01S1AhFMWAesF1DZqCaZbgTB (round 1 pending since 04:02Z; 75-min bound)
