@@ -29,3 +29,7 @@
 2026-08-29T11:28:28Z 30 r1 fixer returned r1-fixes.md: 10 fixed (F1 e9902cc rune-cap stop detail, F2,F3,F4,F5,F6,F13,F14,F16,F17), 8 no-change with evidence (F7,F8,F9,F10,F11,F12,F15,F18); green a8db2b3 run 33249877981
 2026-08-29T11:28:28Z 30 r1 judge dispatched (sha a8db2b3)
 2026-08-29T11:28:28Z heartbeat phase=30
+2026-08-29T11:42:43Z 30 r1 judge returned r1-verdict.md: blocking=1 (legibility item 15: say feed-row unmeasured; fixture SAY 133!=140 runes, no full-length assertion, no feed-row box check). F1 refuted-as-fixed at a8db2b3; items 1-14 PASS
+2026-08-29T11:42:43Z progress phase=30 marker=r1-verdict.md
+2026-08-29T11:42:43Z 30 round 2: reviewer dispatched (head a8db2b3, delta focus + standing verdict finding)
+2026-08-29T11:42:43Z heartbeat phase=30

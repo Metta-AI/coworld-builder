@@ -7,7 +7,7 @@
   "starter": "coworld-ctf",
   "phase": "30",
   "phase_attempts": {},
-  "review_round": 1,
+  "review_round": 2,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T10:51:04Z",
+  "heartbeat_at": "2026-08-29T11:42:43Z",
   "session_ended_at": null,
   "session_id": "9924a629",
   "log": "runs/2026-08-29-continuous-control/log.md"
