@@ -5,19 +5,22 @@
   "slug": "continuous-control",
   "repo": "https://github.com/Metta-AI/cogame-continuous-control",
   "starter": "coworld-ctf",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.1.2",
+    "cow_id": "cow_39456c26-cffa-4d99-9be9-b2b49454143c",
+    "manifest_sha": "sha256:5a975e9fd4511b1ee55ad2f26821f7add5241b036a8a248e85225db713b0b8c4",
+    "release_run_id": "33254010784"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "continuous-control-gaitsmith:v2",
+    "champion2": "continuous-control-throttle:v2",
+    "fillers": [
+      "continuous-control-trotter:v2",
+      "continuous-control-plodder:v2"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -45,7 +48,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T12:46:34Z",
+  "heartbeat_at": "2026-08-29T13:20:56Z",
   "session_ended_at": null,
   "session_id": "9924a629",
   "log": "runs/2026-08-29-continuous-control/log.md"

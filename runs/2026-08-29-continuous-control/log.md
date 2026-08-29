@@ -43,3 +43,12 @@
 2026-08-29T12:46:34Z progress phase=30 marker=r2-verdict.md
 2026-08-29T12:46:34Z 30 -> 40 phase transition: entering release (2 rounds used of 4)
 2026-08-29T12:46:34Z heartbeat phase=40
+2026-08-29T12:47:55Z 40 dispatch version=0.1.0 run=33253409378 step_failed="Build the Coworld manifest" decision=manifest had game.image at the game top level (KeyError image in coworld bundle.py) and resources.limits.memory (extra=forbid); moved image into game.runnable and dropped limits.memory, pushed 0dcd8d1, bumping to 0.1.1
+2026-08-29T12:56:09Z 40 dispatch version=0.1.1 run=33253738053 step_failed="Upload the Coworld" decision=certify passed 10/10 with liveness skipped and all 4 policies minted v1, then upload 400ed "game runnable may not declare a cpu limit; only player pods honor one" — dropped game.runnable.resources.limits (13904cc), bumping to 0.1.2
+2026-08-29T13:02:45Z 40 dispatch version=0.1.2 run=33254010784 step_failed=none decision=SUCCESS ok=true canonical=true cow_id=cow_39456c26-cffa-4d99-9be9-b2b49454143c certify 10/10 liveness skipped, hosted smoke passed + certified, 4 policies at v2 (throttle owned by daveey-1), secret_put=true; release-result.json persisted
+2026-08-29T13:20:00Z 40 note ci: test 40 pinned the image at game.image (the place the CLI never reads) — repointed at game.runnable.image and pinned "no limits on the game runnable" (e144ca1); ci.yml green on main run=33254519406 (test, docker-smoke, wasm-viewer all success)
+2026-08-29T13:20:56Z 40 release green: version 0.1.2 run 33254010784, cow_39456c26-cffa-4d99-9be9-b2b49454143c canonical, certified, 4 policies v2, secret_put; 3 dispatches (0.1.0 manifest KeyError image->runnable, 0.1.1 400 runnable cpu limit, 0.1.2 ok); repo commits 0dcd8d1,13904cc,e144ca1, CI green 33254519406
+2026-08-29T13:20:56Z 40 note for 80-LEARNINGS: templates/ci.yml lacks a coworld-CLI manifest-validate step (two release dispatches burned); triage additions: KeyError image -> game.runnable.image; 400 "game runnable may not declare a cpu limit" -> limits only on player[]
+2026-08-29T13:20:56Z progress phase=40 marker=33254010784
+2026-08-29T13:20:56Z 40 -> 50 phase transition: entering league
+2026-08-29T13:20:56Z heartbeat phase=50
