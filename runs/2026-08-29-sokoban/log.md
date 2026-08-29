@@ -36,3 +36,6 @@
 2026-08-29T10:02:58Z 30 fixer returned r1-fixes.md (16 fixed, 3 dispositioned F6/F10/F14) sha=f31307a run=33246336750 conclusion=success; note: API-replayed commits duplicated the fix series on main, tip tree authoritative, no force-push
 2026-08-29T10:02:58Z progress phase=30 marker=r1-fixes.md
 2026-08-29T10:02:58Z heartbeat phase=30
+2026-08-29T10:06:18Z 30 adopted r1-review-b.md (22 findings, old session's parallel reviewer) into round 1; fixer sthr_01C8YJSdk9Bpgg23U3ek6VRD re-dispatched to triage B-findings vs current main -> reviews/r1-fixes-b.md
+2026-08-29T10:06:18Z 30 note: git-over-HTTPS push auth failing this session; coordinator pushes via REST git-database API (gh api), never forced
+2026-08-29T10:06:18Z heartbeat phase=30
