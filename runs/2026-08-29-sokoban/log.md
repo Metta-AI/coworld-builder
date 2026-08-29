@@ -11,3 +11,6 @@
 2026-08-29T05:24:30Z progress phase=10 marker=runs/2026-08-29-sokoban/design.md
 2026-08-29T05:24:30Z 10 -> 20 phase transition: STATE.phase=20
 2026-08-29T05:24:30Z heartbeat phase=20
+2026-08-29T05:25:21Z 20 repo created: https://github.com/Metta-AI/cogame-sokoban (public)
+2026-08-29T05:25:21Z 20 propagate-secrets run 33236111568 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY on repo
+2026-08-29T05:25:21Z heartbeat phase=20
