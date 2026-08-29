@@ -5,7 +5,7 @@
   "slug": "nethack",
   "repo": "https://github.com/Metta-AI/cogame-nethack",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -45,18 +45,18 @@
     "discord_message_id": "1543118096141656136"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/20771",
+    "branch": "atlas/nethack-33234622143",
+    "region": "simulations",
+    "x": 485,
+    "y": 250,
+    "dispatch_run_id": "33234622143",
+    "attempted_at": "2026-08-29T04:49:42Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-08-29T04:40:47Z",
+  "heartbeat_at": "2026-08-29T04:49:42Z",
   "session_ended_at": null,
   "session_id": "30d37c05",
   "log": "runs/2026-08-28-nethack/log.md"

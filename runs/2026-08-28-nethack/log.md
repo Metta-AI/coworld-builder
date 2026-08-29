@@ -94,3 +94,6 @@
 2026-08-29T04:41:47Z 75 atlas dispatch=33234420917 region=simulations at=536,271 clearance=69.0
 2026-08-29T04:47:05Z 75 atlas dispatch 1 (33234420917) failed: build unplaced-leagues (54 slugs); fix per step 8: mirror queued metta#20746's 53 placements as extra_cities + place crafter myself (494,271 simulations — borrowed 2D-Minecraft RL world) + respot nethack against augmented map
 2026-08-29T04:47:05Z 75 atlas dispatch=33234622143 region=simulations at=485,250 clearance=22.9 extra_cities=54
+2026-08-29T04:49:42Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/20771 status=pr_open (placed 54 leagues incl. crafter for another run; automerge armed, lands via Graphite merge queue)
+2026-08-29T04:49:42Z 75 -> 80 phase transition: STATE.phase=80 written
+2026-08-29T04:49:42Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/20771
