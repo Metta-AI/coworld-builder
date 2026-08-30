@@ -419,3 +419,4 @@
 2026-08-30T02:36:00Z 00 idle: 4 blocked runs, not claiming
 2026-08-30T03:16:00Z 00 idle: 4 blocked runs, not claiming (ladder incident persists: leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 03:15Z; all 4 BLOCKED subtasks open)
 2026-08-30T03:33:30Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; ladder leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 03:33Z)
+2026-08-30T03:59:51Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; ladder leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 2026-08-30T03:59:51Z)
