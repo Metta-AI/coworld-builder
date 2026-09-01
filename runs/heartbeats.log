@@ -599,3 +599,4 @@
 2026-09-01T14:59:51Z 00 idle: 4 blocked runs, not claiming
 2026-09-01T15:14:00Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; leagues 62a1e77b/81761ec5/390fe9da still total_count=0 at 2026-09-01T15:14:00Z — Temporal ladder repair pending; coins awaiting Bedrock quota)
 2026-09-01T15:39:27Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; leagues 62a1e77b/81761ec5/390fe9da still total_count=0 at 2026-09-01T15:39:27Z — Temporal ladder repair pending; coins awaiting Bedrock quota)
+2026-09-01T15:59:00Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open)
