@@ -591,3 +591,4 @@
 2026-09-01T12:18:30Z 00 idle: 4 blocked runs, not claiming
 2026-09-01T12:41:00Z 00 idle: 4 blocked runs, not claiming (subtasks all open; re-checked leagues 62a1e77b/81761ec5/390fe9da: total_count still 0 — Temporal ladder repair still pending)
 2026-09-01T12:59:00Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; re-checked leagues 62a1e77b/81761ec5/390fe9da: total_count still 0 — Temporal ladder repair pending; coins awaiting Bedrock quota subtask)
+2026-09-01T13:19:00Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; leagues 62a1e77b/81761ec5/390fe9da still total_count=0 at 2026-09-01T13:19:00Z — Temporal ladder repair pending; coins awaiting Bedrock quota)
