@@ -10,3 +10,7 @@
 2026-09-03T20:08:00Z progress phase=10 marker=design.md
 2026-09-03T20:08:00Z 10 phase -> 20
 2026-09-03T20:08:00Z heartbeat phase=20
+2026-09-03T20:14:00Z 20 repo created https://github.com/Metta-AI/cogame-battlecode (public)
+2026-09-03T20:15:00Z 20 propagate-secrets run 33801081179 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-battlecode
+2026-09-03T20:17:00Z 20 builder dispatched thread=sthr_01AkqVreNcCLW5hZeYv5QUHv
+2026-09-03T20:17:00Z heartbeat phase=20
