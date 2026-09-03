@@ -752,3 +752,4 @@
 2026-09-03T18:22:33Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; ladder leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 18:22Z)
 2026-09-03T18:34:00Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; ladder leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 18:34Z)
 2026-09-03T19:00:27Z 00 idle: 4 blocked runs, not claiming (subtasks 1217968974654490/1217982805347662/1217968147950044/1217809924523748 all open; ladder leagues 62a1e77b/81761ec5/390fe9da still 0 rounds at 19:00Z)
+2026-09-03T19:26:30Z 00 adopted unblocked run 2026-08-29-sokoban (1217966725746937); not adopted: unblocked run 1217981679055859 (continuous-control), left for next heartbeat
