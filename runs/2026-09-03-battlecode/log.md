@@ -34,3 +34,6 @@
 2026-09-03T23:59:00Z progress phase=20 marker=ci-run-33818291222
 2026-09-03T23:59:00Z 20 phase -> 30 review_round=1
 2026-09-03T23:59:00Z heartbeat phase=30
+2026-09-04T00:08:00Z 30 r1 reviewer dispatched thread=sthr_01Wx8sVsbuH9Bd8fc2zWBRtK output=runs/2026-09-03-battlecode/reviews/r1-review.md
+2026-09-04T00:08:00Z 30 note: git-over-HTTPS push broken in sandbox — coworld-builder pushes now via GitHub Git Data API (gh api, force=false)
+2026-09-04T00:08:00Z heartbeat phase=30
