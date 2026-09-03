@@ -60,8 +60,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T20:09:34Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-03T20:11:45Z",
+  "session_ended_at": "2026-09-03T20:11:45Z",
   "session_id": "67e3eae0",
   "log": ""
 }
