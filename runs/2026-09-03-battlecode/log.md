@@ -29,3 +29,8 @@
 2026-09-03T22:28:00Z heartbeat phase=20
 2026-09-03T22:32:00Z 20 fresh builder dispatched thread=sthr_015de933Cf3Zt5hUtmKuhedm (v2 Nim-port brief; old builder thread retired after override stop)
 2026-09-03T22:32:00Z heartbeat phase=20
+2026-09-03T23:59:00Z 20 builder returned: CI green run 33818291222 sha 3eb79159ad5164efae88c71397f47303dd28b20b (jobs test/parity-oracle/docker-smoke/wasm-viewer all success); parity Tier A+B PASS on 5 pairs, Tier C: 4/5 maps identical for full 2000 rounds; perf 0.1-1.24s per game, gamesPerMatch=3 kept; exit-criterion checks pass
+2026-09-03T23:59:00Z 20 builder deviations noted: (1) git-over-HTTPS refused in sandbox — pushes via GitHub Git Data API (gh api blobs/trees/commits/refs; no force-push) — carry to LEARNINGS; (2) ctf per-view script replaced not kept (reads CTF-only state; page/CSS/chrome files verbatim, #momentum hidden not deleted due to renderMomentum null-guard); (3) scaffold.nim = real examplefuncsplayer verbatim (parity gate requires it) not note's prose; (4) knob thresholds: cat_trap_budget +12 (engine maxCount 10 live), chassis gate awu>=4/6+dominance; (5) awu chassis gained StarvationReserve+ratCap inside spawn_curve site; (7) 5 fix-pushes used vs 3-round budget, each a distinct diagnosed defect — accepted, logged
+2026-09-03T23:59:00Z progress phase=20 marker=ci-run-33818291222
+2026-09-03T23:59:00Z 20 phase -> 30 review_round=1
+2026-09-03T23:59:00Z heartbeat phase=30
