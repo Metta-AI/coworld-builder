@@ -21,7 +21,11 @@ idea that cannot be started (confidential, or unmappable to any starter) never c
 
 ## When 90 is legitimate
 
-Only: a missing credential or permission; a platform outage persisting > 45 minutes; a rule the
+Only: a missing credential or permission; a platform outage persisting > 45 minutes **with a
+control** (the same call against a healthy, older league fails the same way in the same minute —
+a *silent* ladder, i.e. `trigger-round` 200 with no round row and no error, is a refusal gate,
+not an outage: check `GET /leagues/$L/owner-status` → `credits.pool_credits` and
+`budget.daily_budget_usd`, and phase 50 step 7b, before you are here); a rule the
 idea leaves genuinely open **and** whose readings give materially different games; a certification
 failure that survived three *distinct* fixes; anything destructive.
 
@@ -35,17 +39,30 @@ equivalent API shapes. If the reason is on that list, go back and decide it.
    ```json
    {"phase":"40","at":"2026-08-22T16:40:00Z",
     "ask":"<one line: the single decision/credential/action needed>",
+    "probe":"<shell one-liner, exit 0 = the ask is satisfied; null ONLY for a pure human decision>",
     "error":"<exact error text>",
     "attempts":["<what was tried 1>","<2>","<3>"],
     "subtask":"<asana gid>"}
    ```
+   **The probe is mandatory whenever the ask is observable from an API.** It is what lets the
+   queue heal without a human: `prompts/00-claim.md` step 3.2b runs it every heartbeat and
+   completes this subtask itself when it exits 0. Write it against the vault credentials in the
+   environment, e.g. rounds exist —
+   `curl -sfS "$BASE/rounds?league_id=$L&limit=1" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "X-Use-Elevated-Privileges: true" | jq -e '.entries|length>0'`;
+   pool funded — `... "$BASE/leagues/$L/owner-status" ... | jq -e '.credits.pool_credits>0'`;
+   secret present — `gh secret list -R Metta-AI/cogame-<slug> | grep -q '^SOFTMAX_TOKEN'`;
+   throttling gone — fetch the newest completed episode's hosted log and `! grep -q 'Too many
+   tokens'`. A probe that cannot be written honestly means the ask is a human decision — say so
+   in the subtask and set `probe: null`.
 2. Create a subtask on the run task from `templates/blocked-subtask.md`:
    - title `BLOCKED <slug> @<phase>: <one-line ask>`
    - assignee `1209016834701578`
    - body: **what failed** (exact error text in a code block), **what was tried** (the three
      attempts, each with what changed), **what is needed** (exactly one decision, credential, or
      action — not a menu), and the literal line:
-     `Resume: complete this subtask; the next heartbeat resumes at phase <n>`
+     `Resume: complete this subtask; the next heartbeat resumes at phase <n>`, and the literal
+     line `Probe: <the probe, or "none — human decision">` (the heartbeat completes this subtask
+     itself once the probe passes; a human completing it first is equally fine)
    - **Scrub before pasting.** CI logs and HTTP error bodies routinely carry credentials in URLs
      and headers. Replace anything token-shaped with `<redacted>` — `ghp_…`, `gho_…`, `ghs_…`,
      `github_pat_…`, `sk-ant-…`, `Bearer <…>`, `x-api-key: <…>`, `?X-Amz-Signature=…`,

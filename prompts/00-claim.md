@@ -87,6 +87,14 @@ just a run you do not touch.
       recorded at `prompts/90-blocked.md` step 1). That is the human subtask.
    2. Only if `STATE.blocked.subtask` is missing, fall back to the subtask whose name starts with
       `BLOCKED ` (the title prefix phase 90 sets) and which is assigned to `1209016834701578`.
+   2b. **Run the probe first.** If `STATE.blocked.probe` is a non-empty string, execute it
+      (`timeout 60 bash -c "$PROBE"`; the vault credentials are in the environment). Exit 0 means
+      the world has supplied what the ask names: complete the subtask yourself
+      (`PUT /tasks/<gid> {"data":{"completed":true}}`), post one comment on it —
+      `probe passed by coworld-builder: <probe>` — and treat it as `completed: true` in 3.3.
+      Non-zero → still blocked; log `<UTC> 00 probe run=<run> result=fail` in the heartbeat's
+      closing note (not the run's `log.md`, which is off limits while it is not yours). A probe
+      that errors (missing tool, bad JSON) counts as fail, never as pass.
    3. If that one subtask is `completed: true`, move the task to *Running*, then **clear the
       block before resuming**: set `STATE.phase_attempts[<STATE.phase>] = 0` and
       `STATE.blocked = null` (the human answered; the phase gets its full budget back, and a
@@ -99,10 +107,25 @@ just a run you do not touch.
    **If a *Blocked* run's subtask is still open, control falls through to step 4 and this
    heartbeat claims a NEW idea.** That is deliberate: a run waiting on a human must not stop the
    queue. Two bounds on it:
-   - **At most 2 run tasks may sit in *Blocked* at once.** If there are already 2, do **not**
-     claim a new idea — log `<UTC> 00 idle: <n> blocked runs, not claiming` to
-     `runs/heartbeats.log` and exit. A third
-     blocked run means the humans are the bottleneck and more work would only pile up.
+   - **At most 2 run tasks may sit *freshly* *Blocked* at once** — `STATE.blocked.at` less than
+     24 h old. If there are already 2 fresh ones, do **not** claim a new idea — log
+     `<UTC> 00 idle: <n> blocked runs (<f> fresh), not claiming` to `runs/heartbeats.log` and go
+     to 3.5. A third fresh block means the humans are the bottleneck and more work would only
+     pile up. **Stale blocks (≥ 24 h) do not count**: a day of silence is not a human actively
+     deciding, and freezing every new idea behind it helped nobody (four stale blocks held the
+     queue for five days, 2026-08-29→09-03). Missing `blocked.at` → use the subtask's
+     `created_at`.
+   3.5. **Escalate stalled blocks once per UTC day.** Whenever ≥ 2 run tasks are *Blocked* (fresh
+     or stale) at the end of step 3, and no Fleet-section card titled
+     `QUEUE STALLED <today YYYY-MM-DD>: <n> blocked runs` exists yet (list the Fleet section
+     `1217747860605582` and match on the `QUEUE STALLED <today>` prefix — dedupe by prefix, not
+     by the count), create exactly one, assigned to David Bloomin (`1209016834701578`), body =
+     one line per Blocked run: `<slug> @<phase> since <blocked.at>: <ask> — <subtask url>`
+     (plus `probe: <probe>` or `probe: none`), and post the same list to Discord `#coworlds`
+     (`1440464430646427718`, the phase-70 curl shape, `flags: 4`, body starting with the card
+     title; search the last 50 messages for that title first and skip the post if found).
+     Append `<UTC> 00 escalated stalled blocks card=<gid> discord=<msg id|skipped>` to
+     `runs/heartbeats.log`. Then continue to step 4 (stale blocks no longer stop a claim).
    - Blocked runs are checked (step 3) on **every** heartbeat, before any new claim, so an
      unblocked run always resumes ahead of new work.
 

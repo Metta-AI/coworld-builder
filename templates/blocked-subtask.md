@@ -4,7 +4,9 @@ Goes to: a **subtask of the run task** on the Coworld Builder board, assigned to
 **David Bloomin** (`1209016834701578`). The run task itself moves to *Blocked*.
 Written by `prompts/90-blocked.md`. SPEC §Blocked.
 
-Substitute: `<slug>`, `<phase>` (`00`…`80`), `<one-line ask>`, `<run>`, and the bodies below.
+Substitute: `<slug>`, `<phase>` (`00`…`80`), `<one-line ask>`, `<run>`, `<probe>`, and the
+bodies below. `<probe>` is the shell one-liner from `STATE.blocked.probe` (or `none — human
+decision`); the heartbeat completes this subtask itself when the probe exits 0.
 
 ---
 
@@ -42,6 +44,8 @@ Repo:  https://github.com/Metta-AI/cogame-<slug>
 Phase: <phase> — <phase name>
 
 Resume: complete this subtask; the next heartbeat resumes at phase <phase>.
+
+Probe: <probe>
 ```
 
 ## Rules

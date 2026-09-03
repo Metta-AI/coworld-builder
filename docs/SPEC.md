@@ -54,9 +54,17 @@ that names exactly what is needed, and exits.
      then re-GETs the Asana `heartbeat_at` custom field after 20 s and exits if the value moved
      past its own stamp. Only a session that survives all three checks works the phase.
      (`prompts/00-claim.md` step 5.0.)
-     **(b)** else a run task in *Blocked* whose `STATE.blocked.subtask` is complete → move it to
-     *Running* and **resume** (through the same step 2a guard).
-     **(c)** else, **if `live` < `max_parallel_runs` and fewer than 2 runs are *Blocked***, claim
+     **(b)** else a run task in *Blocked* whose `STATE.blocked.subtask` is complete — **or whose
+     `STATE.blocked.probe` passes** — → move it to *Running* and **resume** (through the same step
+     2a guard). The probe is a shell one-liner phase 90 records next to the ask that exits 0 once
+     the world has supplied what the ask names (a round row exists, a pool balance is > 0, a
+     secret is listed, a hosted log is free of the throttling string). Every heartbeat runs every
+     Blocked run's probe before anything else; a pass completes the human subtask itself (comment
+     `probe passed by coworld-builder: <probe>`) and resumes. The human is the fallback, never the
+     only path back — 2026-08-29→09-03 three runs sat five days on a condition a probe would have
+     cleared the minute it changed.
+     **(c)** else, **if `live` < `max_parallel_runs` and fewer than 2 runs are *freshly* *Blocked***
+     (`STATE.blocked.at` < 24 h old), claim
      the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that
      already have a run task), create the run task, and start at phase 00 — the existing
      comment-first claim and SKIPPED rules, unchanged.
@@ -66,7 +74,15 @@ that names exactly what is needed, and exits.
      `<UTC> 00 idle: <n> blocked runs, not claiming` line.)
 
      A *Blocked* run whose subtask is still open does **not** stop (c): the queue keeps moving,
-     bounded at **2 simultaneously-Blocked runs** — at 2, the heartbeat claims nothing and exits.
+     bounded at **2 simultaneously *fresh*-Blocked runs** (`STATE.blocked.at` < 24 h) — at 2, the
+     heartbeat claims nothing and exits. A block older than 24 h **stops counting**: the bound
+     exists to stop work piling up while a human is actively deciding, and a day of silence is
+     not that (four stale blocks froze the queue for five days, 2026-08-29→09-03). While ≥ 2 runs
+     are *Blocked* (fresh or stale) the idle heartbeat also **escalates once per UTC day**: one
+     Fleet-section card `QUEUE STALLED <YYYY-MM-DD>: <n> blocked runs` assigned to David Bloomin
+     (deduped by title) listing every open ask with its subtask link, and one Discord `#coworlds`
+     post with the same list (`flags: 4`; search the channel for the card title first and post
+     nothing if it is there).
      An idea the coordinator **cannot start** is **SKIPPED**, not Blocked: its text is marked
      confidential (a public repo would publish it), or it cannot be mapped to any starter and the
      gap is one §Rails calls a human decision. A SKIP is one
@@ -280,7 +296,12 @@ The run task moves to *Blocked*; a subtask is created, **assigned to David Bloom
 (`1209016834701578`), titled `BLOCKED <slug> @<phase>: <one-line ask>`, body = what failed
 (exact error text), what was tried (the three attempts), the single decision/credential/
 action needed, and `Resume: complete this subtask; the next heartbeat resumes at phase <n>`.
-STATE.blocked records the same. The coordinator exits. The idea task gets one comment.
+STATE.blocked records the same, plus **`at`** (UTC) and **`probe`**: a shell one-liner (curl/jq,
+the vault credentials in the environment) that exits 0 once the ask is satisfied. Whenever the ask
+is observable from an API the probe is mandatory — `rounds` non-empty, `owner-status
+.credits.pool_credits > 0`, a repo secret listed, a fresh hosted log free of `429`/`unavailable` —
+and only a genuine human *decision* may carry `probe: null`. §Runtime step (b) runs it every
+heartbeat. The coordinator exits. The idea task gets one comment.
 Never mark Blocked for something the rails say the agent decides itself (starter choice,
 scoring rule when the idea pins one, parameter tuning).
 

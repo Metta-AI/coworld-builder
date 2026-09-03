@@ -31,9 +31,13 @@ Every firing of a deployment is a *heartbeat*. Run these steps in order, every t
    `STATE.session_ended_at` is ≥ `heartbeat_at`, meaning the last session ended cleanly and is
    not coming back — is yours: **resume** at `STATE.json.phase`, through the session-nonce
    guard in step 2a.
-   **(b)** else a run task in *Blocked* whose `STATE.blocked.subtask` is complete → move it to
-   *Running* and **resume** (same step 2a guard).
-   **(c)** else, **if `live` < `max_parallel_runs` and fewer than 2 run tasks are *Blocked***,
+   **(b)** else a run task in *Blocked* whose `STATE.blocked.subtask` is complete **or whose
+   `STATE.blocked.probe` exits 0** (run every Blocked run's probe first, every heartbeat; a pass
+   completes the subtask yourself with the comment `probe passed by coworld-builder: <probe>`) →
+   move it to *Running* and **resume** (same step 2a guard).
+   **(c)** else, **if `live` < `max_parallel_runs` and fewer than 2 run tasks are *freshly*
+   *Blocked*** (`STATE.blocked.at` < 24 h; older blocks do not count, but while ≥ 2 runs are
+   Blocked at all you escalate once per UTC day — `prompts/00-claim.md` step 3.5),
    claim the top **unclaimed, incomplete** Coworld Idea (board order; skip ideas that already have
    a run task), create the run task, and start at phase 00 — the comment-first claim and the
    SKIPPED rules in `prompts/00-claim.md` step 4, unchanged.
