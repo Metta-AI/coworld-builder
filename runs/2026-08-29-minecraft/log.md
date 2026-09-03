@@ -107,3 +107,7 @@
 2026-09-03T19:58:13Z heartbeat phase=75
 2026-09-03T20:01:11Z 75 atlas dispatch 2 (33799475756) failed: stale CITIES line paintbot/classic not in fresh coworld-stats; fix per step 8 = drop_slugs=paintbot/classic
 2026-09-03T20:01:11Z 75 atlas dispatch=33799764998 region=simulations at=503,274 extra_cities=61 drop_slugs=paintbot/classic (dispatch 3/3)
+2026-09-03T20:04:33Z 75 atlas unplaced reason="dispatch 3 (33799764998) failed step=build: places.mjs names a league that is not in data/coworld-stats.json: paintbot/ctf; budget exhausted (33799293022, 33799475756, 33799764998); fleet card 1218164029642403 filed; minecraft dot rides queued metta#21381 at 503,274"
+2026-09-03T20:04:33Z progress phase=75 marker=33799764998
+2026-09-03T20:04:33Z 75 phase -> 80
+2026-09-03T20:04:33Z heartbeat phase=80

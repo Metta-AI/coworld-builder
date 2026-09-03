@@ -5,7 +5,7 @@
   "slug": "minecraft",
   "repo": "https://github.com/Metta-AI/cogame-minecraft",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "40": 0,
     "50": 1
@@ -48,18 +48,18 @@
     "discord_message_id": "1545159977252163634"
   },
   "atlas": {
-    "status": "",
+    "status": "unplaced",
     "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "branch": "atlas/minecraft-33799764998",
+    "region": "simulations",
+    "x": 503,
+    "y": 274,
+    "dispatch_run_id": "33799764998",
+    "attempted_at": "2026-09-03T20:04:33Z",
+    "reason": "3 dispatches failed at step=build: (1) unplaced leagues: polyduel; (2) stale CITIES line paintbot/classic not in coworld-stats; (3) stale CITIES line paintbot/ctf — paintbot sub-league stats rotting one at a time, fetch-stats.mjs needs a human; queued metta#21381 (coins) already carries minecraft at 503,274"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:54:14Z",
+  "heartbeat_at": "2026-09-03T20:04:33Z",
   "session_ended_at": null,
   "session_id": "3a2c80b9",
   "log": "runs/2026-08-29-minecraft/log.md"
