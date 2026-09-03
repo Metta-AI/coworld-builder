@@ -81,3 +81,4 @@
 2026-09-03T19:26:55Z 50 -> 60 phase transition: STATE.phase=60
 2026-09-03T19:26:55Z heartbeat phase=60
 2026-09-03T19:27:31Z 60 dispatching verifier sub-agent (brief: runs/2026-08-29-sokoban, league_81761ec5, div_e9cf6fb5, cow_71631422, VERIFY.md)
+2026-09-03T19:28:17Z 60 verifier dispatched thread=sthr_01HQFhzKMqMNmk9guHmWwP2t
