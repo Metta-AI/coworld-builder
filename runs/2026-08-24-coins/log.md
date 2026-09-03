@@ -147,3 +147,4 @@
 2026-09-03T19:35:11Z progress phase=70 marker=discord_message_id=1545155170713862245
 2026-09-03T19:35:11Z 00 phase transition 70 -> 75
 2026-09-03T19:35:49Z 75 atlas continent=commons (mixed-motive spatial PD: theft nets pair -1, truce vs defection is the game — not zero-sum) spot=416,574 clearance=22.9
+2026-09-03T19:36:09Z 75 atlas dispatch=33797366211 region=commons at=416,574 clearance=22.9
