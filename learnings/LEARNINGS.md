@@ -1502,3 +1502,28 @@ the starter after the fact.
 - Scrubber 100% can land on frame N−1 of N (here 578/579), making an endcard whose scores land on
   the final frame unreachable from the scrub bar — spectators see pre-credit zeros. Map 100% to
   the last frame inclusive, and put the endcard state in the renderer fixture (crafter's rule).
+
+## 2026-09-03 coins (close of the 2026-08-24 run)
+
+- A haiku-only coworld (no sonnet fallback, the raid learning) turns a platform-wide Bedrock
+  haiku daily-token 429 into a hard Block: 85% of orders fell back to the scripted reciprocator
+  and the PD never produced a theft in six rounds. The unblock path worked exactly as designed —
+  operator completes the Blocked subtask, next heartbeat resumes phase 60, fresh round re-verify
+  went 8/8 with 24/24 LLM orders — but the run sat 9 days. If an idea is throttle-sensitive,
+  the design note should say which is worse: scripted-fallback episodes (haiku-only) or timeout
+  risk (sonnet fallback).
+- While a run is Blocked for days the platform moves: canonical advanced past the run's release
+  (v0.1.4 cow_bd320430 vs our v0.1.2 cow_e5c32ad5 — replay-session POST 404s on the old cow_id),
+  outside entrants joined and out-ranked both champions, the leaderboard label switched Elo→MMR,
+  and the ladder cadence decayed to ~4h48m against round_interval_minutes=15. Phase 60 checks as
+  written all survive this (champions must be *ranked*, not leading; check 6/8 judge what the
+  page actually serves) — verify against the latest completed round, never wait for a fresh one
+  on an old league.
+- Atlas backlog compounds: dispatch 1 for one new dot named **60** unplaced leagues, because
+  earlier runs' atlas PRs never merged (Graphite queue) or predated phase 75. extra_cities
+  handles 60 entries fine (~3.5 KB input). Iterate atlas_spot.py by appending each pick into the
+  local places.mjs copy so picks don't collide; seed the real coordinates of multi-line CITIES
+  entries first (atlas_spot's regex misparses them — it read sugarscape-2's "2" as x). And before
+  re-dispatching, diff EVERY places.mjs slug against /api/coworlds so stale lines
+  (paintbot/classic, paintbot/ctf) go into drop_slugs in the same dispatch — that turned three
+  dispatches into exactly the budget, not over it.
