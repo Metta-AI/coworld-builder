@@ -111,3 +111,7 @@
 2026-09-03T20:04:33Z progress phase=75 marker=33799764998
 2026-09-03T20:04:33Z 75 phase -> 80
 2026-09-03T20:04:33Z heartbeat phase=80
+2026-09-03T20:06:58Z 80 close: summary on run task (1218164219884174) + idea task (1218164108683359); LEARNINGS section appended (fb5c7ba); all 9 phase subtasks complete; idea 1217748424095396 completed; run task moved to Done
+2026-09-03T20:06:58Z progress phase=80 marker=run-task-Done
+2026-09-03T20:06:58Z 00 session end: run closed at phase 80 (Done); no next action — run complete
+2026-09-03T20:06:58Z heartbeat phase=80

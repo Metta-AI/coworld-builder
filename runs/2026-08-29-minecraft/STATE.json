@@ -59,8 +59,8 @@
     "reason": "3 dispatches failed at step=build: (1) unplaced leagues: polyduel; (2) stale CITIES line paintbot/classic not in coworld-stats; (3) stale CITIES line paintbot/ctf — paintbot sub-league stats rotting one at a time, fetch-stats.mjs needs a human; queued metta#21381 (coins) already carries minecraft at 503,274"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T20:04:33Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-03T20:06:58Z",
+  "session_ended_at": "2026-09-03T20:06:58Z",
   "session_id": "3a2c80b9",
   "log": "runs/2026-08-29-minecraft/log.md"
 }
