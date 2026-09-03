@@ -96,3 +96,6 @@
 2026-09-03T19:47:06Z 60 check8 TRUE viewer-check run 33797533088 loaded=true ms=2127 three differing clocks (0/6 SCORE 0 -> 2/6 SCORE 3120229 -> 3/6 SCORE 6210286 = final); supporting run 33797255773 (champion replay) loaded=true but 100% seek did not take (50%==100%); artifacts committed under viewer-check/ and viewer-check-champion/
 2026-09-03T19:47:06Z 60 VERIFY.md written: 8/8 TRUE, findings 4e, 6c, scrubber seek-swallow, sprite-protocol warnings, canvas-painted feed, replay_summary tickCount cosmetic bug
 2026-09-03T19:47:06Z heartbeat phase=60
+2026-09-03T19:48:34Z 60 verifier returned: VERIFY.md 8/8 TRUE (commit efc8209); rounds round_dc0067cb+round_df339820 completed, both champions ranked rounds_played=2, static iframe route, viewer-check run 33797533088 loaded=true 3 differing clocks; 5 non-blocking findings (4e levelsSolved bar unmet by champs in round 2, 6c featured-match always showcase for single-seat, scrubber seek-swallow on champion replay run 33797255773, sprite-protocol console warnings, canvas-painted feed text)
+2026-09-03T19:48:34Z progress phase=60 marker=round_df339820-d1e5-49bf-ba9d-dafd922900f9
+2026-09-03T19:48:34Z heartbeat phase=60
