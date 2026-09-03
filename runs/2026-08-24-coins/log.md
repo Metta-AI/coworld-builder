@@ -142,3 +142,4 @@
 2026-09-03T19:33:34Z 60 phase complete — definition-of-done all-true
 2026-09-03T19:33:34Z progress phase=60 marker=verify-verdict-BLOCKING-0-42f3c12
 2026-09-03T19:33:34Z 00 phase transition 60 -> 70
+2026-09-03T19:34:52Z 70 announce attempted_at written and pushed before POST
