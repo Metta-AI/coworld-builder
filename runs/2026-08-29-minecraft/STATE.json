@@ -8,7 +8,7 @@
   "phase": "50",
   "phase_attempts": {
     "40": 0,
-    "50": 1
+    "50": 0
   },
   "review_round": 1,
   "coworld": {
@@ -54,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:17:19Z",
+  "heartbeat_at": "2026-09-03T19:17:14Z",
   "session_ended_at": null,
   "session_id": "789c7686",
   "log": "runs/2026-08-29-minecraft/log.md"
