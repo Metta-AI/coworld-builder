@@ -76,3 +76,4 @@
 2026-09-03T19:32:08Z progress phase=50 marker=round_26e98f6c-a4d5-4c23-bd62-0ba167ed7f8b
 2026-09-03T19:32:08Z 50 -> 60 phase transition: entering verify
 2026-09-03T19:32:08Z heartbeat phase=60
+2026-09-03T19:33:15Z 60 verifier dispatched thread=sthr_01JFFKZ62ptaT2y9ahXwBtek (8 checks + viewer-check.yml; 2 rounds already completed)
