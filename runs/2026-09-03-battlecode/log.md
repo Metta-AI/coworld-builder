@@ -21,3 +21,9 @@
 2026-09-03T21:32:00Z 20 builder confirmed STOP: zero commits/refs/CI runs on cogame-battlecode, working tree discarded — nothing to unwind
 2026-09-03T21:33:00Z 10 designer re-dispatched on thread sthr_015DB6u6T6MD4NwjbKcGVose with override brief; output=runs/2026-09-03-battlecode/design-draft-v2.md; addendum sent (map-pool names bad at engine.1.2.5; float32 share narrowing; cooperation_at_end from Turn.isCooperation not winType; local JDK21 for parity vectors)
 2026-09-03T21:33:00Z heartbeat phase=10
+2026-09-03T22:24:00Z 10 designer returned design-draft-v2.md (927 lines) round 1 (v2 after operator override) thread=sthr_015DB6u6T6MD4NwjbKcGVose
+2026-09-03T22:28:00Z 10 checklist v2: starter=coworld-ctf[x] num_agents=2-in-variant+cert[x] resolution-order-numbered-1..8[x] scoring+f32+truncation+ranks[x] end-conditions+reason{complete,deadline,fault}[x] observation-visible-vs-hidden[x] reply-schema+rune-caps[x] both-policies-env-switched[x] one-batch+435s<=720s[x] degrade-never-hang[x] two-namespaces[x] viewer-static-wasm+360px[x] four-viewer-files-one-starter=coworld-ctf[x] chrome-provenance+viewpanel-kept[x] transport-rules[x] replay-self-sufficient-by-rederivation+hashchain[x] packaging[x] tests-incl-parity-oracle+knob-teeth+perf-gate+viewer-smoke-executed[x] out-of-scope-non-empty[x] override-items-1..8-discharged[x] steer-20:57-discharged[x] — ACCEPTED round 1
+2026-09-03T22:28:00Z 10 design v2 accepted -> runs/2026-09-03-battlecode/design.md (supersedes v1)
+2026-09-03T22:28:00Z progress phase=10 marker=design.md
+2026-09-03T22:28:00Z 10 phase -> 20
+2026-09-03T22:28:00Z heartbeat phase=20
