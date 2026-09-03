@@ -105,3 +105,5 @@
 2026-09-03T19:58:13Z 75 atlas dispatch 1 (33799293022) failed: build unplaced leagues: polyduel (new since coins snapshot); fix per step 8 = extra_cities +polyduel placed at 808,322 tabletop (two-player card battler, cl 22.9)
 2026-09-03T19:58:13Z 75 atlas dispatch=33799475756 region=simulations at=503,274 extra_cities=61
 2026-09-03T19:58:13Z heartbeat phase=75
+2026-09-03T20:01:11Z 75 atlas dispatch 2 (33799475756) failed: stale CITIES line paintbot/classic not in fresh coworld-stats; fix per step 8 = drop_slugs=paintbot/classic
+2026-09-03T20:01:11Z 75 atlas dispatch=33799764998 region=simulations at=503,274 extra_cities=61 drop_slugs=paintbot/classic (dispatch 3/3)
