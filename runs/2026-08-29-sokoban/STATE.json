@@ -36,9 +36,13 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_dc0067cb-f121-4de9-a81f-98c3cfc6741e",
+      "round_df339820-d1e5-49bf-ba9d-dafd922900f9"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/18ab1e45-c40c-442a-b964-a82fb10a0b6a.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33797533088"
   },
   "announce": {
     "attempted_at": null,
@@ -56,7 +60,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:26:55Z",
+  "heartbeat_at": "2026-09-03T19:46:48Z",
   "session_ended_at": null,
   "session_id": "67e3eae0",
   "log": ""

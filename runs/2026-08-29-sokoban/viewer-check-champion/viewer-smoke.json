@@ -1,0 +1,70 @@
+{
+  "loaded": true,
+  "ms": 5958,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_71631422-adaa-43fd-b234-5f1aa8a08b43/sha256%3A91df94dc27d710b8116aca94e1fe8c9162302f8e54661a3bbeabb3cff15f11bd/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F18ab1e45-c40c-442a-b964-a82fb10a0b6a.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0",
+  "scorebug": "ALPHA pusher SCORE 0 SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0"
+    },
+    {
+      "at": "50%",
+      "clock": "SOLVED 0/6 WEIGHT 0/12 · MOVE 87/200 · SCORE 60000"
+    },
+    {
+      "at": "100%",
+      "clock": "SOLVED 0/6 WEIGHT 0/12 · MOVE 87/200 · SCORE 60000"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[warning] Unknown sprite protocol message type: 108",
+    "[warning] Unknown sprite protocol message type: 108",
+    "[warning] Unknown sprite protocol message type: 108",
+    "[warning] Unknown sprite protocol message type: 108",
+    "[warning] Unknown sprite protocol message type: 108",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34",
+    "[warning] Unknown sprite protocol message type: 34"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

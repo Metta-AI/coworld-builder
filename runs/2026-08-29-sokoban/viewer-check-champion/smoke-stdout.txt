@@ -1,0 +1,4 @@
+{"loaded":true,"ms":5958,"clock":"SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0","scorebug":"ALPHA pusher SCORE 0 SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0","feed_lines":0}
+scrub readouts: 0%="SOLVED 0/6 WEIGHT 0/12 · MOVE 0/200 · SCORE 0"  50%="SOLVED 0/6 WEIGHT 0/12 · MOVE 87/200 · SCORE 60000"  100%="SOLVED 0/6 WEIGHT 0/12 · MOVE 87/200 · SCORE 60000"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

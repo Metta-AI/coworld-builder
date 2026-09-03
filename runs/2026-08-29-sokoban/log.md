@@ -82,3 +82,17 @@
 2026-09-03T19:26:55Z heartbeat phase=60
 2026-09-03T19:27:31Z 60 dispatching verifier sub-agent (brief: runs/2026-08-29-sokoban, league_81761ec5, div_e9cf6fb5, cow_71631422, VERIFY.md)
 2026-09-03T19:28:17Z 60 verifier dispatched thread=sthr_01HQFhzKMqMNmk9guHmWwP2t
+2026-09-03T19:31:30Z 60 poll rounds: [{"n":2,"s":"completed","id":"round_df339820-d1e5-49bf-ba9d-dafd922900f9","err":null},{"n":1,"s":"completed","id":"round_dc0067cb-f121-4de9-a81f-98c3cfc6741e","err":null}]
+2026-09-03T19:31:30Z heartbeat phase=60
+2026-09-03T19:41:01Z 60 poll rounds: [{"n":3,"s":"pending","id":"round_86a273e3-c46d-44fb-b0d0-b1965fed95a2","err":null},{"n":2,"s":"completed","id":"round_df339820-d1e5-49bf-ba9d-dafd922900f9","err":null},{"n":1,"s":"completed","id":"round_dc0067cb-f121-4de9-a81f-98c3cfc6741e","err":null}]
+2026-09-03T19:41:01Z heartbeat phase=60
+2026-09-03T19:47:06Z 60 check1 TRUE 2 completed rounds (round_dc0067cb r1 19:14:17Z, round_df339820 r2 19:29:22Z), 0 failed/discarded; fillers set 2026-08-29T10:59:29Z (live filler-policies read confirms ddfec3df+fc2ef667)
+2026-09-03T19:47:06Z 60 check2 TRUE leaderboard: daveey rank4 sokoban-lookahead:v1 990.05 rounds_played=2; daveey-1 rank6 sokoban-orderfirst:v1 913.95 rounds_played=2; fillers absent
+2026-09-03T19:47:06Z 60 check3 TRUE latest round 2 -> ereq_3abc05c3 (daveey) + ereq_29c9fae7 (daveey-1) completed with replay_urls; single-seat game so one champion per episode; 1 failed ereq_6fdc0eb2 = outsider docxology "player slot 0 never registered; the seat played the pusher baseline"
+2026-09-03T19:47:06Z 60 check4 TRUE protocol=sokoban/v1 reason=complete endRule=ladderComplete, 53/53 llm plans, 0 fallbacks, 20 pushes; binary COWLDSOK replay per design.md 1221-1246 + docs/PROTOCOL.md, strict JSON via tools/replay_summary.py; FINDING 4e design bar levelsSolved>=1 not met in r2 (0/6 both champions), met in r1 daveey (1/6)
+2026-09-03T19:47:06Z 60 check5 TRUE hosted logs CLEAN for both champion ereqs (decoded b'' reprs; 53 openrouter calls all 200)
+2026-09-03T19:47:06Z 60 check6 TRUE static route via POST /coworlds/replays/session ready=true .../replays/static/cow_71631422/sha256%3A91df94.../index.html?v=2#replay=...; source=page raw grep (empty) + SSR payload + client bundle + session endpoint; coworld API featured_match=null (platform-wide); FINDING 6c playlist[] structurally empty for single-seat, featured match resolves via showcase mode over pool.replays (peak score 63f695d7 sokoban-example)
+2026-09-03T19:47:06Z 60 check7 TRUE release-result.json (committed phase-40 copy): "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-09-03T19:47:06Z 60 check8 TRUE viewer-check run 33797533088 loaded=true ms=2127 three differing clocks (0/6 SCORE 0 -> 2/6 SCORE 3120229 -> 3/6 SCORE 6210286 = final); supporting run 33797255773 (champion replay) loaded=true but 100% seek did not take (50%==100%); artifacts committed under viewer-check/ and viewer-check-champion/
+2026-09-03T19:47:06Z 60 VERIFY.md written: 8/8 TRUE, findings 4e, 6c, scrubber seek-swallow, sprite-protocol warnings, canvas-painted feed, replay_summary tickCount cosmetic bug
+2026-09-03T19:47:06Z heartbeat phase=60
