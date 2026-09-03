@@ -109,3 +109,4 @@
 2026-09-03T19:59:52Z 70 -> 75 phase transition: STATE.phase=75
 2026-09-03T19:59:52Z heartbeat phase=75
 2026-09-03T20:00:47Z 75 atlas continent=simulations (rails call: borrowed classic benchmark world, Boxoban tiers; matches minigrid/crafter/procgen/atari-57/nethack cluster); spot 536,271 clearance=69.0
+2026-09-03T20:01:10Z 75 atlas dispatch=33799764998-or-33799763840 (two runs created 20:00:50-51, will identify by artifact slug) region=simulations at=536,271 clearance=69.0
