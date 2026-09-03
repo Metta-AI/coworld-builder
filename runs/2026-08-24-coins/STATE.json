@@ -5,7 +5,7 @@
   "slug": "coins",
   "repo": "https://github.com/Metta-AI/cogame-coins",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "60": 1
   },
@@ -50,7 +50,7 @@
   },
   "announce": {
     "attempted_at": "2026-09-03T19:34:52Z",
-    "discord_message_id": ""
+    "discord_message_id": "1545155170713862245"
   },
   "atlas": {
     "status": "",
@@ -64,7 +64,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:34:52Z",
+  "heartbeat_at": "2026-09-03T19:35:11Z",
   "session_ended_at": null,
   "session_id": "038fd4d9",
   "log": "runs/2026-08-24-coins/log.md"
