@@ -71,3 +71,7 @@
 2026-09-03T19:18:49Z heartbeat phase=60
 2026-09-03T19:19:39Z 60 verify brief being dispatched to verifier (1 completed round so far; verifier polls for #2, bound 75 min)
 2026-09-03T19:20:25Z 60 verify brief sent to verifier thread=sthr_013AVv92rTdPAcdgQb84xEso
+2026-09-03T19:21:00Z 60 poll 1: GET /rounds?league_id -> 1 completed (round_9e5e232a #1), waiting for #2; bound 20:36Z
+2026-09-03T19:21:00Z heartbeat phase=60
+2026-09-03T19:27:43Z 60 poll 2: round 2 round_afbe6591-4851-4490-9331-75b54c296188 status=pending (ladder alive); round 1 completed
+2026-09-03T19:27:43Z heartbeat phase=60
