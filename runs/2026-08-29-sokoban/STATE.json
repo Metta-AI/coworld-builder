@@ -5,7 +5,7 @@
   "slug": "sokoban",
   "repo": "Metta-AI/cogame-sokoban",
   "starter": "coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "20": 1,
     "40": 1,
@@ -60,7 +60,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:46:48Z",
+  "heartbeat_at": "2026-09-03T19:57:20Z",
   "session_ended_at": null,
   "session_id": "67e3eae0",
   "log": ""

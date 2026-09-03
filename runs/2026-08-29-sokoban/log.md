@@ -100,3 +100,6 @@
 2026-09-03T19:48:34Z progress phase=60 marker=round_df339820-d1e5-49bf-ba9d-dafd922900f9
 2026-09-03T19:48:34Z heartbeat phase=60
 2026-09-03T19:49:06Z 60 judge dispatched thread=sthr_01Dbzi3XWg9FHpeRuo74hAa5
+2026-09-03T19:57:20Z 60 judge returned: 60-verdict.md BLOCKING: 0 (commit 0125a4c); all 8 checks re-derived TRUE from primary sources; 4e and 6c ruled non-blocking
+2026-09-03T19:57:20Z 60 -> 70 phase transition: STATE.phase=70
+2026-09-03T19:57:20Z heartbeat phase=70
