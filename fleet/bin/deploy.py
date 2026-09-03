@@ -322,6 +322,25 @@ def load_agent(name_or_role):
 def live_state():
     ags = {a["name"]: a for a in page("/agents") if a["name"].startswith("coworld-builder-")}
     dps = {d["name"]: d for d in page("/deployments") if d["name"].startswith("coworld-builder-")}
+    # The list endpoint stops at 100 rows and the account has more deployments than that
+    # (2026-09-03: `update` reported all three heartbeats MISSING and would have skipped the
+    # agent repoint). Anything cloud.md already records is fetched by id instead.
+    cloud = read_cloud()
+    for name, _suffix, _cron in deployment_specs():
+        if name in dps:
+            continue
+        # Read the recorded id directly: _deployment_id() falls back to live_state() when the
+        # row is absent, which would recurse.
+        dep_id = ((cloud["ids"].get(name) or {}).get("id") or "").strip("`")
+        if not dep_id or dep_id == "TBD":
+            continue
+        try:
+            d = api("/deployments/%s" % dep_id)
+        except Exception as exc:  # noqa: BLE001 - a stale id must not abort the whole pass
+            print("WARN deployment %s (%s) not fetchable by id: %s" % (name, dep_id, exc))
+            continue
+        if d.get("name", name).startswith("coworld-builder-"):
+            dps[d.get("name", name)] = d
     return ags, dps
 
 
