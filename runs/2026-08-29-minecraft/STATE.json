@@ -35,9 +35,13 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_9e5e232a-5216-4716-b76a-ee8a06f81218",
+      "round_afbe6591-4851-4490-9331-75b54c296188"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/e6d142a0-92cc-47fd-b583-e712236c037a.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33797350340"
   },
   "announce": {
     "attempted_at": null,
@@ -55,7 +59,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:18:49Z",
+  "heartbeat_at": "2026-09-03T19:45:16Z",
   "session_ended_at": null,
   "session_id": "3a2c80b9",
   "log": "runs/2026-08-29-minecraft/log.md"
