@@ -18,3 +18,6 @@
 2026-09-03T21:20:00Z 20 builder thread sthr_01AkqVreNcCLW5hZeYv5QUHv sent STOP per override; awaiting confirmation of repo state
 2026-09-03T21:20:00Z 20 -> 10 phase rolled back per operator override; design note to be rewritten against the override
 2026-09-03T21:20:00Z heartbeat phase=10
+2026-09-03T21:32:00Z 20 builder confirmed STOP: zero commits/refs/CI runs on cogame-battlecode, working tree discarded — nothing to unwind
+2026-09-03T21:33:00Z 10 designer re-dispatched on thread sthr_015DB6u6T6MD4NwjbKcGVose with override brief; output=runs/2026-09-03-battlecode/design-draft-v2.md; addendum sent (map-pool names bad at engine.1.2.5; float32 share narrowing; cooperation_at_end from Turn.isCooperation not winType; local JDK21 for parity vectors)
+2026-09-03T21:33:00Z heartbeat phase=10
