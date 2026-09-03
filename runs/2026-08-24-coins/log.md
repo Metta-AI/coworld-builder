@@ -151,3 +151,4 @@
 2026-09-03T19:41:29Z 75 atlas dispatch 1 failed: build error "unplaced leagues" x60 — placing them all via extra_cities (regions: paintlands 16, simulations 17, tabletop 8, commons 14, parlour 5; spots via atlas_spot.py iteratively, min clearance 22.2)
 2026-09-03T19:41:51Z 75 atlas dispatch=33797916996 region=commons at=416,574 clearance=22.9 extra_cities=60
 2026-09-03T19:43:53Z 75 atlas dispatch 2 (33797916996) failed: stale CITIES lines paintbot/classic + paintbot/ctf not in directory — dispatch 3 adds drop_slugs (dropping a dead league line from the map, not deleting a league)
+2026-09-03T19:44:17Z 75 atlas dispatch=33798145062 region=commons at=416,574 extra_cities=60 drop_slugs=paintbot/classic,paintbot/ctf
