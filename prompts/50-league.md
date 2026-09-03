@@ -24,6 +24,14 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
    ```bash
    curl -sS -X POST "$BASE/coworld-league-seeds" "${AUTH[@]}" "${ELEV[@]}" -d '{
      "coworld_name":"<slug>","league_key":"default","league_name":"<Slug>",
+     // If the idea or an operator comment pins a league key / variant (a multi-variant
+     // coworld with one league per variant, e.g. battlecode bc26/bc20), use THAT key and add
+     // "default_variant_id":"<variant id>" here; then, for the coworld's first league only,
+     // POST /leagues/$L/short-name {"short_name":"<key>"} and
+     // POST /games/$GAME/default-league {"league_id":"$L"} so softmax.com/<slug> opens it and
+     // softmax.com/<slug>/<key> addresses it. league_key "default" is NOT what makes a league
+     // the site default — the default-league POST is. Later variants get their own seed,
+     // champions, fillers and credit pool and never touch the first league.
      "template":"commissioner_driven","enabled":true,
      "overrides":{"commissioner_key":"platform"}}'
    ```
