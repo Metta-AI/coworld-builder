@@ -62,3 +62,5 @@
 2026-09-03T19:17:19Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:25Z): pool was 0, he granted 100 credits + drip to league_390fe9da, round 1 pending; resume phase 50 at step 9
 2026-09-03T19:17:19Z 00 resume at phase 50 attempt=1 session=789c7686
 2026-09-03T19:17:14Z 00 resumed after unblock subtask=1217968147950044 attempts_reset=50
+2026-09-03T19:17:32Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:25Z): credit pool was 0, funded 100 + drip; round 1 pending; resume phase 50 at step 9
+2026-09-03T19:17:32Z 00 resume at phase 50 attempt=1 session=3a2c80b9
