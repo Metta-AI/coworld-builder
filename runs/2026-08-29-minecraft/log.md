@@ -70,3 +70,4 @@
 2026-09-03T19:18:49Z 50 phase -> 60
 2026-09-03T19:18:49Z heartbeat phase=60
 2026-09-03T19:19:39Z 60 verify brief being dispatched to verifier (1 completed round so far; verifier polls for #2, bound 75 min)
+2026-09-03T19:20:25Z 60 verify brief sent to verifier thread=sthr_013AVv92rTdPAcdgQb84xEso
