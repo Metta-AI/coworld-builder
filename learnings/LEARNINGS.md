@@ -1527,3 +1527,29 @@ the starter after the fact.
   re-dispatching, diff EVERY places.mjs slug against /api/coworlds so stale lines
   (paintbot/classic, paintbot/ctf) go into drop_slugs in the same dispatch — that turned three
   dispatches into exactly the budget, not over it.
+
+## 2026-09-03 minecraft (close of the 2026-08-29 run)
+
+- **Zero credit pool is silent and looks exactly like a Temporal outage**: trigger-round 200s, the
+  parent `ladder-<league>` workflow runs, but the child refuses with "league credits: … pool
+  balance 0" and **no round row is ever created** — no error to fetch, while healthy sibling
+  leagues keep their cadence. Three runs (minecraft, sokoban, continuous-control) sat Blocked
+  5 days on it. `prompts/50-league.md` step 7b (fund before first trigger) is the fix going
+  forward; the diagnostic signature above is what to recognise on a pre-7b league. After the
+  operator funds, the resume is trivial: round 1 was already pending at resume, rounds 2–3
+  arrived on the 15-min cadence, phase 60 passed 8/8 in ~35 min including the judge.
+- **`viewer_smoke.mjs` missed the ctf lineage's `#killfeed`** (`feed_lines: 0` false negative while
+  the screenshot showed populated say-bubbles) — second occurrence after nethack. Fixed in this
+  commit: `#killfeed` added to the probe list in `templates/tools/ci/viewer_smoke.mjs`. Repos
+  forked before today carry the old probe; read `feed_lines: 0` on a ctf-lineage coworld as
+  "check the png", not "empty feed".
+- **The ctf-lineage scrubber renders but does not seek**: smoke clicks at 50 %/100 % only advanced
+  ordinary playback (0→19→36 ticks). Check 8 passes (clock advances), but a spectator cannot jump
+  to the milestone moments the timeline itself advertises. Add "scrub click actually seeks" to
+  the phase-30 review checklist for coworld-ctf forks.
+- **Confirmed the coins-run atlas rule the hard way**: fixing stale slugs one dispatch at a time
+  (build throws only the *first* stale slug: paintbot/classic, then paintbot/ctf) burns the
+  3-dispatch budget before the tail is known. Diff every `places.mjs` slug against
+  `/api/coworlds` and put the full set in `drop_slugs` on dispatch 1. Give-up is cheap when a
+  queued sibling PR already carries your dot (metta#21381 has minecraft at 503,274): say so on
+  the Fleet card so the human can just merge the queue.

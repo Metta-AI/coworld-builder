@@ -427,7 +427,7 @@ const READOUT_SCRIPT = `(() => {
   // prefixes its game chrome (e.g. #derk-clock) and names its scrubber
   // #seek (2026-08-28, cogame-derks-gym check 8: loaded:true but every
   // readout null because only the parley ids were probed).
-  const feed = document.querySelector('#feed, .feed, #log, [id$="-feed"]');
+  const feed = document.querySelector('#feed, .feed, #log, #killfeed, [id$="-feed"]');
   return {
     clock: text('#clock, [id$="-clock"]'),
     tick: text("#tick-clock, #tick, .tick-clock, #tickinfo"),
