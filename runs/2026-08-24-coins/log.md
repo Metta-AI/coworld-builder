@@ -119,3 +119,5 @@
 2026-08-25T03:22:29Z progress phase=60 marker=viewer-check-32804445583
 2026-08-25T03:23:23Z 90 blocked phase=60 ask="restore Bedrock haiku daily-token quota (platform-wide 429), then complete this subtask" subtask=1217809924523748
 2026-08-25T03:23:23Z session end: phase 60, blocked; next action = on subtask completion, resume phase 60, fresh round, re-verify checks 4+5
+2026-09-03T19:14:19Z 00 resumed after unblock subtask=1217809924523748 attempts_reset=60
+2026-09-03T19:14:19Z 00 resume at phase 60 attempt=1 session=038fd4d9
