@@ -148,3 +148,4 @@
 2026-09-03T19:35:11Z 00 phase transition 70 -> 75
 2026-09-03T19:35:49Z 75 atlas continent=commons (mixed-motive spatial PD: theft nets pair -1, truce vs defection is the game — not zero-sum) spot=416,574 clearance=22.9
 2026-09-03T19:36:09Z 75 atlas dispatch=33797366211 region=commons at=416,574 clearance=22.9
+2026-09-03T19:41:29Z 75 atlas dispatch 1 failed: build error "unplaced leagues" x60 — placing them all via extra_cities (regions: paintlands 16, simulations 17, tabletop 8, commons 14, parlour 5; spots via atlas_spot.py iteratively, min clearance 22.2)
