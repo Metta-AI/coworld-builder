@@ -77,3 +77,12 @@
 2026-09-03T19:32:08Z 50 -> 60 phase transition: entering verify
 2026-09-03T19:32:08Z heartbeat phase=60
 2026-09-03T19:33:15Z 60 verifier dispatched thread=sthr_01JFFKZ62ptaT2y9ahXwBtek (8 checks + viewer-check.yml; 2 rounds already completed)
+2026-09-03T19:43:03Z 60 check1 TRUE rounds 1 (round_26e98f6c) + 2 (round_74324044) completed 19:13:24Z/19:28:17Z, error null; fillers bd151d35+ece2febe registered 2026-08-29T13:26:58Z, before round 1 was created
+2026-09-03T19:43:03Z 60 check2 TRUE leaderboard: daveey-1 continuous-control-throttle:v2 rank 2 (rounds_played 2), daveey continuous-control-gaitsmith:v2 rank 7 (rounds_played 2); no filler/Baseline row
+2026-09-03T19:43:03Z 60 check3 TRUE all 7 episode-requests of round 2 completed with replay_url; champion episodes ereq_e7e02675 (daveey, 20.543) and ereq_e6aad2bb (daveey-1, 57.236); num_agents=1 so one seat per episode by design
+2026-09-03T19:43:03Z 60 check4 TRUE replay_summary.py output is strict UTF-8 JSON; protocol continuous-control/v1, reason complete/ladderComplete, 20 llm orders, 0 fallbacks, 19 says, 4 gaits/14 cadences, distanceTotal 36.344
+2026-09-03T19:43:03Z 60 check5 TRUE hosted logs for both champion episodes decoded (ast.literal_eval) and CLEAN; 20/29 LLM calls all HTTP 200
+2026-09-03T19:43:03Z 60 check6 TRUE static route via POST /coworlds/replays/session ready=true, sha256:5a975e9f... == manifest_sha, no /client/replay; playlist empty for documented single-seat reason (LEARNINGS 2026-08-28 nethack), pool.replays=7; cross-check sokoban(single)=0 vs paintbot 21/escrow 1/eleusis 4
+2026-09-03T19:43:03Z 60 check7 TRUE committed release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-09-03T19:43:03Z 60 check8 TRUE viewer-check run 33797485426 loaded=true ms=3940, three differing clocks (HOPPER t8 / CHEETAH t263 / WALKER t51); starter chrome present; residue: endcard table column collision + "PAR 40000000"/zeroed m,upright,saturated in endcard subtitle
+2026-09-03T19:43:03Z 60 verify complete: 8/8 TRUE, VERIFY.md + viewer-check artifact committed
