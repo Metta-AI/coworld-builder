@@ -113,3 +113,6 @@
 2026-09-03T20:08:00Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21389
 2026-09-03T20:08:00Z 75 -> 80 phase transition: entering close
 2026-09-03T20:08:00Z heartbeat phase=80
+2026-09-03T20:11:42Z 80 close: exec summary on run task (1218164033081067) + condensed on idea task (1218164310043283); LEARNINGS section appended (745839d) + 2 make-coworld triage rows; all 9 phase subtasks complete; idea 1217748466314558 completed; run task moved to Done
+2026-09-03T20:11:42Z progress phase=80 marker=run-task-Done
+2026-09-03T20:11:42Z session end: run complete at phase 80 (Done); atlas PR 21389 open awaiting merge queue; no further action for this run

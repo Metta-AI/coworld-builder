@@ -57,8 +57,8 @@
     "attempted_at": "2026-09-03T20:08:00Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T20:08:00Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-03T20:11:42Z",
+  "session_ended_at": "2026-09-03T20:11:42Z",
   "session_id": "954c9761",
   "log": "runs/2026-08-29-continuous-control/log.md"
 }
