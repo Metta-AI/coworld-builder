@@ -102,3 +102,6 @@
 2026-09-03T19:54:14Z 70 phase -> 75
 2026-09-03T19:54:14Z heartbeat phase=75
 2026-09-03T19:56:18Z 75 atlas dispatch=33799293022 region=simulations at=503,274 clearance=reused-coins-branch-spot (mirrored 60 extra_cities from queued metta#21381 atlas/coins-33798145062; minecraft already spotted there at 503,274 — continent: simulations, borrowed MineRL/Minecraft world like crafter/nethack)
+2026-09-03T19:58:13Z 75 atlas dispatch 1 (33799293022) failed: build unplaced leagues: polyduel (new since coins snapshot); fix per step 8 = extra_cities +polyduel placed at 808,322 tabletop (two-player card battler, cl 22.9)
+2026-09-03T19:58:13Z 75 atlas dispatch=33799475756 region=simulations at=503,274 extra_cities=61
+2026-09-03T19:58:13Z heartbeat phase=75
