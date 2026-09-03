@@ -92,3 +92,7 @@
 2026-09-03T19:45:16Z 60 verifier returned VERIFY.md commit=a586ffd2 all 8 checks TRUE (rounds 1+2 completed, 0 fallbacks 48/48 LLM turns, viewer-check run=33797350340 loaded:true clocks 0/19/36); 3 non-blocking observations noted (scrubber no-seek, viewer_smoke killfeed selector, milestone counts below design bar)
 2026-09-03T19:45:16Z heartbeat phase=60
 2026-09-03T19:45:55Z 60 judge dispatched (fresh context) thread=sthr_01TU8nk5Sqrme56vnBE8KZwa output=runs/2026-08-29-minecraft/verify-verdict.md — rulings requested on checks 3+6 single-seat precedent and verifier observations (a) scrub no-seek, (c) milestone shortfall
+2026-09-03T19:52:17Z 60 judge returned: verify-verdict.md BLOCKING:0 (commit df963bd) — all 8 SPEC items confirmed on independent re-fetch at head (3 completed rounds by 19:43Z; round-3 champions 9/11 and 5/11 milestones, mooting the design-bar variance note); scrub no-seek + viewer_smoke killfeed selector recorded as non-blocking LEARNINGS items
+2026-09-03T19:52:17Z progress phase=60 marker=verify-verdict.md-blocking-0
+2026-09-03T19:52:17Z 60 phase -> 70
+2026-09-03T19:52:17Z heartbeat phase=70
