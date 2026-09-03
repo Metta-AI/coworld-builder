@@ -67,3 +67,6 @@
 2026-08-29T13:38:33Z session end: stopped in phase 50 (blocked); next action = on subtask 1217968974654490 completion, resume phase 50 at step 9 (confirm a round exists pending/running/completed, verify exit criterion, then -> 60)
 2026-08-29T13:38:33Z heartbeat phase=50
 2026-08-29T13:39:10Z 90 subtask body + STATE.blocked.error corrected (accurate trigger times 13:21Z/13:31Z; outage age is platform-wide, hours)
+2026-09-03T19:30:15Z 00 resumed after unblock subtask=1217968974654490 attempts_reset=50
+2026-09-03T19:30:15Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:27Z): credit pool was root cause, 100 credits granted + drip 100/day cap 300, round 1 triggered pending; resume phase 50 at step 9
+2026-09-03T19:30:15Z 00 resume at phase 50 attempt=1 session=954c9761

@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-continuous-control",
   "starter": "coworld-ctf",
   "phase": "50",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "50": 1
+  },
   "review_round": 2,
   "coworld": {
     "version": "0.1.2",
@@ -50,20 +52,9 @@
     "attempted_at": null,
     "reason": ""
   },
-  "blocked": {
-    "phase": "50",
-    "at": "2026-08-29T13:38:33Z",
-    "ask": "restart/repair the Temporal ladder workflow for league_62a1e77b-c464-41ba-90df-702fc0d9d3db so rounds are created (same platform incident as sokoban 1217982805347662)",
-    "error": "trigger-round HTTP 200 (workflow ladder-league_62a1e77b) at 13:21Z and 13:31Z but GET /rounds total_count stays 0, no round row even failed; platform incident hours old: sokoban league_81761ec5 0 rounds since ~11:00Z, minecraft league_390fe9da 0 rounds since ~09:00Z, while established minigrid league kept producing rounds",
-    "attempts": [
-      "full setup + trigger 13:22Z, fillers set before trigger, both submissions placed, polled ~10 min: 0 rounds",
-      "league-health cross-check: config healthy; sibling new leagues stalled while established minigrid league produced rounds -> platform-side",
-      "second trigger 14:05Z HTTP 200, polled 4 min more: 0 rounds"
-    ],
-    "subtask": "1217968974654490"
-  },
-  "heartbeat_at": "2026-08-29T13:38:33Z",
-  "session_ended_at": "2026-08-29T13:38:33Z",
-  "session_id": "9924a629",
+  "blocked": null,
+  "heartbeat_at": "2026-09-03T19:30:15Z",
+  "session_ended_at": null,
+  "session_id": "954c9761",
   "log": "runs/2026-08-29-continuous-control/log.md"
 }
