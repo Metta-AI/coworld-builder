@@ -1572,3 +1572,27 @@ the starter after the fact.
   `num_agents=1`; the page falls back to showcase mode = the peak-scoring replay, which may be an
   outsider's baseline, never necessarily a champion. Expected behaviour, not a defect: phase 60
   check 6 passes via the static route; don't chase it, but say so in VERIFY.md.
+
+## 2026-09-03 continuous-control (close of the 2026-08-29 run)
+
+- Two new release-triage rows folded into `playbooks/make-coworld.md` §Common mistakes:
+  `KeyError: 'image'` in the CLI's `bundle.py` means the image sits at `game.image` instead of
+  `game.runnable.image`; upload 400 "game runnable may not declare a cpu limit" means
+  `game.runnable.resources.limits` must be dropped entirely (limits are for `player[]` pods
+  only). Together they burned two of the three release dispatches; `templates/ci.yml` still has
+  no coworld-CLI manifest-validate step, which would have caught both before dispatch 1.
+- **Divide micro-point accumulators at every render surface, and have phase 30 diff each one
+  against `results`.** This game keeps int64 micro-points (1e-6) internally; the scorebug,
+  clock, stage table and SCORE all divided correctly, but the endcard *subtitle* printed raw
+  micro units ("PAR 40000000 MISSED") and zeroed its distance/upright/saturated totals. Passed
+  phase 30 and both phase-60 judgments as non-blocking residue because every DoD surface was
+  right — but a reviewer instruction "reconcile every numeric string on the endcard against the
+  replay's results object" would have caught it in r1.
+- Same-day sibling closes each cleared the same atlas backlog: 21381 (coins), 21389 (this run,
+  61 extra cities + 2 drops), 21390 (sokoban) all rewrite places.mjs and regenerate index.html
+  from different coordinates — after the first merges, the rest conflict and their re-dispatch
+  is a fresh build anyway. Before spending dispatch 1, `gh pr list -R Metta-AI/metta --search
+  "atlas in:title" --state open`: ~15 atlas PRs have queued unmerged since 08-25, which *is*
+  the backlog's cause. If a queued sibling already carries your slug, the cheap move is one
+  dispatch for your dot alone (the build will fail on the backlog only if those PRs are still
+  unmerged) and otherwise the give-up path — not a second 60-line PR.
