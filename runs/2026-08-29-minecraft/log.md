@@ -58,3 +58,6 @@
 2026-08-29T11:09:41Z progress phase=50 marker=league_390fe9da-f2a6-4001-93df-e08cc2788846
 2026-08-29T11:09:41Z 00 session end: blocked at phase 50 (run task moved to Blocked); next action = on subtask completion resume phase 50 at the trigger step
 2026-08-29T11:09:41Z heartbeat phase=50
+2026-09-03T19:17:19Z 00 resumed after unblock subtask=1217968147950044 attempts_reset=50
+2026-09-03T19:17:19Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:25Z): pool was 0, he granted 100 credits + drip to league_390fe9da, round 1 pending; resume phase 50 at step 9
+2026-09-03T19:17:19Z 00 resume at phase 50 attempt=1 session=789c7686
