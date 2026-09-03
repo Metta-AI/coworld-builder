@@ -112,3 +112,7 @@
 2026-09-03T20:01:10Z 75 atlas dispatch=33799764998-or-33799763840 (two runs created 20:00:50-51, will identify by artifact slug) region=simulations at=536,271 clearance=69.0
 2026-09-03T20:07:42Z 75 atlas retry 2/3: first dispatch failed step=build 'unplaced leagues' (61 others) — re-dispatching with extra_cities for all 61 (regions from their runs' STATE + 8 fresh rails calls: citysim/continuous-control/minecraft=simulations, gnomic=commons, polyduel=tabletop, pudge-wars+paintbot campaign+elite=paintlands; iteratively re-spotted via atlas_spot for spacing) and drop_slugs=paintbot/classic,paintbot/ctf (both absent from /api/coworlds); sokoban moved 536,271->476,211 (old spot collided with particle-worlds)
 2026-09-03T20:08:10Z 75 atlas dispatch=33800435641 region=simulations at=476,211 clearance=22.9 extra_cities=61 drop_slugs=paintbot/classic,paintbot/ctf
+2026-09-03T20:09:34Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21390 status=pr_open (placed 61 other leagues via extra_cities; dropped stale paintbot/classic,paintbot/ctf)
+2026-09-03T20:09:34Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21390
+2026-09-03T20:09:34Z 75 -> 80 phase transition: STATE.phase=80
+2026-09-03T20:09:34Z heartbeat phase=80
