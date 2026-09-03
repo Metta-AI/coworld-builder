@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 1648,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc9b78e5f-ad7a-4a03-9321-e6d494207a88.replay&v=2",
+  "ms": 1313,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_bd320430-6cf8-4f45-8adb-06de80fbe100/sha256%3A6b286bdb0014f6bb1318c3720ce1bcb09949351120d3e0974d480d1cab19bef9/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fabaf7183-5415-4403-8714-74cd41509e62.replay",
   "bundle": null,
   "replay": null,
-  "clock": "BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD",
-  "scorebug": "COINS-PLAYER 0 STOLE 0 took 22 · restraint 100% BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD COINS-PLAYER 0 STOLE 0 took 22 · restraint 100%",
+  "clock": "BEAT 1 / 12 TICK 1 OF 240 · 6 COINS ON THE BOARD",
+  "scorebug": "COINS-PLAYER 0 STOLE 0 took 15 · restraint 100% BEAT 1 / 12 TICK 1 OF 240 · 6 COINS ON THE BOARD COINS-PLAYER 0 STOLE 0 took 10 · restraint 100%",
   "status": "OPEN",
   "loading_text": null,
   "feed_lines": 0,
@@ -22,15 +22,15 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "BEAT 1 / 24 TICK 0 OF 480 · 6 COINS ON THE BOARD"
+      "clock": "BEAT 1 / 12 TICK 1 OF 240 · 6 COINS ON THE BOARD"
     },
     {
       "at": "50%",
-      "clock": "BEAT 13 / 24 TICK 256 OF 480 · 1 COIN ON THE BOARD"
+      "clock": "BEAT 7 / 12 TICK 135 OF 240 · 3 COINS ON THE BOARD"
     },
     {
       "at": "100%",
-      "clock": "FINAL 24 BEATS · BEAT_CAP"
+      "clock": "FINAL 12 BEATS · RANDOM_END"
     }
   ],
   "soak": null,
@@ -45,9 +45,9 @@
   },
   "failure": null,
   "console_tail": [
-    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/font.ttf",
+    "[http 404] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_bd320430-6cf8-4f45-8adb-06de80fbe100/sha256%3A6b286bdb0014f6bb1318c3720ce1bcb09949351120d3e0974d480d1cab19bef9/font.ttf",
     "[error] Failed to load resource: the server responded with a status of 404 ()",
-    "[requestfailed] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e/sha256%3Aa0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72/font.ttf net::ERR_ABORTED",
+    "[requestfailed] https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_bd320430-6cf8-4f45-8adb-06de80fbe100/sha256%3A6b286bdb0014f6bb1318c3720ce1bcb09949351120d3e0974d480d1cab19bef9/font.ttf net::ERR_ABORTED",
     "[bridge] loading",
     "[bridge] ready"
   ],
