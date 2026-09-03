@@ -99,6 +99,23 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
    Any seat whose version is in this list is renamed "Baseline (N)" — including a scored champion.
    Verify the response lists exactly the filler UUIDs from `STATE.policies.fillers[]` and neither
    champion's.
+7b. **Fund the league credit pool — BEFORE the first trigger** (platform rule since 2026-08-31,
+   `metta` `v2/league_credits.py`): a league whose pool is at 0 never runs a round. The trigger
+   returns 200, the Temporal parent `ladder-<league_id>` runs, and its child refuses with
+   `league credits: league <name> has no credits (pool balance 0)` — **no round row is ever
+   created and nothing fails visibly** (sokoban, minecraft, continuous-control sat Blocked five days
+   on exactly this, 2026-08-29 → 09-03). Both calls are team-gated (elevated header):
+   ```bash
+   curl -sS -X POST "$BASE/leagues/$L/reward-pool/grants" "${AUTH[@]}" "${ELEV[@]}" -d "{
+     \"credits\":100,\"note\":\"coworld-builder run $RUN: initial pool funding\",
+     \"idempotency_key\":\"coworld-builder-$RUN-pool-grant-1\"}"
+   curl -sS -X PUT "$BASE/leagues/$L/reward-pool/drip" "${AUTH[@]}" "${ELEV[@]}" \
+     -d '{"daily_drip_credits":100,"max_balance_credits":300}'
+   curl -sS "$BASE/leagues/$L/owner-status" "${AUTH[@]}" "${ELEV[@]}" | jq '.credits.pool_credits'
+   ```
+   100 credits = $10 (crafter parity). The drip lands at the next Pacific budget day; the grant is
+   what lets rounds run today. `pool_credits` must be > 0 before step 8. Record
+   `league.pool_funded: true` in STATE.
 8. **Unpause, then trigger**
    ```bash
    curl -sS -X POST "$BASE/leagues/$L/rounds-paused" "${AUTH[@]}" "${ELEV[@]}" -d '{"paused":false}'
@@ -110,7 +127,9 @@ ELEV=(-H "X-Use-Elevated-Privileges: true" -H 'content-type: application/json')
      | jq -r '.entries[]|[.round_number,.status,(.error//"-")]|@tsv'
    ```
    `Temporal RoundWorkflow failed before settling the round` = fillers were not set before the
-   trigger. Fix step 7, then trigger again.
+   trigger. Fix step 7, then trigger again. An **empty** `entries` list that stays empty after a
+   200 trigger (no round row at all, not even failed) = the credit pool is at 0. Do step 7b, then
+   trigger again — it is not a platform outage and not a reason for phase 90.
 
 ## Exit criterion
 
@@ -130,5 +149,6 @@ unpaused, and at least one round in `pending`/`running`/`completed` — not `fai
 ## Retry budget
 
 3 attempts per step, each varying the approach (re-fetch ids, re-issue with elevated header,
-re-check the filler list). Two failed triggers with fillers verifiably set → `prompts/90-blocked.md`
-quoting the round's `error` field verbatim.
+re-check the filler list). Two failed triggers with fillers verifiably set **and**
+`owner-status.credits.pool_credits > 0` → `prompts/90-blocked.md` quoting the round's `error`
+field verbatim (an empty rounds list has no error field: that is step 7b, never 90).

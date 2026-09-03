@@ -28,7 +28,7 @@ the **same** coordinator agent; every firing adopts **at most one** unit of work
 run, resume an unblocked run, or claim one new idea) and then exits — so the crons fan out the
 work, and the cap below is what bounds it.
 
-- `max_parallel_runs: 3` — the maximum number of *Running* runs with a **fresh** heartbeat
+- `max_parallel_runs: 5` — the maximum number of *Running* runs with a **fresh** heartbeat
   (< 180 min and no `session_ended_at ≥ heartbeat_at` — 3 h because a coordinator blocked in a long sub-agent thread cannot heartbeat) that may exist at once. A heartbeat that
   finds the cap reached does not claim a new idea; it still resumes a stale or unblocked run.
   This is the throttle to lower when the shared resource (Bedrock capacity) is tight — lower it
