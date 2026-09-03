@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3671,"clock":"0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960","scorebug":"0/11 daveey-1 Pickaxe none ALPHA · Y=64 · 0/11 RUNGS · 0 0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960","feed_lines":0}
+scrub readouts: 0%="0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960"  50%="0 / 11 SCORE 0 · 941 TICKS LEFT Y=64 · TICK 19/960"  100%="0 / 11 SCORE 0 · 924 TICKS LEFT Y=64 · TICK 36/960"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

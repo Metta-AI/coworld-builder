@@ -75,3 +75,17 @@
 2026-09-03T19:21:00Z heartbeat phase=60
 2026-09-03T19:27:43Z 60 poll 2: round 2 round_afbe6591-4851-4490-9331-75b54c296188 status=pending (ladder alive); round 1 completed
 2026-09-03T19:27:43Z heartbeat phase=60
+2026-09-03T19:32:42Z 60 poll 3: round 2 round_afbe6591-4851-4490-9331-75b54c296188 status=completed error=null -> 2 completed rounds
+2026-09-03T19:32:42Z 60 check 1 TRUE (2 completed rounds, both after fillers set 2026-08-29T10:24:46Z)
+2026-09-03T19:32:42Z heartbeat phase=60
+2026-09-03T19:40:30Z 60 check 1 TRUE: rounds round_9e5e232a(#1,19:13:45Z) + round_afbe6591(#2,19:29:06Z) completed error=null, both after fillers set 2026-08-29T10:24:46Z
+2026-09-03T19:40:30Z 60 check 2 TRUE: leaderboard div_8b8ad8ef daveey rank7 minecraft-obtaindiamond:v1 MMR904 rounds=2; daveey-1 rank6 minecraft-branchminer:v1 MMR958 rounds=2; fillers absent (7 real entrants, filler path never fired)
+2026-09-03T19:40:30Z 60 check 3 TRUE: round 2 -> 7/7 episode-requests completed w/ replay_url (nested route; flat ?round_id= is 405); daveey=ereq_04411a48 daveey-1=ereq_83858c2c; single-seat game so one champion per episode (cross-checked crafter+nethack: 1 participant/episode)
+2026-09-03T19:40:30Z 60 check 4 TRUE: COWLDMCR bytes -> tools/replay_summary.py strict JSON ok; protocol=minecraft/v1 reason=complete endRule=turnCap; 48/48 llm turns, 0 fallbacks, both champions. NOTE milestonesReached 1 (daveey) / 3 (daveey-1) < design.md L1462 bar of 4; round 1 daveey was 5 — seed variance, recorded not hidden
+2026-09-03T19:40:30Z 60 check 5 TRUE: artifacts/logs elevated, python b'' reprs decoded, grep -> CLEAN on both champion episodes; 48/48 model calls HTTP 200
+2026-09-03T19:40:30Z 60 check 6 TRUE: source=BOTH (page grep found no iframe -> client-rendered; then SSR payload state.pool.replays[] = 7 round-2 replays + POST /coworlds/replays/session). src=.../v2/coworlds/replays/static/cow_8b94b3fa/sha256%3Ae4cc289b.../index.html?v=2#replay=<s3> ready=true; no /client/replay. playlist=[] is the single-seat shape (crafter+nethack identical; bullwhip/paintbot non-empty)
+2026-09-03T19:40:30Z 60 check 7 TRUE: committed release-result.json -> "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
+2026-09-03T19:40:30Z 60 check 8 TRUE: viewer-check.yml run=33797350340 green; loaded=true ms=3671 data_replay_loaded=true; clocks tick 0/19/36 differ; screenshot = paintbot chrome (transport strip, MILESTONE TIMELINE momentum scrubber, scorebug, rung ladder, minimap, say-bubbles, #endcard present); artifacts committed
+2026-09-03T19:40:30Z 60 observations (non-blocking): scrubber does not seek on synthetic click; viewer_smoke.mjs feed selector misses #killfeed so feed_lines=0 under-reports
+2026-09-03T19:40:30Z 60 VERIFY.md written: 8/8 TRUE
+2026-09-03T19:40:30Z heartbeat phase=60

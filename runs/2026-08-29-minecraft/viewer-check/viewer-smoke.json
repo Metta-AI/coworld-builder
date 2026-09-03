@@ -1,0 +1,46 @@
+{
+  "loaded": true,
+  "ms": 3671,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_8b94b3fa-1fdd-4cc4-b746-829f4daaee67/sha256%3Ae4cc289bbe8bf61e8e5c8139b879959d80a781267188e8ef37730534792a2159/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fe6d142a0-92cc-47fd-b583-e712236c037a.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960",
+  "scorebug": "0/11 daveey-1 Pickaxe none ALPHA · Y=64 · 0/11 RUNGS · 0 0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 0,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [],
+    "bridge_ready": false,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "0 / 11 SCORE 0 · 960 TICKS LEFT Y=64 · TICK 0/960"
+    },
+    {
+      "at": "50%",
+      "clock": "0 / 11 SCORE 0 · 941 TICKS LEFT Y=64 · TICK 19/960"
+    },
+    {
+      "at": "100%",
+      "clock": "0 / 11 SCORE 0 · 924 TICKS LEFT Y=64 · TICK 36/960"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
