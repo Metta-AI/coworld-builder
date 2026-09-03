@@ -73,3 +73,6 @@
 2026-08-29T11:36:45Z 90 asana: run task 1217966725746937 moved to Blocked; idea comment 1217968566475990 on 1217748613503800
 2026-08-29T11:36:45Z session end: stopped in phase 50 (blocked); next action = on subtask 1217982805347662 completion, resume phase 50 at step 9 (confirm a round exists pending/running/completed, then exit criterion check -> phase 60)
 2026-08-29T11:36:45Z heartbeat phase=50
+2026-09-03T19:25:29Z 00 resumed after unblock subtask=1217982805347662 attempts_reset=50
+2026-09-03T19:25:29Z 00 operator comment acknowledged (David Bloomin, 2026-09-03T19:12:23Z): credit pool was 0, human granted 100 credits + drip 100/cap 300 to league_81761ec5, round 1 pending; instruction = resume phase 50 at step 9, continue to 60
+2026-09-03T19:25:29Z 00 resume at phase 50 attempt=1 session=67e3eae0
