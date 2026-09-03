@@ -1553,3 +1553,22 @@ the starter after the fact.
   `/api/coworlds` and put the full set in `drop_slugs` on dispatch 1. Give-up is cheap when a
   queued sibling PR already carries your dot (metta#21381 has minecraft at 503,274): say so on
   the Fleet card so the human can just merge the queue.
+
+## 2026-09-03 sokoban (close of the 2026-08-29 run)
+
+- **Sibling runs' recorded atlas coords pile up — never reuse them for `extra_cities`.** Nine
+  commons runs each recorded 416,574 in STATE because each ran `atlas_spot` against main's
+  `places.mjs` without seeing the others' unmerged PRs; my first sokoban spot (536,271) was
+  byte-identical to particle-worlds' recorded dot for the same reason. When a dispatch must place
+  many leagues at once, re-spot ALL of them in one pass, appending each placement to a local
+  `places.mjs` copy before spotting the next — every dot lands ≥22 clear in one dispatch. Keep the
+  sibling runs' *region* choices (their rails call), only re-derive x,y.
+- **The one-dispatch atlas recipe held**: full diff of `places.mjs` slugs vs `/api/coworlds` →
+  complete `drop_slugs` (paintbot/classic + paintbot/ctf) + complete `extra_cities` (61 leagues)
+  → PR metta#21390 on dispatch 2 of 3. Confirms the coins/minecraft learnings; the diff script is
+  ~20 lines of python and cheaper than one wasted dispatch.
+- **Single-seat coworlds: the softmax.com featured-match playlist is structurally empty** — the
+  client's `isWatchableReplayEpisode` wants rank-1 AND rank-2 in one episode, impossible with
+  `num_agents=1`; the page falls back to showcase mode = the peak-scoring replay, which may be an
+  outsider's baseline, never necessarily a champion. Expected behaviour, not a defect: phase 60
+  check 6 passes via the static route; don't chase it, but say so in VERIFY.md.
