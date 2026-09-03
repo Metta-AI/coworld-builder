@@ -109,3 +109,7 @@
 2026-09-03T20:06:04Z 75 atlas dispatch 2 (33799967564) failed: step=build, stale CITIES line paintbot/classic not in coworld-stats (paintbot/ctf also stale vs /api/coworlds)
 2026-09-03T20:06:04Z 75 atlas dispatch=33800244987 region=simulations at=536,271 extra_cities=61 drop_slugs=paintbot/classic,paintbot/ctf (dispatch 3 of 3)
 2026-09-03T20:06:04Z heartbeat phase=75
+2026-09-03T20:08:00Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21389 status=pr_open (automerge armed; waits on Graphite merge queue; placed 61 backlog leagues + dropped 2 stale paintbot slugs in the same PR)
+2026-09-03T20:08:00Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21389
+2026-09-03T20:08:00Z 75 -> 80 phase transition: entering close
+2026-09-03T20:08:00Z heartbeat phase=80
