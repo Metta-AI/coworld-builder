@@ -136,3 +136,4 @@
 2026-09-03T19:28:24Z 60 verifier returned: VERIFY.md 8/8 TRUE — round 194 ereq_5af03905 champion match 13-10, orders 24/24 llm 0 fallback (r191-194: 110/110 llm), log CLEAN (0 429s), viewer-check 33795836783 green loaded=true 3 clocks differ; commit 2662eb6
 2026-09-03T19:28:24Z 60 verifier non-check findings: canonical coins now cow_bd320430 v0.1.4 (STATE had v0.1.2 — replay session 404s on old id); 5 outside entrants outrank champions (featured=coins.r194.e11 richard vs relh); residues policyNames=coins-player, font.ttf 404, feed_lines=0, spoilers-default; ladder cadence ~4h48m not 15min; API: episode-requests?round_id= now 405, use /rounds/<id>/episode-requests
 2026-09-03T19:28:24Z heartbeat phase=60
+2026-09-03T19:28:59Z 60 judge dispatched (fresh-context adjudication of VERIFY.md 8/8) thread=sthr_01TD76niBFhG19iEbEt4pXfZ
