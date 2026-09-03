@@ -4,3 +4,9 @@
 2026-09-03T19:41:00Z 10 starter=cogame-factorio reason: game logic lives in an external Java engine run per episode (battlecode.server.Main headless) — fourth row of the starter table; idea pins it explicitly
 2026-09-03T19:42:00Z 10 designer dispatched thread=sthr_015DB6u6T6MD4NwjbKcGVose output=runs/2026-09-03-battlecode/design-draft.md
 2026-09-03T19:42:00Z heartbeat phase=10
+2026-09-03T20:05:00Z 10 designer returned design-draft.md (878 lines) round 1 thread=sthr_015DB6u6T6MD4NwjbKcGVose
+2026-09-03T20:08:00Z 10 checklist: starter[x] num_agents=2[x] resolution-order-numbered[x] scoring+sign+ranks[x] end-conditions+reason{complete,deadline,engine_error}[x] observation-visible-vs-hidden[x] reply-schema+rune-caps[x] both-policies-env-switched[x] batch+budget-700s<=720s[x] degrade-never-hang[x] two-namespaces[x] viewer-static-bundle+360px[x] chrome-one-starter=cogame-factorio+wasm-exception-invoked[x] chrome-provenance+zoom-kept[x] transport-rules[x] replay-self-sufficient[x] packaging-compose+manifest+docs+protocols[x] tests-incl-viewer-smoke-executed[x] out-of-scope-non-empty[x] — ACCEPTED round 1
+2026-09-03T20:08:00Z 10 design accepted -> runs/2026-09-03-battlecode/design.md
+2026-09-03T20:08:00Z progress phase=10 marker=design.md
+2026-09-03T20:08:00Z 10 phase -> 20
+2026-09-03T20:08:00Z heartbeat phase=20
