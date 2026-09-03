@@ -5,7 +5,7 @@
   "slug": "coins",
   "repo": "https://github.com/Metta-AI/cogame-coins",
   "starter": "Metta-AI/coworld-ctf",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "60": 1
   },
@@ -14,7 +14,13 @@
     "version": "0.1.2",
     "cow_id": "cow_e5c32ad5-8696-4d4f-8a39-458baa8c2a3e",
     "manifest_sha": "sha256:a0ef314213039a0b2224593c57b91b77022e5d11d5cfa181a8f04ab288c87f72",
-    "release_run_id": "32798747762"
+    "release_run_id": "32798747762",
+    "canonical_now": {
+      "cow_id": "cow_bd320430-6cf8-4f45-8adb-06de80fbe100",
+      "version": "0.1.4",
+      "manifest_sha": "sha256:6b286bdb0014",
+      "note": "platform canonical advanced past this runs v0.1.2 release; recorded 2026-09-03"
+    }
   },
   "policies": {
     "champion1": "coins-truce:v2",
@@ -34,16 +40,13 @@
   },
   "verify": {
     "rounds": [
-      "round_daad8f3a",
-      "round_e36cead8",
-      "round_921b4c22",
-      "round_a88d95be",
-      "round_8c676b41",
-      "round_51c0c7e3"
+      "round_c2415ebd"
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/c9b78e5f-ad7a-4a03-9321-e6d494207a88.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/abaf7183-5415-4403-8714-74cd41509e62.replay",
     "iframe_static": true,
-    "viewer_check_run": "32804445583"
+    "viewer_check_run": "33795836783",
+    "verdict": "BLOCKING 0 (42f3c12)",
+    "note": "re-verified 2026-09-03 after Bedrock quota restore; round 194 ereq_5af03905 24/24 llm orders, log CLEAN"
   },
   "announce": {
     "attempted_at": null,
@@ -61,7 +64,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:28:24Z",
+  "heartbeat_at": "2026-09-03T19:33:34Z",
   "session_ended_at": null,
   "session_id": "038fd4d9",
   "log": "runs/2026-08-24-coins/log.md"
