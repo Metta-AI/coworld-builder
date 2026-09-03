@@ -99,3 +99,6 @@
 2026-09-03T19:55:31Z progress phase=70 marker=announce.discord_message_id=1545160286258864238
 2026-09-03T19:55:31Z 70 -> 75 phase transition: entering atlas
 2026-09-03T19:55:31Z heartbeat phase=75
+2026-09-03T19:56:41Z 75 atlas continent=simulations (borrowed MuJoCo/DMC locomotion benchmark bodies — a borrowed world, rails call)
+2026-09-03T19:56:41Z 75 atlas dispatch=33799329796 region=simulations at=536,271 clearance=69.0 label="Continuous Ctrl" (another atlas run 33799293022 in progress ahead of ours in the concurrency queue; slug will be verified from artifact)
+2026-09-03T19:56:41Z heartbeat phase=75
