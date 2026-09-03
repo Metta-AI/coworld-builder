@@ -96,3 +96,4 @@
 2026-09-03T19:52:17Z progress phase=60 marker=verify-verdict.md-blocking-0
 2026-09-03T19:52:17Z 60 phase -> 70
 2026-09-03T19:52:17Z heartbeat phase=70
+2026-09-03T19:53:58Z 70 announce attempted_at written before POST (body 1789 chars, flags=4)
