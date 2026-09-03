@@ -152,3 +152,6 @@
 2026-09-03T19:41:51Z 75 atlas dispatch=33797916996 region=commons at=416,574 clearance=22.9 extra_cities=60
 2026-09-03T19:43:53Z 75 atlas dispatch 2 (33797916996) failed: stale CITIES lines paintbot/classic + paintbot/ctf not in directory — dispatch 3 adds drop_slugs (dropping a dead league line from the map, not deleting a league)
 2026-09-03T19:44:17Z 75 atlas dispatch=33798145062 region=commons at=416,574 extra_cities=60 drop_slugs=paintbot/classic,paintbot/ctf
+2026-09-03T19:45:48Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21381 status=pr_open (dispatch 3 of 3: dispatch 1 bare, dispatch 2 +extra_cities x60, dispatch 3 +drop_slugs paintbot/classic,paintbot/ctf) — placed 60 other leagues, full list committed at runs/2026-08-24-coins/atlas-placements.txt
+2026-09-03T19:45:48Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21381
+2026-09-03T19:45:48Z 00 phase transition 75 -> 80
