@@ -27,3 +27,5 @@
 2026-09-03T22:28:00Z progress phase=10 marker=design.md
 2026-09-03T22:28:00Z 10 phase -> 20
 2026-09-03T22:28:00Z heartbeat phase=20
+2026-09-03T22:32:00Z 20 fresh builder dispatched thread=sthr_015de933Cf3Zt5hUtmKuhedm (v2 Nim-port brief; old builder thread retired after override stop)
+2026-09-03T22:32:00Z heartbeat phase=20
