@@ -34,9 +34,13 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_26e98f6c-a4d5-4c23-bd62-0ba167ed7f8b",
+      "round_74324044-7fe2-454c-a934-575eb65b7514"
+    ],
+    "replay": "ereq_e7e02675 + ereq_e6aad2bb (round 2, both champions, 0 fallbacks)",
+    "iframe_static": true,
+    "viewer_check_run": "33797485426"
   },
   "announce": {
     "attempted_at": null,
@@ -54,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:32:08Z",
+  "heartbeat_at": "2026-09-03T19:44:13Z",
   "session_ended_at": null,
   "session_id": "954c9761",
   "log": "runs/2026-08-29-continuous-control/log.md"

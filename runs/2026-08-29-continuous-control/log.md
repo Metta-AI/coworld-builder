@@ -86,3 +86,6 @@
 2026-09-03T19:43:03Z 60 check7 TRUE committed release-result.json .certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)"
 2026-09-03T19:43:03Z 60 check8 TRUE viewer-check run 33797485426 loaded=true ms=3940, three differing clocks (HOPPER t8 / CHEETAH t263 / WALKER t51); starter chrome present; residue: endcard table column collision + "PAR 40000000"/zeroed m,upright,saturated in endcard subtitle
 2026-09-03T19:43:03Z 60 verify complete: 8/8 TRUE, VERIFY.md + viewer-check artifact committed
+2026-09-03T19:44:13Z 60 verifier returned 8/8 TRUE at ef343dd (VERIFY.md 595 lines, viewer-check 33797485426 loaded=true clocks differ); residue noted: endcard column collision, PAR line micro-points bug, feed_lines=0 at load
+2026-09-03T19:44:13Z 60 judge dispatch next: adjudicate VERIFY.md vs SPEC definition of done
+2026-09-03T19:44:13Z heartbeat phase=60
