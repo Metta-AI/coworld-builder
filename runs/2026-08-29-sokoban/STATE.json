@@ -5,7 +5,7 @@
   "slug": "sokoban",
   "repo": "Metta-AI/cogame-sokoban",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "40": 1,
@@ -32,7 +32,8 @@
   },
   "league": {
     "id": "league_81761ec5-88ed-4a94-b9b5-89d8b93b90fe",
-    "division": "div_e9cf6fb5-77d8-471d-aad1-d808fd28e1cb"
+    "division": "div_e9cf6fb5-77d8-471d-aad1-d808fd28e1cb",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -55,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:25:29Z",
+  "heartbeat_at": "2026-09-03T19:26:55Z",
   "session_ended_at": null,
   "session_id": "67e3eae0",
   "log": ""

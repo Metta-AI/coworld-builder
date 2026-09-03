@@ -76,3 +76,7 @@
 2026-09-03T19:25:29Z 00 resumed after unblock subtask=1217982805347662 attempts_reset=50
 2026-09-03T19:25:29Z 00 operator comment acknowledged (David Bloomin, 2026-09-03T19:12:23Z): credit pool was 0, human granted 100 credits + drip 100/cap 300 to league_81761ec5, round 1 pending; instruction = resume phase 50 at step 9, continue to 60
 2026-09-03T19:25:29Z 00 resume at phase 50 attempt=1 session=67e3eae0
+2026-09-03T19:26:55Z 50 evidence: rounds now exist — round 1 completed (round_dc0067cb), round 2 pending (round_df339820); owner-status pool_credits=192.6 (operator grant); leaderboard shows both champions ranked: daveey rank3 sokoban-lookahead:v1, daveey-1 rank5 sokoban-orderfirst:v1; fillers ddfec3df+fc2ef667 registered (prior session); exit criterion met
+2026-09-03T19:26:55Z progress phase=50 marker=round_dc0067cb-f121-4de9-a81f-98c3cfc6741e
+2026-09-03T19:26:55Z 50 -> 60 phase transition: STATE.phase=60
+2026-09-03T19:26:55Z heartbeat phase=60
