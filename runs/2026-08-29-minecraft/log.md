@@ -69,3 +69,4 @@
 2026-09-03T19:18:49Z progress phase=50 marker=round_9e5e232a-5216-4716-b76a-ee8a06f81218
 2026-09-03T19:18:49Z 50 phase -> 60
 2026-09-03T19:18:49Z heartbeat phase=60
+2026-09-03T19:19:39Z 60 verify brief being dispatched to verifier (1 completed round so far; verifier polls for #2, bound 75 min)
