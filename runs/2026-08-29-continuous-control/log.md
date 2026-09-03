@@ -70,3 +70,9 @@
 2026-09-03T19:30:15Z 00 resumed after unblock subtask=1217968974654490 attempts_reset=50
 2026-09-03T19:30:15Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:27Z): credit pool was root cause, 100 credits granted + drip 100/day cap 300, round 1 triggered pending; resume phase 50 at step 9
 2026-09-03T19:30:15Z 00 resume at phase 50 attempt=1 session=954c9761
+2026-09-03T19:32:08Z 50 resume step 9: rounds 1+2 completed (round_26e98f6c, round_74324044), pool_credits=191.3, unpaused (rounds_paused_at=null)
+2026-09-03T19:32:08Z 50 exit criterion verified: leaderboard shows daveey-1 throttle:v2 rank 2 and daveey gaitsmith:v2 rank 7; fillers trotter:v2 bd151d35 + plodder:v2 ece2febe only
+2026-09-03T19:32:08Z 50 asana: phase-50 subtask 1217967264167973 completed; comment 1218163123949418
+2026-09-03T19:32:08Z progress phase=50 marker=round_26e98f6c-a4d5-4c23-bd62-0ba167ed7f8b
+2026-09-03T19:32:08Z 50 -> 60 phase transition: entering verify
+2026-09-03T19:32:08Z heartbeat phase=60

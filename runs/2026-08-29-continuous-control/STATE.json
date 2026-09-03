@@ -5,7 +5,7 @@
   "slug": "continuous-control",
   "repo": "https://github.com/Metta-AI/cogame-continuous-control",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "50": 1
   },
@@ -30,7 +30,8 @@
   },
   "league": {
     "id": "league_62a1e77b-c464-41ba-90df-702fc0d9d3db",
-    "division": "div_07b556f6-3e13-40db-afd8-d0823c6ed9d3"
+    "division": "div_07b556f6-3e13-40db-afd8-d0823c6ed9d3",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -53,7 +54,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:30:15Z",
+  "heartbeat_at": "2026-09-03T19:32:08Z",
   "session_ended_at": null,
   "session_id": "954c9761",
   "log": "runs/2026-08-29-continuous-control/log.md"
