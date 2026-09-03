@@ -14,3 +14,7 @@
 2026-09-03T20:15:00Z 20 propagate-secrets run 33801081179 success; SOFTMAX_TOKEN + ANTHROPIC_API_KEY present on cogame-battlecode
 2026-09-03T20:17:00Z 20 builder dispatched thread=sthr_01AkqVreNcCLW5hZeYv5QUHv
 2026-09-03T20:17:00Z heartbeat phase=20
+2026-09-03T21:20:00Z 00 operator comments acknowledged: David Bloomin 2026-09-03T20:57:42Z (two phase-20 steers: year-modular boundary; economy knobs with teeth + economic endcard), 2026-09-03T21:03:06Z (OPERATOR OVERRIDE: no Java at runtime, full Nim behaviour port, JSON-only doctrine, standard wasm viewer, Java as CI-only parity oracle, no JDK in image, phase back to 10), 2026-09-03T21:03:34Z (AMENDMENT: starter = coworld-ctf for everything incl. viewer frame/chrome; parley fallback reference; take nothing from cogame-factorio; keep only CI-oracle + documented-divergences ideas), 2026-09-03T21:14:42Z (AMENDMENT 2: multi-year — one repo/coworld, variant + league per year; v1 = bc26 variant, year module sim/years/bc26, league_key/short_name bc26, default_variant_id bc26, set default-league; record league.year_key in STATE)
+2026-09-03T21:20:00Z 20 builder thread sthr_01AkqVreNcCLW5hZeYv5QUHv sent STOP per override; awaiting confirmation of repo state
+2026-09-03T21:20:00Z 20 -> 10 phase rolled back per operator override; design note to be rewritten against the override
+2026-09-03T21:20:00Z heartbeat phase=10
