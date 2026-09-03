@@ -89,3 +89,4 @@
 2026-09-03T19:44:13Z 60 verifier returned 8/8 TRUE at ef343dd (VERIFY.md 595 lines, viewer-check 33797485426 loaded=true clocks differ); residue noted: endcard column collision, PAR line micro-points bug, feed_lines=0 at load
 2026-09-03T19:44:13Z 60 judge dispatch next: adjudicate VERIFY.md vs SPEC definition of done
 2026-09-03T19:44:13Z heartbeat phase=60
+2026-09-03T19:44:48Z 60 judge dispatched thread=sthr_01Q8dV2A4i7VqynsQHBbh855 (adjudicate VERIFY.md 8/8 + residue rulings)
