@@ -5,7 +5,7 @@
   "slug": "minecraft",
   "repo": "https://github.com/Metta-AI/cogame-minecraft",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 0,
     "50": 1
@@ -31,7 +31,8 @@
   },
   "league": {
     "id": "league_390fe9da-f2a6-4001-93df-e08cc2788846",
-    "division": "div_8b8ad8ef-0d63-4330-8be2-81d20a6eb693"
+    "division": "div_8b8ad8ef-0d63-4330-8be2-81d20a6eb693",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -54,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:17:32Z",
+  "heartbeat_at": "2026-09-03T19:18:49Z",
   "session_ended_at": null,
   "session_id": "3a2c80b9",
   "log": "runs/2026-08-29-minecraft/log.md"

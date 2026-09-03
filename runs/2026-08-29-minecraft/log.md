@@ -64,3 +64,8 @@
 2026-09-03T19:17:14Z 00 resumed after unblock subtask=1217968147950044 attempts_reset=50
 2026-09-03T19:17:32Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:12:25Z): credit pool was 0, funded 100 + drip; round 1 pending; resume phase 50 at step 9
 2026-09-03T19:17:32Z 00 resume at phase 50 attempt=1 session=3a2c80b9
+2026-09-03T19:18:49Z 50 resume at step 9 (operator funded pool: grants 200 today, pool_credits=189.8): GET /rounds -> round 1 completed round_9e5e232a-5216-4716-b76a-ee8a06f81218 error=null
+2026-09-03T19:18:49Z 50 leaderboard div_8b8ad8ef: both champions ranked (daveey-1 minecraft-branchminer:v1 MMR 1032, daveey minecraft-obtaindiamond:v1 MMR 1000) among 7+ entrants; exit criterion met
+2026-09-03T19:18:49Z progress phase=50 marker=round_9e5e232a-5216-4716-b76a-ee8a06f81218
+2026-09-03T19:18:49Z 50 phase -> 60
+2026-09-03T19:18:49Z heartbeat phase=60
