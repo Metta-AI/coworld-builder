@@ -155,3 +155,6 @@
 2026-09-03T19:45:48Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21381 status=pr_open (dispatch 3 of 3: dispatch 1 bare, dispatch 2 +extra_cities x60, dispatch 3 +drop_slugs paintbot/classic,paintbot/ctf) — placed 60 other leagues, full list committed at runs/2026-08-24-coins/atlas-placements.txt
 2026-09-03T19:45:48Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21381
 2026-09-03T19:45:48Z 00 phase transition 75 -> 80
+2026-09-03T19:47:55Z 80 close done: summary on run task (1218163429692725) + idea task (1218163429624596), LEARNINGS appended, all 9 phase subtasks complete, idea 1217748422840667 completed, run task moved to Done
+2026-09-03T19:47:55Z progress phase=80 marker=idea-completed-1217748422840667
+2026-09-03T19:47:55Z session end: phase 80, run complete; next action = none (run closed)

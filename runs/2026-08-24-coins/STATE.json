@@ -63,8 +63,8 @@
     "attempted_at": "2026-09-03T19:45:48Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-03T19:45:48Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-03T19:47:55Z",
+  "session_ended_at": "2026-09-03T19:47:55Z",
   "session_id": "038fd4d9",
   "log": "runs/2026-08-24-coins/log.md"
 }
