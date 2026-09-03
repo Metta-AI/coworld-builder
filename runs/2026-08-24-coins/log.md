@@ -137,3 +137,4 @@
 2026-09-03T19:28:24Z 60 verifier non-check findings: canonical coins now cow_bd320430 v0.1.4 (STATE had v0.1.2 — replay session 404s on old id); 5 outside entrants outrank champions (featured=coins.r194.e11 richard vs relh); residues policyNames=coins-player, font.ttf 404, feed_lines=0, spoilers-default; ladder cadence ~4h48m not 15min; API: episode-requests?round_id= now 405, use /rounds/<id>/episode-requests
 2026-09-03T19:28:24Z heartbeat phase=60
 2026-09-03T19:28:59Z 60 judge dispatched (fresh-context adjudication of VERIFY.md 8/8) thread=sthr_01TD76niBFhG19iEbEt4pXfZ
+2026-09-03T19:32:42Z 60 judge verdict: BLOCKING 0 — all eight checks upheld on independent re-fetch (round 194 ereq_5af03905 24/24 llm, log CLEAN, viewer-check 33795836783 green); 7 non-blocking residues
