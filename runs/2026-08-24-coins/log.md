@@ -123,3 +123,4 @@
 2026-09-03T19:14:19Z 00 resume at phase 60 attempt=1 session=038fd4d9
 2026-09-03T19:15:40Z 00 operator comment acknowledged (David Bloomin 2026-09-03T19:04:26Z): Bedrock quota presumed cleared, resume phase 60 with fresh round, re-block if platform-wide 429s persist
 2026-09-03T19:15:40Z 60 pre-dispatch sanity: league_e9506fcc rounds 185-194 all completed, latest round 194 created 2026-09-03T16:36:11Z — ladder healthy
+2026-09-03T19:16:34Z 60 verifier dispatched (fresh 8-check pass, latest round ~194) thread=sthr_012eDtjJf5zHxBa25vxFjLBi
