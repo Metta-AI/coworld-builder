@@ -89,3 +89,5 @@
 2026-09-04T05:35:00Z 30 r2 fixer returned: 16 commits, head abc92ce3d7005eac6dc7bebae0e3b007033c0fd4, CI run 33834906008 success. D1 chassis off LLM surface (GV04); D2 root cause = king STARVATION not cat damage (partial shell, unbounded dig cost, squeak beacon, no retreat, buried-at-spawn on closeup, over-crowning) — 8 chassis fixes, new gate test_king_survival pre-fix fails 8/11 post-fix 11/11, parity untouched; D3 overlay auto-dismiss on first advancing frame or 6s + toggle + height cap, CI gates overlay coverage >50%. Noted unfixed: check_gameversion.sh GV0x parse (unwired), endcard regex escaping
 2026-09-04T05:35:00Z progress phase=30 marker=r2-fixes.md
 2026-09-04T05:35:00Z heartbeat phase=30
+2026-09-04T05:40:00Z 30 r2 judge dispatched thread=sthr_01TiQBweD7PtPA2fhDqvTSbn output=runs/2026-09-03-battlecode/reviews/r2-verdict.md sha=abc92ce
+2026-09-04T05:40:00Z heartbeat phase=30
