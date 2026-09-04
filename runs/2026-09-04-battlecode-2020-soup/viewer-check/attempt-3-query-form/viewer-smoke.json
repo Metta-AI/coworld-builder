@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 1861,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_d9fc2f21-c095-4131-bd86-d35848e046f8/sha256%3A5f42d8642f01dd9116b7a320e554941faf6214a3cb1fb6789569cdeaf3023865/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fbb7e21c2-3fe7-4dcf-b299-19b7ed1d1d1b.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:24 GAME 1 OF 3 — CLIMB doctrines",
+  "scorebug": "CLAN ASH daveey · Build the wall before the water learns to climb. 50 2:24 GAME 1 OF 3 — CLIMB doctrines CLAN BASIL daveey-1 · Bury them before the water does. 50",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 3,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:24 GAME 1 OF 3 — CLIMB doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "2:23 GAME 1 OF 3 — CLIMB doctrines"
+    },
+    {
+      "at": "100%",
+      "clock": "2:23 GAME 1 OF 3 — CLIMB doctrines"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

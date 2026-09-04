@@ -35,9 +35,21 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_ead26855-0352-4701-9a3b-562f9236a7c7",
+      "round_ae434347-5e0c-4930-87a0-be4349749656"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/bb7e21c2-3fe7-4dcf-b299-19b7ed1d1d1b.replay",
+    "iframe_static": true,
+    "viewer_check_run": "33853624448",
+    "viewer_check_runs": [
+      "33853624448",
+      "33853943737",
+      "33854088585"
+    ],
+    "false_items": [
+      8
+    ]
   },
   "announce": {
     "attempted_at": null,
@@ -55,7 +67,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T08:20:10Z",
+  "heartbeat_at": "2026-09-04T08:40:05Z",
   "session_ended_at": null,
   "session_id": "2b2e82a4",
   "log": "runs/2026-09-04-battlecode-2020-soup/log.md"
