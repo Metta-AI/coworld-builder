@@ -144,6 +144,14 @@ just a run you do not touch.
       - its gid appears in `runs/SKIPPED.json` (a previous heartbeat skipped it — step 4.3);
       - its comments carry a `skipped by coworld-builder:` line (same thing, seen from Asana;
         this is the belt-and-braces read for a SKIPPED.json that failed to push).
+      - **it is a mod of a repo another live run is already modifying.** A title or notes
+        containing `(mod of <repo>)` / `mod of the existing Metta-AI/<repo>` names a host repo;
+        if any run task in *Running* (fresh or stale) has `STATE.repo` ending in that repo name,
+        **defer** this idea for this heartbeat — do not claim it, do not SKIP it, do not comment
+        on it; log `<UTC> 00 deferred idea=<gid> host=<repo> busy=<run>` in the heartbeat's
+        closing note and take the next idea. Two runs editing one repo race on `main`, the
+        manifest and the coworld version (battlecode year variants, 2026-09-04). It becomes
+        claimable the moment the host run is *Done* or *Blocked*.
       ```bash
       jq -r '.[]' runs/SKIPPED.json      # the skipped gids, one per line
       ```
