@@ -60,3 +60,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T06:10:55Z heartbeat phase=30
 2026-09-04T07:25:09Z 30 r1 fixer returned: 15/15 resolved (5 code, 3 test, 7 documented) + out-of-scope fix: wasm_replay_smoke.cjs had never executed a frame (require vs global.Module) — now real with negative control; main sha e07412ab, CI green run 33847918283, no test weakened
 2026-09-04T07:25:09Z heartbeat phase=30
+2026-09-04T07:26:18Z 30 r1 judge dispatched thread=sthr_01LhZ4mLAx6KWQU4hEcHCj7k output=runs/2026-09-04-battlecode-2020-soup/reviews/r1-verdict.md (fresh context, sha e07412ab)
+2026-09-04T07:26:18Z heartbeat phase=30
