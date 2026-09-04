@@ -52,3 +52,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T05:50:50Z progress phase=20 marker=ci-run-33841592052
 2026-09-04T05:50:50Z 20 phase -> 30 review_round=1
 2026-09-04T05:50:50Z heartbeat phase=30
+2026-09-04T05:51:49Z 30 r1 reviewer dispatched thread=sthr_019p8LdoN8Nvyz91G7QKxp6S output=runs/2026-09-04-battlecode-2020-soup/reviews/r1-review.md (diff abc92ce..551c5427 vs design.md)
+2026-09-04T05:51:49Z heartbeat phase=30
