@@ -119,3 +119,7 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:45:34Z heartbeat phase=60
 2026-09-04T08:46:16Z 60 judge dispatched thread=sthr_01A7HS4xgv8MuzWyvvz3GzE4 output=runs/2026-09-04-battlecode-2020-soup/reviews/verify-verdict.md (adjudicate 8 checks + killfeed overlap ruling)
 2026-09-04T08:46:16Z heartbeat phase=60
+2026-09-04T08:51:53Z 60 judge returned: blocking: 0 / BLOCKING: 0 — all 8 checks TRUE independently re-fetched; item-8 supersession ruled sound; killfeed/stat-box overlap ruled ADVISORY (fix in next version bump)
+2026-09-04T08:51:53Z progress phase=60 marker=verify-verdict.md
+2026-09-04T08:51:53Z 60 phase -> 70
+2026-09-04T08:51:53Z heartbeat phase=70
