@@ -64,3 +64,5 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T15:31:14Z progress phase=30 marker=r1-verdict.md
 2026-09-04T15:31:14Z 30 phase -> 40
 2026-09-04T15:31:14Z heartbeat phase=40
+2026-09-04T15:32:38Z 40 builder dispatched thread=sthr_01HvdgYBkXKkhAdcvRGFY7SH version=0.3.0 (policies from repo tools/ci/policies.json, 12 entries; bc21 four are new) output=runs/2026-09-04-battlecode-2021/release-result.json
+2026-09-04T15:32:38Z heartbeat phase=40
