@@ -37,3 +37,6 @@
 2026-09-04T00:08:00Z 30 r1 reviewer dispatched thread=sthr_01Wx8sVsbuH9Bd8fc2zWBRtK output=runs/2026-09-03-battlecode/reviews/r1-review.md
 2026-09-04T00:08:00Z 30 note: git-over-HTTPS push broken in sandbox — coworld-builder pushes now via GitHub Git Data API (gh api, force=false)
 2026-09-04T00:08:00Z heartbeat phase=30
+2026-09-04T00:52:00Z 30 r1 reviewer returned: 17 findings (1 blocking B1 endcard .show vs .on class mismatch; N1-N16 advisory incl. scrub-selector smoke gap, doctrine-fallback cause overwrite, deadline record not load-bearing, knob-test seed loop bug), 22 traced-consistent, 4 undetermined
+2026-09-04T00:52:00Z progress phase=30 marker=r1-review.md
+2026-09-04T00:52:00Z heartbeat phase=30
