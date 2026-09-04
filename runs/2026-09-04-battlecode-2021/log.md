@@ -82,3 +82,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T15:47:24Z heartbeat phase=60
 2026-09-04T15:48:55Z 60 verifier dispatched thread=sthr_01RgPoLV7wPEgAJrdBPJeiRv output=runs/2026-09-04-battlecode-2021/VERIFY.md + viewer-check/ (75-min poll bound; heartbeats delegated to verifier during poll)
 2026-09-04T15:48:55Z heartbeat phase=60
+2026-09-04T15:49:24Z heartbeat phase=60
