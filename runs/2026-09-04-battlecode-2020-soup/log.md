@@ -54,3 +54,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T05:50:50Z heartbeat phase=30
 2026-09-04T05:51:49Z 30 r1 reviewer dispatched thread=sthr_019p8LdoN8Nvyz91G7QKxp6S output=runs/2026-09-04-battlecode-2020-soup/reviews/r1-review.md (diff abc92ce..551c5427 vs design.md)
 2026-09-04T05:51:49Z heartbeat phase=30
+2026-09-04T06:10:11Z 30 r1 reviewer returned: 15 findings, 0 claimed blocking (F1 vacuous fixture assert, F2 victim_alias mislabel, F4 flood_table[7] sentinel vs note, F8 end-reason re-derive shortfall, F9 undeclared weaker knob gates, F10 move-into-water divergence undocumented, F13 no committed bc20 fixture replay, etc)
+2026-09-04T06:10:11Z heartbeat phase=30
