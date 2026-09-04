@@ -121,3 +121,6 @@
 2026-09-04T05:00:55Z progress phase=70 marker=announce.discord_message_id
 2026-09-04T05:00:55Z 70 phase -> 75
 2026-09-04T05:00:55Z heartbeat phase=75
+2026-09-04T05:02:00Z 75 atlas continent=commons reason: the game's defining mechanic is the mixed-motive alliance-and-betrayal doctrine decision (the idea's own motive line: mixed-motive, 'a trust game with a real war underneath'); the RTS is the substrate — commons over paintlands
+2026-09-04T05:02:00Z 75 atlas dispatch=33838959493 region=commons at=416,574 clearance=22.9 label='Battlecode 2026'
+2026-09-04T05:02:00Z heartbeat phase=75
