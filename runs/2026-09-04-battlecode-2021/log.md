@@ -124,3 +124,6 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:41:37Z 75 phase -> 80
 2026-09-04T16:41:37Z heartbeat phase=80
 2026-09-04T16:43:01Z 80 LEARNINGS section appended
+2026-09-04T16:44:23Z 80 close: exec summary 1218191847500393 on run task, condensed 1218192272892189 on idea task; all 9 phase subtasks complete; idea 1218173707173046 completed; run task -> Done
+2026-09-04T16:44:23Z progress phase=80 marker=run-task-Done
+2026-09-04T16:44:23Z 80 RUN COMPLETE — session fe001725 ends; next action: none (run closed)

@@ -67,8 +67,8 @@
     "attempted_at": "2026-09-04T16:41:37Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T16:41:37Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-04T16:44:23Z",
+  "session_ended_at": "2026-09-04T16:44:23Z",
   "session_id": "fe001725",
   "log": "runs/2026-09-04-battlecode-2021/log.md"
 }
