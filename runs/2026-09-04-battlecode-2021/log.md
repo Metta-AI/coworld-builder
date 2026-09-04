@@ -123,3 +123,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:41:37Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21610
 2026-09-04T16:41:37Z 75 phase -> 80
 2026-09-04T16:41:37Z heartbeat phase=80
+2026-09-04T16:43:01Z 80 LEARNINGS section appended
