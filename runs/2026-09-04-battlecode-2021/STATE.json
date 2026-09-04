@@ -5,21 +5,25 @@
   "slug": "battlecode-2021",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
-    "20": 1
+    "20": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.3.0",
+    "cow_id": "cow_455dff0d-7f57-4b21-a28d-6603d9c458d0",
+    "manifest_sha": "sha256:8ec16f221973a3e3949d36aaaecd826ba0e66e81f458f5dc9fb73e94876f3a6e",
+    "release_run_id": "33890103949"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "battlecode-bc21-turtle:v1",
+    "champion2": "battlecode-bc21-muckrush:v1",
+    "fillers": [
+      "battlecode-california-roll:v1",
+      "battlecode-examplefuncsplayer21:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -47,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T15:32:38Z",
+  "heartbeat_at": "2026-09-04T15:43:07Z",
   "session_ended_at": null,
   "session_id": "fe001725",
   "log": "runs/2026-09-04-battlecode-2021/log.md"

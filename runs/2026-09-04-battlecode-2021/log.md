@@ -66,3 +66,7 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T15:31:14Z heartbeat phase=40
 2026-09-04T15:32:38Z 40 builder dispatched thread=sthr_01HvdgYBkXKkhAdcvRGFY7SH version=0.3.0 (policies from repo tools/ci/policies.json, 12 entries; bc21 four are new) output=runs/2026-09-04-battlecode-2021/release-result.json
 2026-09-04T15:32:38Z heartbeat phase=40
+2026-09-04T15:43:07Z 40 builder returned: release run 33890103949 success first dispatch; version=0.3.0 canonical=true certify.ok=true replay_liveness=skipped(static) secret_put=true; 12/12 policies (bc26/bc20 recut v2 on new image digest, bc21 four at v1, muckrush player=ply_bac48eb1); cow_id cow_455dff0d-7f57-4b21-a28d-6603d9c458d0
+2026-09-04T15:43:07Z progress phase=40 marker=33890103949
+2026-09-04T15:43:07Z 40 phase -> 50
+2026-09-04T15:43:07Z heartbeat phase=50
