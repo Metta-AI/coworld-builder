@@ -26,8 +26,10 @@
     "filler_version_ids": []
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc",
+    "division": "div_df107879-c101-4771-98b7-7adf428b78c1",
+    "year_key": "bc20",
+    "pool_funded": false
   },
   "verify": {
     "rounds": [],
@@ -50,7 +52,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T08:07:42Z",
+  "heartbeat_at": "2026-09-04T08:09:04Z",
   "session_ended_at": null,
   "session_id": "2b2e82a4",
   "log": "runs/2026-09-04-battlecode-2020-soup/log.md"

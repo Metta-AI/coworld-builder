@@ -75,3 +75,6 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:07:42Z progress phase=40 marker=release-run-33850681870
 2026-09-04T08:07:42Z 40 phase -> 50
 2026-09-04T08:07:42Z heartbeat phase=50
+2026-09-04T08:09:04Z 50 league seeded 200: league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc key=bc20 name='Battlecode 2020 — Soup' default_variant_id=bc20 (bc26 league league_24414477 untouched, default-league NOT changed per idea)
+2026-09-04T08:09:04Z 50 division div_df107879-c101-4771-98b7-7adf428b78c1 200; settings 200 (elo k32, round_robin, filler_policy, 15min); short-name bc20 200 (softmax.com/battlecode/bc20)
+2026-09-04T08:09:04Z heartbeat phase=50
