@@ -86,3 +86,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:12:14Z progress phase=50 marker=league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc
 2026-09-04T08:12:14Z 50 phase -> 60
 2026-09-04T08:12:14Z heartbeat phase=60
+2026-09-04T08:13:28Z 60 verifier dispatched thread=sthr_01WKajK2qTXy3USnrSg1s7Rf output=runs/2026-09-04-battlecode-2020-soup/VERIFY.md (75-min bound; degenerate-play substance checks folded into check 4)
+2026-09-04T08:13:28Z heartbeat phase=60
