@@ -7,3 +7,26 @@
 2026-09-04T09:17:30Z 00 STATE.json written phase=10 session=1b63e692; mod run of Metta-AI/cogame-battlecode (year module bc21), per idea HOW and LEARNINGS 2026-09-04 battlecode-2020-soup recipe
 2026-09-04T09:22:00Z 10 designer dispatch prepared: starter=cogame-battlecode (mod run, year module bc21); brief modeled on 2026-09-04-battlecode-2020-soup with its LEARNINGS carried forward
 2026-09-04T09:19:47Z 10 designer dispatched thread=sthr_01M8sPmhZSeDaf2EZnSp2zT4 output=runs/2026-09-04-battlecode-2021/design.md (bc21 year-module mod; bc20-sibling model; parity root-cause + killfeed-fix + cert-fixture pins in brief)
+2026-09-04T09:49:33Z 10 designer returned round 1: design.md (1724 lines) — ACCEPTED against prompts/10-design.md checklist:
+- [x] starter named with reason (cogame-battlecode itself; mod run, year-module boundary proved by bc20)
+- [x] num_agents=2 stated in bc21 variant game_config and cert fixture (cert stays bc26); <SEATS>=2
+- [x] resolution order numbered 1-7 mirroring GameWorld.runRound (turn order, empower scan order, bid auction (bid+1)/2, buff expiry, camouflage@300, double-wipe->B)
+- [x] scoring: points=int(40*survival+35*vote_share+15*center_share+10*influence_share) f32-truncated; scores=100*wins+mean(points); higher better; league ranks results.scores
+- [x] end conditions: 6 end_reason values incl deadline/abandoned; results.reason closed enum complete/deadline/fault
+- [x] per-seat observation = sealed pre-match doctrine brief, recorded verbatim in replay; no per-round obs
+- [x] reply schema caps: 16KB reply, notes 280 runes, motto 48 runes, all rune-boundary truncation
+- [x] both policies same image env-switched: PLAYER_PROMPT champions (slanderer-turtle vs muck-rush) + PLAYER_SCRIPTED awu->california-roll, scaffold->examplefuncsplayer21
+- [x] one parallel batch of 2 LLM calls, 45s doctrine budget, worst case 445s <= 720s (60% of 1200)
+- [x] degrade-never-hang: retry once -> california-roll fallback sheet; doctrine_fallback event; loud logging
+- [x] two name spaces: Clan Ash/Clan Basil in-game, real names spectator-side only
+- [x] viewer: static-replay-viewer bundle, build hook, chrome verbatim, readouts listed, 360px legible
+- [x] all four viewer files from ONE starter (cogame-battlecode); data-replay-loaded/data-replay-error stated
+- [x] chrome provenance: chrome_common.js byte-for-byte, replay_broadcast.html appended game block, viewpanel KEPT (board 768-1024px > 360px frame) with reason
+- [x] transport rules: --band/--topband/--hudscale (+new --statrail) via relayout(), nothing in band, endcard stops at var(--band) + dismissed on seek, beat buttons with CSS for every kind
+- [x] replay self-sufficient: names, config, sheets, events, seed; wasm re-derives frames
+- [x] packaging: compose.yaml unchanged, manifest template (bc21 variant added, player[] UNCHANGED, cert bc26), game.docs readme+pages(+rules-bc21), protocols player+global
+- [x] tests: 19 test files incl bounded-orders (11), survival gate w/ inverted control (12), knob-teeth (13), perf gate 75s (15), strict-UTF8 replay (17), parity-oracle-bc21 (Tier C BLOCKING vs parity_ledger_bc21.json), 3-episode docker-smoke, wasm-viewer executes bundle on all 3 replays
+- [x] out of scope non-empty (14 items)
+Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfeed FIT-zoom fix in scope w/ smoke overlap gate, 1500-round cap pinned vs stale 3000 spec prose (patch 2021.2.3.0), 18/76 maps with exclusion reasons
+2026-09-04T09:49:33Z 10 phase -> 20
+2026-09-04T09:49:33Z progress phase=10 marker=design.md

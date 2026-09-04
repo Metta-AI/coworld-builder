@@ -5,7 +5,7 @@
   "slug": "battlecode-2021",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {},
   "review_round": 0,
   "coworld": {
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T09:19:47Z",
+  "heartbeat_at": "2026-09-04T09:49:33Z",
   "session_ended_at": null,
   "session_id": "1b63e692",
   "log": "runs/2026-09-04-battlecode-2021/log.md"
