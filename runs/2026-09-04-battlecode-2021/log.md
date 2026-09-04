@@ -48,3 +48,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T14:05:29Z 20 asana: subtask 1218176520186448 completed, comment 1218185826410720 posted
 2026-09-04T14:05:29Z 20 phase -> 30
 2026-09-04T14:05:29Z heartbeat phase=30
+2026-09-04T14:05:57Z 30 r1 reviewer dispatching: repo checkout /workspace/cogame-battlecode@bdc06b04, diff base e17947d9 (pre-merge main), output reviews/r1-review.md
