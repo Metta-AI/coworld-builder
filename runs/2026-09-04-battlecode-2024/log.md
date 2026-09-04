@@ -32,3 +32,4 @@
 2026-09-04T17:38:00Z 20 builder dispatched thread=sthr_018Ags2YPPSefosws5xoBEm2 branch=bc24-year-module output=runs/2026-09-04-battlecode-2024/build-report.md (GV07 extend, player[] unchanged, cert bc26, Tier A/A'/B/C parity with root-cause-or-fail, killfeed gate kept armed, official sprites, competence gate w/ negative control pinned in brief)
 2026-09-04T17:38:00Z heartbeat phase=20
 2026-09-04T20:39:53Z 00 resume at phase 20 attempt=1 session=9f5cea40
+2026-09-04T20:41:33Z 20 previous builder thread sthr_018Ags2YPPSefosws5xoBEm2 left no build-report.md, no bc24-year-module branch, no CI runs after 15:45 — leg did not happen; re-dispatching builder (attempt 1 of 3, fresh session 9f5cea40)
