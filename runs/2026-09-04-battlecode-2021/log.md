@@ -54,3 +54,6 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T14:34:31Z progress phase=30 marker=r1-review.md
 2026-09-04T14:34:31Z heartbeat phase=30
 2026-09-04T14:35:05Z 30 r1 fixer dispatched thread=sthr_01Cq9wYGucgRFRN2eYdrEaV6 output=runs/2026-09-04-battlecode-2021/reviews/r1-fixes.md (F1 gate-arming pinned as must-fix; F2/F4/F5/F6 doc/CSS aligns; evidence-backed no-change allowed elsewhere)
+2026-09-04T15:16:15Z 30 r1 fixer returned: r1-fixes.md pushed; 7 commits (F1 gate armed 8f0821aa4, F2 b3ae368a5, F4 5e2710efd, F5 02586801e, F6 41dc4458f, F8 3c9f77dbe, F12 d2922438d), 6 evidence-backed no-change; main CI 33886193070 success at d2922438; NEEDS-DESIGN flag on checklist item 7 grid-harness provenance
+2026-09-04T15:16:15Z progress phase=30 marker=r1-fixes.md
+2026-09-04T15:16:15Z heartbeat phase=30
