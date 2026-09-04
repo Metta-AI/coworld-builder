@@ -44,3 +44,6 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T06:58:40Z 20 push 2 sha=0a0106f (docs, NOTICE, tests/test_bc20_replay.nim) CI run 33840693769 conclusion=success — all five jobs green
 2026-09-04T06:58:40Z 20 exit criterion checked on 0a0106f: no <slug>/<IMAGE>/<SEATS> residue; all three workflows parse and are active; coworld-release.yml inputs version/policies/put_secret/skip_certify present; coworld-submit.yml inputs player_id/policy/league_id present; release-result and submit-result artifacts present; both hooks committed 100755; num_agents 2 in both variants' game_config and in the cert fixture, never at variant top level; cert stays bc26
 2026-09-04T06:58:40Z 20 build-report.md written; 0 red CI rounds spent (retry budget untouched)
+2026-09-04T05:44:22Z 20 builder returned: branch green (runs 33839853976, 33840693769), PR 1 open; report build-report.md; API-push workaround noted; GV05 (sibling spent GV04); parity full-engine tier blocked by dead net.sf.jsi artifact, dependency-free oracle vectors 67559 lines clean instead
+2026-09-04T05:44:22Z 20 sibling run 2026-09-03-battlecode confirmed COMPLETE (phase 80, 0.1.6) — merged PR 1 to main (merge sha 551c5427), watching main CI run 33841592052
+2026-09-04T05:44:22Z heartbeat phase=20
