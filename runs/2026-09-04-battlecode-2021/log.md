@@ -97,3 +97,6 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:20:42Z 60 check 7 TRUE: committed release-result.json certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
 2026-09-04T16:20:42Z 60 check 8 FALSE: viewer-check 33893228440/33893758738 loaded:true both signals, but 3 clock readouts identical (2:05 GAME 1 OF 2 - BOG) and png pinned at round 5/1500; control run 33893927786 same bc21 shell on bc20 replay seeks 0%/50%/100% -> game1/game2/FINAL, so shell seek + harness selector are sound; cause = bc21 Worker starvation (sim 9.361s/3000r vs bc20 0.598s/3462r) vs harness 700ms post-click wait. 3/3 attempts spent, not fixed, reported
 2026-09-04T16:20:42Z 60 VERIFY.md written: 1 item false (item 8), items 1-7 TRUE; viewer-check/ (3 attempts) committed
+2026-09-04T16:22:35Z 60 verifier returned: VERIFY.md items 1-7 TRUE, item 8 FALSE (loaded:true both signals, but 3 identical clock readouts; control run 33893927786 with bc20 replay passes same bundle+harness — bc21 replay 18x heavier/round, 700ms post-click settle too short to distinguish slow seek from freeze)
+2026-09-04T16:22:35Z progress phase=60 marker=VERIFY.md
+2026-09-04T16:22:35Z heartbeat phase=60
