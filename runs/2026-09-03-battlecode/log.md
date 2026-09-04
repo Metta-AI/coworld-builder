@@ -112,3 +112,7 @@
 2026-09-04T04:55:00Z heartbeat phase=60
 2026-09-04T04:58:00Z 60 phase-60 judge dispatched thread=sthr_01MrBcX2192VfnPK3jSR3T1r output=runs/2026-09-03-battlecode/reviews/r2-verify-verdict.md
 2026-09-04T04:58:00Z heartbeat phase=60
+2026-09-04T05:25:00Z 60 judge returned BLOCKING: 0 — all 8 checks upheld with independent re-fetches; operator check-4 ruling answered (GV04 removed chassis at source, no idle-win, active losers in both kings_destroyed games); check-8 zoom-slider caveat ruled non-undermining (playback motion corroborated 3 ways; harness defect is coworld-builder's, advisory)
+2026-09-04T05:25:00Z progress phase=60 marker=r2-verify-verdict.md
+2026-09-04T05:25:00Z 60 phase -> 70
+2026-09-04T05:25:00Z heartbeat phase=70
