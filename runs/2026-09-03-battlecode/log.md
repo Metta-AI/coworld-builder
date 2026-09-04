@@ -56,3 +56,8 @@
 2026-09-04T03:40:00Z 00 operator comment acknowledged: daveey (session steer) — release smoke-episode Ping/Pong failures root-caused to server.nim websocketHandler sending empty Pong; certifier requires payload echo (runner.py:734-745, RFC 6455 5.5.3); fix = websocket.send(message.data, Pong) as coworld-ctf server.nim:891-892; add payload-echo test; re-dispatch; no attempts elsewhere first
 2026-09-04T03:40:00Z 40 steer relayed to builder thread sthr_015de933Cf3Zt5hUtmKuhedm
 2026-09-04T03:40:00Z heartbeat phase=40
+2026-09-04T05:20:00Z 40 builder returned: 0.1.5 canonical+certified cow_6f3468fa-5cf5-4c4b-95cf-1d87dc41bfa2 release run 33829115081; 6 dispatches (0.1.0 tokens-schema, 0.1.1 bad-token-accepted, 0.1.2 global-ws, 0.1.3 pong-echo per operator steer, 0.1.4 policy-image-cut, 0.1.5 success); budget overrun 6v3 accepted — converging chain, each a distinct diagnosed fix, transcript advanced one step per dispatch; cert_probe.py lifted from coworld 0.1.43 wheel — template candidate for LEARNINGS
+2026-09-04T05:20:00Z 40 release-result.json persisted to runs/2026-09-03-battlecode/
+2026-09-04T05:20:00Z progress phase=40 marker=release-run-33829115081
+2026-09-04T05:20:00Z 40 phase -> 50
+2026-09-04T05:20:00Z heartbeat phase=50
