@@ -42,3 +42,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T13:38:41Z 20 CI run 33876856381 branch=bc21-year-module sha=cb4d6fbb conclusion=success (all 6 jobs green incl parity-oracle-bc21); awaiting builder merge of PR #3 to main
 2026-09-04T13:46:41Z heartbeat phase=20
 2026-09-04T13:46:41Z 20 PR #3 merged 13:43:26Z; main CI run 33879654216 sha=bdc06b04 in_progress
+2026-09-04T13:56:47Z heartbeat phase=20
