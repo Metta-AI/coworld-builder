@@ -132,3 +132,7 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:55:50Z 75 atlas slug=battlecode/bc20 region=commons at=548,583 clearance=22.9 (adjacent-continent rationale: sibling battlecode at 416,574 commons in queued PR 21548; spot from PR geometry not stale main); extra_cities=63 mirrored VERBATIM from PR 21548 so the two diffs merge cleanly; drop_slugs=paintbot/classic,paintbot/ctf (same stale pair)
 2026-09-04T08:55:50Z heartbeat phase=75
 2026-09-04T08:56:18Z 75 atlas dispatch=33855828090 region=commons at=548,583 clearance=22.9
+2026-09-04T08:59:25Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21581 status=pr_open (63 extra cities mirrored from queued PR 21548; automerge armed; merge queue is human-owned)
+2026-09-04T08:59:25Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21581
+2026-09-04T08:59:25Z 75 phase -> 80
+2026-09-04T08:59:25Z heartbeat phase=80
