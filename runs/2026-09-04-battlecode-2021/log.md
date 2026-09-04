@@ -107,3 +107,7 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:27:29Z heartbeat phase=60
 2026-09-04T16:28:22Z 60 judge dispatched thread=sthr_01EY1ebzZWD5eFQ9t1o8RZzd output=runs/2026-09-04-battlecode-2021/verify-verdict.md
 2026-09-04T16:28:22Z heartbeat phase=60
+2026-09-04T16:34:51Z 60 judge returned: verify-verdict.md blocking=0/BLOCKING=0 agree; all 8 checks TRUE (item 8 via re-run 33895007454); 3 completed rounds now; advisories: worker keyframe checkpoints for seek latency, 2 chrome-collision legibility notes
+2026-09-04T16:34:51Z progress phase=60 marker=verify-verdict.md
+2026-09-04T16:34:51Z 60 phase -> 70
+2026-09-04T16:34:51Z heartbeat phase=70
