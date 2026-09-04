@@ -125,3 +125,7 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:51:53Z heartbeat phase=70
 2026-09-04T08:52:43Z 70 announce.attempted_at written and pushed BEFORE the POST
 2026-09-04T08:52:43Z heartbeat phase=70
+2026-09-04T08:53:09Z 70 announce msg=1545355975630782475 (200, flags:4, embeds:[])
+2026-09-04T08:53:09Z progress phase=70 marker=announce.discord_message_id
+2026-09-04T08:53:09Z 70 phase -> 75
+2026-09-04T08:53:09Z heartbeat phase=75
