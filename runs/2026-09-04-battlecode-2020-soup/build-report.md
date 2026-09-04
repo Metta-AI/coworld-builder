@@ -284,3 +284,63 @@ that does run.
   file in the tree.
 * **`docs/plans/2026-09-04-battlecode-2020-soup-design.md`** is committed on
   the branch, as the note asks.
+
+---
+
+## Addendum — corrections from the r1 review (2026-09-04)
+
+Written by the r1 fixer; the body above is the builder's and is left as it
+was. Full disposition of all fifteen findings:
+`runs/2026-09-04-battlecode-2020-soup/reviews/r1-fixes.md`.
+
+### "byte-identical to `main`'s" is DECODED-identical (review finding F15)
+
+The line under **What shipped → The year boundary** — "the bc26 variant, its
+two player entries, its four policies and the certification fixture are
+byte-identical to `main`'s" — is true after JSON decoding and **not** true at
+the byte level. A structural compare of `abc92ce` against `551c542` reports no
+change under `/variants/0`, `/certification`, `/player/0`, `/player/1` or any
+bc26 `results_schema` property, so **no bc26 value changed**; but the file was
+re-serialised with non-ASCII escaping off, and two bc26 strings lost their
+`\u2014` escape — `variants[bc26].name` and `player[scaffold].description`
+(`abc92ce:coworld_manifest_template.json:491` and `:468`). The decoded values
+are identical and the platform parses JSON, so nothing downstream changes.
+
+Not "fixed" in the tree: the manifest is now uniformly raw UTF-8 (six em
+dashes, no `\u` escapes), and re-escaping two strings would make the file
+internally inconsistent in order to make a sentence in this report true. The
+sentence is what was wrong. Read that line as **"decodes identically to
+`main`'s"**.
+
+### Deviations the review found undeclared, now declared in the repo
+
+The build report's deviation list (§1–§9 above) was missing four items the
+review caught. All four are now in the repo, where a reader of the code finds
+them:
+
+* the builder-miner's **Refinery, built second** — `docs/RULES-BC20.md`
+  §Divergences item 16, together with §7's Chebyshev-2 net guns, which were in
+  this report but in no repo document;
+* the Fulfillment Center's **absent `NEED_DRONES` branch** — item 15;
+* **move-into-water destroys the mover** — item 17, with the upstream
+  `RobotControllerImpl` citation at the pinned commit `7618f6b`;
+* `flood_table["7"] = 1501` (the sentinel, not the note's 1546) and the
+  absence of `rules_digest`/`sheet_schema` from the per-seat observation —
+  `docs/PROTOCOL.md` §The bc20 observation.
+
+### Two green gates that were testing nothing
+
+Both pre-date this report and both were green on the sha it records:
+
+* the worst-case renderer fixture measured the **hidden bc26** doctrine panel
+  on its three bc20 rows, so its "the panel may not own the board" rule passed
+  on a 0×0 rect (review F1);
+* `tools/wasm_replay_smoke.cjs` had **never executed a wasm frame**: `require()`
+  shadows the `global.Module` the emitted glue looks for, so
+  `onRuntimeInitialized` was never called and the step exited 0 in 0.1 s with
+  no output — on every run, including main's green 33841592052. The evidence
+  cited for it under **Evidence → `wasm-viewer`** ("runs `wasm_replay_smoke.cjs`
+  against both. Green.") was therefore worth nothing at the time it was
+  written. It runs now, on three replays, and prints `loaded:true` with
+  `mismatch_round: -1` for each.
+
