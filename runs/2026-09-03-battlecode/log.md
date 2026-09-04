@@ -42,3 +42,6 @@
 2026-09-04T00:52:00Z heartbeat phase=30
 2026-09-04T00:56:00Z 30 r1 fixer dispatched thread=sthr_01UuyqB9k4s1SroJw2d98raX output=runs/2026-09-03-battlecode/reviews/r1-fixes.md
 2026-09-04T00:56:00Z heartbeat phase=30
+2026-09-04T02:05:00Z 30 r1 fixer returned: 17/17 resolved (13 fixed incl. B1 endcard .on + smoke now seeks and gates endcard display; N13a exposed 2 real manifest defects vs coworld CLI — game.owner missing, resources.limits.memory illegal — fixed; GV02+GV03 bumps; 3 documented-by-design N9/N12/N16 with evidence; 1 sub-claim refuted) head=81ffb0e41d51b4622e9377d0dcc02a8946cbd08c CI run 33824171362 success
+2026-09-04T02:05:00Z progress phase=30 marker=r1-fixes.md
+2026-09-04T02:05:00Z heartbeat phase=30
