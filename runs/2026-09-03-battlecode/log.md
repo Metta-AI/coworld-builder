@@ -127,3 +127,9 @@
 2026-09-04T05:06:04Z 75 atlas dispatch 1 (33838959493) failed step=build: 62 unplaced leagues — fix per step 8: placed all 62 via extra_cities (continents: paintlands 14, simulations 19, tabletop 9, commons 13, shire 3, parlour 4; per-league spots from atlas_spot.py iterated against a growing places copy, min clearance 22.1, none crowded)
 2026-09-04T05:06:04Z 75 atlas dispatch=33839210039 region=commons at=416,574 clearance=22.9 label='Battlecode 2026' extra_cities=62
 2026-09-04T05:06:04Z heartbeat phase=75
+2026-09-04T05:16:22Z 75 atlas dispatch 2 (33839210039) failed step=build: stale CITIES slugs; pre-checked all: paintbot/classic + paintbot/ctf gone from /api/coworlds
+2026-09-04T05:16:22Z 75 atlas dispatch=33839312700 (fix 3: drop_slugs=paintbot/classic,paintbot/ctf + same 62 extra_cities) -> success
+2026-09-04T05:16:22Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21548 status=pr_open (approved auto; waiting on Graphite merge queue — a human merges; also placed 62 backlog leagues and dropped 2 stale lines for the fleet)
+2026-09-04T05:16:22Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21548
+2026-09-04T05:16:22Z 75 phase -> 80
+2026-09-04T05:16:22Z heartbeat phase=80

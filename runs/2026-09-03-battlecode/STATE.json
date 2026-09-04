@@ -5,7 +5,7 @@
   "slug": "battlecode",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "coworld-ctf",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -51,18 +51,23 @@
     "discord_message_id": "1545297516470476841"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/21548",
+    "branch": "atlas/battlecode-33839312700",
+    "region": "commons",
+    "x": 416,
+    "y": 574,
+    "dispatch_run_id": "33839312700",
+    "attempted_at": "2026-09-04T05:16:22Z",
+    "reason": "",
+    "extra_cities_placed": 62,
+    "dropped_stale": [
+      "paintbot/classic",
+      "paintbot/ctf"
+    ]
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T05:06:04Z",
+  "heartbeat_at": "2026-09-04T05:16:22Z",
   "session_ended_at": null,
   "session_id": "8dca3903",
   "log": "runs/2026-09-03-battlecode/log.md"
