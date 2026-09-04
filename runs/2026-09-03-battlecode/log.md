@@ -110,3 +110,5 @@
 2026-09-04T04:55:00Z 60 verifier caveat recorded: viewer_smoke.mjs scrub locator hits #zoom-slider before #scrub in THIS shell (50%/100% clicks drove zoom); motion corroborated by clock/scorebug/round-counter progression instead — harness finding, phase-30-class, non-blocking; 3 more advisory notes (PROTOCOL.md GV03 example, defaults ledger under-report, 12x zoom no snap-back)
 2026-09-04T04:55:00Z progress phase=60 marker=VERIFY.md
 2026-09-04T04:55:00Z heartbeat phase=60
+2026-09-04T04:58:00Z 60 phase-60 judge dispatched thread=sthr_01MrBcX2192VfnPK3jSR3T1r output=runs/2026-09-03-battlecode/reviews/r2-verify-verdict.md
+2026-09-04T04:58:00Z heartbeat phase=60
