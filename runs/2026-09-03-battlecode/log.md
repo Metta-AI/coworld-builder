@@ -47,3 +47,7 @@
 2026-09-04T02:05:00Z heartbeat phase=30
 2026-09-04T02:08:00Z 30 r1 judge dispatched thread=sthr_01HkNeifb9mykX47y65ejpWt output=runs/2026-09-03-battlecode/reviews/r1-verdict.md sha=81ffb0e
 2026-09-04T02:08:00Z heartbeat phase=30
+2026-09-04T02:45:00Z 30 r1 judge returned BLOCKING: 0 (B1 fixed+proven, N-series fixed/by-design, 1 sub-claim refuted; all 15 checklist items + batch rule PASS; 5 advisory notes recorded) -> phase 30 complete in 1 round
+2026-09-04T02:45:00Z progress phase=30 marker=r1-verdict.md
+2026-09-04T02:45:00Z 30 phase -> 40
+2026-09-04T02:45:00Z heartbeat phase=40
