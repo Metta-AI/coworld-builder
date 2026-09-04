@@ -116,3 +116,4 @@
 2026-09-04T05:25:00Z progress phase=60 marker=r2-verify-verdict.md
 2026-09-04T05:25:00Z 60 phase -> 70
 2026-09-04T05:25:00Z heartbeat phase=70
+2026-09-04T05:00:28Z 70 announce attempt marker written (pre-POST)
