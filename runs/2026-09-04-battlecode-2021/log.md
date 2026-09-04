@@ -119,3 +119,7 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:39:29Z 75 atlas slug=battlecode/bc21 region=commons at=581,538 clearance=22.9 (commons: multi-variant strategy league, sibling battlecode cluster; spot from PR-21581 geometry not stale main); extra_cities=64 mirrored VERBATIM from queued PR 21581 branch so the diffs merge cleanly; drop_slugs=paintbot/classic,paintbot/ctf (same stale pair)
 2026-09-04T16:39:29Z 75 atlas dispatch=33896329928 region=commons at=581,538 clearance=22.9
 2026-09-04T16:39:29Z heartbeat phase=75
+2026-09-04T16:41:37Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/21610 status=pr_open (64 extra cities mirrored from queued PR 21581; automerge armed; merge queue is human-owned)
+2026-09-04T16:41:37Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21610
+2026-09-04T16:41:37Z 75 phase -> 80
+2026-09-04T16:41:37Z heartbeat phase=80

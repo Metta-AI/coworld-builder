@@ -5,7 +5,7 @@
   "slug": "battlecode-2021",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -57,18 +57,17 @@
     "discord_message_id": "1545472630616752128"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/21610",
+    "branch": "atlas/battlecode-bc21-33896329928",
+    "region": "commons",
+    "x": 581,
+    "y": 538,
+    "dispatch_run_id": "33896329928",
+    "attempted_at": "2026-09-04T16:41:37Z"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T16:39:29Z",
+  "heartbeat_at": "2026-09-04T16:41:37Z",
   "session_ended_at": null,
   "session_id": "fe001725",
   "log": "runs/2026-09-04-battlecode-2021/log.md"
