@@ -60,3 +60,7 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T15:18:41Z 30 note: git-over-https push auth to github.com failing (401); coworld-builder pushes via Git Data API (gh api) from here on — helper /tmp/apipush.py
 2026-09-04T15:19:41Z 30 r1 judge dispatched thread=sthr_01AbxQKReBF75eyaLtdAD9CL reviewed_sha=d2922438 ci=33886193070 output=runs/2026-09-04-battlecode-2021/reviews/r1-verdict.md
 2026-09-04T15:19:41Z heartbeat phase=30
+2026-09-04T15:31:14Z 30 r1 judge returned: r1-verdict.md blocking=0/BLOCKING=0 agree; all 15 checklist items + parallel-batch clause PASS; F1-F13 audited (7 resolved at head, 6 advisory); advisory residue: parity oracle weaker than design-note pin (disclosed in PARITY.md), carry to phase 60
+2026-09-04T15:31:14Z progress phase=30 marker=r1-verdict.md
+2026-09-04T15:31:14Z 30 phase -> 40
+2026-09-04T15:31:14Z heartbeat phase=40
