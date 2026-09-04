@@ -62,3 +62,7 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T07:25:09Z heartbeat phase=30
 2026-09-04T07:26:18Z 30 r1 judge dispatched thread=sthr_01LhZ4mLAx6KWQU4hEcHCj7k output=runs/2026-09-04-battlecode-2020-soup/reviews/r1-verdict.md (fresh context, sha e07412ab)
 2026-09-04T07:26:18Z heartbeat phase=30
+2026-09-04T07:40:51Z 30 r1 judge returned: blocking: 0 / BLOCKING: 0 (markers agree) — 11 findings resolved by verified commits, 4 sound doc dispositions; independent 15-item checklist all PASS; advisory residue: narrowed parity oracle (dead net.sf.jsi, documented)
+2026-09-04T07:40:51Z progress phase=30 marker=r1-verdict.md
+2026-09-04T07:40:51Z 30 phase -> 40
+2026-09-04T07:40:51Z heartbeat phase=40
