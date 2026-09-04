@@ -95,3 +95,5 @@
 2026-09-04T06:20:00Z progress phase=30 marker=r2-verdict.md
 2026-09-04T06:20:00Z 30 phase -> 40 (re-release 0.1.6 with policies='[]' skip; league stays on v1 policy versions)
 2026-09-04T06:20:00Z heartbeat phase=40
+2026-09-04T06:24:00Z 40 0.1.6 release dispatched to builder thread=sthr_015de933Cf3Zt5hUtmKuhedm (policies='[]' skip, artifact to separate path)
+2026-09-04T06:24:00Z heartbeat phase=40
