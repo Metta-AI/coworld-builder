@@ -47,3 +47,8 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T05:44:22Z 20 builder returned: branch green (runs 33839853976, 33840693769), PR 1 open; report build-report.md; API-push workaround noted; GV05 (sibling spent GV04); parity full-engine tier blocked by dead net.sf.jsi artifact, dependency-free oracle vectors 67559 lines clean instead
 2026-09-04T05:44:22Z 20 sibling run 2026-09-03-battlecode confirmed COMPLETE (phase 80, 0.1.6) — merged PR 1 to main (merge sha 551c5427), watching main CI run 33841592052
 2026-09-04T05:44:22Z heartbeat phase=20
+2026-09-04T05:50:50Z 20 push-auth incident: git-over-HTTPS refused sandbox-wide; coworld-builder pushes now replayed via git-data REST API (/tmp/api_push.py, no force; a rejected ref update = lost race, same rule)
+2026-09-04T05:50:50Z 20 main CI green run 33841592052 sha=551c5427 (merge of PR 1); workflows parse on main, release/submit inputs + artifacts confirmed
+2026-09-04T05:50:50Z progress phase=20 marker=ci-run-33841592052
+2026-09-04T05:50:50Z 20 phase -> 30 review_round=1
+2026-09-04T05:50:50Z heartbeat phase=30

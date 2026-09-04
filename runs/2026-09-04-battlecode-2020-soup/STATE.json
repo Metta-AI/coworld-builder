@@ -5,9 +5,9 @@
   "slug": "battlecode-2020-soup",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {},
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -45,7 +45,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T05:44:22Z",
+  "heartbeat_at": "2026-09-04T05:50:50Z",
   "session_ended_at": null,
   "session_id": "2b2e82a4",
   "log": "runs/2026-09-04-battlecode-2020-soup/log.md"
