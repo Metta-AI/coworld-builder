@@ -71,3 +71,5 @@
 2026-09-04T02:34:00Z progress phase=50 marker=league_24414477-8c64-4a71-b643-f8a1ef148e29
 2026-09-04T02:34:00Z 50 phase -> 60
 2026-09-04T02:34:00Z heartbeat phase=60
+2026-09-04T02:36:00Z 60 verifier dispatched thread=sthr_01XCpPxmEGP7NZhyKZXLiQF7 output=runs/2026-09-03-battlecode/VERIFY.md (75-min bound)
+2026-09-04T02:36:00Z heartbeat phase=60
