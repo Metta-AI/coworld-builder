@@ -5,7 +5,7 @@
   "slug": "battlecode-2020-soup",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "40": 0
   },
@@ -23,13 +23,16 @@
       "battlecode-bowl-of-chowder:v1",
       "battlecode-examplefuncsplayer:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "fef73ff9-c4ed-4acd-910e-b34d0198ab13",
+      "14072215-0a2f-4dd3-8be7-409fbfb5ab49"
+    ]
   },
   "league": {
     "id": "league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc",
     "division": "div_df107879-c101-4771-98b7-7adf428b78c1",
     "year_key": "bc20",
-    "pool_funded": false
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -52,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T08:09:04Z",
+  "heartbeat_at": "2026-09-04T08:12:14Z",
   "session_ended_at": null,
   "session_id": "2b2e82a4",
   "log": "runs/2026-09-04-battlecode-2020-soup/log.md"

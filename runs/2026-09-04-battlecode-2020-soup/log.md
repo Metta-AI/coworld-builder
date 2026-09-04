@@ -78,3 +78,11 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:09:04Z 50 league seeded 200: league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc key=bc20 name='Battlecode 2020 — Soup' default_variant_id=bc20 (bc26 league league_24414477 untouched, default-league NOT changed per idea)
 2026-09-04T08:09:04Z 50 division div_df107879-c101-4771-98b7-7adf428b78c1 200; settings 200 (elo k32, round_robin, filler_policy, 15min); short-name bc20 200 (softmax.com/battlecode/bc20)
 2026-09-04T08:09:04Z heartbeat phase=50
+2026-09-04T08:12:14Z 50 champion1 submit ok run 33852053271 sub_a8748180 (battlecode-bc20-latticer:v1, daveey)
+2026-09-04T08:12:14Z 50 champion2 submit ok run 33852131537 sub_03d36bcd (battlecode-bc20-rusher:v1, daveey-1 confirmed)
+2026-09-04T08:12:14Z 50 fillers 200: battlecode-bowl-of-chowder:v1=fef73ff9-c4ed-4acd-910e-b34d0198ab13, battlecode-examplefuncsplayer:v1=14072215-0a2f-4dd3-8be7-409fbfb5ab49 (neither champion)
+2026-09-04T08:12:14Z 50 pool grant 100 credits 200 (balance 100.0); drip 100/day max 300 200
+2026-09-04T08:12:14Z 50 unpaused 200; trigger-round 200 (ladder workflow); round_ead26855 round 1 pending, entrant_attributions = both champions
+2026-09-04T08:12:14Z progress phase=50 marker=league_b08a04aa-9d3d-4ff2-91a3-013e19a531cc
+2026-09-04T08:12:14Z 50 phase -> 60
+2026-09-04T08:12:14Z heartbeat phase=60
