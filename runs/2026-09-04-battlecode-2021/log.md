@@ -49,3 +49,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T14:05:29Z 20 phase -> 30
 2026-09-04T14:05:29Z heartbeat phase=30
 2026-09-04T14:05:57Z 30 r1 reviewer dispatching: repo checkout /workspace/cogame-battlecode@bdc06b04, diff base e17947d9 (pre-merge main), output reviews/r1-review.md
+2026-09-04T14:06:32Z 30 r1 reviewer dispatched thread=sthr_01BvkzZvM9FG6QUEN3CqJRoV output=runs/2026-09-04-battlecode-2021/reviews/r1-review.md
