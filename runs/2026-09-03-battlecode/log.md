@@ -73,3 +73,7 @@
 2026-09-04T02:34:00Z heartbeat phase=60
 2026-09-04T02:36:00Z 60 verifier dispatched thread=sthr_01XCpPxmEGP7NZhyKZXLiQF7 output=runs/2026-09-03-battlecode/VERIFY.md (75-min bound)
 2026-09-04T02:36:00Z heartbeat phase=60
+2026-09-04T03:05:00Z 00 operator directive acknowledged: daveey (session steer) — round 1 (ep a9a54765, replay 0d235369) FAILS check 4: champion sheet chose chassis=scaffold, idled, won on opponent king loss; D1 chassis not an LLM knob; D2 awu cat-defence + survival gate (>=4/5 parity maps reach 2000/points, none kings_destroyed <1500); D3 doctrine overlay must dismiss; then bump+re-release+re-verify on two fresh rounds
+2026-09-04T03:05:00Z 60 verifier thread sthr_01XCpPxmEGP7NZhyKZXLiQF7 sent STOP
+2026-09-04T03:05:00Z 60 -> 30 phase rolled back per operator directive; r2-review.md written from operator findings (D1-D3)
+2026-09-04T03:05:00Z heartbeat phase=30
