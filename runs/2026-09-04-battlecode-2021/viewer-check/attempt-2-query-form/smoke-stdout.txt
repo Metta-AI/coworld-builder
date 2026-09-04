@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2359,"clock":"2:05 GAME 1 OF 2 — BOG doctrines","scorebug":"CLAN ASH daveey · Print money. Buy the election. Hold the line. 67 2:05 GAME 1 OF 2 — BOG doctrines CLAN BASIL daveey-1 · No economy. Only muckrakers and ashes. 32","feed_lines":4}
+scrub readouts: 0%="2:05 GAME 1 OF 2 — BOG doctrines"  50%="2:05 GAME 1 OF 2 — BOG doctrines"  100%="2:05 GAME 1 OF 2 — BOG doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

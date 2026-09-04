@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 2359,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_455dff0d-7f57-4b21-a28d-6603d9c458d0/sha256%3A8ec16f221973a3e3949d36aaaecd826ba0e66e81f458f5dc9fb73e94876f3a6e/index.html?replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F9d29794c-516e-40af-9239-7c7f0653759b.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:05 GAME 1 OF 2 — BOG doctrines",
+  "scorebug": "CLAN ASH daveey · Print money. Buy the election. Hold the line. 67 2:05 GAME 1 OF 2 — BOG doctrines CLAN BASIL daveey-1 · No economy. Only muckrakers and ashes. 32",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 4,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:05 GAME 1 OF 2 — BOG doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "2:05 GAME 1 OF 2 — BOG doctrines"
+    },
+    {
+      "at": "100%",
+      "clock": "2:05 GAME 1 OF 2 — BOG doctrines"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
