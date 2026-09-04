@@ -31,3 +31,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T03:23:11Z 10 phase -> 20
 2026-09-04T03:23:11Z progress phase=10 marker=design.md
 2026-09-04T03:23:11Z heartbeat phase=20
+2026-09-04T03:25:07Z 20 builder dispatched thread=sthr_01Ri6rwfEDZH5fDbkWjKHWcv branch=bc20-year-module output=runs/2026-09-04-battlecode-2020-soup/build-report.md (branch-only, PR open not merged, sibling-run coordination pinned in brief)
+2026-09-04T03:25:07Z heartbeat phase=20
