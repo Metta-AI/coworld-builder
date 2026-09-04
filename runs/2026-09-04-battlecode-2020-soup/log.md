@@ -114,3 +114,6 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:43:39Z 60 verifier returned: 7/8 TRUE; check 8 FALSE via harness defect (comma selector clicked #zoom-slider, verifier proved it with viewpanel=0 control); killfeed/stat-box overlap noted for judge
 2026-09-04T08:43:39Z 60 harness fix: viewer_smoke.mjs scrub target resolved in preference order (#scrub first), zoom-slider mis-click documented in comment; re-dispatching viewer-check
 2026-09-04T08:43:39Z heartbeat phase=60
+2026-09-04T08:45:34Z 60 check 8 re-run after harness fix: viewer-check run 33854861020 loaded:true, clocks 2:24-GAME1 / 1:11-GAME2 / FINAL — three differ, item 8 TRUE; artifact committed viewer-check-rerun/
+2026-09-04T08:45:34Z progress phase=60 marker=viewer-check-33854861020
+2026-09-04T08:45:34Z heartbeat phase=60

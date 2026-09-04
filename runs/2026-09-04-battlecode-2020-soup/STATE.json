@@ -41,7 +41,7 @@
     ],
     "replay": "https://softmax-public.s3.amazonaws.com/replays/bb7e21c2-3fe7-4dcf-b299-19b7ed1d1d1b.replay",
     "iframe_static": true,
-    "viewer_check_run": "33853624448",
+    "viewer_check_run": "33854861020",
     "viewer_check_runs": [
       "33853624448",
       "33853943737",
@@ -49,7 +49,8 @@
     ],
     "false_items": [
       8
-    ]
+    ],
+    "viewer_check_rerun": true
   },
   "announce": {
     "attempted_at": null,

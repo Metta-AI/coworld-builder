@@ -1,0 +1,4 @@
+{"loaded":true,"ms":3191,"clock":"2:24 GAME 1 OF 3 — CLIMB doctrines","scorebug":"CLAN ASH daveey · Build the wall before the water learns to climb. 50 2:24 GAME 1 OF 3 — CLIMB doctrines CLAN BASIL daveey-1 · Bury them before the water does. 50","feed_lines":3}
+scrub readouts: 0%="2:24 GAME 1 OF 3 — CLIMB doctrines"  50%="1:11 GAME 2 OF 3 — ALANDDIVIDED doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

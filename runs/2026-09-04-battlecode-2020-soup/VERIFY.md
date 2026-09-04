@@ -777,3 +777,37 @@ obtained, because the check's own scrubber selector resolves to this shell's zoo
 not mark it true, and I did not touch the harness. The judge's call is whether that is a
 coworld defect (the evidence says it is not) or a coworld-builder tooling defect to fix in
 `templates/tools/ci/viewer_smoke.mjs` before item 8 can be re-run honestly.
+
+---
+
+## 8 (re-run) — after the harness fix: TRUE
+
+The verifier's root cause was accepted: `templates/tools/ci/viewer_smoke.mjs` resolved
+`'#scrub, #seek, input[type="range"]'` in DOM order, so every seek click landed on this shell's
+`#zoom-slider`. Fixed by the coordinator in coworld-builder commit `viewer_smoke: resolve scrub
+target in preference order, not DOM order` (scrub target tried `#scrub` → `#seek` →
+`input[type="range"]`, first present-and-visible wins; the mis-click is documented in the code
+comment). No coworld code changed; the coworld repo was not touched.
+
+Re-dispatch: `viewer-check.yml` run **33854861020** (conclusion success) against the SAME iframe
+src as attempt 1 (`…/static/cow_d9fc2f21-…/sha256%3A5f42d864…/index.html?v=2#replay=…bb7e21c2….replay`).
+Artifact committed at `runs/2026-09-04-battlecode-2020-soup/viewer-check-rerun/`.
+
+```
+{"loaded": true, "ms": 3191, "clock": "2:24 GAME 1 OF 3 — CLIMB doctrines",
+ "scorebug": "CLAN ASH daveey · Build the wall before the water learns to climb. 50 2:24 GAME 1 OF 3 — CLIMB doctrines CLAN BASIL daveey-1 · Bury them before the water does. 50",
+ "feed_lines": 3}
+signals: {"data_replay_loaded": "true", "data_replay_error": null, "bridge": ["ready"], "bridge_ready": true, "bridge_error": []}
+failure: null
+```
+
+| at | clock |
+|---|---|
+| 0% | `2:24 GAME 1 OF 3 — CLIMB doctrines` |
+| 50% | `1:11 GAME 2 OF 3 — ALANDDIVIDED doctrines` |
+| 100% | `FINAL MATCH OVER doctrines` |
+
+Both conditions hold: `loaded: true` (both signals), and the three clock readouts differ — the
+seek now crosses game boundaries (game 1 on Climb → game 2 on ALandDivided → the final endcard),
+which is stronger motion evidence than a within-game clock tick. Item 8 is **TRUE**. The summary
+table's item-8 row is superseded by this section.
