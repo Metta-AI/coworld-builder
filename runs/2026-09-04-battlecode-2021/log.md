@@ -70,3 +70,13 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T15:43:07Z progress phase=40 marker=33890103949
 2026-09-04T15:43:07Z 40 phase -> 50
 2026-09-04T15:43:07Z heartbeat phase=50
+2026-09-04T15:47:24Z 50 league seeded 200: league_cb515f3b-3c07-4512-bbf8-b72324f3cbf5 key=bc21 name='Battlecode 2021 — Campaign' default_variant_id=bc21 (bc26/bc20 leagues untouched, default-league NOT changed)
+2026-09-04T15:47:24Z 50 short-name bc21 200 (softmax.com/battlecode/bc21); division div_5beaa66e-36ec-4db2-bc46-31a501eebaa6 200; settings 200 (elo k32, round_robin, filler_policy, 15min)
+2026-09-04T15:47:24Z 50 champion1 submit ok run 33891219517 sub_fe2a99f7 (battlecode-bc21-turtle:v1, daveey)
+2026-09-04T15:47:24Z 50 champion2 submit ok run 33891274764 sub_1be0cd8c (battlecode-bc21-muckrush:v1, daveey-1 confirmed)
+2026-09-04T15:47:24Z 50 fillers 200: battlecode-california-roll:v1=45c48b3f-c363-4a17-8256-a09438a0ac7b, battlecode-examplefuncsplayer21:v1=28b535fa-170b-4060-a799-bb42840534ba (neither champion)
+2026-09-04T15:47:24Z 50 pool grant 100 credits 200 (balance 100.0); drip 100/day max 300 200
+2026-09-04T15:47:24Z 50 unpaused 200; trigger-round 200 (ladder workflow); round_6feca3e3 round 1 pending, entrant_attributions = both champions
+2026-09-04T15:47:24Z progress phase=50 marker=round_6feca3e3
+2026-09-04T15:47:24Z 50 phase -> 60
+2026-09-04T15:47:24Z heartbeat phase=60

@@ -5,7 +5,7 @@
   "slug": "battlecode-2021",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "40": 1
@@ -24,11 +24,16 @@
       "battlecode-california-roll:v1",
       "battlecode-examplefuncsplayer21:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "45c48b3f-c363-4a17-8256-a09438a0ac7b",
+      "28b535fa-170b-4060-a799-bb42840534ba"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_cb515f3b-3c07-4512-bbf8-b72324f3cbf5",
+    "division": "div_5beaa66e-36ec-4db2-bc46-31a501eebaa6",
+    "year_key": "bc21",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -51,7 +56,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T15:43:07Z",
+  "heartbeat_at": "2026-09-04T15:47:24Z",
   "session_ended_at": null,
   "session_id": "fe001725",
   "log": "runs/2026-09-04-battlecode-2021/log.md"
