@@ -35,3 +35,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T12:53:49Z 00 resume at phase 20 attempt=1 session=fe001725
 2026-09-04T12:55:16Z 20 previous session's builder thread still live: 6 bc21 commits pushed 12:45-12:46Z, CI run 33874457351 in_progress on bc21-year-module — monitoring instead of re-dispatching (two builders on one branch would race)
 2026-09-04T13:09:12Z heartbeat phase=20
+2026-09-04T13:12:05Z 20 CI run 33874457351 branch=bc21-year-module conclusion=failure: parity-oracle-bc21 (javac invalid flag --release under JDK8) + test (test_bc20_baselines.nim type mismatch ScriptedChassis vs ChassisKind); waiting bounded window for the live builder thread to fix before taking over
