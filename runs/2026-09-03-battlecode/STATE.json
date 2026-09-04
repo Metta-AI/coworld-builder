@@ -5,7 +5,7 @@
   "slug": "battlecode",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "coworld-ctf",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {},
   "review_round": 1,
   "coworld": {
@@ -21,11 +21,16 @@
       "battlecode-awu:v1",
       "battlecode-scaffold:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "2a5e9e22-bb5b-48ae-8570-6ccdfbecf6c5",
+      "e1af161f-f6df-4dc6-b659-915b9c596524"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_24414477-8c64-4a71-b643-f8a1ef148e29",
+    "division": "div_4b5efaec-5fde-40c5-9a47-79172c727a13",
+    "year_key": "bc26",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -48,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T05:20:00Z",
+  "heartbeat_at": "2026-09-04T02:34:00Z",
   "session_ended_at": null,
   "session_id": "8dca3903",
   "log": "runs/2026-09-03-battlecode/log.md"

@@ -61,3 +61,13 @@
 2026-09-04T05:20:00Z progress phase=40 marker=release-run-33829115081
 2026-09-04T05:20:00Z 40 phase -> 50
 2026-09-04T05:20:00Z heartbeat phase=50
+2026-09-04T02:29:49Z 50 league seeded 200: league_24414477-8c64-4a71-b643-f8a1ef148e29 key=bc26 name='Battlecode 2026 — Uneasy Alliances' default_variant_id=bc26 (AMENDMENT 2)
+2026-09-04T02:30:10Z 50 short-name bc26 200; default-league set 200 on game_4713fcac-c545-48ee-881d-f5b45eaf208e; division div_4b5efaec-5fde-40c5-9a47-79172c727a13 200; settings 200 (elo k32, round_robin, filler_policy, 15min)
+2026-09-04T02:30:55Z 50 champion1 submit ok run 33829784173 sub_a97d5e1e (battlecode-loyalist:v1, daveey)
+2026-09-04T02:31:30Z 50 champion2 submit ok run 33829820413 sub_91d5fbcc (battlecode-opportunist:v1, daveey-1 confirmed)
+2026-09-04T02:32:30Z 50 fillers 200: battlecode-awu:v1=2a5e9e22-bb5b-48ae-8570-6ccdfbecf6c5, battlecode-scaffold:v1=e1af161f-f6df-4dc6-b659-915b9c596524 (neither champion)
+2026-09-04T02:32:40Z 50 pool grant 100 credits 200 (balance 100.0); drip 100/day max 300 200
+2026-09-04T02:33:00Z 50 unpaused 200; trigger-round 200 (ladder workflow); round 1 pending, entrants = both champions
+2026-09-04T02:34:00Z progress phase=50 marker=league_24414477-8c64-4a71-b643-f8a1ef148e29
+2026-09-04T02:34:00Z 50 phase -> 60
+2026-09-04T02:34:00Z heartbeat phase=60
