@@ -1,0 +1,52 @@
+{
+  "run": "2026-09-04-battlecode-2020-soup",
+  "idea_task": "1218165469199121",
+  "run_task": "1218170282874132",
+  "slug": "battlecode-2020-soup",
+  "repo": "https://github.com/Metta-AI/cogame-battlecode",
+  "starter": "cogame-battlecode",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-09-04T02:58:30Z",
+  "session_ended_at": null,
+  "session_id": "2b2e82a4",
+  "log": "runs/2026-09-04-battlecode-2020-soup/log.md"
+}
