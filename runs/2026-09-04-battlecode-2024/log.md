@@ -29,3 +29,5 @@
 - [x] killfeed FIT-zoom fix verified already in tree; bc24 adds its readouts to measured set + runs gate on bc24 replay
 2026-09-04T17:52:30Z 10 -> 20 phase transition: design accepted round 1, zero rejections
 2026-09-04T17:52:30Z progress phase=10 marker=design.md
+2026-09-04T17:38:00Z 20 builder dispatched thread=sthr_018Ags2YPPSefosws5xoBEm2 branch=bc24-year-module output=runs/2026-09-04-battlecode-2024/build-report.md (GV07 extend, player[] unchanged, cert bc26, Tier A/A'/B/C parity with root-cause-or-fail, killfeed gate kept armed, official sprites, competence gate w/ negative control pinned in brief)
+2026-09-04T17:38:00Z heartbeat phase=20
