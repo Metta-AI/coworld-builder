@@ -37,6 +37,10 @@
 //   --timeout <s>     seconds to wait for the load signal (default 60).
 //   --soak <s>        after the load signal, watch the viewer PLAY for this
 //                     many seconds (default 0 = off). See "SOAK" below.
+//   --settle <ms>     upper bound on how long each scrub readout waits for the
+//                     seek to land (default 700). The wait is adaptive: it
+//                     polls and stops as soon as the clock moves, recording
+//                     the actual latency as scrub[].settle_ms.
 //   --strict-text-bounds
 //                     fail if the viewer drew any text outside its canvas.
 //                     Use it for a FIXED arena; leave it off for a pannable
@@ -155,7 +159,7 @@ function die(code, message) {
 }
 
 function parseArgs(argv) {
-  const out = { timeout: 60, soak: 0, outDir: process.cwd(), headed: false, strictTextBounds: false };
+  const out = { timeout: 60, soak: 0, settle: 700, outDir: process.cwd(), headed: false, strictTextBounds: false };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     const next = () => {
@@ -170,12 +174,13 @@ function parseArgs(argv) {
       case "--url": out.url = next(); break;
       case "--timeout": out.timeout = Number(next()); break;
       case "--soak": out.soak = Number(next()); break;
+      case "--settle": out.settle = Number(next()); break;
       case "--strict-text-bounds": out.strictTextBounds = true; break;
       case "--out": out.outDir = resolve(next()); break;
       case "--headed": out.headed = true; break;
       case "-h":
       case "--help":
-        die(0, "usage: viewer_smoke.mjs (--bundle <dir> --replay <file> | --url <url>) [--timeout 60] [--soak 0] [--strict-text-bounds] [--out dir]");
+        die(0, "usage: viewer_smoke.mjs (--bundle <dir> --replay <file> | --url <url>) [--timeout 60] [--soak 0] [--settle 700] [--strict-text-bounds] [--out dir]");
         break;
       default: die(2, `unknown argument: ${arg}`);
     }
@@ -185,6 +190,7 @@ function parseArgs(argv) {
   if (out.bundle && !out.replay) die(2, "--bundle requires --replay");
   if (!Number.isFinite(out.timeout) || out.timeout <= 0) die(2, "--timeout must be a positive number of seconds");
   if (!Number.isFinite(out.soak) || out.soak < 0) die(2, "--soak must be a non-negative number of seconds");
+  if (!Number.isFinite(out.settle) || out.settle < 0) die(2, "--settle must be a non-negative number of milliseconds");
   return out;
 }
 
@@ -604,10 +610,27 @@ async function main() {
         const box = scrubLoc ? await scrubLoc.boundingBox() : null;
         if (!box) break;
         const x = box.x + Math.max(1, Math.min(box.width - 1, box.width * fraction));
+        const prevClock = scrub[scrub.length - 1].clock;
         await page.mouse.click(x, box.y + box.height / 2);
-        await sleep(700);
-        const now = await page.evaluate(READOUT_SCRIPT);
-        scrub.push({ at: `${Math.round(fraction * 100)}%`, clock: now.clock });
+        // A seek on a heavy replay is a re-simulation in the Worker: it can
+        // take well past the old fixed 700 ms without being frozen
+        // (cogame-battlecode bc21, 2026-09-04: 3.12 ms/round native, 18x
+        // bc20's, and every readout landed before the Worker replied). Poll
+        // until the clock moves off the previous readout or --settle ms
+        // elapse, and record how long the seek actually took -- the latency
+        // is spectator-experience evidence, not just a wait.
+        const started = Date.now();
+        let now = null;
+        for (;;) {
+          await sleep(Math.min(500, Math.max(50, args.settle)));
+          now = await page.evaluate(READOUT_SCRIPT);
+          if (now.clock !== prevClock || Date.now() - started >= args.settle) break;
+        }
+        scrub.push({
+          at: `${Math.round(fraction * 100)}%`,
+          clock: now.clock,
+          settle_ms: Date.now() - started,
+        });
       } catch (error) {
         scrub.push({ at: `${Math.round(fraction * 100)}%`, clock: null, error: String(error && error.message) });
       }

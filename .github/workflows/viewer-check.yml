@@ -27,6 +27,16 @@ on:
         required: false
         default: '90'
         type: string
+      settle:
+        description: 'Milliseconds each scrub readout may wait for its seek to land (adaptive; the actual latency is recorded)'
+        required: false
+        default: '700'
+        type: string
+      soak:
+        description: 'Seconds to watch unattended playback after the load signal (0 = off)'
+        required: false
+        default: '0'
+        type: string
 
 permissions:
   contents: read
@@ -55,12 +65,16 @@ jobs:
         env:
           URL: ${{ inputs.url }}
           TIMEOUT: ${{ inputs.timeout }}
+          SETTLE: ${{ inputs.settle }}
+          SOAK: ${{ inputs.soak }}
         run: |
           set -uo pipefail
           echo "url: ${URL}"
           node templates/tools/ci/viewer_smoke.mjs \
             --url "${URL}" \
             --timeout "${TIMEOUT:-90}" \
+            --settle "${SETTLE:-700}" \
+            --soak "${SOAK:-0}" \
             --out "${GITHUB_WORKSPACE}" \
             > smoke-stdout.txt 2> smoke-stderr.txt
           status=$?

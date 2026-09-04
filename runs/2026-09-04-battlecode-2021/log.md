@@ -100,3 +100,5 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:22:35Z 60 verifier returned: VERIFY.md items 1-7 TRUE, item 8 FALSE (loaded:true both signals, but 3 identical clock readouts; control run 33893927786 with bc20 replay passes same bundle+harness — bc21 replay 18x heavier/round, 700ms post-click settle too short to distinguish slow seek from freeze)
 2026-09-04T16:22:35Z progress phase=60 marker=VERIFY.md
 2026-09-04T16:22:35Z heartbeat phase=60
+2026-09-04T16:24:28Z 60 check-8 retry (attempt 2, different approach per budget): instrument fix — viewer_smoke.mjs scrub settle made adaptive+parametrized (--settle, records settle_ms), viewer-check.yml gains settle/soak inputs; re-dispatching against same iframe src with settle=20000 soak=15
+2026-09-04T16:24:28Z heartbeat phase=60
