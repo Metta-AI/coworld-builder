@@ -102,3 +102,6 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:22:35Z heartbeat phase=60
 2026-09-04T16:24:28Z 60 check-8 retry (attempt 2, different approach per budget): instrument fix — viewer_smoke.mjs scrub settle made adaptive+parametrized (--settle, records settle_ms), viewer-check.yml gains settle/soak inputs; re-dispatching against same iframe src with settle=20000 soak=15
 2026-09-04T16:24:28Z heartbeat phase=60
+2026-09-04T16:27:29Z 60 check 8 re-run after instrument fix: viewer-check run 33895007454 loaded:true, soak moved=true, clocks 1:50-GAME1-BOG / 1:02-GAME2-ARENA / FINAL — three differ (settle_ms 3515/4015), item 8 TRUE; artifact committed viewer-check-rerun/
+2026-09-04T16:27:29Z progress phase=60 marker=33895007454
+2026-09-04T16:27:29Z heartbeat phase=60

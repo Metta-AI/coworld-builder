@@ -929,3 +929,47 @@ replay ~16× cheaper to simulate (0.598 s vs 9.361 s) seeks perfectly, so the sh
 scrub-target selector are both sound. I did not mark it true, and I did not touch the harness or
 the coworld. The judge's call is whether that is a coworld performance defect, a
 coworld-builder instrument limit, or both.
+
+---
+
+## Check 8 — RE-RUN after instrument fix (2026-09-04T16:26Z): TRUE
+
+The three prior attempts (33893228440, 33893758738, 33893927786) established `loaded: true`
+with three identical clock readouts, and the bc20-replay control isolated the variable to the
+bc21 replay's per-round cost (3.12 ms/round native, 18× bc20). The open question was whether
+the seek ever lands (viewer slow) or never lands (viewer frozen). The harness could not answer
+it: the post-click settle was a fixed 700 ms.
+
+**Instrument fix (coworld-builder commit `afc534c`, no coworld-repo change):**
+`templates/tools/ci/viewer_smoke.mjs` scrub settle made adaptive — polls until the clock moves
+off the previous readout or `--settle` ms elapse, and records the actual latency as
+`scrub[].settle_ms`; `viewer-check.yml` gained `settle`/`soak` pass-through inputs.
+
+**Re-dispatch:** viewer-check run **33895007454** (conclusion success), same iframe `src` as the
+three prior attempts (`static/cow_455dff0d…/sha256%3A8ec16f22…/index.html?v=2#replay=…9d29794c….replay`),
+`-f timeout=90 -f settle=20000 -f soak=15`. Artifact committed under `viewer-check-rerun/`.
+
+```json
+{"loaded":true,"ms":1482,"clock":"1:50 GAME 1 OF 2 — BOG doctrines","failure":null}
+soak(15s): moved=true  before="2:05 GAME 1 OF 2 — BOG doctrines"  middle="1:52 GAME 1 OF 2 — BOG doctrines"  after="1:50 GAME 1 OF 2 — BOG doctrines"
+```
+
+| scrub | clock | settle_ms |
+|---|---|---|
+| 0% | 1:50 GAME 1 OF 2 — BOG doctrines | — |
+| 50% | 1:02 GAME 2 OF 2 — ARENA doctrines | 3515 |
+| 100% | FINAL MATCH OVER doctrines | 4015 |
+
+`canvas_text: {"total":0,"outside":0,"ellipsized":0,"never_inside":0}` (DOM-chrome shell; same
+as all prior attempts).
+
+**Both item-8 conditions now hold:** `loaded: true` (both signals), and the three clock readouts
+differ — 0% in game 1 on Bog, 50% in game 2 on Arena, 100% on the FINAL endcard, matching the
+replay's two-game sweep structure exactly. Unattended playback also advances (soak moved=true),
+so the viewer plays without user input. Seek latency on this replay is 3.5–4.0 s (the Worker
+re-simulates the heavy bc21 rounds on seek); recorded honestly as spectator-experience data —
+noticeable, not unusable, and the first frame is drawn in 1.5 s.
+
+**Item 8: TRUE.** (Prior FALSE was the instrument's fixed 700 ms settle. Advisory for future
+battlecode work: a year module this compute-heavy would benefit from Worker-side keyframe
+checkpoints to cut seek latency; filed as spectator-experience residue, not a defect.)
