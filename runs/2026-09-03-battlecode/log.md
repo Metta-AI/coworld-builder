@@ -106,3 +106,7 @@
 2026-09-04T04:25:00Z heartbeat phase=60
 2026-09-04T04:28:00Z 60 re-verify verifier dispatched thread=sthr_01C2nTUFjxgJHtQTVMRYH6J3 (rounds >=9 only, GV04 required, operator check-4 substance test, D3 in-the-wild screenshot check)
 2026-09-04T04:28:00Z heartbeat phase=60
+2026-09-04T04:55:00Z 60 verifier returned: ALL 8 CHECKS TRUE on rounds 9+10 (both 0.1.6/GV04, complete, no fallbacks; substance test passed both replays — both clans build/ferry/fight, backstab@800 fired in r10, no idle-win; leaderboard daveey 1068.6 / daveey-1 931.4 both rounds_played 10; logs CLEAN; static viewer route; D3 confirmed in the wild — overlay collapsed, board visible with kings/rats/cats/cheese; 4 viewer-check runs green, primary 33837141976)
+2026-09-04T04:55:00Z 60 verifier caveat recorded: viewer_smoke.mjs scrub locator hits #zoom-slider before #scrub in THIS shell (50%/100% clicks drove zoom); motion corroborated by clock/scorebug/round-counter progression instead — harness finding, phase-30-class, non-blocking; 3 more advisory notes (PROTOCOL.md GV03 example, defaults ledger under-report, 12x zoom no snap-back)
+2026-09-04T04:55:00Z progress phase=60 marker=VERIFY.md
+2026-09-04T04:55:00Z heartbeat phase=60

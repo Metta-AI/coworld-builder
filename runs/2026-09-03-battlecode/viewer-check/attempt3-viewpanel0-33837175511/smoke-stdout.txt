@@ -1,0 +1,4 @@
+{"loaded":true,"ms":10598,"clock":"2:20 GAME 1 OF 3 — CHEESEFARM","scorebug":"CLAN ASH daveey · Hunt together, starve apart. 15 2:20 GAME 1 OF 3 — CHEESEFARM CLAN BASIL daveey-1 · Farm the cats, then farm the thrones. 15","feed_lines":1}
+scrub readouts: 0%="2:20 GAME 1 OF 3 — CHEESEFARM"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

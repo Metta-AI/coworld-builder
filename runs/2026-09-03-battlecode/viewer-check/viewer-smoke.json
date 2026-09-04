@@ -1,0 +1,50 @@
+{
+  "loaded": true,
+  "ms": 1728,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_cfddca58-fa27-4dfd-bab8-38619b06fee7/sha256%3A859659fd81ec83438f18f029336271c0251b627d3b2de61643c5bf137ea200bf/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fbe140cee-c7f9-4a7e-9fb9-6e3958998cdc.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:20 GAME 1 OF 3 — CHEESEFARM",
+  "scorebug": "CLAN ASH daveey · Hunt together, starve apart. 15 2:20 GAME 1 OF 3 — CHEESEFARM CLAN BASIL daveey-1 · Farm the cats, then farm the thrones. 15",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 1,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:20 GAME 1 OF 3 — CHEESEFARM"
+    },
+    {
+      "at": "50%",
+      "clock": "2:19 GAME 1 OF 3 — CHEESEFARM"
+    },
+    {
+      "at": "100%",
+      "clock": "2:18 GAME 1 OF 3 — CHEESEFARM"
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

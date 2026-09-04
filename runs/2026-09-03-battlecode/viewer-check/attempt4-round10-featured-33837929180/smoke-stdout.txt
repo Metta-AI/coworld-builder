@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2318,"clock":"1:47 GAME 1 OF 3 — DEFAULTMEDIUM","scorebug":"CLAN ASH daveey · Cats first, betrayal second, cheese always. 15 1:47 GAME 1 OF 3 — DEFAULTMEDIUM CLAN BASIL daveey-1 · Farm the cats. Then farm the clan. 15","feed_lines":1}
+scrub readouts: 0%="1:47 GAME 1 OF 3 — DEFAULTMEDIUM"  50%="1:47 GAME 1 OF 3 — DEFAULTMEDIUM"  100%="1:46 GAME 1 OF 3 — DEFAULTMEDIUM"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
