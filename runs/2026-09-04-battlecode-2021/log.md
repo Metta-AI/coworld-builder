@@ -30,3 +30,5 @@
 Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfeed FIT-zoom fix in scope w/ smoke overlap gate, 1500-round cap pinned vs stale 3000 spec prose (patch 2021.2.3.0), 18/76 maps with exclusion reasons
 2026-09-04T09:49:33Z 10 phase -> 20
 2026-09-04T09:49:33Z progress phase=10 marker=design.md
+2026-09-04T09:51:21Z 20 builder dispatched thread=sthr_01QAZzoBKFkNkF5TzKv8pooc branch=bc21-year-module output=runs/2026-09-04-battlecode-2021/build-report.md (PR open not merged; GV06 extend, player[] unchanged, cert bc26, Tier-C parity ledger blocking, killfeed --statrail fix, 3-episode smoke pinned in brief)
+2026-09-04T09:51:21Z heartbeat phase=20
