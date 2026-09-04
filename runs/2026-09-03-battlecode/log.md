@@ -53,3 +53,6 @@
 2026-09-04T02:45:00Z heartbeat phase=40
 2026-09-04T02:50:00Z 40 release dispatched to builder thread=sthr_015de933Cf3Zt5hUtmKuhedm (version 0.1.0, put_secret=true, policies from repo tools/ci/policies.json)
 2026-09-04T02:50:00Z heartbeat phase=40
+2026-09-04T03:40:00Z 00 operator comment acknowledged: daveey (session steer) — release smoke-episode Ping/Pong failures root-caused to server.nim websocketHandler sending empty Pong; certifier requires payload echo (runner.py:734-745, RFC 6455 5.5.3); fix = websocket.send(message.data, Pong) as coworld-ctf server.nim:891-892; add payload-echo test; re-dispatch; no attempts elsewhere first
+2026-09-04T03:40:00Z 40 steer relayed to builder thread sthr_015de933Cf3Zt5hUtmKuhedm
+2026-09-04T03:40:00Z heartbeat phase=40
