@@ -124,3 +124,6 @@
 2026-09-04T05:02:00Z 75 atlas continent=commons reason: the game's defining mechanic is the mixed-motive alliance-and-betrayal doctrine decision (the idea's own motive line: mixed-motive, 'a trust game with a real war underneath'); the RTS is the substrate — commons over paintlands
 2026-09-04T05:02:00Z 75 atlas dispatch=33838959493 region=commons at=416,574 clearance=22.9 label='Battlecode 2026'
 2026-09-04T05:02:00Z heartbeat phase=75
+2026-09-04T05:06:04Z 75 atlas dispatch 1 (33838959493) failed step=build: 62 unplaced leagues — fix per step 8: placed all 62 via extra_cities (continents: paintlands 14, simulations 19, tabletop 9, commons 13, shire 3, parlour 4; per-league spots from atlas_spot.py iterated against a growing places copy, min clearance 22.1, none crowded)
+2026-09-04T05:06:04Z 75 atlas dispatch=33839210039 region=commons at=416,574 clearance=22.9 label='Battlecode 2026' extra_cities=62
+2026-09-04T05:06:04Z heartbeat phase=75
