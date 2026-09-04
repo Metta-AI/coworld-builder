@@ -117,3 +117,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:45:34Z 60 check 8 re-run after harness fix: viewer-check run 33854861020 loaded:true, clocks 2:24-GAME1 / 1:11-GAME2 / FINAL — three differ, item 8 TRUE; artifact committed viewer-check-rerun/
 2026-09-04T08:45:34Z progress phase=60 marker=viewer-check-33854861020
 2026-09-04T08:45:34Z heartbeat phase=60
+2026-09-04T08:46:16Z 60 judge dispatched thread=sthr_01A7HS4xgv8MuzWyvvz3GzE4 output=runs/2026-09-04-battlecode-2020-soup/reviews/verify-verdict.md (adjudicate 8 checks + killfeed overlap ruling)
+2026-09-04T08:46:16Z heartbeat phase=60
