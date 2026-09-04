@@ -112,3 +112,7 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:34:51Z 60 phase -> 70
 2026-09-04T16:34:51Z heartbeat phase=70
 2026-09-04T16:36:18Z 70 announce.attempted_at written and pushed BEFORE the POST
+2026-09-04T16:36:45Z 70 announce msg=1545472630616752128 (200, flags:4, embeds:[])
+2026-09-04T16:36:45Z progress phase=70 marker=announce.discord_message_id
+2026-09-04T16:36:45Z 70 phase -> 75
+2026-09-04T16:36:45Z heartbeat phase=75
