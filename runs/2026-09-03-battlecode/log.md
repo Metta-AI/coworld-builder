@@ -104,3 +104,5 @@
 2026-09-04T04:25:00Z progress phase=40 marker=release-run-33836155531
 2026-09-04T04:25:00Z 40 phase -> 60 (league config from phase 50 stands; champions/fillers/pool unchanged)
 2026-09-04T04:25:00Z heartbeat phase=60
+2026-09-04T04:28:00Z 60 re-verify verifier dispatched thread=sthr_01C2nTUFjxgJHtQTVMRYH6J3 (rounds >=9 only, GV04 required, operator check-4 substance test, D3 in-the-wild screenshot check)
+2026-09-04T04:28:00Z heartbeat phase=60
