@@ -66,3 +66,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T07:40:51Z progress phase=30 marker=r1-verdict.md
 2026-09-04T07:40:51Z 30 phase -> 40
 2026-09-04T07:40:51Z heartbeat phase=40
+2026-09-04T07:41:55Z 40 builder dispatched thread=sthr_015Lv4QFAqyAnKn72oU7GjRd version=0.2.0 policies=bc20-only override (avoid minting unused bc26 v2s, sibling precedent) put_secret=true
+2026-09-04T07:41:55Z heartbeat phase=40
