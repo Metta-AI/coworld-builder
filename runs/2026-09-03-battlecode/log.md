@@ -139,3 +139,5 @@
 2026-09-04T05:18:45Z heartbeat phase=80
 2026-09-04T05:20:03Z 00 operator comment acknowledged LATE: David Bloomin 2026-09-04T01:25:31Z story 1218169378342217 — Tier C parity divergence (arrows r915; also dirtfulcat r453) must be root-caused or written into docs/PARITY.md as a known divergence before phase 80; not done — the comment landed mid-session and was missed because run-task comments were only read at heartbeat start, not at phase transitions. Process defect, mine.
 2026-09-04T05:20:03Z 80 operator directive (session): name the open parity item + Fleet card 1218171523823317 in the executive summary and LEARNINGS; do not describe parity as complete — applying as addenda (summary comment cannot be edited; an ADDENDUM comment is posted on run + idea tasks)
+2026-09-04T05:20:32Z 80 addenda posted: run task (EXECUTIVE SUMMARY — ADDENDUM) + idea task; LEARNINGS addendum committed; open item = Fleet card 1218171523823317 (Tier C parity root cause)
+2026-09-04T05:20:32Z heartbeat phase=80
