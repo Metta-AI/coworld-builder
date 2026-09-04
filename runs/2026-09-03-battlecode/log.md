@@ -79,3 +79,5 @@
 2026-09-04T03:05:00Z heartbeat phase=30
 2026-09-04T03:10:00Z 30 r2 fixer dispatched thread=sthr_01B2FUwtX7bigouMPmDAyfq7 output=runs/2026-09-03-battlecode/reviews/r2-fixes.md (D1 chassis knob removal, D2 awu cat-defence + survival gate, D3 doctrine overlay dismissal)
 2026-09-04T03:10:00Z heartbeat phase=30
+2026-09-04T03:20:00Z 40 builder answered ping-pong steer: fix was already in 0.1.5 (commit 19136e0, dispatch 4); added payload-echo probe cb37075 (proven to fail on reverted build), CI green run 33830002282; asked keep-0.1.5 vs re-dispatch — answered A (keep 0.1.5), 0.1.6 will follow the r2 fix loop; builder to check if coworld-release.yml can skip upload-policies so 0.1.6 does not mint unused v2s (league stays on v1)
+2026-09-04T03:20:00Z heartbeat phase=30
