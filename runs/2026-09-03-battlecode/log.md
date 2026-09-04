@@ -77,3 +77,5 @@
 2026-09-04T03:05:00Z 60 verifier thread sthr_01XCpPxmEGP7NZhyKZXLiQF7 sent STOP
 2026-09-04T03:05:00Z 60 -> 30 phase rolled back per operator directive; r2-review.md written from operator findings (D1-D3)
 2026-09-04T03:05:00Z heartbeat phase=30
+2026-09-04T03:10:00Z 30 r2 fixer dispatched thread=sthr_01B2FUwtX7bigouMPmDAyfq7 output=runs/2026-09-03-battlecode/reviews/r2-fixes.md (D1 chassis knob removal, D2 awu cat-defence + survival gate, D3 doctrine overlay dismissal)
+2026-09-04T03:10:00Z heartbeat phase=30
