@@ -43,3 +43,8 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T13:46:41Z heartbeat phase=20
 2026-09-04T13:46:41Z 20 PR #3 merged 13:43:26Z; main CI run 33879654216 sha=bdc06b04 in_progress
 2026-09-04T13:56:47Z heartbeat phase=20
+2026-09-04T14:05:29Z 20 main CI run 33879654216 sha=bdc06b04 conclusion=success; exit checks pass (placeholders clean, exec bits set, 3 workflows parse w/ pinned inputs, release/submit artifacts present, bc21 variant num_agents=2, champion#2 player id set)
+2026-09-04T14:05:29Z progress phase=20 marker=33879654216
+2026-09-04T14:05:29Z 20 asana: subtask 1218176520186448 completed, comment 1218185826410720 posted
+2026-09-04T14:05:29Z 20 phase -> 30
+2026-09-04T14:05:29Z heartbeat phase=30
