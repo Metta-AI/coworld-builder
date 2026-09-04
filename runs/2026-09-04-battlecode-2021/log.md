@@ -33,3 +33,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T09:51:21Z 20 builder dispatched thread=sthr_01QAZzoBKFkNkF5TzKv8pooc branch=bc21-year-module output=runs/2026-09-04-battlecode-2021/build-report.md (PR open not merged; GV06 extend, player[] unchanged, cert bc26, Tier-C parity ledger blocking, killfeed --statrail fix, 3-episode smoke pinned in brief)
 2026-09-04T09:51:21Z heartbeat phase=20
 2026-09-04T12:53:49Z 00 resume at phase 20 attempt=1 session=fe001725
+2026-09-04T12:55:16Z 20 previous session's builder thread still live: 6 bc21 commits pushed 12:45-12:46Z, CI run 33874457351 in_progress on bc21-year-module — monitoring instead of re-dispatching (two builders on one branch would race)
