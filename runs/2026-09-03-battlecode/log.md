@@ -97,3 +97,10 @@
 2026-09-04T06:20:00Z heartbeat phase=40
 2026-09-04T06:24:00Z 40 0.1.6 release dispatched to builder thread=sthr_015de933Cf3Zt5hUtmKuhedm (policies='[]' skip, artifact to separate path)
 2026-09-04T06:24:00Z heartbeat phase=40
+2026-09-04T04:24:00Z 00 log-timestamp correction: the five preceding lines stamped 05:35:00Z-06:24:00Z were written between ~03:50Z and 04:24Z (estimated stamps drifted ahead of the clock); order is correct, stamps from here on are from date -u
+2026-09-04T04:24:00Z 40 builder returned: 0.1.6 GREEN first try, run 33836155531 at abc92ce; cow_cfddca58-fa27-4dfd-bab8-38619b06fee7 (cow_id is per-version), manifest_sha 859659fd; policies [] as designed, league v1 versions untouched; league follows canonical by name (no rebind); static viewer sha = bundle content digest, D3 viewer changes flow automatically
+2026-09-04T04:24:00Z 40 release-result-0.1.6.json persisted alongside the 0.1.5 policy record
+2026-09-04T04:24:52Z 40 rounds 1-8 all completed under 0.1.5 (cadence every 15min); round 9 triggered = first 0.1.6 round (trigger 200)
+2026-09-04T04:25:00Z progress phase=40 marker=release-run-33836155531
+2026-09-04T04:25:00Z 40 phase -> 60 (league config from phase 50 stands; champions/fillers/pool unchanged)
+2026-09-04T04:25:00Z heartbeat phase=60
