@@ -775,3 +775,4 @@
 2026-09-04T00:38:37Z heartbeat: nothing to do
 2026-09-04T01:00:36Z 00 deferred idea=1218165469199121 (bc20 Soup, mod of cogame-battlecode): base run 2026-09-03-battlecode live at phase 30 (hb=2026-09-04T00:56:00Z, r1 fixer running), not shipped; claimable once base run completes
 2026-09-04T01:00:36Z heartbeat: nothing to do
+2026-09-04T01:18:59Z heartbeat: nothing to do (bc20 Soup deferred behind live battlecode run at phase 30; live=1/5, 0 blocked)
