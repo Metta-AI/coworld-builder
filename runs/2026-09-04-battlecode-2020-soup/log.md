@@ -88,3 +88,11 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:12:14Z heartbeat phase=60
 2026-09-04T08:13:28Z 60 verifier dispatched thread=sthr_01WKajK2qTXy3USnrSg1s7Rf output=runs/2026-09-04-battlecode-2020-soup/VERIFY.md (75-min bound; degenerate-play substance checks folded into check 4)
 2026-09-04T08:13:28Z heartbeat phase=60
+2026-09-04T08:20:10Z 60 poll 1: rounds?league_id -> 1 round, round_ead26855 round_number=1 status=completed (created 08:11:19Z, completed 08:12:12Z); need >=2, waiting (interval 15min, bound 09:28Z)
+2026-09-04T08:20:10Z 60 check 2 TRUE: leaderboard daveey rank1 latticer:v1 1016 rounds_played=1 wins=1 / daveey-1 rank2 rusher:v1 984 rounds_played=1; no filler rows
+2026-09-04T08:20:10Z 60 check 3 (round 1) TRUE: ereq_241dd10b completed replay_url=.../a3fb2023-1408-4c75-9023-e665a3eb2510.replay participants daveey+daveey-1 (flat ?round_id= 405; nested /rounds/$R/episode-requests works)
+2026-09-04T08:20:10Z 60 check 4 (round 1) TRUE: strict python json ok, protocol=cogame.battlecode.v1, result.reason=complete, fallbacks=[0,0], sheets differ (lattice vs rush), 3 games end_reason hq_destroyed/quantity/..., 76 events incl first_build x30, rush_launched x3, wall_closed x5, flood_stage x13, hq_buried
+2026-09-04T08:20:10Z 60 check 5 (round 1) CLEAN: decoded 4 containers, zero 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected'
+2026-09-04T08:20:10Z 60 check 6 static: page client-rendered (no <iframe> in raw HTML for /battlecode/bc20 or /battlecode); featured match from SSR state.playlist[0]; POST /coworlds/replays/session -> ready:true viewer_url=.../v2/coworlds/replays/static/cow_d9fc2f21.../sha256%3A5f42d864.../index.html?v=2#replay=<s3>
+2026-09-04T08:20:10Z 60 check 7 TRUE: committed release-result.json certify.replay_liveness = 'Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)'
+2026-09-04T08:20:10Z heartbeat phase=60
