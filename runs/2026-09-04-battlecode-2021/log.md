@@ -111,3 +111,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:34:51Z progress phase=60 marker=verify-verdict.md
 2026-09-04T16:34:51Z 60 phase -> 70
 2026-09-04T16:34:51Z heartbeat phase=70
+2026-09-04T16:36:18Z 70 announce.attempted_at written and pushed BEFORE the POST
