@@ -4,7 +4,7 @@
   "run_task": "1218176598028188",
   "slug": "battlecode-2021",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
-  "starter": "coworld-ctf",
+  "starter": "cogame-battlecode",
   "phase": "10",
   "phase_attempts": {},
   "review_round": 0,
