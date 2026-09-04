@@ -131,3 +131,4 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:53:09Z heartbeat phase=75
 2026-09-04T08:55:50Z 75 atlas slug=battlecode/bc20 region=commons at=548,583 clearance=22.9 (adjacent-continent rationale: sibling battlecode at 416,574 commons in queued PR 21548; spot from PR geometry not stale main); extra_cities=63 mirrored VERBATIM from PR 21548 so the two diffs merge cleanly; drop_slugs=paintbot/classic,paintbot/ctf (same stale pair)
 2026-09-04T08:55:50Z heartbeat phase=75
+2026-09-04T08:56:18Z 75 atlas dispatch=33855828090 region=commons at=548,583 clearance=22.9
