@@ -123,3 +123,5 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:51:53Z progress phase=60 marker=verify-verdict.md
 2026-09-04T08:51:53Z 60 phase -> 70
 2026-09-04T08:51:53Z heartbeat phase=70
+2026-09-04T08:52:43Z 70 announce.attempted_at written and pushed BEFORE the POST
+2026-09-04T08:52:43Z heartbeat phase=70
