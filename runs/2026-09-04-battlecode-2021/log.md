@@ -88,3 +88,12 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:04:21Z heartbeat phase=60
 2026-09-04T16:11:36Z heartbeat phase=60
 2026-09-04T16:14:51Z heartbeat phase=60
+2026-09-04T16:20:42Z 60 check 1 TRUE: 2 completed rounds round_6feca3e3 (r1) round_dc7a247d (r2), error null, fillers set pre-trigger
+2026-09-04T16:20:42Z 60 check 2 TRUE: leaderboard daveey turtle:v1 rank1 1030.53 rp2, daveey-1 muckrush:v1 rank2 969.47 rp2, no filler/Baseline row
+2026-09-04T16:20:42Z 60 check 3 TRUE: ereq_1f12242c completed replay 9d29794c, participants daveey/daveey-1 is_filler false
+2026-09-04T16:20:42Z 60 check 4 TRUE: strict UTF-8 JSON 71618B, protocol cogame.battlecode.v1 GV06 bc21, reason=complete, fallbacks [0,0], 2 full 1500-round games
+2026-09-04T16:20:42Z 60 check 5 TRUE: hosted log CLEAN (0 of 4 gated patterns), both openrouter calls 200
+2026-09-04T16:20:42Z 60 check 6 TRUE: SSR playlist[0] featured match r2 + session endpoint viewer_url static path sha256:8ec16f22 ready=true, no /client/replay
+2026-09-04T16:20:42Z 60 check 7 TRUE: committed release-result.json certify.replay_liveness = "Replay liveness: skipped (static replay bundle declared; ...)"
+2026-09-04T16:20:42Z 60 check 8 FALSE: viewer-check 33893228440/33893758738 loaded:true both signals, but 3 clock readouts identical (2:05 GAME 1 OF 2 - BOG) and png pinned at round 5/1500; control run 33893927786 same bc21 shell on bc20 replay seeks 0%/50%/100% -> game1/game2/FINAL, so shell seek + harness selector are sound; cause = bc21 Worker starvation (sim 9.361s/3000r vs bc20 0.598s/3462r) vs harness 700ms post-click wait. 3/3 attempts spent, not fixed, reported
+2026-09-04T16:20:42Z 60 VERIFY.md written: 1 item false (item 8), items 1-7 TRUE; viewer-check/ (3 attempts) committed
