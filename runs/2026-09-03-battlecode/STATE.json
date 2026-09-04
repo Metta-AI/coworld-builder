@@ -5,7 +5,7 @@
   "slug": "battlecode",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "coworld-ctf",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {},
   "review_round": 2,
   "coworld": {
@@ -53,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-04T05:40:00Z",
+  "heartbeat_at": "2026-09-04T06:20:00Z",
   "session_ended_at": null,
   "session_id": "8dca3903",
   "log": "runs/2026-09-03-battlecode/log.md"

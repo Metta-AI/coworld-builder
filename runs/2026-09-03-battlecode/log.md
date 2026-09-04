@@ -91,3 +91,7 @@
 2026-09-04T05:35:00Z heartbeat phase=30
 2026-09-04T05:40:00Z 30 r2 judge dispatched thread=sthr_01TiQBweD7PtPA2fhDqvTSbn output=runs/2026-09-03-battlecode/reviews/r2-verdict.md sha=abc92ce
 2026-09-04T05:40:00Z heartbeat phase=30
+2026-09-04T06:20:00Z 30 r2 judge returned BLOCKING: 0 — D1/D2/D3 all FIXED at abc92ce (survival gate strengthens: dirtfulcat swapped for arrows = an observed-failing map; full checklist PASS; no loosened tests over full history)
+2026-09-04T06:20:00Z progress phase=30 marker=r2-verdict.md
+2026-09-04T06:20:00Z 30 phase -> 40 (re-release 0.1.6 with policies='[]' skip; league stays on v1 policy versions)
+2026-09-04T06:20:00Z heartbeat phase=40
