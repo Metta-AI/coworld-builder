@@ -51,3 +51,5 @@
 2026-09-04T02:45:00Z progress phase=30 marker=r1-verdict.md
 2026-09-04T02:45:00Z 30 phase -> 40
 2026-09-04T02:45:00Z heartbeat phase=40
+2026-09-04T02:50:00Z 40 release dispatched to builder thread=sthr_015de933Cf3Zt5hUtmKuhedm (version 0.1.0, put_secret=true, policies from repo tools/ci/policies.json)
+2026-09-04T02:50:00Z heartbeat phase=40
