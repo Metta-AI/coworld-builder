@@ -947,3 +947,11 @@
 2026-09-04T13:38:30Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-04-battlecode-2021
 2026-09-04T13:38:30Z heartbeat: nothing to do
 2026-09-04T13:45:32Z 00 yield run=2026-09-04-battlecode-2021 to=session-fe001725 (my session went stale in a long builder thread; live session resumed 12:53Z and is fresh; rebase conflict + foreign nonce -> exit. Note: this session merged PR 3 (merge sha bdc06b0488817d6079ab4e2797c7fe1a83adbde8) at ~13:42Z before observing the takeover — the live session was awaiting exactly that merge; builder build-report.md exists only in this container, its content is mirrored in PR 3 / docs/PARITY.md / parity_ledger_bc21.json)
+2026-09-04T13:56:52Z 00 deferred idea=1218173707729346 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173818729631 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173707682926 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173707344974 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173818034076 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173707507614 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-04-battlecode-2021
+2026-09-04T13:56:52Z heartbeat: nothing to do
