@@ -443,7 +443,27 @@ const READOUT_SCRIPT = `(() => {
 
 // The scrubber element the scrub readouts click: #scrub (parley lineage),
 // #seek (moba lineage), else any range input.
-const SCRUB_SELECTOR = '#scrub, #seek, input[type="range"]';
+// Resolved in PREFERENCE order, never as one comma list: Playwright resolves
+// a comma selector by DOCUMENT order, and a shell whose zoom slider (an
+// input[type="range"]) precedes its #scrub in the DOM gets its zoom dragged
+// instead of a seek (cogame-battlecode bc20, 2026-09-04: all three scrub
+// clicks landed on #zoom-slider, clock readouts froze at 2:23 and the
+// screenshots were pinned at 12.0x zoom).
+const SCRUB_SELECTORS = ['#scrub', '#seek', 'input[type="range"]'];
+async function scrubTarget(page) {
+  for (const sel of SCRUB_SELECTORS) {
+    try {
+      const loc = page.locator(sel).first();
+      if ((await loc.count()) > 0) {
+        const box = await loc.boundingBox();
+        if (box) return loc; // present AND visible; a hidden control cannot seek
+      }
+    } catch {
+      // try the next selector
+    }
+  }
+  return null;
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -578,9 +598,10 @@ async function main() {
   const scrub = [];
   if (loaded && readout && readout.has_scrub) {
     scrub.push({ at: "0%", clock: readout.clock });
+    const scrubLoc = await scrubTarget(page);
     for (const fraction of [0.5, 1.0]) {
       try {
-        const box = await page.locator(SCRUB_SELECTOR).first().boundingBox();
+        const box = scrubLoc ? await scrubLoc.boundingBox() : null;
         if (!box) break;
         const x = box.x + Math.max(1, Math.min(box.width - 1, box.width * fraction));
         await page.mouse.click(x, box.y + box.height / 2);

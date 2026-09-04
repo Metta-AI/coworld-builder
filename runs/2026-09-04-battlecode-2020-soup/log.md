@@ -111,3 +111,6 @@ Post-D1/D2/D3 interface honoured (no chassis knob; baselines play; overlay dismi
 2026-09-04T08:40:05Z 60 VERIFY.md written: items 1-7 TRUE, item 8 FALSE; viewer-check artifacts (3 runs) committed under runs/.../viewer-check/
 2026-09-04T08:40:05Z 60 legibility observation for the coordinator: killfeed panel overdraws the per-clan soup/mined/refined stat boxes bottom-right in all three screenshots
 2026-09-04T08:40:05Z heartbeat phase=60
+2026-09-04T08:43:39Z 60 verifier returned: 7/8 TRUE; check 8 FALSE via harness defect (comma selector clicked #zoom-slider, verifier proved it with viewpanel=0 control); killfeed/stat-box overlap noted for judge
+2026-09-04T08:43:39Z 60 harness fix: viewer_smoke.mjs scrub target resolved in preference order (#scrub first), zoom-slider mis-click documented in comment; re-dispatching viewer-check
+2026-09-04T08:43:39Z heartbeat phase=60
