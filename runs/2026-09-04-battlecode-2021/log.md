@@ -105,3 +105,5 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T16:27:29Z 60 check 8 re-run after instrument fix: viewer-check run 33895007454 loaded:true, soak moved=true, clocks 1:50-GAME1-BOG / 1:02-GAME2-ARENA / FINAL — three differ (settle_ms 3515/4015), item 8 TRUE; artifact committed viewer-check-rerun/
 2026-09-04T16:27:29Z progress phase=60 marker=33895007454
 2026-09-04T16:27:29Z heartbeat phase=60
+2026-09-04T16:28:22Z 60 judge dispatched thread=sthr_01EY1ebzZWD5eFQ9t1o8RZzd output=runs/2026-09-04-battlecode-2021/verify-verdict.md
+2026-09-04T16:28:22Z heartbeat phase=60
