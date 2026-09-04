@@ -53,3 +53,4 @@ Extras: GV05->GV06 extending ReplayCompatibleGameVersions, 0.2.0->0.3.0, killfee
 2026-09-04T14:34:31Z 30 r1 reviewer returned: r1-review.md (1213 lines), 13 findings F1-F13 all non-blocking per reviewer + 4 could-not-determine; F1 = killfeed-overlap viewer gate never executes (OVERLAP_SCRIPT not an IIFE, page.evaluate serialises undefined)
 2026-09-04T14:34:31Z progress phase=30 marker=r1-review.md
 2026-09-04T14:34:31Z heartbeat phase=30
+2026-09-04T14:35:05Z 30 r1 fixer dispatched thread=sthr_01Cq9wYGucgRFRN2eYdrEaV6 output=runs/2026-09-04-battlecode-2021/reviews/r1-fixes.md (F1 gate-arming pinned as must-fix; F2/F4/F5/F6 doc/CSS aligns; evidence-backed no-change allowed elsewhere)
