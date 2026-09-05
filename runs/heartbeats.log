@@ -1098,3 +1098,4 @@
 2026-09-04T20:56:15Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-04-battlecode-2024
 2026-09-04T20:56:15Z heartbeat: nothing to do
 2026-09-05T06:40:30Z heartbeat: builder board unreachable (403 on project 1217747772236871 via tasks list, project GET, sections, direct task GET; ASANA_PAT valid — users/me and Ideas board OK) — exiting per 00-claim retry budget
+2026-09-05T06:46:00Z heartbeat: builder board still unreachable (403 on tasks list, project GET, section 1217747860567752 tasks, direct GET task 1218192717760615; ASANA_PAT valid — users/me 200, Ideas board 200, workspace Softmax member). Second consecutive heartbeat; permission on project appears revoked for the PAT user. Cannot resume stale run battlecode-2024 (nonce guard needs the task's heartbeat_at field). Exiting per 00-claim retry budget; next heartbeat retries.
