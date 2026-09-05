@@ -1097,3 +1097,4 @@
 2026-09-04T20:56:15Z 00 deferred idea=1218173707507614 host=cogame-battlecode busy=2026-09-04-battlecode-2024
 2026-09-04T20:56:15Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-04-battlecode-2024
 2026-09-04T20:56:15Z heartbeat: nothing to do
+2026-09-05T06:40:30Z heartbeat: builder board unreachable (403 on project 1217747772236871 via tasks list, project GET, sections, direct task GET; ASANA_PAT valid — users/me and Ideas board OK) — exiting per 00-claim retry budget
