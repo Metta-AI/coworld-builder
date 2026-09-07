@@ -60,3 +60,4 @@
 2026-09-07T14:21:49Z 30 reviewer re-dispatch prepared (3rd in-round attempt; sessions ab4442d8/db98fc3b died in reviewer threads sthr_012okBBR5gZouSrwcrLYWp8H/sthr_01LspzzSNWhNdeZzGVfqkUnj, no r1-review.md): fresh checkout /tmp/cogame-battlecode@5e7c8b78, base d2922438, round=1 session=71600f96
 2026-09-07T14:22:26Z 30 reviewer dispatched thread=sthr_01Mu9keKFpErgSJNvr7AdXe7 round=1 output=runs/2026-09-04-battlecode-2024/reviews/r1-review.md
 2026-09-07T14:22:26Z heartbeat phase=30
+2026-09-07T17:42:36Z 00 resume at phase 30 attempt=3 session=bd697ed3
