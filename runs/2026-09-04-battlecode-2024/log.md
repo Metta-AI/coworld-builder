@@ -49,3 +49,4 @@
 2026-09-07T08:03:39Z 20 exit checks passed by coordinator on main@5e7c8b78 (ci run 34084170288 green; PR #4 merged 04:43:34Z by dead builder leg sthr_01XwDhWaHziXqchcZwWKNYtA which left no build-report.md — checks re-run mechanically: placeholders clean, hooks executable, 3 workflows parse w/ inputs+artifacts, manifest bc24 variant + num_agents=2 everywhere, GV07 compat extended, 20 bc24 tests, policies 2 LLM + 2 scripted w/ player field on champion 2)
 2026-09-07T08:03:39Z 20 -> 30 phase transition: ci.yml green on main, review_round=1
 2026-09-07T08:03:39Z heartbeat phase=30
+2026-09-07T08:04:25Z 30 reviewer dispatch prepared: repo checkout /tmp/cogame-battlecode@5e7c8b78 (full history), base for the bc24 delta = d2922438 (main pre-PR#4), output=runs/2026-09-04-battlecode-2024/reviews/r1-review.md
