@@ -8,18 +8,28 @@ Ids are not secrets. Tokens are — none appear in this file, ever.
 
 ## Environment & vaults
 
-- `environment_id: env_017PXeSYBWccAvG8XynueHm6` — the ctf-team cloud environment. Reused
-  deliberately: it already has the egress allow-list and the sandbox shape these agents need.
-- `vault_ids: vlt_011CdApMvqzJr9CKNMkuVDW3, vlt_011CeJJ4eJ7h2TKoPBwKhA4M, vlt_011CeKzkxhfppi8gvSsPT3Fp` — the first carries
+Everything below lives in the Anthropic Console workspace **`daveey-builder-rl`**
+(`workspace_id: wrkspc_01MGK1QjvxLGdUFCeExDjLSb`). The fleet was migrated here from the Default
+workspace on 2026-09-05; the originals there are paused, never deleted. `fleet/bin/deploy.py` reads
+the `workspace_id:` line and sends it as `anthropic-workspace-id` on every call, because the key it
+uses (`daveey/anthropic/org-key`) is org-scoped.
+
+- `environment_id: env_019SmBGHe5jFJRAx79XbLJ2t` — the `coworld-builder` cloud environment
+  (unrestricted egress).
+- `vault_ids: vlt_011Ceji2nezKy48HL8omxZoS, vlt_011Ceji2osuWzkRdtzSAjvGe, vlt_011Ceji2q5bkjbNtYCpaXoXW` — the first carries
   `SOFTMAX_TOKEN`, `GH_TOKEN`, `ASANA_PAT`; the second `DISCORD_BOT_TOKEN`; the third `GEMINI_API_KEY`
   (nano-banana board art, `playbooks/art-nanobanana.md`); all substituted at egress.
 
 | vault | id | credentials | status |
 |---|---|---|---|
-| fleet vault (shared) | `vlt_011CdApMvqzJr9CKNMkuVDW3` | `SOFTMAX_TOKEN`, `GH_TOKEN`, `ASANA_PAT` | live |
-| coworld-builder-discord | `vlt_011CeJJ4eJ7h2TKoPBwKhA4M` | `DISCORD_BOT_TOKEN` → host `discord.com` (credential `vcrd_01QU9AwcE3bj7PRqFN1WuvxX`) | live (created 2026-08-22 via `POST /vaults {display_name}` then `POST /vaults/{id}/credentials {display_name, auth:{type:environment_variable, secret_name, secret_value, networking:{type:limited, allowed_hosts}, injection_location:{header,body}}}`) |
-| coworld-builder-gemini | `vlt_011CeKzkxhfppi8gvSsPT3Fp` | `GEMINI_API_KEY` → host `generativelanguage.googleapis.com`, header only (credential `vcrd_01PgxttsNFfkySBA2RP2ErMx`); value from AWS Secrets Manager `polis/shared/gemini-api-key` | live (created 2026-08-23, same two calls) |
+| coworld-builder-shared | `vlt_011Ceji2nezKy48HL8omxZoS` | `SOFTMAX_TOKEN` → `softmax.com`, `*.softmax.com` (`vcrd_01XH1j2iVb3ZAwykg2hstrKK`); `GH_TOKEN` → `api.github.com` (`vcrd_011msqcS7eDVDvYyzWX79DgU`); `ASANA_PAT` → `app.asana.com` (`vcrd_01V7tG4EumFwF1BeYQ1uvzJy`, rotated 2026-09-07 to the `asana/coworld-builder-pat` token, identity daveey@softmax.com) | live |
+| coworld-builder-discord | `vlt_011Ceji2osuWzkRdtzSAjvGe` | `DISCORD_BOT_TOKEN` → `discord.com` (`vcrd_014rxX1s6cDGqcJcsdzYauuo`, the **disco** bot `1477537399365046415`, value from Secrets Manager `vault/discord/disco/app`) | live |
+| coworld-builder-gemini | `vlt_011Ceji2q5bkjbNtYCpaXoXW` | `GEMINI_API_KEY` → `generativelanguage.googleapis.com` (`vcrd_01AhEHwN8rXu3oa4KTzNhToY`); value from Secrets Manager `polis/shared/gemini-api-key` | live |
+| costbot-anthropic (shared with paintbot-rl) | `vlt_011Cepp92ZY28CEh9BDzynFT` | `ANTHROPIC_API_KEY` → `api.anthropic.com`, header only (`vcrd_01NW7V4DuCrMqm8LawqDSNnZ`); the org key, used **only** by the cost reporter below — never attach it to the heartbeat deployments | live (created 2026-09-07) |
 
+Credentials are created with `POST /vaults {display_name}` then `POST /vaults/{id}/credentials
+{display_name, auth:{type:environment_variable, secret_name, secret_value, networking:{type:limited,
+allowed_hosts}, injection_location:{header,body}}}`; values are write-only and are rotated in place.
 
 ## Parallelism
 
@@ -58,24 +68,44 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 <!-- ids:start -->
 | name | kind | model | id | version |
 |---|---|---|---|---|
-| coworld-builder-designer | agent | claude-opus-5 | `agent_01H3PEczi6dnzrkJrxwptWGj` | 1 |
-| coworld-builder-builder | agent | claude-opus-5 | `agent_01SzZNRaSMDkipDajZYWysoc` | 2 |
-| coworld-builder-reviewer | agent | claude-opus-5 | `agent_01AUUSA9pGCz89r72iyymKLC` | 1 |
-| coworld-builder-fixer | agent | claude-opus-5 | `agent_01VAuffJBu8B3j3GEWphmQ7x` | 1 |
-| coworld-builder-judge | agent | claude-fable-5 | `agent_01QF6UtN7yE5eRTNM4tFkwHH` | 1 |
-| coworld-builder-verifier | agent | claude-opus-5 | `agent_01Grqmo29T2TuAtdS4UNRGV6` | 2 |
-| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01Hxx6czhYKwmEJ7CkMnXb1W` | 5 |
-| coworld-builder-a | deployment | — | `depl_01YSmungQBmAMerqw9KxGdQs` | — |
-| coworld-builder-b | deployment | — | `depl_01McBgP42628cnvocD3u9Jih` | — |
-| coworld-builder-c | deployment | — | `depl_01HKErKeH5KSxtPa9uRFGBR9` | — |
+| coworld-builder-designer | agent | claude-opus-5 | `agent_015htUThBTiX7Fra5qrEpquP` | 1 |
+| coworld-builder-builder | agent | claude-opus-5 | `agent_01AthKSsUbWvWosHh7HZjCAr` | 1 |
+| coworld-builder-reviewer | agent | claude-opus-5 | `agent_01CsHjdc4pxeqSVDW7JvzBcZ` | 1 |
+| coworld-builder-fixer | agent | claude-opus-5 | `agent_01QMN2xVrv6ns2csqFh6hs3w` | 1 |
+| coworld-builder-judge | agent | claude-fable-5 | `agent_01Qr1e1BWYz9uFFqsNHhkizq` | 1 |
+| coworld-builder-verifier | agent | claude-opus-5 | `agent_01KfCo21DgZQmQVjZeDcvM54` | 1 |
+| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01DjRYToc7AQajSeXcQmrfrp` | 1 |
+| coworld-builder-a | deployment | — | `depl_01DjRYVBHvWDKLniB32apgZ8` | — |
+| coworld-builder-b | deployment | — | `depl_019XuubNJYzeb3cix2Xv3vmS` | — |
+| coworld-builder-c | deployment | — | `depl_01Tw4fZqARa9zFXdbdognKay` | — |
 <!-- ids:end -->
 
-`coworld-builder-a` carries the id the single pre-parallelism deployment
-(`coworld-builder-hourly`) was created with: `deploy.py update` renames and reschedules it in
-place. `b` and `c` are TBD until `deploy.py create` makes them and rewrites this table.
+These are the `daveey-builder-rl` ids (all v1, created at the 2026-09-05 migration). The
+pre-migration Default-workspace agents (coordinator v5 etc.) are paused there and are not what
+the crons run. Each heartbeat deployment carries a `$200` session budget cap.
 
 Deployment schedules: `11`, `31`, `51 * * * *` UTC — hourly each, 20 minutes apart, staggered
 clear of the cogamer fleet's crons (§Parallelism). Config: `fleet/deployment.json`.
+
+## Cost reporting (costbot)
+
+A separate, tiny agent posts the fleet's **previous-UTC-day token spend in dollars, broken down by
+sub-agent**, to Discord as the disco bot every day at 00:30 UTC. It is read-only and is not part of
+the heartbeat: the coordinator never runs it and never reads its config.
+
+| what | value |
+|---|---|
+| tool | `fleet/bin/costbot.py` (`report`, `deploy`, `run`, `status`) — python3 stdlib, same file as in paintbot-rl |
+| config | `fleet/costbot.json` (fleet name, deployment-name prefixes, workspace/environment/vault ids, Discord channel, cron, model; `ids` written by `deploy`) |
+| agent | `coworld-builder-costbot` `agent_01HBxn8TtFzoFMZzEgSDq5Wt` v1, `claude-sonnet-5` effort low, system prompt `fleet/costbot.md` |
+| deployment | `coworld-builder-costbot` `depl_01LH1ofjgY85RD25bTvBQpC5`, cron `30 0 * * *` UTC, `$2` session budget |
+| vaults | `coworld-builder-discord` + `costbot-anthropic` (above) |
+| destination | disco's DM channel with David Bloomin, `1477593964675862618` |
+| numbers | the API's `usage.list_cost` per session and per thread (list price; billed may be lower). Sessions counted by UTC start; a message carrying `[costbot coworld-builder <day>]` already in the channel means that day is done and a re-run does not post again |
+
+Preview or re-run by hand: `python3 fleet/bin/costbot.py report [--day YYYY-MM-DD] [--post]`;
+`costbot.py run` fires the reporter now (it reports yesterday). Change the cron, model, or channel in
+`fleet/costbot.json` and run `costbot.py deploy`.
 
 ## Sandbox tooling
 

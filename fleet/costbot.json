@@ -1,0 +1,40 @@
+{
+ "fleet": "coworld-builder",
+ "deployment_prefixes": [
+  "coworld-builder-"
+ ],
+ "roster": [
+  "coworld-builder-coordinator",
+  "coworld-builder-designer",
+  "coworld-builder-builder",
+  "coworld-builder-reviewer",
+  "coworld-builder-fixer",
+  "coworld-builder-judge",
+  "coworld-builder-verifier"
+ ],
+ "workspace_id": "wrkspc_01MGK1QjvxLGdUFCeExDjLSb",
+ "environment_id": "env_019SmBGHe5jFJRAx79XbLJ2t",
+ "vault_ids": [
+  "vlt_011Ceji2osuWzkRdtzSAjvGe",
+  "vlt_011Cepp92ZY28CEh9BDzynFT"
+ ],
+ "discord_channel_id": "1477593964675862618",
+ "repo": {
+  "url": "https://github.com/Metta-AI/coworld-builder",
+  "mount_path": "/workspace/coworld-builder"
+ },
+ "schedule": "30 0 * * *",
+ "model": {
+  "id": "claude-sonnet-5",
+  "effort": {
+   "type": "low"
+  },
+  "speed": "standard"
+ },
+ "budget_cents": 200,
+ "ids": {
+  "agent": "agent_01HBxn8TtFzoFMZzEgSDq5Wt",
+  "agent_version": 1,
+  "deployment": "depl_01LH1ofjgY85RD25bTvBQpC5"
+ }
+}

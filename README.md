@@ -68,13 +68,27 @@ python3 fleet/bin/deploy.py status        # every deployment's latest runs and t
 ```
 
 Add `--dry-run` to any of them to print the redacted payloads without sending anything. The
-tool needs `ANTHROPIC_API_KEY` (or AWS Secrets Manager `daveey/anthropic/api-key`, profile
-`softmax-org`) and `gh auth token` for the repo mounts. It never prints a token, and no token
+tool needs `ANTHROPIC_API_KEY` (or AWS Secrets Manager `daveey/anthropic/org-key`, profile
+`softmax-org`; the fleet lives in the `daveey-builder-rl` workspace, whose id `fleet/cloud.md`
+carries and the tool sends as `anthropic-workspace-id`) and `gh auth token` for the repo mounts. It never prints a token, and no token
 is ever written to git — `fleet/deployment.json` carries `"<resupply-at-apply>"` and the real
 value is supplied at apply time.
 
 `create` writes every id it made into the table in `fleet/cloud.md`. That file is where the
 environment id, the vault ids, the Asana gids and the Discord ids live; the agents read it too.
+
+### Daily spend report
+
+```
+python3 fleet/bin/costbot.py report [--day YYYY-MM-DD] [--post]   # yesterday's $ by sub-agent; --post DMs it
+python3 fleet/bin/costbot.py deploy                                # create/update the reporter agent + 00:30 UTC cron
+python3 fleet/bin/costbot.py run                                   # fire the reporter now
+python3 fleet/bin/costbot.py status
+```
+
+A separate `coworld-builder-costbot` agent posts the previous UTC day's token spend, in dollars and
+broken down by sub-agent, to Discord as the disco bot every day at 00:30 UTC. Config and ids:
+`fleet/costbot.json`; details in `fleet/cloud.md` §Cost reporting.
 
 ## Maintaining it
 

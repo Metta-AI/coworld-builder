@@ -29,7 +29,9 @@ disagreement between them prints a WARNING here.
                      subcommand.
 
 Credentials: ANTHROPIC_API_KEY from the environment, else AWS Secrets Manager
-(daveey/anthropic/api-key, profile softmax-org). Repo tokens from `gh auth token`, at apply
+(daveey/anthropic/org-key, profile softmax-org). That key is org-scoped, so every call also sends
+`anthropic-workspace-id` = the `workspace_id:` line in fleet/cloud.md (ANTHROPIC_WORKSPACE_ID in the
+environment overrides it); the fleet lives in the `daveey-builder-rl` workspace since 2026-09-05. Repo tokens from `gh auth token`, at apply
 time only. This tool never prints a token, an api key, or a vault secret.
 
 Run from anywhere; paths resolve against the repo root. python3 stdlib only.
@@ -82,11 +84,22 @@ def key():
     if not k:
         k = subprocess.run(
             ["aws", "secretsmanager", "get-secret-value", "--secret-id",
-             "daveey/anthropic/api-key", "--profile", "softmax-org",
+             "daveey/anthropic/org-key", "--profile", "softmax-org",
              "--query", "SecretString", "--output", "text"],
             capture_output=True, text=True, check=True).stdout.strip()
         os.environ["ANTHROPIC_API_KEY"] = k
     return k
+
+
+def workspace_id():
+    """The `workspace_id:` line of fleet/cloud.md (ANTHROPIC_WORKSPACE_ID overrides). Empty means
+    the key is workspace-scoped already and no header is sent."""
+    w = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+    if w is None:
+        m = re.search(r"`workspace_id:\s*([A-Za-z0-9_\-]+)`", open(CLOUD_MD, encoding="utf-8").read())
+        w = m.group(1) if m else ""
+        os.environ["ANTHROPIC_WORKSPACE_ID"] = w
+    return w
 
 
 def gh_token():
@@ -99,9 +112,11 @@ def api(path, body=None, method=None, tries=3):
     data = json.dumps(body).encode() if body is not None else None
     m = method or ("POST" if data else "GET")
     for i in range(tries):
-        r = urllib.request.Request(API + path, data=data, method=m, headers={
-            "x-api-key": key(), "anthropic-version": "2023-06-01",
-            "anthropic-beta": "managed-agents-2026-04-01", "content-type": "application/json"})
+        headers = {"x-api-key": key(), "anthropic-version": "2023-06-01",
+                   "anthropic-beta": "managed-agents-2026-04-01", "content-type": "application/json"}
+        if workspace_id():
+            headers["anthropic-workspace-id"] = workspace_id()
+        r = urllib.request.Request(API + path, data=data, method=m, headers=headers)
         try:
             with urllib.request.urlopen(r, timeout=120) as f:
                 return json.loads(f.read())
