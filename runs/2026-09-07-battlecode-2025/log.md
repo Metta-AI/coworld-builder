@@ -7,3 +7,5 @@
 2026-09-07T18:02:04Z heartbeat phase=10
 2026-09-07T21:15:16Z 00 resume at phase 10 attempt=1 session=a0703eb3
 2026-09-07T21:16:50Z 10 previous designer thread sthr_01KW4uduozgqafwVgmHWqYiy left no design.md — leg did not happen; re-dispatching designer (designer round 1 of 3, fresh session a0703eb3)
+2026-09-07T21:17:51Z 10 designer dispatched thread=sthr_01JCLiXuhGuM1gtXBTqCv6a7 round=1 output=runs/2026-09-07-battlecode-2025/design.md (bc25 year-module mod; bc24-sibling model; cert-stays-bc26 player[]-unchanged, no-inert-chassis w/ -d:bc25BrokenChassis negative control, parity root-cause-or-fail Temurin 21, viewer four-files-one-starter + settle/soak pin, doctrine-batch 45s, branch-only bc25-year-module, GV07->GV08 0.4.0->0.5.0 pins in brief)
+2026-09-07T21:17:51Z heartbeat phase=10
