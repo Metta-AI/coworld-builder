@@ -1538,3 +1538,4 @@
 2026-09-07T21:00:11Z 00 deferred idea=1218173707507614 host=cogame-battlecode busy=2026-09-07-battlecode-2025
 2026-09-07T21:00:11Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-07-battlecode-2025
 2026-09-07T21:00:11Z heartbeat: nothing to do
+2026-09-07T21:35:07Z heartbeat: nothing to do (1 live bc25 fresh, 1 blocked probe fail, 5 battlecode mods deferred: bc23 bc22 bc16 bc19 bc17 host cogame-battlecode busy with 2026-09-07-battlecode-2025)
