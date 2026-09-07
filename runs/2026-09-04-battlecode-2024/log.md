@@ -46,3 +46,6 @@
 2026-09-07T04:40:19Z heartbeat phase=20
 2026-09-07T08:01:58Z 00 attempts_reset phase=20 reason=progress marker=ci run 34084170288 (main 5e7c8b78 green, PR #4 merged 04:43:34Z — new since previous session's 04:40 dispatch; progress line absent because that session died inside the builder thread)
 2026-09-07T08:01:58Z 00 resume at phase 20 attempt=1 session=ab4442d8
+2026-09-07T08:03:39Z 20 exit checks passed by coordinator on main@5e7c8b78 (ci run 34084170288 green; PR #4 merged 04:43:34Z by dead builder leg sthr_01XwDhWaHziXqchcZwWKNYtA which left no build-report.md — checks re-run mechanically: placeholders clean, hooks executable, 3 workflows parse w/ inputs+artifacts, manifest bc24 variant + num_agents=2 everywhere, GV07 compat extended, 20 bc24 tests, policies 2 LLM + 2 scripted w/ player field on champion 2)
+2026-09-07T08:03:39Z 20 -> 30 phase transition: ci.yml green on main, review_round=1
+2026-09-07T08:03:39Z heartbeat phase=30
