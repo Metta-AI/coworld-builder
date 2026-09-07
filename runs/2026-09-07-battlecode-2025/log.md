@@ -5,3 +5,4 @@
 2026-09-07T18:00:58Z 10 designer dispatch prepared: starter=cogame-battlecode (mod run, year module bc25 Chromatic Conflict); brief modeled on 2026-09-04-battlecode-2024 with LEARNINGS 2026-09-03/09-04 battlecode entries carried forward; main@5e7c8b7 has bc26/bc20/bc21/bc24 at GV07; sibling bc24 run is Blocked at phase 30 (its module already merged) — bc25 works branch-only
 2026-09-07T18:02:04Z 10 designer dispatched thread=sthr_01KW4uduozgqafwVgmHWqYiy output=runs/2026-09-07-battlecode-2025/design.md (bc25 year-module mod; bc24-sibling model; cert-stays-bc26 player[]-unchanged, no-inert-chassis w/ negative control, parity root-cause-or-fail Temurin 21, viewer four-files-one-starter + settle/soak, doctrine-batch 45s, branch-only bc25-year-module pins in brief)
 2026-09-07T18:02:04Z heartbeat phase=10
+2026-09-07T21:15:16Z 00 resume at phase 10 attempt=1 session=a0703eb3
