@@ -42,3 +42,5 @@
 2026-09-07T04:38:16Z 00 attempts_reset phase=20 reason=progress marker=ci run 34073121395 (sha 0950ff99 green on bc24-year-module, new since previous session's 01:22 dispatch; progress line absent because that session died inside the builder thread)
 2026-09-07T04:38:16Z 00 resume at phase 20 attempt=1 session=6fc1bf10
 2026-09-07T04:39:31Z 20 builder re-dispatch prepared (resume of dead leg sthr_01AP3dXAJ7DRMUnnXC5fjrwP): branch bc24-year-module green at 0950ff99 (runs 34073121395/34073119162), PR #4 open+mergeable, no build-report.md — new builder to audit vs design, close gaps, merge PR #4, ci.yml green on main, exit checks, write report (builder round continues under attempt=1, session 6fc1bf10)
+2026-09-07T04:40:19Z 20 builder dispatched thread=sthr_01XwDhWaHziXqchcZwWKNYtA output=runs/2026-09-04-battlecode-2024/build-report.md (audit bc24-year-module@0950ff99 vs design, close gaps, merge PR #4, ci.yml green on main, full exit checks, report)
+2026-09-07T04:40:19Z heartbeat phase=20
