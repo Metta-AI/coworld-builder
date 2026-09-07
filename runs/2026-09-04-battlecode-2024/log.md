@@ -61,3 +61,6 @@
 2026-09-07T14:22:26Z 30 reviewer dispatched thread=sthr_01Mu9keKFpErgSJNvr7AdXe7 round=1 output=runs/2026-09-04-battlecode-2024/reviews/r1-review.md
 2026-09-07T14:22:26Z heartbeat phase=30
 2026-09-07T17:42:36Z 00 resume at phase 30 attempt=3 session=bd697ed3
+2026-09-07T17:45:21Z 90 blocked phase=30 ask="phase 30 ended three sessions without progress — reviewer threads die before writing r1-review.md" subtask=1218245497860470
+2026-09-07T17:45:21Z 90 run task moved to Blocked; idea task 1218173707729346 commented (story 1218245497744431)
+2026-09-07T17:45:21Z session end in phase 90 (blocked); next action: on subtask 1218245497860470 completion or probe pass, resume phase 30 with attempts reset and a scoped-down reviewer brief (delta-only)
