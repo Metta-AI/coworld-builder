@@ -9,3 +9,25 @@
 2026-09-07T21:16:50Z 10 previous designer thread sthr_01KW4uduozgqafwVgmHWqYiy left no design.md — leg did not happen; re-dispatching designer (designer round 1 of 3, fresh session a0703eb3)
 2026-09-07T21:17:51Z 10 designer dispatched thread=sthr_01JCLiXuhGuM1gtXBTqCv6a7 round=1 output=runs/2026-09-07-battlecode-2025/design.md (bc25 year-module mod; bc24-sibling model; cert-stays-bc26 player[]-unchanged, no-inert-chassis w/ -d:bc25BrokenChassis negative control, parity root-cause-or-fail Temurin 21, viewer four-files-one-starter + settle/soak pin, doctrine-batch 45s, branch-only bc25-year-module, GV07->GV08 0.4.0->0.5.0 pins in brief)
 2026-09-07T21:17:51Z heartbeat phase=10
+2026-09-07T22:10:00Z 10 designer returned round 1: design.md (2080 lines) — ACCEPTED against prompts/10-design.md checklist:
+- [x] starter named with reason (cogame-battlecode itself; mod run, year-module boundary proved by bc20/bc21/bc24)
+- [x] num_agents=2 single number, in variants[bc25].game_config, all other variants + bc26 cert fixture unchanged; <SEATS>=2 cross-check named
+- [x] resolution order: 6 numbered steps mirroring GameWorld.runRound (updateResourcePatterns list-order, dynamic exec-order with by-value removal + pre-sweep snapshot, cooldown -10, DecisionOps 1750/2000 reset, end-of-turn paint bill, end ladder)
+- [x] scoring: points=int(55*share(area)+20*share(towers)+10*share(chips)+10*share(paint)+5*share(bots)) f32-narrowed truncated, share=0.5 on 0-0; scores=200*wins+mean(points) — 200 not 100 so scores strictly order with wins (proof + 500-vector test pinned); league ranks results.scores
+- [x] end conditions: 9 end_reason values (7 new + coin_flip/abandoned); results.reason complete|deadline|fault closed, deadline scores finished games
+- [x] per-seat observation: sealed one-shot doctrine brief JSON, visible/hidden enumerated; opponent sheet never sent; no per-round observation
+- [x] reply schema caps: 16KB bytes rune-cut, sheet<=32 keys, notes 280 runes, motto 48 runes, unknown keys <=16x40 runes, all rune-boundary
+- [x] both policies same image env-switched: PLAYER_PROMPT (bc25-coverage/bc25-siege) vs PLAYER_SCRIPTED=awu|scaffold -> spaark/examplefuncsplayer25 per-year resolution
+- [x] one parallel batch of 2 LLM calls, doctrineBudgetMs=45000 (20000+12000), worst case 445s <= 720s
+- [x] degrade-never-hang: failure table + verbatim fallback sheet (= spaark all-defaults) + doctrine_fallback event
+- [x] two name spaces: Clan Ash/Clan Basil in-game; real names only replay.names[]/results.names[]
+- [x] viewer: static-replay-viewer bundle, build_replay_viewer.sh, all four files from cogame-battlecode itself (config.nims byte-identical, no MODULARIZE, worker bootstrap untouched), data-replay-loaded/-error, legible at 360px
+- [x] chrome provenance: chrome_common.js + broadcast_core.js byte-for-byte, replay_broadcast.html = existing page + appended bc25 block, zoom decision: KEEP #viewpanel (16px/tile -> 480-960px > 360px frame)
+- [x] transport rules: --band/--topband/--hudscale/--statrail on :root, no overlay in band, endcard stops at var(--band) + seeks dismiss, buildBc25BeatButtons labelled buttons, CSS for all 11 beat kinds scoped to html[data-year=bc25]
+- [x] replay self-sufficient: events+config+seed+names, wasm re-derives every frame, event budget bounded per game
+- [x] packaging: compose.yaml unchanged, manifest variant bc25 beside bc26/bc20/bc21/bc24, cert stays bc26, player[] UNCHANGED with players_missing cross-check + test_manifest assertions, game.docs+both game.protocols, 0.4.0->0.5.0, GV07->GV08 ReplayCompatibleGameVersions extended
+- [x] tests: 23 native tests incl. legality+DecisionOps bounds, e2e docker-smoke 5th episode with per-seat substance floors phase 20 must MEASURE, strict UTF-8 parse, viewer_smoke executed by wasm-viewer job (bc25 at --timeout 120 --soak 15; check-8 dispatch settle=20000 soak=15 pinned), competence gate w/ -d:bc25BrokenChassis negative control, parity Tier A/A'/B/C root-cause-or-fail Temurin 21 + mandatory --add-opens jdk.internal.misc pin, cert_probe
+- [x] out of scope (v1) non-empty (13 items); no OPEN section — 4 prose-vs-engine conflicts resolved against pinned engine 28975a48
+2026-09-07T22:15:43Z 10 -> 20 phase transition: design accepted round 1, zero rejections; phase-10 subtask 1218245630978968 completed, comment 1218247827992831 posted
+2026-09-07T22:15:43Z progress phase=10 marker=design.md
+2026-09-07T22:15:43Z heartbeat phase=20
