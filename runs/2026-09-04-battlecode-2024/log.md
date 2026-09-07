@@ -36,3 +36,4 @@
 2026-09-04T20:42:21Z 20 builder dispatched thread=sthr_01AJcDZJ9TciJR4RRK687z18 branch=bc24-year-module output=runs/2026-09-04-battlecode-2024/build-report.md (mod run, no repo-create; GV07 extend, 0.3.0->0.4.0, cert stays bc26, num_agents=2, parity Tier A/A'/B/C root-cause-or-fail, killfeed gate kept armed, competence gate -d:bc24BrokenChassis, viewer settle=20000 soak=15, PR-then-merge pinned in brief)
 2026-09-04T20:42:21Z heartbeat phase=20
 2026-09-07T01:20:09Z 00 resume at phase 20 attempt=2 session=cb9a9f89
+2026-09-07T01:22:04Z 20 previous builder thread sthr_01AJcDZJ9TciJR4RRK687z18 died mid-leg but left branch bc24-year-module CI-green (push run 33918358129, PR run 33918362485, sha fa5083a) and PR #4 open; no build-report.md — re-dispatching builder to verify completeness vs design, merge PR #4, drive ci.yml green on main, and write the report (attempt 2 of 3, session cb9a9f89)
