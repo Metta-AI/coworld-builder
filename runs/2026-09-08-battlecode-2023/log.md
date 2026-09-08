@@ -65,3 +65,6 @@
 2026-09-08T16:21:09Z 00 resume at phase 30 attempt=1 session=51417e08
 2026-09-08T16:24:19Z 30 fixer thread sthr_01GZT2djMW5mMiWhea5781kM (dead session) left no r1-fixes.md, but its repo work landed: branch bc23-r1-fixes, PR #7 merged 47f36001 at 15:21:53Z, commits F18-F28 (b9cca9f4 f536d797 6f49a476 857f71d0 72bbeaaf 76c576ff e38d025f 6e186b6f fd0c6757), main CI 34244272097 success
 2026-09-08T16:24:19Z 30 re-dispatching fixer (attempt 2 of 3, narrowed brief): verify each r1 finding on main 47f36001, write r1-fixes.md; commit only if a finding is unaddressed
+2026-09-08T16:24:30Z 30 fixer returned round 1: r1-fixes.md (399 lines) — PR #7 merged main=47f36001, CI 34244272097 success 9/9; F18 fixed (+2 real chrome clip defects found and fixed), F19 Tier A' SHIPPED (12 pairs bit-exact, scenario23 rewritten robot-local), F20/F23/F24/F26/F27 fixed, F21/F22/F25/F28 refuted with evidence; residue documented in docs/PARITY.md (elixir-gated subsystems need scenario variants not shipped)
+2026-09-08T16:24:30Z progress phase=30 marker=r1-fixes.md
+2026-09-08T16:24:30Z heartbeat phase=30
