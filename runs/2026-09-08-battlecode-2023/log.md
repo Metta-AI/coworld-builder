@@ -96,3 +96,7 @@
 2026-09-08T17:31:58Z progress phase=60 marker=VERIFY.md-8of8
 2026-09-08T17:31:58Z heartbeat phase=60
 2026-09-08T17:32:26Z 60 judge dispatched thread=sthr_01JMfTRCqMEVCjKJStKwXWdN output=runs/2026-09-08-battlecode-2023/reviews/verify-verdict.md (adjudicate VERIFY.md 8/8 vs SPEC definition-of-done; weigh FINDING A + 7 legibility items; spot-check refetches)
+2026-09-08T17:38:49Z 60 judge returned: verify-verdict.md blocking:0/BLOCKING:0 (commit 49d7371) — all 8 checks re-verified at head (3 rounds now), FINDING A non-blocking (did not recur round 3), 7 legibility items phase-30 material; VERIFY evidence accurate in every spot-check
+2026-09-08T17:38:49Z progress phase=60 marker=verify-verdict.md
+2026-09-08T17:38:49Z 60 -> 70 phase transition: STATE written phase=70
+2026-09-08T17:38:49Z heartbeat phase=70
