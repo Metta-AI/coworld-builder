@@ -76,3 +76,4 @@
 2026-09-08T16:36:51Z progress phase=30 marker=r1-verdict.md
 2026-09-08T16:36:51Z 30 -> 40 phase transition: STATE written phase=40 (review loop exited round 1, zero blocking)
 2026-09-08T16:36:51Z heartbeat phase=40
+2026-09-08T16:38:02Z 40 release builder dispatched thread=sthr_01WaMew4okQU26CbA4tk7FQw version=0.6.0 policies=tools/ci/policies.json (no override; bc23: duel champ1, alchemist champ2 player=daveey-1, fillers lemonade+examplefuncsplayer23) output=release-result.json+release-report.md
