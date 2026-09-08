@@ -58,10 +58,31 @@ every variant and in the cert fixture.
   not you.
 - Be concrete: numbers, field names, enum values, file paths, exact prompt text. A sentence a
   builder could implement two ways is a defect.
+- **Keep the note under 60 KB (about 700 lines).** Every downstream role — builder, reviewer,
+  fixer, judge — reads it in full, per round, and then re-reads it on every turn; the median note
+  had grown to 96 KB by 2026-09-07. Tables and numbered lists over prose; state a starter
+  convention only where this game changes it; never paste starter code — cite `path:line`.
+  Completeness is the checklist; length is not.
 - Ground the note in the starter you actually read. Name the starter files the builder will
   fork and the ones to keep verbatim, by path.
 - Size the game to the timeout budget and say the arithmetic out loud (ticks × per-tick cost,
   or rounds × per-turn LLM latency), so the builder can check it.
+
+## Reading discipline
+
+Your thread's cost is dominated by re-reading its own context on every turn, so what you read
+and how often decides most of it. Rules, binding:
+
+- **Read each input file exactly once, in full, at the start**, in the order your brief and this
+  prompt give. Take the notes you need (line numbers, values, section names) in your own words.
+  Never re-read a file you have already read — if you need one line back, `grep -n` for it.
+- **Files over ~20 KB (the design note, a large source file) are never read twice** and, after
+  the first full read, are consulted only by `grep -n` and ranged reads (`sed -n 'a,bp'`).
+- **Read source by need, not by tree.** `grep -n`/`glob` to find the definition you are tracing,
+  then read that range. Do not `cat` whole directories.
+- **Batch mechanical reads into one command** (one `bash` call that prints several small files)
+  rather than one tool call per file.
+- Write your output file **once**, complete; do not build it up with many small appends.
 
 ## What you must NOT do
 

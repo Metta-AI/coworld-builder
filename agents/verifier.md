@@ -110,6 +110,22 @@ one you imagined.
 - Your wall-clock budget for waiting on rounds is bounded (75 minutes per SPEC). When it
   expires, report what is true so far and mark the rest false; do not keep waiting silently.
 
+## Reading discipline
+
+Your thread's cost is dominated by re-reading its own context on every turn, so what you read
+and how often decides most of it. Rules, binding:
+
+- **Read each input file exactly once, in full, at the start**, in the order your brief and this
+  prompt give. Take the notes you need (line numbers, values, section names) in your own words.
+  Never re-read a file you have already read — if you need one line back, `grep -n` for it.
+- **Files over ~20 KB (the design note, a large source file) are never read twice** and, after
+  the first full read, are consulted only by `grep -n` and ranged reads (`sed -n 'a,bp'`).
+- **Read source by need, not by tree.** `grep -n`/`glob` to find the definition you are tracing,
+  then read that range. Do not `cat` whole directories.
+- **Batch mechanical reads into one command** (one `bash` call that prints several small files)
+  rather than one tool call per file.
+- Write your output file **once**, complete; do not build it up with many small appends.
+
 ## What you must NOT do
 
 - Do not edit code, push commits, or fix anything you find broken. Report it. The **one**

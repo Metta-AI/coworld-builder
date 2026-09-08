@@ -35,8 +35,10 @@ The judge never sees `r<round>-fixes.md` before forming its own read of the diff
 > report what you observe. Cover: the resolution rules, the decision path (LLM call, parse,
 > retry, fallback), every wait and its bound, string truncation, the replay writer, the viewer's
 > re-derivation, the manifest, and the tests. For each observation give file:line, what the code
-> does, and what the note says it should do. Do not propose fixes. Write
-> `<abs path>/runs/<run>/reviews/r<round>-review.md`.
+> does, and what the note says it should do. Do not propose fixes. Read, once each and in this
+> order: `prompts/30-review-loop.md` §ACCEPTANCE CHECKLIST, the design note, then the source files
+> the checklist names (`grep -n` first, ranged reads after) — never a whole tree, never a second
+> read of the note. Write `<abs path>/runs/<run>/reviews/r<round>-review.md` once, complete.
 
 **Fixer**:
 
@@ -60,6 +62,8 @@ The judge never sees `r<round>-fixes.md` before forming its own read of the diff
 > as blocking** — this is the only rule; `agents/judge.md` defers to it. Say what would settle
 > it. Item 1's "no test loosened" is verified from `git log -p -- tests/` in the coworld repo,
 > so it is verifiable: do not report it as unverifiable.
+> Read each input once, in the order `agents/judge.md` binds; consult the design note afterwards by
+> `grep -n`, never a second full read.
 > Checklist: `<paste the ACCEPTANCE CHECKLIST verbatim>`.
 
 **Verdict markers.** The verdict file carries the count **twice**: `blocking: <n>` as the *first*

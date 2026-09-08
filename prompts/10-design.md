@@ -48,7 +48,9 @@ the reason. Never go to phase 90 for a starter choice.
    > numbered order, exact scoring formula and sign, exact end conditions and `results.reason`
    > values, the full observation each seat gets, the reply schema with per-field character caps,
    > the event record written to the replay, the viewer's readouts, the manifest variants, and the
-   > test list. `## Viewer` must name the **single starter** that supplies all four viewer files
+   > test list. **Keep the note under 60 KB (~700 lines)**: tables and numbered lists over prose,
+   > starter conventions restated only where this game changes them, no pasted starter code
+   > (cite `path:line`). `## Viewer` must name the **single starter** that supplies all four viewer files
    > (`replay-viewer/config.nims`, the wasm entry `.nim`, `static_replay*.js`, `index.html`) —
    > one starter for all four, never a mixture — and state that the shell sets
    > `data-replay-loaded="true"` on its first drawn frame and `data-replay-error` on failure. Reference `playbooks/make-coworld.md` §Phase 0 for the non-optional pins and state
@@ -105,6 +107,9 @@ the reason. Never go to phase 90 for a starter choice.
       last being `tools/ci/viewer_smoke.mjs` run by `ci.yml`'s `wasm-viewer` job against the
       replay `docker-smoke` produced, i.e. the bundle is **executed**, not merely built.
 - [ ] Out of scope (v1) is non-empty.
+- [ ] The note is under 60 KB (`wc -c`). Over that, send the designer back **in the same thread**
+      with `trim: <n> KB over — tables over prose, no restated starter conventions, no pasted code`;
+      it costs one short turn there and saves every later role a re-read.
 
 ## Exit criterion
 
