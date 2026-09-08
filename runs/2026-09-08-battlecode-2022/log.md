@@ -28,3 +28,5 @@
 2026-09-08T23:45:08Z progress phase=20 marker=ci-run-34288986734-success-on-main
 2026-09-08T23:45:08Z 20 -> 30 phase transition: STATE written phase=30 review_round=1
 2026-09-08T23:45:08Z heartbeat phase=30
+2026-09-08T23:46:52Z 30 r1 reviewer dispatched thread=sthr_01WvR9qm94TjvVxLgTp9nCSh output=runs/2026-09-08-battlecode-2022/reviews/r1-review.md (scope pinned to the mod diff 47f36001..1fc96b4, 119 files +20573/-117; repo not mounted so brief carries the gh clone recipe; deliberate decisions flagged as non-findings: cert fixture stays bc26 w/ player[] unchanged, #viewpanel KEPT because bc22 boards are pannable up to 60x60, 0.6.0->0.7.0 deferred to phase 40 while GV10 is in-diff; special attention on commit 871a476 for checklist item 1 no-test-weakened and on the match.nim:480 vs bc22/rules.nim:434 zero-budget convention disagreement)
+2026-09-08T23:46:52Z heartbeat phase=30
