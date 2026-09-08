@@ -83,3 +83,7 @@
 2026-09-08T05:48:59Z progress phase=60 marker=round_e6a531d2-ad6b-4344-9ed7-3dbbe682d3d8
 2026-09-08T05:48:59Z heartbeat phase=60
 2026-09-08T05:50:11Z 60 judge dispatched thread=sthr_01QooMhhvPfLbEZ55m8MvrnX output=runs/2026-09-07-battlecode-2025/reviews/verify-verdict.md
+2026-09-08T05:55:06Z 60 judge returned: verify-verdict.md blocking:0/BLOCKING:0, all 8 checks stand (independent re-fetches matched); non-blocking wording observation on check 1 gloss
+2026-09-08T05:55:06Z progress phase=60 marker=verify-verdict.md
+2026-09-08T05:55:06Z 60 -> 70 phase transition
+2026-09-08T05:55:06Z heartbeat phase=70
