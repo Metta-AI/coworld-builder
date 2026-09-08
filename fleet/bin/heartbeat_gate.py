@@ -15,7 +15,8 @@ Modes (python3 stdlib only):
                     non-zero only on an unexpected error.
   --fire            after deciding, POST /deployments/{id}/run on the least-recently-run heartbeat
                     deployment (fleet/cloud.md ids table) when there is work. Needs
-                    ANTHROPIC_API_KEY (org key; the workspace header comes from fleet/cloud.md).
+                    ANTHROPIC_AUTH_TOKEN (a federated bearer token — what the workflow uses) or
+                    ANTHROPIC_API_KEY (an org key; the workspace header comes from fleet/cloud.md).
   --alert           when the Builder board is unreachable, post ONE Discord message per UTC day to
                     `#coworlds` (needs DISCORD_BOT_TOKEN). Never fires the coordinator on a 403.
   --summary         sandbox mode, run by the coordinator as `prompts/00-claim.md` step 0: does the
@@ -40,8 +41,8 @@ Decision rules mirror `prompts/00-claim.md` steps 1–4.2, in the same order:
 Confidentiality and startability of an idea stay with the coordinator (SPEC §Rails): a skipped
 idea lands in runs/SKIPPED.json and is filtered out here forever after.
 
-Credentials come from the environment only (ASANA_PAT, ANTHROPIC_API_KEY, DISCORD_BOT_TOKEN,
-plus whatever a probe needs). Nothing is ever printed but their presence.
+Credentials come from the environment only (ASANA_PAT, ANTHROPIC_AUTH_TOKEN or ANTHROPIC_API_KEY,
+DISCORD_BOT_TOKEN, plus whatever a probe needs). Nothing is ever printed but their presence.
 """
 import argparse
 import datetime as dt
@@ -141,13 +142,20 @@ def asana_all(path, params):
 
 
 def anthropic(path, body=None, method=None):
+    h = {"anthropic-version": "2023-06-01", "anthropic-beta": "managed-agents-2026-04-01"}
+    tok = os.environ.get("ANTHROPIC_AUTH_TOKEN")
     key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        raise SystemExit("ANTHROPIC_API_KEY is not set — cannot fire a deployment")
-    h = {"x-api-key": key, "anthropic-version": "2023-06-01", "anthropic-beta": "managed-agents-2026-04-01"}
-    ws = workspace_id()
-    if ws:
-        h["anthropic-workspace-id"] = ws
+    if tok:
+        # A federated `sk-ant-oat01-` bearer token (the workflow mints one per run from GitHub's
+        # OIDC token): already bound to the workspace, so no workspace header.
+        h["authorization"] = "Bearer " + tok
+    elif key:
+        h["x-api-key"] = key
+        ws = workspace_id()
+        if ws:
+            h["anthropic-workspace-id"] = ws
+    else:
+        raise SystemExit("neither ANTHROPIC_AUTH_TOKEN nor ANTHROPIC_API_KEY is set — cannot fire a deployment")
     return _request(ANTHROPIC + path, h, body, method, timeout=120)
 
 
@@ -533,7 +541,7 @@ def main():
             alert(ids, d)
     elif d["work"] and args.fire:
         fire(ids, d)
-    d["credentials_present"] = {k: bool(os.environ.get(k)) for k in ("ASANA_PAT", "ANTHROPIC_API_KEY", "DISCORD_BOT_TOKEN", "GH_TOKEN", "SOFTMAX_TOKEN")}
+    d["credentials_present"] = {k: bool(os.environ.get(k)) for k in ("ASANA_PAT", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_API_KEY", "DISCORD_BOT_TOKEN", "GH_TOKEN", "SOFTMAX_TOKEN")}
     print(json.dumps(d, indent=1, sort_keys=True))
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:

@@ -31,7 +31,8 @@ disagreement between them prints a WARNING here.
   --dry-run          print the payloads (redacted) instead of sending them. Works on every
                      subcommand.
 
-Credentials: ANTHROPIC_API_KEY from the environment, else AWS Secrets Manager
+Credentials: ANTHROPIC_AUTH_TOKEN (a federated bearer token, used by the GitHub workflows; no
+workspace header needed), else ANTHROPIC_API_KEY from the environment, else AWS Secrets Manager
 (daveey/anthropic/org-key, profile softmax-org). That key is org-scoped, so every call also sends
 `anthropic-workspace-id` = the `workspace_id:` line in fleet/cloud.md (ANTHROPIC_WORKSPACE_ID in the
 environment overrides it); the fleet lives in the `daveey-coworld-builder` workspace since 2026-09-05. Repo tokens from `gh auth token`, at apply
@@ -118,10 +119,16 @@ def api(path, body=None, method=None, tries=3):
     data = json.dumps(body).encode() if body is not None else None
     m = method or ("POST" if data else "GET")
     for i in range(tries):
-        headers = {"x-api-key": key(), "anthropic-version": "2023-06-01",
-                   "anthropic-beta": "managed-agents-2026-04-01", "content-type": "application/json"}
-        if workspace_id():
-            headers["anthropic-workspace-id"] = workspace_id()
+        headers = {"anthropic-version": "2023-06-01", "anthropic-beta": "managed-agents-2026-04-01",
+                   "content-type": "application/json"}
+        if os.environ.get("ANTHROPIC_AUTH_TOKEN"):
+            # A federated `sk-ant-oat01-` bearer token (GitHub Actions via Workload Identity
+            # Federation) is already bound to its workspace: no key, no workspace header.
+            headers["authorization"] = "Bearer " + os.environ["ANTHROPIC_AUTH_TOKEN"]
+        else:
+            headers["x-api-key"] = key()
+            if workspace_id():
+                headers["anthropic-workspace-id"] = workspace_id()
         r = urllib.request.Request(API + path, data=data, method=m, headers=headers)
         try:
             with urllib.request.urlopen(r, timeout=120) as f:

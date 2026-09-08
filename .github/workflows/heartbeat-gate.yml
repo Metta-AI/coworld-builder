@@ -12,10 +12,11 @@
 # Manual run: gh workflow run heartbeat-gate.yml -R Metta-AI/coworld-builder -f fire=false
 # (decision only, nothing fired). The decision JSON is in the job log and the step summary.
 #
-# Secrets: ASANA_PAT (Builder + Ideas boards), ANTHROPIC_ORG_KEY (org key; the workspace header
-# comes from fleet/cloud.md), DISCORD_BOT_TOKEN (one alert per day when the board is unreachable),
-# and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written against the sandbox's
-# vault credentials of the same names.
+# Secrets: ASANA_PAT (Builder + Ideas boards), DISCORD_BOT_TOKEN (one alert per day when the
+# board is unreachable), and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written
+# against the sandbox's vault credentials of the same names. The Anthropic side stores NO key:
+# the job exchanges its GitHub OIDC token for a 15-minute workspace-bound bearer token
+# (Workload Identity Federation, rule gha-coworld-builder; see costbot.yml and fleet/cloud.md).
 name: heartbeat-gate
 
 on:
@@ -33,20 +34,43 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
   gate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      ANTHROPIC_FEDERATION_RULE_ID: fdrl_01BTD9UxCJYG7XH92mYyvWJD
+      ANTHROPIC_ORGANIZATION_ID: 05f53468-d719-40a4-a580-aff01188eeeb
+      ANTHROPIC_SERVICE_ACCOUNT_ID: svac_01GWpPtRHsvnM2msLzpTLFuk
+      ANTHROPIC_WORKSPACE_ID: wrkspc_01MGK1QjvxLGdUFCeExDjLSb
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - name: Exchange the GitHub OIDC token for an Anthropic bearer token
+        run: |
+          set -euo pipefail
+          JWT=$(curl -sS --fail-with-body -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value)
+          BODY=$(jq -n --arg jwt "$JWT" --arg rule "$ANTHROPIC_FEDERATION_RULE_ID" \
+                   --arg org "$ANTHROPIC_ORGANIZATION_ID" --arg sa "$ANTHROPIC_SERVICE_ACCOUNT_ID" \
+                   --arg ws "$ANTHROPIC_WORKSPACE_ID" \
+                   '{grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer", assertion:$jwt,
+                     federation_rule_id:$rule, organization_id:$org, service_account_id:$sa, workspace_id:$ws}')
+          RESP=$(curl -sS -w '\n%{http_code}' https://api.anthropic.com/v1/oauth/token \
+            -H "content-type: application/json" -d "$BODY")
+          CODE=$(tail -n1 <<<"$RESP"); RESP=$(sed '$d' <<<"$RESP")
+          if [ "$CODE" != "200" ]; then echo "token exchange failed: HTTP $CODE $RESP"; exit 1; fi
+          TOKEN=$(jq -r .access_token <<<"$RESP")
+          echo "::add-mask::$TOKEN"
+          echo "ANTHROPIC_AUTH_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "token acquired, expires_in=$(jq -r .expires_in <<<"$RESP")s"
       - name: decide (and fire)
         env:
           ASANA_PAT: ${{ secrets.ASANA_PAT }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_ORG_KEY }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           SOFTMAX_TOKEN: ${{ secrets.SOFTMAX_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
