@@ -81,3 +81,6 @@
 2026-09-08T16:49:17Z progress phase=40 marker=release-run-34252334397
 2026-09-08T16:49:17Z 40 -> 50 phase transition: STATE written phase=50
 2026-09-08T16:49:17Z heartbeat phase=50
+2026-09-08T16:57:55Z 50 seed 200 league_e3244a55-f8b9-486b-9412-51dc1f56c978 key=bc23 name='Battlecode 2023 — Tempest' default_variant_id=bc23 (seed lseed_d2f75eb2); short-name bc23 200 (default-league NOT touched); division div_dc5f977f-2f98-4796-8cdd-87ecf673704f created; settings 200 (round_robin/filler_policy/elo/15min)
+2026-09-08T16:57:55Z 50 note: git-over-HTTPS to github.com 503ing (upstream connect error) while api.github.com works — committing locally, will push via git or Data API when possible
+2026-09-08T16:57:55Z heartbeat phase=50
