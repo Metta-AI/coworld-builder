@@ -45,3 +45,4 @@
 2026-09-08T11:15:27Z 20 builder fix landed cd58a9cd 11:12:13Z: parity_tiers_bc23 strips bc= from BOTH traces (was java-only) + bc23's own bytecode limits — matches coordinator diagnosis; CI re-running: 34219450002 (push) + 34219453501 (pull_request)
 2026-09-08T11:15:27Z progress phase=20 marker=ci-run-34219450002
 2026-09-08T11:20:38Z heartbeat phase=20
+2026-09-08T11:35:35Z heartbeat phase=20
