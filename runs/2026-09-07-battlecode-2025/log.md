@@ -55,3 +55,6 @@
 2026-09-08T03:17:45Z heartbeat phase=30
 2026-09-08T03:18:46Z 30 reviewer dispatched thread=sthr_01FijKdzar7n4dKoayEUbN7Q round=1 checkout=/tmp/cogame-battlecode-r1@eb33a8d2 base=5e7c8b7 output=runs/2026-09-07-battlecode-2025/reviews/r1-review.md (incremental-write instruction added — bc24 sibling lost 3 reviewer threads that died with nothing on disk)
 2026-09-08T03:18:46Z heartbeat phase=30
+2026-09-08T03:32:53Z 30 r1 reviewer returned: r1-review.md written, FINDINGS: 43, 1 blocking-candidate (F26 beat emission), advisories incl F34 substance floors, F11/F12 events, F39, F41, F43
+2026-09-08T03:32:53Z progress phase=30 marker=r1-review.md
+2026-09-08T03:32:53Z heartbeat phase=30
