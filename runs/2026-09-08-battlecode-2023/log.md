@@ -91,3 +91,7 @@
 2026-09-08T17:03:35Z 00 note: session 51417e08 resumed at 16:21 (my heartbeat stale while blocked in fixer thread), stood down its duplicate fixer at 16:24:53 and yielded (commit f6bc010 'yield resume of battlecode-2023 to live session 01858aee'); STATE.session_id restored 51417e08 -> 01858aee; no duplicate external work occurred
 2026-09-08T17:03:35Z heartbeat phase=60
 2026-09-08T17:04:28Z 60 verifier dispatched thread=sthr_01TSieuxFQRGpwBdmy6qeMLt output=runs/2026-09-08-battlecode-2023/VERIFY.md + viewer-check/ (L=league_e3244a55 D=div_dc5f977f COW=cow_93baa4e4 page=softmax.com/battlecode/bc23; 75-min round bound; incremental-write pinned)
+2026-09-08T17:31:58Z 60 verifier returned: VERIFY.md 8/8 TRUE (commit c641e28) — 2 rounds completed in 13 min, both champions ranked (alchemist 1030.53 rank1, duel 969.47 rank2), replay valid 0-fallback, log CLEAN, static iframe (sha match), liveness-skipped, viewer-check 34256712314 loaded=true 3 differing clocks + 15s soak advance
+2026-09-08T17:31:58Z 60 verifier FINDING A (non-blocking, recorded for close): champions sometimes wrap doctrine in a protocol envelope -> all 12 knobs to sheet_unknown_fields, seat plays schema-default sheet (r1 seat0, r2 seat1; winner won on default); endcard shows applied not submitted sheet; defaults_applied counters do not flag it. Plus 7 legibility items incl. 2 repeats from bc25 (bc26 nouns on endcard, doctrine-card clip)
+2026-09-08T17:31:58Z progress phase=60 marker=VERIFY.md-8of8
+2026-09-08T17:31:58Z heartbeat phase=60
