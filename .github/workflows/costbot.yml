@@ -43,13 +43,18 @@ jobs:
           set -euo pipefail
           JWT=$(curl -sS --fail-with-body -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value)
-          RESP=$(curl -sS --fail-with-body https://api.anthropic.com/v1/oauth/token \
-            -H "content-type: application/json" \
-            -d "$(jq -n --arg jwt "$JWT" --arg rule "$ANTHROPIC_FEDERATION_RULE_ID" \
-                     --arg org "$ANTHROPIC_ORGANIZATION_ID" --arg sa "$ANTHROPIC_SERVICE_ACCOUNT_ID" \
-                     --arg ws "$ANTHROPIC_WORKSPACE_ID" \
-                     '{grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer", assertion:$jwt,
-                       federation_rule_id:$rule, organization_id:$org, service_account_id:$sa, workspace_id:$ws}')")
+          # The claims the federation rule matches on (the JWT itself is never printed).
+          cut -d. -f2 <<<"$JWT" | tr '_-' '/+' | awk '{ l=length($0)%4; if (l) $0=$0 substr("===",1,4-l); print }' \
+            | base64 -d 2>/dev/null | jq -c '{iss,sub,aud,repository_owner,ref,event_name}'
+          BODY=$(jq -n --arg jwt "$JWT" --arg rule "$ANTHROPIC_FEDERATION_RULE_ID" \
+                   --arg org "$ANTHROPIC_ORGANIZATION_ID" --arg sa "$ANTHROPIC_SERVICE_ACCOUNT_ID" \
+                   --arg ws "$ANTHROPIC_WORKSPACE_ID" \
+                   '{grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer", assertion:$jwt,
+                     federation_rule_id:$rule, organization_id:$org, service_account_id:$sa, workspace_id:$ws}')
+          RESP=$(curl -sS -w '\n%{http_code}' https://api.anthropic.com/v1/oauth/token \
+            -H "content-type: application/json" -d "$BODY")
+          CODE=$(tail -n1 <<<"$RESP"); RESP=$(sed '$d' <<<"$RESP")
+          if [ "$CODE" != "200" ]; then echo "token exchange failed: HTTP $CODE $RESP"; exit 1; fi
           TOKEN=$(jq -r .access_token <<<"$RESP")
           echo "::add-mask::$TOKEN"
           echo "ANTHROPIC_AUTH_TOKEN=$TOKEN" >> "$GITHUB_ENV"
