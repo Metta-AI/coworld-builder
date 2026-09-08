@@ -112,3 +112,6 @@
 2026-09-08T17:43:13Z heartbeat phase=80
 2026-09-08T17:44:07Z 80 close: LEARNINGS section appended; atlas PR re-read OPEN (approved, merge-queue); leaderboard final alchemist:v1 1043.75 rank1 (3 wins) / duel:v1 956.25 rank2; 3 rounds completed
 2026-09-08T17:44:07Z heartbeat phase=80
+2026-09-08T17:45:06Z 80 close complete: exec summary on run task, condensed summary on idea task, LEARNINGS appended, all 9 phase subtasks complete, idea 1218173707682926 completed, run task 1218254757143976 moved to Done
+2026-09-08T17:45:06Z progress phase=80 marker=run-task-Done
+2026-09-08T17:45:06Z 80 run CLOSED — session 01858aee ends; run took phases 20(resume)->80 in one session (claim+10 by prior session 06:21Z)
