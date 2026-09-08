@@ -85,3 +85,46 @@
 | `carrier_throw -> resources deposited` measured only −1.3 % (15 545 → 15 350), below the committed −4 % | Substituted the statistic the knob actually owns: the **banked share** of everything the carriers carried, `banked/(banked+thrown)` in permille. Measured −23.7 % (5 313 → 4 052 summed over six games), gated at −10 %. The substitution and both measurements are in the shard's header. |
 | `test_bc25_replay.nim` asserted the bc25 fixture's `game_version` == `GameVersion`, which GV09 broke | Relaxed to `in ReplayCompatibleGameVersions`, which is the form `test_bc20_replay.nim`, `test_bc21_replay.nim` and `test_bc24_replay.nim` already use. The assertion that matters — `rederives(text) == -1`, a full re-simulation of the file against today's bc25 rules — is untouched. |
 | `test_manifest.nim` policy counts | 20 → 24 policies, 10 → 12 prompts, plus six new assertions naming the bc23 champions, their poles, their fillers and champion #2's owning player. |
+
+- **push 3 — `cd58a9cda3d6a6a6ee11d8b7f0b5f911a9f9fc22`** (1 path,
+  `tools/ci/parity_tiers_bc23.py`): the comparator fix above.
+- **CI round 2 — run
+  [34219450002](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34219450002)**
+  on `cd58a9c`, branch `bc23-year-module`: **`success`, all nine jobs.**
+  `parity-oracle-bc23`'s summary in that run:
+
+  | bot | map | tier A | peak bytecode |
+  |---|---|---|---|
+  | `examplefuncsplayer23` | `Quiet` | bit-exact | 6 % |
+  | `examplefuncsplayer23` | `SmallElements` | bit-exact | 6 % |
+  | `examplefuncsplayer23` | `Lantern` | bit-exact | 5 % |
+  | `examplefuncsplayer23` | `Spin` | bit-exact | 7 % |
+  | `examplefuncsplayer23` | `Sneaky` | bit-exact | 6 % |
+  | `examplefuncsplayer23` | `Barcode` | bit-exact | 6 % |
+
+  — six whole 2000-round games, ledger empty; Tier B "the committed
+  arithmetic table IS the jar's own output"; 52 `GameConstants` fields
+  cross-checked against the jar; every map really ran (190–509 robots built,
+  2000 rounds, zero mid-turn bytecode cut-offs).
+- **Merged**: PR #6 merged to `main` as
+  **`f9b292a21d64a8253a32d671d94f292924dd3e88`**.
+- **CI on main — run
+  [34224289835](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34224289835)**
+  on `f9b292a2`, branch `main`: **conclusion `success`**, all nine jobs green
+  (`test`, `parity-oracle`, `parity-oracle-bc20/21/23/24/25`, `docker-smoke`,
+  `wasm-viewer`).
+
+## Phase-20 exit-criterion checks on the merged `main` tree
+
+| check | result |
+|---|---|
+| no `<slug>` / `<IMAGE>` / `<SEATS>` in the three workflows, `docker_smoke.sh`, `policies.json` | none |
+| all three workflows parse and are registered | `CI active`, `Coworld release active`, `Coworld submit active` |
+| `coworld-release.yml` inputs | `version`, `policies`, `put_secret`, `skip_certify` all present |
+| `coworld-submit.yml` inputs | `player_id`, `policy`, `league_id` all present |
+| `release-result` / `submit-result` artifacts | both present |
+| per-policy owner field | `policies.json` champion #2 of every year carries `player`; the release workflow reads `row.get("player")` and passes `player_id` |
+| `num_agents` in every variant and the cert fixture | bc26/bc20/bc21/bc24/bc25/**bc23** = 2, certification = 2 |
+| `replay_viewer` | `{"bundle": "static-replay-viewer"}` (static wasm, no pod/client URL) |
+| `game.protocols` | `player` and `global` |
+| `tools/build_replay_viewer.sh`, `tools/ci/docker_smoke.sh`, `tools/ci/viewer_smoke.mjs` | all present, all `-rwxr-xr-x` |
