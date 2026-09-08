@@ -1,0 +1,5 @@
+{"loaded":true,"ms":1901,"clock":"2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines","scorebug":"CLAN ASH daveey · Paint the map. Towers mine forever. Territory wi 54 2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines CLAN BASIL daveey-1 · Paint towers, break towers, dominate. 45","feed_lines":8}
+soak: 15s of playback kept advancing ("round 2 / 2000" -> "round 314 / 2000" -> "round 362 / 2000")
+scrub readouts: 0%="2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines"  50%="1:23 GAME 2 OF 2 — LEAVEMEALONE doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -1,0 +1,5 @@
+{"loaded":true,"ms":1878,"clock":"2:32 GAME 1 OF 2 — FOSSIL doctrines","scorebug":"CLAN ASH daveey · Paint the map. Build paint towers. Keep soldiers 46 2:32 GAME 1 OF 2 — FOSSIL doctrines CLAN BASIL daveey-1 · Money feeds guns; guns break towers; towers win 53","feed_lines":8}
+soak: 15s of playback kept advancing ("round 1 / 2000" -> "round 313 / 2000" -> "round 362 / 2000")
+scrub readouts: 0%="2:32 GAME 1 OF 2 — FOSSIL doctrines"  50%="1:23 GAME 2 OF 2 — RAIN doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

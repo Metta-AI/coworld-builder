@@ -1,0 +1,69 @@
+{
+  "loaded": true,
+  "ms": 1901,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_e58e703d-3d34-4d27-b8eb-4464a6209170/sha256%3A28e952e1db3f2d7c479160ac522a91f420b0dd2c5fdf2b83d44ade8d7bdce7fe/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fa0418bda-3045-4e27-94b1-ed27f2143faf.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines",
+  "scorebug": "CLAN ASH daveey · Paint the map. Towers mine forever. Territory wi 54 2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines CLAN BASIL daveey-1 · Paint towers, break towers, dominate. 45",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 8,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "1:23 GAME 2 OF 2 — LEAVEMEALONE doctrines",
+      "settle_ms": 1004
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MATCH OVER doctrines",
+      "settle_ms": 1506
+    }
+  ],
+  "soak": {
+    "seconds": 15,
+    "moved": true,
+    "before": {
+      "clock": "2:47 GAME 1 OF 2 — DEFAULTLARGE doctrines",
+      "tick": "round 2 / 2000"
+    },
+    "middle": {
+      "clock": "2:34 GAME 1 OF 2 — DEFAULTLARGE doctrines",
+      "tick": "round 314 / 2000"
+    },
+    "after": {
+      "clock": "2:32 GAME 1 OF 2 — DEFAULTLARGE doctrines",
+      "tick": "round 362 / 2000"
+    },
+    "status": "OPEN",
+    "page_errors": []
+  },
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
