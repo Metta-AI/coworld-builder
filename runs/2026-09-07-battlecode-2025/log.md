@@ -92,3 +92,12 @@
 2026-09-08T05:56:51Z progress phase=70 marker=1546761144507572276
 2026-09-08T05:56:51Z 70 -> 75 phase transition
 2026-09-08T05:56:51Z heartbeat phase=75
+2026-09-08T05:58:17Z 75 atlas dispatch=34192669474 region=paintlands at=202,270 clearance=39.5 slug=battlecode/bc25 label='Battlecode 2025'
+2026-09-08T06:02:43Z 75 atlas retry 2: dispatch 1 (34192669474) failed step=build unplaced-leagues(68); fix = place all 68 via extra_cities (continents logged in /tmp/assign.tsv shape: 21 paintlands, 20 simulations, 13 tabletop/commons mix, 8 parlour; spots via atlas_spot.py iteratively, min clearance 22.8)
+2026-09-08T06:03:03Z 75 atlas dispatch=34192992294 region=paintlands at=202,270 clearance=39.5 extra_cities=68
+2026-09-08T06:03:56Z 75 atlas retry 3: dispatch 2 (34192992294) failed step=build stale-line paintbot/classic not in stats; fix = drop_slugs=paintbot/classic (league gone from softmax.com; map-line removal only)
+2026-09-08T06:03:56Z 75 atlas dispatch=34193077162 region=paintlands at=202,270 extra_cities=68 drop_slugs=paintbot/classic
+2026-09-08T06:06:08Z 75 atlas unplaced reason="places.mjs names a league that is not in data/coworld-stats.json: paintbot/ctf" card=1218254195545568 (3 dispatches: 34192669474, 34192992294, 34193077162; extra_cities for 68 leagues committed at runs/2026-09-07-battlecode-2025/atlas-extra-cities.json)
+2026-09-08T06:06:08Z progress phase=75 marker=34193077162
+2026-09-08T06:06:08Z 75 -> 80 phase transition
+2026-09-08T06:06:08Z heartbeat phase=80

@@ -5,14 +5,15 @@
   "slug": "battlecode-2025",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "10": 1,
     "20": 1,
     "40": 0,
     "50": 0,
     "60": 0,
-    "70": 0
+    "70": 0,
+    "75": 0
   },
   "review_round": 1,
   "coworld": {
@@ -53,18 +54,18 @@
     "discord_message_id": "1546761144507572276"
   },
   "atlas": {
-    "status": "",
+    "status": "unplaced",
     "pr_url": "",
     "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "region": "paintlands",
+    "x": 202,
+    "y": 270,
+    "dispatch_run_id": "34193077162",
+    "attempted_at": "2026-09-08T06:06:08Z",
+    "reason": "places.mjs names a league that is not in data/coworld-stats.json: paintbot/ctf (after 3 dispatches: unplaced-68 -> extra_cities; stale paintbot/classic -> drop_slugs; stale paintbot/ctf -> budget exhausted)"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T05:56:51Z",
+  "heartbeat_at": "2026-09-08T06:06:08Z",
   "session_ended_at": null,
   "session_id": "241923eb",
   "log": "runs/2026-09-07-battlecode-2025/log.md"
