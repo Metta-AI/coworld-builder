@@ -38,3 +38,5 @@
 2026-09-08T10:36:22Z heartbeat phase=20
 2026-09-08T10:56:36Z heartbeat phase=20
 2026-09-08T11:06:56Z heartbeat phase=20
+2026-09-08T11:15:00Z 20 CI run 34214301269 (push, 69f51a47) completed: FAILURE — sole red job parity-oracle-bc23 (examplefuncsplayer23 diverges round 1, all maps, no ledger); test 60min GREEN, wasm-viewer GREEN, docker-smoke GREEN, bc20/21/24/25+bc26 parity GREEN
+2026-09-08T11:15:00Z 20 takeover clock: no new branch commit since 10:13:29Z; if none lands by ~11:54Z dispatch builder round 2 with the parity-bc23 failing log
