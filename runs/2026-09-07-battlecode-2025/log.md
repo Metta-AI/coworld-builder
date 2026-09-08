@@ -48,3 +48,8 @@
 2026-09-08T03:15:13Z 20 -> 30 phase transition: review round 1
 2026-09-08T03:15:13Z heartbeat phase=30
 2026-09-08T03:16:03Z 30 r1 reviewer dispatched thread=sthr_01TQ8THtgxiwTQ1f26jr4x9f checkout=/tmp/cbc@eb33a8d2 base=5e7c8b78 output=runs/2026-09-07-battlecode-2025/reviews/r1-review.md (incremental-write instruction added after bc24's three silent reviewer deaths)
+2026-09-08T03:17:45Z 20 builder returned thread=sthr_014XsfpaZKWHS7Yfxrp6CzXe: build-report.md written; PR #5 merged 02:48:37Z; branch run 34177575069 green (8 jobs), main run 34181338414 green on eb33a8d2; 3 of 3 builder rounds used (measured smoke floors, ci.yml YAML-index clobber repair, wasm32 repro + 4 chrome fixes); 9 measured deviations recorded in-tree
+2026-09-08T03:17:45Z 20 exit checks passed by coordinator on main@eb33a8d2: placeholders clean, hooks executable, 3 workflows parse w/ inputs+artifacts+player field, manifest bc25 variant + num_agents=2 everywhere + player[]=[awu,scaffold] + cert bc26 + end_reason extended, GV08 compat extended, 19 bc25 test shards, policies 2 LLM (champion2 player field) + 2 scripted
+2026-09-08T03:17:45Z progress phase=20 marker=ci run 34181338414
+2026-09-08T03:17:45Z 20 -> 30 phase transition: ci.yml green on main, review_round=1; phase-20 subtask 1218245358416212 completed
+2026-09-08T03:17:45Z heartbeat phase=30
