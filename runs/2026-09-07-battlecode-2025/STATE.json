@@ -5,11 +5,12 @@
   "slug": "battlecode-2025",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "10": 1,
     "20": 1,
-    "40": 0
+    "40": 0,
+    "50": 0
   },
   "review_round": 1,
   "coworld": {
@@ -25,12 +26,16 @@
       "battlecode-spaark:v1",
       "battlecode-examplefuncsplayer25:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "c5a81b50-2497-4c59-8041-93c57c6ef609",
+      "db05ec98-1121-4019-b731-898bca3e139d"
+    ]
   },
   "league": {
-    "id": "",
-    "division": "",
-    "year_key": "bc25"
+    "id": "league_7edecd14-58d2-4a23-aadb-491577a60935",
+    "division": "div_a5c7f237-a2e2-484a-9e97-f1fd9b8dfd97",
+    "year_key": "bc25",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -53,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T05:19:15Z",
+  "heartbeat_at": "2026-09-08T05:23:47Z",
   "session_ended_at": null,
   "session_id": "241923eb",
   "log": "runs/2026-09-07-battlecode-2025/log.md"

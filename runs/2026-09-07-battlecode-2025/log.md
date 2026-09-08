@@ -72,3 +72,9 @@
 2026-09-08T05:19:15Z progress phase=40 marker=34189611273
 2026-09-08T05:19:15Z 40 -> 50 phase transition
 2026-09-08T05:19:15Z heartbeat phase=50
+2026-09-08T05:20:43Z 50 seed 200 league_7edecd14-58d2-4a23-aadb-491577a60935 key=bc25 (seed lseed_8f4fefb8); short-name bc25 200; division div_a5c7f237-a2e2-484a-9e97-f1fd9b8dfd97 created; settings 200 (round_robin/filler_policy/elo/15min)
+2026-09-08T05:20:43Z heartbeat phase=50
+2026-09-08T05:23:47Z 50 champion1 submit run=34190271045 ok=true (coverage:v1 daveey); champion2 submit run=34190307639 ok=true (siege:v1 daveey-1); fillers 200 spaark=c5a81b50 efp25=db05ec98; grant 100cr + drip 100/300 pool=100.0; unpause 200; trigger 200 workflow=ladder-league_7edecd14; round 1 pending w/ both champions in entrant_attributions
+2026-09-08T05:23:47Z progress phase=50 marker=league_7edecd14-58d2-4a23-aadb-491577a60935
+2026-09-08T05:23:47Z 50 -> 60 phase transition
+2026-09-08T05:23:47Z heartbeat phase=60
