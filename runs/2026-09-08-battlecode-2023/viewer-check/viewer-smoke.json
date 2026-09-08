@@ -1,0 +1,69 @@
+{
+  "loaded": true,
+  "ms": 1368,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_93baa4e4-ec4b-40c7-9f0f-694c97c5dfe7/sha256%3Aa4ae44ab88615b434ccef7b6d6edc82bb8cdc6aec397d9f3efcaa89c70ef133e/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F16e08a05-82d7-4447-ad97-ee53be22557f.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "3:55 GAME 1 OF 3 — SCATTER doctrines",
+  "scorebug": "CLAN ASH daveey 47 3:55 GAME 1 OF 3 — SCATTER doctrines CLAN BASIL daveey-1 52",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 6,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "3:55 GAME 1 OF 3 — SCATTER doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "2:04 GAME 2 OF 3 — HIDEANDSEEK doctrines",
+      "settle_ms": 10038
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MATCH OVER doctrines",
+      "settle_ms": 9038
+    }
+  ],
+  "soak": {
+    "seconds": 15,
+    "moved": true,
+    "before": {
+      "clock": "4:10 GAME 1 OF 3 — SCATTER doctrines",
+      "tick": "round 2 / 2000"
+    },
+    "middle": {
+      "clock": "3:57 GAME 1 OF 3 — SCATTER doctrines",
+      "tick": "round 318 / 2000"
+    },
+    "after": {
+      "clock": "3:55 GAME 1 OF 3 — SCATTER doctrines",
+      "tick": "round 366 / 2000"
+    },
+    "status": "OPEN",
+    "page_errors": []
+  },
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

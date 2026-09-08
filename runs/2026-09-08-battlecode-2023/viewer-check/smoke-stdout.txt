@@ -1,0 +1,5 @@
+{"loaded":true,"ms":1368,"clock":"3:55 GAME 1 OF 3 — SCATTER doctrines","scorebug":"CLAN ASH daveey 47 3:55 GAME 1 OF 3 — SCATTER doctrines CLAN BASIL daveey-1 52","feed_lines":6}
+soak: 15s of playback kept advancing ("round 2 / 2000" -> "round 318 / 2000" -> "round 366 / 2000")
+scrub readouts: 0%="3:55 GAME 1 OF 3 — SCATTER doctrines"  50%="2:04 GAME 2 OF 3 — HIDEANDSEEK doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
