@@ -63,3 +63,7 @@
 2026-09-08T04:55:23Z progress phase=30 marker=r1-fixes.md
 2026-09-08T04:55:23Z heartbeat phase=30
 2026-09-08T04:58:34Z 30 r1 judge dispatched thread=sthr_01XFRQwWLLTQjx2Wu4tQJwZy checkout=/tmp/cbc-judge@6885a062 base=5e7c8b78 output=runs/2026-09-07-battlecode-2025/reviews/r1-verdict.md (fresh context, fixes.md withheld)
+2026-09-08T05:08:14Z 30 r1 judge returned: r1-verdict.md blocking:0/BLOCKING:0, all 15 checklist items pass at 6885a062 (CI 34185528349 cited); F26 fixed at head, F40 refuted (grid harness committed), residue: killfeed-gate negative control absent (non-blocking)
+2026-09-08T05:08:14Z progress phase=30 marker=r1-verdict.md
+2026-09-08T05:08:14Z 30 -> 40 phase transition: review loop closed round 1, zero blocking
+2026-09-08T05:08:14Z heartbeat phase=40
