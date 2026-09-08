@@ -5,22 +5,26 @@
   "slug": "battlecode-2023",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "20": 1,
-    "30": 1
+    "30": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.6.0",
+    "cow_id": "cow_93baa4e4-ec4b-40c7-9f0f-694c97c5dfe7",
+    "manifest_sha": "sha256:a4ae44ab88615b434ccef7b6d6edc82bb8cdc6aec397d9f3efcaa89c70ef133e",
+    "release_run_id": "34252334397"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "battlecode-bc23-duel:v1",
+    "champion2": "battlecode-bc23-alchemist:v1",
+    "fillers": [
+      "battlecode-lemonade:v1",
+      "battlecode-examplefuncsplayer23:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -49,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T16:36:51Z",
+  "heartbeat_at": "2026-09-08T16:49:17Z",
   "session_ended_at": null,
   "session_id": "51417e08",
   "log": "runs/2026-09-08-battlecode-2023/log.md"

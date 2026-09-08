@@ -77,3 +77,7 @@
 2026-09-08T16:36:51Z 30 -> 40 phase transition: STATE written phase=40 (review loop exited round 1, zero blocking)
 2026-09-08T16:36:51Z heartbeat phase=40
 2026-09-08T16:38:02Z 40 release builder dispatched thread=sthr_01WaMew4okQU26CbA4tk7FQw version=0.6.0 policies=tools/ci/policies.json (no override; bc23: duel champ1, alchemist champ2 player=daveey-1, fillers lemonade+examplefuncsplayer23) output=release-result.json+release-report.md
+2026-09-08T16:49:17Z 40 release 0.6.0 GREEN first dispatch run=34252334397: canonical=true certify.ok=true liveness-skipped secret_put=true, 24 policies (bc23: duel:v1 champ1, alchemist:v1 champ2 player=daveey-1, fillers lemonade:v1 examplefuncsplayer23:v1); cow_93baa4e4-ec4b-40c7-9f0f-694c97c5dfe7 (fresh id per version — platform behavior, matches all prior releases); hosted cert settled certified 16:45:49Z
+2026-09-08T16:49:17Z progress phase=40 marker=release-run-34252334397
+2026-09-08T16:49:17Z 40 -> 50 phase transition: STATE written phase=50
+2026-09-08T16:49:17Z heartbeat phase=50
