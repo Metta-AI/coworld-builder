@@ -1,0 +1,67 @@
+name: costbot
+
+# Daily token-spend DM for the coworld-builder fleet (fleet/bin/costbot.py report --post).
+# Authenticates to the Anthropic API with Workload Identity Federation: GitHub's OIDC token
+# for this workflow run is exchanged for a 15-minute workspace-scoped bearer token, so no
+# Anthropic API key is stored anywhere. Federation rule `gha-coworld-builder` only matches runs
+# on refs/heads/main of this repo. The disco Discord token is the one stored secret.
+on:
+  schedule:
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "UTC day to report (YYYY-MM-DD); default yesterday"
+        required: false
+        default: ""
+      post:
+        description: "post to Discord (false = print only)"
+        required: false
+        default: "true"
+
+concurrency:
+  group: costbot
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ANTHROPIC_FEDERATION_RULE_ID: fdrl_01BTD9UxCJYG7XH92mYyvWJD
+      ANTHROPIC_ORGANIZATION_ID: 05f53468-d719-40a4-a580-aff01188eeeb
+      ANTHROPIC_SERVICE_ACCOUNT_ID: svac_01GWpPtRHsvnM2msLzpTLFuk
+      ANTHROPIC_WORKSPACE_ID: wrkspc_01MGK1QjvxLGdUFCeExDjLSb
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exchange the GitHub OIDC token for an Anthropic bearer token
+        run: |
+          set -euo pipefail
+          JWT=$(curl -sS --fail-with-body -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value)
+          RESP=$(curl -sS --fail-with-body https://api.anthropic.com/v1/oauth/token \
+            -H "content-type: application/json" \
+            -d "$(jq -n --arg jwt "$JWT" --arg rule "$ANTHROPIC_FEDERATION_RULE_ID" \
+                     --arg org "$ANTHROPIC_ORGANIZATION_ID" --arg sa "$ANTHROPIC_SERVICE_ACCOUNT_ID" \
+                     --arg ws "$ANTHROPIC_WORKSPACE_ID" \
+                     '{grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer", assertion:$jwt,
+                       federation_rule_id:$rule, organization_id:$org, service_account_id:$sa, workspace_id:$ws}')")
+          TOKEN=$(jq -r .access_token <<<"$RESP")
+          echo "::add-mask::$TOKEN"
+          echo "ANTHROPIC_AUTH_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "token acquired, expires_in=$(jq -r .expires_in <<<"$RESP")s"
+      - name: Report
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DAY: ${{ github.event.inputs.day }}
+          POST: ${{ github.event.inputs.post || 'true' }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          [ -n "$DAY" ] && ARGS+=(--day "$DAY")
+          [ "$POST" = "true" ] && ARGS+=(--post)
+          python3 fleet/bin/costbot.py report "${ARGS[@]}"

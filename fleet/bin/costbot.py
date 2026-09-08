@@ -24,13 +24,15 @@ be lower with negotiated discounts. Per-thread costs exclude running time and ar
 independently, so the "runtime/other" line is the session total minus the thread sum.
 
 Credentials, never printed and never written to git:
-  ANTHROPIC_API_KEY   env (a vault credential in the sandbox), else AWS Secrets Manager
-                      `daveey/anthropic/org-key` (profile softmax-org). The key is org-scoped,
-                      so every call sends `anthropic-workspace-id: <workspace_id>`; a
-                      workspace-scoped key works too — drop `workspace_id` from the config.
-  DISCORD_BOT_TOKEN   env (vault), else Secrets Manager `vault/discord/disco/app` (profile
-                      softmax, JSON key DISCORD_BOT_TOKEN) — the disco bot.
-  repo mount token    `gh auth token`, at `deploy` time only.
+  ANTHROPIC_AUTH_TOKEN  a federated `sk-ant-oat01-` bearer token (GitHub Actions gets one from
+                        Workload Identity Federation; see .github/workflows/costbot.yml). Already
+                        bound to the workspace, so no workspace header is sent.
+  ANTHROPIC_API_KEY     else: an API key from the env, else AWS Secrets Manager
+                        `daveey/anthropic/org-key` (profile softmax-org). An org-wide key gets
+                        `anthropic-workspace-id: <workspace_id>` from the config on every call.
+  DISCORD_BOT_TOKEN     env, else Secrets Manager `vault/discord/disco/app` (profile softmax,
+                        JSON key DISCORD_BOT_TOKEN) — the disco bot.
+  repo mount token      `gh auth token`, at `deploy` time only.
 """
 
 import argparse
@@ -92,12 +94,18 @@ def _secret(secret_id, profile, region=None):
     return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
 
 
-def anthropic_key():
+def anthropic_auth():
+    """Headers that authenticate to the Anthropic API. ANTHROPIC_AUTH_TOKEN (a federated
+    `sk-ant-oat01-` bearer token, already bound to its workspace) wins; else ANTHROPIC_API_KEY;
+    else the org key from Secrets Manager. Only a key needs the workspace header."""
+    tok = os.environ.get("ANTHROPIC_AUTH_TOKEN")
+    if tok:
+        return {"authorization": "Bearer " + tok}
     k = os.environ.get("ANTHROPIC_API_KEY")
     if not k:
         k = _secret("daveey/anthropic/org-key", "softmax-org")
         os.environ["ANTHROPIC_API_KEY"] = k
-    return k
+    return {"x-api-key": k}
 
 
 def discord_token():
@@ -144,12 +152,12 @@ def _request(url, headers, body=None, method=None, tries=4, timeout=120):
 
 def api(cfg, path, body=None, method=None, params=None):
     headers = {
-        "x-api-key": anthropic_key(),
+        **anthropic_auth(),
         "anthropic-version": "2023-06-01",
         "anthropic-beta": "managed-agents-2026-04-01",
         "content-type": "application/json",
     }
-    if cfg.get("workspace_id"):
+    if cfg.get("workspace_id") and "x-api-key" in headers:
         headers["anthropic-workspace-id"] = cfg["workspace_id"]
     url = API + path + ("?" + urllib.parse.urlencode(params, doseq=True) if params else "")
     return _request(url, headers, body, method)
@@ -231,7 +239,6 @@ def collect(cfg, day):
 
     by_agent, by_depl = {}, {}
     total = threads_total = 0
-    idle_sessions = idle_cents = 0  # sessions that dispatched no sub-agent: pure heartbeat overhead
     for s in todays:
         c = cents(s.get("usage"))
         total += c
@@ -239,11 +246,7 @@ def collect(cfg, day):
         b = by_depl.setdefault(dep, {"cents": 0, "sessions": 0})
         b["cents"] += c
         b["sessions"] += 1
-        threads = page(cfg, "/sessions/{}/threads".format(s["id"]))
-        if len(threads) <= 1:
-            idle_sessions += 1
-            idle_cents += c
-        for t in threads:
+        for t in page(cfg, "/sessions/{}/threads".format(s["id"])):
             a = t.get("agent") or {}
             name = a.get("name") or a.get("type") or "?"
             u = t.get("usage") or {}
@@ -283,8 +286,6 @@ def collect(cfg, day):
         "day": day,
         "sessions": len(todays),
         "total_cents": total,
-        "idle_sessions": idle_sessions,
-        "idle_cents": idle_cents,
         "runtime_other_cents": max(total - threads_total, 0),
         "by_agent": by_agent,
         "by_deployment": by_depl,
@@ -315,10 +316,6 @@ def render(r):
             f"{short(name, fleet):<{width}}  {usd(b['cents']):>9}  {b['threads']:>3} thr  {ktok(b['output_tokens']):>5} out tok"
         )
     table.append(f"{'runtime/other':<{width}}  {usd(r['runtime_other_cents']):>9}")
-    table.append(
-        f"{'idle':<{width}}  {usd(r.get('idle_cents', 0)):>9}  {r.get('idle_sessions', 0):3d} ses  "
-        "(heartbeats that dispatched no sub-agent)"
-    )
     lines.append("```")
     lines += table
     lines.append("```")
