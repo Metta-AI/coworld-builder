@@ -53,3 +53,6 @@
 2026-09-08T12:17:42Z heartbeat phase=20
 2026-09-08T12:32:41Z heartbeat phase=20
 2026-09-08T12:47:38Z heartbeat phase=20
+2026-09-08T12:50:50Z 20 CI GREEN on main: run 34224289835 (f9b292a2) success — all jobs incl parity-oracle-bc23; exit checks pass (3 workflows parse+active, release inputs version/policies/put_secret/skip_certify, submit inputs player_id/policy/league_id); build-report.md complete through CI round 1 fix
+2026-09-08T12:50:50Z 20 -> 30 phase transition: STATE written phase=30 review_round=1
+2026-09-08T12:50:50Z heartbeat phase=30
