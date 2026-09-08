@@ -18,6 +18,9 @@ Modelled on daveey/cogamer's fleet/bin/fleetctl.py (same api()/key() helpers, sa
   run                POST /deployments/{id}/run — a manual heartbeat, off-schedule.
                      `--name <suffix>` picks which one (default `a`).
   status             every deployment's latest runs + their session status.
+  pause / unpause    pause or resume the heartbeat crons (all, or --name one). Paused deployments
+                     still accept manual runs, which is how the heartbeat gate
+                     (.github/workflows/heartbeat-gate.yml) wakes the coordinator.
 
 Parallelism: several coworld runs advance at once. Each of the K deployments is one heartbeat
 cron (staggered inside the hour); `max_parallel_runs` in fleet/cloud.md §Parallelism is the cap
@@ -69,7 +72,10 @@ AGENT_FIELDS = ("name", "description", "model", "tools", "mcp_servers", "skills"
 # fields; `multiagent` here is UNVERIFIED against that endpoint. Verify with `--dry-run update`
 # followed by one real `update` after a roster edit, and record the outcome in this comment.
 VERSIONED_FIELDS = ("description", "model", "tools", "mcp_servers", "skills", "multiagent")
-DEPL_FIELDS = ("name", "environment_id", "vault_ids", "schedule", "resources")
+# `budget` and `initial_events` were added 2026-09-08: the live deployments carried a $200/session
+# budget that git did not record, and a kickoff-text edit in deployment.json was silently ignored
+# because `update` popped initial_events before comparing.
+DEPL_FIELDS = ("name", "environment_id", "vault_ids", "schedule", "resources", "budget", "initial_events")
 
 IDS_START = "<!-- ids:start -->"
 IDS_END = "<!-- ids:end -->"
@@ -361,7 +367,9 @@ def live_state():
 
 def norm_depl(d):
     out = {k: d.get(k) for k in DEPL_FIELDS}
-    out["agent"] = {"id": d["agent"]["id"], "version": d["agent"]["version"]}
+    # `type` kept so the comparison matches deployment_body(); without it every dry-run showed a
+    # phantom `agent` diff on every deployment.
+    out["agent"] = {"type": "agent", "id": d["agent"]["id"], "version": d["agent"]["version"]}
     if out.get("schedule"):
         out["schedule"] = {k: out["schedule"][k] for k in ("type", "expression", "timezone")
                            if k in out["schedule"]}
@@ -580,7 +588,6 @@ def cmd_update(args):
             continue
         want = deployment_body(coord[2], coord[3], cloud, spec, with_token=not args.dry_run)
         cmp_want = json.loads(json.dumps(want))
-        cmp_want.pop("initial_events", None)
         for r in cmp_want.get("resources") or []:
             if r.get("type") == "github_repository":
                 r["authorization_token"] = "<resupply-at-apply>"
@@ -648,6 +655,30 @@ def _resolve_name(suffix):
                      % (suffix, ", ".join("%s (%s)" % (s, n) for n, s, _ in specs)))
 
 
+def _pause_or_unpause(args, verb):
+    """POST /deployments/{id}/pause|unpause on the heartbeat deployments (all, or --name one).
+    Paused deployments still accept manual runs — which is exactly what the heartbeat gate
+    (.github/workflows/heartbeat-gate.yml) relies on: the crons stay paused and the gate fires
+    a run only when there is a unit of work."""
+    cloud = read_cloud()
+    names = [_resolve_name(args.name)] if args.name else [n for n, _s, _c in deployment_specs()]
+    for name in names:
+        dep = _deployment_id(cloud, name, args.dry_run)
+        if args.dry_run:
+            show("POST /deployments/%s/%s (%s)" % (dep, verb, name), {})
+            continue
+        d = api("/deployments/%s/%s" % (dep, verb), {})
+        print("%s %s -> status=%s paused_reason=%s" % (verb, name, d.get("status"), json.dumps(d.get("paused_reason"))))
+
+
+def cmd_pause(args):
+    _pause_or_unpause(args, "pause")
+
+
+def cmd_unpause(args):
+    _pause_or_unpause(args, "unpause")
+
+
 def cmd_run(args):
     name = _resolve_name(args.name)
     dep = _deployment_id(read_cloud(), name, args.dry_run)
@@ -702,10 +733,15 @@ def main():
     r = sub.add_parser("run", help="POST /deployments/{id}/run — a manual heartbeat")
     r.add_argument("--name", default="a",
                    help="which heartbeat deployment: a suffix (a/b/c) or the full name")
+    for verb, help_ in (("pause", "pause the heartbeat crons (manual runs and the gate still work)"),
+                        ("unpause", "resume the heartbeat crons")):
+        pp = sub.add_parser(verb, help=help_)
+        pp.add_argument("--name", default=None, help="one deployment (suffix or full name); default: all")
     s = sub.add_parser("status", help="every deployment's latest runs + session status")
     s.add_argument("--limit", type=int, default=5)
     args = ap.parse_args()
-    {"create": cmd_create, "update": cmd_update, "run": cmd_run, "status": cmd_status}[
+    {"create": cmd_create, "update": cmd_update, "run": cmd_run, "status": cmd_status,
+     "pause": cmd_pause, "unpause": cmd_unpause}[
         args.cmd](args)
 
 

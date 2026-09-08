@@ -19,7 +19,10 @@ one** unit of work and then works it; the crons fan the queue out, the cap bound
 
 Every firing of a deployment is a *heartbeat*. Run these steps in order, every time:
 
-1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder** board
+1. Run the heartbeat summary (`prompts/00-claim.md` step 0: one `python3 fleet/bin/heartbeat_gate.py --summary`
+   call that does the tool preflight, pulls the mount, and prints the board state, freshness,
+   probe results and the claimable idea as JSON — use it instead of re-deriving those with
+   your own curls), then read the **Coworld Builder** board
    (the Coworld Builder gid in `fleet/cloud.md` — it is a row in that table, **not** a shell
    variable; nothing exports `BUILDER_PROJECT`) and count `live` = run tasks in *Running* whose
    `heartbeat_at` is **fresh**: < 180 min old **and** with `STATE.session_ended_at` null or older
@@ -182,19 +185,21 @@ Read the run task's comments at the start of **every** heartbeat, before doing a
 
 `playbooks/make-coworld.md` (in this repo) is the full text of how a coworld gets made and the
 gotcha table every phase leans on — read the sections your phase prompt names, and treat its
-pins as binding. `/workspace/cogamer/fleet/PROTOCOLS.md` carries the shared, incident-hardened
-protocol blocks; read the sections **ESCALATION HANDOFF** (what a handoff to a human must
-contain), **CRUX DECISIONS** (the agent decides; do not wait on an operator for a rails call),
-and **STRUCTURED RECORDS ARE OWED** before your first claim of a run. Those files are read from
-the mounts at run time; do not paraphrase them from memory.
+pins as binding. Three fleet-wide protocol rules apply here in this form (they used to be cited
+from a `cogamer` mount, which is no longer attached):
 
-Do **not** apply PROTOCOLS §CLAIM PROTOCOL or §HEARTBEAT literally here: they are written for a
-board with a *Planned* section and an `owner` field, which the Coworld Builder board does not
-have (`fleet/cloud.md`), and they specify 60-minute staleness with 10-minute heartbeats. **This
-system's numbers and algorithm supersede them**: the claim algorithm is `prompts/00-claim.md`,
-the staleness threshold is 180 minutes (dead-session floor; clean ends set `session_ended_at`), and heartbeats are every 15 minutes of unblocked work (SPEC §Runtime). What
-carries over from §CLAIM PROTOCOL is the *shape* the claim prompt already implements —
-comment-first, re-read before you commit to the claim, yield to an earlier claim.
+- **Escalation handoff.** A handoff to a human is board-visible work, never just a log line:
+  phase 90's Blocked subtask names the exact error, the three attempts, the single decision or
+  credential needed, and a probe that clears it — `prompts/90-blocked.md` is the executable form.
+- **Crux decisions are yours.** Anything §Rails lists, you decide and log; you never wait on an
+  operator for it. Only the Blocked list in §Rails goes to a human.
+- **Structured records are owed.** STATE, `log.md`, the reviews, `VERIFY.md` and the `progress`
+  line are the record the next heartbeat and the human read; a session that ends without pushing
+  them has done nothing anyone can see.
+
+The claim algorithm is `prompts/00-claim.md`; the staleness threshold is 180 minutes (dead-session
+floor; clean ends set `session_ended_at`), and heartbeats are every 15 minutes of unblocked work
+(SPEC §Runtime). The claim is comment-first, re-read before you commit, yield to an earlier claim.
 
 ## Hard safety rules
 

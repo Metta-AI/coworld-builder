@@ -21,36 +21,49 @@ just a run you do not touch.
 
 ## Procedure
 
-0. **Tool preflight — once, at the top of every heartbeat.** Every phase prompt pipes JSON through
-   `jq` (00, 20, 40, 50, 60, 70) and every phase that touches GitHub uses `gh`. The sandbox is
-   guaranteed `git`, `curl`, `python3`; **`gh` and `jq` are not** (2026-08-22: the first run found
-   `gh` missing and installed it). Check and install both before you rely on them:
+0. **Heartbeat summary — one call, at the top of every heartbeat.** Run exactly this and read
+   its JSON:
    ```bash
-   command -v gh >/dev/null || {
-     curl -fsSL https://github.com/cli/cli/releases/download/v2.63.2/gh_2.63.2_linux_amd64.tar.gz \
-       | tar -xz -C /tmp && install -m 0755 /tmp/gh_2.63.2_linux_amd64/bin/gh /usr/local/bin/gh \
-       || install -m 0755 /tmp/gh_2.63.2_linux_amd64/bin/gh "$HOME/.local/bin/gh"; }
-   command -v gh >/dev/null && gh --version | head -1 || echo "NO GH"
-   command -v jq >/dev/null || echo "NO JQ"
+   cd /workspace/coworld-builder && python3 fleet/bin/heartbeat_gate.py --summary
    ```
+   It does, in one tool call, what steps 1–4.2 below describe: the `gh`/`jq` preflight (installs
+   `gh` v2.63.2 from the release tarball if it is missing — the sandbox does not guarantee it;
+   `preflight.gh`/`preflight.jq` say what is present), `git pull --rebase` of this mount, the
+   *Running* list with each run's freshness (`running[]`, `live`), every *Blocked* run's human
+   subtask status and probe exit code (`blocked[]`, `fresh_blocked`), `max_parallel_runs`, the
+   stalled-queue check, and the first claimable idea (`target.idea`, `target.name`, `target.notes`
+   verbatim) after the SKIPPED / already-run / comment / host-busy filters, with the deferred ideas
+   in `deferred[]`. `kind` is the unit of work it found: `resume`, `unblock`, `escalate`, `claim`,
+   or `none`; `reason` says why. **Use those fields for steps 1–4.2 instead of re-fetching the
+   boards yourself** — re-fetch only what an action needs (the re-GET before a claim, the comment
+   you post, the `heartbeat_at` you write). If `board_error` is set, the Builder board is
+   unreachable: do not create a run — append `<UTC> heartbeat: builder board unreachable (<error>)`
+   to `runs/heartbeats.log` and exit. If the script itself fails (traceback, missing python),
+   log `<UTC> 00 summary failed — falling back to manual steps` and do steps 1–4.2 by hand with the
+   curls below.
    `gh` authenticates from `GH_TOKEN` in the environment (vault-injected); never run `gh auth
-   login`. If `gh` cannot be installed, that IS a Blocked-class fact (every GitHub step needs it)
-   — but only after one retry with the `$HOME/.local/bin` path on `PATH`.
-   If it is missing, do **not** go to phase 90 and do not stop: every `jq` line in these prompts
-   has a mechanical `python3` equivalent — `python3 -c 'import json,sys; d=json.load(sys.stdin);
-   print(…)'` for reads and `json.dump` for writes. Use it, and record
-   `<UTC> 00 jq missing — using python3 json` in `runs/heartbeats.log` (or the run's `log.md`
-   once you own a run) so the gap is visible. Confirmed-present tooling belongs in
-   `fleet/cloud.md` §Sandbox tooling.
+   login`. If `gh` cannot be installed even with `$HOME/.local/bin` on `PATH`, that IS a
+   Blocked-class fact (every GitHub step needs it). If `jq` is missing, every `jq` line in these
+   prompts has a mechanical `python3` equivalent (`python3 -c 'import json,sys; d=json.load(sys.stdin);
+   print(…)'` for reads, `json.dump` for writes) — use it and record `<UTC> 00 jq missing — using
+   python3 json` in `runs/heartbeats.log` (or the run's `log.md` once you own a run).
+   Confirmed-present tooling belongs in `fleet/cloud.md` §Sandbox tooling.
 
-1. List *Running* tasks on the Builder board, and read `max_parallel_runs` out of
-   `fleet/cloud.md` §Parallelism (the `` `max_parallel_runs: N` `` line — never a remembered
-   number). `live` = the count of *Running* tasks that come out **fresh** in step 2.
+   **How you were woken.** The three heartbeat crons are paused; `.github/workflows/heartbeat-gate.yml`
+   runs this same script every 20 minutes and fires a deployment only when `kind != none`. So a
+   session that finds `kind: none` is the exception, not the rule — log the one line step 4a names
+   and exit at once.
+
+1. *(computed by step 0: `running[]`, `live`, `max_parallel_runs`.)* List *Running* tasks on the
+   Builder board, and read `max_parallel_runs` out of `fleet/cloud.md` §Parallelism (the
+   `` `max_parallel_runs: N` `` line — never a remembered number). `live` = the count of *Running*
+   tasks that come out **fresh** in step 2.
    ```bash
    curl -sS "https://app.asana.com/api/1.0/tasks?project=1217747772236871&opt_fields=name,completed,memberships.section.gid,custom_fields,notes" \
      -H "Authorization: Bearer $ASANA_PAT"
    ```
-2. For each *Running* task read `heartbeat_at`. It is the **Asana custom field
+2. *(computed by step 0: `running[].fresh`, `running[].age_min`; the resume target, if any, is
+   `target`.)* For each *Running* task read `heartbeat_at`. It is the **Asana custom field
    `1217748424048134`** (text, UTC ISO-8601, on the Coworld Builder project — gid in
    `fleet/cloud.md`). Read it out of the task's `custom_fields` array:
    ```bash
@@ -80,7 +93,10 @@ just a run you do not touch.
    - If **more than one** *Running* task qualifies, adopt the one with the **oldest**
      `heartbeat_at`, and **adopt exactly one per heartbeat** — never carry two runs forward in a
      single session. Log the ones you did not adopt by gid; the next heartbeat takes the next.
-3. Else list *Blocked* tasks. For each, identify **the human subtask** — never "a completed
+3. *(computed by step 0: `blocked[].subtask_completed`, `blocked[].probe_rc`, `fresh_blocked`;
+   an `unblock` target is one whose subtask is complete or whose probe exited 0 — you still
+   complete the subtask and post the probe comment yourself, 3.2b.)* Else list *Blocked* tasks.
+   For each, identify **the human subtask** — never "a completed
    subtask": every run task carries nine phase subtasks (10…80) that phase 80 completes as the
    run progresses, so a completed phase subtask means nothing here.
    1. Read `runs/<run>/STATE.json` and take **`STATE.blocked.subtask`** (the gid phase 90
@@ -129,8 +145,11 @@ just a run you do not touch.
    - Blocked runs are checked (step 3) on **every** heartbeat, before any new claim, so an
      unblocked run always resumes ahead of new work.
 
-4. Else claim work — **only if `live` < `max_parallel_runs`** (step 1). At the cap, claim
-   nothing: go to step 4a. Below it, exactly one new idea, by the procedure below.
+4. *(computed by step 0: `kind: claim` with `target.idea` / `target.name` / `target.notes`, and
+   `deferred[]` for the log line in 4.2. Start at 4.3 with that idea; if it fails a gate, SKIP it
+   and take the next one by 4.2 yourself.)* Else claim work — **only if `live` < `max_parallel_runs`**
+   (step 1). At the cap, claim nothing: go to step 4a. Below it, exactly one new idea, by the
+   procedure below.
 
    **Claiming races** — two overlapping heartbeats (two of the three crons, a manual
    `deploy.py run`, or a retried deployment run) can both see the same free idea. The comment-first
