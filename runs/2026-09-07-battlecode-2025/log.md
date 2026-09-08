@@ -62,3 +62,4 @@
 2026-09-08T04:55:23Z 30 r1 fixer returned: 6 commits eb33a8d2->6885a062 (F26 blocking fixed w/ emission arms + tests, F11/F12/F39/F43/F34 addressed, F41/F36/F40/F1 kept with reasons), CI 34185528349 green on main; fixer note: git push Basic auth rejected in sandbox, commits landed via Git Data API (no force, identical trees)
 2026-09-08T04:55:23Z progress phase=30 marker=r1-fixes.md
 2026-09-08T04:55:23Z heartbeat phase=30
+2026-09-08T04:58:34Z 30 r1 judge dispatched thread=sthr_01XFRQwWLLTQjx2Wu4tQJwZy checkout=/tmp/cbc-judge@6885a062 base=5e7c8b78 output=runs/2026-09-07-battlecode-2025/reviews/r1-verdict.md (fresh context, fixes.md withheld)
