@@ -1645,3 +1645,4 @@
 2026-09-08T03:18:19Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-07-battlecode-2025
 2026-09-08T03:18:19Z 00 probe run=2026-09-04-battlecode-2024 result=fail
 2026-09-08T03:18:19Z heartbeat: nothing to do
+2026-09-08T03:41:32Z yield run=2026-09-07-battlecode-2025 session=a0703eb3 lost resume race to session=241923eb (my heartbeat went stale during a 5h builder thread; foreign session resumed 01:22Z, its heartbeat_at 03:32:53Z is past my 03:18:46Z stamp) — my r1 reviewer output (thread sthr_01FijKdzar7n4dKoayEUbN7Q, 9 findings) set aside as superseded by owner's r1-review.md; exiting with no further writes to the run
