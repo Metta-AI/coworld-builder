@@ -47,3 +47,4 @@
 2026-09-08T03:15:13Z progress phase=20 marker=34181338414
 2026-09-08T03:15:13Z 20 -> 30 phase transition: review round 1
 2026-09-08T03:15:13Z heartbeat phase=30
+2026-09-08T03:16:03Z 30 r1 reviewer dispatched thread=sthr_01TQ8THtgxiwTQ1f26jr4x9f checkout=/tmp/cbc@eb33a8d2 base=5e7c8b78 output=runs/2026-09-07-battlecode-2025/reviews/r1-review.md (incremental-write instruction added after bc24's three silent reviewer deaths)
