@@ -5,13 +5,14 @@
   "slug": "battlecode-2023",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "20": 1,
     "30": 1,
     "40": 1,
     "50": 1,
-    "60": 1
+    "60": 1,
+    "70": 1
   },
   "review_round": 1,
   "coworld": {
@@ -49,7 +50,7 @@
   },
   "announce": {
     "attempted_at": "2026-09-08T17:39:39Z",
-    "discord_message_id": ""
+    "discord_message_id": "1546938154840227940"
   },
   "atlas": {
     "status": "",
@@ -63,7 +64,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T17:39:39Z",
+  "heartbeat_at": "2026-09-08T17:40:11Z",
   "session_ended_at": null,
   "session_id": "01858aee",
   "log": "runs/2026-09-08-battlecode-2023/log.md"
