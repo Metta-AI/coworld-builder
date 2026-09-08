@@ -56,3 +56,4 @@
 2026-09-08T12:50:50Z 20 CI GREEN on main: run 34224289835 (f9b292a2) success — all jobs incl parity-oracle-bc23; exit checks pass (3 workflows parse+active, release inputs version/policies/put_secret/skip_certify, submit inputs player_id/policy/league_id); build-report.md complete through CI round 1 fix
 2026-09-08T12:50:50Z 20 -> 30 phase transition: STATE written phase=30 review_round=1
 2026-09-08T12:50:50Z heartbeat phase=30
+2026-09-08T12:52:13Z 30 reviewer dispatched thread=sthr_01FyBBKZv8ZgbcBakMUVFKTT round=1 output=runs/2026-09-08-battlecode-2023/reviews/r1-review.md (mod-run scope: diff 6885a062..f9b292a2 109 files; incremental-write pinned — bc24 3x dead-reviewer lesson; tarball fallback for refused git-https; cite CI 34224289835)
