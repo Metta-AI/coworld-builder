@@ -101,3 +101,5 @@
 2026-09-08T06:06:08Z progress phase=75 marker=34193077162
 2026-09-08T06:06:08Z 75 -> 80 phase transition
 2026-09-08T06:06:08Z heartbeat phase=80
+2026-09-08T06:08:21Z 80 close: summary posted on run task + idea task; LEARNINGS section appended; leaderboard 1.coverage 1043.7 (3W) 2.siege 956.3; 3 rounds completed
+2026-09-08T06:08:21Z progress phase=80 marker=LEARNINGS.md

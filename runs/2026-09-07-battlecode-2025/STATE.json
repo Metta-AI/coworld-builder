@@ -65,7 +65,7 @@
     "reason": "places.mjs names a league that is not in data/coworld-stats.json: paintbot/ctf (after 3 dispatches: unplaced-68 -> extra_cities; stale paintbot/classic -> drop_slugs; stale paintbot/ctf -> budget exhausted)"
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T06:06:08Z",
+  "heartbeat_at": "2026-09-08T06:08:21Z",
   "session_ended_at": null,
   "session_id": "241923eb",
   "log": "runs/2026-09-07-battlecode-2025/log.md"
