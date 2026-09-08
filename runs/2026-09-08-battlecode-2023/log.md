@@ -60,3 +60,4 @@
 2026-09-08T13:10:44Z 30 reviewer returned round 1: r1-review.md (807 lines) — 28 findings: 1 blocking (F18 legibility: renderer fixture has no bc23 row, #bc23-doctrines notes path untested), 10 non-blocking (F19 parity Tier A' not shipped, F20 bc23BrokenChassis negative control never executed, F23 knob margins retuned, F24 vacuous unscoped-CSS check, F21/F22 measured floor lowerings, F25-F28 minor), 16 areas clean, 1 not tree-checkable (F4)
 2026-09-08T13:10:44Z progress phase=30 marker=r1-review.md
 2026-09-08T13:10:44Z heartbeat phase=30
+2026-09-08T13:11:39Z 30 fixer dispatched thread=sthr_01GZT2djMW5mMiWhea5781kM round=1 output=runs/2026-09-08-battlecode-2023/reviews/r1-fixes.md (F18 blocking fixture bc23 row; F19 Tier A' attempt-or-document; F20 negative control; F23 knob assertions; F24 vacuous check; F26 tail off-by-one; F21/F22/F25/F28 refute-or-document; branch bc23-r1-fixes PR-then-merge; incremental-write + Data-API fallback pinned)
