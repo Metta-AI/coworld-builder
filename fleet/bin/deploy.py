@@ -34,7 +34,7 @@ disagreement between them prints a WARNING here.
 Credentials: ANTHROPIC_API_KEY from the environment, else AWS Secrets Manager
 (daveey/anthropic/org-key, profile softmax-org). That key is org-scoped, so every call also sends
 `anthropic-workspace-id` = the `workspace_id:` line in fleet/cloud.md (ANTHROPIC_WORKSPACE_ID in the
-environment overrides it); the fleet lives in the `daveey-builder-rl` workspace since 2026-09-05. Repo tokens from `gh auth token`, at apply
+environment overrides it); the fleet lives in the `daveey-coworld-builder` workspace since 2026-09-05. Repo tokens from `gh auth token`, at apply
 time only. This tool never prints a token, an api key, or a vault secret.
 
 Run from anywhere; paths resolve against the repo root. python3 stdlib only.

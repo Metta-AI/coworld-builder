@@ -79,7 +79,7 @@ key), `--alert` needs `DISCORD_BOT_TOKEN`. The same script is the coordinator's 
 
 Add `--dry-run` to any of them to print the redacted payloads without sending anything. The
 tool needs `ANTHROPIC_API_KEY` (or AWS Secrets Manager `daveey/anthropic/org-key`, profile
-`softmax-org`; the fleet lives in the `daveey-builder-rl` workspace, whose id `fleet/cloud.md`
+`softmax-org`; the fleet lives in the `daveey-coworld-builder` workspace, whose id `fleet/cloud.md`
 carries and the tool sends as `anthropic-workspace-id`) and `gh auth token` for the repo mounts. It never prints a token, and no token
 is ever written to git — `fleet/deployment.json` carries `"<resupply-at-apply>"` and the real
 value is supplied at apply time.

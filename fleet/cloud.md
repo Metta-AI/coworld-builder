@@ -8,7 +8,7 @@ Ids are not secrets. Tokens are — none appear in this file, ever.
 
 ## Environment & vaults
 
-Everything below lives in the Anthropic Console workspace **`daveey-builder-rl`**
+Everything below lives in the Anthropic Console workspace **`daveey-coworld-builder`**
 (`workspace_id: wrkspc_01MGK1QjvxLGdUFCeExDjLSb`). The fleet was migrated here from the Default
 workspace on 2026-09-05; the originals there are paused, never deleted. `fleet/bin/deploy.py` reads
 the `workspace_id:` line and sends it as `anthropic-workspace-id` on every call, because the key it
@@ -87,7 +87,7 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 | coworld-builder-c | deployment | — | `depl_01Tw4fZqARa9zFXdbdognKay` | — |
 <!-- ids:end -->
 
-These are the `daveey-builder-rl` ids (all v1, created at the 2026-09-05 migration). The
+These are the `daveey-coworld-builder` ids (all v1, created at the 2026-09-05 migration). The
 pre-migration Default-workspace agents (coordinator v5 etc.) are paused there and are not what
 the crons run. Each heartbeat deployment carries a `$200` session budget cap.
 
