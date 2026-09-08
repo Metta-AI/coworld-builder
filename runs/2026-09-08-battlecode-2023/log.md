@@ -72,3 +72,7 @@
 2026-09-08T16:24:53Z heartbeat phase=30
 2026-09-08T16:25:25Z 30 judge dispatched thread=sthr_01TuLDaMtUMBNFYESffuwahQ round=1 output=runs/2026-09-08-battlecode-2023/reviews/r1-verdict.md (fresh context, reviewed sha 47f36001, refute-then-checklist, fixes file only after own read; checklist pasted verbatim; incremental-write pinned)
 2026-09-08T16:27:36Z 00 yield resume run=2026-09-08-battlecode-2023: original session 01858aee proved alive (woke from 3h13m fixer thread; fixer returned 16:24:30Z, judge dispatched 16:25:25Z, Asana heartbeat_at moved past my 16:21:09Z stamp) — session 51417e08 exits; duplicate fixer sthr_01FGqxdYSBcqHakUMsb7P4D2 stood down clean, r1-fixes.md restored from 115169b
+2026-09-08T16:36:51Z 30 judge returned round 1: r1-verdict.md blocking:0/BLOCKING:0 agree — F18 true-then-fixed-at-head, F19/F20/F23/F24/F26/F27 fixed-verified, F21/F22/F25/F28 refutations audited sound (F28 recomputed independently), all 15 checklist items + batch rider PASS at 47f36001; 3 advisory observations logged
+2026-09-08T16:36:51Z progress phase=30 marker=r1-verdict.md
+2026-09-08T16:36:51Z 30 -> 40 phase transition: STATE written phase=40 (review loop exited round 1, zero blocking)
+2026-09-08T16:36:51Z heartbeat phase=40
