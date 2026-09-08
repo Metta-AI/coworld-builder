@@ -105,3 +105,4 @@
 2026-09-08T17:40:11Z progress phase=70 marker=discord_message_id=1546938154840227940
 2026-09-08T17:40:11Z 70 -> 75 phase transition: STATE written phase=75
 2026-09-08T17:40:11Z heartbeat phase=75
+2026-09-08T17:41:40Z 75 atlas dispatch=34258601869 region=paintlands at=328,264 clearance=35.1 slug=battlecode/bc23 label='Battlecode 2023' extra_cities=69 (bc25 file + bc25@202,270) drop_slugs=paintbot/classic,paintbot/ctf (continent: paintlands — zero-sum robot combat, same as bc20/21/25/26)
