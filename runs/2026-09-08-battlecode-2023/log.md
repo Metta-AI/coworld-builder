@@ -31,3 +31,7 @@
 2026-09-08T07:12:30Z 20 builder dispatched thread=sthr_01F7acZAb8YTcXh4zub7sXY6 branch=bc23-year-module output=runs/2026-09-08-battlecode-2023/build-report.md (mod run, no repo-create; GV08->GV09, 0.5.0->0.6.0, cert stays bc26, player[] unchanged, num_agents=2, parity Temurin 8 + exit-3-on-no-robot + System.exit pins, competence gate -d:bc23BrokenChassis, docker-smoke substance floors MEASURED maxRounds=800, viewer --timeout 120 --soak 15 + beats emitted+labelled+styled, policies 2 LLM + 2 scripted w/ player field on champion 2, PR-then-merge, git-data-API --input fallback, incremental build-report pinned in brief)
 2026-09-08T07:12:30Z heartbeat phase=20
 2026-09-08T10:19:00Z 00 resume at phase 20 attempt=1 session=01858aee
+2026-09-08T10:24:00Z 20 resume observation: prior session's builder thread sthr_01F7acZAb8YTcXh4zub7sXY6 still active — push 2 landed 69f51a47 at 10:13:29Z (chassis+parity+tests+chrome+CI), PR #6 opened 10:14:15Z, CI runs 34214301269 (push) + 34214369355 (pull_request) in_progress on 69f51a47
+2026-09-08T10:24:00Z 20 CI partial verdict on 69f51a47: parity-oracle-bc23 FAIL (examplefuncsplayer23 diverges at round 1 on all 6 maps, no ledger entry, root-cause-or-fail); bc20/21/24/25 parity green, docker-smoke green, test + wasm-viewer in_progress
+2026-09-08T10:24:00Z 20 decision: no duplicate builder dispatch — monitor branch/CI for the live builder's next iteration; takeover threshold: CI complete-red with no new commit for 40 min
+2026-09-08T10:24:00Z heartbeat phase=20
