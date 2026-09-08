@@ -110,3 +110,5 @@
 2026-09-08T17:43:13Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/21888
 2026-09-08T17:43:13Z 75 -> 80 phase transition: STATE written phase=80
 2026-09-08T17:43:13Z heartbeat phase=80
+2026-09-08T17:44:07Z 80 close: LEARNINGS section appended; atlas PR re-read OPEN (approved, merge-queue); leaderboard final alchemist:v1 1043.75 rank1 (3 wins) / duel:v1 956.25 rank2; 3 rounds completed
+2026-09-08T17:44:07Z heartbeat phase=80
