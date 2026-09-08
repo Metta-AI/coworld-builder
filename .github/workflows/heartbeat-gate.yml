@@ -1,0 +1,59 @@
+# The heartbeat gate: decides, without an LLM, whether the coworld-builder queue has a unit of
+# work, and fires one of the three heartbeat deployments (coworld-builder-a/b/c) only when it
+# does. The deployments' own cron schedules are PAUSED (`python3 fleet/bin/deploy.py pause`);
+# this workflow is what wakes the coordinator now.
+#
+# Why: an idle heartbeat is a Fable session that costs ~$1.2–1.5 and finds nothing to do; 58 of
+# 66 sessions on 2026-09-07 were idle (fleet/bin/heartbeat_gate.py has the numbers). The
+# decision — stale run? unblocked run? claimable idea? — is deterministic, so it runs here for
+# free and the coordinator is only paid for when there is work. The coordinator still runs
+# prompts/00-claim.md in full when fired; every race guard in there is unchanged.
+#
+# Manual run: gh workflow run heartbeat-gate.yml -R Metta-AI/coworld-builder -f fire=false
+# (decision only, nothing fired). The decision JSON is in the job log and the step summary.
+#
+# Secrets: ASANA_PAT (Builder + Ideas boards), ANTHROPIC_ORG_KEY (org key; the workspace header
+# comes from fleet/cloud.md), DISCORD_BOT_TOKEN (one alert per day when the board is unreachable),
+# and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written against the sandbox's
+# vault credentials of the same names.
+name: heartbeat-gate
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+    inputs:
+      fire:
+        description: "fire a heartbeat deployment when there is work (false = decide only)"
+        required: false
+        default: "true"
+
+concurrency:
+  group: heartbeat-gate
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: decide (and fire)
+        env:
+          ASANA_PAT: ${{ secrets.ASANA_PAT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_ORG_KEY }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          SOFTMAX_TOKEN: ${{ secrets.SOFTMAX_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          FIRE="${{ github.event.inputs.fire }}"
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "$FIRE" != "false" ]; then
+            python3 fleet/bin/heartbeat_gate.py --fire --alert
+          else
+            python3 fleet/bin/heartbeat_gate.py --alert
+          fi

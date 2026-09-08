@@ -50,11 +50,18 @@ work, and the cap below is what bounds it.
 - The separate bound of **2 simultaneously-Blocked runs** (`prompts/00-claim.md` step 3) is
   unchanged and independent.
 
-| deployment | cron (UTC) |
-|---|---|
-| `coworld-builder-a` | `11 * * * *` |
-| `coworld-builder-b` | `31 * * * *` |
-| `coworld-builder-c` | `51 * * * *` |
+| deployment | cron (UTC) | status |
+|---|---|---|
+| `coworld-builder-a` | `11 * * * *` | paused since 2026-09-08 — fired by the gate |
+| `coworld-builder-b` | `31 * * * *` | paused since 2026-09-08 — fired by the gate |
+| `coworld-builder-c` | `51 * * * *` | paused since 2026-09-08 — fired by the gate |
+
+**The crons are paused.** `.github/workflows/heartbeat-gate.yml` runs `fleet/bin/heartbeat_gate.py`
+every 20 minutes and POSTs `/deployments/<id>/run` on the least-recently-run of the three only when
+there is a unit of work (an idle Fable heartbeat cost ~$1.2–1.5 and 58 of 66 sessions on 2026-09-07
+were idle). `python3 fleet/bin/deploy.py unpause` restores the crons; `pause` re-pauses them. The
+pause is a live status, not a field in `fleet/deployment.json`, so `deploy.py update` never touches
+it. Every fired session carries the `$200` budget in `fleet/deployment.json`.
 
 The same table lives in `fleet/deployment.json`'s `deployments` list, which is what
 `fleet/bin/deploy.py` actually applies; `deploy.py` prints a WARNING if the two disagree.

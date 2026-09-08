@@ -1,8 +1,9 @@
 # coworld-builder
 
-An autonomous builder for coworlds. A managed agent wakes up three times an hour — three
-staggered crons on the same coordinator (`coworld-builder-a`/`-b`/`-c`, minutes 11/31/51 UTC) —
-takes the top unclaimed idea off the Asana **Coworld Ideas** board, and carries it all the way to
+An autonomous builder for coworlds. A managed agent wakes up whenever the queue holds work —
+`.github/workflows/heartbeat-gate.yml` checks every 20 minutes for free and fires one of three
+deployments on the same coordinator (`coworld-builder-a`/`-b`/`-c`; their own hourly crons are
+paused) — takes the top unclaimed idea off the Asana **Coworld Ideas** board, and carries it all the way to
 a shipped game: a public `Metta-AI/cogame-<slug>` repo, a certified coworld on softmax.com, a league with
 two ranked champions and filler baselines, at least two completed rounds whose replays render
 in a static wasm viewer at `https://softmax.com/<slug>`, and an announcement in Discord
@@ -65,7 +66,16 @@ python3 fleet/bin/deploy.py update        # new agent versions wherever config/p
                                           # reconciles all three deployments
 python3 fleet/bin/deploy.py run --name b  # a manual heartbeat on one deployment (default: a)
 python3 fleet/bin/deploy.py status        # every deployment's latest runs and their sessions
+python3 fleet/bin/deploy.py pause         # pause the heartbeat crons (the gate still fires manual
+                                          # runs); `unpause` brings the crons back
 ```
+
+The heartbeat gate — `fleet/bin/heartbeat_gate.py`, run by `.github/workflows/heartbeat-gate.yml`
+every 20 minutes — decides without an LLM whether there is a unit of work (stale run, unblocked
+run, stalled-queue escalation, claimable idea) and fires a deployment only then. Run it locally
+with `ASANA_PAT` set to see the decision it would make; `--fire` needs `ANTHROPIC_API_KEY` (the org
+key), `--alert` needs `DISCORD_BOT_TOKEN`. The same script is the coordinator's `00-claim.md` step 0
+(`--summary`), so the sandbox and the gate compute the freshness and claim rules from one file.
 
 Add `--dry-run` to any of them to print the redacted payloads without sending anything. The
 tool needs `ANTHROPIC_API_KEY` (or AWS Secrets Manager `daveey/anthropic/org-key`, profile
@@ -98,9 +108,14 @@ broken down by sub-agent, to Discord as the disco bot every day at 00:30 UTC. Co
   `python3 fleet/bin/deploy.py update`. Role prompts are baked into agent versions, so they
   need the redeploy.
 - **Change the model, effort, or tools of a role** → edit `agents/<role>.json`, then `update`.
-- **Change the schedule, the mounts, or how many heartbeat crons there are** → edit
-  `fleet/deployment.json` (its `deployments` list is the fan-out) and the matching table in
-  `fleet/cloud.md` §Parallelism, then `update` (existing crons) and `create` (new ones).
+- **Change the schedule, the mounts, the per-session budget, or how many heartbeat crons there
+  are** → edit `fleet/deployment.json` (its `deployments` list is the fan-out) and the matching
+  table in `fleet/cloud.md` §Parallelism, then `update` (existing crons) and `create` (new ones).
+  New heartbeat deployments keep the `coworld-builder-` name prefix so `fleet/costbot.json` counts
+  them. The gate's cadence is the cron in `.github/workflows/heartbeat-gate.yml`.
+- **Change what counts as a unit of work** → `fleet/bin/heartbeat_gate.py` and
+  `prompts/00-claim.md` together; they must agree, and the prompt's step 0 says the script wins
+  on the mechanical parts.
 - **Change how many runs may be in flight** → edit `max_parallel_runs` in `fleet/cloud.md`
   §Parallelism. No redeploy: the coordinator reads that file every heartbeat.
 - **Change the design itself** → edit `docs/SPEC.md` first, then the prompts and templates that

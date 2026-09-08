@@ -14,9 +14,12 @@ that names exactly what is needed, and exits.
 
 ## Runtime
 
-- **Anthropic Managed Agents**, one *coordinator* agent (`claude-fable-5`, effort xhigh) with a
-  `multiagent: coordinator` roster of fixed-role sub-agents (`claude-opus-5` xhigh, except the
-  judge = `claude-fable-5`). Deployed with the `fleet/bin/fleetctl.py` conventions from
+- **Anthropic Managed Agents**, one *coordinator* agent (`claude-opus-5`, effort high — it
+  orchestrates, briefs and keeps records; 2026-09-08 it moved down from `claude-fable-5` xhigh)
+  with a `multiagent: coordinator` roster of fixed-role sub-agents: designer, builder, fixer on
+  `claude-opus-5` xhigh (long-horizon design and coding), reviewer on `claude-opus-5` high
+  (reading-heavy), verifier on `claude-sonnet-5` high (fetch-and-paste evidence), and the judge on
+  `claude-fable-5` xhigh (the quality gate). Model and effort live in `agents/<role>.json`. Deployed with the `fleet/bin/fleetctl.py` conventions from
   `daveey/cogamer` — git is the source of truth (`agents/*.json` + `agents/*.md` + `AGENT.md` +
   `fleet/deployment.json`), applied out by `fleet/bin/deploy.py`. There is **no `fleet/mirror/`
   export and no `diff` here**: `deploy.py` has `create`, `update`, `run`, `status` only, and
@@ -25,7 +28,14 @@ that names exactly what is needed, and exits.
 - **Three deployments, hourly crons staggered 20 minutes apart** (`coworld-builder-a` at minute
   11, `-b` at 31, `-c` at 51 UTC — `fleet/cloud.md` §Parallelism, applied from
   `fleet/deployment.json`'s `deployments` list). They are three crons on the **same** coordinator
-  agent, not three different agents. **Several runs in *Running* at once is the normal state**,
+  agent, not three different agents. **The crons are paused; the heartbeat gate fires them.**
+  `.github/workflows/heartbeat-gate.yml` runs `fleet/bin/heartbeat_gate.py` every 20 minutes and
+  POSTs a manual run on the least-recently-run deployment only when the queue holds a unit of
+  work (a stale or cleanly-ended run, an unblocked run, a stalled-queue escalation, or a claimable
+  idea). An idle heartbeat was a ~$1.2–1.5 Fable session that found nothing to do, and 58 of 66
+  sessions on 2026-09-07 were idle; the gate answers the same question for free and leaves every
+  race guard below untouched — the coordinator still runs `prompts/00-claim.md` in full when
+  fired. Every fired session carries a `$200` hard budget (`fleet/deployment.json` `budget`). **Several runs in *Running* at once is the normal state**,
   bounded by `max_parallel_runs` (`fleet/cloud.md` §Parallelism, currently 3). Every firing is a
   *heartbeat*:
   1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder**
@@ -107,8 +117,7 @@ that names exactly what is needed, and exits.
   `ASANA_PAT`, `DISCORD_BOT_TOKEN`, `GEMINI_API_KEY` — the last for nano-banana board art, see
   `playbooks/art-nanobanana.md`).
 - Repos mounted (declared in `fleet/deployment.json`): this repo (read-write,
-  `/workspace/coworld-builder`), `daveey/cogamer` (read, `/workspace/cogamer`, for
-  `fleet/PROTOCOLS.md`), and all six starters read-only at **`/workspace/starters/<name>`**:
+  `/workspace/coworld-builder`) and all six starters read-only at **`/workspace/starters/<name>`**:
   `cogame-babel`, `cogame-bullwhip`, `cogame-parley`, `coworld-ctf`, `cogame-moba`,
   `cogame-factorio`. Phase 10 reads the mounts; phase 20 still `git clone`s the chosen starter
   into the new repo's working tree so the new repo gets a clean history.
