@@ -5,22 +5,26 @@
   "slug": "battlecode-2025",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "10": 1,
-    "20": 1
+    "20": 1,
+    "40": 0
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.5.0",
+    "cow_id": "cow_e58e703d-3d34-4d27-b8eb-4464a6209170",
+    "manifest_sha": "sha256:28e952e1db3f2d7c479160ac522a91f420b0dd2c5fdf2b83d44ade8d7bdce7fe",
+    "release_run_id": "34189611273"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "battlecode-bc25-coverage:v1",
+    "champion2": "battlecode-bc25-siege:v1",
+    "fillers": [
+      "battlecode-spaark:v1",
+      "battlecode-examplefuncsplayer25:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -49,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T05:08:14Z",
+  "heartbeat_at": "2026-09-08T05:19:15Z",
   "session_ended_at": null,
   "session_id": "241923eb",
   "log": "runs/2026-09-07-battlecode-2025/log.md"

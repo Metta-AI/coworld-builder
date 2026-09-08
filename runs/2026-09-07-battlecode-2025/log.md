@@ -68,3 +68,7 @@
 2026-09-08T05:08:14Z 30 -> 40 phase transition: review loop closed round 1, zero blocking
 2026-09-08T05:08:14Z heartbeat phase=40
 2026-09-08T05:09:34Z 40 release builder dispatched thread=sthr_015oVTWv7p8wYYt5jFFwW5mg version=0.5.0 policies=tools/ci/policies.json (no override) output=release-result.json+release-report.md
+2026-09-08T05:19:15Z 40 release 0.5.0 GREEN first dispatch run=34189611273: canonical=true certify.ok=true liveness-skipped secret_put=true, 20 policies recut (bc25: coverage:v1 champ1, siege:v1 champ2 player=daveey-1, fillers spaark:v1 examplefuncsplayer25:v1); cow_e58e703d-3d34-4d27-b8eb-4464a6209170
+2026-09-08T05:19:15Z progress phase=40 marker=34189611273
+2026-09-08T05:19:15Z 40 -> 50 phase transition
+2026-09-08T05:19:15Z heartbeat phase=50
