@@ -231,6 +231,7 @@ def collect(cfg, day):
 
     by_agent, by_depl = {}, {}
     total = threads_total = 0
+    idle_sessions = idle_cents = 0  # sessions that dispatched no sub-agent: pure heartbeat overhead
     for s in todays:
         c = cents(s.get("usage"))
         total += c
@@ -238,7 +239,11 @@ def collect(cfg, day):
         b = by_depl.setdefault(dep, {"cents": 0, "sessions": 0})
         b["cents"] += c
         b["sessions"] += 1
-        for t in page(cfg, "/sessions/{}/threads".format(s["id"])):
+        threads = page(cfg, "/sessions/{}/threads".format(s["id"]))
+        if len(threads) <= 1:
+            idle_sessions += 1
+            idle_cents += c
+        for t in threads:
             a = t.get("agent") or {}
             name = a.get("name") or a.get("type") or "?"
             u = t.get("usage") or {}
@@ -278,6 +283,8 @@ def collect(cfg, day):
         "day": day,
         "sessions": len(todays),
         "total_cents": total,
+        "idle_sessions": idle_sessions,
+        "idle_cents": idle_cents,
         "runtime_other_cents": max(total - threads_total, 0),
         "by_agent": by_agent,
         "by_deployment": by_depl,
@@ -308,6 +315,10 @@ def render(r):
             f"{short(name, fleet):<{width}}  {usd(b['cents']):>9}  {b['threads']:>3} thr  {ktok(b['output_tokens']):>5} out tok"
         )
     table.append(f"{'runtime/other':<{width}}  {usd(r['runtime_other_cents']):>9}")
+    table.append(
+        f"{'idle':<{width}}  {usd(r.get('idle_cents', 0)):>9}  {r.get('idle_sessions', 0):3d} ses  "
+        "(heartbeats that dispatched no sub-agent)"
+    )
     lines.append("```")
     lines += table
     lines.append("```")
