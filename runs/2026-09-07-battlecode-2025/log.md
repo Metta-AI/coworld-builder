@@ -43,3 +43,7 @@
 2026-09-08T02:55:13Z 20 branch CI green run=34177575069 sha=843e09a5; PR #5 merged by builder at 02:48:13Z -> main sha eb33a8d2; watching main CI run=34181338414
 2026-09-08T02:55:13Z heartbeat phase=20
 2026-09-08T03:09:26Z heartbeat phase=20
+2026-09-08T03:15:13Z 20 main CI green run=34181338414 sha=eb33a8d2 (branch green 34177575069 sha=843e09a5, PR #5 merged); exit checks pass: placeholders clean, hooks executable, 3 workflows parse w/ pinned inputs, release/submit artifacts present, bc25 policies 2 LLM (champ2 player field) + 2 scripted
+2026-09-08T03:15:13Z progress phase=20 marker=34181338414
+2026-09-08T03:15:13Z 20 -> 30 phase transition: review round 1
+2026-09-08T03:15:13Z heartbeat phase=30

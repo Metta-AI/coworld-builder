@@ -5,12 +5,12 @@
   "slug": "battlecode-2025",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "20",
+  "phase": "30",
   "phase_attempts": {
     "10": 1,
     "20": 1
   },
-  "review_round": 0,
+  "review_round": 1,
   "coworld": {
     "version": "",
     "cow_id": "",
@@ -49,7 +49,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-08T03:09:26Z",
+  "heartbeat_at": "2026-09-08T03:15:13Z",
   "session_ended_at": null,
   "session_id": "241923eb",
   "log": "runs/2026-09-07-battlecode-2025/log.md"
