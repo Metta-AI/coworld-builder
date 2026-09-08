@@ -58,3 +58,4 @@
 2026-09-08T03:32:53Z 30 r1 reviewer returned: r1-review.md written, FINDINGS: 43, 1 blocking-candidate (F26 beat emission), advisories incl F34 substance floors, F11/F12 events, F39, F41, F43
 2026-09-08T03:32:53Z progress phase=30 marker=r1-review.md
 2026-09-08T03:32:53Z heartbeat phase=30
+2026-09-08T03:33:26Z 30 r1 fixer dispatched thread=sthr_01Qf5J1xBwB6Bz5Rcd7ew5dF findings=43 blocking-candidate=F26 output=runs/2026-09-07-battlecode-2025/reviews/r1-fixes.md
