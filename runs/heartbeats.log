@@ -1853,3 +1853,4 @@
 2026-09-08T15:56:02Z 00 deferred idea=1218173707507614 host=cogame-battlecode busy=2026-09-08-battlecode-2023
 2026-09-08T15:56:02Z 00 deferred idea=1218173792280294 host=cogame-battlecode busy=2026-09-08-battlecode-2023
 2026-09-08T15:56:02Z heartbeat: nothing to do
+2026-09-08T16:27:47Z 00 yield resume run=2026-09-08-battlecode-2023 to=session 01858aee (original session alive — woke from long fixer thread, Asana heartbeat_at moved past my stamp within minutes of my adoption; duplicate fixer stood down clean, nothing foreign pushed)
