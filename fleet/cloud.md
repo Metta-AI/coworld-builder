@@ -75,13 +75,13 @@ Filled in by `python3 fleet/bin/deploy.py create`. Do not hand-edit ids; re-run 
 <!-- ids:start -->
 | name | kind | model | id | version |
 |---|---|---|---|---|
-| coworld-builder-designer | agent | claude-opus-5 | `agent_015htUThBTiX7Fra5qrEpquP` | 1 |
-| coworld-builder-builder | agent | claude-opus-5 | `agent_01AthKSsUbWvWosHh7HZjCAr` | 1 |
-| coworld-builder-reviewer | agent | claude-opus-5 | `agent_01CsHjdc4pxeqSVDW7JvzBcZ` | 1 |
-| coworld-builder-fixer | agent | claude-opus-5 | `agent_01QMN2xVrv6ns2csqFh6hs3w` | 1 |
-| coworld-builder-judge | agent | claude-fable-5 | `agent_01Qr1e1BWYz9uFFqsNHhkizq` | 1 |
-| coworld-builder-verifier | agent | claude-opus-5 | `agent_01KfCo21DgZQmQVjZeDcvM54` | 1 |
-| coworld-builder-coordinator | agent | claude-fable-5 | `agent_01DjRYToc7AQajSeXcQmrfrp` | 1 |
+| coworld-builder-designer | agent | claude-opus-5 | `agent_015htUThBTiX7Fra5qrEpquP` | 2 |
+| coworld-builder-builder | agent | claude-opus-5 | `agent_01AthKSsUbWvWosHh7HZjCAr` | 2 |
+| coworld-builder-reviewer | agent | claude-opus-5 | `agent_01CsHjdc4pxeqSVDW7JvzBcZ` | 2 |
+| coworld-builder-fixer | agent | claude-opus-5 | `agent_01QMN2xVrv6ns2csqFh6hs3w` | 2 |
+| coworld-builder-judge | agent | claude-fable-5 | `agent_01Qr1e1BWYz9uFFqsNHhkizq` | 2 |
+| coworld-builder-verifier | agent | claude-sonnet-5 | `agent_01KfCo21DgZQmQVjZeDcvM54` | 2 |
+| coworld-builder-coordinator | agent | claude-opus-5 | `agent_01DjRYToc7AQajSeXcQmrfrp` | 2 |
 | coworld-builder-a | deployment | — | `depl_01DjRYVBHvWDKLniB32apgZ8` | — |
 | coworld-builder-b | deployment | — | `depl_019XuubNJYzeb3cix2Xv3vmS` | — |
 | coworld-builder-c | deployment | — | `depl_01Tw4fZqARa9zFXdbdognKay` | — |
