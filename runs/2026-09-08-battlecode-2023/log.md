@@ -63,3 +63,5 @@
 2026-09-08T13:11:39Z 30 fixer dispatched thread=sthr_01GZT2djMW5mMiWhea5781kM round=1 output=runs/2026-09-08-battlecode-2023/reviews/r1-fixes.md (F18 blocking fixture bc23 row; F19 Tier A' attempt-or-document; F20 negative control; F23 knob assertions; F24 vacuous check; F26 tail off-by-one; F21/F22/F25/F28 refute-or-document; branch bc23-r1-fixes PR-then-merge; incremental-write + Data-API fallback pinned)
 2026-09-08T16:21:09Z 00 attempts_reset phase=30 reason=progress marker=r1-review.md
 2026-09-08T16:21:09Z 00 resume at phase 30 attempt=1 session=51417e08
+2026-09-08T16:24:19Z 30 fixer thread sthr_01GZT2djMW5mMiWhea5781kM (dead session) left no r1-fixes.md, but its repo work landed: branch bc23-r1-fixes, PR #7 merged 47f36001 at 15:21:53Z, commits F18-F28 (b9cca9f4 f536d797 6f49a476 857f71d0 72bbeaaf 76c576ff e38d025f 6e186b6f fd0c6757), main CI 34244272097 success
+2026-09-08T16:24:19Z 30 re-dispatching fixer (attempt 2 of 3, narrowed brief): verify each r1 finding on main 47f36001, write r1-fixes.md; commit only if a finding is unaddressed
