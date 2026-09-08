@@ -82,3 +82,4 @@
 2026-09-08T05:48:59Z 60 verifier returned: VERIFY.md 8/8 TRUE (rounds 1+2 completed, both champions ranked rounds_played=2, replay a0418bda complete 0-fallback, log CLEAN, static iframe, liveness-skipped, viewer-check 34191692693 loaded:true 3 differing clocks); 2 advisory items noted (bc26 endcard nouns off-year, doctrine-card last-line clip) — to judge
 2026-09-08T05:48:59Z progress phase=60 marker=round_e6a531d2-ad6b-4344-9ed7-3dbbe682d3d8
 2026-09-08T05:48:59Z heartbeat phase=60
+2026-09-08T05:50:11Z 60 judge dispatched thread=sthr_01QooMhhvPfLbEZ55m8MvrnX output=runs/2026-09-07-battlecode-2025/reviews/verify-verdict.md
