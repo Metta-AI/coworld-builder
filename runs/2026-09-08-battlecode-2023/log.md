@@ -40,3 +40,5 @@
 2026-09-08T11:06:56Z heartbeat phase=20
 2026-09-08T11:15:00Z 20 CI run 34214301269 (push, 69f51a47) completed: FAILURE — sole red job parity-oracle-bc23 (examplefuncsplayer23 diverges round 1, all maps, no ledger); test 60min GREEN, wasm-viewer GREEN, docker-smoke GREEN, bc20/21/24/25+bc26 parity GREEN
 2026-09-08T11:15:00Z 20 takeover clock: no new branch commit since 10:13:29Z; if none lands by ~11:54Z dispatch builder round 2 with the parity-bc23 failing log
+2026-09-08T11:09:42Z 20 coordinator diagnosis of parity-bc23 red (artifact parity-bc23, run 34214301269): traces are in TRUE game-state parity on all 6 maps — md5(nim head)==md5(java head) after stripping the trailing bc= field; sole mismatch is the comparator normalizing bc= off the Java trace but not off the Nim trace (nim emits bc=0 on every unit line). One-commit fix: normalize both sides identically (or stop emitting bc= in the nim tracer) + ledger/PARITY.md note
+2026-09-08T11:09:42Z heartbeat phase=20
