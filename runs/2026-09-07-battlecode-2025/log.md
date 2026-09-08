@@ -67,3 +67,4 @@
 2026-09-08T05:08:14Z progress phase=30 marker=r1-verdict.md
 2026-09-08T05:08:14Z 30 -> 40 phase transition: review loop closed round 1, zero blocking
 2026-09-08T05:08:14Z heartbeat phase=40
+2026-09-08T05:09:34Z 40 release builder dispatched thread=sthr_015oVTWv7p8wYYt5jFFwW5mg version=0.5.0 policies=tools/ci/policies.json (no override) output=release-result.json+release-report.md
