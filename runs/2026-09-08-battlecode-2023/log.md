@@ -88,3 +88,5 @@
 2026-09-08T17:02:01Z progress phase=50 marker=league_e3244a55-f8b9-486b-9412-51dc1f56c978
 2026-09-08T17:02:01Z 50 -> 60 phase transition: STATE written phase=60
 2026-09-08T17:02:01Z heartbeat phase=60
+2026-09-08T17:03:35Z 00 note: session 51417e08 resumed at 16:21 (my heartbeat stale while blocked in fixer thread), stood down its duplicate fixer at 16:24:53 and yielded (commit f6bc010 'yield resume of battlecode-2023 to live session 01858aee'); STATE.session_id restored 51417e08 -> 01858aee; no duplicate external work occurred
+2026-09-08T17:03:35Z heartbeat phase=60
