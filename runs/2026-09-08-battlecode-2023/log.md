@@ -95,3 +95,4 @@
 2026-09-08T17:31:58Z 60 verifier FINDING A (non-blocking, recorded for close): champions sometimes wrap doctrine in a protocol envelope -> all 12 knobs to sheet_unknown_fields, seat plays schema-default sheet (r1 seat0, r2 seat1; winner won on default); endcard shows applied not submitted sheet; defaults_applied counters do not flag it. Plus 7 legibility items incl. 2 repeats from bc25 (bc26 nouns on endcard, doctrine-card clip)
 2026-09-08T17:31:58Z progress phase=60 marker=VERIFY.md-8of8
 2026-09-08T17:31:58Z heartbeat phase=60
+2026-09-08T17:32:26Z 60 judge dispatched thread=sthr_01JMfTRCqMEVCjKJStKwXWdN output=runs/2026-09-08-battlecode-2023/reviews/verify-verdict.md (adjudicate VERIFY.md 8/8 vs SPEC definition-of-done; weigh FINDING A + 7 legibility items; spot-check refetches)
