@@ -68,3 +68,4 @@
 2026-09-08T16:24:30Z 30 fixer returned round 1: r1-fixes.md (399 lines) — PR #7 merged main=47f36001, CI 34244272097 success 9/9; F18 fixed (+2 real chrome clip defects found and fixed), F19 Tier A' SHIPPED (12 pairs bit-exact, scenario23 rewritten robot-local), F20/F23/F24/F26/F27 fixed, F21/F22/F25/F28 refuted with evidence; residue documented in docs/PARITY.md (elixir-gated subsystems need scenario variants not shipped)
 2026-09-08T16:24:30Z progress phase=30 marker=r1-fixes.md
 2026-09-08T16:24:30Z heartbeat phase=30
+2026-09-08T16:25:25Z 30 judge dispatched thread=sthr_01TuLDaMtUMBNFYESffuwahQ round=1 output=runs/2026-09-08-battlecode-2023/reviews/r1-verdict.md (fresh context, reviewed sha 47f36001, refute-then-checklist, fixes file only after own read; checklist pasted verbatim; incremental-write pinned)
