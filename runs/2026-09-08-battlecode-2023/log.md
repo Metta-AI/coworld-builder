@@ -90,3 +90,4 @@
 2026-09-08T17:02:01Z heartbeat phase=60
 2026-09-08T17:03:35Z 00 note: session 51417e08 resumed at 16:21 (my heartbeat stale while blocked in fixer thread), stood down its duplicate fixer at 16:24:53 and yielded (commit f6bc010 'yield resume of battlecode-2023 to live session 01858aee'); STATE.session_id restored 51417e08 -> 01858aee; no duplicate external work occurred
 2026-09-08T17:03:35Z heartbeat phase=60
+2026-09-08T17:04:28Z 60 verifier dispatched thread=sthr_01TSieuxFQRGpwBdmy6qeMLt output=runs/2026-09-08-battlecode-2023/VERIFY.md + viewer-check/ (L=league_e3244a55 D=div_dc5f977f COW=cow_93baa4e4 page=softmax.com/battlecode/bc23; 75-min round bound; incremental-write pinned)
