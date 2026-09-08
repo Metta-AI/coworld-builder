@@ -2,7 +2,7 @@ name: costbot
 
 # Daily token-spend DM for the coworld-builder fleet (fleet/bin/costbot.py report --post).
 # Authenticates to the Anthropic API with Workload Identity Federation: GitHub's OIDC token
-# for this workflow run is exchanged for a 15-minute workspace-scoped bearer token, so no
+# for this workflow run is exchanged for a short-lived (~10 min) workspace-scoped bearer token, so no
 # Anthropic API key is stored anywhere. Federation rule `gha-coworld-builder` only matches runs
 # on refs/heads/main of this repo. The disco Discord token is the one stored secret.
 on:

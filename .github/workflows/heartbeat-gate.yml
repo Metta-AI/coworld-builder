@@ -15,7 +15,7 @@
 # Secrets: ASANA_PAT (Builder + Ideas boards), DISCORD_BOT_TOKEN (one alert per day when the
 # board is unreachable), and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written
 # against the sandbox's vault credentials of the same names. The Anthropic side stores NO key:
-# the job exchanges its GitHub OIDC token for a 15-minute workspace-bound bearer token
+# the job exchanges its GitHub OIDC token for a short-lived (~10 min) workspace-bound bearer token
 # (Workload Identity Federation, rule gha-coworld-builder; see costbot.yml and fleet/cloud.md).
 name: heartbeat-gate
 

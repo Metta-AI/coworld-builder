@@ -98,7 +98,8 @@ clear of the cogamer fleet's crons (§Parallelism). Config: `fleet/deployment.js
 The **previous-UTC-day token spend in dollars, broken down by sub-agent**, is DM'd to David
 Bloomin by the disco bot every day at 00:30 UTC. It runs as the GitHub Actions cron
 `.github/workflows/costbot.yml`, not as an agent: the job exchanges its GitHub OIDC token for a
-10-minute Anthropic token bound to this workspace (Workload Identity Federation), so **no Anthropic
+short-lived Anthropic token bound to this workspace (Workload Identity Federation; ~10 min — the rule
+caps it at 15, and the exchange also caps it at twice the GitHub token's remaining life), so **no Anthropic
 API key is stored anywhere**. The coordinator never runs it and never reads its config.
 
 | what | value |
@@ -106,7 +107,7 @@ API key is stored anywhere**. The coordinator never runs it and never reads its 
 | tool | `fleet/bin/costbot.py report [--day YYYY-MM-DD] [--post]` — python3 stdlib, same file as in paintbot-rl |
 | config | `fleet/costbot.json` (fleet name, deployment-name prefixes, workspace id, Discord channel) |
 | workflow | `costbot.yml`: cron `30 0 * * *` UTC + `workflow_dispatch` (inputs `day`, `post`) |
-| federation | issuer `github-actions` `fdis_013v83o6VBFNGqfjrB42wN5p`; rule `gha-coworld-builder` `fdrl_01BTD9UxCJYG7XH92mYyvWJD` (subject `repo:Metta-AI@178685062/coworld-builder@1343083865:ref:refs/heads/main`, audience `https://api.anthropic.com`, scope `workspace:developer`, 15 min); service account `sa-coworld-builder` `svac_01GWpPtRHsvnM2msLzpTLFuk` (member of this workspace) |
+| federation | issuer `github-actions` `fdis_013v83o6VBFNGqfjrB42wN5p`; rule `gha-coworld-builder` `fdrl_01BTD9UxCJYG7XH92mYyvWJD` (subject `repo:Metta-AI@178685062/coworld-builder@1343083865:ref:refs/heads/main`, audience `https://api.anthropic.com`, scope `workspace:developer`, `token_lifetime_seconds` 900); service account `sa-coworld-builder` `svac_01GWpPtRHsvnM2msLzpTLFuk` (member of this workspace) |
 | secret | `DISCORD_BOT_TOKEN` repo secret (the disco bot, from Secrets Manager `vault/discord/disco/app`) — the only one |
 | destination | disco's DM channel with David Bloomin, `1477593964675862618` |
 | numbers | the API's `usage.list_cost` per session and per thread (list price; billed may be lower). Sessions counted by UTC start; a message carrying `[costbot coworld-builder <day>]` already in the channel means that day is done and a re-run does not post again |
