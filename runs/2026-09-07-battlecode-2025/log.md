@@ -33,3 +33,4 @@
 2026-09-07T22:15:43Z heartbeat phase=20
 2026-09-07T22:16:56Z 20 builder dispatched thread=sthr_014XsfpaZKWHS7Yfxrp6CzXe branch=bc25-year-module output=runs/2026-09-07-battlecode-2025/build-report.md (mod run, no repo-create; GV07->GV08, 0.4.0->0.5.0, cert stays bc26, player[] unchanged, num_agents=2, parity Tier A/A'/B/C root-cause-or-fail Temurin 21 + --add-opens pin, competence gate -d:bc25BrokenChassis, docker-smoke substance floors MEASURED, viewer --timeout 120 --soak 15, policies 2 LLM + 2 scripted w/ player field on champion 2, PR-then-merge, git-data-API fallback pinned in brief)
 2026-09-07T22:16:56Z heartbeat phase=20
+2026-09-08T01:21:00Z 00 resume at phase 20 attempt=1 session=241923eb
