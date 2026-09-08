@@ -4,7 +4,7 @@
  "model": {
   "id": "claude-opus-5",
   "effort": {
-   "type": "xhigh"
+   "type": "high"
   },
   "speed": "standard"
  },
