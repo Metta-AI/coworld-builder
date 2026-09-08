@@ -35,3 +35,4 @@
 2026-09-08T10:24:00Z 20 CI partial verdict on 69f51a47: parity-oracle-bc23 FAIL (examplefuncsplayer23 diverges at round 1 on all 6 maps, no ledger entry, root-cause-or-fail); bc20/21/24/25 parity green, docker-smoke green, test + wasm-viewer in_progress
 2026-09-08T10:24:00Z 20 decision: no duplicate builder dispatch — monitor branch/CI for the live builder's next iteration; takeover threshold: CI complete-red with no new commit for 40 min
 2026-09-08T10:24:00Z heartbeat phase=20
+2026-09-08T10:36:22Z heartbeat phase=20
