@@ -15,8 +15,7 @@
  "workspace_id": "wrkspc_01MGK1QjvxLGdUFCeExDjLSb",
  "environment_id": "env_019SmBGHe5jFJRAx79XbLJ2t",
  "vault_ids": [
-  "vlt_011Ceji2osuWzkRdtzSAjvGe",
-  "vlt_011Cepp92ZY28CEh9BDzynFT"
+  "vlt_011Ceji2osuWzkRdtzSAjvGe"
  ],
  "discord_channel_id": "1477593964675862618",
  "repo": {
@@ -32,9 +31,6 @@
   "speed": "standard"
  },
  "budget_cents": 200,
- "ids": {
-  "agent": "agent_01HBxn8TtFzoFMZzEgSDq5Wt",
-  "agent_version": 1,
-  "deployment": "depl_01LH1ofjgY85RD25bTvBQpC5"
- }
+ "ids": {},
+ "_comment": "costbot runs as the GitHub Actions cron .github/workflows/costbot.yml under Workload Identity Federation (rule gha-coworld-builder, service account sa-coworld-builder) \u2014 no Anthropic key is stored. environment_id/vault_ids/model/schedule/budget_cents/ids only feed `costbot.py deploy`, which creates a Managed-Agents reporter instead; that path was retired on 2026-09-08 (its agent, deployment and the costbot-anthropic vault are archived) and its ids are cleared."
 }

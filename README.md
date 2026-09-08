@@ -96,9 +96,11 @@ python3 fleet/bin/costbot.py run                                   # fire the re
 python3 fleet/bin/costbot.py status
 ```
 
-A separate `coworld-builder-costbot` agent posts the previous UTC day's token spend, in dollars and
-broken down by sub-agent, to Discord as the disco bot every day at 00:30 UTC. Config and ids:
-`fleet/costbot.json`; details in `fleet/cloud.md` §Cost reporting.
+The GitHub Actions cron `.github/workflows/costbot.yml` posts the previous UTC day's token spend,
+in dollars and broken down by sub-agent, to Discord as the disco bot every day at 00:30 UTC. It
+authenticates with Workload Identity Federation, so no Anthropic key is stored. Config:
+`fleet/costbot.json`; details in `fleet/cloud.md` §Cost reporting. (`deploy`/`run`/`status` create
+a Managed-Agents reporter instead; that path is retired.)
 
 ## Maintaining it
 

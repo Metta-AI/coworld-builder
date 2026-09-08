@@ -25,7 +25,6 @@ uses (`daveey/anthropic/org-key`) is org-scoped.
 | coworld-builder-shared | `vlt_011Ceji2nezKy48HL8omxZoS` | `SOFTMAX_TOKEN` → `softmax.com`, `*.softmax.com` (`vcrd_01XH1j2iVb3ZAwykg2hstrKK`); `GH_TOKEN` → `api.github.com` (`vcrd_011msqcS7eDVDvYyzWX79DgU`); `ASANA_PAT` → `app.asana.com` (`vcrd_01V7tG4EumFwF1BeYQ1uvzJy`, rotated 2026-09-07 to the `asana/coworld-builder-pat` token, identity daveey@softmax.com) | live |
 | coworld-builder-discord | `vlt_011Ceji2osuWzkRdtzSAjvGe` | `DISCORD_BOT_TOKEN` → `discord.com` (`vcrd_014rxX1s6cDGqcJcsdzYauuo`, the **disco** bot `1477537399365046415`, value from Secrets Manager `vault/discord/disco/app`) | live |
 | coworld-builder-gemini | `vlt_011Ceji2q5bkjbNtYCpaXoXW` | `GEMINI_API_KEY` → `generativelanguage.googleapis.com` (`vcrd_01AhEHwN8rXu3oa4KTzNhToY`); value from Secrets Manager `polis/shared/gemini-api-key` | live |
-| costbot-anthropic (shared with paintbot-rl) | `vlt_011Cepp92ZY28CEh9BDzynFT` | `ANTHROPIC_API_KEY` → `api.anthropic.com`, header only (`vcrd_01NW7V4DuCrMqm8LawqDSNnZ`); the org key, used **only** by the cost reporter below — never attach it to the heartbeat deployments | live (created 2026-09-07) |
 
 Credentials are created with `POST /vaults {display_name}` then `POST /vaults/{id}/credentials
 {display_name, auth:{type:environment_variable, secret_name, secret_value, networking:{type:limited,
@@ -96,23 +95,32 @@ clear of the cogamer fleet's crons (§Parallelism). Config: `fleet/deployment.js
 
 ## Cost reporting (costbot)
 
-A separate, tiny agent posts the fleet's **previous-UTC-day token spend in dollars, broken down by
-sub-agent**, to Discord as the disco bot every day at 00:30 UTC. It is read-only and is not part of
-the heartbeat: the coordinator never runs it and never reads its config.
+The **previous-UTC-day token spend in dollars, broken down by sub-agent**, is DM'd to David
+Bloomin by the disco bot every day at 00:30 UTC. It runs as the GitHub Actions cron
+`.github/workflows/costbot.yml`, not as an agent: the job exchanges its GitHub OIDC token for a
+10-minute Anthropic token bound to this workspace (Workload Identity Federation), so **no Anthropic
+API key is stored anywhere**. The coordinator never runs it and never reads its config.
 
 | what | value |
 |---|---|
-| tool | `fleet/bin/costbot.py` (`report`, `deploy`, `run`, `status`) — python3 stdlib, same file as in paintbot-rl |
-| config | `fleet/costbot.json` (fleet name, deployment-name prefixes, workspace/environment/vault ids, Discord channel, cron, model; `ids` written by `deploy`) |
-| agent | `coworld-builder-costbot` `agent_01HBxn8TtFzoFMZzEgSDq5Wt` v1, `claude-sonnet-5` effort low, system prompt `fleet/costbot.md` |
-| deployment | `coworld-builder-costbot` `depl_01LH1ofjgY85RD25bTvBQpC5`, cron `30 0 * * *` UTC, `$2` session budget |
-| vaults | `coworld-builder-discord` + `costbot-anthropic` (above) |
+| tool | `fleet/bin/costbot.py report [--day YYYY-MM-DD] [--post]` — python3 stdlib, same file as in paintbot-rl |
+| config | `fleet/costbot.json` (fleet name, deployment-name prefixes, workspace id, Discord channel) |
+| workflow | `costbot.yml`: cron `30 0 * * *` UTC + `workflow_dispatch` (inputs `day`, `post`) |
+| federation | issuer `github-actions` `fdis_013v83o6VBFNGqfjrB42wN5p`; rule `gha-coworld-builder` `fdrl_01BTD9UxCJYG7XH92mYyvWJD` (subject `repo:Metta-AI@178685062/coworld-builder@1343083865:ref:refs/heads/main`, audience `https://api.anthropic.com`, scope `workspace:developer`, 15 min); service account `sa-coworld-builder` `svac_01GWpPtRHsvnM2msLzpTLFuk` (member of this workspace) |
+| secret | `DISCORD_BOT_TOKEN` repo secret (the disco bot, from Secrets Manager `vault/discord/disco/app`) — the only one |
 | destination | disco's DM channel with David Bloomin, `1477593964675862618` |
 | numbers | the API's `usage.list_cost` per session and per thread (list price; billed may be lower). Sessions counted by UTC start; a message carrying `[costbot coworld-builder <day>]` already in the channel means that day is done and a re-run does not post again |
 
-Preview or re-run by hand: `python3 fleet/bin/costbot.py report [--day YYYY-MM-DD] [--post]`;
-`costbot.py run` fires the reporter now (it reports yesterday). Change the cron, model, or channel in
-`fleet/costbot.json` and run `costbot.py deploy`.
+Re-run by hand: `gh workflow run costbot.yml -f day=YYYY-MM-DD -f post=false` (print only) or
+`python3 fleet/bin/costbot.py report [--day D] [--post]` locally (reads the org key from Secrets
+Manager). The Managed-Agents reporter `costbot.py deploy` creates was retired 2026-09-08 (agent
+`agent_01HBxn8TtFzoFMZzEgSDq5Wt`, deployment `depl_01LH1ofjgY85RD25bTvBQpC5` and vault
+`costbot-anthropic` are archived).
+
+Workload Identity Federation objects are managed with the Admin API under an `org:admin` OAuth
+token (`ant auth login --profile admin --scope org:admin`; Admin API keys are rejected there).
+GitHub's `sub` claim is id-qualified (`repo:<owner>@<owner_id>/<repo>@<repo_id>:ref:...`) — a rule
+written with bare names never matches.
 
 ## Sandbox tooling
 
