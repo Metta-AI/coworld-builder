@@ -68,3 +68,5 @@
 2026-09-09T00:33:41Z progress phase=50 marker=league_c7fc991e-b0c5-49f7-89a8-53e51e370241
 2026-09-09T00:33:41Z 50 -> 60 phase transition: STATE written phase=60
 2026-09-09T00:33:41Z heartbeat phase=60
+2026-09-09T00:35:05Z 60 verifier dispatched thread=sthr_013xfEjqgV224jyQt9hkJLrD output=runs/2026-09-08-battlecode-2022/VERIFY.md + viewer-check/. Brief carries all STATE ids, the MOD-run naming correction (the API coworld name is 'battlecode' and the page is softmax.com/battlecode + /battlecode/bc22 — softmax.com/battlecode-2022 does not exist), the 75-min poll bound from 00:33Z with round_interval 15, fillers-set-before-round-1 so every completed round qualifies for check 1, check 7 reads the COMMITTED release-result.json, and the phase-30 carry-forward that the identical 0%/50% clock readouts must be retired or reported by check 8's real browser run
+2026-09-09T00:35:05Z heartbeat phase=60
