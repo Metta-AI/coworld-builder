@@ -88,3 +88,5 @@
 2026-09-09T01:10:09Z progress phase=60 marker=verify-verdict.md-blocking-0
 2026-09-09T01:10:09Z 60 -> 70 phase transition: STATE written phase=70
 2026-09-09T01:10:09Z heartbeat phase=70
+2026-09-09T01:12:12Z 70 resume guard: STATE.announce.discord_message_id empty and attempted_at null, AND a limit=15 scan of #coworlds found no bc22 post (latest siblings are bc23 msg=1546938154840227940 and bc25 msg=1546761144507572276) — safe to post exactly once
+2026-09-09T01:12:12Z 70 announce.attempted_at written and pushed BEFORE the POST (1799 chars, under the 1800 cap; matches the sibling-year convention 'New Battlecode year: <YYYY> — <name>' and links softmax.com/battlecode/bc22, not the nonexistent softmax.com/battlecode-2022)
