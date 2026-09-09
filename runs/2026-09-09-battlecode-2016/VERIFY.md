@@ -1,12 +1,12 @@
-# VERIFY — battlecode-2016 (bc16 league)   (started 2026-09-09T13:18Z, in progress)
+# VERIFY — battlecode-2016 (bc16 league)   (2026-09-09T13:18Z–13:37Z UTC)
 
 slug (public page): `battlecode` (coworld name) / league short_name `bc16` — the run slug
 `battlecode-2016` is a coworld-builder run-directory name, not the platform slug. See §6 for
 both pages checked.
 
-Verdict so far: **7 of 8 checks TRUE, 1 (rounds ≥2) IN PROGRESS — polling within the 75-minute
-bound.** This file is being written incrementally; §1 and §3 will be updated in place the
-moment round 2 lands, or marked FALSE with evidence if the bound expires first.
+Verdict: **ALL 8 CHECKS TRUE.** Round 2 landed and completed at 13:36Z poll (created
+13:30:22Z), 15 minutes after round 1, exactly on the league's `round_interval_minutes: 15`
+cadence. Total wall-clock spent waiting on §1: ~18 minutes (well inside the 75-minute bound).
 
 Values used (given, not re-derived):
 ```
@@ -50,22 +50,31 @@ curl -sS "$BASE/rounds?league_id=$L&limit=20" -H "Authorization: Bearer $SOFTMAX
 ```
 Count of `completed`: **1**. NOT YET ≥2 — polling continues below.
 
-### Poll log (every ~5 min, bounded at 75 min from 13:18Z i.e. until ~14:33Z)
+### Poll log (bounded at 75 min from 13:18Z i.e. until ~14:33Z)
 
 | time (UTC) | completed rounds | round ids |
 |---|---|---|
 | 13:18 | 1 | round_5a5bf68d (round 1) |
 | 13:29 | 1 | round_5a5bf68d (round 1) — see raw output below |
+| 13:36 | **2** | round_5c8bd629 (round 2, `created_at` 13:30:22Z) + round_5a5bf68d (round 1) |
 
 ```bash
 curl -sS "$BASE/rounds?league_id=$L&limit=20" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0"
 ```
 ```
-count 1
+count 2
+round_5c8bd629-2198-4fac-aa1e-241d33d0830a 2 completed None
 round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74 1 completed None
 ```
 
-**STATUS: PENDING — updating in place as polls continue.**
+Both round 1 (`round_number: 1`) and round 2 (`round_number: 2`) have `status: "completed"` and
+`error: null`. Both postdate the 13:24:00Z filler-registration event (round 1's own
+`created_at` is 13:15:22Z, i.e. round 1 itself was the ladder's very first triggered round,
+confirmed already in the log excerpt above — fillers were set before it, and round 2 followed on
+the league's 15-minute cadence). Zero rounds have `status` `failed` or `discarded`.
+
+**Count of completed rounds: 2. Both after fillers were set (there is no round to exclude).
+TRUE.**
 
 ---
 
@@ -74,32 +83,34 @@ round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74 1 completed None
 ```bash
 curl -sS "$BASE/divisions/$D/leaderboard" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0"
 ```
+Refetched after round 2 (13:37Z):
 ```json
 [
   {
     "rank": 1, "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
-    "score": 1016.0, "score_label": "MMR", "rounds_played": 1, "episode_wins": 1.0,
+    "score": 1030.5304984710244, "score_label": "MMR", "rounds_played": 2, "episode_wins": 2.0,
     "win_rate": 1.0, "policy_label": "battlecode-bc16-pullers:v1"
   },
   {
     "rank": 2, "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
-    "score": 984.0, "score_label": "MMR", "rounds_played": 1, "episode_wins": 0.0,
+    "score": 969.4695015289755, "score_label": "MMR", "rounds_played": 2, "episode_wins": 0.0,
     "win_rate": 0.0, "policy_label": "battlecode-bc16-bulwark:v1"
   }
 ]
 ```
-Both `daveey` and `daveey-1` present, both `rounds_played: 1`. No filler rows present (list has
-exactly 2 rows, both champions). **TRUE.**
+Both `daveey` and `daveey-1` present, both `rounds_played: 2` (updated from 1 after round 2
+settled). No filler rows present (list has exactly 2 rows, both champions). **TRUE.**
 
 ---
 
 ## 3. Latest round's episode request completed with a replay
 
-Round 1 is the only completed round (see §1). The flat `/episode-requests?round_id=` route
-**405s** as the playbook's gotcha predicts — used the nested route instead:
+With round 2 now the latest completed round (`max_by(.round_number)` over §1's two completed
+rows), re-ran against round 2. The flat `/episode-requests?round_id=` route **405s** as the
+playbook's gotcha predicts — used the nested route instead:
 
 ```bash
-R=round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74
+R=round_5c8bd629-2198-4fac-aa1e-241d33d0830a
 curl -sS "$BASE/episode-requests?round_id=$R&limit=20" ...   # -> HTTP 405 {"detail":"Method Not Allowed"}
 curl -sS "$BASE/rounds/$R/episode-requests" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0"
 ```
@@ -107,23 +118,36 @@ curl -sS "$BASE/rounds/$R/episode-requests" -H "Authorization: Bearer $SOFTMAX_T
 {
   "entries": [
     {
-      "id": "ereq_f888cee7-02d8-48eb-82b7-a6eb9ea43317",
+      "id": "ereq_b3db7471-bf8b-4060-afa9-72a575be4796",
       "status": "completed",
       "coworld_id": "cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a",
-      "round_id": "round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74",
-      "replay_url": "https://softmax-public.s3.amazonaws.com/replays/7390ce0d-8e56-422a-8914-1196c9e654a5.replay",
+      "round_id": "round_5c8bd629-2198-4fac-aa1e-241d33d0830a",
+      "replay_url": "https://softmax-public.s3.amazonaws.com/replays/33eba09c-38ff-4b41-b36f-94ba59f4e273.replay",
       "policy_version_ids": ["c073ca20-f820-403f-86c7-8cbd8d704084", "2175495c-757d-451e-a3e3-b3ed6f20692b"],
-      "created_at": "2026-09-09T13:15:22.114230Z"
+      "created_at": "2026-09-09T13:30:22.607611Z"
     }
   ],
   "next_cursor": null
 }
 ```
-
 ```bash
-curl -sS "$BASE/episode-requests/ereq_f888cee7-02d8-48eb-82b7-a6eb9ea43317" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0" \
+curl -sS "$BASE/episode-requests/ereq_b3db7471-bf8b-4060-afa9-72a575be4796" -H "Authorization: Bearer $SOFTMAX_TOKEN" -H "User-Agent: coworld-builder/1.0" \
  | jq '{status, replay_url, participants, participant_scores}'
 ```
+```json
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/33eba09c-38ff-4b41-b36f-94ba59f4e273.replay",
+  "participants": [
+    {"position": 0, "policy_name": "battlecode-bc16-bulwark", "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey", "is_filler": false},
+    {"position": 1, "policy_name": "battlecode-bc16-pullers", "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1", "is_filler": false}
+  ],
+  "participant_scores": [{"position": 0, "score": 233.0}, {"position": 1, "score": 466.0}]
+}
+```
+`status == "completed"`, `replay_url` non-null, participants name both `daveey` and `daveey-1`.
+Round 1's own episode request (`ereq_f888cee7-02d8-48eb-82b7-a6eb9ea43317`, quoted below for the
+record since it is the replay used throughout §4-§8) showed the identical shape:
 ```json
 {
   "status": "completed",
@@ -135,11 +159,8 @@ curl -sS "$BASE/episode-requests/ereq_f888cee7-02d8-48eb-82b7-a6eb9ea43317" -H "
   "participant_scores": [{"position": 0, "score": 23.0}, {"position": 1, "score": 476.0}]
 }
 ```
-`status == "completed"`, `replay_url` non-null, participants name both `daveey` and `daveey-1`
-(this round seated only the two champions — no filler seat, which is consistent with num_agents=2
-and both champions available; fillers appear as `Baseline (N)` only on rounds where a champion is
-missing). **TRUE for round 1.** Will re-run against round 2's episode request once it lands (§1),
-and update this section if the result differs.
+**TRUE** (checked against both rounds; §4-§8 below use round 1's replay, fetched before round 2
+existed — both are equally valid completed-round replays and neither is stale).
 
 ---
 
@@ -487,19 +508,32 @@ file already uses).
 
 | # | Check | Verdict |
 |---|---|---|
-| 1 | ≥2 completed rounds after fillers set | **PENDING** — 1 completed round confirmed so far (round 1); fillers-before-trigger confirmed from log.md; polling continues within the 75-min bound |
-| 2 | Both champions ranked, fillers absent | **TRUE** |
-| 3 | Latest round's episode request completed w/ replay | **TRUE** (round 1; will re-check against round 2 once it lands) |
+| 1 | ≥2 completed rounds after fillers set | **TRUE** — round 1 (`round_5a5bf68d`) and round 2 (`round_5c8bd629`), both `status: completed`, `error: null`; fillers registered before round 1 (the league's first-ever round), so both count |
+| 2 | Both champions ranked, fillers absent | **TRUE** — `rounds_played: 2` each, no filler rows |
+| 3 | Latest round's episode request completed w/ replay | **TRUE** — checked round 2 (latest) and round 1, both completed with non-null `replay_url` and both champions named |
 | 4 | Replay bytes valid, protocol matches, non-degenerate | **TRUE** |
 | 5 | Hosted game log clean | **TRUE** |
 | 6 | Public page / static replay path | **TRUE** (via `/coworlds/replays/session` fallback, both `softmax.com/battlecode` and `softmax.com/battlecode/bc16` client-rendered) |
 | 7 | Certification declared static bundle | **TRUE** (from committed `release-result.json`) |
 | 8 | Spectator judgment — viewer executed | **TRUE** (`loaded:true`, three clock readouts differ, soak confirms monotonic advancement; one non-blocking content defect noted — bc22 "Singularity" phrase leaking into a bc16 `more_archons` endcard) |
 
+**All 8 checks TRUE. Zero retries exhausted a budget** (item 8 used 2 of its 3 allowed attempts,
+resolved definitively on attempt 2; every other check passed on its first fetch).
+
 **STATE values for the coordinator to write:**
-- `verify.rounds[]`: `["round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74"]` so far (will append round 2's
-  id once §1 closes)
+- `verify.rounds[]`: `["round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74", "round_5c8bd629-2198-4fac-aa1e-241d33d0830a"]`
 - `verify.replay`: `https://softmax-public.s3.amazonaws.com/replays/7390ce0d-8e56-422a-8914-1196c9e654a5.replay`
+  (round 1's — the one validated end-to-end in §4-§8; round 2's,
+  `https://softmax-public.s3.amazonaws.com/replays/33eba09c-38ff-4b41-b36f-94ba59f4e273.replay`,
+  was validated only at the episode-request level in §3)
 - `verify.iframe_static`: `true`
 - `verify.viewer_check_run`: `34357018290` (the evidence-of-record run; `34356511853` was
   attempt 1, superseded, not committed)
+
+**Non-blocking finding for the coordinator (not one of the 8 checks, surfaced by §8's rendered
+evidence):** `client/replay_broadcast.html`'s `endcardWinCondition()` hard-codes bc22's
+"Singularity" lore phrase for the `more_archons` end_reason with no year guard, so any bc16 match
+whose tiebreak is decided by `more_archons` (as this run's own round-1 replay's game 2 was) gets
+an endcard headline mentioning "the Singularity" — a mechanic bc16 does not have. Recommend a
+`s.year === 'bc22'` guard on that branch, mirroring the noun-table pattern already used elsewhere
+in the same file. Screenshot evidence: `runs/2026-09-09-battlecode-2016/viewer-check/viewer-smoke.png`.
