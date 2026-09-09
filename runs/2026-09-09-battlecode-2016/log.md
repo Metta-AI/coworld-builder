@@ -27,3 +27,5 @@
 2026-09-09T03:29:59Z heartbeat phase=20
 2026-09-09T03:31:29Z 20 builder round 2 (continuation) dispatched thread=sthr_01NjABijFmNX6e69AChy1PuK branch=bc16-year-module@c488388f output=runs/2026-09-09-battlecode-2016/build-report.md (append-only) — brief carries: build-report.md M5 items 1-10 as the work list, the two rulings verbatim (GV11 fixture regeneration for replay-bc22/bc23 with the assertion untouched; survival gate = one bounded den-breaking chassis iteration then the MEASURED ratio + 5 substance floors + negative control proven red), local-Nim method + AUTHORISED local Temurin 8 for the whole parity loop before the first push, git-data-API landing via /mnt/session/outputs/land-via-git-data-api.py with landed-tree diff, the three authorised cross-year edits and the two forbidden ones, all 9 hard pins, the 8 exit checks, PR-then-merge --merge, red-CI budget 0 of 3 consumed
 2026-09-09T03:31:29Z heartbeat phase=20
+2026-09-09T06:58:00Z 00 attempts_reset phase=20 reason=progress marker=branch-commit-c488388f4a74152ea79c12d8ac7e57acfa93751b
+2026-09-09T06:58:00Z 00 resume at phase 20 attempt=1 session=8202fcd4

@@ -7,7 +7,8 @@
   "starter": "cogame-battlecode",
   "phase": "20",
   "phase_attempts": {
-    "10": 1
+    "10": 1,
+    "20": 1
   },
   "review_round": 0,
   "coworld": {
@@ -49,8 +50,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T03:31:29Z",
+  "heartbeat_at": "2026-09-09T06:58:00Z",
   "session_ended_at": null,
-  "session_id": "905b63bf",
+  "session_id": "8202fcd4",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
 }
