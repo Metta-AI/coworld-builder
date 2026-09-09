@@ -99,3 +99,8 @@
 2026-09-09T01:16:43Z 75 coordinates recomputed with a corrected positional parse over the FULL unfiltered neighbour set (147 dots incl. every extra_city, not just those inside the outline): 244,228 clearance 23.4, distances bc20 65.8 / bc21 79.9 / bc26 61.8 / bc23 91.4 / bc25 59.4, inside both the paintlands outline and its fly-to box
 2026-09-09T01:16:43Z 75 pre-empted BOTH known build failures on dispatch 1 rather than discovering them one per dispatch as 2026-09-07-battlecode-2025 did (it burned all 3 and went unplaced): extra_cities carries the 70-league backlog and drop_slugs carries both stale lines. Also removed polyduel/v1 from the inherited bc25 extra-cities file — that league has since left /api/coworlds and would have been a NEW stale-line failure. File committed at runs/2026-09-08-battlecode-2022/atlas-extra-cities.json
 2026-09-09T01:16:43Z heartbeat phase=75
+2026-09-09T01:17:47Z 75 atlas pr=https://github.com/Metta-AI/metta/pull/22141 status=pr_open (FIRST dispatch; artifact .slug verified == battlecode/bc22 before believing it, per prompt step 6). automerge=armed; not merged by hand and no blessed label — metta lands through Graphite's queue and a human finishes with gt submit --merge-when-ready
+2026-09-09T01:17:47Z 75 this PR also clears the 70-league atlas backlog and removes the two stale paintbot lines, so the next run's atlas dispatch should start from a clean places.mjs
+2026-09-09T01:17:47Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/22141
+2026-09-09T01:17:47Z 75 -> 80 phase transition: STATE written phase=80
+2026-09-09T01:17:47Z heartbeat phase=80

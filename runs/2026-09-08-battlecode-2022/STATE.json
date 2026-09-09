@@ -5,13 +5,14 @@
   "slug": "battlecode-2022",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "20": 1,
     "40": 1,
     "50": 1,
     "60": 1,
-    "70": 1
+    "70": 1,
+    "75": 1
   },
   "review_round": 1,
   "coworld": {
@@ -53,18 +54,18 @@
     "discord_message_id": "1547052004210380810"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/22141",
+    "branch": "atlas/battlecode-bc22-34298504854",
+    "region": "paintlands",
+    "x": 244,
+    "y": 228,
+    "dispatch_run_id": "34298504854",
+    "attempted_at": "2026-09-09T01:17:47Z",
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T01:12:28Z",
+  "heartbeat_at": "2026-09-09T01:17:47Z",
   "session_ended_at": null,
   "session_id": "398be0e9",
   "log": "runs/2026-09-08-battlecode-2022/log.md"
