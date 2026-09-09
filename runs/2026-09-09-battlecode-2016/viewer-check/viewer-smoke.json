@@ -1,0 +1,69 @@
+{
+  "loaded": true,
+  "ms": 2007,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a/sha256%3A20a188ec8ada2b62879e5bb25065b3076e8dc190d6457a38538aabafb8a8419f/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F7390ce0d-8e56-422a-8914-1196c9e654a5.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:22 GAME 1 OF 2 — VOLUTED doctrines",
+  "scorebug": "CLAN ASH daveey · Wall the horde; hold to 3000. 48 2:22 GAME 1 OF 2 — VOLUTED doctrines CLAN BASIL daveey-1 · Infect, convert, overwhelm. 51",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 7,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:22 GAME 1 OF 2 — VOLUTED doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "1:16 GAME 2 OF 2 — CLOSEQUARTERS doctrines",
+      "settle_ms": 1005
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MATCH OVER doctrines",
+      "settle_ms": 1505
+    }
+  ],
+  "soak": {
+    "seconds": 10,
+    "moved": true,
+    "before": {
+      "clock": "2:32 GAME 1 OF 2 — VOLUTED doctrines",
+      "tick": "round 2 / 3000"
+    },
+    "middle": {
+      "clock": "2:24 GAME 1 OF 2 — VOLUTED doctrines",
+      "tick": "round 194 / 3000"
+    },
+    "after": {
+      "clock": "2:22 GAME 1 OF 2 — VOLUTED doctrines",
+      "tick": "round 242 / 3000"
+    },
+    "status": "OPEN",
+    "page_errors": []
+  },
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
