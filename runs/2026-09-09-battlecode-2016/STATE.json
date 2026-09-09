@@ -47,13 +47,16 @@
     "pool_funded": true
   },
   "verify": {
+    "rounds_completed": 17,
     "rounds": [
       "round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74",
-      "round_5c8bd629-2198-4fac-aa1e-241d33d0830a"
+      "round_5c8bd629-2198-4fac-aa1e-241d33d0830a",
+      "round_bef99b2c (round 17, latest completed)"
     ],
-    "replay": "https://softmax-public.s3.amazonaws.com/replays/7390ce0d-8e56-422a-8914-1196c9e654a5.replay",
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/28474a90-b446-4a9a-a1d9-7ef5b78abf46.replay",
     "iframe_static": true,
-    "viewer_check_run": "34357018290"
+    "viewer_check_run": "34382385197",
+    "viewer_check_run_supplemental": "34382582739"
   },
   "announce": {
     "attempted_at": null,
@@ -71,7 +74,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T17:20:00Z",
+  "heartbeat_at": "2026-09-09T17:36:00Z",
   "session_ended_at": null,
   "session_id": "e43917a0",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
