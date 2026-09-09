@@ -53,7 +53,12 @@ def parse(src):
     body = src[start : src.index("\n];", start)]
     for entry in re.findall(r"\[[^\[\]]*\]", body):
         quoted = re.findall(r'"([^"]*)"', entry)
-        nums = re.findall(r"(?<![\w.])(\d+)(?![\w.])", entry)
+        # Numbers are read from the entry with its strings blanked out: a label
+        # like "Battlecode 2016" or a slug like "atari-57" must never be taken
+        # for the x coordinate (it was, and six leagues were spotted on top of
+        # each other).
+        unquoted = re.sub(r'"[^"]*"', '""', entry)
+        nums = re.findall(r"(?<![\w.])(\d+)(?![\w.])", unquoted)
         if len(quoted) >= 3 and len(nums) >= 2:
             cities.append((quoted[0], float(nums[0]), float(nums[1]), quoted[2]))
     marks = [(float(x), float(y)) for x, y in re.findall(r'\["[^"]*", (\d+), (\d+)\]', src)]
