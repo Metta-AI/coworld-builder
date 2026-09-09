@@ -337,6 +337,18 @@ r1-F8/F9's work, and the audit confirms it: bc16's label says
 ## CI
 
 - **PR run (`pull_request`, head `9947ae69254f0a780117fc9c1dcede88d3d4cee9`):**
-  run [34386571634](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34386571634) — CI-RESULT-PR
-- **`main` run (`push`, head MAIN-SHA):** run MAIN-RUN — CI-RESULT-MAIN
-- **Final `main` sha:** MAIN-SHA
+  run [34386571634](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34386571634) —
+  **success**, all eleven jobs (`test`, `docker-smoke`, `wasm-viewer`, eight
+  `parity-oracle*`). No rerun needed; the known `wasm-viewer` tar flake did not
+  hit this run.
+- **Merged** with `--merge` at 2026-09-09T18:55:03Z, merge commit
+  `6e89d0fe57cb12e564451a2d2dec6bc99bd7024d`. Never squashed, never rebased,
+  never force-pushed.
+- **`main` run (`push`, head `6e89d0fe57cb12e564451a2d2dec6bc99bd7024d`):** run
+  [34391925052](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34391925052) —
+  **success**, completed 2026-09-09T19:59:16Z, all eleven jobs green:
+  `test`, `docker-smoke`, `wasm-viewer`, `parity-oracle`, `parity-oracle-bc16`,
+  `parity-oracle-bc20`, `parity-oracle-bc21`, `parity-oracle-bc22`,
+  `parity-oracle-bc23`, `parity-oracle-bc24`, `parity-oracle-bc25`. No rerun
+  needed.
+- **Final `main` sha: `6e89d0fe57cb12e564451a2d2dec6bc99bd7024d`**
