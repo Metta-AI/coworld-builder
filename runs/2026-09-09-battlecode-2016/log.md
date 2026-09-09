@@ -44,3 +44,7 @@
 2026-09-09T08:17:30Z heartbeat phase=20
 2026-09-09T08:17:30Z 20 main CI 34322655506 test job at step 22 of 26 (Run tests), 65 min in, advancing; the branch run took 46 min for the same job and the job timeout is 150, so this is a slower runner / colder nimcache, not a wedge
 2026-09-09T08:31:00Z heartbeat phase=20
+2026-09-09T08:35:00Z 20 ci.yml run 34322655506 conclusion=success on main@fbc7d345e116dcb5e7c6fbae510144da09f11a8b — all 11 jobs green (test, docker-smoke, wasm-viewer, parity-oracle, parity-oracle-bc16/20/21/22/23/24/25). Phase-20 exit criterion MET. Builder rounds against a red CI consumed: 0 of 3 (no CI round of this phase ever came back red)
+2026-09-09T08:36:00Z progress phase=20 marker=ci-run-34322655506-success-on-main-fbc7d345
+2026-09-09T08:36:00Z 20 -> 30 phase transition: STATE written phase=30 review_round=1 and pushed BEFORE the reviewer is dispatched
+2026-09-09T08:36:00Z heartbeat phase=30
