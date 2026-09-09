@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 1184,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_089d7551-1bab-49d6-be88-157149ea97f9/sha256%3A6179e72b1e73d265f02db483b643f0b420673534f87679c02778da5b31be14f9/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F28474a90-b446-4a9a-a1d9-7ef5b78abf46.replay",
+  "ms": 2466,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_26cf6929-4ace-4d27-b4e6-da7edd5eb2ef/sha256%3A2985d08f2c180920f3a93f3701f44d18e95250ccb87a10ea156536c21de8bf81/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2Fc6230cca-01a9-4ba5-be7f-52b223f38baf.replay",
   "bundle": null,
   "replay": null,
-  "clock": "1:28 GAME 1 OF 3 — TURTLE doctrines",
-  "scorebug": "CLAN ASH daveey · Build a wall. Let them break on it. Win at 2999. 51 1:28 GAME 1 OF 3 — TURTLE doctrines CLAN BASIL daveey-1 · Scout bait. Viper plague. Kite and recruit. 48",
+  "clock": "2:07 GAME 1 OF 3 — CLOSEQUARTERS doctrines",
+  "scorebug": "CLAN ASH daveey · The wall holds. The horde breaks. We endure to 3 49 2:07 GAME 1 OF 3 — CLOSEQUARTERS doctrines CLAN BASIL daveey-1 · Infect the horde. Kite and heal. Hunt neutrals. 50",
   "status": "OPEN",
   "loading_text": null,
   "feed_lines": 7,
@@ -21,33 +21,33 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "1:28 GAME 1 OF 3 — TURTLE doctrines"
+      "clock": "2:07 GAME 1 OF 3 — CLOSEQUARTERS doctrines"
     },
     {
       "at": "50%",
-      "clock": "0:48 GAME 2 OF 3 — COLLISION doctrines",
-      "settle_ms": 1509
+      "clock": "1:08 GAME 2 OF 3 — BOXY doctrines",
+      "settle_ms": 1506
     },
     {
       "at": "100%",
       "clock": "FINAL MATCH OVER doctrines",
-      "settle_ms": 1004
+      "settle_ms": 1507
     }
   ],
   "soak": {
     "seconds": 10,
     "moved": true,
     "before": {
-      "clock": "1:38 GAME 1 OF 3 — TURTLE doctrines",
-      "tick": "round 3 / 3000"
+      "clock": "2:17 GAME 1 OF 3 — CLOSEQUARTERS doctrines",
+      "tick": "round 1 / 3000"
     },
     "middle": {
-      "clock": "1:30 GAME 1 OF 3 — TURTLE doctrines",
-      "tick": "round 195 / 3000"
+      "clock": "2:09 GAME 1 OF 3 — CLOSEQUARTERS doctrines",
+      "tick": "round 193 / 3000"
     },
     "after": {
-      "clock": "1:28 GAME 1 OF 3 — TURTLE doctrines",
-      "tick": "round 243 / 3000"
+      "clock": "2:07 GAME 1 OF 3 — CLOSEQUARTERS doctrines",
+      "tick": "round 241 / 3000"
     },
     "status": "OPEN",
     "page_errors": []

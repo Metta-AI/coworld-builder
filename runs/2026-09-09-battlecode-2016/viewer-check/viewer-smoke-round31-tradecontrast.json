@@ -1,0 +1,69 @@
+{
+  "loaded": true,
+  "ms": 2254,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_26cf6929-4ace-4d27-b4e6-da7edd5eb2ef/sha256%3A2985d08f2c180920f3a93f3701f44d18e95250ccb87a10ea156536c21de8bf81/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F155fd170-8f83-439b-bf43-6560d7e0c796.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:44 GAME 1 OF 3 — TURTLE doctrines",
+  "scorebug": "CLAN ASH daveey · Wall holds. Horde breaks. Archons endure to 3000 49 2:44 GAME 1 OF 3 — TURTLE doctrines CLAN BASIL daveey-1 · Infection is a feature, not a bug. 50",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 7,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:44 GAME 1 OF 3 — TURTLE doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "1:26 GAME 2 OF 3 — VOLUTED doctrines",
+      "settle_ms": 2509
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MATCH OVER doctrines",
+      "settle_ms": 5522
+    }
+  ],
+  "soak": {
+    "seconds": 10,
+    "moved": true,
+    "before": {
+      "clock": "2:54 GAME 1 OF 3 — TURTLE doctrines",
+      "tick": "round 5 / 3000"
+    },
+    "middle": {
+      "clock": "2:46 GAME 1 OF 3 — TURTLE doctrines",
+      "tick": "round 197 / 3000"
+    },
+    "after": {
+      "clock": "2:44 GAME 1 OF 3 — TURTLE doctrines",
+      "tick": "round 245 / 3000"
+    },
+    "status": "OPEN",
+    "page_errors": []
+  },
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

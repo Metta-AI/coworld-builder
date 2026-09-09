@@ -1,0 +1,5 @@
+{"loaded":true,"ms":2254,"clock":"2:44 GAME 1 OF 3 — TURTLE doctrines","scorebug":"CLAN ASH daveey · Wall holds. Horde breaks. Archons endure to 3000 49 2:44 GAME 1 OF 3 — TURTLE doctrines CLAN BASIL daveey-1 · Infection is a feature, not a bug. 50","feed_lines":7}
+soak: 10s of playback kept advancing ("round 5 / 3000" -> "round 197 / 3000" -> "round 245 / 3000")
+scrub readouts: 0%="2:44 GAME 1 OF 3 — TURTLE doctrines"  50%="1:26 GAME 2 OF 3 — VOLUTED doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
