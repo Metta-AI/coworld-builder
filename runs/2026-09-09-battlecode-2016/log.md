@@ -41,3 +41,5 @@
 2026-09-09T07:30:00Z 20 main@fbc7d345 ci.yml run 34322655506: 10 of 11 jobs green (docker-smoke, wasm-viewer, parity-oracle + all 8 per-year oracles); the `test` shard job is still running
 2026-09-09T07:45:00Z heartbeat phase=20
 2026-09-09T08:01:00Z heartbeat phase=20
+2026-09-09T08:17:30Z heartbeat phase=20
+2026-09-09T08:17:30Z 20 main CI 34322655506 test job at step 22 of 26 (Run tests), 65 min in, advancing; the branch run took 46 min for the same job and the job timeout is 150, so this is a slower runner / colder nimcache, not a wedge
