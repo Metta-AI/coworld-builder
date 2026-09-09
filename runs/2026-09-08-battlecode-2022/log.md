@@ -42,3 +42,6 @@
 2026-09-09T00:18:27Z progress phase=30 marker=r1-verdict.md-blocking-0
 2026-09-09T00:18:27Z 30 -> 40 phase transition: STATE written phase=40, review_round=1 (exited at round 1 of 4, no fixer needed)
 2026-09-09T00:18:27Z heartbeat phase=40
+2026-09-09T00:20:18Z 40 secrets verified present on Metta-AI/cogame-battlecode (SOFTMAX_TOKEN + ANTHROPIC_API_KEY, both 2026-09-03); propagate-secrets.yml not re-dispatched
+2026-09-09T00:20:18Z 40 builder dispatched thread=sthr_01NtgRQPHtVVmURpdLEuuUYP version=0.7.0 (mod run: coworld 0.6.0->0.7.0, NOT 0.1.0) output=runs/2026-09-08-battlecode-2022/release-result.json. Policies: the design-note-pinned OVERRIDE limited to the four bc22 entries (champ1 battlecode-bc22-rush daveey, champ2 battlecode-bc22-transmuter daveey-1 w/ player ply_bac48eb1, fillers battlecode-wololo + battlecode-examplefuncsplayer22), filtered out of the repo's own 28-entry tools/ci/policies.json so the prompts stay byte-exact and the six existing year leagues do not get vN+1 recut. dispatch-then-watch pinned, skip_certify forbidden, git-push-unavailable + Git Data API path carried forward from phase 20
+2026-09-09T00:20:18Z heartbeat phase=40
