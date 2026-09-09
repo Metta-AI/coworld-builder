@@ -297,3 +297,36 @@ phase 50 resolves UUIDs from `GET /policy-versions`. Not a failure.
   "step_failed": null
 }
 ```
+
+
+---
+
+## Coordinator verification (13:15Z, not the builder's claim)
+
+Read from the committed `release-result.json`, not from the sub-agent's reply:
+`ok=true`, `canonical=true`, `secret_put=true`, `step_failed=null`, `errors=[]`,
+`certify.ok=true`, `certify.replay_liveness` contains
+`skipped (static replay bundle declared`, 32 policies for 32 requested with **32 distinct
+`<name>:vN` labels**, and `battlecode-bc16-pullers.player_id ==
+ply_bac48eb1-662e-44f8-973d-f3e016dccf5d`. `policy_version_id` is `null` on all 32, which is
+expected (upload-policy prints no uuid) and is resolved in phase 50.
+
+**Hosted certification chased to settled**, because the artifact was written while it still read
+`hosted_certification: "certifying"` and the phase-40 exit requires it CERTIFIED, not merely
+canonical. Polled through the CLI (never a raw GET, which 403s):
+
+```
+uvx --from "coworld[auth]==0.1.43" coworld status cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a --json
+  .coworld.canonical            -> true
+  .coworld.version              -> 0.8.0
+  .certification.state          -> "certified"
+  .certification.certified      -> true
+  .certification.failed_step    -> null
+  .certification.failure        -> null
+  .certification.completed_at   -> 2026-09-09T13:08:29.401045Z
+  .certification.transcript_summary -> 10 of 10 pass (matriculate, source-resolves,
+      images-reachable, fixture-conforms, smoke-episode, results-conform, replay-present,
+      replay-loadable, players-run, supporting-roles)
+```
+
+So the coworld is **Canonical: yes** and **hosted certification: certified** at 0.8.0.

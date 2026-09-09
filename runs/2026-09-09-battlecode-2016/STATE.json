@@ -5,23 +5,27 @@
   "slug": "battlecode-2016",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "10": 1,
     "20": 1,
-    "30": 1
+    "30": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.8.0",
+    "cow_id": "cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a",
+    "manifest_sha": "sha256:20a188ec8ada2b62879e5bb25065b3076e8dc190d6457a38538aabafb8a8419f",
+    "release_run_id": "34354493592"
   },
   "policies": {
-    "champion1": "",
-    "champion2": "",
-    "fillers": [],
+    "champion1": "battlecode-bc16-bulwark:v1",
+    "champion2": "battlecode-bc16-pullers:v1",
+    "fillers": [
+      "battlecode-bulwark:v1",
+      "battlecode-greenhorn:v1"
+    ],
     "filler_version_ids": []
   },
   "league": {
@@ -51,7 +55,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T13:10:00Z",
+  "heartbeat_at": "2026-09-09T13:16:00Z",
   "session_ended_at": null,
   "session_id": "f7ff015e",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
