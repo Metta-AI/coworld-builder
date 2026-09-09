@@ -72,7 +72,12 @@ of every removed line for `check`/`doAssert`/`assert`/`skip`/`Skip`/`xfail`.
   inside the docker build (`Error: unhandled exception: error running command 'tar xf
   nim.tar.gz' … [NimbyError]`). The **identical tree passed the identical job** on branch run
   `34338896940`.
-- `test` was still running when this file was written; the coordinator re-ran the failed job
-  after the run settled. The phase-30 exit requires a green `ci.yml` on `main` at the reviewed
-  sha, so the judge was not dispatched against a flake-red run — see `log.md` for the rerun's
-  run id and conclusion.
+- `test` completed **success** at 12:36Z (58 min), so attempt 1 ended `failure` with
+  `wasm-viewer` as its only red job. The coordinator re-ran the failed job only
+  (`gh run rerun 34346628919 --failed`, which keeps the run id), and **attempt 2 completed
+  `success` at 12:43Z with all 11 jobs green** — `test`, `docker-smoke`, `wasm-viewer`,
+  `parity-oracle` and the eight per-year oracles. The flake did not recur, which confirms the
+  toolchain-download diagnosis over a code cause.
+- **Phase-30 checklist item 1 therefore holds at the reviewed sha**: `ci.yml` conclusion
+  `success` on `main` @ `46b92ae5ff9a78be61c659f4a2eff861aa17b838`, run `34346628919`, with no
+  test disabled, skipped, or loosened during this run (audited above).
