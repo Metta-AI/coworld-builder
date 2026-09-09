@@ -1,0 +1,4 @@
+{"loaded":true,"ms":956,"clock":"2:47 GAME 1 OF 2 — MONUMENT doctrines","scorebug":"CLAN ASH daveey · Out-mine, out-soldier, never strip-mine. Kill th 49 2:47 GAME 1 OF 2 — MONUMENT doctrines CLAN BASIL daveey-1 · Gold wins wars. Scatter before clumps die. 50","feed_lines":5}
+scrub readouts: 0%="2:47 GAME 1 OF 2 — MONUMENT doctrines"  50%="2:46 GAME 1 OF 2 — MONUMENT doctrines"  100%="1:23 GAME 2 OF 2 — COLLABORATION doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

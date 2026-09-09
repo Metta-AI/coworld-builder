@@ -38,9 +38,13 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_24e8c2d5-1184-413d-845c-9211696da19a",
+      "round_1e28888a-4f43-45d9-a4ef-0edf36b3b5d6"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/fe390134-a8b6-4d82-a34d-e804ed5472a5.replay",
+    "iframe_static": true,
+    "viewer_check_run": "34296904104"
   },
   "announce": {
     "attempted_at": null,
@@ -58,7 +62,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T00:33:41Z",
+  "heartbeat_at": "2026-09-09T01:02:19Z",
   "session_ended_at": null,
   "session_id": "398be0e9",
   "log": "runs/2026-09-08-battlecode-2022/log.md"
