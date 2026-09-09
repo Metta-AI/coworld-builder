@@ -104,3 +104,8 @@
 2026-09-09T01:17:47Z progress phase=75 marker=https://github.com/Metta-AI/metta/pull/22141
 2026-09-09T01:17:47Z 75 -> 80 phase transition: STATE written phase=80
 2026-09-09T01:17:47Z heartbeat phase=80
+2026-09-09T01:20:39Z 80 executive summary posted on run task 1218285765438028 (28 lines) and condensed to 5 lines + links on idea task 1218173707344974
+2026-09-09T01:20:39Z 80 LEARNINGS.md gained '## 2026-09-08 battlecode-2022' (8 entries), committed 61b8207. CORRECTION to my own 01:16:43Z log line: the atlas_spot digit-in-label misparse is NOT a new discovery — it is already recorded under '## 2026-09-07 battlecode-2025'. What is new is that its recommended workaround was never applied, that the mis-parsed dots are dropped from the neighbour set entirely (invisible twice over, since taken[] also filters by inside(poly)), and that this is what produced bc25's and bc23's inflated clearance numbers
+2026-09-09T01:20:39Z 80 note: the first close commit lost its STATE/log write — 'git pull --rebase && python3' short-circuited because appending to LEARNINGS.md left the tree dirty, so the && chain skipped the writer while the following git add/commit/push still ran. LEARNINGS landed, STATE did not. Re-run here. Lesson for the next close: stage or stash before the pull, and verify the log tail after every combined pull-and-write
+2026-09-09T01:20:39Z 80 atlas re-read per prompt step 1: gh pr view 22141 -> state=OPEN mergedAt=null -> reported as 'open (approved, waiting on metta's merge queue — a human runs merge-when-ready)'
+2026-09-09T01:20:39Z 80 final league state: 4 rounds completed, 0 failed/discarded; daveey-1 battlecode-bc22-transmuter:v1 elo 1055.8 4 wins, daveey battlecode-bc22-rush:v1 elo 944.2 0 wins
