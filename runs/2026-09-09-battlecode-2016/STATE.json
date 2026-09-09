@@ -16,16 +16,22 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.8.1",
-    "cow_id": "cow_089d7551-1bab-49d6-be88-157149ea97f9",
-    "manifest_sha": "sha256:6179e72b1e73d265f02db483b643f0b420673534f87679c02778da5b31be14f9",
-    "release_run_id": "34380179056",
-    "previous": {
-      "version": "0.8.0",
-      "cow_id": "cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a",
-      "manifest_sha": "sha256:20a188ec8ada2b62879e5bb25065b3076e8dc190d6457a38538aabafb8a8419f",
-      "release_run_id": "34354493592"
-    }
+    "version": "0.8.2",
+    "cow_id": "cow_26cf6929-4ace-4d27-b4e6-da7edd5eb2ef",
+    "manifest_sha": "sha256:2985d08f2c180920f3a93f3701f44d18e95250ccb87a10ea156536c21de8bf81",
+    "release_run_id": "34399197087",
+    "superseded": [
+      {
+        "version": "0.8.0",
+        "cow_id": "cow_4bdfa37d-4f28-4480-a42d-0cc439cd158a",
+        "release_run_id": "34354493592"
+      },
+      {
+        "version": "0.8.1",
+        "cow_id": "cow_089d7551-1bab-49d6-be88-157149ea97f9",
+        "release_run_id": "34380179056"
+      }
+    ]
   },
   "policies": {
     "champion1": "battlecode-bc16-bulwark:v1",
@@ -74,7 +80,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T20:06:00Z",
+  "heartbeat_at": "2026-09-09T20:26:00Z",
   "session_ended_at": null,
   "session_id": "e43917a0",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
