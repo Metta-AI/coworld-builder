@@ -11,7 +11,8 @@
     "20": 1,
     "30": 1,
     "40": 1,
-    "50": 1
+    "50": 1,
+    "60": 1
   },
   "review_round": 1,
   "coworld": {
@@ -40,9 +41,13 @@
     "pool_funded": true
   },
   "verify": {
-    "rounds": [],
-    "replay": "",
-    "iframe_static": false
+    "rounds": [
+      "round_5a5bf68d-9904-4f7e-a4ec-1fe95e582f74",
+      "round_5c8bd629-2198-4fac-aa1e-241d33d0830a"
+    ],
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/7390ce0d-8e56-422a-8914-1196c9e654a5.replay",
+    "iframe_static": true,
+    "viewer_check_run": "34357018290"
   },
   "announce": {
     "attempted_at": null,
@@ -60,7 +65,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T13:28:00Z",
+  "heartbeat_at": "2026-09-09T13:40:00Z",
   "session_ended_at": null,
   "session_id": "f7ff015e",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
