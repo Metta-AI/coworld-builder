@@ -37,3 +37,5 @@
 2026-09-09T07:17:00Z 20 PR #10 merged to main with --merge: main 00c1dae -> fbc7d345e116dcb5e7c6fbae510144da09f11a8b
 2026-09-09T07:18:00Z 20 watching ci.yml run 34322655506 on main@fbc7d345 — the phase-20 exit gate
 2026-09-09T07:18:00Z heartbeat phase=20
+2026-09-09T07:30:00Z heartbeat phase=20
+2026-09-09T07:30:00Z 20 main@fbc7d345 ci.yml run 34322655506: 10 of 11 jobs green (docker-smoke, wasm-viewer, parity-oracle + all 8 per-year oracles); the `test` shard job is still running
