@@ -5,7 +5,7 @@
   "slug": "battlecode-2016",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "30",
+  "phase": "40",
   "phase_attempts": {
     "10": 1,
     "20": 1,
@@ -51,7 +51,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T12:44:00Z",
+  "heartbeat_at": "2026-09-09T13:00:00Z",
   "session_ended_at": null,
   "session_id": "f7ff015e",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
