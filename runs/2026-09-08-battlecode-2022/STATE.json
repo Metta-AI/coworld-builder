@@ -5,10 +5,11 @@
   "slug": "battlecode-2022",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
-    "40": 1
+    "40": 1,
+    "50": 1
   },
   "review_round": 1,
   "coworld": {
@@ -24,11 +25,17 @@
       "battlecode-wololo:v1",
       "battlecode-examplefuncsplayer22:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "82b2d622-4e35-4bc4-8282-ab5c5d8b3d6a",
+      "550961a8-b958-47cf-81dc-ea1d871bec42"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_c7fc991e-b0c5-49f7-89a8-53e51e370241",
+    "division": "div_c39ea7d1-7ff0-4728-a4e5-ca30b3edd7e1",
+    "key": "bc22",
+    "short_name": "bc22",
+    "pool_funded": true
   },
   "verify": {
     "rounds": [],
@@ -51,7 +58,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T00:29:17Z",
+  "heartbeat_at": "2026-09-09T00:33:41Z",
   "session_ended_at": null,
   "session_id": "398be0e9",
   "log": "runs/2026-09-08-battlecode-2022/log.md"

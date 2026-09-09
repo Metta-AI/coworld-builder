@@ -53,3 +53,18 @@
 2026-09-09T00:29:17Z progress phase=40 marker=release-run-34294596547
 2026-09-09T00:29:17Z 40 -> 50 phase transition: STATE written phase=50
 2026-09-09T00:29:17Z heartbeat phase=50
+2026-09-09T00:33:41Z 50 pre-check: GET /leagues returned 5 battlecode leagues (bc26/bc20/bc21/bc23/bc25), NOT the seven the design note predicted — the bc24 league was never created because run 2026-09-04-battlecode-2024 is Blocked. No bc22 league existed, so this run creates the sixth. Selected by name/key client-side, never by index
+2026-09-09T00:33:41Z 50 POST /coworld-league-seeds 200 -> league_c7fc991e-b0c5-49f7-89a8-53e51e370241 (coworld_name=battlecode, league_key=bc22, default_variant_id=bc22, template=commissioner_driven, commissioner_key=platform, seed lseed_4997d976)
+2026-09-09T00:33:41Z 50 POST /leagues/$L/short-name 200 short_name=bc22 -> softmax.com/battlecode/bc22. POST /games/$GAME/default-league deliberately NOT called (that belongs to the first league, per the design note)
+2026-09-09T00:33:41Z 50 PUT /leagues/$L/divisions 200 -> div_c39ea7d1-7ff0-4728-a4e5-ca30b3edd7e1 (Competition, level 1, type competition, visible)
+2026-09-09T00:33:41Z 50 POST /leagues/$L/settings 200: ladder enabled, round_robin + filler_policy on insufficient players, allowed_failures 0.0 retry_times 2, elo initial 1000 k 32 round_scoring_rule mean, round_interval_minutes 15
+2026-09-09T00:33:41Z 50 champion #1 submit: run 34295333076 success, submit-result ok=true, policy=battlecode-bc22-rush:v1 player=ply_44ae9048 (daveey), submission sub_3450793f, status pending, auto champion always
+2026-09-09T00:33:41Z 50 champion #2 submit: run 34295374302 success, submit-result ok=true, policy=battlecode-bc22-transmuter:v1 player=ply_bac48eb1 (daveey-1), submission sub_71293c51 — NO 409, confirming phase 40's daveey-1 ownership mint worked
+2026-09-09T00:33:41Z 50 filler UUIDs resolved client-side from GET /policy-versions (the name= filter is ignored): wololo=82b2d622-4e35-4bc4-8282-ab5c5d8b3d6a examplefuncsplayer22=550961a8-b958-47cf-81dc-ea1d871bec42, both player=daveey; champion #2's row confirmed player_name=daveey-1 before use
+2026-09-09T00:33:41Z 50 POST /leagues/$L/filler-policies 200: response lists exactly the two filler UUIDs and neither champion's (verified against a3771028 / 1fb5f69a). Set BEFORE any trigger-round
+2026-09-09T00:33:41Z 50 credit pool funded BEFORE first trigger: POST reward-pool/grants 200 (100 credits, idempotency_key coworld-builder-2026-09-08-battlecode-2022-pool-grant-1) + PUT reward-pool/drip 200 (100/day, max 300); owner-status pool_credits=100.0 > 0
+2026-09-09T00:33:41Z 50 POST /leagues/$L/rounds-paused 200 paused=false; POST /leagues/$L/trigger-round 200 -> workflow ladder-league_c7fc991e
+2026-09-09T00:33:41Z 50 round 1 round_24e8c2d5-1184-413d-845c-9211696da19a status=pending, no error field. EXIT CRITERION MET via round_config.entrant_attributions (the division leaderboard is still null because no round has settled): both champions present — ply_44ae9048/a3771028 and ply_bac48eb1/1fb5f69a — fillers registered and distinct, rounds unpaused, one round pending
+2026-09-09T00:33:41Z progress phase=50 marker=league_c7fc991e-b0c5-49f7-89a8-53e51e370241
+2026-09-09T00:33:41Z 50 -> 60 phase transition: STATE written phase=60
+2026-09-09T00:33:41Z heartbeat phase=60
