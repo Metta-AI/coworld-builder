@@ -1,0 +1,5 @@
+{"loaded":true,"ms":1184,"clock":"1:28 GAME 1 OF 3 — TURTLE doctrines","scorebug":"CLAN ASH daveey · Build a wall. Let them break on it. Win at 2999. 51 1:28 GAME 1 OF 3 — TURTLE doctrines CLAN BASIL daveey-1 · Scout bait. Viper plague. Kite and recruit. 48","feed_lines":7}
+soak: 10s of playback kept advancing ("round 3 / 3000" -> "round 195 / 3000" -> "round 243 / 3000")
+scrub readouts: 0%="1:28 GAME 1 OF 3 — TURTLE doctrines"  50%="0:48 GAME 2 OF 3 — COLLISION doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

@@ -1,0 +1,5 @@
+{"loaded":true,"ms":1358,"clock":"2:27 GAME 1 OF 2 — VOLUTED doctrines","scorebug":"CLAN ASH daveey · Wall the horde; hold to 3000. 49 2:27 GAME 1 OF 2 — VOLUTED doctrines CLAN BASIL daveey-1 · Infect, convert, overwhelm. 50","feed_lines":7}
+soak: 5s of playback kept advancing ("round 0 / 3000" -> "round 71 / 3000" -> "round 119 / 3000")
+scrub readouts: 0%="2:27 GAME 1 OF 2 — VOLUTED doctrines"  50%="1:15 GAME 2 OF 2 — CLOSEQUARTERS doctrines"  100%="FINAL MATCH OVER doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
