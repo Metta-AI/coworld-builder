@@ -5,7 +5,7 @@
   "slug": "battlecode-2016",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "10": 1,
     "20": 1,
@@ -69,18 +69,18 @@
     "discord_message_id": "1547360207745851423"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
+    "status": "already_placed",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/22386",
     "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
+    "region": "paintlands",
+    "x": 190,
+    "y": 291,
     "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "attempted_at": "2026-09-10T01:32:00Z",
+    "reason": "battlecode/bc16 was already a CITIES line on metta main (places.mjs:393, label 2016, territory t-battlecode) and already renders as a dot on the live https://softmax.com/atlas; placed by metta commit 8d071e13 (PR #22386, merged 2026-09-10T00:59:53Z), whose own follow-up section says re-dispatching atlas-update.yml for leagues it placed is no longer needed. No dispatch made, no second PR opened."
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-10T01:25:00Z",
+  "heartbeat_at": "2026-09-10T01:32:00Z",
   "session_ended_at": null,
   "session_id": "05c2d53c",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
