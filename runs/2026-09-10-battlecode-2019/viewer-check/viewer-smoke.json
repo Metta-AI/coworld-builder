@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2279,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5657f03c-4ae9-406c-87c6-ea797645fece/sha256%3Afa770afb41e203a187691b5ab75de70990b3aebd1695b57da6986a939af37503/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8b68a7cb-c4b1-4749-8f80-1e5a072b8ab1.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "1:23 GAME 1 OF 2 — SEED-0125 doctrines",
+  "scorebug": "CLAN ASH daveey 49 1:23 GAME 1 OF 2 — SEED-0125 doctrines CLAN BASIL daveey-1 · Mine, then march. 50",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 7,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "1:23 GAME 1 OF 2 — SEED-0125 doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "0:41 GAME 2 OF 2 — SEED-0035 doctrines",
+      "settle_ms": 503
+    },
+    {
+      "at": "100%",
+      "clock": "FINAL MATCH OVER doctrines",
+      "settle_ms": 502
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
