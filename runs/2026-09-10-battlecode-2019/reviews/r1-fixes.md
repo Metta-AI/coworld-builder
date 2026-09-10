@@ -236,3 +236,74 @@ rather than edited.
 - `ci.yml` run **34463989522** — `push`, `main`, `headSha 16b424ffcf9fbeeaf90c109b7fd04dfb52753cdc`,
   conclusion **`success`**, all 12 jobs `success` (`test`, `docker-smoke`, `wasm-viewer` and the
   nine parity oracles). Found by matching `headSha`, not by `gh run list -L 1`.
+
+---
+
+## r1-F6b — the second site of the F6 falsehood
+
+Added after the round closed, on the coordinator's ruling on `NOTED (not fixed)` item 1 above:
+the sentence F6 removed from the knob table row lived at a second site in the same cog-facing
+file, which left `docs/RULES-BC19.md` contradicting itself a page later. Scope was that one
+sentence.
+
+| finding | disposition | commit | files | checklist item |
+|---|---|---|---|---|
+| F6b | fixed | `96d0d6b974ce463329dfdcb629eccb4dc333097b` | `docs/RULES-BC19.md:244-250` (§Divergences item 14) | **none** — advisory truthfulness defect, same class as F6 |
+
+**Before** (item 14's closing sentence):
+
+> `    economy builds are funded whenever the order can pay. The knob's two`
+> `    asserted teeth are unchanged: rounds at zero fuel down, attacks down.`
+
+**After:**
+
+> `    economy builds are funded whenever the order can pay. The knob's first`
+> `    asserted tooth survives — rounds ended with the fuel store at zero down`
+> `    (−49 %, threshold 40 %) — but the second inverts: RAW attacks go UP,`
+> `    1 296 → 2 331, because an order at reserve 0 cannot afford to BUILD the`
+> `    soldiers either, so what the knob test asserts is **attacks per military`
+> `    unit built** down (−58 %, threshold 20 %). The `fuel_reserve` row of the`
+> `    knob table above carries the reading.`
+
+Consistent with the wording landed at `:129` in `53d4a677`, in §Divergences' own register and
+wrap width, and it points at the knob table row rather than restating its arithmetic.
+`tests/test_bc19_knobs.nim` is untouched — the substituted statistic is accepted. `git diff
+16b424ff..f5de5bdb --name-only` is `docs/RULES-BC19.md` alone: no code, no test, no workflow.
+
+**Grep afterwards, as asked** — `grep -n 'attacks down' docs/RULES-BC19.md` at `f5de5bdb`:
+
+```
+(no output, exit 1)
+```
+
+Zero hits in the file. **A third site does exist, and it is not in `docs/`:**
+`src/battlecode/years/bc19/chassis/econ.nim:97-98` carries the same sentence as a code comment —
+
+> `  ## for them. `fuel_reserve`'s teeth are unchanged and are exactly the two`
+> `  ## the knob test asserts: rounds at zero fuel down, attacks down.`
+
+I did **not** touch it: the ruling named `docs/RULES-BC19.md:245` and one file, and
+`git diff 16b424ff..<head>` had to be that file alone. Repo-wide, those are all of them:
+`grep -rn 'attacks down' .` at `f5de5bdb` returns exactly that one hit in `econ.nim`, and
+`grep -rn 'asserted teeth\|two teeth\|both teeth'` returns nothing. `grep -rn 'rounds at zero
+fuel'` returns `econ.nim:98` and `tests/test_bc19_knobs.nim:52`, the latter being the header
+measurement, which is correct as written. So one comment in `src/` remains for whoever rules on
+it; it is a comment on `canAfford`'s fuel gate and changing it moves no behaviour.
+
+**Landed:** branch `claude/r1-f6b-sthr_01W9ytsyw786zhkaNTHb2dcb` (one commit, Git Data API,
+remote tree `ee6350b6c43d23b1225fc529b6aeb8f1ab56d5fb` == local `HEAD^{tree}`), PR
+<https://github.com/Metta-AI/cogame-battlecode/pull/16>, merged `--merge` →
+**`f5de5bdbab21fb897f6eb4c27be76a1dced8f6bb`** on `main` (now `main`'s head).
+
+**CI:** `ci.yml` run **34472691904** — <https://github.com/Metta-AI/cogame-battlecode/actions/runs/34472691904>
+— `push`, `main`, `headSha f5de5bdbab21fb897f6eb4c27be76a1dced8f6bb`, conclusion **`success`**,
+**12/12 jobs** success. Check counts unchanged again in its `test` job (`102856052199`):
+`test_bc19_knobs: ok (41 checks)`, `test_bc19_sheet: ok (215 checks)`, `test_bc19_beats: ok (1240
+checks)`, `test_viewer: ok (1151 checks)`.
+
+`git diff --stat 16b424ffcf9fbeeaf90c109b7fd04dfb52753cdc f5de5bdbab21fb897f6eb4c27be76a1dced8f6bb`:
+
+```
+ docs/RULES-BC19.md | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+```
