@@ -12,7 +12,8 @@
     "30": 1,
     "40": 1,
     "50": 1,
-    "60": 1
+    "60": 1,
+    "75": 1
   },
   "review_round": 1,
   "coworld": {
@@ -79,8 +80,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-09T21:46:00Z",
+  "heartbeat_at": "2026-09-10T01:25:00Z",
   "session_ended_at": null,
-  "session_id": "e43917a0",
+  "session_id": "05c2d53c",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
 }
