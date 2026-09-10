@@ -387,3 +387,371 @@ Ordered so a continuation can pick up in this order. Nothing below is started.
   stay that way: **no Node, no npm, no JS runtime, no JDK in any image stage**
   (ruling 4). The 2019 engine exists only in `parity-oracle-bc19` and in
   `tools/gen_maps_bc19.mjs`.
+
+---
+
+## Round 3 — CI to green on main
+
+**STATUS: DONE.** `ci.yml` is green on `main` at the merge commit. **No CI
+round of this phase was red, so the 3-round red-CI retry budget is still 0 of
+3 consumed.** No test was weakened, skipped or deleted; no parity tier was
+loosened; the bc19 ledger is still `[]`.
+
+| deliverable | result |
+|---|---|
+| CI verdict on the inherited branch run | **`34446572285` → `success`** (all 12 jobs) |
+| `docs/PARITY.md` §bc19 §Status rewritten, private path deleted | commit **`11d3b29adb`** |
+| PR opened and merged with a merge commit | **[#14](https://github.com/Metta-AI/cogame-battlecode/pull/14)**, merged 08:23:00Z |
+| merge commit on `main` | **`d2f5d3d7033925655cb64a26cc1a5879c041fec5`** |
+| **`ci.yml` GREEN ON `main`** | **run [`34454858348`](https://github.com/Metta-AI/cogame-battlecode/actions/runs/34454858348) → `success`**, all 12 jobs, at `d2f5d3d707` |
+
+### The CI verdicts I took, in order
+
+| run | head | branch | event | conclusion | what I did with it |
+|---|---|---|---|---|---|
+| **`34446572285`** | `7aa8e6712c` | `bc19-year-module` | push | **`success`** | Watched to the end with `gh run watch 34446572285 --exit-status`; the watcher exited **0**. All twelve jobs green: `test`, `docker-smoke`, `wasm-viewer`, `parity-oracle`, `parity-oracle-bc16/bc19/bc20/bc21/bc22/bc23/bc24/bc25`. The `test` job ran 06:45:26Z → 08:15Z (~90 min against a 180 min timeout). **This is the run that proves the code.** |
+| `34454277837` | `530ccbd442` | `bc19-year-module` | push | in progress, not claimed | Not my commit (see *Concurrent operator activity* below). I took a verdict on **one job** of it — `parity-oracle-bc19`, job `102796917054`, **`success`**, including the `Tier B` step the commit edits — because that was the only evidence I needed before rebasing onto it. |
+| `34454706128` (push) and `34454806120` (`pull_request`) | `11d3b29adb` | `bc19-year-module` | — | superseded, not claimed | Started by my push and by the PR. The merge landed before they finished; `ci.yml`'s `concurrency: ci-${{ github.ref }}` queues push runs on the same ref rather than cancelling them, so they were still queued/running when the merge run started. **I claim neither.** |
+| **`34454858348`** | **`d2f5d3d707`** | **`main`** | push | **`success`** | **The phase-20 exit criterion.** Watched with `gh run watch 34454858348 --exit-status`; the watcher exited **0**. 08:23:03Z → 09:33:15Z. All twelve jobs green: `test` (job `102798774973`, 08:23:06Z → 09:33:14Z, 70 min against the 180 min timeout), `docker-smoke`, `wasm-viewer`, `parity-oracle`, `parity-oracle-bc16/bc19/bc20/bc21/bc22/bc23/bc24/bc25`. `parity-oracle-bc19` = job `102798775171`, 08:23:06Z → 08:24:59Z, `success`, **54 of 54 pairs BIT-EXACT, 0 failures, and zero `##[error]` annotations in the whole job**. |
+
+**Zero red runs. Nothing to root-cause, nothing to fix, no approach to
+change.** The reason is that the previous round had already driven the tree to
+a state the sandbox could check: before pushing anything I re-ran the 22
+`tests/test_bc19_*.nim` shards plus the five year-neutral shards it extended
+(`test_manifest`, `test_viewer`, `test_determinism`, `test_constants`,
+`test_sheet`) locally under Nim 2.2.4, **each in both debug and `-d:release`,
+27 shards × 2 modes = 54 runs, 0 failures**, so the only thing I pushed was a
+docs edit no test reads.
+
+### The commit I pushed
+
+**`11d3b29adb9983015d31e42072497fb9377a79ce`** — *"docs(bc19): PARITY.md
+§Status is the oracle's real verdict, not a to-do list"*. One file,
+`docs/PARITY.md`, +37 −17.
+
+`git push` is still refused for a non-`claude/` branch in this sandbox
+(`remote: No anonymous write access`), so this landed through the Git Data API
+exactly as the previous round's commits did: blob → tree → commit → `PATCH`
+the ref **without** `force`. Both halves were verified against the local git
+objects before the ref moved — the API's blob sha
+(`70e47c3d189f76c38ac53e10c25e4d23cfd0e747`) and tree sha
+(`258c82bcce653eb39baf7487387fa2c32bcd6cd3`) are **byte-identical to
+`git rev-parse HEAD:docs/PARITY.md` and `git rev-parse HEAD^{tree}`** on the
+local rebase. The first `PATCH` was rejected `422 Update is not a fast
+forward`, which is how I found the concurrent commit below; I rebased onto it
+and re-landed rather than forcing anything.
+
+#### What §Status now says
+
+It said **"NOT YET RUN"** and listed the driver, the seven bots, the
+comparator, the ledger and the CI job as remaining work — all of which exist
+and all of which have now run. It now states, tier by tier, what ran in
+`parity-oracle-bc19` and what each tier proved, naming the job, the job id,
+the branch, the commit, the conclusion and the wall clock (1 m 57 s):
+
+- the comparator self-test (a one-line-longer oracle trace **must** be
+  reported as a divergence, and the normaliser **must** be applied to both
+  sides);
+- **Tier B over its whole finite domain** — all 7 939 `ceil(sqrt(r²))` values,
+  the reclaim's whole division domain, all 22 committed boards byte-diffed,
+  and the 13 degenerate seeds refused **by name**;
+- **Tiers A / A′ / A″ / B′(a) / C over 54 whole-game pairs** — six trace bots
+  × nine boards, 1000 rounds each, line for line, `--assert-clock` on every
+  one — **54 of 54 BIT-EXACT**;
+- the anti-vacuity assertions taken off the **oracle** trace, not the port's
+  (Tier A's trickle/id-pool/`wc=1`/one-`A`-line-in-round-1000; Tier A′'s five
+  unit types, five action kinds, r² 7938 broadcast, castle talk and carried
+  load; the CHURCH's legal 0-damage `ATTACK` on **all nine** boards; and the
+  three end rungs);
+- **Tier B′(b)**, the separate non-compared `bc19slowbot` run that proves the
+  engine really does freeze a slow robot.
+
+**And it no longer cites `runs/2026-09-10-battlecode-2019/build-report.md`.**
+That was a path inside the private `coworld-builder` repository, in a public
+repo's docs, pointing a reader at a directory they cannot read. `git diff
+origin/main...HEAD | grep '^+.*runs/2026'` is now empty and `grep -rn
+'build-report'` over `docs/ tools/ tests/ src/ .github/ NOTICE README.md`
+returns nothing.
+
+### The PR
+
+**[#14 — `bc19: Battlecode 2019 "Crusade" — the ninth year module`](https://github.com/Metta-AI/cogame-battlecode/pull/14)**
+`bc19-year-module` → `main`, merged **`--merge`** (a real merge commit, as
+every sibling year did):
+
+```
+$ gh api repos/Metta-AI/cogame-battlecode/git/commits/d2f5d3d7 -q '.parents[].sha'
+6e89d0fe57cb12e564451a2d2dec6bc99bd7024d      # main before
+11d3b29adb9983015d31e42072497fb9377a79ce      # bc19-year-module head
+```
+
+`main` moved `6e89d0f` → **`d2f5d3d7033925655cb64a26cc1a5879c041fec5`**.
+Fourteen commits, 123 files, +35 832 / −89. The branch
+`bc19-year-module` **still exists at `11d3b29adb`** — nothing was deleted and
+nothing was force-pushed.
+
+I did **not** author the PR body: PR #14 already existed when I went to open
+it (see below), its head was already my commit `11d3b29adb`, and its body
+already described the module, the divergences and the parity tiers. Replacing
+another author's body with mine would have destroyed information, so I merged
+what was there. My drafted body is at `/tmp/pr_body.md` in the builder
+sandbox if a reviewer wants to diff the two readings.
+
+### Concurrent operator activity — a phase-30 reviewer must know this
+
+**Two things landed on this branch from outside this thread while I was
+working, both authored `daveey` / "David Bloomin":**
+
+1. **`530ccbd44241e24cb18a44a9ce670f1ce5356f68`** at 08:16:29Z, on top of
+   `7aa8e6712c` — *"ci(bc19): strip the deliberate negative test's `::error::`
+   annotations"*. `.github/workflows/ci.yml` only, +9 −1. It pipes the Tier B
+   `--assert-degenerate` invocation through `sed 's/^::error:://'`.
+   **I read it before building on it and it is correct, not a mask.** That
+   invocation is a *deliberate negative test*: `gen_maps_bc19.mjs:208` prints
+   `::error::seed 7 is not a playable board: …` and `:254` prints
+   `::error::1 bc19 map failure(s)` for a run whose whole purpose is that the
+   board be refused, and GitHub was turning both into **annotations on a green
+   job** (run `34446572285`'s summary reads "1 bc19 map failure(s)" beside a
+   passing job). The thirteen refusals are printed by `:248` on **stdout**
+   with **no prefix** (`console.log('refused 7: …')`), so the `sed` cannot
+   touch the strings the following `grep -q "^refused ${seed}: "` asserts, and
+   a seed that stopped being refused still fails the step through the shell's
+   own `::error::` echo, outside the pipe. Verified green in CI twice
+   (`34454277837` job `102796917054`, and the main run) and the main run's
+   `parity-oracle-bc19` job now carries **zero** `##[error]` lines.
+2. **PR #14 itself**, opened 08:22:26Z with `11d3b29adb` as its head — i.e.
+   after my commit landed. `gh pr create` returned *"a pull request for branch
+   `bc19-year-module` into `main` already exists"*.
+
+Neither touches game semantics. I made no other change on their account, and
+I did not relitigate either.
+
+### §Exit-criterion evidence, run at the green `main` sha
+
+Every check below was run in a checkout of
+**`d2f5d3d7033925655cb64a26cc1a5879c041fec5`** — the merge commit, i.e. the
+sha `ci.yml` is green on. Verbatim:
+
+```
+$ git rev-parse HEAD
+d2f5d3d7033925655cb64a26cc1a5879c041fec5
+
+$ if grep -n '<slug>\|<IMAGE>\|<SEATS>' .github/workflows/ci.yml \
+    .github/workflows/coworld-release.yml .github/workflows/coworld-submit.yml \
+    tools/ci/docker_smoke.sh tools/ci/policies.json
+  then echo '::error::unsubstituted placeholders remain'; exit 1; fi
+(no output — zero hits for the three names)
+
+$ grep -n '<cow_id>\|<sha>\|<run_id>\|<name>:vN' .github/workflows/*.yml   # the four DOCUMENTED residue names
+.github/workflows/ci.yml:4672:  # /v2/coworlds/replays/static/<cow_id>/<sha>/index.html, so a bundle that
+.github/workflows/coworld-release.yml:21:#   gh run download <run_id> -R Metta-AI/cogame-battlecode -n release-result \
+.github/workflows/coworld-release.yml:84:  #   lists the nested /v2/coworlds/<cow_id>/episode-requests route instead;
+.github/workflows/coworld-release.yml:367:        # from GET /v2/coworlds/<cow_id> a couple of minutes later. A version bump
+.github/workflows/coworld-submit.yml:17:#   gh run download <run_id> -R Metta-AI/cogame-battlecode -n submit-result \
+.github/workflows/coworld-submit.yml:31:        description: "Policy to submit, <name>:vN (omit :vN for the latest version)"
+
+$ for WF in ci.yml coworld-release.yml coworld-submit.yml; do
+    gh api repos/Metta-AI/cogame-battlecode/actions/workflows/$WF -q '.name + " " + .state'; done
+CI active
+Coworld release active
+Coworld submit active
+
+$ gh workflow view coworld-release.yml -R Metta-AI/cogame-battlecode --yaml \
+  | grep -E '^ +(version|policies|put_secret|skip_certify):'
+      version:
+      policies:
+      put_secret:
+      skip_certify:
+
+$ gh workflow view coworld-submit.yml -R Metta-AI/cogame-battlecode --yaml \
+  | grep -E '^ +(player_id|policy|league_id):'
+      player_id:
+      policy:
+      league_id:
+
+$ grep -n 'release-result' .github/workflows/coworld-release.yml
+21:#   gh run download <run_id> -R Metta-AI/cogame-battlecode -n release-result \
+22:#     -D /tmp/rr && jq . /tmp/rr/release-result.json
+105:          echo "RR=${RUNNER_TEMP}/release-result" >> "$GITHUB_ENV"
+106:          mkdir -p "${RUNNER_TEMP}/release-result"
+240:          # This text ends up in release-result.json, which is uploaded as a
+445:      - name: Assemble release-result.json
+515:          out = os.path.join(rr, "release-result.json")
+554:      - name: Upload release-result
+558:          name: release-result
+559:          path: ${{ env.RR }}/release-result.json
+574:          # run should not gain a second red step for it. `release-result`
+583:            "$RR/release-result.json")"
+
+$ grep -n 'submit-result' .github/workflows/coworld-submit.yml
+17:#   gh run download <run_id> -R Metta-AI/cogame-battlecode -n submit-result \
+18:#     -D /tmp/sr && jq . /tmp/sr/submit-result.json
+59:          echo "SR=${RUNNER_TEMP}/submit-result" >> "$GITHUB_ENV"
+60:          mkdir -p "${RUNNER_TEMP}/submit-result"
+97:      - name: Assemble submit-result.json
+123:          json.dump(result, open(os.path.join(sr, "submit-result.json"), "w"), indent=2)
+136:      - name: Upload submit-result
+140:          name: submit-result
+141:          path: ${{ env.SR }}/submit-result.json
+
+$ grep -n '"player"\|player_id' .github/workflows/coworld-release.yml
+255:              result = softmax("player", "unset")
+270:                  player = row.get("player") or None
+280:                      switch = softmax("player", "use", player)
+308:                      "player_id": player,
+539:                  f"{('`' + p['player_id'] + '`') if p.get('player_id') else 'token owner'} |"
+
+$ git ls-files -s tools/build_replay_viewer.sh tools/ci/docker_smoke.sh
+100755 c399573ebf305697b9e6b8050d0dbc95afa2fe73 0	tools/build_replay_viewer.sh
+100755 b86ea23da5d499b2c88bbfbc43a5639407af91c4 0	tools/ci/docker_smoke.sh
+
+$ test -x tools/build_replay_viewer.sh && test -x tools/ci/docker_smoke.sh && echo 'both executable'
+both executable
+```
+
+Reading of the placeholder grep: **zero hits for the three names**
+`<slug>`, `<IMAGE>`, `<SEATS>`; the six lines above are the **four documented
+residue names** (`<cow_id>`/`<sha>` in `ci.yml`'s static-replay-route comment,
+`<run_id>` in both artifact-readback recipes, `<name>:vN` in
+`coworld-submit.yml`'s `policy` input description) and per
+`templates/README.md` they are runtime values, not residue. The grep was never
+run on a bare `<`.
+
+And the rest of the tree the exit criterion names, at the same sha:
+
+```
+$ ls -1 tools/ci/viewer_smoke.mjs tools/ci/policies.json coworld_manifest_template.json \
+     .github/workflows/{ci,coworld-release,coworld-submit}.yml
+.github/workflows/ci.yml
+.github/workflows/coworld-release.yml
+.github/workflows/coworld-submit.yml
+coworld_manifest_template.json
+tools/ci/policies.json
+tools/ci/viewer_smoke.mjs
+
+$ python3 - <<'PY'   # num_agents in EVERY variant and in the cert fixture
+variant bc26 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc20 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc21 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc24 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc25 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc23 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc22 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc16 game_config.num_agents = 2 | variant-level num_agents present: False
+variant bc19 game_config.num_agents = 2 | variant-level num_agents present: False
+certification game_config.num_agents = 2 | year = bc26
+replay_viewer = {"bundle": "static-replay-viewer"}
+```
+
+`num_agents` is inside every variant's `game_config` and inside
+`certification.game_config`, and **never** at a variant's top level
+(`CoworldVariant` is `additionalProperties: false`). The certification fixture
+is still year **`bc26`** and the manifest `player[]` block is unchanged, as
+ruled. `tools/ci/policies.json` carries 36 entries, of which the four new bc19
+ones are `battlecode-bc19-saber` and `battlecode-bc19-preachers` (both
+`PLAYER_PROMPT`, champion #2 carrying
+`"player": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"`) plus
+`battlecode-saber` and `battlecode-examplefuncsplayer19` (both
+`PLAYER_SCRIPTED`), all four on the same `cogame-battlecode-player:latest`
+image, env-switched. Both entry points live in `src/battlecode_player.nim`
+(`PLAYER_PROMPT` → LLM seat, `PLAYER_SCRIPTED` → scripted seat).
+
+### Tier C parity ledger state
+
+**`tools/ci/parity_ledger_bc19.json` is `[]` — empty — and it stayed empty
+through both green runs. There is nothing to root-cause.**
+
+| evidence | branch run `34446572285` | **main run `34454858348`** |
+|---|---|---|
+| `parity-oracle-bc19` conclusion | `success` (job `102772780365`) | **`success`** (job `102798775171`) |
+| pairs compared | `compared 54 whole-game pairs, 0 failure(s)` | `compared 54 whole-game pairs, 0 failure(s)` |
+| `BIT-EXACT` lines in the job log | **54** | **54** |
+| trace volume | 819 876 lines a side, **1 639 752 lines compared** (398 lines on the shortest pair, 39 804 on the longest) | same pair set |
+| `##[error]` annotations in the job | 2 (both from the deliberate negative test; that is what `530ccbd44` fixed) | **0** |
+| `parity-bc19-digests` artifact | **does not exist** | **does not exist** |
+
+The missing artifact is the *positive* evidence, not a gap:
+`tools/ci/parity_tiers_bc19.py` writes a digest **only** when
+`reports` is non-empty (i.e. only on a divergence), and the upload step is
+`if-no-files-found: ignore`. No divergence ⇒ no digest file ⇒ no artifact. A
+divergence with no ledger entry exits **2** and reddens the job, which is
+root-cause-or-fail enforced by the comparator rather than by convention.
+
+### From the design note: what is implemented, and the one place the wording moved
+
+Everything the design note specifies is in the tree and exercised by CI. The
+`## M5 remaining work` list of the previous round is fully discharged: the
+oracle driver and all seven bots, `tools/parity_trace_bc19.nim`,
+`tools/ci/parity_tiers_bc19.py`, the empty ledger, the `parity-oracle-bc19`
+job, all **22** `tests/test_bc19_*.nim` shards, `tests/bc19_fixture.nim`,
+`tools/gen_bc19_fixture_replay.nim`, `tests/fixtures/replay-bc19.json`, the
+`tools/ci/renderer_fixture.html` bc19 row and both bc19
+`wasm_replay_smoke.cjs` invocations (the smoke episode's replay and the
+committed fixture).
+
+**One wording divergence, and it is stated in the test rather than papered
+over.** M5 item 6 said the fixture "must emit **all twelve** beat kinds or
+`test_bc19_beats.nim` is a CSS inventory rather than a gate." The committed
+fixture emits **eleven of the twelve**, and `tests/test_bc19_beats.nim:18-26`
+records why: `famine` fires only when a store is at zero **and** the acting
+robot asked for something it could not pay for, and `saber` never asks for
+what it cannot pay — that is the `refused_actions == 0` gate in
+`tests/test_bc19_survival.nim`. `famine` is a spectator signal for a **weak or
+an LLM** order. So its CSS rule ships, its **label is exercised from a
+synthetic event** (two events, one per store, each label asserted against the
+store it names), and the "every emitted kind has a scoped CSS rule" obligation
+is deliberately stated over the *emitted* set so the file can say this instead
+of pretending. The gate is not a CSS inventory: the other eleven are asserted
+against the committed bytes.
+
+**Divergence ruling 1's condition of acceptance is satisfied on the merged
+tree**, and I verified it rather than assuming it: `docs/RULES-BC19.md:129` is
+the **knob table** row for `fuel_reserve`, and it reads *"the fuel floor below
+which the order stops making WAR, not the floor below which it stops making
+MONEY"*, with the pilgrim arithmetic (+10 a turn for one pilgrim against a
+flat 25 a round for the whole order), the measured deadlock (3 280 karbonite
+banked, four military units, zero damage on `seed-0043`/`seed-0048`), the
+scope (*"the reserve gates military builds, attacks and military movement;
+`mine`, `move` and economy builds are funded whenever the order can pay"*) and
+the two teeth the knob test asserts (*"rounds at zero fuel down, attacks
+down"*). It is in the doctrine sheet's own table, not only in §Divergences
+(where it is item 14).
+
+### Cross-year edits: still exactly the two authorised
+
+- **Ruling 2 (mandated).** `tests/fixtures/replay-{bc16,bc22,bc23}.json` are
+  regenerated and now read `game_version: "GV12"`; `replay-bc19.json` is
+  `GV12` too. `sim_types.nim` is `GameVersion = "GV12"` with
+  `ReplayCompatibleGameVersions` **extended** — the array still lists
+  `"GV09", "GV10", "GV11", GameVersion` and was never reset.
+  `replay-bc20/21/24/25.json` are untouched.
+- **Ruling 3.** `ci.yml`'s `test` job `timeout-minutes` is 180. The green main
+  run's `test` job needed most of it, which is why the bump was necessary
+  rather than tidy.
+- **Nothing else.** `git diff origin/main...HEAD --name-only | grep years/ |
+  grep -v years/bc19/` returns exactly `src/battlecode/years/dispatch.nim` and
+  `src/battlecode/years/registry.nim` — the two year-neutral registration
+  files, additive. No sibling year module file, map, atlas or manifest variant
+  is edited. **The sibling parity comparator zip-tail/`toHex` bugs in
+  bc20/21/24/25 and `match.nim:480`'s `max(1,min())` clamp are untouched**, as
+  ruled. No third cross-year edit was needed, so none was made.
+- **No Node, no npm, no JS runtime, no JDK in any Docker image stage.**
+  `Dockerfile` and `Dockerfile.replay-viewer` are not in the diff at all. The
+  2019 engine exists only in the `parity-oracle-bc19` CI job and in
+  `tools/gen_maps_bc19.mjs`.
+- **The version bump 0.8.2 → 0.9.0 is untouched**, as ruled — it is phase 40's.
+
+### What a phase-30 reviewer should look at first
+
+1. **`docs/PARITY.md` §bc19 §Status** — the only file this round changed. It is
+   now a verdict with a run id, not a plan.
+2. **`530ccbd44`, the operator's `sed 's/^::error:://'` in `ci.yml`'s Tier B
+   step.** My reading of why it masks nothing is above; it deserves a second
+   pair of eyes because "strip the error prefix" is a shape that usually *is*
+   a mask, and here it is not.
+3. **`tests/test_bc19_beats.nim`'s eleven-of-twelve beat set**, and whether
+   `famine`-from-a-synthetic-event is the right answer or whether the fixture
+   should be made to run a weak order until it fires.
+4. **PR #14's body was written by `daveey`, not by this builder.** If review
+   wants the builder's own summary of the module, the divergences and the
+   tiers, it is the `/tmp/pr_body.md` draft named above and this report.
