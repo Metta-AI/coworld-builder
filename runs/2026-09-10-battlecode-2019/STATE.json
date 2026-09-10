@@ -6,7 +6,9 @@
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
   "phase": "10",
-  "phase_attempts": {},
+  "phase_attempts": {
+    "10": 1
+  },
   "review_round": 0,
   "coworld": {
     "version": "",
