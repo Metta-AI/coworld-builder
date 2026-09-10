@@ -80,8 +80,8 @@
     "reason": "battlecode/bc16 was already a CITIES line on metta main (places.mjs:393, label 2016, territory t-battlecode) and already renders as a dot on the live https://softmax.com/atlas; placed by metta commit 8d071e13 (PR #22386, merged 2026-09-10T00:59:53Z), whose own follow-up section says re-dispatching atlas-update.yml for leagues it placed is no longer needed. No dispatch made, no second PR opened."
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-10T01:32:00Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-10T01:31:37Z",
+  "session_ended_at": "2026-09-10T01:31:37Z",
   "session_id": "05c2d53c",
   "log": "runs/2026-09-09-battlecode-2016/log.md"
 }
