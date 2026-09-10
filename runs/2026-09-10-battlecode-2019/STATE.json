@@ -9,7 +9,8 @@
   "phase_attempts": {
     "10": 1,
     "20": 1,
-    "40": 1
+    "40": 1,
+    "50": 1
   },
   "review_round": 1,
   "coworld": {
@@ -25,11 +26,17 @@
       "battlecode-saber:v1",
       "battlecode-examplefuncsplayer19:v1"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "90ba8153-1e75-4c92-9fa1-273ac88f3670",
+      "a606e8be-0885-46c8-a25d-1682c17bbe3a"
+    ]
   },
   "league": {
-    "id": "",
-    "division": ""
+    "id": "league_1ce0515e-3218-4f13-a80d-e066890607db",
+    "division": "div_f794f180-5b39-45fc-adcf-61b501a280cb",
+    "pool_funded": true,
+    "short_name": "bc19",
+    "seed": "lseed_4e7ef04d-911a-4afd-9f86-586847154eae"
   },
   "verify": {
     "rounds": [],
@@ -51,7 +58,19 @@
     "attempted_at": null,
     "reason": ""
   },
-  "blocked": null,
+  "blocked": {
+    "phase": "50",
+    "at": "2026-09-10T13:35:00Z",
+    "ask": "raise battlecode's 15 USD/day coworld budget (or confirm we wait for the 2026-09-11T07:00Z reset) so the bc19 league can run a round",
+    "probe": "B=https://softmax.com/api/observatory/v2; H=(-H \"Authorization: Bearer $SOFTMAX_TOKEN\" -H \"X-Use-Elevated-Privileges: true\"); curl -sfS \"$B/rounds?league_id=league_1ce0515e-3218-4f13-a80d-e066890607db&limit=1\" \"${H[@]}\" | jq -e '(if type==\"array\" then . else .entries end)|length>0' >/dev/null || curl -sfS \"$B/coworlds/battlecode/budget\" \"${H[@]}\" | jq -e '.remaining_usd>0' >/dev/null",
+    "error": "POST /leagues/league_1ce0515e-3218-4f13-a80d-e066890607db/trigger-round -> 200 {\"kind\":\"platform\",\"workflow_id\":\"ladder-league_1ce0515e-...\"} twice, and GET /rounds?league_id=... stays {\"entries\": []} with no round row and no error. GET /coworlds/battlecode/budget: {\"daily_budget_usd\": 15.0, \"spent_today_usd\": 15.3917415, \"remaining_usd\": -0.3917415, \"resets_at\": \"2026-09-11T07:00:00Z\", \"projected_today_usd\": 57.16, \"budget_status\": \"over\"}. Control in the same minutes: all seven sibling battlecode leagues stopped at 2026-09-10T10:00Z (bc16 round 79, bc26 round 598) while non-battlecode leagues completed rounds at 13:19:34Z (paintbot-cdx) and 13:20:17Z (paintbot-wasm) \u2014 coworld-scoped spend cap, not a platform outage",
+    "attempts": [
+      "phase 50 step 7b in full: POST reward-pool/grants credits=100 -> 200 granted_credits=100.0, PUT reward-pool/drip 100/300 -> 200, owner-status credits.pool_credits=200.0 > 0, then trigger -> 200 and /rounds still empty. Rules out the documented pool-at-zero failure mode",
+      "verified the fillers-before-trigger and unpaused preconditions, then triggered a SECOND time: league.filler_policy_version_ids = exactly [90ba8153 battlecode-saber:v1, a606e8be battlecode-examplefuncsplayer19:v1] and neither champion's, rounds_paused_at null; second trigger 200, /rounds empty across three polls over 2.5 min, no error text anywhere to quote",
+      "hunted for a budget lever operable from this token instead of escalating: /coworld-budgets, /budgets, /leagues/<L>/budget, /games/<G>/budget and /games/<G>/settings all 404; the only budget surface is the READ-ONLY GET /coworlds/battlecode/budget. Raising a spend cap is also not on the coordinator's rails, so it is not mine to decide"
+    ],
+    "subtask": "1218361476033077"
+  },
   "heartbeat_at": "2026-09-10T13:35:00Z",
   "session_ended_at": null,
   "session_id": "34aa8a31",
