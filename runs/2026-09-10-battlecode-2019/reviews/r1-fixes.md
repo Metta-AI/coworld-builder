@@ -307,3 +307,89 @@ checks)`, `test_viewer: ok (1151 checks)`.
  docs/RULES-BC19.md | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 ```
+
+---
+
+## r1-F6c — the third site, in code comments
+
+Added after the round closed, on the coordinator's ruling on the third site the post-F6b sweep
+turned up. Scope was that one comment, and the ruling required it to land **after** the 0.9.0
+release had been dispatched, so the release could not snapshot a sha whose `ci.yml` had not
+concluded.
+
+**The release run waited on:** `coworld-release.yml` run **34480332524** —
+`workflow_dispatch`, `headSha f5de5bdbab21fb897f6eb4c27be76a1dced8f6bb` (the r1-F6b merge, the
+sha the coordinator gated on), `createdAt 2026-09-10T13:03:53Z`, conclusion **`success`** at
+~13:15Z. It existed and had started before this fix was written, and I additionally waited for it
+to **conclude** — its predecessors took 8–9 minutes, so the wait was cheap and it removes the one
+residual hazard the ruling was aimed at: a failed release being re-dispatched on `--ref main`
+into a window where my commit was present but its CI was not finished. My commit was created
+after 13:15Z. Checked before landing, for the same reason: `ci.yml`'s concurrency group is
+`ci-${{ github.ref }}` with `cancel-in-progress` only on `pull_request`, and
+`coworld-release.yml`'s is `coworld-release` with `cancel-in-progress: false`, so a push to `main`
+can cancel neither the release nor the `main` CI run.
+
+| finding | disposition | commit | files | checklist item |
+|---|---|---|---|---|
+| F6c | fixed | `fd5dfc8146e09f004bab9af06fad94a11ec44cce` | `src/battlecode/years/bc19/chassis/econ.nim:97-103` (the doc comment on `canSpend`) | **none** — advisory truthfulness defect, same class as F6/F6b |
+
+**Before** (last two lines of `canSpend`'s doc comment):
+
+> `  ## for them. `fuel_reserve`'s teeth are unchanged and are exactly the two`
+> `  ## the knob test asserts: rounds at zero fuel down, attacks down.`
+
+**After:**
+
+> `  ## for them. Of `fuel_reserve`'s two teeth the knob test asserts the first`
+> `  ## as written — rounds ended with the fuel store at zero down, -49 %`
+> `  ## against a 40 % threshold — and the second NORMALISED: raw attacks go UP,`
+> `  ## 1 296 -> 2 331, because an order at reserve 0 cannot afford to BUILD the`
+> `  ## soldiers either, so what is asserted is attacks per military unit built`
+> `  ## down, -58 % against 20 %. `docs/RULES-BC19.md`'s `fuel_reserve` row`
+> `  ## carries the reading.`
+
+Consistent with `:129` (`53d4a677`) and `:245` (`96d0d6b9`), in the file's own `##` register and
+wrap width (longest new line 79 chars; the file's previous longest was also 79), ASCII `-49 %` /
+`1 296 -> 2 331` as the `.nim` comments in this repo write measurements, and it points at the
+knob table row rather than restating the arithmetic.
+
+**Comment lines only, verified mechanically:**
+`git diff -U0 | grep -E '^[+-]' | grep -v '^[+-][+-]' | grep -vE '^[+-]\s*##' | wc -l` = **0**.
+`canSpend`'s three guards (`w.karbonite[t] - s.committedK < kCost`,
+`w.fuel[t] - s.committedF < fCost`, and the `not essential and … < s.fuelGate()` gate) and every
+constant are untouched; `tests/test_bc19_knobs.nim` is untouched. Correction to my own shorthand
+in the F6b section above: the proc carrying this comment is **`canSpend`**, not `canAfford`.
+`git diff --stat f5de5bdb f0570643` = `src/battlecode/years/bc19/chassis/econ.nim | 9 +++++++--`,
+1 file, 7 insertions, 2 deletions.
+
+**The sweep afterwards, at the merge sha `f0570643`:**
+
+```
+$ grep -rn 'attacks down' .
+(no output, exit 1)
+
+$ grep -rn 'rounds at zero fuel' .
+./tests/test_bc19_knobs.nim:52:##  5. `fuel_reserve` 0 -> 1500 — rounds at zero fuel 9 381 -> 4 731 is
+```
+
+Exactly what was expected: zero hits for the falsehood anywhere in the repo, and the single
+remaining `rounds at zero fuel` is the knob test header's own measurement, which is correct as
+written. All three sites of the F6 sentence — `docs/RULES-BC19.md:129`, `:245` and
+`econ.nim:97-98` — are now consistent with what `tests/test_bc19_knobs.nim` asserts.
+
+**Landed:** branch `claude/r1-f6c-sthr_01W9ytsyw786zhkaNTHb2dcb` (one commit, Git Data API,
+remote tree `0359511d4bd3744763bdb6af40a040dc1a00bc45` == local `HEAD^{tree}`), PR
+<https://github.com/Metta-AI/cogame-battlecode/pull/17>, merged `--merge` →
+**`f05706438808a4f6eac1a16a4445838f09f0422a`** on `main` (now `main`'s head).
+
+**CI:** `ci.yml` run **34481618674** — <https://github.com/Metta-AI/cogame-battlecode/actions/runs/34481618674>
+— `push`, `main`, `headSha f05706438808a4f6eac1a16a4445838f09f0422a`, conclusion **`success`**,
+**12/12 jobs** success. Check counts unchanged again in its `test` job (`102885543960`), including
+the shard that exercises `canSpend` through the scripted chassis:
+`test_bc19_baselines: ok (72 checks)`, `test_bc19_knobs: ok (41 checks)`,
+`test_bc19_sheet: ok (215 checks)`, `test_bc19_beats: ok (1240 checks)`,
+`test_viewer: ok (1151 checks)` — all identical to the reviewed run's job `102798774973`.
+
+**Note for the release ledger:** the shipped 0.9.0 artefact is the release run above, built from
+`f5de5bdb`, which does **not** contain this commit. `main` is now one comment-only commit ahead of
+what was released, and `ci.yml` is `success` on both shas.
