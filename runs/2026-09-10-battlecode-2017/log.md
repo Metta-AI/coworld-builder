@@ -41,3 +41,6 @@
 2026-09-10T23:22:00Z 20 remaining gate: ci.yml on MAIN, run 34536659753 (sha 07ad48cc, started 22:17Z) — 12 of 13 jobs already green INCLUDING parity-oracle-bc17; only `test` is in_progress. It ran 98 min on each of the last two branch runs (18:05->19:43, 20:38->22:16), so main's is due ~23:55Z. Polling it; no new dispatch while a green-so-far run is in flight
 2026-09-10T23:22:00Z heartbeat phase=20
 2026-09-10T23:33:00Z heartbeat phase=20
+2026-09-10T23:58:00Z 20 EXIT CRITERION MET: ci.yml run 34536659753 on MAIN at 07ad48cc concluded SUCCESS with 13/13 jobs green (test finished 23:54:53Z after 97m36s; parity-oracle-bc17 green among them). Static exit checks were run by me at 23:22Z on the same sha and are recorded above
+2026-09-10T23:58:00Z progress phase=20 marker=ci.yml run 34536659753 success on main@07ad48cc (PR #18 merged 22:17Z)
+2026-09-10T23:58:00Z 20 -> 30 phase transition: STATE written phase=30 review_round=1 and PUSHED BEFORE the reviewer is dispatched; phase-20 subtask 1218362347253265 completed with the repo + green-run URLs
