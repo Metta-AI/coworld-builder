@@ -28,3 +28,5 @@
 2026-09-10T04:42:00Z heartbeat phase=20
 2026-09-10T07:50:00Z 00 attempts_reset phase=20 reason=progress marker=branch-commit-d268dde7ee472f4eb6a85d63f43b585793242483
 2026-09-10T07:50:00Z 00 resume at phase 20 attempt=1 session=34aa8a31
+2026-09-10T08:05:00Z 20 resume findings: previous session's builder thread is DEAD (this container booted 2026-09-10T07:45:49Z; ps shows no worker), last branch commit 7aa8e6712c at 06:44:23Z. Branch bc19-year-module now carries 12 commits, all 23 bc19 test shards, tests/fixtures/replay-bc19.json, tools/oracle/bc19/* and the parity-oracle-bc19 job (ci.yml:3280). CI run 34446572285 (head 7aa8e6712c) is IN PROGRESS: 10/12 jobs green incl parity-oracle-bc19 (06:46-06:48), docker-smoke and wasm-viewer green; only `test` still running (started 06:45, siblings take 46-80 min). No PR opened yet. Remaining phase-20 work: CI verdict, docs/PARITY.md bc19 Status rewrite (still says NOT YET RUN and cites a private coworld-builder run path at line 2100), PR -> merge --merge -> ci.yml green on main
+2026-09-10T08:05:00Z heartbeat phase=20
