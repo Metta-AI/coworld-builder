@@ -40,3 +40,4 @@
 2026-09-10T23:22:00Z 20 the round-2 builder never wrote runs/2026-09-10-battlecode-2017/build-report.md (its session died with the container). Not a phase gate: prompts/20-build.md §Writes owes STATE, log.md, the Asana subtask and a green CI run on main — the report is a brief artifact, and everything it would have asserted I verified above from main's own tree and from the CI API. No third builder round is dispatched to write a document
 2026-09-10T23:22:00Z 20 remaining gate: ci.yml on MAIN, run 34536659753 (sha 07ad48cc, started 22:17Z) — 12 of 13 jobs already green INCLUDING parity-oracle-bc17; only `test` is in_progress. It ran 98 min on each of the last two branch runs (18:05->19:43, 20:38->22:16), so main's is due ~23:55Z. Polling it; no new dispatch while a green-so-far run is in flight
 2026-09-10T23:22:00Z heartbeat phase=20
+2026-09-10T23:33:00Z heartbeat phase=20
