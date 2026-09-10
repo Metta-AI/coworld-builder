@@ -393,3 +393,89 @@ the shard that exercises `canSpend` through the scripted chassis:
 **Note for the release ledger:** the shipped 0.9.0 artefact is the release run above, built from
 `f5de5bdb`, which does **not** contain this commit. `main` is now one comment-only commit ahead of
 what was released, and `ci.yml` is `success` on both shas.
+
+---
+
+## r1-F6c hand-off — authorised, then ordered deferred; the order arrived AFTER it had landed
+
+**Correction to the record, first, because it matters more than the hand-off.** The coordinator's
+stand-down ("do not land it, stop polling, land nothing") reached me **after** r1-F6c was already
+merged and green. The section above this one is what actually happened and it stands. Timeline, in
+UTC on 2026-09-10:
+
+| time | event |
+|---|---|
+| 13:03:53Z | `coworld-release.yml` **34480332524** created on `f5de5bdbab` — 0.9.0 canonical + hosted-certified `cow_5657f03c-4ae9-406c-87c6-ea797645fece` |
+| ~13:06Z | the ruling to fix F6c **after** the release reached me; I polled immediately and found 34480332524 already `in_progress`, which I reported as being older than the message |
+| ~13:15Z | 34480332524 concluded **`success`**; I had additionally waited for that conclusion |
+| 13:16:30Z | F6c merged as **`f05706438808a4f6eac1a16a4445838f09f0422a`** (PR #17, commit `fd5dfc8146e09f004bab9af06fad94a11ec44cce`); `ci.yml` run **34481618674** starts |
+| 14:50Z | 34481618674 concluded **`success`**, 12/12 jobs, at `f0570643` |
+| 14:52Z | report appended (`a94b0af4` in this repo) and reported to the coordinator |
+| after that | stand-down received. **Nothing has been pushed to `Metta-AI/cogame-battlecode` since, and nothing will be.** |
+
+So the wait condition was met in substance — the release was dispatched, and had *finished*, before
+the fix was written — and the coordinator's own note that a run created after the instruction was
+impossible is consistent with what I reported at the time. What was not possible was deferring a
+commit that had already been merged four hours before the order to defer it.
+
+**Current state of the repo, verified at the time of writing:** `main` head
+`f05706438808a4f6eac1a16a4445838f09f0422a`; **no open PRs**; `ci.yml` `success` on `f0570643`
+(34481618674) *and* on the released `f5de5bdb` (34472691904). The three `claude/…` branches from
+this round remain in place (never deleted, per instruction). The repo is quiet.
+
+**One consequence the resume needs, which nobody has ruled on.** Two `coworld-submit.yml` runs
+were dispatched by phase 50 on `--ref main` at **13:20:05Z** (`34481984448`) and **13:20:48Z**
+(`34482063422`), both **`success`** — and both carry `headSha f057064388`, i.e. they ran on the
+F6c merge, three and a half minutes after it landed, not on the released `f5de5bdb`. The only
+difference between those two shas is one `##` comment, so there is no behavioural consequence, but
+the submit runs' sha does not equal the release's sha and a heartbeat comparing them will notice.
+**`main` is one comment-only commit ahead of the 0.9.0 artefact.** Two ways to close it, both
+needing a decision I did not take:
+1. **Leave it.** `ci.yml` is green on both shas and the diff is a comment. The next release off
+   `main` absorbs it. This is the cheap and, in my read, correct option.
+2. **Revert `f0570643`** so `main` equals the released tree exactly. That is another push to a
+   repo the coordinator has ordered quiet, and it would need its own CI run, so I did not do it.
+
+**The hand-off itself, as requested — kept here so a resume finds the change already specified
+rather than rediscovering it.** It is already applied at `f0570643`; if a future run reverts or
+re-derives this tree, this is the text.
+
+- **File and line:** `src/battlecode/years/bc19/chassis/econ.nim:97-98`, the last two lines of the
+  doc comment on `proc canSpend*` (the fuel-gate ledger; **`canSpend`**, not `canAfford`, which is
+  a shorthand slip in an earlier section of this file).
+- **The false text** (as it stood at `f5de5bdb`, the released sha):
+
+  > `  ## for them. `fuel_reserve`'s teeth are unchanged and are exactly the two`
+  > `  ## the knob test asserts: rounds at zero fuel down, attacks down.`
+
+  False for the same reason as `docs/RULES-BC19.md:129` (r1-F6) and `:245` (r1-F6b):
+  `tests/test_bc19_knobs.nim:353-362` asserts *attacks per military unit built* down, and raw
+  attacks measured **up** 1 296 → 2 331.
+- **The replacement wording** (consistent with `:129` and `:245`, in the file's `##` register and
+  79-char wrap, ASCII measurements as this repo's `.nim` comments write them):
+
+  > `  ## for them. Of `fuel_reserve`'s two teeth the knob test asserts the first`
+  > `  ## as written — rounds ended with the fuel store at zero down, -49 %`
+  > `  ## against a 40 % threshold — and the second NORMALISED: raw attacks go UP,`
+  > `  ## 1 296 -> 2 331, because an order at reserve 0 cannot afford to BUILD the`
+  > `  ## soldiers either, so what is asserted is attacks per military unit built`
+  > `  ## down, -58 % against 20 %. `docs/RULES-BC19.md`'s `fuel_reserve` row`
+  > `  ## carries the reading.`
+
+- **Comment-only, no behavioural component.** `git diff -U0 | grep -E '^[+-]' | grep -v
+  '^[+-][+-]' | grep -vE '^[+-]\s*##'` is empty; `canSpend`'s three guards and `s.fuelGate()` are
+  untouched; `tests/test_bc19_knobs.nim` is untouched (the substituted statistic is accepted);
+  `test_bc19_baselines`, the shard that drives `canSpend` through the scripted chassis, reports the
+  same **72 checks** before and after.
+- **Authorised** by the coordinator as `r1-F6c` after the r1-F6b sweep found it, then **ordered
+  deferred** because the run went **Blocked at phase 50** — the whole `battlecode` coworld is over
+  its 15 USD/day spend cap (spent 15.39, `budget_status: over`, resets 2026-09-11T07:00:00Z), so
+  the ladder creates no round and the repo is to stay still. The deferral order is honoured from
+  here on: no further push.
+- **The sha it sits on top of:** release run **34480332524**, `workflow_dispatch`, sha
+  **`f5de5bdbab`** (0.9.0 canonical + hosted-certified `cow_5657f03c-4ae9-406c-87c6-ea797645fece`).
+  As landed it is the single commit `fd5dfc81` on top of that sha, merged as `f0570643`.
+
+**Sweep, still true at `f0570643`:** `grep -rn 'attacks down' .` → nothing repo-wide;
+`grep -rn 'rounds at zero fuel' .` → only `tests/test_bc19_knobs.nim:52`, the knob test header's
+own measurement, correct as written. All three sites of the F6 sentence agree with the test.
