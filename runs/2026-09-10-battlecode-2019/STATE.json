@@ -5,7 +5,7 @@
   "slug": "battlecode-2019",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "10",
+  "phase": "20",
   "phase_attempts": {
     "10": 1
   },
@@ -47,7 +47,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-10T01:56:00Z",
+  "heartbeat_at": "2026-09-10T03:05:00Z",
   "session_ended_at": null,
   "session_id": "8f14d229",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
