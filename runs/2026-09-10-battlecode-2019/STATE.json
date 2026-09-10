@@ -8,14 +8,15 @@
   "phase": "40",
   "phase_attempts": {
     "10": 1,
-    "20": 1
+    "20": 1,
+    "40": 1
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.9.0",
+    "cow_id": "cow_5657f03c-4ae9-406c-87c6-ea797645fece",
+    "manifest_sha": "sha256:fa770afb41e203a187691b5ab75de70990b3aebd1695b57da6986a939af37503",
+    "release_run_id": "34480332524"
   },
   "policies": {
     "champion1": "battlecode-bc19-saber",
