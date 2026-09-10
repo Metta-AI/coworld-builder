@@ -61,18 +61,19 @@
   "blocked": {
     "phase": "50",
     "at": "2026-09-10T13:35:00Z",
-    "ask": "raise battlecode's 15 USD/day coworld budget (or confirm we wait for the 2026-09-11T07:00Z reset) so the bc19 league can run a round",
+    "ask": "ANSWERED by daveey 2026-09-10T17:26Z + 22:41Z, subtask 1218361476033077 completed 22:42:01Z \u2014 original ask was \"raise battlecode's 15 USD/day coworld budget (or confirm we wait for the 2026-09-11T07:00Z reset) so the bc19 league can run a round\"; the answer is DO NOT raise the cap (stays 15.00 USD/day) and instead the eight battlecode leagues' cadences were cut (bc19/bc16/bc22/bc23/bc25 to round_interval_minutes=288, bc20/bc21/bc26 to 144), with the explicit operator instruction \"Do not trigger-round before\" the 2026-09-11T07:00:00Z budget reset. NO HUMAN ACTION IS OUTSTANDING: this run is parked on the clock, not on a person, and blocked.probe is the gate that releases it \u2014 it exits 0 once the reset restores budget headroom or a bc19 round row appears. Deliberately left in Blocked rather than Running so the prompts/00-claim.md 5.1 no-progress counter cannot drive it into a false phase 90 during the ~8 hours in which the only remaining call is forbidden.",
     "probe": "B=https://softmax.com/api/observatory/v2; H=(-H \"Authorization: Bearer $SOFTMAX_TOKEN\" -H \"X-Use-Elevated-Privileges: true\"); curl -sfS \"$B/rounds?league_id=league_1ce0515e-3218-4f13-a80d-e066890607db&limit=1\" \"${H[@]}\" | jq -e '(if type==\"array\" then . else .entries end)|length>0' >/dev/null || curl -sfS \"$B/coworlds/battlecode/budget\" \"${H[@]}\" | jq -e '.remaining_usd>0' >/dev/null",
     "error": "POST /leagues/league_1ce0515e-3218-4f13-a80d-e066890607db/trigger-round -> 200 {\"kind\":\"platform\",\"workflow_id\":\"ladder-league_1ce0515e-...\"} twice, and GET /rounds?league_id=... stays {\"entries\": []} with no round row and no error. GET /coworlds/battlecode/budget: {\"daily_budget_usd\": 15.0, \"spent_today_usd\": 15.3917415, \"remaining_usd\": -0.3917415, \"resets_at\": \"2026-09-11T07:00:00Z\", \"projected_today_usd\": 57.16, \"budget_status\": \"over\"}. Control in the same minutes: all seven sibling battlecode leagues stopped at 2026-09-10T10:00Z (bc16 round 79, bc26 round 598) while non-battlecode leagues completed rounds at 13:19:34Z (paintbot-cdx) and 13:20:17Z (paintbot-wasm) \u2014 coworld-scoped spend cap, not a platform outage",
     "attempts": [
       "phase 50 step 7b in full: POST reward-pool/grants credits=100 -> 200 granted_credits=100.0, PUT reward-pool/drip 100/300 -> 200, owner-status credits.pool_credits=200.0 > 0, then trigger -> 200 and /rounds still empty. Rules out the documented pool-at-zero failure mode",
       "verified the fillers-before-trigger and unpaused preconditions, then triggered a SECOND time: league.filler_policy_version_ids = exactly [90ba8153 battlecode-saber:v1, a606e8be battlecode-examplefuncsplayer19:v1] and neither champion's, rounds_paused_at null; second trigger 200, /rounds empty across three polls over 2.5 min, no error text anywhere to quote",
-      "hunted for a budget lever operable from this token instead of escalating: /coworld-budgets, /budgets, /leagues/<L>/budget, /games/<G>/budget and /games/<G>/settings all 404; the only budget surface is the READ-ONLY GET /coworlds/battlecode/budget. Raising a spend cap is also not on the coordinator's rails, so it is not mine to decide"
+      "hunted for a budget lever operable from this token instead of escalating: /coworld-budgets, /budgets, /leagues/<L>/budget, /games/<G>/budget and /games/<G>/settings all 404; the only budget surface is the READ-ONLY GET /coworlds/battlecode/budget. Raising a spend cap is also not on the coordinator's rails, so it is not mine to decide",
+      "2026-09-10T22:49:42Z heartbeat: probe re-run -> exit 1 (remaining_usd -0.39, /rounds empty). Phase-50 preconditions re-verified read-only and all intact (rounds_paused_at null, ladder enabled, round_interval_minutes 288 per the human's fix, filler_policy_version_ids exactly the two baselines, pool_credits 200.0), so the resume is a single trigger-round at step 8 and nothing earlier. No trigger issued: the operator forbade it before 07:00Z"
     ],
     "subtask": "1218361476033077"
   },
-  "heartbeat_at": "2026-09-10T14:54:11Z",
-  "session_ended_at": "2026-09-10T14:54:11Z",
+  "heartbeat_at": "2026-09-10T22:49:42Z",
+  "session_ended_at": "2026-09-10T22:49:42Z",
   "session_id": "34aa8a31",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
 }
