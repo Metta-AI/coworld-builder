@@ -42,8 +42,9 @@
     "rounds": [
       "round_aa77a013-672b-4b0b-a740-2cc8e9521241"
     ],
-    "replay": "",
-    "iframe_static": false
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/8b68a7cb-c4b1-4749-8f80-1e5a072b8ab1.replay",
+    "iframe_static": true,
+    "viewer_check_run": "34544098607"
   },
   "announce": {
     "attempted_at": null,
@@ -61,8 +62,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-10T23:52:00Z",
-  "session_ended_at": null,
+  "heartbeat_at": "2026-09-11T00:01:00Z",
+  "session_ended_at": "2026-09-11T00:01:00Z",
   "session_id": "8caffbc3",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
 }
