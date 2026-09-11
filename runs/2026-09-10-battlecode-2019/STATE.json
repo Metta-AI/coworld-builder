@@ -5,7 +5,7 @@
   "slug": "battlecode-2019",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "75",
+  "phase": "80",
   "phase_attempts": {
     "10": 1,
     "20": 1,
@@ -69,18 +69,18 @@
     "discord_message_id": "1547914094034813039"
   },
   "atlas": {
-    "status": "",
-    "pr_url": "",
-    "branch": "",
-    "region": "",
-    "x": 0,
-    "y": 0,
-    "dispatch_run_id": "",
-    "attempted_at": null,
-    "reason": ""
+    "status": "pr_open",
+    "pr_url": "https://github.com/Metta-AI/metta/pull/22726",
+    "branch": "atlas/battlecode-bc17-34584264437",
+    "region": "paintlands",
+    "x": 238,
+    "y": 291,
+    "dispatch_run_id": "34584264437",
+    "attempted_at": "2026-09-11T10:20:18Z",
+    "reason": "battlecode/bc19 was already placed, at 238,291 in paintlands inside the t-battlecode ring, by TWO already-open metta PRs opened by sibling battlecode runs (22681 bc24 at 02:41Z and 22726 bc17 at 09:32Z, both OPEN and APPROVED, both waiting on Graphite's merge queue). A third PR adding the same CITIES line would only conflict with them, so this run adopts 22726 rather than dispatching atlas-update.yml. Zero of the three dispatches used."
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T10:18:08Z",
+  "heartbeat_at": "2026-09-11T10:20:18Z",
   "session_ended_at": null,
   "session_id": "51b7f2a6",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
