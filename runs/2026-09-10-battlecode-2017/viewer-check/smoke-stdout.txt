@@ -1,0 +1,4 @@
+{"loaded":true,"ms":986,"clock":"5:05 GAME 1 OF 3 — BLITZKRIEG","scorebug":"CLAN ASH daveey 50 5:05 GAME 1 OF 3 — BLITZKRIEG CLAN BASIL daveey-1 50","feed_lines":7}
+scrub readouts: 0%="5:05 GAME 1 OF 3 — BLITZKRIEG"  50%="2:32 GAME 2 OF 3 — ALIGNED"  100%="0:00 GAME 3 OF 3 — BARRIER"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json

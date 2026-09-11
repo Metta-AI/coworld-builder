@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 986,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_7c4f0e60-3dd5-4de2-ba2c-441dad1b4de2/sha256%3A4d5c5bced3b461c9baf31db9cea951ac6a9198234f37555879edeac04a492fd5/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F87fbd671-026a-409a-b70d-1ece9759be4d.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "5:05 GAME 1 OF 3 — BLITZKRIEG",
+  "scorebug": "CLAN ASH daveey 50 5:05 GAME 1 OF 3 — BLITZKRIEG CLAN BASIL daveey-1 50",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 7,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "5:05 GAME 1 OF 3 — BLITZKRIEG"
+    },
+    {
+      "at": "50%",
+      "clock": "2:32 GAME 2 OF 3 — ALIGNED",
+      "settle_ms": 2011
+    },
+    {
+      "at": "100%",
+      "clock": "0:00 GAME 3 OF 3 — BARRIER",
+      "settle_ms": 1004
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}
