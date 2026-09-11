@@ -15,10 +15,10 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "0.11.1",
-    "cow_id": "cow_ce47d56c-9691-47aa-8d20-5f6b1a3eb47a",
-    "manifest_sha": "sha256:6b26dbdd1569ed7d7d8ba338c9b726c1836741fe25e39f7e64c7b30310ede3a3",
-    "release_run_id": "34564421830",
+    "version": "0.11.2",
+    "cow_id": "cow_7c4f0e60-3dd5-4de2-ba2c-441dad1b4de2",
+    "manifest_sha": "sha256:4d5c5bced3b461c9baf31db9cea951ac6a9198234f37555879edeac04a492fd5",
+    "release_run_id": "34565644691",
     "superseded": {
       "version": "0.9.0",
       "cow_id": "cow_5657f03c-4ae9-406c-87c6-ea797645fece",
@@ -37,12 +37,13 @@
       "90ba8153-1e75-4c92-9fa1-273ac88f3670",
       "a606e8be-0885-46c8-a25d-1682c17bbe3a"
     ],
-    "published_labels_0_11_1": [
-      "battlecode-bc19-saber:v4",
-      "battlecode-bc19-preachers:v4",
-      "battlecode-saber:v4",
-      "battlecode-examplefuncsplayer19:v4"
-    ]
+    "published_labels_0_11_2": [
+      "battlecode-bc19-saber:v5",
+      "battlecode-bc19-preachers:v5",
+      "battlecode-saber:v5",
+      "battlecode-examplefuncsplayer19:v5"
+    ],
+    "submitted_note": "champion1/champion2 remain the :v1 policy-versions actually submitted and ranked (35935ce8 saber, d179231c preachers); a config-only re-release needs no re-submission \u2014 round 3 ran deadline_ms=40000 with the :v1 entrants"
   },
   "league": {
     "id": "league_1ce0515e-3218-4f13-a80d-e066890607db",
@@ -78,8 +79,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T08:29:34Z",
-  "session_ended_at": "2026-09-11T08:29:34Z",
+  "heartbeat_at": "2026-09-11T08:30:43Z",
+  "session_ended_at": "2026-09-11T08:30:43Z",
   "session_id": "8860aee9",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
 }
