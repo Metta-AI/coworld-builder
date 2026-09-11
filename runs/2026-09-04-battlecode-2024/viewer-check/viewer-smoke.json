@@ -1,0 +1,52 @@
+{
+  "loaded": true,
+  "ms": 2823,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_b9c9aab2-42ac-4606-b1e6-442841de04de/sha256%3Aa8f75cf35577878ed80694c2b0383b18c3fe7de547b44dbb80bb25e91e9c471d/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F29d4150a-12f4-483a-b347-65b88a76897b.replay",
+  "bundle": null,
+  "replay": null,
+  "clock": "2:45 GAME 1 OF 2 — RANDY doctrines",
+  "scorebug": "CLAN ASH daveey · They never get one out. Explosives and moats hol 48 2:45 GAME 1 OF 2 — RANDY doctrines CLAN BASIL daveey-1 · First blood wins. Carry hard, die fast, repeat. 51",
+  "status": "OPEN",
+  "loading_text": null,
+  "feed_lines": 3,
+  "signals": {
+    "data_replay_loaded": "true",
+    "data_replay_error": null,
+    "bridge": [
+      "ready"
+    ],
+    "bridge_ready": true,
+    "bridge_error": []
+  },
+  "scrub": [
+    {
+      "at": "0%",
+      "clock": "2:45 GAME 1 OF 2 — RANDY doctrines"
+    },
+    {
+      "at": "50%",
+      "clock": "1:22 GAME 1 OF 2 — RANDY doctrines",
+      "settle_ms": 1005
+    },
+    {
+      "at": "100%",
+      "clock": "0:00 GAME 2 OF 2 — DEFAULTLARGE doctrines",
+      "settle_ms": 1005
+    }
+  ],
+  "soak": null,
+  "canvas_text": {
+    "total": 0,
+    "outside": 0,
+    "ellipsized": 0,
+    "never_inside": 0,
+    "never_inside_samples": [],
+    "distinct_capped": false,
+    "samples": []
+  },
+  "failure": null,
+  "console_tail": [
+    "[bridge] ready"
+  ],
+  "screenshot": "/home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png"
+}

@@ -1,0 +1,4 @@
+{"loaded":true,"ms":2823,"clock":"2:45 GAME 1 OF 2 — RANDY doctrines","scorebug":"CLAN ASH daveey · They never get one out. Explosives and moats hol 48 2:45 GAME 1 OF 2 — RANDY doctrines CLAN BASIL daveey-1 · First blood wins. Carry hard, die fast, repeat. 51","feed_lines":3}
+scrub readouts: 0%="2:45 GAME 1 OF 2 — RANDY doctrines"  50%="1:22 GAME 1 OF 2 — RANDY doctrines"  100%="0:00 GAME 2 OF 2 — DEFAULTLARGE doctrines"
+canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
+artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
