@@ -1,0 +1,3648 @@
+{
+  "coworld": {
+    "id": "cow_d8457b5a-acbd-4112-acee-bca7082b654f",
+    "name": "battlecode",
+    "version": "0.11.6",
+    "manifest": {
+      "$schema": "https://raw.githubusercontent.com/Metta-AI/metta/main/coworld/schema/coworld_manifest.schema.json",
+      "tags": [
+        "battlecode",
+        "strategy",
+        "mixed-motive",
+        "wasm"
+      ],
+      "game": {
+        "name": "battlecode",
+        "version": "0.11.6",
+        "description": "Battlecode, played by doctrine. Two cogs each write one sealed JSON strategy sheet and a deterministic Nim port of an official Battlecode rule set plays the whole match from those two sheets. Variant `bc26` is 2026 \"Uneasy Alliances\" \u2014 rat clans allied against NPC cats until one of them betrays. Variant `bc20` is 2020 \"Soup\" \u2014 the water rises every round, and a team either terraforms its way above the flood, walls its HQ in, or buries the enemy's under fifty units of dirt. Variant `bc21` is 2021 \"Campaign\" \u2014 Enlightenment Centers bid influence for votes and spend it on politicians, slanderers and muckrakers, and the election is decided at round 1500. Variant `bc24` is 2024 \"Breadwars\" \u2014 50 identical ducks a side, three flags each, an impassable dam for 200 rounds, and traps you cannot see until they go off. Variant `bc25` is 2025 \u201cChromatic Conflict\u201d \u2014 paint robots colour a grid, build money, paint and defense towers by painting exact patterns onto ruins, and win by owning 70\u202f% of the map. Variant `bc23` is 2023 \u201cTempest\u201d \u2014 carriers mine adamantium and mana from sky wells, launchers fight the only real war, and a faction wins by ferrying reality anchors onto 75\u202f% of the sky islands. Variant `bc22` is 2022 \u201cMutation\u201d \u2014 miners dig lead out of a map that only regenerates the squares you do not empty, laboratories turn lead into gold at a price that rises with company, and anomalies strike every two hundred rounds until the Singularity takes the weaker side at round 2000. Variant `bc16` is 2016 \"Zombie Invasion\" \u2014 archons build soldiers, guards, vipers, turrets and scouts and collect parts while zombie dens spawn escalating waves on a public schedule, every kill by a zombie stands the victim back up on the horde's side, and every uninfected corpse becomes a wall; win by destroying the enemy's last archon, or by having more of them at round 2999. Variant `bc19` is 2019 \u201cCrusade\u201d \u2014 castles and churches build pilgrims that mine karbonite and fuel, crusaders, prophets and preachers; every action burns fuel and the only free income is twenty-five fuel a round; the board is a mirror so both sides know where the other's castles are from round one; a preacher's blast hits nine squares with no team check; the two orders may barter karbonite for fuel with each other; and a side wins by destroying every enemy castle, or by holding more of them at round one thousand. Variant `bc17` is 2017 \"Robotic Wildlife Fund\" -- the continuous-space year: archons hire gardeners who plant bullet trees; soldiers, tanks, scouts and lumberjacks fight with travelling bullets in float coordinates; a victory point costs seven and a half bullets on round one and twenty on round two thousand nine hundred and ninety-nine; and a side wins by buying one thousand of them, by killing every enemy robot, or by holding more of them at the round limit.",
+        "owner": "daveey@gmail.com",
+        "player_runtime": "platform-hosted",
+        "config_schema": {
+          "type": "object",
+          "required": [
+            "tokens",
+            "players"
+          ],
+          "properties": {
+            "pool": {
+              "enum": [
+                "small",
+                "mixed",
+                "large"
+              ],
+              "type": "string"
+            },
+            "seed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "year": {
+              "enum": [
+                "bc26",
+                "bc20",
+                "bc21",
+                "bc24",
+                "bc25",
+                "bc23",
+                "bc22",
+                "bc16",
+                "bc19",
+                "bc17"
+              ],
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "tokens": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "description": "One connection token per player slot, indexed by slot."
+            },
+            "players": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "description": "One player display-name object per seat, indexed by slot."
+            },
+            "retryMs": {
+              "type": "integer",
+              "maximum": 60000,
+              "minimum": 1000
+            },
+            "maxRounds": {
+              "type": "integer",
+              "maximum": 3000,
+              "minimum": 50
+            },
+            "attempt1Ms": {
+              "type": "integer",
+              "maximum": 60000,
+              "minimum": 1000
+            },
+            "num_agents": {
+              "type": "integer",
+              "maximum": 2,
+              "minimum": 2
+            },
+            "gamesPerMatch": {
+              "type": "integer",
+              "maximum": 3,
+              "minimum": 1
+            },
+            "maxOutputTokens": {
+              "type": "integer",
+              "maximum": 8192,
+              "minimum": 64
+            },
+            "connectTimeoutMs": {
+              "type": "integer",
+              "maximum": 120000,
+              "minimum": 1000
+            },
+            "doctrineBudgetMs": {
+              "type": "integer",
+              "maximum": 120000,
+              "minimum": 1000
+            },
+            "matchBudgetSeconds": {
+              "type": "integer",
+              "maximum": 600,
+              "minimum": 5
+            },
+            "perGameBudgetSeconds": {
+              "type": "integer",
+              "maximum": 300,
+              "minimum": 5
+            }
+          },
+          "additionalProperties": false
+        },
+        "results_schema": {
+          "type": "object",
+          "required": [
+            "names",
+            "aliases",
+            "scores",
+            "wins",
+            "points",
+            "games",
+            "seed",
+            "year",
+            "policy_kind",
+            "sheet_defaults_applied",
+            "sheet_envelope",
+            "fallbacks",
+            "decision_ms",
+            "sim_seconds",
+            "reason",
+            "wall_clock_seconds",
+            "game_version"
+          ],
+          "properties": {
+            "seed": {
+              "type": "integer"
+            },
+            "wins": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "year": {
+              "type": "string"
+            },
+            "games": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "map",
+                  "side",
+                  "rounds_played",
+                  "winner",
+                  "end_reason"
+                ],
+                "properties": {
+                  "map": {
+                    "type": "string"
+                  },
+                  "side": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "heals": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "kills": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "moves": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "ruins": {
+                    "type": "integer"
+                  },
+                  "votes": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "winner": {
+                    "type": "integer"
+                  },
+                  "attacks": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "exposes": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "repairs": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "top_bid": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "empowers": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gold_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "hq_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "boolean"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lead_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "mana_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: this seat's team mana at the final round"
+                  },
+                  "alive_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "buff_peak": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "chips_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "envisions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "hq_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: damage dealt by headquarters' end-of-round aura"
+                  },
+                  "ids_spent": {
+                    "type": "integer"
+                  },
+                  "masteries": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "net_worth": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiles_dug": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trees_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "broadcasts": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "cat_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "crumbs_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "dirt_moved": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "elixir_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: this seat's team elixir at the final round"
+                  },
+                  "end_reason": {
+                    "enum": [
+                      "kings_destroyed",
+                      "cats_cleared",
+                      "round_limit",
+                      "abandoned",
+                      "hq_destroyed",
+                      "quantity",
+                      "quality",
+                      "broadcasts",
+                      "highest_id",
+                      "coin_flip",
+                      "annihilated",
+                      "more_votes",
+                      "more_enlightenment_centers",
+                      "more_influence",
+                      "capture",
+                      "more_flag_captures",
+                      "level_sum",
+                      "more_bread",
+                      "paint_enough_area",
+                      "destroy_all_units",
+                      "more_squares_painted",
+                      "more_towers_alive",
+                      "more_money",
+                      "more_paint_in_units",
+                      "more_robots_alive",
+                      "conquest",
+                      "more_sky_islands",
+                      "more_reality_anchors",
+                      "more_elixir_net_worth",
+                      "more_mana_net_worth",
+                      "more_adamantium_net_worth",
+                      "more_archons",
+                      "more_gold_net_worth",
+                      "more_lead_net_worth",
+                      "archons_destroyed",
+                      "more_archon_health",
+                      "more_parts_net_worth",
+                      "castles_destroyed",
+                      "more_castles",
+                      "more_unit_health",
+                      "victory_points_reached",
+                      "all_robots_destroyed",
+                      "more_victory_points",
+                      "more_bullet_trees",
+                      "more_bullet_worth"
+                    ],
+                    "type": "string"
+                  },
+                  "fuel_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gold_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "heal_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "income_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "labs_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lead_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "levels_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "mana_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: mana this seat's carriers collected from wells"
+                  },
+                  "mop_swings": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rats_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rats_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "soup_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "transforms": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "transmutes": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trees_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "units_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "votes_tied": {
+                    "type": "integer"
+                  },
+                  "archons_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "backstab_by": {
+                    "type": "integer"
+                  },
+                  "bids_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "board_width": {
+                    "type": "integer"
+                  },
+                  "boosts_cast": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: booster fields cast"
+                  },
+                  "camouflaged": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "castles_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "chips_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "cloud_tiles": {
+                    "type": "integer",
+                    "description": "bc23: cloud tiles on the map"
+                  },
+                  "conversions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "dens_on_map": {
+                    "type": "integer"
+                  },
+                  "dirt_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_depots": {
+                    "type": "integer"
+                  },
+                  "hp_repaired": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "kill_crumbs": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "kings_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "kings_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "paint_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "paint_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robots_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rubble_mean": {
+                    "type": "integer"
+                  },
+                  "sage_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "sages_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "self_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tanks_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "towers_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trap_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "traps_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "triad_shots": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "units_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "units_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "wells_total": {
+                    "type": "integer",
+                    "description": "bc23: wells on the map"
+                  },
+                  "anchor_heals": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: health this seat's robots received from its own anchors"
+                  },
+                  "anchors_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: anchors of this seat's that were ground to zero"
+                  },
+                  "archons_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "array_writes": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: shared-array writes"
+                  },
+                  "body_attacks": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "castle_talks": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "castles_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "centers_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "chips_earned": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "chop_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "churches_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "crumbs_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "damage_taken": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "drones_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "ducks_jailed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "elixir_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: elixir this seat's carriers collected from transformed wells"
+                  },
+                  "give_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "guards_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "islands_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: islands whose anchor this seat let reach zero health"
+                  },
+                  "mine_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "miners_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "mutations_l2": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "mutations_l3": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "pentad_shots": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robots_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robots_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "scouts_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "single_shots": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "soup_refined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "splash_kills": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "throw_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: damage dealt by carrier throws"
+                  },
+                  "tiles_filled": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiles_mopped": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiles_to_win": {
+                    "type": "integer"
+                  },
+                  "towers_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "towers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "traps_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "turret_packs": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "vipers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "anchors_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: anchors this seat's headquarters built"
+                  },
+                  "archons_start": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "basic_signals": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_fired": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "castles_start": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "centers_owned": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "churches_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "current_rides": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: times a robot of this seat was shoved by a current"
+                  },
+                  "current_tiles": {
+                    "type": "integer",
+                    "description": "bc23: tiles carrying a current"
+                  },
+                  "dens_per_side": {
+                    "type": "integer"
+                  },
+                  "drone_pickups": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "ducks_spawned": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "flags_dropped": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_trickled": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gardeners_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "hq_lost_cause": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "hq_lost_round": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "influence_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "karbonite_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "labs_finished": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "messages_sent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "moppers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "net_gun_kills": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "net_worth_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robots_turned": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rounds_no_bid": {
+                    "type": "integer"
+                  },
+                  "rounds_played": {
+                    "type": "integer"
+                  },
+                  "shake_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "srp_completed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiles_painted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trees_planted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "turrets_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "water_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "win_condition": {
+                    "type": "integer"
+                  },
+                  "adamantium_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: this seat's team adamantium at the final round"
+                  },
+                  "anchors_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: anchors this seat ever planted (the second tiebreak rung)"
+                  },
+                  "backstab_round": {
+                    "type": "integer"
+                  },
+                  "boosters_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: temporal boosters built"
+                  },
+                  "builders_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "builds_refused": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "carriers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: carriers built"
+                  },
+                  "churches_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "dens_destroyed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "flags_captured": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "flags_returned": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_deposited": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "fuel_reclaimed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gardeners_lost": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gold_reclaimed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "islands_on_map": {
+                    "type": "integer",
+                    "description": "bc23: how many sky islands the map carries"
+                  },
+                  "islands_to_win": {
+                    "type": "integer",
+                    "description": "bc23: islands a conquest needs under the float32 75 % test"
+                  },
+                  "lead_reclaimed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "markers_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "net_guns_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "pilgrims_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "prophets_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "radio_messages": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "soldier_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "soldiers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "splash_attacks": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "squares_opened": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "srp_active_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "strike_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiebreak_round": {
+                    "type": "integer"
+                  },
+                  "trade_fuel_net": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "upgrades_taken": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "victory_points": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "wells_upgraded": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: wells this seat raised to rate 3 with 1400 kg of their own type"
+                  },
+                  "zombies_killed": {
+                    "type": "integer"
+                  },
+                  "crusaders_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "flags_picked_up": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gardeners_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "gold_transmuted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "heal_levels_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "influence_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "karbonite_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "karbonite_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "launchers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: launchers built"
+                  },
+                  "lead_on_map_end": {
+                    "type": "integer"
+                  },
+                  "message_signals": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "move_fuel_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "paintable_tiles": {
+                    "type": "integer"
+                  },
+                  "parts_worth_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "preachers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "refused_actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rounds_carrying": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "schedule_rounds": {
+                    "type": "integer"
+                  },
+                  "splashers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "squares_painted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "towers_upgraded": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trades_executed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trades_proposed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "traps_triggered": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "unit_health_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "water_level_end": {
+                    "type": "number"
+                  },
+                  "zombies_spawned": {
+                    "type": "integer"
+                  },
+                  "adamantium_mined": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: adamantium this seat's carriers collected from wells"
+                  },
+                  "amplifiers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: signal amplifiers built"
+                  },
+                  "anomalies_dodged": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "archons_per_side": {
+                    "type": "integer"
+                  },
+                  "build_levels_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "castles_per_side": {
+                    "type": "integer"
+                  },
+                  "centers_captured": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "crumbs_collected": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "den_damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "islands_captured": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: islands this seat anchored from neutral or from the enemy"
+                  },
+                  "islands_held_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: sky islands this seat holds at the final round"
+                  },
+                  "karbonite_depots": {
+                    "type": "integer"
+                  },
+                  "money_towers_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "muckrakers_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "muckrakers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "paint_towers_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "parts_end_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "passable_squares": {
+                    "type": "integer"
+                  },
+                  "queue_length_end": {
+                    "type": "integer"
+                  },
+                  "radio_fuel_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "resources_banked": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: cargo this seat's carriers actually DEPOSITED into a headquarters"
+                  },
+                  "resources_thrown": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: cargo destroyed by this seat's carrier throws, hit or miss"
+                  },
+                  "robot_ids_issued": {
+                    "type": "integer"
+                  },
+                  "slanderers_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "slanderers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trees_mature_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "vaporators_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "attack_levels_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullet_ids_issued": {
+                    "type": "integer"
+                  },
+                  "coverage_permille": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "decision_ops_peak": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "destabilizes_cast": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: destabilisations cast"
+                  },
+                  "domination_factor": {
+                    "type": "string"
+                  },
+                  "drone_water_drops": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "flooded_tiles_end": {
+                    "type": "integer"
+                  },
+                  "landscapers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lead_on_map_start": {
+                    "type": "integer"
+                  },
+                  "lumberjacks_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "neutrals_captured": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "politicians_alive": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "politicians_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rounds_with_a_lab": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "singularity_round": {
+                    "type": "integer"
+                  },
+                  "squares_mined_dry": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "srp_rounds_active": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tiles_overpainted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "transactions_sent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "watchtower_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "watchtowers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "wells_transformed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: wells this seat turned into elixir wells with 600 kg of the opposite resource"
+                  },
+                  "zombies_alive_end": {
+                    "type": "integer"
+                  },
+                  "archon_parts_walks": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "archon_relocations": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "area_without_walls": {
+                    "type": "integer"
+                  },
+                  "board_width_tenths": {
+                    "type": "integer"
+                  },
+                  "bullets_end_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "cheese_transferred": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "cooperation_at_end": {
+                    "type": "boolean"
+                  },
+                  "defense_towers_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "destabilize_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: damage dealt by destabiliser detonations"
+                  },
+                  "empower_conviction": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "enemy_damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "enemy_damage_taken": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "enemy_trees_felled": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "first_anchor_round": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: the round this seat first planted an anchor, or 0"
+                  },
+                  "gold_net_worth_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lead_net_worth_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lead_squares_start": {
+                    "type": "integer"
+                  },
+                  "neutrals_activated": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "outbreak_level_end": {
+                    "type": "integer"
+                  },
+                  "paint_in_units_end": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "parts_on_map_start": {
+                    "type": "integer"
+                  },
+                  "parts_spent_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robot_damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rubble_mean_tenths": {
+                    "type": "integer"
+                  },
+                  "tanks_built_by_600": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "tower_damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "vortexes_scheduled": {
+                    "type": "integer"
+                  },
+                  "anomalies_scheduled": {
+                    "type": "integer"
+                  },
+                  "bid_influence_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "board_height_tenths": {
+                    "type": "integer"
+                  },
+                  "damage_dealt_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "damage_taken_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "destabilizers_built": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: temporal destabilizers built"
+                  },
+                  "enemy_half_churches": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "infections_suffered": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "karbonite_deposited": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "karbonite_reclaimed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "longest_hold_streak": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: the longest run of consecutive rounds holding at least one island"
+                  },
+                  "mature_trees_by_600": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "mine_actions_wasted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "neutral_trees_start": {
+                    "type": "integer"
+                  },
+                  "parts_income_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "parts_squares_start": {
+                    "type": "integer"
+                  },
+                  "rounds_with_any_srp": {
+                    "type": "integer"
+                  },
+                  "scouts_built_by_600": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "symmetry_horizontal": {
+                    "type": "integer"
+                  },
+                  "trade_karbonite_net": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "transactions_minted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "trees_alive_at_1500": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "upgrade_first_round": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "zombie_damage_dealt": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "zombie_damage_taken": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "carrier_damage_taken": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: damage this seat's carriers took"
+                  },
+                  "friendly_fire_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "infections_inflicted": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "lattice_units_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "neutral_trees_felled": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "robot_rounds_starved": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "setup_flag_teleports": {
+                    "type": "integer"
+                  },
+                  "strike_distance_mean": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: mean Chebyshev distance of the launcher centroid from its nearest own headquarters"
+                  },
+                  "trees_lost_to_strike": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "watchtowers_finished": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "anomaly_losses_charge": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "archons_alive_at_2000": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "blockchain_soup_spent": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_shaken_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "carrier_rounds_loaded": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: carrier-rounds spent carrying cargo"
+                  },
+                  "carriers_built_by_400": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: carriers built by round 400"
+                  },
+                  "castle_separation_max": {
+                    "type": "number"
+                  },
+                  "castle_separation_min": {
+                    "type": "number"
+                  },
+                  "global_pollution_peak": {
+                    "type": "integer"
+                  },
+                  "headquarters_per_side": {
+                    "type": "integer",
+                    "description": "bc23: headquarters each faction starts with"
+                  },
+                  "neutrals_on_map_start": {
+                    "type": "integer"
+                  },
+                  "rounds_with_any_carry": {
+                    "type": "integer"
+                  },
+                  "rubble_cleared_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rubble_created_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "anomaly_losses_fury_hp": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_donated_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "captured_distance_mean": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: mean Chebyshev distance from a captured island to the nearest enemy headquarters"
+                  },
+                  "enemy_gardeners_killed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "impassable_squares_end": {
+                    "type": "integer"
+                  },
+                  "launchers_built_by_400": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: launchers built by round 400"
+                  },
+                  "lead_spent_transmuting": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "parts_collected_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "peak_bullets_in_flight": {
+                    "type": "integer"
+                  },
+                  "peak_coverage_permille": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "viper_infection_damage": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullet_worth_end_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_trickled_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "rounds_below_one_bullet": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "archon_health_end_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "impassable_squares_start": {
+                    "type": "integer"
+                  },
+                  "lumberjacks_built_by_600": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "own_trees_damaged_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "anomaly_losses_abyss_lead": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "neutral_archons_activated": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "neutral_trees_with_robots": {
+                    "type": "integer"
+                  },
+                  "rounds_holding_any_island": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: rounds in which this seat held at least one island"
+                  },
+                  "neutral_trees_with_bullets": {
+                    "type": "integer"
+                  },
+                  "robots_released_from_trees": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "accelerating_anchors_placed": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "description": "bc23: of those, the 300-elixir accelerating kind"
+                  },
+                  "friendly_fire_damage_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "archon_separation_max_tenths": {
+                    "type": "integer"
+                  },
+                  "archon_separation_min_tenths": {
+                    "type": "integer"
+                  },
+                  "bullets_spent_on_shots_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_spent_on_trees_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_spent_on_units_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "bullets_earned_from_trees_tenths": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2
+                  }
+                }
+              },
+              "maxItems": 3,
+              "minItems": 0
+            },
+            "names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "maxItems": 3,
+                "minItems": 0
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "reason": {
+              "enum": [
+                "complete",
+                "deadline",
+                "fault"
+              ],
+              "type": "string"
+            },
+            "scores": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "fallbacks": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "decision_ms": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "policy_kind": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "sim_seconds": {
+              "type": "number"
+            },
+            "game_version": {
+              "type": "string"
+            },
+            "sheet_envelope": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "wall_clock_seconds": {
+              "type": "number"
+            },
+            "sheet_defaults_applied": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 16,
+                "minItems": 0
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          }
+        },
+        "runnable": {
+          "type": "game",
+          "image": "public.ecr.aws/q5f4m8t9/cogames@sha256:7539b470731382f6b059ac3693712d5bde83440d05e62f5c71b9ac0c5358967e",
+          "run": [
+            "/bin/battlecode"
+          ],
+          "env": {
+            "ANTHROPIC_API_KEY_URI": "secret://coworld/battlecode/anthropic_api_key"
+          },
+          "source_url": "https://github.com/Metta-AI/cogame-battlecode/tree/7b4fced0a64f38f9d13022e9aa537fc3d38ee701",
+          "resources": {
+            "requests": {
+              "memory": "4Gi"
+            },
+            "limits": {
+              "cpu": "2"
+            }
+          }
+        },
+        "protocols": {
+          "player": {
+            "type": "uri",
+            "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/PROTOCOL.md"
+          },
+          "global": {
+            "type": "uri",
+            "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/PROTOCOL.md"
+          }
+        },
+        "docs": {
+          "readme": {
+            "type": "uri",
+            "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/README.md"
+          },
+          "pages": [
+            {
+              "id": "rules.md",
+              "title": "Rules, knobs and deliberate divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES.md"
+              }
+            },
+            {
+              "id": "rules-bc20.md",
+              "title": "Battlecode 2020 \"Soup\": rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC20.md"
+              }
+            },
+            {
+              "id": "rules-bc21.md",
+              "title": "Battlecode 2021 \u201cCampaign\u201d: rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC21.md"
+              }
+            },
+            {
+              "id": "rules-bc24.md",
+              "title": "Battlecode 2024 \"Breadwars\": rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC24.md"
+              }
+            },
+            {
+              "id": "rules-bc25.md",
+              "title": "Battlecode 2025 \u201cChromatic Conflict\u201d: rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC25.md"
+              }
+            },
+            {
+              "id": "rules-bc23.md",
+              "title": "Battlecode 2023 \u201cTempest\u201d: rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC23.md"
+              }
+            },
+            {
+              "id": "rules-bc22.md",
+              "title": "Battlecode 2022 \u201cMutation\u201d: rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC22.md"
+              }
+            },
+            {
+              "id": "rules-bc16.md",
+              "title": "Battlecode 2016 \"Zombie Invasion\": rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC16.md"
+              }
+            },
+            {
+              "id": "rules-bc19.md",
+              "title": "Battlecode 2019 \u201cCrusade\u201d: rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC19.md"
+              }
+            },
+            {
+              "id": "replay.md",
+              "title": "Replay format",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/REPLAY.md"
+              }
+            },
+            {
+              "id": "parity.md",
+              "title": "The Java oracle and what it proves",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/PARITY.md"
+              }
+            },
+            {
+              "id": "rules-bc17.md",
+              "title": "Battlecode 2017 \"Robotic Wildlife Fund\": rules, knobs and divergences",
+              "content": {
+                "type": "uri",
+                "value": "https://github.com/Metta-AI/cogame-battlecode/blob/main/docs/RULES-BC17.md"
+              }
+            }
+          ]
+        },
+        "replay_viewer": {
+          "bundle": "sha256:e0ac9a5838264fa91597a8dfc5db3597ec329e695c5500bc7f0406675ce5f193"
+        }
+      },
+      "player": [
+        {
+          "type": "player",
+          "image": "public.ecr.aws/q5f4m8t9/cogames@sha256:7539b470731382f6b059ac3693712d5bde83440d05e62f5c71b9ac0c5358967e",
+          "run": [
+            "/bin/battlecode-player"
+          ],
+          "env": {
+            "PLAYER_SCRIPTED": "awu",
+            "PLAYER_POLICY_LABEL": "awu"
+          },
+          "source_url": "https://github.com/Metta-AI/cogame-battlecode/tree/7b4fced0a64f38f9d13022e9aa537fc3d38ee701",
+          "resources": {
+            "requests": {
+              "memory": "512Mi"
+            },
+            "limits": {
+              "cpu": "1"
+            }
+          },
+          "id": "awu",
+          "name": "awu",
+          "description": "the strong published baseline of whichever year the variant selects \u2014 distilled-awubot on bc26, Bowl of Chowder on bc20, California Roll on bc21, Gone Sharkin' on bc24, SPAARK on bc25, lemonade on bc23, wololo on bc22, bulwark on bc16, saber on bc19, orchard on bc17."
+        },
+        {
+          "type": "player",
+          "image": "public.ecr.aws/q5f4m8t9/cogames@sha256:7539b470731382f6b059ac3693712d5bde83440d05e62f5c71b9ac0c5358967e",
+          "run": [
+            "/bin/battlecode-player"
+          ],
+          "env": {
+            "PLAYER_SCRIPTED": "scaffold",
+            "PLAYER_POLICY_LABEL": "scaffold"
+          },
+          "source_url": "https://github.com/Metta-AI/cogame-battlecode/tree/7b4fced0a64f38f9d13022e9aa537fc3d38ee701",
+          "resources": {
+            "requests": {
+              "memory": "512Mi"
+            },
+            "limits": {
+              "cpu": "1"
+            }
+          },
+          "id": "scaffold",
+          "name": "scaffold",
+          "description": "the weak scaffold baseline of whichever year the variant selects \u2014 the ported example bot (examplefuncsplayer on bc20, examplefuncsplayer21 on bc21), examplefuncsplayer24 on bc24, examplefuncsplayer25 on bc25, examplefuncsplayer23 on bc23, examplefuncsplayer22 on bc22, greenhorn on bc16, examplefuncsplayer19 on bc19, examplefuncsplayer17 on bc17."
+        }
+      ],
+      "reporter": [],
+      "commissioner": [],
+      "grader": [],
+      "diagnoser": [],
+      "optimizer": [],
+      "variants": [
+        {
+          "id": "bc26",
+          "name": "Battlecode 2026 \u2014 Uneasy Alliances (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc26",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 2000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 330,
+            "perGameBudgetSeconds": 90
+          },
+          "description": "Best of three on the mixed pool. Both clans start allied against the cats; either can betray at any moment, and the points formula swings when they do."
+        },
+        {
+          "id": "bc20",
+          "name": "Battlecode 2020 \u2014 Soup (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc20",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 1500,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 320,
+            "perGameBudgetSeconds": 100
+          },
+          "description": "Best of three on the mixed pool. The water rises every round and every HQ starts below it: a team either walls its HQ in, terraforms above the flood, or buries the enemy's HQ under fifty units of dirt before the sea gets to its own."
+        },
+        {
+          "id": "bc21",
+          "name": "Battlecode 2021 \u2014 Campaign (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc21",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 1500,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 340,
+            "perGameBudgetSeconds": 110
+          },
+          "description": "Best of three on the mixed pool. Every round auctions one citizen's vote; influence buys units, buys votes, and is what an enemy politician takes when it converts your Enlightenment Center. Turtle and print money, spam muckrakers and kill the money, or take the neutral Centers first \u2014 1500 rounds decide it."
+        },
+        {
+          "id": "bc24",
+          "name": "Battlecode 2024 \u2014 Breadwars (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc24",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 2000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 340,
+            "perGameBudgetSeconds": 110
+          },
+          "description": "Best of three on the mixed pool. Fifty identical ducks a side and three flags each. A dam splits the map for 200 rounds while both flocks dig, fill, hide traps and choose where their flags will stand; then it falls, and the only way to end the game early is to carry all three enemy flags home. Ducks level up by attacking, healing or building \u2014 2\u202f000 rounds decide it."
+        },
+        {
+          "id": "bc25",
+          "name": "Battlecode 2025 \u2014 Chromatic Conflict (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc25",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 2000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 340,
+            "perGameBudgetSeconds": 110
+          },
+          "description": "Best of three on the mixed pool. Two clans of paint robots colour a grid. Soldiers paint one tile at a time, splashers repaint a blast radius including the enemy's ground, and moppers wipe it back to bare. Towers are built by painting an exact 5\u00d75 pattern onto a ruin, and a Special Resource Pattern pays every mining tower you own \u2014 if it survives fifty rounds. Paint 70\u202f% of the map, destroy everything they have, or be ahead on colour at round 2\u202f000."
+        },
+        {
+          "id": "bc23",
+          "name": "Battlecode 2023 \u2014 Tempest (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc23",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 2000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 340,
+            "perGameBudgetSeconds": 110
+          },
+          "description": "Best of three on the mixed pool. Carriers mine adamantium and mana from wells and haul it home at half speed when they are full; launchers are the only unit that deals real damage, and they can shoot through the clouds that blind everyone. Pour 600\u202fkg of the wrong resource into a well and it becomes elixir, which buys temporal boosters, destabilizers and the better kind of reality anchor. Win by anchoring 75\u202f% of the sky islands \u2014 and an anchor only holds while your robots stand on the island."
+        },
+        {
+          "id": "bc22",
+          "name": "Battlecode 2022 \u2014 Mutation (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc22",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 2000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 340,
+            "perGameBudgetSeconds": 110
+          },
+          "description": "Best of three on the mixed pool. Miners dig lead out of the map, and the map only puts lead back on squares you did not empty \u2014 so the cheapest mistake in this year is mining the last unit off a deposit. Soldiers cost lead and deal three damage; sages cost gold, deal forty-five, and gold exists only because a laboratory makes it, more cheaply the lonelier it is. Anomalies strike every two hundred rounds \u2014 the abyss eats your bank, the charge kills whoever clumped hardest, the fury burns buildings that are standing still, and the vortex reshuffles the ground \u2014 and at round 2000 the Singularity takes the weaker side. Lose your last archon and you lose immediately."
+        },
+        {
+          "id": "bc16",
+          "name": "Battlecode 2016 \u2014 Zombie Invasion (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc16",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 3000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 360,
+            "perGameBudgetSeconds": 120
+          },
+          "description": "Best of three on the mixed pool, three thousand rounds each. Archons are the only thing that matters: lose your last one and you lose on the spot. They build soldiers, guards, vipers, turrets and scouts out of parts they collect by walking over them, and they repair one wounded robot a turn for free. Zombie dens spawn escalating waves on a schedule both sides can read from round zero, and every three hundred rounds the zombies get stronger. Anything a zombie or a viper bites is infected, and anything that dies while infected stands back up on the horde's side \u2014 so a soldier you lose in their half is a zombie hunting them. Anything that dies uninfected leaves a wall of rubble where it fell. At round 2999 the side with more archons wins."
+        },
+        {
+          "id": "bc19",
+          "name": "Battlecode 2019 \u2014 Crusade (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc19",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 24000,
+            "maxRounds": 1000,
+            "attempt1Ms": 40000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "maxOutputTokens": 3000,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 75000,
+            "matchBudgetSeconds": 200,
+            "perGameBudgetSeconds": 60
+          },
+          "description": "Best of three on the mixed pool, one thousand rounds each. Castles are the only thing that matters: destroy all of theirs and you win on the spot. Castles and churches build pilgrims, crusaders, prophets and preachers; pilgrims mine karbonite and fuel and must carry each load back to a structure before it can be spent. Every action burns fuel, and the only free income is twenty-five fuel a round. The board is a mirror, and every robot is handed the whole map on its first turn, so neither side has to look for the other. A preacher puts twenty damage on nine squares at once and does not check whose units are standing there. Castles may barter karbonite for fuel with the enemy's castles. At round one thousand the side with more castles wins, then the side with more total unit health, then a coin flip."
+        },
+        {
+          "id": "bc17",
+          "name": "Battlecode 2017 \u2014 Robotic Wildlife Fund (2 seats)",
+          "game_config": {
+            "pool": "mixed",
+            "seed": 0,
+            "year": "bc17",
+            "players": [
+              {
+                "name": "Clan Ash"
+              },
+              {
+                "name": "Clan Basil"
+              }
+            ],
+            "retryMs": 12000,
+            "maxRounds": 3000,
+            "attempt1Ms": 20000,
+            "num_agents": 2,
+            "gamesPerMatch": 3,
+            "connectTimeoutMs": 25000,
+            "doctrineBudgetMs": 45000,
+            "matchBudgetSeconds": 330,
+            "perGameBudgetSeconds": 120
+          },
+          "description": "Best of three on the mixed pool, two thousand nine hundred and ninety-nine rounds each, in continuous space. Archons hire gardeners; gardeners plant bullet trees that pay a bullet a round once grown, and build soldiers, tanks, scouts and lumberjacks. Bullets travel: a shot crosses two units a round and the first body its line touches takes the damage, whoever's it is. A lumberjack's strike hits everything within two of it, including its own farm. Any robot can spend bullets on victory points, and a point costs seven and a half bullets on the first round and twenty on the last -- so waiting is expensive. A thousand points ends the game on the spot, and so does losing your last robot. Otherwise the winner at the round limit is decided by points, then by trees standing, then by bullets in the bank."
+        }
+      ],
+      "certification": {
+        "game_config": {
+          "pool": "small",
+          "seed": 1,
+          "year": "bc26",
+          "players": [
+            {
+              "name": "Clan Ash"
+            },
+            {
+              "name": "Clan Basil"
+            }
+          ],
+          "retryMs": 2000,
+          "maxRounds": 400,
+          "attempt1Ms": 4000,
+          "num_agents": 2,
+          "gamesPerMatch": 1,
+          "connectTimeoutMs": 15000,
+          "doctrineBudgetMs": 9000,
+          "matchBudgetSeconds": 45,
+          "perGameBudgetSeconds": 40
+        },
+        "players": [
+          {
+            "player_id": "awu"
+          },
+          {
+            "player_id": "scaffold"
+          }
+        ]
+      },
+      "episode_timeout_minutes": 20
+    },
+    "manifest_hash": "sha256:83648d8f4ab968282a5e6359109be653d2d43126320e6cfa42cac221e55c51a3",
+    "size_bytes": 53746,
+    "canonical": true
+  },
+  "hosted_smoke_episodes": [
+    {
+      "id": "ereq_007bf68c-282a-4575-b2ab-4c3045368c81",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "id": "ereq_18dce63f-adc9-40ba-bf10-e5c218e3a4b7",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "id": "ereq_4ac9f200-586c-4615-a0ff-69ea4afb7dba",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "id": "ereq_7cabd557-4bab-48fd-9e0c-0e9ee6c48d7b",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "id": "ereq_8793506c-5be2-47b9-884d-5eec8d6866c1",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "certification": {
+    "coworld_id": "cow_d8457b5a-acbd-4112-acee-bca7082b654f",
+    "state": "certified",
+    "certified": true,
+    "contract_version": "main-ad645e14b909",
+    "certification_job_id": "8495c0f7-0c1f-4c2b-ba3f-5e4be752516d",
+    "failed_step": null,
+    "failure": null,
+    "transcript_summary": [
+      {
+        "id": "matriculate",
+        "status": "pass"
+      },
+      {
+        "id": "source-resolves",
+        "status": "pass"
+      },
+      {
+        "id": "images-reachable",
+        "status": "pass"
+      },
+      {
+        "id": "fixture-conforms",
+        "status": "pass"
+      },
+      {
+        "id": "smoke-episode",
+        "status": "pass"
+      },
+      {
+        "id": "results-conform",
+        "status": "pass"
+      },
+      {
+        "id": "replay-present",
+        "status": "pass"
+      },
+      {
+        "id": "replay-loadable",
+        "status": "pass"
+      },
+      {
+        "id": "players-run",
+        "status": "pass"
+      },
+      {
+        "id": "supporting-roles",
+        "status": "pass"
+      }
+    ],
+    "completed_at": "2026-09-11T09:10:37.062189Z"
+  }
+}
