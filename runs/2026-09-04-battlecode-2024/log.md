@@ -73,3 +73,7 @@
 2026-09-11T01:40:00Z heartbeat phase=30
 2026-09-11T01:44:00Z 30 judge dispatched thread=sthr_01MXE6mWZYe4CxaseKh2jfhA round=1 checkout=/tmp/bc24-judge@5e7c8b78 base=d2922438 ci=34084170288 output=runs/2026-09-04-battlecode-2024/reviews/r1-verdict.md (fresh context; refute F1-F7 + independent checklist pass; incremental write pinned in the brief after three dead reviewer threads)
 2026-09-11T01:44:00Z progress phase=30 marker=reviews/r1-fixes.md
+2026-09-11T01:50:00Z 30 judge returned thread=sthr_01MXE6mWZYe4CxaseKh2jfhA verdict=reviews/r1-verdict.md blocking=0 (first line 'blocking: 0', last line 'BLOCKING: 0', agree; all 15 items + one-batch verified independently; F1-F7 all reproduced and all advisory; extra: wasm canvas draws no text at all, flag_returned polarity settled)
+2026-09-11T01:52:00Z 30 -> 40 phase transition: judge returned zero blocking findings in round 1; review_round=1; residue F1/F4/F5/F6/F7 advisory
+2026-09-11T01:52:00Z 30 asana: phase-30 subtask 1218192519515132 completed, run task commented with round count + residue
+2026-09-11T01:52:00Z heartbeat phase=40
