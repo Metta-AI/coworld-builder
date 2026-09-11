@@ -267,3 +267,4 @@
 2026-09-11T06:13:00Z 60 builder: ci.yml run 34568926547 (event pull_request, head 2a868bc8, created 06:11:58Z) is in progress on PR #24. Found by matching the head sha, not by taking `gh run list -L 1`. Polling; full runs take 75-105 min and the parallel run's PR #23 run 34565862675 is queued alongside it, so contention is expected
 2026-09-11T06:18:40Z 60 builder's PR CI is live: ci.yml run 34568926547 on branch bc19-doctrine-tokens, in_progress. Noted alongside it, read-only: the parallel bc17 run has ci.yml 34565862675 in_progress on bc17-r1-followups and TWO release runs already concluded success on main (34564421830 = 0.11.1, and 34565644691, a later one) — so the canonical version may move again while my token fix builds, which is exactly why the brief tells the builder to re-read canonical immediately before dispatching and to take the next patch ABOVE whatever it finds
 2026-09-11T06:18:40Z heartbeat phase=60
+2026-09-11T06:23:00Z heartbeat phase=60
