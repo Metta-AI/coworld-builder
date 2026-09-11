@@ -1,11 +1,11 @@
 {
   "loaded": true,
-  "ms": 2279,
-  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_5657f03c-4ae9-406c-87c6-ea797645fece/sha256%3Afa770afb41e203a187691b5ab75de70990b3aebd1695b57da6986a939af37503/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8b68a7cb-c4b1-4749-8f80-1e5a072b8ab1.replay",
+  "ms": 2088,
+  "url": "https://api.observatory.softmax-research.net/v2/coworlds/replays/static/cow_d8457b5a-acbd-4112-acee-bca7082b654f/sha256%3A83648d8f4ab968282a5e6359109be653d2d43126320e6cfa42cac221e55c51a3/index.html?v=2#replay=https%3A%2F%2Fsoftmax-public.s3.amazonaws.com%2Freplays%2F8b4a5124-2ea5-4e1f-9f63-3bff84cbeb5e.replay",
   "bundle": null,
   "replay": null,
-  "clock": "1:23 GAME 1 OF 2 — SEED-0125 doctrines",
-  "scorebug": "CLAN ASH daveey 49 1:23 GAME 1 OF 2 — SEED-0125 doctrines CLAN BASIL daveey-1 · Mine, then march. 50",
+  "clock": "1:23 GAME 1 OF 2 — SEED-0001 doctrines",
+  "scorebug": "CLAN ASH daveey-1 50 1:23 GAME 1 OF 2 — SEED-0001 doctrines CLAN BASIL Games Bond · Preach first, mine later. 50",
   "status": "OPEN",
   "loading_text": null,
   "feed_lines": 7,
@@ -21,17 +21,17 @@
   "scrub": [
     {
       "at": "0%",
-      "clock": "1:23 GAME 1 OF 2 — SEED-0125 doctrines"
+      "clock": "1:23 GAME 1 OF 2 — SEED-0001 doctrines"
     },
     {
       "at": "50%",
-      "clock": "0:41 GAME 2 OF 2 — SEED-0035 doctrines",
+      "clock": "0:41 GAME 2 OF 2 — SEED-0060 doctrines",
       "settle_ms": 503
     },
     {
       "at": "100%",
       "clock": "FINAL MATCH OVER doctrines",
-      "settle_ms": 502
+      "settle_ms": 503
     }
   ],
   "soak": null,

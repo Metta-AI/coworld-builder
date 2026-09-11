@@ -1,4 +1,4 @@
-{"loaded":true,"ms":2279,"clock":"1:23 GAME 1 OF 2 — SEED-0125 doctrines","scorebug":"CLAN ASH daveey 49 1:23 GAME 1 OF 2 — SEED-0125 doctrines CLAN BASIL daveey-1 · Mine, then march. 50","feed_lines":7}
-scrub readouts: 0%="1:23 GAME 1 OF 2 — SEED-0125 doctrines"  50%="0:41 GAME 2 OF 2 — SEED-0035 doctrines"  100%="FINAL MATCH OVER doctrines"
+{"loaded":true,"ms":2088,"clock":"1:23 GAME 1 OF 2 — SEED-0001 doctrines","scorebug":"CLAN ASH daveey-1 50 1:23 GAME 1 OF 2 — SEED-0001 doctrines CLAN BASIL Games Bond · Preach first, mine later. 50","feed_lines":7}
+scrub readouts: 0%="1:23 GAME 1 OF 2 — SEED-0001 doctrines"  50%="0:41 GAME 2 OF 2 — SEED-0060 doctrines"  100%="FINAL MATCH OVER doctrines"
 canvas text: 0 drawn, 0 never inside the canvas (0 draws crossed an edge), 0 ellipsized
 artifacts: /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.png /home/runner/work/coworld-builder/coworld-builder/viewer-smoke.json
