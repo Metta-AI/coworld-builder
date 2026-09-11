@@ -44,8 +44,9 @@
       "round_958dff29-905a-45be-9e62-3fd12f015d76",
       "round_741956f9-8622-4dec-9d9d-64baebf4cd07"
     ],
-    "replay": "",
-    "iframe_static": false
+    "replay": "https://softmax-public.s3.amazonaws.com/replays/29d4150a-12f4-483a-b347-65b88a76897b.replay",
+    "iframe_static": true,
+    "viewer_check_run": "34554357054"
   },
   "announce": {
     "attempted_at": null,
@@ -63,7 +64,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T02:20:00Z",
+  "heartbeat_at": "2026-09-11T02:30:00Z",
   "session_ended_at": null,
   "session_id": "9346975d",
   "log": "runs/2026-09-04-battlecode-2024/log.md"
