@@ -5,7 +5,7 @@
   "slug": "battlecode-2017",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "70",
+  "phase": "75",
   "phase_attempts": {
     "10": 1,
     "20": 2,
@@ -47,7 +47,7 @@
   },
   "announce": {
     "attempted_at": "2026-09-11T09:25:13Z",
-    "discord_message_id": ""
+    "discord_message_id": "1547900851765518396"
   },
   "atlas": {
     "status": "",
@@ -61,7 +61,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T09:25:13Z",
+  "heartbeat_at": "2026-09-11T09:25:33Z",
   "session_ended_at": null,
   "session_id": "c3f0efb9",
   "log": "runs/2026-09-10-battlecode-2017/log.md"
