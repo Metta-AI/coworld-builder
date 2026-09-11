@@ -1,259 +1,262 @@
 {
-  "version": "0.11.2",
-  "ok": true,
-  "cow_id": "cow_7c4f0e60-3dd5-4de2-ba2c-441dad1b4de2",
-  "manifest_sha": "sha256:4d5c5bced3b461c9baf31db9cea951ac6a9198234f37555879edeac04a492fd5",
-  "canonical": true,
-  "hosted_smoke": "passed",
-  "hosted_certification": "certifying",
+  "version": "0.11.5",
+  "ok": false,
+  "cow_id": null,
+  "manifest_sha": null,
+  "canonical": null,
+  "hosted_smoke": null,
+  "hosted_certification": null,
   "certify": {
     "ok": true,
     "replay_liveness": "Replay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)",
-    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/certification_report.html\nArtifacts: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s\nResults: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/results.json\nReplay: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/logs\nInspect replay: open /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-t2pfgj8s/logs\n"
+    "output_tail": "Docker context: default (local images use this store)\nCertifying dist/coworld_manifest.json against transcript coworld-executable\n  [run ] matriculate: manifest conforms to the Coworld schema\n  [pass] matriculate: manifest conforms to the Coworld schema\n  [run ] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [pass] source-resolves: whether each runnable declares a source_url that resolves to publicly accessible source\n  [run ] images-reachable: every declared image is pullable or inspectable\n  [pass] images-reachable: every declared image is pullable or inspectable\n  [run ] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [pass] fixture-conforms: the certification fixture validates against game.config_schema after runner token injection\n  [run ] smoke-episode: the game and certification players run one episode\n  [pass] smoke-episode: the game and certification players run one episode\n  [run ] results-conform: episode results validate against results_schema\n  [pass] results-conform: episode results validate against results_schema\n  [run ] replay-present: a replay artifact was produced\n  [pass] replay-present: a replay artifact was produced\n  [run ] replay-loadable: the replay artifact has a declared viewer path\n  [pass] replay-loadable: the replay artifact has a declared viewer path\n  [run ] players-run: every declared player actually started on the smoke episode (not just declared)\n  [pass] players-run: every declared player actually started on the smoke episode (not just declared)\n  [run ] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\n  [pass] supporting-roles: declared supporting roles satisfy the currently implemented Executable checks\nCertified dist/coworld_manifest.json\nTranscript: coworld-executable (10 steps passed)\nTranscript report: file:///home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/certification_report.html\nArtifacts: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp\nResults: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/results.json\nReplay: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/replay\nReplay liveness: skipped (static replay bundle declared; /client/replay and /replay not required)\nLogs: /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/logs\nInspect replay: open /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/replay in your static replay viewer bundle (see STATIC_REPLAY_VIEWERS.md)\nInspect logs: ls /home/runner/work/cogame-battlecode/cogame-battlecode/tmp/coworld-cert-hegz68sp/logs\n"
   },
   "policies": [
     {
       "name": "battlecode-loyalist",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-opportunist",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-awu",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-scaffold",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc20-latticer",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc20-rusher",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-bowl-of-chowder",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer",
-      "version": "v12",
+      "version": "v15",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc21-turtle",
-      "version": "v11",
+      "version": "v14",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc21-muckrush",
-      "version": "v11",
+      "version": "v14",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-california-roll",
-      "version": "v11",
+      "version": "v14",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer21",
-      "version": "v11",
+      "version": "v14",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc24-fortress",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc24-flagrush",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-gone-sharkin",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer24",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc25-coverage",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc25-siege",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-spaark",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer25",
-      "version": "v10",
+      "version": "v13",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc23-duel",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc23-alchemist",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-lemonade",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer23",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc22-rush",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc22-transmuter",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-wololo",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer22",
-      "version": "v9",
+      "version": "v12",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc16-bulwark",
-      "version": "v8",
+      "version": "v11",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc16-pullers",
-      "version": "v8",
+      "version": "v11",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-bulwark",
-      "version": "v8",
+      "version": "v11",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-greenhorn",
-      "version": "v8",
+      "version": "v11",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc19-saber",
-      "version": "v5",
+      "version": "v8",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc19-preachers",
-      "version": "v5",
+      "version": "v8",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-saber",
-      "version": "v5",
+      "version": "v8",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer19",
-      "version": "v5",
+      "version": "v8",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc17-orchard",
-      "version": "v4",
+      "version": "v7",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-bc17-tankrush",
-      "version": "v4",
+      "version": "v7",
       "policy_version_id": null,
       "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"
     },
     {
       "name": "battlecode-orchard",
-      "version": "v4",
+      "version": "v7",
       "policy_version_id": null,
       "player_id": null
     },
     {
       "name": "battlecode-examplefuncsplayer17",
-      "version": "v4",
+      "version": "v7",
       "policy_version_id": null,
       "player_id": null
     }
   ],
-  "secret_put": true,
-  "errors": [],
-  "step_failed": null
+  "secret_put": false,
+  "errors": [
+    "upload-coworld exited 1",
+    "no 'Canonical: yes|no' line in the upload-coworld output (exit_code=1); the upload did not run, died early, or the CLI output format changed - see release-logs/upload.log"
+  ],
+  "step_failed": "Upload the Coworld"
 }

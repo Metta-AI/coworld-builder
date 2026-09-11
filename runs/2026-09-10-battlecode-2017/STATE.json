@@ -5,7 +5,7 @@
   "slug": "battlecode-2017",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "40",
+  "phase": "50",
   "phase_attempts": {
     "10": 1,
     "20": 2,
@@ -14,17 +14,17 @@
   },
   "review_round": 1,
   "coworld": {
-    "version": "",
-    "cow_id": "",
-    "manifest_sha": "",
-    "release_run_id": ""
+    "version": "0.11.2",
+    "cow_id": "cow_7c4f0e60-3dd5-4de2-ba2c-441dad1b4de2",
+    "manifest_sha": "sha256:4d5c5bced3b461c9baf31db9cea951ac6a9198234f37555879edeac04a492fd5",
+    "release_run_id": "34565644691"
   },
   "policies": {
-    "champion1": "battlecode-bc17-orchard",
-    "champion2": "battlecode-bc17-tankrush",
+    "champion1": "battlecode-bc17-orchard:v4",
+    "champion2": "battlecode-bc17-tankrush:v4",
     "fillers": [
-      "battlecode-orchard",
-      "battlecode-examplefuncsplayer17"
+      "battlecode-orchard:v4",
+      "battlecode-examplefuncsplayer17:v4"
     ],
     "filler_version_ids": []
   },
@@ -53,7 +53,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T05:54:00Z",
+  "heartbeat_at": "2026-09-11T08:52:00Z",
   "session_ended_at": null,
   "session_id": "c3f0efb9",
   "log": "runs/2026-09-10-battlecode-2017/log.md"
