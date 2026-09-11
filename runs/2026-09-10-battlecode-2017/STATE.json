@@ -8,7 +8,8 @@
   "phase": "30",
   "phase_attempts": {
     "10": 1,
-    "20": 2
+    "20": 2,
+    "30": 1
   },
   "review_round": 1,
   "coworld": {
@@ -48,8 +49,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T00:26:00Z",
+  "heartbeat_at": "2026-09-11T03:38:00Z",
   "session_ended_at": null,
-  "session_id": "e3379c9c",
+  "session_id": "c3f0efb9",
   "log": "runs/2026-09-10-battlecode-2017/log.md"
 }
