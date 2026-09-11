@@ -66,3 +66,4 @@
 2026-09-07T17:45:21Z session end in phase 90 (blocked); next action: on subtask 1218245497860470 completion or probe pass, resume phase 30 with attempts reset and a scoped-down reviewer brief (delta-only)
 2026-09-10T22:59:23Z 30 r1 reviewer leg completed OUT OF BAND by the operator (daveey, local Claude Code session) after three in-sandbox reviewer threads died silently: reviews/r1-review.md written against checkout 5e7c8b78 base d2922438, CI run 34084170288 verified; 0 blocking, 7 advisory (F1-F7); next: fixer (advisory only, coordinator decides) then judge per prompts/30-review-loop.md; blocked subtask 1218245497860470 being completed by the operator
 2026-09-11T01:29:00Z 00 resumed after unblock subtask=1218245497860470 attempts_reset=30 (probe passed rc=0; r1-review.md present — subtask was completed out of band by the operator)
+2026-09-11T01:30:00Z 00 resume at phase 30 attempt=1 session=9346975d
