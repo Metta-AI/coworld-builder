@@ -115,3 +115,6 @@
 2026-09-11T02:34:00Z 60 RULING on the 1280px endcard overlap (#bc24-flags pill occluding the MATCH OVER/FINAL caption): NOT blocking, recorded as residue by both the phase-30 and phase-60 judges. No definition-of-done item names it, check 8's two-part rule holds, every load-bearing readout is legible. Fix path for a future bc24 touch: z-order or background fill on the pill, re-verified by the 1280px CI smoke. Filed as residue, not a re-open
 2026-09-11T02:35:00Z 60 -> 70 phase transition: STATE written phase=70 and pushed BEFORE the announce; all eight definition-of-done checks TRUE and adjudicated blocking=0
 2026-09-11T02:36:00Z 70 resume guard clear: STATE.announce.discord_message_id empty and attempted_at null; searched the last 50 #coworlds messages for 'battlecode/bc24' — zero hits, so this is a first post, not a re-post. announce.attempted_at written and PUSHED before the POST
+2026-09-11T02:37:00Z 70 announce msg=1547797305237839882 posted to Discord #coworlds (1440464430646427718), 1794 chars, HTTP 200, flags=4 and embeds=[] confirmed in the response body so no PATCH was needed. Play link https://softmax.com/battlecode/bc24 (the bc24 league page — softmax.com/battlecode opens the bc26 league)
+2026-09-11T02:38:00Z progress phase=70 marker=1547797305237839882
+2026-09-11T02:38:00Z heartbeat phase=70
