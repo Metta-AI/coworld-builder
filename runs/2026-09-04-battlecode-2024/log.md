@@ -118,3 +118,7 @@
 2026-09-11T02:37:00Z 70 announce msg=1547797305237839882 posted to Discord #coworlds (1440464430646427718), 1794 chars, HTTP 200, flags=4 and embeds=[] confirmed in the response body so no PATCH was needed. Play link https://softmax.com/battlecode/bc24 (the bc24 league page — softmax.com/battlecode opens the bc26 league)
 2026-09-11T02:38:00Z progress phase=70 marker=1547797305237839882
 2026-09-11T02:38:00Z heartbeat phase=70
+2026-09-11T02:35:00Z 75 atlas continent = paintlands (zero-sum RTS: two clans, 50 ducks each, capture the flags) and territory = t-battlecode, the circle circ(196,281,46) the coworld's eight year leagues already share
+2026-09-11T02:35:00Z 75 coordinates 202,270 chosen from the LIVE places.mjs rather than atlas_spot.py's continent sweep, because this coworld has a territory and its cities sit on a lattice: y=270 already holds battlecode(2026)@178 and bc22@226, leaving exactly one hole at x=202. Clearance 24.0 to both, 24.2 to bc16/bc20/bc21, 12.5 from the territory centre so it is well inside the radius-46 circle. Label '2024', matching the year-only labels of all seven siblings
+2026-09-11T02:35:39Z 75 atlas dispatch=34555216333 region=paintlands territory=t-battlecode at=202,270 clearance=24.0 slug=battlecode/bc24
+2026-09-11T02:35:39Z 75 NOTE for the artifact read: six live leagues are unplaced (battlecode/bc19, battlecode/bc24, overfished, paintbot-wasm, paintbot-cdx, paintbot-pw). If build.mjs names any of them, dispatch 2 carries them in extra_cities per prompts/75-atlas.md step 8 rather than treating it as a failure
