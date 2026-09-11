@@ -306,3 +306,5 @@
 2026-09-11T07:38:00Z 60 builder: my ci.yml run 34570503721 at 07:36Z — 12 of 13 jobs green (all ten parity oracles, docker-smoke, wasm-viewer), only the long `test` job still running. For calibration: on the previous main run 34557429247 `test` took ~2 h 3 m, so ~08:35Z is the honest estimate here, not the brief's 75-105 min. Still polling; I claim nothing until it reports a conclusion
 2026-09-11T07:47:04Z 60 ci.yml 34570503721 at ~72 min: 12 of 13 jobs done, only the long `test` job still running — the same shape as the previous PR run, which finished at 1:26. No action needed; recorded so the wait is legible in the log rather than looking like silence
 2026-09-11T07:47:04Z heartbeat phase=60
+2026-09-11T08:07:28Z 60 ci.yml 34570503721 now ~92 min in, `test` still the only job outstanding. That is inside this repo's observed 75-105 min band but at the long end; if it exceeds ~2 h I will read the job log rather than keep waiting blind
+2026-09-11T08:07:28Z heartbeat phase=60
