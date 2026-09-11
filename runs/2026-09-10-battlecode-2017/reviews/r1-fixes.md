@@ -577,7 +577,10 @@ against item 13's assertion).
 ## NOTED (not fixed)
 
 Three things found while working that are **not** findings in this round's
-review, left alone per the scope rule:
+review. Items 1 and 3 were subsequently **ruled in scope by the coordinator
+and fixed** — see "Follow-ups" below, which is appended rather than folded
+into the F1–F15 entries above so the record of what the review itself
+covered stays intact. Item 2 is carried forward:
 
 1. **`#bc17-doctrines-toggle` has CSS and JS but no element.**
    `client/replay_broadcast.html:4010` and `:4089` style it and the block
@@ -602,3 +605,236 @@ review, left alone per the scope rule:
 Everything read from the repo, the CI logs and the design note was treated as
 data. No text encountered in any of them was addressed to me, and nothing was
 acted on as an instruction.
+
+
+---
+
+# Follow-ups — ruled in scope by the coordinator after F1–F15 landed
+
+Branch: `bc17-r1-followups` off `main@526befd`.
+PR: **#23** — <https://github.com/Metta-AI/cogame-battlecode/pull/23>
+Branch head: **`6fe5a404a8a4a4cf9c0cbf99be0fdcc6ad83c11a`**
+Branch CI: run **34565862675** — conclusion **`success`**, 13/13 jobs.
+Merged with `--merge` (no squash). Merge commit on `main`:
+**`2d61d796e6a1da9ca234dd626c4043ff6ab91dbe`**
+`ci.yml` on `main` at that sha: run **34573046331** —
+<https://github.com/Metta-AI/cogame-battlecode/actions/runs/34573046331> —
+conclusion **`success`**, 13/13 jobs, `run_attempt: 1`, `event: push`,
+`head_branch: main`.
+
+Two commits, one per follow-up. `git diff main..HEAD -- tests/` removes
+**nothing**: the only test change is 45 added lines.
+
+| follow-up | disposition | commit | files |
+|---|---|---|---|
+| 1 — `#bc17-doctrines-toggle` has no element | fixed | `c838aba` | `client/replay_broadcast.html:4607-4617,8504-8514`; `tests/test_viewer.nim:1957-1990`; `tools/ci/renderer_fixture.html:85-93,+chip check` |
+| 2 — the 400-char endcard capture | widened to 3000, capture-only | `6fe5a40` | `tools/ci/viewer_smoke.mjs:527-548` |
+
+## Follow-up 1 — `#bc17-doctrines-toggle` is an element now
+
+**What it did.** The id was referenced four times — a positional rule at
+`client/replay_broadcast.html:4101`, a year-scoping rule at `:4010`, and two
+`$('bc17-doctrines-toggle')` bindings in the block — and
+`grep -c 'id="bc17-doctrines-toggle"'` returned **0**. `#bc17-doctrines`
+closes itself six seconds in, or on the first frame that advances the
+playhead, and the only way back is that chip, so **a viewer who lost the
+bc17 doctrine card could never get it back** and the CSS and both click
+bindings pointed at nothing. Same defect class as F3, on an absent element
+rather than a dead class.
+
+**No sibling is missing its own**, checked rather than assumed: all eight
+other years with a doctrine panel return 1 for
+`grep -c 'id="<year>-doctrines-toggle"'`. bc17 was the only one at 0, so
+nothing outside this run's year needed touching.
+
+**What it does now.** The element ships beside the panel inside `#chrome`,
+not in the clock column with the other eight — those eight ship a plain
+flowed button, while bc17's own rule is `position: absolute` off
+`--topband`, a pill twelve pixels above the panel it re-opens, so it has to
+share the panel's containing block to land there. It carries `hidden`, as
+its siblings do.
+
+**One line of the block changed with it**, and it is load-bearing:
+`setDoctrinesOpen` set `chip.style.display`, which cannot un-hide an element
+carrying the `hidden` attribute — `[hidden] { display: none }` is a UA rule
+and `#bc17-doctrines-toggle`'s own rule sets no `display`, so there is
+nothing for `style.display = ''` to beat. It now sets `chip.hidden`, which
+is what bc16 does.
+
+**The gate, and it is not a text grep.** Two halves, because the defect has
+two ways to come back:
+
+* **element presence, derived.** `tests/test_viewer.nim` extracts the page's
+  `<style>` block, **strips the CSS comments** (so it asks what the rules
+  name, not what the prose mentions), collects every `#bc17-…` id token the
+  rules select, and requires the markup to carry `id="…"` for each. Eight
+  ids come out today — `bc17-vp`, `bc17-bullets`, `bc17-econ`, `bc17-units`,
+  `bc17-doctrines`, `bc17-doctrines-toggle`, `bc17-fund`,
+  `bc17-doctrines-close` — and **any** bc17 id that is styled and never
+  instantiated is red. The requirement is derived from the page, so a
+  hand-written list cannot go stale against it;
+* **computed visibility.** `tools/ci/renderer_fixture.html` gains a
+  `REOPEN_CHIP` map and, in a real browser, shows the chip the way the page
+  shows it (`chip.hidden = false`) and requires the year's own rules to give
+  it something clickable: `display` not `none`, `visibility` not `hidden`, a
+  rect bigger than a point, and a box inside the frame — measured
+  explicitly, because the frame-escape scan below it skips the chip while it
+  ships `hidden`.
+
+**Negative controls run.** Deleting the element turns the derived check red:
+*"#bc17-doctrines-toggle is styled, so the page must CARRY it"*. Appending
+`html[data-year="bc17"] #bc17-doctrines-toggle { display: none !important }`
+to the extracted stylesheet turns the fixture red at all three widths:
+*"#bc17-doctrines-toggle is display:none for its own year — a dismissed
+doctrine panel can never be re-opened"*.
+
+**And the round trip, in a real headless Chromium** against the page's own
+CSS and the block's own JS: first frame → panel 821×336, chip hidden;
+playhead advances → panel dismissed, chip 72×16; chip clicked → panel back
+open, chip hidden again. The last step was impossible before this commit.
+
+## Follow-up 2 — the endcard capture is 3000 characters
+
+**What it did.** `viewer_smoke.mjs:531` sliced the captured `#endcard` text
+at 400 characters, which cut every year's capture off inside the **second
+doctrine line** — so a year's endcard war panel, the part a spectator reads
+to find out how the match was won and the part most likely to be missing,
+never reached a CI log. That is how F4 stayed invisible for a whole round:
+the bc17 capture read "headline + wincond + score line + the two doctrine
+lines, with no Fund ledger", which was consistent with an absent panel *and*
+with an instrument that stopped reading.
+
+**The new size is measured, not picked.** Laid out at both seats' full rune
+caps and each year's measured-widest numbers in the renderer fixture, at
+1280 px with the card raised, the ten years' `#endcard` innerText is:
+
+| bc26 | bc20 | bc21 | bc24 | bc23 | bc25 | bc22 | **bc17** | bc16 | bc19 |
+|---|---|---|---|---|---|---|---|---|---|
+| 611 | 678 | 840 | 926 | 964 | 1039 | 1094 | **2074** | 2363 | 2612 |
+
+bc17's 2 074 is the card this run owns and it now fits whole, Fund panel
+included; **3 000** holds the widest of the ten with room and is still a
+single bounded slice rather than an unbounded dump.
+
+**Evidence that no year's gate outcome moves** — the three the ruling asked
+for:
+
+1. `endcard.text` has **exactly one consumer in the tree**. A grep over
+   every `.yml`, `.mjs`, `.cjs`, `.nim`, `.sh` and `.py` finds
+   `ci.yml:5704` and nothing else, and all it does is
+   `printf '%s' "${card}" | grep -qi 'clan'`.
+2. **Widening a prefix slice is monotone**: the new string has the old one
+   as a prefix, so every substring that matched before still matches. The
+   check can only go pass → pass. It could in principle flip fail → pass,
+   and no year fails today — run 34557429247's wasm-viewer log shows all ten
+   replays reporting `shown=true text=CLAN ASH — CLAN ASH …`, so the match
+   lands inside the first twenty characters of every one.
+3. **No failure path in `viewer_smoke.mjs` reads the text.**
+   `endcardFailure` is computed from `scrollHeight` against `clientHeight`
+   and `overflow-y`; `boundsFailure` from the canvas-text report;
+   `overlapFailure` from the killfeed gate; `failure` from the load signal,
+   the bridge and the soak. `endcard.shown` and `endcard.display`, which
+   `ci.yml` *does* gate on, are separate fields and are untouched.
+
+**And it immediately paid for itself.** Run 34565862675's wasm-viewer log
+now carries the whole bc17 score screen, including the panel F4 added and
+the ladder with the deciding rung marked — *"Clan Ash: 5 victory points for
+56.2 bullets (11.2 a point) / trees: 4 planted, 3 mature at the end, 1 lost
+/ units: 27 built, 24 lost · 2 kills / damage dealt 721.5 / friendly fire
+255.0 · own trees 0.0 / … / round 899 ladder (PWNED): more victory points:
+5 vs 0 ← decided it / more bullet trees: 3 vs 0 …"*. None of that had ever
+reached a log before. (The missing lowercase `s` throughout is the GitHub
+log-redaction artefact the review already recorded; it affects all ten
+years' captures identically.)
+
+*(One implementation note worth keeping: the comment at that site carries no
+backticks on purpose. It lives inside `READOUT_SCRIPT`, which is a template
+literal, and a backtick pair would end the string — `node --check` caught it
+on the first attempt.)*
+
+## Fix-forward — my own gate went red on `main`, and I own that
+
+`ci.yml` went **red on `main` at `7b4fced`** (run 34578233563,
+`wasm-viewer`) on a gate this round added, and not on a defect. The
+first-drawn-frame check shipped as `test "${ff_round}" = "1"` and that run
+read `first drawn frame: round 3 / 899`.
+
+**What races.** The load signal is set INSIDE the page on the first frame
+the worker hands the shell; `viewer_smoke.mjs` reads `#tick-clock` from
+OUTSIDE on a 250 ms poll, so free-running playback puts a round or three on
+the clock before the read lands. Run 34578233563 measured all ten years on
+one runner — **1, 2, 2, 2, 3, 3, 3, 3, 3, 3** — and bc17 itself read
+`round 1` on runs 34565862675 and 34573046331 and `round 3` on 34578233563.
+Same bytes, same bundle, busier runner. An equality there was an assertion
+about the instrument, not about the viewer.
+
+**The repair, commit `d67cb22` (PR #25, merge `173878c`).** The claim gets
+sharper rather than looser:
+
+* `viewer_smoke.mjs` reports `first_frame` from the poll that FIRST saw the
+  load signal (`atLoadSignal`), not from the extra re-read after the loop —
+  as close to the first drawn frame as the outside can get;
+* `ci.yml` asserts a **floor** and a **window** instead of an equality. The
+  floor is exact and is what carries the checklist's claim: below round 1
+  there is no frame at all, because `replay.nim:270-276` enumerates frames
+  `for r in 1 .. rounds`, so a reading of 0 would be a frame from a lobby
+  this runtime does not have. The window is `max(10, total/50)` — 18 rounds
+  of an 899-round replay, six times the worst reading observed — and catches
+  a viewer that opens part way through;
+* the **exact** clamp is unchanged and still asserted, on the rewind seek,
+  which is a positioned jump and not a race: `after a rewind seek: round 1 /
+  899` on every run since it landed.
+
+Negative controls run against doctored JSON: `round 0` red, `round 402` red,
+a missing rewind entry red; `round 1` and the observed `round 3` both pass.
+On the branch run the gate then printed
+`first drawn frame: round 1 / 899   after a rewind seek: round 1 / 899`.
+
+**Retry budget on that branch: two attempts, and the first failure was not
+mine either.** Attempt 1 (run 34583465003, attempt 1) went red in
+`docker-smoke` on the **bc19** episode: the episode itself completed
+(`reason=complete games=1 scores=[257.0, 42.0]`, results and replay both
+written) and the game container then SIGSEGV'd during teardown —
+`server.nim serve → mummy.nim serve → loopForever → destroy →
+orc.nim nimDecRefIsLastCyclicDyn → rememberCycle → unregisterCycle`. That is
+the Nim ORC cyclic collector at process exit, and the commit under test
+changes exactly two files, `ci.yml`'s bc17 block inside the `wasm-viewer`
+job and `tools/ci/viewer_smoke.mjs`, neither of which `docker-smoke` runs at
+all — so it cannot be reached from this diff. Attempt 2 was a re-run of the
+failed jobs; `docker-smoke` passed and `wasm-viewer` passed with it.
+Recorded as a flake rather than papered over.
+
+## What `main` looked like when this round closed
+
+Three merges came out of this round, each with `ci.yml` green on the sha it
+produced:
+
+| merge | what | `ci.yml` on `main` |
+|---|---|---|
+| `526befd` | F1–F15 (PR #22) | run 34557429247 — `success`, 13/13 |
+| `2d61d79` | follow-ups 1 and 2 (PR #23) | run 34573046331 — `success`, 13/13 |
+| `173878c` | the fix-forward (PR #25) | run 34589452188 — `success`, 13/13 |
+
+`7b4fced` between the second and third is PR #24, `bc19-doctrine-tokens`,
+another run's work touching `coworld_manifest_template.json` and
+`docs/PROTOCOL.md` only.
+
+**`main` is at `173878c` and `ci.yml` is green on it**, run 34589452188,
+13/13 jobs, `run_attempt: 1`, `event: push`, `head_branch: main`.
+
+**One thing that is NOT `ci.yml` and NOT this round's:** two `Coworld
+release` dispatches at `2d61d79` failed at the *Upload the Coworld* step
+with platform-side hosted smoke errors (`error=ReadError (HTTP status
+unavailable)` and `error=Container worker Error with exit code 1`). That is
+phase 40's pipeline against the hosted service; nothing in this round's diff
+touches upload, certification or the manifest. The next dispatch, run
+34582116703 at `7b4fced`, **succeeded** — so those two were transient.
+Recorded only so nobody reads a red release as a red `ci.yml`.
+
+## Carried forward, still not fixed
+
+`tools/ci/renderer_fixture.html`'s `FILLED` map has **no `bc19` key**, so for
+the bc19 row `document.querySelectorAll(undefined)` matches nothing and the
+"hides its own content" scan is vacuous for that year. It belongs to another
+run and the coordinator is recording it as carried-forward residue; bc17's
+entry is present and exercised.
