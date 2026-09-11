@@ -348,3 +348,11 @@ platform-wide, so neither is evidence. What works:
   `is_canonical`, which is absent from every row).
 - `POST /v2/episodes/search` takes only a nested `where` tree; flat kwargs 422 with
   `extra_forbidden`.
+
+## Policy versions minted by FAILED releases
+
+`coworld-release.yml` runs `upload-policies` **before** `upload-coworld`, so a dispatch that dies
+at the upload/hosted-smoke step still mints a new version of every policy. A repo with three failed
+dispatches therefore has policies at v5/v6/v7 while the *published* coworld carries v4. Always
+resolve UUIDs by exact `<name>:vN` match against the release artifact that actually published —
+never "the newest" and never "the only row with that name" (battlecode bc17, 2026-09-11).

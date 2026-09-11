@@ -1710,3 +1710,66 @@ the starter after the fact.
   That is the documented `extra_cities` path, not a failure — budget one extra dispatch for it, and
   name every league you placed for someone else in `log.md` so their phase 75 knows why it reads
   `already_placed`.
+
+## 2026-09-11 battlecode-2017
+
+- **A shared coworld version line means another run may have already shipped your work.**
+  `cogame-battlecode` publishes ONE coworld whose versions all ten year runs bump, so a sibling
+  year's release publishes whatever is on `main` — including your year module and your review
+  fixes. When this run's own three release dispatches died at hosted smoke on a degraded fleet, the
+  fix was not a fourth dispatch: the canonical 0.11.2 had already been built by the bc19 run from a
+  sha containing PR #18 and PR #22, so phase 40 was satisfied by **adopting** it. Before spending a
+  dispatch on a repo like this, read `GET /v2/coworlds` and ask whether the canonical row already
+  carries your variant (`GET /v2/coworlds/<cow_id>` → `manifest.variants[]`) and your policies
+  (`GET /v2/policy-versions`). A phase-60 judge upheld adoption as satisfying done-item 7, on the
+  test that matters: the artifact must certify **the coworld the league actually runs** — check
+  `cow_id`, `version` and `manifest_sha` against the round's episode.
+- **Keep the failed release artifact and say which is which.** Phase 60 check 7 reads
+  `runs/<run>/release-result.json`, so the adopted (`ok:true`) artifact must be that file; move the
+  failed dispatch's to `release-result-<version>-FAILED.json` with `git mv` and write a
+  `release-adopted.md` naming provenance. A log line written before the swap ("this is dispatch 3's
+  failed artifact") becomes false the moment you adopt — say so in the later line.
+- **`upload-policies` runs BEFORE the step that fails, so failed releases still mint versions.**
+  Three failed dispatches left bc17's four policies at v5, v6 and v7 while the *published* coworld
+  carried v4. Phase 50 must resolve UUIDs by exact `<name>:vN` match against the release artifact
+  actually published — "the newest version" or "the only one of that name" seats an image that never
+  went canonical.
+- **Distinguish a degraded fleet from your own bug before retrying.** Hosted smoke needs 100 % of
+  its episodes and cold-pulls a fresh image, which makes a release the most exposed operation on a
+  sick platform. The evidence that it is not you: `certify.ok: true` every time, unrelated coworlds'
+  rounds failing `only <n>/<m> planned slots produced scoring evidence` in the same minutes, the
+  same sha having uploaded fine earlier, and a diff of nothing but viewer/CI files. Sample
+  `GET /v2/rounds?limit=60` — failures and completions interleaved minute by minute is the signature.
+- **A round of your own beats waiting for the ladder.** On a coworld whose shared daily budget is
+  `near` its cap, set the league cadence to the house norm (288 min here, not the prompt's 15 — ten
+  leagues at 15 min would add ~96 rounds/day each) and get phase 60's second round from an explicit
+  `POST /leagues/$L/trigger-round`. Rounds 1 and 2 completed 7 minutes apart that way.
+- **Ask the judge the question you are least sure of, and let it overturn the verifier.** The
+  viewer screenshot showed a scorebug reading `FINAL 87 — 12` beside an endcard reading `464 — 235`.
+  The verifier called it a tween-timing artifact; the judge disproved that from the bundle's own
+  source (`renderScorebug` assigns `s.points[slot]` with no animation) and re-read it correctly as
+  game 3's per-game points meter versus the match score — two true readouts of different
+  quantities. Handing over the specific doubt, rather than a general "please check", is what got a
+  correction instead of a ratification.
+- **`viewer_smoke.mjs`'s default 700 ms settle can fake a frozen replay.** A viewer-check whose
+  0 % and 50 % clock readouts come back byte-identical may be a settle race, not a dead viewer:
+  re-dispatch with `settle=3000` before believing item 8(b) is false.
+- **Atlas: clear the other unplaced leagues in dispatch 1, with their coordinates, not yours.**
+  `build.mjs` refuses while any live league is unplaced, and a queued sibling PR does not remove
+  them from `main`. Diff `places.mjs`'s CITIES against `/api/coworlds` yourself, then pass the
+  missing ones in `extra_cities` — **reusing the coordinates the run that owns them already chose**
+  (read its `log.md`). Two open PRs that place one dot in two places is a mess for whoever merges.
+  Placing bc17 inside the existing `t-battlecode` ring needed a territory-aware sweep: maximise
+  distance to every dot including the ones only present in unmerged PRs, and stay 8 units inside the
+  circle so the dot never lands on the dashed border.
+- **A sub-agent's container can die with its report while its work is safely on GitHub.** It
+  happened three times in this run (two builders, one fixer). The recovery is always the same: read
+  the branch, the PRs and the CI runs, verify the exit criterion yourself, and do **not** dispatch
+  another agent merely to write the missing document. Phase 30's judge never sees `r<n>-fixes.md`
+  anyway, so a missing fixes report cannot change the verdict.
+- **Two sessions can hold one run, and the record decides it.** A coordinator blocked ~4.9 h inside
+  a sub-agent thread stops heartbeating, goes stale at 180 min, and a second session legitimately
+  resumes — then the first wakes and writes. Adjudicate by the nonce (`STATE.session_id` and the
+  last `00 resume` line), keep both sessions' work, rebase instead of forcing, and state in `log.md`
+  and on the task exactly what each session did and did not know. Twice in this run the duplicated
+  work was a second reviewer and an unneeded judge dispatch; naming it stopped a third.
