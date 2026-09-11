@@ -125,3 +125,5 @@
 2026-09-11T00:01:00Z heartbeat phase=60
 2026-09-11T00:01:00Z progress phase=60 marker=VERIFY.md + viewer-check run 34544098607 (checks 2,3,4,6,7,8 TRUE with pasted evidence; round_aa77a013 completed)
 2026-09-11T00:01:00Z 00 session end at phase 60, session=8caffbc3, session_ended_at=2026-09-11T00:01:00Z. EXACT NEXT ACTION: wait for bc19 round 2 (ladder, ~04:04Z; if it has not appeared by 07:00Z the operator's prohibition has expired and a single POST /leagues/league_1ce0515e-3218-4f13-a80d-e066890607db/trigger-round is permitted, ~0.11 USD against the raised 20.00 USD/day cap), then re-run checks 1/3/4/5 per the ruling above, update VERIFY.md in place, and dispatch coworld-builder-judge on it. Do NOT redo phase 50 (league, division, both champions, both fillers and the 200-credit pool are all in place) and do NOT re-dispatch viewer-check.yml
+2026-09-11T00:52:00Z 00 attempts_reset phase=60 reason=progress marker=VERIFY.md + viewer-check run 34544098607 (checks 2,3,4,6,7,8 TRUE with pasted evidence; round_aa77a013 completed)
+2026-09-11T00:52:00Z 00 resume at phase 60 attempt=1 session=8860aee9
