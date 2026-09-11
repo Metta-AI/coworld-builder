@@ -1773,3 +1773,69 @@ the starter after the fact.
   last `00 resume` line), keep both sessions' work, rebase instead of forcing, and state in `log.md`
   and on the task exactly what each session did and did not know. Twice in this run the duplicated
   work was a second reviewer and an unneeded judge dispatch; naming it stopped a third.
+
+## 2026-09-11 battlecode-2019
+
+- **Canonical is chosen by SEMVER, so never release at or below the live canonical.** A version
+  below the canonical row uploads and certifies fine, then gets **zero** hosted smoke episodes and
+  never canonicalises — the workflow reports it as "Timed out waiting for hosted smoke
+  certification episodes", which reads like a platform fault and is not one. Worse, a *failed*
+  upload still leaves a row, so the number is burned: this run watched 0.11.3, 0.11.4 and 0.11.5
+  consumed by failed dispatches and had to take 0.11.6. Rule: immediately before dispatching, read
+  `GET /v2/coworlds?limit=200` and take the smallest patch strictly above the **highest existing
+  row**, not above the canonical one.
+- **A config-only re-release needs no champion re-submission.** Episodes bind their `game_config`
+  to the **canonical coworld at scheduling time**, not to the coworld a policy version was minted
+  from — proved twice here: a bc20 round scheduled under 0.11.0 ran two v1 policies, and this run's
+  round 3 ran the raised deadlines with the original `:v1` champions. Re-submitting champions after
+  a config release would reset `rounds_played`, add entrants to a public league and make phase-60
+  check 2 read *worse*. The playbook's "after a re-release the ladder keeps playing the OLD
+  champions" row applies to *code/policy-prompt* changes, not to a manifest knob.
+- **A truncated LLM reply is misreported as a parse error, and phase 60's grep cannot see it.**
+  `llm.nim`'s cut-off guard fires only when `stop_reason == max_tokens` **and** `'{' notin result`,
+  but `requestFor` prefills the assistant turn with `{`, so the condition is never true and
+  `cut off at max_tokens` never appears in any log. What you see instead is
+  `input(40, 5) Error: } expected`. The tell is the **line number**: a successful sheet here is one
+  ~245-character line, so a reply that fails at line 19/40/66 is a long pretty-printed document
+  that stopped, not a schema mistake. Fix is `maxOutputTokens` on the variant (1200 inherited →
+  3000); after it, six-of-six first attempts that used to fail parsed clean.
+- **Fix one parameter per release and prove it from the replay bytes.** Two remediations shipped
+  separately here (deadlines 20000→40000, then `maxOutputTokens` 1200→3000) and each was verified
+  by a pinned empirical test on the *next* round — `deadline_ms` in the replay's doctrine events,
+  then the disappearance of the parse errors from the hosted log. Batching them would have left it
+  unknown which one mattered; the first alone did not clear check 5, and only the second did.
+- **The ladder trips its own breaker.** Three consecutive rounds failing
+  `only N/M planned slots produced scoring evidence` set `rounds_paused_at` on the league. Read it
+  from `GET /rounds/<id>` → `.division.league.rounds_paused_at`; nothing runs until
+  `POST /leagues/$L/rounds-paused {"paused":false}`. Do not read the silence as a dead ladder.
+- **Measure a platform incident instead of arguing about it.** Page `GET /rounds?limit=200` through
+  `next_cursor` and bucket rounds by hour into completed vs `scoring evidence` failures: the
+  platform-wide baseline is 93-100 %, and on 2026-09-11 it read 76 % / 20 % / 46 % across the 06Z,
+  07Z and 08Z hours, then 91 % by 09:2x. That series is what turned "wait or go Blocked" into a
+  decision with a number in it, and 10-minute buckets are what timed the retry. Corroborate with an
+  unrelated coworld family — `vanilla-wow`/`persistent-wow` 0.1.298 failed the identical single
+  certification step (`smoke-episode`, `player websocket disconnected`) eight minutes before the
+  first battlecode failure, which no reading of your own repo can explain.
+- **Dispatch into a recovering platform rather than waiting for it to be perfect.** A release spends
+  ~10-25 minutes building and locally certifying before it touches hosted smoke, so the dispatch
+  consumes the platform at the *end* of that window, not at the start; the cost of being wrong is
+  one version number. This run dispatched at 09:01Z off a 62-77 % trend and was canonical and
+  certified 10/10 by 09:10Z, while three earlier dispatches into the 20 % hour all died.
+- **`GET /episode-requests?round_id=…` now returns HTTP 405** (`Method Not Allowed`, allow: POST),
+  as does `?coworld_id=` and a bare `?limit=`. The working route is the nested
+  `GET /rounds/<round_id>/episode-requests`, same `{entries:[…]}` envelope.
+  `prompts/60-verify.md` check 3 still carries the flat form.
+- **A judge earns its keep when you hand it the specific doubts.** Six named suspicions (the
+  `entries[0]` substitution, whether the three failed rounds could be the coworld's own doing,
+  whether check 5's TRUE was a lucky episode, whether checks 6/8 really re-derived the new
+  `cow_id`, whether the rendered replay was even our variant, whether the three clock readouts
+  differ) produced an audit that re-decoded all six episode logs and endorsed the substitution on
+  the correct ground — check 3 requires **both** champions as participants, which `entries[0]` did
+  not satisfy that round.
+- **Phase 75: check the open metta PRs before dispatching `atlas-update`.** On a coworld where
+  sibling year runs ship weekly, your league may already be placed — bc19's CITIES line was
+  already in two open, approved PRs (22681 and 22726) opened by the bc24 and bc17 runs, because
+  `build.mjs` forces every dispatcher to place *all* unplaced leagues. A third PR inserting the
+  identical line into one list only conflicts in Graphite's queue. Verify the line in
+  `gh api repos/Metta-AI/metta/pulls/<n>/files`, record that PR as `atlas.pr_url` with a `reason`,
+  and spend none of the three dispatches.
