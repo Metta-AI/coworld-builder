@@ -586,8 +586,9 @@ The doctrine deadlines above were raised in **0.9.1** (from `attempt1Ms` 20 000 
 `doctrineBudgetMs` 45 000) because both doctrine attempts for one seat timed out against the bedrock sidecar in league
 rounds 1 and 2 while the provider answered `200 OK` to every request.
 
-`maxOutputTokens` was then raised in **0.11.2** to **3 000** for `bc19` alone (every other year inherits
-`defaultGameConfig()`'s 1 200) because both doctrine attempts for one seat returned *inside* those raised deadlines
+`maxOutputTokens` was then raised to **3 000** for `bc19` alone (every other year inherits
+`defaultGameConfig()`'s 1 200) after league **round 3**, the first round to run the raised deadlines above, because
+both doctrine attempts for one seat returned *inside* those deadlines
 (27.5 s against 40 s, then 13.1 s against 24 s) but were long pretty-printed replies that stopped mid-structure
 (`input(40, 40) Error: ] expected`, then `input(40, 5) Error: } expected`, where a successful sheet is a single line
 of ~245 characters), and a truncated reply cannot be detected by the existing `max_tokens` guard
@@ -746,7 +747,7 @@ inside the 720 s envelope computed in §The game. At most **2 provider calls per
 `src/battlecode/llm.nim` is unchanged and year-neutral: the credential ladder (Bedrock sidecar → `ANTHROPIC_API_KEY` →
 `ANTHROPIC_API_KEY_URI`), the single Bedrock candidate `us.anthropic.claude-haiku-4-5-20251001-v1:0`, fence-tolerant
 JSON extraction, the `throttled` fast-fail, rune-boundary truncation, and the `maxOutputTokens` it reads from
-`game_config` — **3 000 for `bc19` since 0.11.2**, where every other year inherits `defaultGameConfig()`'s 1 200
+`game_config` — **3 000 for `bc19`**, where every other year inherits `defaultGameConfig()`'s 1 200
 (§Match shape and budget). With no credentials
 the client disables itself at construction and every seat falls back instantly, which is what lets offline
 certification and `docker-smoke` finish in seconds.
@@ -1863,7 +1864,7 @@ verifications found them; bc22 fixed four for every year and bc16 kept them arme
     3000}` (bc16 widened it) and bc19 uses **1000**; `gamesPerMatch` keeps `maximum 3` (bc19 uses 3);
     `perGameBudgetSeconds` keeps `maximum 300` (bc19 uses **60**); `matchBudgetSeconds` keeps `maximum 600` (bc19 uses
     **200**); `attempt1Ms`/`retryMs` keep `1000…60000` (40 000 / 24 000 since 0.9.1); `doctrineBudgetMs` keeps `1000…120000`
-    (75 000 since 0.9.1); `maxOutputTokens` keeps `64…8192` (**3 000 for bc19 since 0.11.2**, inherited 1 200
+    (75 000 since 0.9.1); `maxOutputTokens` keeps `64…8192` (**3 000 for bc19**, inherited 1 200
     elsewhere); `connectTimeoutMs` keeps `1000…120000` (25 000); `num_agents` keeps `{minimum: 2, maximum: 2}`. `pool.enum`
     unchanged. `tokens` stays **declared and required** (the runner injects it — the 2026-09-03 lesson); every array
     keeps `minItems`/`maxItems`; **no runner-managed `tokens` values inside any `game_config`**;
