@@ -572,17 +572,21 @@ follows the engine. Every disagreement found:
 
 ```
 container start, map load, seat connect              <=  30 s   (connectTimeoutMs 25 000)
-doctrine phase: ONE parallel batch of 2 LLM calls    <=  45 s   (attempt1Ms 20 000 + retryMs 12 000
+doctrine phase: ONE parallel batch of 2 LLM calls    <=  75 s   (attempt1Ms 40 000 + retryMs 24 000
                                                                 + parse/validate, hard cap
-                                                                doctrineBudgetMs 45 000)
+                                                                doctrineBudgetMs 75 000)
 match: 3 games x 1000 rounds                         <= 200 s   (matchBudgetSeconds; each game also
                                                                 capped at perGameBudgetSeconds 60)
 score + replay write + shutdown grace                <=  30 s
                                                        -------
-worst case                                             305 s   <= 720 s
+worst case                                             335 s   <= 720 s
 ```
 
-There is exactly **one decision turn per episode**, so the "per-turn wall-clock budget" is the 45 s doctrine phase,
+The doctrine deadlines above were raised in **0.9.1** (from `attempt1Ms` 20 000 / `retryMs` 12 000 /
+`doctrineBudgetMs` 45 000) because both doctrine attempts for one seat timed out against the bedrock sidecar in league
+rounds 1 and 2 while the provider answered `200 OK` to every request.
+
+There is exactly **one decision turn per episode**, so the "per-turn wall-clock budget" is the 75 s doctrine phase,
 and both seats' calls go out as **one parallel batch**.
 
 **Honest per-round estimate, so the builder can check it**, derived from the engine's own economy rather than guessed:
@@ -725,8 +729,9 @@ secret://coworld/battlecode/anthropic_api_key`, `coworld_manifest_template.json`
 
 **One decision turn, one parallel batch.** Both seats are asked at the same moment and their two provider calls go out
 as **ONE parallel batch** (`curly.makeRequests`, `decide.nim`'s existing shape) with the same deadline; seats are
-**never** queried one after another. The batch's wall-clock budget is `doctrineBudgetMs = 45 000` — attempt 1
-`attempt1Ms = 20 000`, the single retry `retryMs = 12 000` — which is the per-turn budget for this game and sits
+**never** queried one after another. The batch's wall-clock budget is `doctrineBudgetMs = 75 000` — attempt 1
+`attempt1Ms = 40 000`, the single retry `retryMs = 24 000` (raised in 0.9.1, §Match shape and budget) — which is the
+per-turn budget for this game and sits
 inside the 720 s envelope computed in §The game. At most **2 provider calls per seat per episode**.
 
 `src/battlecode/llm.nim` is unchanged and year-neutral: the credential ladder (Bedrock sidecar → `ANTHROPIC_API_KEY` →
@@ -945,9 +950,9 @@ strictly comparable.
 
 | failure | response |
 |---|---|
-| no LLM reply within `attempt1Ms` (20 000) | one retry with `retryMs` (12 000), logged `will retry` — never `falling back` |
+| no LLM reply within `attempt1Ms` (40 000) | one retry with `retryMs` (24 000), logged `will retry` — never `falling back` |
 | second failure, unparseable JSON, or a provider throttle with no other candidate model | that seat plays the **fallback sheet** below on the `saber` chassis, `results.fallbacks[seat] = 1`, a **`doctrine_fallback` event** names the cause, the log line says `falling back` |
-| doctrine phase exceeds `doctrineBudgetMs` (45 000) | whatever is unresolved takes the fallback sheet; the match starts anyway |
+| doctrine phase exceeds `doctrineBudgetMs` (75 000) | whatever is unresolved takes the fallback sheet; the match starts anyway |
 | a sheet field is unknown, mistyped or out of range | that field alone takes its default (or clamps, for the six integers); the rest of the sheet applies |
 | the sheet arrives inside an envelope | it is unwrapped **once**, the envelope key is recorded in `seats[].sheet_envelope`, and the knobs apply |
 | a seat never registers | it plays the fallback sheet; the slot is reported to `COGAME_PLAYER_FAILURE_URI` and the server **logs loudly** rather than silently defaulting (the grf-football scar) |
@@ -1394,7 +1399,7 @@ observation of any kind. The example below is the real `seed-0043` card, measure
  "sheet_schema":{"…all eleven knobs, their values, ranges, defaults and notes…"},
  "scoring":{"weights":{"castles_share":64,"unit_health_share":24,"net_worth_share":12},"win_bonus_per_game":200,"games":3,
             "note":"shares are float32; points truncate to an integer; net worth is karbonite + fuel/5 + the build cost of every live unit; the league ranks by ELO on match wins and results.scores is dominated by the win bonus"},
- "budget":{"attempt1_ms":20000,"retry_ms":12000,"one_shot":true}}
+ "budget":{"attempt1_ms":40000,"retry_ms":24000,"one_shot":true}}
 ```
 
 **Visible**: everything above — own alias and side, all three map cards with **both** orders' castle positions, the
@@ -1846,8 +1851,8 @@ verifications found them; bc22 fixed four for every year and bc16 kept them arme
     **appended, so no existing index moves**. **NO BOUND MOVES.** `maxRounds` is already `{minimum: 50, maximum:
     3000}` (bc16 widened it) and bc19 uses **1000**; `gamesPerMatch` keeps `maximum 3` (bc19 uses 3);
     `perGameBudgetSeconds` keeps `maximum 300` (bc19 uses **60**); `matchBudgetSeconds` keeps `maximum 600` (bc19 uses
-    **200**); `attempt1Ms`/`retryMs` keep `1000…60000` (20 000 / 12 000); `doctrineBudgetMs` keeps `1000…120000`
-    (45 000); `connectTimeoutMs` keeps `1000…120000` (25 000); `num_agents` keeps `{minimum: 2, maximum: 2}`. `pool.enum`
+    **200**); `attempt1Ms`/`retryMs` keep `1000…60000` (40 000 / 24 000 since 0.9.1); `doctrineBudgetMs` keeps `1000…120000`
+    (75 000 since 0.9.1); `connectTimeoutMs` keeps `1000…120000` (25 000); `num_agents` keeps `{minimum: 2, maximum: 2}`. `pool.enum`
     unchanged. `tokens` stays **declared and required** (the runner injects it — the 2026-09-03 lesson); every array
     keeps `minItems`/`maxItems`; **no runner-managed `tokens` values inside any `game_config`**;
     `additionalProperties: false` stays. **Every edit this run makes to the manifest is additive.**
@@ -1893,7 +1898,7 @@ verifications found them; bc22 fixed four for every year and bc16 kept them arme
   | `bc23` | Battlecode 2023 — Tempest (2 seats) | unchanged | **2** |
   | `bc22` | Battlecode 2022 — Mutation (2 seats) | unchanged | **2** |
   | `bc16` | Battlecode 2016 — Zombie Invasion (2 seats) | unchanged | **2** |
-  | `bc19` | Battlecode 2019 — Crusade (2 seats) | `year: "bc19"`, `pool: "mixed"`, `gamesPerMatch: 3`, `seed: 0`, `maxRounds: 1000`, **`num_agents: 2`**, `attempt1Ms: 20000`, `retryMs: 12000`, `doctrineBudgetMs: 45000`, `perGameBudgetSeconds: 60`, `matchBudgetSeconds: 200`, `connectTimeoutMs: 25000`, `players: [{"name":"Clan Ash"},{"name":"Clan Basil"}]` | **2** |
+  | `bc19` | Battlecode 2019 — Crusade (2 seats) | `year: "bc19"`, `pool: "mixed"`, `gamesPerMatch: 3`, `seed: 0`, `maxRounds: 1000`, **`num_agents: 2`**, `attempt1Ms: 40000`, `retryMs: 24000`, `doctrineBudgetMs: 75000`, `perGameBudgetSeconds: 60`, `matchBudgetSeconds: 200`, `connectTimeoutMs: 25000`, `players: [{"name":"Clan Ash"},{"name":"Clan Basil"}]` | **2** |
 
   **No shipped variant's `game_config` changes, and no variant's `players` array changes.**
 
