@@ -296,3 +296,5 @@
 2026-09-11T06:54:14Z heartbeat phase=60
 2026-09-11T07:09:25Z 60 RULING on why this session stays open rather than ending cleanly, since the wait is now hours long: the remaining chain is PR #24 CI -> merge -> main CI -> ONE release dispatch, and the release is the single call that a second coordinator could duplicate into a wasted version and a rotated cow_id. My builder thread cannot be steered from another session (the parallel session established that and stood down for the same reason), so the cheapest way to keep the release single-threaded is for the session that owns the builder to stay alive through it. I heartbeat every 15 minutes while waiting, so the run never looks stale
 2026-09-11T07:09:25Z heartbeat phase=60
+2026-09-11T07:27:32Z 60 waiting: ci.yml 34570503721 (PR #24, maxOutputTokens) still in_progress ~50 min in, which is normal for this repo (75-105 min). League side quiet and healthy: latest round is still #4, completed, and the budget reset at 07:00Z so the ladder can fund the post-release round when it comes
+2026-09-11T07:27:32Z heartbeat phase=60
