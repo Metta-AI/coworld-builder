@@ -1,6 +1,16 @@
-# VERIFY — battlecode-2019   (2026-09-10T23:54:13Z)
+# VERIFY — battlecode-2019   (2026-09-10T23:54:13Z; pass 2 update 2026-09-11T00:58:10Z)
 
-Verdict: 3 items false / pending — see items 1, 4, 5 below; items 2, 3, 6, 7, 8 TRUE.
+Verdict: 1 item false — see item 5 below (champion #2, daveey-1/`battlecode-bc19-preachers`,
+fell back to the scripted-default doctrine again in round 2's champion-vs-champion episode,
+the same failure signature as round 1: both LLM attempts timed out against the bedrock sidecar).
+Items 1, 2, 3, 4, 6, 7, 8 TRUE (item 4 carries the same load-bearing finding as item 5, since it
+is the same event observed from the replay bytes rather than the hosted log).
+
+**Pass 2 (this update)** re-ran checks 1, 3, 4 and 5 against round 2
+(`round_6acab2f9-8ffd-4b03-98bb-a1500f23acae`, completed 2026-09-11T00:50:31Z), per the
+coordinator's second-pass brief. Checks 2, 6, 7, 8 were not re-run — their pass-1 evidence is
+immutable for version 0.9.0 — except for a one-GET leaderboard refresh added to item 2's
+addendum.
 
 Scope note: this coworld is `battlecode` (ninth year-module `bc19`), league
 `league_1ce0515e-3218-4f13-a80d-e066890607db` (`bc19`), division
@@ -16,6 +26,8 @@ are shown, values never printed. Per the coordinator's binding brief for this di
 ---
 
 ## 1. ≥2 completed rounds after fillers were set
+
+### Pass 1 — round 1 (2026-09-10T23:54Z)
 
 ```
 curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}"
@@ -49,13 +61,68 @@ Exactly **one** completed round exists (`round_number=1`, `status=completed`,
 cadence set by the operator to cap the coworld's daily Bedrock spend). No failed/discarded rounds
 exist. The definition of done requires **≥2** completed rounds.
 
-**Verdict: FALSE — pending round 2.** The ladder is enabled (`ladder.enabled=true`) and unpaused
-(`rounds_paused_at=null`) at `round_interval_minutes=288`, so round 2 will arrive on its own
-without any trigger-round call. Per the coordinator's explicit, human-operator-sourced
-instruction (David Bloomin, 2026-09-10T22:41:59Z: "Do not trigger-round before" the
-2026-09-11T07:00:00Z coworld-budget reset), this verifier issued **no** `POST
-/leagues/$L/trigger-round` and made **no** write of any kind to the platform. A later heartbeat
-must re-run this single check once round 2 exists.
+Pass-1 verdict at the time: FALSE — pending round 2. (Superseded below; see log.md for the
+correction that round 1 was triggered manually by the operator at 22:56:56Z, not created
+unprompted by the ladder — the read-only facts above, id/status/completed_at, are unaffected.)
+
+### Pass 2 — round 2 (2026-09-11T00:58Z)
+
+```bash
+BASE=https://softmax.com/api/observatory/v2
+L=league_1ce0515e-3218-4f13-a80d-e066890607db
+curl -sS "$BASE/rounds?league_id=$L&limit=20" "${AUTH[@]}"
+```
+Full response trimmed to the fields that matter (both rows carry the same league/division
+context already shown above; the round-2 row is new since pass 1):
+```json
+{
+  "entries": [
+    {
+      "id": "round_6acab2f9-8ffd-4b03-98bb-a1500f23acae",
+      "round_number": 2,
+      "status": "completed",
+      "scheduled_by": "ladder",
+      "error": null,
+      "completed_at": "2026-09-11T00:50:31.273345Z",
+      "created_at": "2026-09-11T00:48:48.658738Z",
+      "round_config": {
+        "entrant_policy_version_ids": [
+          "180e3b93-3442-460f-8ff7-22965047c210",
+          "35935ce8-2828-4d67-826c-97b0da1399cb",
+          "d179231c-078e-45f5-937d-5fd3d4c17a16"
+        ]
+      }
+    },
+    {
+      "id": "round_aa77a013-672b-4b0b-a740-2cc8e9521241",
+      "round_number": 1,
+      "status": "completed",
+      "scheduled_by": "ladder",
+      "error": null,
+      "completed_at": "2026-09-10T23:16:10.110165Z",
+      "created_at": "2026-09-10T22:56:56.979049Z"
+    }
+  ],
+  "next_cursor": null
+}
+```
+```bash
+jq -r '[.entries[]|select(.status=="completed")]|length' /tmp/rounds.json
+# -> 2
+jq -c '[.entries[]|{id,round_number,status,error,completed_at}]' /tmp/rounds.json
+# -> [{"id":"round_6acab2f9-...","round_number":2,"status":"completed","error":null,"completed_at":"2026-09-11T00:50:31.273345Z"},
+#     {"id":"round_aa77a013-...","round_number":1,"status":"completed","error":null,"completed_at":"2026-09-10T23:16:10.110165Z"}]
+```
+Two completed rounds now exist: round_number 1 (`round_aa77a013`, completed 2026-09-10T23:16:10Z)
+and round_number 2 (`round_6acab2f9`, completed 2026-09-11T00:50:31Z), both `error: null`, no
+failed/discarded rounds. Fillers were registered at 2026-09-10T13:35:00Z (log.md line: "filler
+UUIDs resolved ... POST /leagues/$L/filler-policies 200 ... set BEFORE any trigger"), which is
+**before round 1 was even created** (round 1's `created_at=2026-09-10T22:56:56Z`, round 2's
+`created_at=2026-09-11T00:48:48Z`) — both completed round_numbers (1 and 2) are after the round
+in which fillers were set, satisfying the check's ordering requirement trivially.
+
+**Verdict: TRUE.** ≥2 completed rounds (exactly 2), both after fillers were registered, neither
+failed nor discarded.
 
 ---
 
@@ -93,9 +160,30 @@ filler_policy` to seat one.
 
 **Verdict: TRUE.**
 
+### Addendum — post-round-2 leaderboard refresh (2026-09-11T00:58Z, pass 2)
+
+Not a re-run of the full check (per the coordinator's brief this costs one GET only):
+```bash
+curl -sS "$BASE/divisions/$D/leaderboard" "${AUTH[@]}"
+```
+```json
+[
+  {"rank":1,"player_name":"daveey-1","score":1032.0,"rounds_played":2,"episode_wins":3.0,"win_rate":0.75,"policy_label":"battlecode-bc19-preachers:v1"},
+  {"rank":2,"player_name":"daveey","score":1027.6160793889464,"rounds_played":2,"episode_wins":3.0,"win_rate":0.75,"policy_label":"battlecode-bc19-saber:v1"},
+  {"rank":3,"player_name":"docxology","score":940.3839206110537,"rounds_played":2,"episode_wins":0.0,"win_rate":0.0,"policy_label":"daf-battlecode-carrier-doctrine:v2"}
+]
+```
+Both champions now show `rounds_played=2` (was 1 in pass 1); `daveey-1` moved to rank 1 (won its
+round-2 champion-vs-champion episode 449.67–249.33 despite check 5's fallback below — the
+scripted-default doctrine still won that match). No filler policy is on the board; `docxology`
+remains the correctly-identified third-party entrant. This addendum does not change item 2's
+verdict, already TRUE in pass 1.
+
 ---
 
 ## 3. Latest round's episode request completed with a replay
+
+### Pass 1 — round 1 (2026-09-10T23:54Z)
 
 `GET /episode-requests?round_id=$R&limit=20` (the flat route, as the coordinator's brief
 specified) returned:
@@ -146,11 +234,87 @@ curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" | jq '{status, replay_url, 
 (no fillers were seated in this pairing — the other two episode requests in this round pair each
 champion against `docxology` instead).
 
-**Verdict: TRUE.**
+Pass-1 verdict: TRUE (for round 1, the then-latest round).
+
+### Pass 2 — round 2 (2026-09-11T00:58Z)
+
+Re-derived `R` as the max `round_number` completed round from item 1's pass-2 fetch:
+```bash
+R=$(jq -r '[.entries[]|select(.status=="completed")]|max_by(.round_number).id' /tmp/rounds.json)
+echo "$R"
+# -> round_6acab2f9-8ffd-4b03-98bb-a1500f23acae
+```
+Confirms `R` now resolves to round 2, not round 1. `EREQ` per the prompt's flat route:
+```bash
+curl -sS "$BASE/episode-requests?round_id=$R&limit=20" "${AUTH[@]}" -w '\nHTTP_STATUS:%{http_code}\n'
+```
+```
+{"detail":"Method Not Allowed"}
+HTTP_STATUS:405
+```
+Same 405 as pass 1 (documented gotcha, playbook §9). Falling back to the nested route again:
+```bash
+curl -sS "$BASE/rounds/$R/episode-requests" "${AUTH[@]}"
+```
+```json
+{"entries":[
+  {"id":"ereq_47eb0220-9db2-436c-b71a-88d20e15dcab","status":"completed",
+   "replay_url":"https://softmax-public.s3.amazonaws.com/replays/03889556-6f62-4620-bd8c-c98de057209a.replay",
+   "policy_version_ids":["35935ce8-2828-4d67-826c-97b0da1399cb","d179231c-078e-45f5-937d-5fd3d4c17a16"],
+   "created_at":"2026-09-11T00:48:49.423412Z"},
+  {"id":"ereq_05e7d186-9dca-4327-b41a-75b5b33c94d0","status":"completed",
+   "replay_url":"https://softmax-public.s3.amazonaws.com/replays/fe29c92d-a5e6-4972-bd8f-38937fa66ab0.replay",
+   "policy_version_ids":["180e3b93-3442-460f-8ff7-22965047c210","d179231c-078e-45f5-937d-5fd3d4c17a16"],
+   "created_at":"2026-09-11T00:48:49.409113Z"},
+  {"id":"ereq_8f7dd280-5c26-4bc6-b589-08c7b2b80f24","status":"completed",
+   "replay_url":"https://softmax-public.s3.amazonaws.com/replays/e588ab83-6b1d-4659-a49c-dd19943eafaa.replay",
+   "policy_version_ids":["180e3b93-3442-460f-8ff7-22965047c210","35935ce8-2828-4d67-826c-97b0da1399cb"],
+   "created_at":"2026-09-11T00:48:49.401216Z"}
+],"next_cursor":null}
+```
+`.entries[0].id` = `ereq_47eb0220-9db2-436c-b71a-88d20e15dcab` — again the champion-vs-champion
+match (`35935ce8…`=saber/daveey, `d179231c…`=preachers/daveey-1). Detail:
+```bash
+EREQ=$(jq -r '.entries[0].id' /tmp/ereq_round2.json)
+curl -sS "$BASE/episode-requests/$EREQ" "${AUTH[@]}" | jq '{status, replay_url, participants, participant_scores}'
+```
+```json
+{
+  "status": "completed",
+  "replay_url": "https://softmax-public.s3.amazonaws.com/replays/03889556-6f62-4620-bd8c-c98de057209a.replay",
+  "participants": [
+    {
+      "position": 0, "kind": "policy",
+      "policy_version_id": "35935ce8-2828-4d67-826c-97b0da1399cb",
+      "policy_name": "battlecode-bc19-saber", "version": 1,
+      "player_id": "ply_44ae9048-3242-4654-881f-6d9d43347fa3", "player_name": "daveey",
+      "is_filler": false, "is_seed": false
+    },
+    {
+      "position": 1, "kind": "policy",
+      "policy_version_id": "d179231c-078e-45f5-937d-5fd3d4c17a16",
+      "policy_name": "battlecode-bc19-preachers", "version": 1,
+      "player_id": "ply_bac48eb1-662e-44f8-973d-f3e016dccf5d", "player_name": "daveey-1",
+      "is_filler": false, "is_seed": false
+    }
+  ],
+  "participant_scores": [
+    {"position": 0, "score": 249.33333333333334},
+    {"position": 1, "score": 449.6666666666667}
+  ]
+}
+```
+`status=completed`, `replay_url` non-null, participants correctly named `daveey` and `daveey-1`
+(as in round 1, the other two round-2 episode requests pair each champion against `docxology`
+instead — `ereq_05e7d186` = docxology vs preachers, `ereq_8f7dd280` = docxology vs saber).
+
+**Verdict: TRUE** (round 2's designated episode `ereq_47eb0220-9db2-436c-b71a-88d20e15dcab`).
 
 ---
 
 ## 4. Replay bytes are valid and show the game
+
+### Pass 1 — round 1 (2026-09-10T23:54Z)
 
 ```bash
 curl -sSL "https://softmax-public.s3.amazonaws.com/replays/8b68a7cb-c4b1-4749-8f80-1e5a072b8ab1.replay" -o /tmp/ep.replay
@@ -235,17 +399,107 @@ Event stream (129 events total), early/middle/late excerpt:
 {"kind":"episode_end","ms":0,"reason":"complete"}
 ```
 
-**Verdict: TRUE, with a load-bearing finding for the judge.** Bytes are valid strict UTF-8 JSON,
-protocol matches, `reason=complete`, and the events show real doctrine-driven play (castle
-economy, duels, church construction/loss, trades, a genuine 1000-round tiebreak on unit health)
-rather than a scripted stub. But **champion #2 (daveey-1 / `battlecode-bc19-preachers`) played
-this entire episode on the scripted-default fallback doctrine, not an LLM-authored one** — both
-of its LLM attempts timed out. Whether that is acceptable turns on check 5's finding below, which
-is the same event.
+Pass-1 verdict: TRUE, with the load-bearing finding carried into pass 2 below.
+
+### Pass 2 — round 2 (2026-09-11T00:58Z)
+
+```bash
+curl -sSL "https://softmax-public.s3.amazonaws.com/replays/03889556-6f62-4620-bd8c-c98de057209a.replay" -o /tmp/ep2.replay
+jq -e . /tmp/ep2.replay >/dev/null && echo "strict UTF-8 JSON: ok"
+```
+```
+strict UTF-8 JSON: ok
+```
+```bash
+jq -r '.protocol, .result.reason' /tmp/ep2.replay
+```
+```
+cogame.battlecode.v1
+complete
+```
+`protocol` matches; `result.reason = "complete"` — both games reached `rounds_played: 1000`
+(`game[0]` seed-0003, `game[1]` seed-0042), no deadline cut.
+
+The prompt's literal decision/fallback queries, run verbatim, both return 0 — there is no
+`type=="decision"` or `fallback==true` key in this game's schema (it uses `kind` and a
+`doctrine_fallback` event instead, exactly as pass 1 found):
+```bash
+jq -r '[.events[]|select(.type=="decision")]|length' /tmp/ep2.replay   # -> 0
+jq -r '[.events[]|select(.fallback==true)]|length' /tmp/ep2.replay     # -> 0
+```
+Using the game's actual doctrine-event schema instead:
+```bash
+jq -c '.events[]|select(.kind|test("doctrine"))' /tmp/ep2.replay
+```
+```json
+{"kind":"doctrine_requested","ms":0,"slot":0,"attempt":1,"deadline_ms":20000}
+{"kind":"doctrine_requested","ms":0,"slot":1,"attempt":1,"deadline_ms":20000}
+{"kind":"doctrine_retry","ms":20000,"slot":0,"cause":"parse"}
+{"kind":"doctrine_retry","ms":20000,"slot":1,"cause":"timeout"}
+{"kind":"doctrine_received","ms":11999,"slot":0,"attempt":2,"latency_ms":11999,"defaults_applied":0,"unknown_fields":0}
+{"kind":"doctrine_retry","ms":11999,"slot":1,"cause":"timeout"}
+{"kind":"doctrine_fallback","ms":0,"slot":1,"cause":"parse"}
+```
+```bash
+jq -c '.result.fallbacks' /tmp/ep2.replay   # -> [0,1]
+```
+**This is the identical failure signature as round 1's designated episode, byte-for-byte in
+shape**: slot 0 (daveey/saber) — attempt 1 a JSON parse error, attempt 2 succeeded at
+`latency_ms:11999` with `defaults_applied:0, unknown_fields:0` (a clean LLM sheet). Slot 1
+(daveey-1/preachers) — both attempts timed out (`doctrine_retry cause:"timeout"` twice), then
+`doctrine_fallback` to the scripted default. Decision count 2, fallback count 1 (50 %) in this
+episode, same as round 1.
+
+Round-2 context, the other two episode requests fetched and checked the same way:
+```bash
+jq -c '.events[]|select(.kind|test("doctrine"))' /tmp/ep2_ereq_05e7d186.replay   # docxology vs preachers
+jq -c '.events[]|select(.kind|test("doctrine"))' /tmp/ep2_ereq_8f7dd280.replay   # docxology vs saber
+```
+| episode | slot0 | slot1 | fallback? |
+|---|---|---|---|
+| ereq_47eb0220 (saber vs preachers) | daveey/saber: succeeded (retry, parse then ok) | daveey-1/preachers: **fell back** (2 timeouts) | 1 fallback |
+| ereq_05e7d186 (docxology vs preachers) | docxology: succeeded (retry, parse then ok) | daveey-1/preachers: succeeded (retry, 1 timeout then ok) | 0 fallback |
+| ereq_8f7dd280 (docxology vs saber) | docxology: succeeded (retry, parse then ok) | daveey/saber: succeeded (retry, 1 timeout then ok) | 0 fallback |
+
+Round-2 tally: `daveey`/saber fell back **0 of 2**; `daveey-1`/preachers fell back **1 of 2**
+(50 %) — the exact same rate and the exact same episode-selection pattern as round 1 (the
+fallback lands specifically in the champion-vs-champion pairing both times; the docxology
+pairings both succeeded both times). **Combined round 1 + round 2: saber 0/4 (0 %), preachers
+2/4 (50 %).**
+
+Game-content sample for round 2 (same structural elements as round 1 — castle economy, duels,
+churches, trades, a full 1000-round tiebreak):
+```bash
+jq -r '.result.games[0]|{map,rounds_played,end_reason,units_built,pilgrims_built,crusaders_built,prophets_built,attacks,kills,trades_executed}' /tmp/ep2.replay
+```
+```json
+{"map":"seed-0003","rounds_played":1000,"end_reason":"more_unit_health",
+ "units_built":[153,95],"pilgrims_built":[139,79],"crusaders_built":[0,3],
+ "prophets_built":[11,10],"attacks":[78,126],"kills":[67,125],"trades_executed":[2,2]}
+```
+```bash
+jq -r '.events[]|[.tick,.kind]' /tmp/ep2.replay 2>/dev/null | head; jq -r '.events|length' /tmp/ep2.replay
+```
+Event kinds present (185 events total): `church_built`(30), `church_lost`(2), `depot_claimed`(60),
+`doctrine_fallback`(1), `doctrine_received`(1), `doctrine_requested`(2), `doctrine_retry`(3),
+`duel`(29), `episode_end`(1), `episode_start`(1), `first_action`(6), `game_end`(3), `game_start`(3),
+`tiebreak`(3), `trade`(23), `unit_milestone`(17) — real doctrine-driven play, not a scripted stub,
+despite one seat's episode being played on that seat's own scripted-default fallback sheet.
+
+**Verdict: TRUE, with the same load-bearing finding recurring for a second, independent round.**
+Bytes are valid strict UTF-8 JSON, protocol matches, `reason=complete`, and the events show real
+gameplay. But **champion #2 (daveey-1/`battlecode-bc19-preachers`) again played the designated
+episode entirely on the scripted-default fallback doctrine** — both LLM attempts timed out, same
+as round 1. This is no longer a single occurrence: combined across both verified rounds, 2 of 4
+champion decisions used the scripted fallback, both for the same champion, both in the identical
+20000 ms-timeout-then-20000 ms-timeout-then-fallback shape. See check 5 for the full evidence and
+characterisation of whether this is a transport hiccup or a systematically undersized deadline.
 
 ---
 
 ## 5. Hosted game log is clean
+
+### Pass 1 — round 1 (2026-09-10T23:54Z)
 
 Elevated header added (`X-Use-Elevated-Privileges: true`) as required. Logs are python
 `b'…'` byte-string reprs per container; decoded with `ast.literal_eval`-equivalent before
@@ -283,19 +537,132 @@ CLEAN
 CLEAN
 ```
 
-**Verdict: FALSE for the designated episode (1 of 3 this round).** This is a genuine, non-clean
-log line, not the documented Bedrock-capacity exception: the forbidden pattern matched here is
-`falling back` (the coworld's own retry-exhausted message), not the platform-wide `LLM provider
-is unavailable` string the check's documented exception is written for, and the failure mode is
-two client-side transport **timeouts** waiting on the bedrock sidecar (`Timeout was reached
-POST …/invoke`) rather than a provider-unavailable error. The httpx sidecar log for this same
-episode shows four `POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"` calls
-completing between 22:57:34Z and 22:58:02Z, i.e. the upstream model did eventually answer within
-the episode's own log window — the client's per-attempt budget was simply tighter than the
-model's latency on this occasion. No cross-check against another LLM coworld's concurrent log
-was performed in this run (out of scope for a bounded verifier dispatch); this finding should be
-treated as unexplained rather than excused. It is fully consistent with, and is the direct cause
-of, check 4's fallback finding for the same seat.
+Pass-1 verdict: FALSE for the designated episode (1 of 3 this round) — the finding pass 2 was
+dispatched to characterise.
+
+### Pass 2 — round 2 (2026-09-11T00:58Z)
+
+Designated episode `ereq_47eb0220-9db2-436c-b71a-88d20e15dcab` (round 2's `entries[0]`, the
+champion-vs-champion pairing, same as check 3 pass 2):
+```bash
+curl -sS "$BASE/episode-requests/$EREQ/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o /tmp/ereq_47eb0220-9db2-436c-b71a-88d20e15dcab_raw.json
+python3 -c "... ast.literal_eval per b'...' container repr ..."   # same decode approach as pass 1
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/ereq_47eb0220-9db2-436c-b71a-88d20e15dcab_decoded.txt || echo CLEAN
+```
+```
+30:battlecode llm: seat 1 falling back to the scripted doctrine (parse)
+```
+Decoded `game` container in full:
+```
+battlecode config: year=bc19 pool=mixed seed=449961009 games=3 maxRounds=1000 num_agents=2 matchBudget=200s
+battlecode: listening on 0.0.0.0:8080
+battlecode: waiting for seats
+battlecode: refused a seat-0 connection: seat 0 was given the wrong connection token
+battlecode: a spectator joined /global
+battlecode: seat 1 connected
+battlecode: seat 1 registered kind=llm label=preachers
+battlecode: seat 0 connected
+battlecode: seat 0 registered kind=llm label=saber
+battlecode: doctrine
+battlecode llm: bedrock transport, model us.anthropic.claude-haiku-4-5-20251001-v1:0
+battlecode llm: seat 0 attempt 1 failed, will retry: input(19, 3) Error: } expected
+battlecode llm: seat 1 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+battlecode llm: seat 1 attempt 2 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+battlecode llm: seat 1 falling back to the scripted doctrine (parse)
+battlecode: match
+battlecode: settled: complete
+battlecode: reason=complete games=3 scores=[249.33333333333334, 449.6666666666667] sim=0.722s wall=38.632s
+```
+**Verdict for the designated episode: FALSE — NOT CLEAN.** Same forbidden string (`falling back`),
+same seat (1 = daveey-1/preachers), same two-timeout shape as round 1.
+
+**1. Designated-episode verdict:** FALSE (not clean) — see above.
+
+**2. Every episode in round 2 (`round_id=round_6acab2f9-8ffd-4b03-98bb-a1500f23acae`),
+fetched and grepped individually:**
+
+```bash
+for E in ereq_47eb0220-9db2-436c-b71a-88d20e15dcab ereq_05e7d186-9dca-4327-b41a-75b5b33c94d0 ereq_8f7dd280-5c26-4bc6-b589-08c7b2b80f24; do
+  curl -sS "$BASE/episode-requests/$E/artifacts/logs" "${AUTH[@]}" "${ELEV[@]}" -o "/tmp/${E}_raw.json"
+done
+# decode each (ast.literal_eval per b'...' container), then:
+grep -nE 'falling back|LLM provider is unavailable|cut off at max_tokens|rejected' /tmp/*_decoded.txt || echo CLEAN
+```
+
+| episode | participants | log clean? | matched line |
+|---|---|---|---|
+| `ereq_47eb0220-9db2-436c-b71a-88d20e15dcab` | daveey/saber (slot0) vs daveey-1/preachers (slot1) | **NOT CLEAN** | `battlecode llm: seat 1 falling back to the scripted doctrine (parse)` |
+| `ereq_05e7d186-9dca-4327-b41a-75b5b33c94d0` | docxology (slot0) vs daveey-1/preachers (slot1) | CLEAN | — |
+| `ereq_8f7dd280-5c26-4bc6-b589-08c7b2b80f24` | docxology (slot0) vs daveey/saber (slot1) | CLEAN | — |
+
+Decoded `game` containers for the two clean episodes, verbatim, for the accompanying
+timeout/retry context (each shows exactly one "attempt 1 failed" per seat, each followed by a
+silent successful attempt 2 — no second failure, no fallback line):
+```
+# ereq_05e7d186 (docxology vs preachers)
+battlecode llm: seat 0 attempt 1 failed, will retry: input(31, 3) Error: } expected
+battlecode llm: seat 1 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+battlecode: match
+battlecode: settled: complete
+battlecode: reason=complete games=2 scores=[38.5, 460.5] sim=0.235s wall=35.818s
+```
+```
+# ereq_8f7dd280 (docxology vs saber)
+battlecode llm: seat 0 attempt 1 failed, will retry: input(28, 3) Error: } expected
+battlecode llm: seat 1 attempt 1 failed, will retry: llm transport: Timeout was reached POST http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
+battlecode: match
+battlecode: settled: complete
+battlecode: reason=complete games=2 scores=[47.5, 451.5] sim=0.269s wall=37.087s
+```
+Accompanying sidecar (bedrock-sidecar container) timing for the designated (not-clean) episode,
+decoded the same way:
+```
+2026-09-11 00:48:59,842 INFO __main__ bedrock_sidecar_started {... "episode_request_id":"47eb0220-9db2-436c-b71a-88d20e15dcab", ...}
+[2026-09-11 00:49:00 +0000] [10] [INFO] Running on http://127.0.0.1:9100 (CTRL + C to quit)
+2026-09-11 00:49:07,428 INFO httpx HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+2026-09-11 00:49:23,093 INFO httpx HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+2026-09-11 00:49:27,228 INFO httpx HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+2026-09-11 00:49:37,318 INFO httpx HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+```
+Four `200 OK` responses complete between 00:49:07.428Z and 00:49:37.318Z (a ~30 s window) — the
+same shape as round 1's four-200 window (22:57:34Z–22:58:02Z, ~28 s). The upstream model answered
+every request it was sent in both rounds; what failed both times was the client's own
+per-attempt 20000 ms budget for slot 1 specifically.
+
+**3. Round-2 fallback tally, combined tally, and characterisation:**
+
+Round 2: `daveey`/saber fell back **0 of 2** decisions; `daveey-1`/preachers fell back **1 of 2**
+decisions (50 %) — identical to round 1's per-round tally.
+
+**Combined round 1 + round 2: `daveey`/saber 0 of 4 (0 %); `daveey-1`/preachers 2 of 4 (50 %).**
+Both of preachers' fallbacks occurred in the champion-vs-champion pairing specifically (both
+attempts timing out against the bedrock sidecar); both of preachers' successes occurred in its
+pairing against `docxology` (one timeout on attempt 1, success on attempt 2). Saber never fell
+back in either round, always recovering on attempt 2 after a parse error on attempt 1.
+
+The surrounding context in both rounds is the same and is unambiguous about *why*: in every
+instance the log line is `llm transport: Timeout was reached POST
+http://127.0.0.1:9100/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke` — a **client-side
+transport timeout against the local bedrock sidecar**, not a parse failure (parse failures are a
+separate, always-recovered-on-retry failure mode affecting the *other* seat in every episode) and
+not a provider-unavailable error (the string `LLM provider is unavailable` never appears in any
+of the six logs fetched across both rounds). The sidecar's own httpx log shows the upstream model
+call completing successfully in every episode, within a window (~28–30 s) that is longer than one
+20000 ms attempt but comparable to two attempts back-to-back — consistent with responses simply
+arriving after the per-attempt clock had already been reset for a retry, not with the provider
+failing to answer at all.
+
+**Characterisation (evidence only, no ruling): this is no longer explainable as a one-off
+transport hiccup.** It recurred in a second, independent round, in the identical shape (two
+consecutive timeouts, same seat, same pairing, both times), affecting the same champion at the
+same 50 % per-round rate both times, while the other champion (saber) never once hit it. Two
+independent samples both landing on the specific pairing where preachers plays saber, and neither
+landing on preachers-vs-docxology, is a small sample (n=2) and could still be coincidence — but
+the recurrence of the exact failure mode (timeout, not parse; both attempts, not one) across two
+rounds separated by roughly 90 minutes is evidence in favour of "the 20000 ms per-attempt deadline
+is tight enough that it is not reliably clearing this model/transport's real-world latency for
+this seat," rather than in favour of "an isolated transport blip." Whether that reading is
+sufficient to act on, and what to do about it, is the coordinator's call, not this verifier's.
 
 ---
 
@@ -489,13 +856,22 @@ transport strip/scrubber/scorebug/endcard shape described for paintbot/raid/hive
 
 ## Summary for the coordinator
 
+Post-pass-2 state (checks 1, 3, 4, 5 re-run against round 2; checks 2, 6, 7, 8 unchanged from
+pass 1, item 2 additionally refreshed with a one-GET leaderboard addendum):
+
 | # | Check | Verdict |
 |---|---|---|
-| 1 | ≥2 completed rounds after fillers | **FALSE — pending round 2** (1 of 2; ladder unpaused, 288 min cadence, will self-resolve; no trigger-round issued) |
-| 2 | Both champions ranked | TRUE |
-| 3 | Latest round's episode request completed w/ replay | TRUE |
-| 4 | Replay bytes valid, protocol matches, shows the game | TRUE, with finding: champion #2 (daveey-1/preachers) played this episode entirely on the scripted-default fallback (1 of 1 decisions in this episode, 1 of 2 across the round) |
-| 5 | Hosted game log clean | **FALSE** for the designated episode — one `falling back` line, caused by two client-side LLM-transport timeouts, not the documented Bedrock-unavailable exception |
-| 6 | Public page uses static replay path | TRUE (bc19-specific page `softmax.com/battlecode/bc19` featured our exact round-1 episode; bc26 default-league page recorded separately and correctly not treated as bc19 evidence) |
-| 7 | Certification declared static bundle | TRUE (committed `release-result.json`) |
-| 8 | Viewer executed and legible | TRUE — `loaded:true`, three differing clock readouts, screenshot matches starter chrome and the replay record |
+| 1 | ≥2 completed rounds after fillers | **TRUE** — round_aa77a013 (round 1, completed 2026-09-10T23:16:10Z) and round_6acab2f9 (round 2, completed 2026-09-11T00:50:31Z), both `error:null`, both after fillers were registered (2026-09-10T13:35:00Z) |
+| 2 | Both champions ranked | TRUE (pass 1; refreshed addendum shows `rounds_played=2` for both) |
+| 3 | Latest round's episode request completed w/ replay | TRUE — re-derived against round 2: `ereq_47eb0220-9db2-436c-b71a-88d20e15dcab`, status completed, replay_url non-null, participants daveey + daveey-1 |
+| 4 | Replay bytes valid, protocol matches, shows the game | TRUE, with a recurring finding: champion #2 (daveey-1/preachers) again played the designated episode entirely on the scripted-default fallback (round 2: 1 of 2 decisions in-round; combined both rounds: 2 of 4, 50 %) |
+| 5 | Hosted game log clean | **FALSE** for the designated episode, again — same `falling back` line, same seat, same two-timeout shape as round 1. Round-2 tally: saber 0/2, preachers 1/2. **Combined: saber 0/4 (0 %), preachers 2/4 (50 %).** Evidence characterisation: recurrence across two independent rounds in the identical failure shape supports "the 20000 ms per-attempt deadline is not reliably clearing this transport's real-world latency for this seat" over "one-off transport hiccup" — not a ruling, a characterisation for the coordinator |
+| 6 | Public page uses static replay path | TRUE (unchanged from pass 1; bc19-specific page `softmax.com/battlecode/bc19` featured round-1 episode at the time of that fetch) |
+| 7 | Certification declared static bundle | TRUE (unchanged from pass 1; committed `release-result.json`) |
+| 8 | Viewer executed and legible | TRUE (unchanged from pass 1; `loaded:true`, three differing clock readouts, screenshot matches starter chrome and the replay record) |
+
+**Overall: 7 of 8 TRUE, 1 FALSE (check 5).** Checks 1, 2, 3, 4, 6, 7, 8 all TRUE with fresh or
+carried-forward pasted evidence. Check 5 is FALSE for the designated episode in **both** verified
+rounds, with the identical failure shape both times — this is the load-bearing open item for the
+coordinator to adjudicate (raise the 20000 ms per-attempt doctrine deadline, or accept the
+observed 50 % fallback rate for this one champion as within tolerance).
