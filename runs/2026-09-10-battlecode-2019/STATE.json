@@ -79,8 +79,8 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T08:30:43Z",
-  "session_ended_at": "2026-09-11T08:30:43Z",
-  "session_id": "8860aee9",
+  "heartbeat_at": "2026-09-11T08:52:00Z",
+  "session_ended_at": null,
+  "session_id": "51b7f2a6",
   "log": "runs/2026-09-10-battlecode-2019/log.md"
 }
