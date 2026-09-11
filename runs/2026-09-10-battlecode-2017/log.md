@@ -152,3 +152,4 @@
 2026-09-11T09:20:00Z progress phase=60 marker=reviews/60-verdict.md BLOCKING: 0 (all 8 items upheld, both coordinator questions ruled)
 2026-09-11T09:20:00Z 60 -> 70 phase transition: STATE written phase=70 and PUSHED BEFORE any Discord call
 2026-09-11T09:23:24Z heartbeat phase=70
+2026-09-11T09:25:13Z 70 announce attempted_at written and pushed BEFORE the POST (AGENT.md hard rule 4): body composed from templates/announce.md at 1788 chars, play link https://softmax.com/battlecode/bc17 matching the sibling years' convention (bc24/bc16/bc22/bc23/bc25 all post softmax.com/battlecode/<key>), NOT softmax.com/battlecode-2017 which does not exist. Step-0 resume guard run first: STATE.announce.discord_message_id was empty and attempted_at null, and a read of the last messages in #coworlds found bc24, bc16, bc22, bc23, bc25 and a QUEUE STALLED card but NO bc17 post
