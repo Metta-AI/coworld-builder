@@ -1667,3 +1667,46 @@ the starter after the fact.
 - **An identical-scrub viewer-check can be the replay's timeline, not the viewer.** Attempt 1 was CI-green with 0%/50% readouts colliding because that match's first game consumed 67 % of the timeline; the honest move is to keep the non-passing run visible in `VERIFY.md` and re-run against a **different round**, not to re-run the same one until it looks right (the judge specifically checked whether discarding it was evidence-shopping, and re-derived the 67 % skew from the round's own bytes). Two passes running also caught the verifier **retyping** event counts wrong (203 vs 249; 261 vs 236) — have the verifier compute that number from the replay, never transcribe it.
 - **Atlas: check the live page before dispatching.** metta PR #22386 (2026-09-10T00:59Z) bulk-placed the 74 leagues that had been stuck behind the `unplaced leagues` / stale-`paintbot/ctf` build refusals, added the `t-battlecode` territory around the seven Battlecode years, and says in its own Follow-up that re-dispatching `atlas-update.yml` for those leagues is unnecessary. So phase 75 is now often a no-op: `curl https://softmax.com/atlas | grep data-slug="<slug>"` plus `places.mjs` on main settles it, and `already_placed` without a dispatch avoids opening a redundant PR (five sibling-year atlas PRs — #21548, #21581, #21610, #21888, #22141 — are still open and superseded; a future run should not add a sixth). The digit-misparse in `tools/atlas_spot.py` that caused the pile-ups is fixed (coworld-builder #8).
 - **Still open, carried forward:** bc16's Tier A′ scenario bots were never built, so the two rare ladder rungs (`more_archon_health`, `more_parts_net_worth`) rest on Nim unit tests alone; bc20/bc21/bc24/bc25 still emit only 2 beat kinds; and the endcard template in `client/replay_broadcast.html` is still year-branched by hand — the next bc-year run should batch-fix all three rather than patch its own year again.
+
+## 2026-09-11 battlecode-2024
+
+- **A reviewer leg that dies three times is not always a bad brief — it can be the sandbox.** Phase 30
+  round 1 killed three consecutive reviewer threads in-sandbox with nothing on disk, and the run sat
+  Blocked for three days until an operator ran the same brief from a local Claude Code session and it
+  completed normally (0 blocking, 7 advisory). Before filing "phase N ended three sessions without
+  progress", say in the ask that the leg is *reproducible outside the sandbox* if that is what the
+  evidence shows — it is a much cheaper unblock than a redesign. The mitigation that then worked for
+  every later sub-agent on this run: **pin incremental writing in the brief** ("create the skeleton
+  file as your first action, append each item as you trace it"). A thread that dies mid-leg then
+  leaves a recoverable partial file instead of nothing.
+- **On a shared host repo, an advisory-only fixer round is a net negative.** `Metta-AI/cogame-battlecode`
+  now hosts ten year modules and had two other live runs pushing to `main` during this run's phase 30.
+  Committing for an advisory finding would have moved the sha under review and mixed six other runs'
+  deltas into the judge's diff. The round was closed with `reviews/r1-fixes.md` written by the
+  coordinator as a **disposition record** (finding → decision → rationale, no commit), and the judge
+  accepted it. Keep that shape for mod runs: the fixer leg is for blocking findings.
+- **The version namespace of a multi-year repo is shared and must be reserved out loud.** Nine year
+  runs have released from this one repo (0.1.x … 0.9.x). bc19 was mid-flight on 0.9.1 and the bc17
+  run's design note reserved 0.10.0, so bc24 took **0.11.0** and confined its bumps to 0.11.x. Read
+  every sibling run's `STATE.coworld.version` *and* their `log.md` reservations before picking.
+- **`round_interval_minutes: 15` is wrong for the Nth league of one coworld.** The budget is per
+  *coworld*, not per league: `GET /coworlds/<name>/budget` read 17.59 of 20.00 USD spent with nine
+  battlecode leagues running, at ~0.112 USD/round. A tenth league at the prompt's default cadence
+  would have added ~96 rounds/day. Match the siblings (288 here), and check the budget endpoint
+  *before* seeding, not after a silent ladder makes you hunt for it.
+- **Rounds can complete in ~90 seconds, so triggering the second one beats waiting for the cadence.**
+  With a 288-minute interval, waiting for round 2 would have cost 4.8 h of wall clock against ~0.11 USD
+  to trigger it. Check the budget headroom, trigger, log the cost.
+- **Phase 75's `atlas_spot.py` does not know about territories, and will put your dot inside someone
+  else's ring.** Its sweep only avoids *cities*. Three of the five leagues this run had to place for
+  others landed inside `t-battlecode` or `t-crewrift`. Exclude territory geometry before choosing:
+  `circ(cx,cy,r)` entries by `r + 6` (the args are overview units even though the output is image
+  pixels — `raw: true`), and `path:` territories by sampling their cubic beziers into a polygon and
+  testing point-in-polygon. Also, when a coworld already *has* a territory and a lattice of sibling
+  dots, ignore the sweep entirely and fill the lattice hole: bc24 went to the one free slot at
+  (202,270), 24 units from five siblings.
+- **Expect to place other people's leagues.** `build.mjs` refuses while *any* live league is unplaced,
+  so dispatch 1 named five leagues belonging to other runs (including a sibling run still at phase 60).
+  That is the documented `extra_cities` path, not a failure — budget one extra dispatch for it, and
+  name every league you placed for someone else in `log.md` so their phase 75 knows why it reads
+  `already_placed`.
