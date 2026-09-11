@@ -101,3 +101,7 @@
 2026-09-11T02:12:00Z 50 -> 60 phase transition: STATE written phase=60 and pushed BEFORE any phase-60 work; verify.rounds seeded with round_958dff29
 2026-09-11T02:12:00Z progress phase=50 marker=league_8f4f934c-c3ae-4db2-9470-927ba356a3ee (division div_8e76c71d, round_958dff29 pending)
 2026-09-11T02:12:00Z heartbeat phase=60
+2026-09-11T02:13:00Z 60 round 1 completed (round_958dff29, created 02:07:17Z by the trigger, completed within ~2 min; polls at 02:08:54/02:10:35/02:12:16 all read completed, error=null)
+2026-09-11T02:14:00Z 60 round 2 triggered manually: POST /leagues/$L/trigger-round 200 -> round_741956f9-8622-4dec-9d9d-64baebf4cd07 round_number=2. Budget checked first, GET /coworlds/battlecode/budget: spent 17.598 of 20.0, remaining 2.402, status near — one round at ~0.112 USD fits inside the remaining headroom before the 07:00Z reset, and waiting for the 288-minute cadence instead would have put round 2 at ~06:55Z
+2026-09-11T02:16:00Z 60 round 2 completed (error=null). TWO completed rounds now exist, both after the fillers were registered at 02:07:00Z — check 1 of the definition of done is satisfied
+2026-09-11T02:20:00Z heartbeat phase=60
