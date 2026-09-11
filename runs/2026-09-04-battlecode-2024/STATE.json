@@ -8,7 +8,7 @@
   "phase": "30",
   "phase_attempts": {
     "20": 1,
-    "30": 3
+    "30": 0
   },
   "review_round": 1,
   "coworld": {
@@ -48,19 +48,7 @@
     "attempted_at": null,
     "reason": ""
   },
-  "blocked": {
-    "phase": "30",
-    "at": "2026-09-07T17:45:21Z",
-    "ask": "phase 30 ended three sessions without progress — reviewer threads die before writing r1-review.md",
-    "probe": "test -s /workspace/coworld-builder/runs/2026-09-04-battlecode-2024/reviews/r1-review.md",
-    "error": "no error text — silent session death: three consecutive sessions (ab4442d8, db98fc3b, 71600f96) dispatched a round-1 reviewer (threads sthr_012okBBR5gZouSrwcrLYWp8H, sthr_01LspzzSNWhNdeZzGVfqkUnj, sthr_01Mu9keKFpErgSJNvr7AdXe7) and died in-thread; no reviews/ artifact exists",
-    "attempts": [
-      "session ab4442d8 08:05Z: reviewer vs fresh checkout /tmp/cogame-battlecode@5e7c8b78 base d2922438 — died in-thread, no file",
-      "session db98fc3b 11:20Z: rebuilt checkout, fresh reviewer thread — died in-thread, no file",
-      "session 71600f96 14:22Z: third fresh reviewer thread, same parameters — died in-thread, no file"
-    ],
-    "subtask": "1218245497860470"
-  },
+  "blocked": null,
   "heartbeat_at": "2026-09-07T17:45:21Z",
   "session_ended_at": "2026-09-07T17:45:21Z",
   "session_id": "bd697ed3",
