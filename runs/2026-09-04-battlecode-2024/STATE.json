@@ -5,7 +5,7 @@
   "slug": "battlecode-2024",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "50",
+  "phase": "60",
   "phase_attempts": {
     "20": 1,
     "30": 1,
@@ -25,15 +25,24 @@
       "battlecode-gone-sharkin:v7",
       "battlecode-examplefuncsplayer24:v7"
     ],
-    "filler_version_ids": []
+    "filler_version_ids": [
+      "1cceb130-77d6-40ad-9ea2-eb973ebc2281",
+      "bb8c18d1-8bf9-4a4c-afc1-e4d8be4fff41"
+    ]
   },
   "league": {
-    "id": "",
-    "division": "",
-    "year_key": "bc24"
+    "id": "league_8f4f934c-c3ae-4db2-9470-927ba356a3ee",
+    "division": "div_8e76c71d-10ae-4e37-863f-f2bb4b8aa24b",
+    "year_key": "bc24",
+    "short_name": "bc24",
+    "seed": "lseed_4eb2974c-2562-4254-bc98-e112c717758d",
+    "pool_funded": true,
+    "round_interval_minutes": 288
   },
   "verify": {
-    "rounds": [],
+    "rounds": [
+      "round_958dff29-905a-45be-9e62-3fd12f015d76"
+    ],
     "replay": "",
     "iframe_static": false
   },
@@ -53,7 +62,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T02:06:00Z",
+  "heartbeat_at": "2026-09-11T02:12:00Z",
   "session_ended_at": null,
   "session_id": "9346975d",
   "log": "runs/2026-09-04-battlecode-2024/log.md"
