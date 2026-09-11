@@ -1896,3 +1896,31 @@ traps, address-space exhaustion) in the new year module are caught.
 spec's prose and the engine disagree — map minimum size, the unreachable `MORE_FLAGS_PICKED` rung,
 and the released jar's `SPEC_VERSION` — are resolved against the pinned engine in §The game and
 §Packaging and recorded as divergences from the prose, not as open questions.)*
+
+## Amendments (coordinator, 2026-09-11, phase 30 round 1)
+
+Two places where this note and the shipped, CI-green code at `5e7c8b78` disagree and **the code is
+right**. Recorded here so the note describes what was built; both were raised as advisory findings
+F2 and F3 in `reviews/r1-review.md` and disposed of in `reviews/r1-fixes.md`.
+
+1. **Docker-smoke substance assertion (amends §Packaging, the per-seat statistic set).** The
+   shipped `ci.yml` asserts the per-seat set `{ducks_spawned: 10, crumbs_spent: 100,
+   traps_built: 1, damage_dealt: 300}` and moves `levels_end` and `heal_dealt` to **across-seats**
+   assertions (`levels >= 3`, `healed >= 80`), alongside `picked >= 1`. Reason: `examplefuncsplayer24`
+   never heals, and its ducks die before earning the 15 attack XP a third skill level needs, so a
+   per-seat floor on those two statistics would assert the weaker bot rather than the game. The
+   across-seats flag-pickup line reads `.result.games[0].flags_picked_up`, not this note's
+   `flag_pickups`: `flag_pickups` is not a key any bc24 results document carries (`Bc24GameKeys`,
+   `src/battlecode/results.nim:129-139`). The substitutions are documented in `ci.yml:1250-1268`
+   and ran green in CI 34084170288. The docker-smoke step also does not print `sim_seconds` /
+   `rounds`; the perf shard prints the equivalent measurement in release
+   (`DefaultLarge 2000 rounds in 0.622 s`).
+
+2. **Replay event fields (amends the event table in §Sim module).** Three kinds ship with fields
+   that differ from the table: `first_action` carries **`action`**, not `kind` — `MatchEvent`
+   flattens `fields` into the event object, so a field named `kind` would overwrite the event kind
+   itself (`src/battlecode/match.nim:160-176`); `setup_end` carries
+   `{"traps": [e.b, e.c], "teleported": <int setupFlagTeleports>}` rather than per-clan
+   `flags`/`dug`/`filled` and a boolean; and `flag_taken` carries `alias, flag, x, y` with no
+   `escort`. Every emitted kind has viewer CSS and a per-game bound asserted in
+   `tests/test_bc24_replay.nim:278-286`, and `:306-308` pins `first_action`'s shape explicitly.

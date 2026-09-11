@@ -67,3 +67,7 @@
 2026-09-10T22:59:23Z 30 r1 reviewer leg completed OUT OF BAND by the operator (daveey, local Claude Code session) after three in-sandbox reviewer threads died silently: reviews/r1-review.md written against checkout 5e7c8b78 base d2922438, CI run 34084170288 verified; 0 blocking, 7 advisory (F1-F7); next: fixer (advisory only, coordinator decides) then judge per prompts/30-review-loop.md; blocked subtask 1218245497860470 being completed by the operator
 2026-09-11T01:29:00Z 00 resumed after unblock subtask=1218245497860470 attempts_reset=30 (probe passed rc=0; r1-review.md present — subtask was completed out of band by the operator)
 2026-09-11T01:30:00Z 00 resume at phase 30 attempt=1 session=9346975d
+2026-09-11T01:40:00Z 30 r1 review read: 0 blocking, 7 advisory (F1-F7) against sha 5e7c8b78 base d2922438 ci 34084170288
+2026-09-11T01:40:00Z 30 r1 fixer leg decided by coordinator: NO fixer dispatch, no commit — every finding advisory; main has since moved to 4bcb8db carrying bc16/bc17/bc19/bc22/bc23/bc25 modules from other runs and two of those runs (battlecode-2019, battlecode-2017) are live on this shared repo, so a commit for an advisory finding would move the sha under review and race their main; dispositions written to reviews/r1-fixes.md
+2026-09-11T01:40:00Z 30 design.md amended (F2 docker-smoke statistic set + flags_picked_up key, F3 three event-field shapes) — note aligned to shipped code, code unchanged
+2026-09-11T01:40:00Z heartbeat phase=30
