@@ -5,7 +5,7 @@
   "slug": "battlecode-2024",
   "repo": "https://github.com/Metta-AI/cogame-battlecode",
   "starter": "cogame-battlecode",
-  "phase": "60",
+  "phase": "70",
   "phase_attempts": {
     "20": 1,
     "30": 1,
@@ -49,7 +49,7 @@
     "viewer_check_run": "34554357054"
   },
   "announce": {
-    "attempted_at": null,
+    "attempted_at": "2026-09-11T02:36:00Z",
     "discord_message_id": ""
   },
   "atlas": {
@@ -64,7 +64,7 @@
     "reason": ""
   },
   "blocked": null,
-  "heartbeat_at": "2026-09-11T02:30:00Z",
+  "heartbeat_at": "2026-09-11T02:36:00Z",
   "session_ended_at": null,
   "session_id": "9346975d",
   "log": "runs/2026-09-04-battlecode-2024/log.md"
