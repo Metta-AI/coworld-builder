@@ -71,3 +71,5 @@
 2026-09-11T01:40:00Z 30 r1 fixer leg decided by coordinator: NO fixer dispatch, no commit — every finding advisory; main has since moved to 4bcb8db carrying bc16/bc17/bc19/bc22/bc23/bc25 modules from other runs and two of those runs (battlecode-2019, battlecode-2017) are live on this shared repo, so a commit for an advisory finding would move the sha under review and race their main; dispositions written to reviews/r1-fixes.md
 2026-09-11T01:40:00Z 30 design.md amended (F2 docker-smoke statistic set + flags_picked_up key, F3 three event-field shapes) — note aligned to shipped code, code unchanged
 2026-09-11T01:40:00Z heartbeat phase=30
+2026-09-11T01:44:00Z 30 judge dispatched thread=sthr_01MXE6mWZYe4CxaseKh2jfhA round=1 checkout=/tmp/bc24-judge@5e7c8b78 base=d2922438 ci=34084170288 output=runs/2026-09-04-battlecode-2024/reviews/r1-verdict.md (fresh context; refute F1-F7 + independent checklist pass; incremental write pinned in the brief after three dead reviewer threads)
+2026-09-11T01:44:00Z progress phase=30 marker=reviews/r1-fixes.md
