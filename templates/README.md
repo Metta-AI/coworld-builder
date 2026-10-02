@@ -171,7 +171,7 @@ Overridable by env: `SMOKE_IMAGE`, `SMOKE_SLUG`, `SMOKE_GAME_BIN` (default `/bin
 `SMOKE_PORT` (8080), `SMOKE_TIMEOUT` (900), `SMOKE_REPLAY_OUT`
 (`dist/smoke/replay.json`), `SMOKE_REQUIRE_REPLAY_JSON` (1 — set `0` for a
 binary replay format such as CTF's `.bitreplay`), `SMOKE_EXTRA_ENV` (`"K=V K=V"` applied to
-every player). If `ANTHROPIC_API_KEY` is present it is forwarded to the game container so the
+every player). If `COWORLD_LLM_ENDPOINT` is present it is forwarded to the game container so the
 LLM path is exercised; CI does not set it, which is deliberate — the game must complete on
 its scripted baselines with no credentials at all.
 
@@ -179,14 +179,13 @@ its scripted baselines with no credentials at all.
 
 `workflow_dispatch` only. Inputs: **`version`** (required, `MAJOR.MINOR.PATCH`),
 **`policies`** (JSON array of `{name, run, env:{...}}`; empty ⇒ read `tools/ci/policies.json`
-from the repo), **`secret_key_name`** (default `anthropic_api_key`), **`put_secret`**
-(default true), **`skip_certify`** (default false, debugging only).
+from the repo), **`skip_certify`** (default false, debugging only).
 `concurrency: coworld-release`, `cancel-in-progress: false` — a killed upload can leave a
 half-published version behind.
 
 The step order is load-bearing and is the whole point of the file:
 
-1. `softmax set-token "$SOFTMAX_TOKEN"` via `uvx --from "coworld[auth]==0.1.38"`.
+1. `softmax set-token "$SOFTMAX_TOKEN"` via `uvx --from "coworld[auth]==0.1.56"`.
 2. `coworld build --version $VERSION --project . --compose compose.yaml --template coworld_manifest_template.json --output dist/coworld_manifest.json`.
 3. `coworld certify dist/coworld_manifest.json`, teed to an artifact, and **failed unless the
    output contains `Replay liveness: skipped (static replay bundle declared`** — that line is
@@ -202,12 +201,9 @@ The step order is load-bearing and is the whole point of the file:
    as `daveey-1` (409 "already assigned to player"), so champion #2 must be uploaded while
    `daveey-1` is active, and CI is the only place `softmax player use` can run. The unset
    runs in a `finally` at both the per-policy and whole-step level, so no failure can leave
-   the runner — or the later `upload-coworld` / `secret put` steps — impersonating anyone.
+   the runner — or the later `upload-coworld`  steps — impersonating anyone.
 5. `coworld upload-coworld dist/coworld_manifest.json --timeout-seconds 900
    --wait-hosted-smoke --hosted-smoke-timeout-seconds 1800`.
-6. `coworld secret put <slug> <secret_key_name> <tmpfile>` with `ANTHROPIC_API_KEY` written to
-   a mode-600 temp file that is deleted immediately. **After** step 5: the secret namespace
-   does not exist until the Coworld does.
 
 It parses `Coworld: cow_…`, `Manifest hash: sha256:…`, `Canonical: yes|no`,
 `Hosted smoke certification: passed` and each `Upload complete: <name>:vN`, writes them to
@@ -221,7 +217,7 @@ It parses `Coworld: cow_…`, `Manifest hash: sha256:…`, `Canonical: yes|no`,
  "policies":[{"name":"bullwhip-steady","version":"v1","policy_version_id":null,"player_id":null},
              {"name":"bullwhip-forecaster","version":"v1","policy_version_id":null,
               "player_id":"ply_bac48eb1-662e-44f8-973d-f3e016dccf5d"}],
- "secret_put":true,"errors":[],"step_failed":null}
+ "errors":[],"step_failed":null}
 ```
 
 (`policy_version_id` is always `null`: `upload-policy` prints only `name:vN`. `player_id` is
@@ -234,7 +230,7 @@ gh run download <run_id> -R Metta-AI/cogame-<slug> -n release-result -D /tmp/rr
 jq . /tmp/rr/release-result.json
 ```
 
-Requires repo secrets `SOFTMAX_TOKEN` and `ANTHROPIC_API_KEY`, propagated onto each coworld repo by dispatching `propagate-secrets.yml` in `Metta-AI/coworld-builder` (`gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>`; it runs with a user token that is admin on Metta-AI repos — no org admin, no value ever in the sandbox).
+Requires `SOFTMAX_TOKEN`. Policies requesting inference set `use_llm: true` and a canonical `llm_model`, such as `anthropic/claude-sonnet-4.6`. The platform injects `COWORLD_LLM_ENDPOINT`; provider keys are not uploaded.
 
 ## `coworld-submit.yml` → `.github/workflows/coworld-submit.yml`
 
