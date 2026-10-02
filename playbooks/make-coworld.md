@@ -28,7 +28,6 @@ thing the game is about.
 | `uv run coworld certify dist/coworld_manifest.json` | same dispatch (step 2 of the same run) |
 | `uv run coworld upload-policy …` | same dispatch (`policies` input) |
 | `uv run coworld upload-coworld …` | same dispatch |
-| `uv run coworld secret put …` | same dispatch (`put_secret: true`) |
 | `docker build …` / any local image work | the workflow's runner; never the sandbox |
 | `uv run coworld submit …` | dispatch `coworld-submit.yml` (artifact `submit-result`) |
 | `uv run softmax player use/unset` | inside `coworld-submit.yml` only |
@@ -77,8 +76,7 @@ gh run download "$RUN" -R "$REPO" -n release-result -D /tmp/rr
 jq . /tmp/rr/release-result.json
 ```
 
-Other inputs: `secret_key_name` (default `anthropic_api_key`), `put_secret` (default true),
-`skip_certify` (default false — **debugging only, never for a real release**; it also makes the
+Other input: `skip_certify` (default false — **debugging only, never for a real release**; it also makes the
 `certify` key `null` rather than `false`, so a `null` there means "not checked", not "failed").
 
 `release-result.json` is written **even when a step fails**:
@@ -199,8 +197,7 @@ Notes that survive the move to CI:
   is visible. Fix: bump the version and re-dispatch once the image is warm. It passes the second
   time. Do not debug the game for this.
 - **Hosted game logs:** `GET /v2/episode-requests/<ereq>/artifacts/logs` with the elevated header.
-- **Secret** is `anthropic_api_key`; the workflow puts it from the repo's `ANTHROPIC_API_KEY` secret (propagated by coworld-builder's `propagate-secrets.yml`),
-  after `upload-coworld`.
+- **Hosted inference:** games receive `COWORLD_LLM_ENDPOINT` automatically. Send native `/v1/messages` or `/v1/chat/completions` requests with the acting `X-Coworld-Player-Slot`. Player uploads request `--use-llm --llm-model anthropic/claude-haiku-4.5`; each player pod owns its inference budget. The injected `COWORLD_LLM_MODEL` takes precedence over local model defaults. Do not add provider-key manifest entries or publish Anthropic secrets.
 - **LLM players on Bedrock:** force JSON with a system prompt demanding the reply **begins with
   `{`** (Haiku answers prose-first otherwise); Haiku 4.5 rejects `output_config.effort`;
   `maxOutputTokens` 900, not 400 (`cut off at max_tokens`).

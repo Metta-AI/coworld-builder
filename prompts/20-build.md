@@ -25,7 +25,7 @@ Owner: builder sub-agent, driven by the coordinator. The sandbox cannot compile 
    gh workflow run propagate-secrets.yml -R Metta-AI/coworld-builder -f repo=cogame-<slug>
    # find-the-new-run recipe (playbook), then:
    gh run watch <id> -R Metta-AI/coworld-builder --exit-status
-   gh secret list -R Metta-AI/cogame-<slug>     # must list SOFTMAX_TOKEN and ANTHROPIC_API_KEY
+   gh secret list -R Metta-AI/cogame-<slug>     # must list SOFTMAX_TOKEN
    ```
 2. Send the **builder** brief (self-contained):
 
@@ -158,7 +158,7 @@ for WF in ci.yml coworld-release.yml coworld-submit.yml; do
 done
 # the inputs phases 40 and 50 pass by name (BINDING, per playbooks/observatory-api.md §12):
 gh workflow view coworld-release.yml -R "$REPO" --yaml \
- | grep -E '^ +(version|policies|put_secret|skip_certify):' 
+ | grep -E '^ +(version|policies|skip_certify):'
 gh workflow view coworld-submit.yml  -R "$REPO" --yaml \
  | grep -E '^ +(player_id|policy|league_id):'
 # and the two artifacts the later phases read back:
