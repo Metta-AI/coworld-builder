@@ -10,10 +10,10 @@
 # prompts/00-claim.md in full when fired; every race guard in there is unchanged.
 #
 # Manual run: gh workflow run heartbeat-gate.yml -R Metta-AI/coworld-builder -f fire=false
-# (decision only, nothing fired). The decision JSON is in the job log and the step summary.
+# (decision only, nothing fired). The job log has the decision JSON; the step summary has the outcome.
 #
-# Secrets: ASANA_PAT (Builder + Ideas boards), DISCORD_BOT_TOKEN (one alert per day when the
-# board is unreachable), and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written
+# Board-read errors fail the job; the next scheduled run retries. GitHub Actions tracks recovery.
+# Secrets: ASANA_PAT (Builder + Ideas boards) and SOFTMAX_TOKEN / GH_PAT for the Blocked-run probes, which are written
 # against the sandbox's vault credentials of the same names. The Anthropic side stores NO key:
 # the job exchanges its GitHub OIDC token for a short-lived (~10 min) workspace-bound bearer token
 # (Workload Identity Federation, rule gha-coworld-builder; see costbot.yml and fleet/cloud.md).
@@ -71,13 +71,12 @@ jobs:
       - name: decide (and fire)
         env:
           ASANA_PAT: ${{ secrets.ASANA_PAT }}
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           SOFTMAX_TOKEN: ${{ secrets.SOFTMAX_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           FIRE="${{ github.event.inputs.fire }}"
           if [ "${{ github.event_name }}" = "schedule" ] || [ "$FIRE" != "false" ]; then
-            python3 fleet/bin/heartbeat_gate.py --fire --alert
+            python3 fleet/bin/heartbeat_gate.py --fire
           else
-            python3 fleet/bin/heartbeat_gate.py --alert
+            python3 fleet/bin/heartbeat_gate.py
           fi
