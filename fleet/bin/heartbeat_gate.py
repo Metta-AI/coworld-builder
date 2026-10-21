@@ -11,14 +11,12 @@ coordinator still runs `prompts/00-claim.md` in full when fired — every race g
 
 Modes (python3 stdlib only):
 
-  decide            (default) print the decision as JSON. Exit 0 always once a decision is made;
-                    non-zero only on an unexpected error.
+  decide            (default) print the decision as JSON. Exit 1 on a board error; exit 0
+                    after a successful decision, including an idle queue.
   --fire            after deciding, POST /deployments/{id}/run on the least-recently-run heartbeat
                     deployment (fleet/cloud.md ids table) when there is work. Needs
                     ANTHROPIC_AUTH_TOKEN (a federated bearer token — what the workflow uses) or
                     ANTHROPIC_API_KEY (an org key; the workspace header comes from fleet/cloud.md).
-  --alert           when the Builder board is unreachable, post ONE Discord message per UTC day to
-                    `#coworlds` (needs DISCORD_BOT_TOKEN). Never fires the coordinator on a 403.
   --summary         sandbox mode, run by the coordinator as `prompts/00-claim.md` step 0: does the
                     gh/jq preflight, `git pull --rebase`, and prints the same decision JSON with the
                     details the claim needs (candidate idea text, stale runs, probe results) so the
@@ -26,7 +24,7 @@ Modes (python3 stdlib only):
 
 Decision rules mirror `prompts/00-claim.md` steps 1–4.2, in the same order:
 
-  1. Builder board unreachable (403/5xx)                     -> board_error, no work, no fire
+  1. Builder board unreadable                               -> board_error, no work, no fire
   2. Running task stale (heartbeat_at ≥ 180 min) or ended
      (STATE.session_ended_at ≥ heartbeat_at)                 -> work: resume (oldest first)
   3. Blocked task whose STATE.blocked.subtask is complete,
@@ -42,7 +40,7 @@ Confidentiality and startability of an idea stay with the coordinator (SPEC §Ra
 idea lands in runs/SKIPPED.json and is filtered out here forever after.
 
 Credentials come from the environment only (ASANA_PAT, ANTHROPIC_AUTH_TOKEN or ANTHROPIC_API_KEY,
-DISCORD_BOT_TOKEN, plus whatever a probe needs). Nothing is ever printed but their presence.
+plus whatever a probe needs). Nothing is ever printed but their presence.
 """
 import argparse
 import datetime as dt
@@ -61,11 +59,9 @@ CLOUD_MD = os.path.join(ROOT, "fleet", "cloud.md")
 SANDBOX_ROOT = "/workspace/coworld-builder"   # probes are written against this path
 ASANA = "https://app.asana.com/api/1.0"
 ANTHROPIC = "https://api.anthropic.com/v1"
-DISCORD = "https://discord.com/api/v10"
 STALE_MIN = 180
 FRESH_BLOCK_H = 24
 MAX_FRESH_BLOCKED = 2
-ALERT_MARKER = "[gate-alert %s]"
 
 # Defaults; fleet/cloud.md overrides every one of these.
 IDS = {
@@ -73,7 +69,6 @@ IDS = {
     "running": "1217747860567752", "blocked": "1217762552336061",
     "done": "1217748136343842", "fleet": "1217747860605582",
     "human": "1209016834701578", "heartbeat_field": "1217748424048134",
-    "discord_channel": "1440464430646427718",
 }
 
 
@@ -159,14 +154,6 @@ def anthropic(path, body=None, method=None):
     return _request(ANTHROPIC + path, h, body, method, timeout=120)
 
 
-def discord(path, body=None, params=None):
-    tok = os.environ.get("DISCORD_BOT_TOKEN")
-    if not tok:
-        return None
-    url = DISCORD + path + ("?" + urllib.parse.urlencode(params) if params else "")
-    return _request(url, {"authorization": "Bot " + tok, "user-agent": "DiscordBot (heartbeat-gate, 1.0)"}, body)
-
-
 # --------------------------------------------------------------------------- fleet/cloud.md
 
 
@@ -192,8 +179,6 @@ def read_cloud():
             ids["heartbeat_field"] = gid
         elif "david bloomin" in w:
             ids["human"] = gid
-        elif w.startswith("`#coworlds`"):
-            ids["discord_channel"] = gid
     m = re.search(r"`max_parallel_runs:\s*(\d+)`", body)
     ids["max_parallel_runs"] = int(m.group(1)) if m else 3
     m = re.search(r"`workspace_id:\s*([A-Za-z0-9_\-]+)`", body)
@@ -447,7 +432,7 @@ def decide(root, ids, want_details=False, probe_root=None):
     return d
 
 
-# --------------------------------------------------------------------------- fire / alert
+# --------------------------------------------------------------------------- fire
 
 
 def pick_deployment(ids):
@@ -483,27 +468,6 @@ def fire(ids, d):
     d["fired"] = {"deployment": name, "id": dep, "run": r.get("id"), "session": r.get("session_id")}
 
 
-def alert(ids, d):
-    day = now().strftime("%Y-%m-%d")
-    marker = ALERT_MARKER % day
-    ch = ids["discord_channel"]
-    try:
-        msgs = discord("/channels/%s/messages" % ch, params={"limit": 50})
-        if msgs is None:
-            d["notes"].append("DISCORD_BOT_TOKEN not set; alert not posted")
-            return
-        if any(marker in (m.get("content") or "") for m in msgs):
-            d["notes"].append("alert already posted today")
-            return
-        text = ("⚠️ coworld-builder heartbeat gate: the Builder board is unreachable, so no heartbeat is being fired.\n"
-                "`%s`\nFix the ASANA_PAT credential or the board access, then the gate resumes on its own. %s" % (
-                    d["board_error"][:300], marker))
-        m = discord("/channels/%s/messages" % ch, {"content": text, "allowed_mentions": {"parse": []}, "flags": 4})
-        d["notes"].append("alert posted: message %s" % (m or {}).get("id"))
-    except (urllib.error.HTTPError, urllib.error.URLError) as e:
-        d["notes"].append("alert failed: %s" % e)
-
-
 # --------------------------------------------------------------------------- sandbox summary
 
 
@@ -526,7 +490,6 @@ def preflight():
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--fire", action="store_true", help="fire a heartbeat deployment when there is work")
-    ap.add_argument("--alert", action="store_true", help="post one Discord alert per day when the board is unreachable")
     ap.add_argument("--summary", action="store_true", help="sandbox mode: preflight + pull + decision with details")
     ap.add_argument("--root", default=ROOT, help="repo checkout to read runs/ from (default: this script's repo)")
     args = ap.parse_args()
@@ -536,18 +499,17 @@ def main():
     if args.summary:
         d["preflight"] = preflight()
     d.update(decide(args.root, ids, want_details=args.summary, probe_root=args.root))
-    if d.get("board_error"):
-        if args.alert:
-            alert(ids, d)
-    elif d["work"] and args.fire:
+    if not d["board_error"] and d["work"] and args.fire:
         fire(ids, d)
-    d["credentials_present"] = {k: bool(os.environ.get(k)) for k in ("ASANA_PAT", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_API_KEY", "DISCORD_BOT_TOKEN", "GH_TOKEN", "SOFTMAX_TOKEN")}
+    d["credentials_present"] = {k: bool(os.environ.get(k)) for k in ("ASANA_PAT", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_API_KEY", "GH_TOKEN", "SOFTMAX_TOKEN")}
     print(json.dumps(d, indent=1, sort_keys=True))
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:
         with open(summary, "a", encoding="utf-8") as f:
             f.write("**%s** — %s%s\n" % (d["kind"], d["reason"], (" → fired %s" % d["fired"]["deployment"]) if d.get("fired") else ""))
-    return 0
+            if d["board_error"]:
+                f.write(f"\n```\n{d['board_error']}\n```\n")
+    return 1 if d["board_error"] else 0
 
 
 if __name__ == "__main__":

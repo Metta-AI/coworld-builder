@@ -74,7 +74,11 @@ The heartbeat gate — `fleet/bin/heartbeat_gate.py`, run by `.github/workflows/
 every 20 minutes — decides without an LLM whether there is a unit of work (stale run, unblocked
 run, stalled-queue escalation, claimable idea) and fires a deployment only then. Run it locally
 with `ASANA_PAT` set to see the decision it would make; `--fire` needs `ANTHROPIC_API_KEY` (the org
-key), `--alert` needs `DISCORD_BOT_TOKEN`. The same script is the coordinator's `00-claim.md` step 0
+key). A board-read error prints the decision JSON and exits 1; a successful decision exits 0,
+including an idle queue. Errors also appear in the GitHub step summary. Check the
+[gate workflow](https://github.com/Metta-AI/coworld-builder/actions/workflows/heartbeat-gate.yml)
+for current health: each scheduled run retries, and a successful run clears the failure status.
+The gate sends no Discord alerts. The same script is the coordinator's `00-claim.md` step 0
 (`--summary`), so the sandbox and the gate compute the freshness and claim rules from one file.
 
 Add `--dry-run` to any of them to print the redacted payloads without sending anything. The

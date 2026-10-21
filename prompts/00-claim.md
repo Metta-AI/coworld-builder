@@ -36,9 +36,9 @@ just a run you do not touch.
    in `deferred[]`. `kind` is the unit of work it found: `resume`, `unblock`, `escalate`, `claim`,
    or `none`; `reason` says why. **Use those fields for steps 1–4.2 instead of re-fetching the
    boards yourself** — re-fetch only what an action needs (the re-GET before a claim, the comment
-   you post, the `heartbeat_at` you write). If `board_error` is set, the Builder board is
-   unreachable: do not create a run — append `<UTC> heartbeat: builder board unreachable (<error>)`
-   to `runs/heartbeats.log` and exit. If the script itself fails (traceback, missing python),
+   you post, the `heartbeat_at` you write). If `board_error` is set, a required board is
+   unreachable (the script exits 1 but still prints its JSON): do not create a run — append `<UTC> heartbeat: builder board unreachable (<error>)`
+   to `runs/heartbeats.log` and exit. If the script fails without decision JSON (traceback, missing python),
    log `<UTC> 00 summary failed — falling back to manual steps` and do steps 1–4.2 by hand with the
    curls below.
    `gh` authenticates from `GH_TOKEN` in the environment (vault-injected); never run `gh auth

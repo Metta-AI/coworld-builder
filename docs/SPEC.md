@@ -35,7 +35,9 @@ that names exactly what is needed, and exits.
   idea). An idle heartbeat was a ~$1.2–1.5 Fable session that found nothing to do, and 58 of 66
   sessions on 2026-09-07 were idle; the gate answers the same question for free and leaves every
   race guard below untouched — the coordinator still runs `prompts/00-claim.md` in full when
-  fired. Every fired session carries a `$200` hard budget (`fleet/deployment.json` `budget`). **Several runs in *Running* at once is the normal state**,
+  fired. Board-read errors print the decision JSON and exit nonzero, so GitHub Actions owns
+  failure and recovery status. The gate sends no Discord alerts; the next scheduled run retries.
+  Every fired session carries a `$200` hard budget (`fleet/deployment.json` `budget`). **Several runs in *Running* at once is the normal state**,
   bounded by `max_parallel_runs` (`fleet/cloud.md` §Parallelism, currently 3). Every firing is a
   *heartbeat*:
   1. Run the tool preflight (`prompts/00-claim.md` step 0), then read the **Coworld Builder**
