@@ -44,9 +44,21 @@
     "attempted_at": null,
     "reason": ""
   },
-  "blocked": null,
-  "heartbeat_at": "2026-10-22T23:17:00Z",
-  "session_ended_at": null,
+  "blocked": {
+    "phase": "10",
+    "at": "2026-10-22T23:58:00Z",
+    "ask": "decide the owner and target for QWOP: coworld-builder stands down for the new CoMax QWOP team on Metta-AI/polyworld, or ships the 2D cogame-cogwop coworld as designed",
+    "probe": null,
+    "error": "No technical failure. The idea card was rewritten by daveey between the heartbeat gate's snapshot (2026-10-22T23:15:12Z) and this run's verbatim capture (23:18Z), ~3 min after the 23:15:46Z claim: 'UPDATE 2026-10-22 (daveey): build on Metta-AI/polyworld and make it TRUE 3D. ... The sections TRACK & TERRAIN, PHYSICS and BROADCAST COVERAGE below are the spec. They replace any 2D/Box2D wording in the rest of the card.' A human comment on the idea task at 2026-10-22T23:27:10Z then assigned the build to a new CoMax QWOP team with a $1,000/month budget (comax PR #423), 'Code goes to Metta-AI/polyworld on qwop/* branches'. coworld-builder's pipeline only produces a public Metta-AI/cogame-<slug> coworld forked from one of its six mounted starters; polyworld is not a starter, is not mounted, and has no release chain here, so phases 20-75 cannot build the updated card.",
+    "attempts": [
+      "1. Claimed and designed against the card as the gate presented it (pre-update text): starter coworld-ctf, num_agents 4, variants sprint+tandem, 30 Hz physics decoupled from a coarse decision tick via key schedules. Result: a complete 762-line design note at runs/2026-10-22-cogwop/design.md, every phase-10 checklist item self-assessed PASS \u2014 a sound 2D game, but not the game the updated card asks for.",
+      "2. Re-read the live idea task and its comments first-hand instead of trusting the gate's cached notes, and diffed them against the capture. Result: the rewrite is real and post-dates the claim; the 23:27 build-owner comment found; the designer had independently flagged the same conflict at design.md:100-105 rather than hiding it.",
+      "3. Tested whether the post-update card is buildable inside the rails without a human. It is not: polyworld is not one of the six starters, is not mounted, and 'code goes to Metta-AI/polyworld on qwop/* branches' is a target phases 20-75 cannot produce. Starter choice is a rail the agent decides; which repo and which team own an idea is not, and the two readings give materially different games as well as different owners."
+    ],
+    "subtask": "1219800377928138"
+  },
+  "heartbeat_at": "2026-10-22T23:58:00Z",
+  "session_ended_at": "2026-10-22T23:58:00Z",
   "session_id": "9dc99954",
   "subtasks": {
     "10": "1219799713386615",
