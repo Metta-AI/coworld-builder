@@ -1,0 +1,63 @@
+{
+  "run": "2026-10-22-cogwop",
+  "idea_task": "1219799551688527",
+  "run_task": "1219799712870759",
+  "slug": "cogwop",
+  "repo": "https://github.com/Metta-AI/cogame-cogwop",
+  "starter": "coworld-ctf",
+  "phase": "10",
+  "phase_attempts": {},
+  "review_round": 0,
+  "coworld": {
+    "version": "",
+    "cow_id": "",
+    "manifest_sha": "",
+    "release_run_id": ""
+  },
+  "policies": {
+    "champion1": "",
+    "champion2": "",
+    "fillers": [],
+    "filler_version_ids": []
+  },
+  "league": {
+    "id": "",
+    "division": ""
+  },
+  "verify": {
+    "rounds": [],
+    "replay": "",
+    "iframe_static": false
+  },
+  "announce": {
+    "attempted_at": null,
+    "discord_message_id": ""
+  },
+  "atlas": {
+    "status": "",
+    "pr_url": "",
+    "branch": "",
+    "region": "",
+    "x": 0,
+    "y": 0,
+    "dispatch_run_id": "",
+    "attempted_at": null,
+    "reason": ""
+  },
+  "blocked": null,
+  "heartbeat_at": "2026-10-22T23:17:00Z",
+  "session_ended_at": null,
+  "session_id": "9dc99954",
+  "subtasks": {
+    "10": "1219799713386615",
+    "20": "1219799741195508",
+    "30": "1219799741252619",
+    "40": "1219799553150647",
+    "50": "1219799741423433",
+    "60": "1219799713386624",
+    "70": "1219799741667076",
+    "75": "1219799737026146",
+    "80": "1219799553511053"
+  },
+  "log": "runs/2026-10-22-cogwop/log.md"
+}
